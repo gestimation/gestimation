@@ -1,57 +1,70 @@
 ---
-title: "Coffee and Research are the best when they are hot."
 format:
   html:
     toc: false
 ---
 
+
+
+<div class="hero-text">
+
+![](image/coffee.png){.hero-header-img}
+
+</div>
+
+
+<div class="content-narrow">
+
+# Coffee and Research are the best when they are hot.
+
 Welcome.  
-This is a small corner of the internet where I keep my thoughts on statistics, causal inference, and clinical research.
+This is a quiet corner where I keep my thoughts on statistics,  
+causal inference, and clinical research.
 
-I believe that ideas — like good coffee — are best enjoyed while they are still warm. This site collects the tools, stories, and methods that have shaped my own way of thinking about data and medicine.
+Ideas — like good coffee — are best enjoyed while they are still warm.
 
-Below are the two main projects available for now.
+</div>
 
 ---
 
-## 1. R Package **cifmodeling**
+<div class="project-card">
 
-A toolkit for survival and competing risks analysis in R.
+## R package **cifmodeling**
+
+A toolkit for survival and competing risks analysis in R — the more technical side of my coffee-fueled research.
 
 - Kaplan–Meier and Aalen–Johansen estimation and visualization  
-- Direct polytomous regression of CIFs
-- Integration with **ggsurvfit**, **modelsummary**, and modern R workflows  
+- **Direct polytomous regression** of cumulative incidence functions
+- Integration with **ggsurvfit**, **modelsummary**, and modern R workflows 
 
-👉 **[Visit the cifmodeling site](https://gestimation.github.io/cifmodeling/)**
+**[Visit the cifmodeling site](https://gestimation.github.io/cifmodeling/)**
 
----
+</div>
 
-## 2. Story and Quiz — *How I learned research from my father*
+<div class="project-card">
 
-A Japanese series of short, warm stories about learning research.  
-Through conversations between a father and daughter, the essentials of medical research unfold naturally.
+## Story and Quiz — *How I learned research from my father*
+
+A Japanese series of short, warm stories about learning research. Through conversations between a father and daughter, the essentials of research unfold naturally.
 
 - For readers who want to grasp the *feel* of research before opening a textbook  
 - Light, conversational chapters you can read in a few minutes  
 - From Study Design → Clinical Trials → Epidemiology → Causal Inference → Publishing
 
-👉 **[Read the Story and Quiz series (JP)](./jp/index.qmd)**
+**[Read the Story and Quiz series (in Japanese)](./jp/index.qmd)**
+</div>
 
----
-
----
+<div class="about-section">
 
 ## About the author
 
-<img src="image/portrait.jpg" alt="Shiro Tanaka" width="130"
-     style="border-radius: 50%; float:left; margin-right: 1rem;">
+<img src="image/portrait.jpg" width="120" style="float:left; margin-right:1rem;">
 
-Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics
-at Kyoto University. He works at the intersection of causal inference and clinical
-research. His recent projects explore survival analysis and g-methods, as well as the way we teach research through stories. 
+Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyoto University. He works at the intersection of causal inference and clinical research. He tends to think best with papers, R, and a cup of coffee within reach.
+
+**[More information](./about/about.Rmd)**
 
 <br clear="all">
+</div>
 
----
-
-More content — including English blog posts, R examples, and lecture notes — will be added gradually, while the coffee is still hot.
+More content will be added gradually.

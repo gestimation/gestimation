@@ -1,0 +1,97 @@
+/* ----------------------------------------------------
+   Global
+---------------------------------------------------- */
+
+body {
+  background: #ffffff;
+  color: #2b1f1a; /* 濃いめのコーヒーブラウン */
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+}
+
+/* 見出し（緊張感を出すために serif をワンポイント） */
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+/* リンク（濃い茶色、ホバーでほんのり暗く） */
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+/* ナビバー：白背景 × コーヒー色テキスト */
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom: 2px solid #8b4a24;
+}
+
+/* ----------------------------------------------------
+   Layout Components
+---------------------------------------------------- */
+
+/* Hero section with coffee image, sharp edges */
+.hero {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+.hero-img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 320px;
+  filter: brightness(0.92); /* 少し落ち着いたトーン */
+}
+
+/* hero text */
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+/* Project cards: no rounded corners */
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 0; /* ← ここが重要 */
+  margin-bottom: 1.5rem;
+}
+
+/* Button link (flat, modern) */
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+/* About section minimal */
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5
