@@ -105,6 +105,14 @@ Kaplan-Meier法による生存曲線の推定が妥当な状況として正し�
 
 [Epidemiology IV](epidemiology-4.md)
 
+[Regression I](logistic-regression-1.md)
+
+[Regression II](logistic-regression-2.md)
+
+[Regression III](logistic-regression-3.md)
+
+[Regression IV](logistic-regression-4.md)
+
 [Causal inference I](causal-inference-1.md)
 
 [Causal inference II](causal-inference-2.md)
