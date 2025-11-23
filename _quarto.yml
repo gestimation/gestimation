@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "gestimation"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: 日本語
+        menu:
+          - text: Study design
+            href: jp/study-design-1.md
+          - text: Clinical trial
+            href: jp/clinical-trial-1.md
+          - text: Epidemiology
+            href: jp/epidemiology-1.md
+          - text: Causal inference
+            href: jp/causal-inference-1.md
+          - text: Publishing a paper
+            href: jp/publish-a-paper-1.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
