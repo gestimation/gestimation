@@ -1,41 +1,57 @@
 ---
-title: "gestimation"
+title: "Coffee and Research are the best when they are hot."
 format:
   html:
     toc: false
 ---
 
-## ようこそ
+Welcome.  
+This is a small corner of the internet where I keep my thoughts on statistics, causal inference, and clinical research.
 
-このサイトでは、統計学・因果推論・臨床研究についてまとめています。\
-いま公開しているコンテンツは、次の2つです。
+I believe that ideas — like good coffee — are best enjoyed while they are still warm. This site collects the tools, stories, and methods that have shaped my own way of thinking about data and medicine.
 
-------------------------------------------------------------------------
+Below are the two main projects available for now.
 
-### 1. Rパッケージ **cifmodeling**
+---
 
-生存時間解析・競合リスクのためのRパッケージです。
+## 1. R Package **cifmodeling**
 
--   Kaplan–Meier / Aalen–Johansen の推定と可視化
--   CIF ベースの回帰（polyreg）
--   ggsurvfit や modelsummary との連携
+A toolkit for survival and competing risks analysis in R.
 
-👉 [**cifmodeling サイトへ**](https://gestimation.github.io/cifmodeling/)
+- Kaplan–Meier and Aalen–Johansen estimation and visualization  
+- Direct polytomous regression of CIFs
+- Integration with **ggsurvfit**, **modelsummary**, and modern R workflows  
 
-------------------------------------------------------------------------
+👉 **[Visit the cifmodeling site](https://gestimation.github.io/cifmodeling/)**
 
-### 2. Story and Quiz
+---
 
-**「私は父から研究を学んだ」**
+## 2. Story and Quiz — *How I learned research from my father*
 
-がんサバイバーの就労支援を題材に、研究方法や統計学の考え方を **ストーリー形式** で学ぶ読み物シリーズです。
+A Japanese series of short, warm stories about learning research.  
+Through conversations between a father and daughter, the essentials of medical research unfold naturally.
 
--   研究をはじめる前に、**全体像や言葉の感覚**をつかみたい人へ
--   1話あたり数分で読める、軽い語り口
--   Study design → Clinical trial → Epidemiology → Causal inference → Publish と読み進めると、 医学研究の入り口と出口がつながります
+- For readers who want to grasp the *feel* of research before opening a textbook  
+- Light, conversational chapters you can read in a few minutes  
+- From Study Design → Clinical Trials → Epidemiology → Causal Inference → Publishing
 
-👉 [**Story and Quiz のページへ**](./jp/index.qmd)
+👉 **[Read the Story and Quiz series (JP)](./jp/index.qmd)**
 
-------------------------------------------------------------------------
+---
 
-今後、英語の R ブログ記事やセミナー資料も少しずつ追加していく予定です。
+---
+
+## About the author
+
+<img src="image/portrait.jpg" alt="Shiro Tanaka" width="130"
+     style="border-radius: 50%; float:left; margin-right: 1rem;">
+
+Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics
+at Kyoto University. He works at the intersection of causal inference and clinical
+research. His recent projects explore survival analysis and g-methods, as well as the way we teach research through stories. 
+
+<br clear="all">
+
+---
+
+More content — including English blog posts, R examples, and lecture notes — will be added gradually, while the coffee is still hot.

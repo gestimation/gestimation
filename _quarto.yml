@@ -3,12 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "gestimation"
+  title: "Coffee and Research"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - text: 日本語
+      - text: Story and Quiz (JP)
         menu:
           - text: Study design
             href: jp/study-design-1.md
@@ -16,6 +16,8 @@ website:
             href: jp/clinical-trial-1.md
           - text: Epidemiology
             href: jp/epidemiology-1.md
+          - text: Regression
+            href: jp/logistic-regression-1.md
           - text: Causal inference
             href: jp/causal-inference-1.md
           - text: Publishing a paper

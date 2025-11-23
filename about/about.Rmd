@@ -1,0 +1,16 @@
+---
+title: "About Shiro Tanaka"
+---
+
+<img src="image/portrait.jpg" width="150" style="border-radius: 12px; float:right; margin-left:1rem;">
+
+Shiro Tanaka is a biostatistician and currently Professor of Clinical Biostatistics
+at the Graduate School of Medicine, Kyoto University.
+
+He has served as a trial statistician in translational research at Kyoto University Hospital, as well as in nationwide clinical trials in pediatric oncology and osteoporosis. He teaches graduate courses on statistics, clinical trials, and meta-analysis.
+
+He is an advisory expert for the Pharmaceutical and Medical Devices Agency, a councilor for the Japanese Society for Pharmacoepidemiology
+and the Biometric Society of Japan, and serves on multiple editorial boards.
+
+He works at the intersection of causal inference and clinical
+research. His recent projects explore survival analysis and g-methods, as well as the way we teach research through stories. 
