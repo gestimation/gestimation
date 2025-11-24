@@ -1,0 +1,423 @@
+---
+format:
+  html:
+    toc: true
+---
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+# Story and Quiz − Study design III
+::: {.serif-block}
+　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, survival/competing-risk, clinical trial
+:::
+
+### アウトカムってなに？
+
+:::: dialogue
+::: voice-daughter
+私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”OS”とか”DFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSはがんの再発を調べてるみたいなんだけど。お父さん詳しい？」
+:::
+
+::: voice-father
+お父さん「統計解析をしていて、OSとDFSを扱うことはあるよ。OSは全生存期間（overall survival）、DFSは無病生存期間（disease-free survival）のことだよね」
+:::
+
+::: voice-daughter
+私「無病生存期間って再発までの日数のこと？」
+:::
+
+::: voice-father
+お父さん「再発までの日数だったら無再発期間(relapse-free time)って言葉を選ぶかなあ」
+:::
+
+::: voice-daughter
+私「同じじゃないの？」
+:::
+
+::: voice-father
+お父さん「学術的には違うよ。再発を経験せずに、死亡することもあるでしょ。無病生存期間のポイントは、再発・2次がん・死亡のうち、**どれか最初のイベントまでの時間**を扱うこと。だから、再発だけでなく、死亡したり別のがんを発症したりしたときも、イベントとして扱われるんだ」
+:::
+
+![](study-design-2.png)
+
+::: voice-daughter
+私「イベント扱いって？」
+:::
+
+::: voice-father
+お父さん「生存時間データは、一般に特定のイベントまでの経過時間なんだ。端的にいうとね、無病生存期間のデータから“3年無病生存確率”を計算するとするでしょ。それは“イベントが起こらない確率”に相当するんだけど、意味合いとしては3年時点で、再発も2次がんも経験せず、生存できる確率を求めることになる」 **私「そういうことか」** お父さん「薬の臨床試験で用いられるアウトカムは、”エンドポイント”とよばれることもあるね。表に、がん臨床試験の主な生存時間エンドポイントを整理してあげるよ（Japan Clinical Oncology Group 2021）」
+:::
+
+| エンドポイント | イベント1 | イベント2 | イベント3 | イベント4 | 打ち切り日 |
+|------------|------------|------------|------------|------------|------------|
+| 全生存期間 | 死亡 |  |  |  | 最終生存確認日 |
+| 無増悪生存期間 | 死亡 | 増悪/再発 |  |  | 最終無増悪確認日 |
+| 無再発生存期間 | 死亡 | 再発 |  |  | 最終生存確認日 |
+| 無病生存期間 | 死亡 | 再発 | 2次がん |  | 最終生存確認日 |
+| 無イベント生存期間 | 死亡 | 寛解導入失敗 | 再発 | 2次がん | 最終生存確認日 |
+| 治療成功期間 | 死亡 | 治療中止（治療中の増悪/再発を含む） | プロトコール治療完了後の増悪/再発 |  | 最終治療継続確認日または最終無増悪確認日 |
+
+::: voice-daughter
+私「でかした！」
+:::
+
+::: voice-father
+お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」
+:::
+
+::: voice-daughter
+私「時間原点についてもう少し説明してよ」
+:::
+
+::: voice-father
+お父さん「じゃあ、生存時間の原点について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」
+:::
+::::
+
+
+::: {.callout-note title="シミュレーションデータ（再発あり）の生成"}
+前回の発展形として、シミュレーションデータを使って、全生存期間・無再発生存期間・無再発期間の違いをみてみましょう。 無再発期間の解析では、再発の前に死亡した患者の扱いが問題になります。これを競合リスク（competing risk）といいます。 死亡だけではなく再発を伴った生存時間データをRで生成します。全生存期間のイベントは「死亡」、全再発生存期間のイベントは「死亡と再発」です。無再発期間のイベントは「再発」ですが、死亡を競合リスクとして扱います。前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。
+
+-   ストーマ保有：2項分布（rbinom関数）から生成した2値データ
+
+-   生存時間：指数分布（rexp関数）から生成した生存時間データ
+
+```{r}
+set.seed(46)
+
+n <- 200
+
+## --- ベースラインの属性 ---------------------------------
+
+# ストーマ保有あり(1)/なし(0)
+stoma <- rbinom(n, size = 1, prob = 0.4)
+
+# 性別 0 = 女性, 1 = 男性
+sex <- rbinom(n, size = 1, prob = 0.5)
+
+# 年齢：正規分布から生成（ストーマあり群を少し高齢に）
+age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+
+## --- 再発・死亡・打ち切りの「潜在的な」発生時間を指数分布から生成 ----
+#   ・ストーマあり群の方が、再発・死亡ともやや起こりやすい設定にしています
+
+lambda_rec   <- ifelse(stoma == 1, 0.20, 0.12)  # 再発のrate（大きいほど早く起こる）
+lambda_death <- ifelse(stoma == 1, 0.10, 0.07)  # 死亡のrate
+lambda_cens  <- 0.05                             # 打ち切りのrate（群に依存しない）
+
+t_rec   <- rexp(n, rate = lambda_rec)    # 再発までの潜在時間
+t_death <- rexp(n, rate = lambda_death)  # 死亡までの潜在時間
+t_cens  <- rexp(n, rate = lambda_cens)   # 打ち切りまでの潜在時間
+
+## --- 全生存期間（Overall Survival; OS） -------------------
+# イベント：死亡のみ（再発の有無は問わない）
+
+time_os   <- pmin(t_death, t_cens)
+status_os <- as.integer(t_death <= t_cens)  # 1 = 死亡, 0 = 打ち切り
+
+
+## --- 無病生存期間（Disease-Free Survival; DFS） ----------
+# イベント：再発 or 死亡（最初に起こった方）
+# （ここでは2次がんは考えず、「再発 or 死亡」をDFSイベントとみなします）
+
+time_dfs <- pmin(t_rec, t_death, t_cens)
+
+status_dfs <- integer(n)
+status_dfs[time_dfs == t_rec   & time_dfs < t_cens] <- 1L  # 再発
+status_dfs[time_dfs == t_death & time_dfs < t_cens] <- 1L  # 死亡
+# time_dfs == t_cens の場合は 0（打ち切り）のまま
+
+
+## --- 無再発期間（Recurrence-Free Interval） + 競合リスク ----
+# イベント1: 再発
+# イベント2: 再発を経験しない死亡
+# 0: 打ち切り
+# → 再発を主なアウトカムとして、死亡を競合リスクとして扱う
+
+time_rft <- pmin(t_rec, t_death, t_cens)
+
+event_rft <- integer(n)
+event_rft[time_rft == t_rec   & time_rft < t_cens] <- 1L  # イベント1: 再発
+event_rft[time_rft == t_death & time_rft < t_cens] <- 2L  # イベント2: 競合リスクとしての死亡
+# time_rft == t_cens の場合は 0（打ち切り）のまま
+
+
+## --- データフレームにまとめる --------------------------------
+
+dat <- data.frame(
+  age        = age,
+  sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+  stoma      = factor(stoma, levels = c(0, 1),
+                      labels = c("WITHOUT STOMA", "WITH STOMA")),
+  time_os    = time_os,
+  status_os  = status_os,
+  time_dfs   = time_dfs,
+  status_dfs = status_dfs,
+  time_rft   = time_rft,
+  event_rft  = event_rft
+)
+
+head(dat)
+```
+:::
+
+::: {.callout-note title="全生存期間（OS）のKaplan–Meier曲線"}
+まず、`ggplot2`パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。
+
+```{r}
+library(cifmodeling)
+
+fit_os <- cifcurve(
+Event(time_os, status_os) ~ stoma,
+data         = dat,
+outcome.type = "survival"   # 単一イベントの生存時間データ
+)
+
+plot_os <- cifplot(fit_os)
+plot_os
+```
+:::
+
+::: {.callout-note title="無病生存期間（DFS）のKaplan–Meier曲線"}
+
+```{r}
+fit_dfs <- cifcurve(
+Event(time_dfs, status_dfs) ~ stoma,
+data         = dat,
+outcome.type = "survival"   # 「再発 or 死亡」を1イベントとして扱う
+)
+
+plot_dfs <- cifplot(fit_dfs)
+plot_dfs
+```
+:::
+
+::: {.callout-note title="無再発期間（RFT）のAalen-Johansen曲線の違い"}
+次の生存時間データでは、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier生存曲線**を描いてみます。
+
+```{r}
+library(cifmodeling)
+# 3. 無再発期間の競合リスク解析（Aalen–Johansen CIF）
+# Event(time_rft, event_rft) で、
+#   1 = 再発（interest）
+#   2 = 再発を経験しない死亡（競合リスク）
+#   0 = 打ち切り
+
+fit_cr <- cifcurve(
+  Event(time_rft, event_rft) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk"
+)
+
+plot_cr <- cifplot(fit_cr)  # デフォルトでCIF（riskスケール）を描画
+plot_cr
+```
+:::
+
+::: {.callout-note title="臨床エンドポイントと代替エンドポイント"}
+OSとDFSは、特に術後補助化学療法の有効性を評価するときに用いられるアウトカム （エンドポイントともいいます）です。それでは両者は、どのような考え方で使い分けられているのでしょうか。指針の1つになっているのが、医薬品の承認審査の考え方です。たとえば抗悪性腫瘍薬の臨床評価方法に関するガイドライン（厚生労働省2021）では、抗がん剤を承認するためには、生存期間の延長などにもとづき、確実な有効性を示す必要があると述べています。そのため、OSを臨床エンドポイントとみなして、こちらが重視されます。 米国国立衛生研究所（NIH）は、エンドポイントを以下の3つに分類しています（Biomarkers Definitions Working Group 2001）。
+
+-   バイオマーカー （biological marker or biomarker） 正常な生物学的プロセス、病態形成プロセスあるいは治療的介入に対する薬理学的反応の指標として客観的に測定および評価されるある特性
+-   臨床エンドポイント（clinical endpoint） 患者がどのように感じ、あるいは機能し、どのくらい生存しているかを反映する特性あるいは変数
+-   代替エンドポイント（surrogate endpoint） バイオマーカーのうち、臨床エンドポイントの代わりになることが意図されたもので、疫学、治療学、病態生理学または他の科学的根拠にもとづき、臨床上の便益・害の有無を予測することが期待されるもの
+
+致死的疾患のための医薬品開発では、代替エンドポイントを用いた臨床試験の結果をもとに承認審査が行われ、臨床エンドポイントによる有効性・安全性の評価は承認後になされることが国際的に許されています。たとえば米国食品医薬品局（FDA）の加速承認制度（Accelerated Approval）には、代替エンドポイントの利用条件などが規定されています。 加速承認制度は、AIDS問題に端を発して、90年代に緊急性の高い医薬品を早期開発するために導入されました。
+
+術後補助化学療法としての抗がん剤の有効性を評価する臨床試験では、DFSを代替エンドポイントとして採用することがありますが、その最大のメリットは試験期間が短くなることです。ただし、過去の承認審査では、代替エンドポイントの利用が誤った医薬品評価につながったケースが数多く報告されています（Fleming and Demets 1996）。たとえば、進行大腸がんにおける5FU+ロイコボリン併用療法は、臨床試験で腫瘍縮小がみられたにもかかわらず、臨床エンドポイントであるOSを評価すると、ほとんど延命効果がないことが明らかになりました（Fleming and Demets 1996）。
+:::
+
+::: {.callout-note title="このエピソードに関係するクイズです"}
+2009～2014年にFDAによって承認されたがん領域の医薬品は、83品目あったそうです。奏効率（腫瘍縮小や完全寛解）がエンドポイントの臨床試験を根拠として承認されたのは、83品目のうち何割だったか、正しいものを選びなさい。
+
+1.  0～24%
+2.  25～49%
+3.  50～74%
+4.  75～100%
+:::
+
+::: {.callout-note collapse="true" title="答えはこちら"}
+-   **正解は2です。**
+
+Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。
+:::
+
+### Continuation of their story
+
+[Study design I](study-design-1.md)
+
+[Study design II](study-design-2.md)
+
+[Study design III](study-design-3.md)
+
+[Study design IV](study-design-4.md)
+
+[Clinical trial I](clinical-trial-1.md)
+
+[Clinical trial II](clinical-trial-2.md)
+
+[Clinical trial III](clinical-trial-3.md)
+
+[Epidemiology I](epidemiology-1.md)
+
+[Epidemiology II](epidemiology-2.md)
+
+[Epidemiology III](epidemiology-3.md)
+
+[Epidemiology IV](epidemiology-4.md)
+
+[Regression I](logistic-regression-1.md)
+
+[Regression II](logistic-regression-2.md)
+
+[Regression III](logistic-regression-3.md)
+
+[Regression IV](logistic-regression-4.md)
+
+[Causal inference I](causal-inference-1.md)
+
+[Causal inference II](causal-inference-2.md)
+
+[Causal inference III](causal-inference-3.md)
+
+[Causal inference IV](causal-inference-4.md)
+
+[Publish a paper I](publish-a-paper-1.md)
+
+[Publish a paper II](publish-a-paper-2.md)
+
+[Publish a paper III](publish-a-paper-3.md)
+
+[Publish a paper IV](publish-a-paper-4.md)

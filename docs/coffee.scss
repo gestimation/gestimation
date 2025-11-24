@@ -10,7 +10,6 @@ body {
   line-height: 1.55;
 }
 
-
 /* 見出し（緊張感を出すために serif をワンポイント） */
 h1, h2, h3 {
   font-family: "Georgia", "Times New Roman", serif;
@@ -101,7 +100,6 @@ a:hover {
   padding: 1.8rem 1.2rem 2.5rem;
 }
 
-
 /* フル幅ヒーロー用：コンテンツ枠からはみ出して viewport いっぱいに広げる */
 .hero-header {
   margin-left: calc(50% - 50vw);
@@ -115,26 +113,14 @@ a:hover {
   display: block;
 }
 
-
-/* Story & Quiz: dialogue voices */
 .dialogue .voice-father p {
-  color: #7a3e1a !important;   /* 深めのブラウン（父） */
+  color: #7a3e1a !important;
 }
-
 .dialogue .voice-daughter p {
-  color: #234f7c !important;   /* 深めのブルー（娘） */
+  color: #234f7c !important;
 }
-
-.dialogue {
-  margin: 1.2rem 0 1.6rem;
-}
-
 .dialogue .voice-daughter,
 .dialogue .voice-father {
   margin-bottom: 0.4rem;
 }
 
-
-.dialogue {
-  background: #fff7e8;  /* 薄いクリーム色の背景 */
-}

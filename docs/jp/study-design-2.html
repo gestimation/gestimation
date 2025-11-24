@@ -158,12 +158,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
 <section id="story-and-quiz-study-design-ii" class="level1">
 <h1>Story and Quiz − Study design II</h1>
 <p>キーワード: OS/PFS/DFS/奏効率, PICO/PECO, 生存時間データ, 臨床試験 難易度: ★</p>
 <section id="アウトカムってなに" class="level3">
 <h3 class="anchored" data-anchor-id="アウトカムってなに">アウトカムってなに？</h3>
-<p><strong>私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”OS”とか”DFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSはがんの再発を調べてるみたいなんだけど。お父さん詳しい？」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”OS”とか”DFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSはがんの再発を調べてるみたいなんだけど。お父さん詳しい？」</p>
+</div>
+</div>
 <p>お父さん「統計解析をしていて、OSとDFSを扱うことはあるよ。OSは全生存期間（overall survival）、DFSは無病生存期間（disease-free survival）のことだよね」</p>
 <p><strong>私「無病生存期間って再発までの日数のこと？」</strong></p>
 <p>お父さん「再発までの日数だったら無再発期間って言葉を選ぶかなあ」</p>
@@ -245,17 +252,16 @@ ul.task-list li input[type="checkbox"] {
 <p>お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」</p>
 <p><strong>私「時間原点についてもう少し説明してよ」</strong></p>
 <p>お父さん「じゃあ、生存時間の原点について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="臨床エンドポイントと代替エンドポイント">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+臨床エンドポイントと代替エンドポイント
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>臨床エンドポイントと代替エンドポイント</strong></p>
 <p>OSとDFSは、特に術後補助化学療法の有効性を評価するときに用いられるアウトカム （エンドポイントともいいます）です。それでは両者は、どのような考え方で使い分けられているのでしょうか。指針の1つになっているのが、医薬品の承認審査の考え方です。たとえば抗悪性腫瘍薬の臨床評価方法に関するガイドライン（厚生労働省2021）では、抗がん剤を承認するためには、生存期間の延長などにもとづき、確実な有効性を示す必要があると述べています。そのため、OSを臨床エンドポイントとみなして、こちらが重視されます。 米国国立衛生研究所（NIH）は、エンドポイントを以下の3つに分類しています（Biomarkers Definitions Working Group 2001）。</p>
 <ul>
 <li>バイオマーカー （biological marker or biomarker） 正常な生物学的プロセス、病態形成プロセスあるいは治療的介入に対する薬理学的反応の指標として客観的に測定および評価されるある特性</li>
@@ -266,17 +272,16 @@ Note
 <p>術後補助化学療法としての抗がん剤の有効性を評価する臨床試験では、DFSを代替エンドポイントとして採用することがありますが、その最大のメリットは試験期間が短くなることです。ただし、過去の承認審査では、代替エンドポイントの利用が誤った医薬品評価につながったケースが数多く報告されています（Fleming and Demets 1996）。たとえば、進行大腸がんにおける5FU+ロイコボリン併用療法は、臨床試験で腫瘍縮小がみられたにもかかわらず、臨床エンドポイントであるOSを評価すると、ほとんど延命効果がないことが明らかになりました（Fleming and Demets 1996）。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+このエピソードに関係するクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>最後にクイズです</strong></p>
 <p>奏効率（response rate）とは、抗がん剤による治療を行った結果、何割の患者で腫瘍が縮小したか（完全奏効または部分奏効を達成したか）や血液から腫瘍細胞が消えたか（完全寛解）を表す指標です。この用語は広く用いられていますが、Japan Clinical Oncology Group（JCOG）では奏効割合（response proportion）という表現を好んでいます（Japan Clinical Oncology Group 2021）。</p>
 <p>さて、次の指標のうち、率（rate）に該当するのはどれでしょうか。</p>
 <ol type="1">
@@ -287,41 +292,39 @@ Note
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p><strong>正解と解説</strong></p>
-<p>正解は4です。</p>
+<li><strong>正解は4です。</strong></li>
+</ul>
 <p>割合、率、比の3つの違いについて説明しましょう。比とは、ある量を別の量で割ったもののことです。たとえば、BMIは体重を身長で割ったものですから比の一種で、単位はkg/m2です。割合は、一部の数を全体の数で割ったもの（言い換えると、分母が分子を含んでいるもの）です。割合は、もちろん2値データや分類データを要約するために用いられる指標ですよね。この指標は、言葉の定義からいって、比の一種です。しかし、割合は、①100%を超えない、②人数を人数で割っているためキャンセルして単位がない（無単位）という特徴があります。割合と区別してほしいのが率です。たとえば胃がんの発生率（incidence rate of gastric cancer）というと、一定時間に胃がんが発生するスピードで、人年法（胃がんの発生数/観察人年）で計算されます。人数を人数×年で割っているため、単位は1/年（より一般には1/時間）です。</p>
 <p>「打率」は安打数÷打数であり、「割合」になります。</p>
 <p>「男女比率」は男性の人数÷女性の人数であり、「比」になります。</p>
 <p>「有病率」は疾患を有する人の人数÷全体の人数であり、「割合」になります。</p>
-<p>「死亡率」は死亡件数÷観察人年であり、「率」になります。</p></li>
-</ul>
+<p>「死亡率」は死亡件数÷観察人年であり、「率」になります。</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="もうひとつクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+もうひとつクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>もうひとつクイズです</strong></p>
 <p>2009～2014年にFDAによって承認されたがん領域の医薬品は、83品目あったそうです。奏効率（腫瘍縮小や完全寛解）がエンドポイントの臨床試験を根拠として承認されたのは、83品目のうち何割だったか、正しいものを選びなさい。</p>
 <ol type="1">
 <li>0～24%</li>
@@ -344,9 +347,9 @@ Note
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p><strong>正解と解説</strong></p>
-<p>正解は2です。 Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。</p></li>
+<li><strong>正解は2です。</strong></li>
 </ul>
+<p>Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。</p>
 </div>
 </div>
 </div>

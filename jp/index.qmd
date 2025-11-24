@@ -25,6 +25,7 @@
 
 -   [Study design I](study-design-1.md)
 -   [Study design II](study-design-2.md)
+-   [Study design II](study-design-2-1.qmd)
 -   [Study design III](study-design-3.md)
 -   [Study design IV](study-design-4.md)
 

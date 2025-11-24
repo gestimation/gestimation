@@ -1,34 +1,148 @@
 ---
-title: "Story and Quiz − Study design I"
 format:
   html:
     toc: true
 ---
-
 <style>
-/* このページ専用のテスト用スタイル */
-
-.dialogue {
-  background: #fff7e8;  /* まず背景色で本当に当たっているか確認 */
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
 }
 
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
 .dialogue .voice-father p {
-  color: #7a3e1a !important;   /* 深めのブラウン（父） */
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
 }
 
-.dialogue .voice-daughter p {
-  color: #234f7c !important;   /* 深めのブルー（娘） */
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
 }
 </style>
-
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-
 # Story and Quiz − Study design I
-
-【キーワード: OS/PFS/DFS/奏効率, PICO/PECO, 観察研究】　【難易度: ★】
+::: {.serif-block}
+　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study
+:::
 
 ------------------------------------------------------------------------
 
@@ -136,7 +250,7 @@ format:
 :::
 
 ::: voice-father
-お父さん「いやいや調査票をつくるときには固めときたいよね。データ解析はどのソフトを使うつもり？」
+お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」
 :::
 
 ::: voice-daughter
@@ -156,8 +270,8 @@ format:
 :::
 ::::::::::::::::::::::::::::::::
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **臨床疑問 と研究仮説**
+
+::: {.callout-note title="臨床疑問と研究仮説"}
 
 日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、臨床疑問（clinical question）といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を研究仮説（research hypothesis）として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。
 
@@ -201,7 +315,7 @@ format:
     PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。
 :::
 
-::: {.callout-note title="最後にクイズです"}
+::: {.callout-note title="このエピソードに関係するクイズです"}
 がん臨床研究で用いられるアウトカムのひとつに無増悪生存期間（progression-free survival）があります。このアウトカムを測定するには、画像による腫瘍増悪の判定が必要になります。このとき、客観性を高めるため、第三者が画像をみて増悪を判定すると、主治医による増悪の判定と一致しないことがあり得ます。この問題は、中央判定と施設判定の不一致と呼ばれます。以下の選択肢のうち、対処法として適切でないものを選びなさい。
 
 1.  統計解析では、客観性が高い中央判定の結果を採用する
@@ -211,13 +325,11 @@ format:
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解と解説**
+-   **正解は2です。**
 
-    正解は2です。
+中央判定と施設判定のうち、先に起きたものを採用すると、無増悪生存期間が短くなる方向にバイアスが生じるため、適切ではありません。
 
-    中央判定と施設判定のうち、先に起きたものを採用すると、無増悪生存期間が短くなる方向にバイアスが生じるため、適切ではありません。
-
-    ひとつだけ注意があります。施設判定ではなく中央判定を必ず採用すべき、というわけではありません。施設で増悪になった後、それが追跡状況や画像検査の頻度に影響したり、施設の担当医の治療方針が変化したりすることがあります。このような状況では、施設判定を用いることが適切かもしれません。
+ひとつだけ注意があります。施設判定ではなく中央判定を必ず採用すべき、というわけではありません。施設で増悪になった後、それが追跡状況や画像検査の頻度に影響したり、施設の担当医の治療方針が変化したりすることがあります。このような状況では、施設判定を用いることが適切かもしれません。
 :::
 
 ### Continuation of their story

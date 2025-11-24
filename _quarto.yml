@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: docs
-
+  resources:
+    - coffee.scss
+  
 website:
   title: "Coffee and Research"
   navbar:
