@@ -1,3 +1,27 @@
+---
+title: "Story and Quiz − Study design I"
+format:
+  html:
+    toc: true
+---
+
+<style>
+/* このページ専用のテスト用スタイル */
+
+.dialogue {
+  background: #fff7e8;  /* まず背景色で本当に当たっているか確認 */
+}
+
+.dialogue .voice-father p {
+  color: #7a3e1a !important;   /* 深めのブラウン（父） */
+}
+
+.dialogue .voice-daughter p {
+  color: #234f7c !important;   /* 深めのブルー（娘） */
+}
+</style>
+
+
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
@@ -11,9 +35,9 @@
 ### はじめて研究に取り組む娘と統計家の父
 
 :::::::::::::::::::::::::::::::: dialogue
-<p class="voice-daughter">
+::: voice-daughter
 私「お父さんってさ、大学で統計学を教えてるんでしょ」
-</p>
+:::
 
 ::: voice-father
 お父さん「そうだよ」
@@ -128,7 +152,7 @@
 :::
 
 ::: voice-father
-お父さん「じゃあRの使い方も身につけなきゃいけないよね。どの関数を使うかもアウトカムによって違うんだよ」
+お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」
 :::
 ::::::::::::::::::::::::::::::::
 

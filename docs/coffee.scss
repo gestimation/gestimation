@@ -117,12 +117,12 @@ a:hover {
 
 
 /* Story & Quiz: dialogue voices */
-.voice-father {
-  color: #7a3e1a;   /* 深めのブラウン（父） */
+.dialogue .voice-father p {
+  color: #7a3e1a !important;   /* 深めのブラウン（父） */
 }
 
-.voice-daughter {
-  color: #234f7c;   /* 深めのブルー（娘） */
+.dialogue .voice-daughter p {
+  color: #234f7c !important;   /* 深めのブルー（娘） */
 }
 
 .dialogue {
@@ -132,4 +132,9 @@ a:hover {
 .dialogue .voice-daughter,
 .dialogue .voice-father {
   margin-bottom: 0.4rem;
+}
+
+
+.dialogue {
+  background: #fff7e8;  /* 薄いクリーム色の背景 */
 }
