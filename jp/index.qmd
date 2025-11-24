@@ -1,6 +1,3 @@
----
----
-
 ::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
@@ -16,7 +13,7 @@
 
 最初の1本はここからどうぞ。
 
-→ [**Study design I**](study-design-1.md)
+→ [**Study design I**](study-design-1.qmd)
 
 ------------------------------------------------------------------------
 

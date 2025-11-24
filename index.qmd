@@ -2,7 +2,6 @@
 format:
   html:
     toc: false
-    css: coffee.scss
 ---
 
 ::: {.hero-header}
