@@ -220,9 +220,9 @@ OR=1 SOR=1 \| 0.50 0.44 0.67 \| 0.33 0.25 0.51 \| 0.25 0.17 0.41 \| 0.20 0.11 0.
 
 [Study design III](study-design-3.qmd)
 
-[Study design III](study-design-4.qmd)
+[Study design IV](study-design-4.qmd)
 
-[Study design IV](study-design-5.qmd)
+[Study design V](study-design-5.qmd)
 
 [Clinical trial I](clinical-trial-1.qmd)
 

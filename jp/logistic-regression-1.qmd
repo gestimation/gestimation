@@ -141,7 +141,11 @@ a:hover {
 :::
 # Story and Quiz − Logistic regression I
 
-【キーワード: リスクの指標と効果の指標, 一般化線型モデル, 交絡/情報バイアス/選択バイアス, 論文の書き方】　【難易度: ★】
+::: serif-block
+　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing
+:::
+
+------------------------------------------------------------------------
 
 ### どうしてオッズ比が無限大になっちゃったの？
 
@@ -386,9 +390,9 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 
 [Study design III](study-design-3.qmd)
 
-[Study design III](study-design-4.qmd)
+[Study design IV](study-design-4.qmd)
 
-[Study design IV](study-design-5.qmd)
+[Study design V](study-design-5.qmd)
 
 [Clinical trial I](clinical-trial-1.qmd)
 

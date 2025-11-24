@@ -141,7 +141,11 @@ a:hover {
 :::
 # Story and Quiz − Epidemiology I
 
-【キーワード: 2値・分類データ, リスクの指標と効果の指標, 観察研究, 論文の書き方】　【難易度: ★★】
+::: serif-block
+　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
+:::
+
+------------------------------------------------------------------------
 
 ### 98%って100人いたら98人に効くって思わない？
 
@@ -304,9 +308,9 @@ a:hover {
 
 [Study design III](study-design-3.qmd)
 
-[Study design III](study-design-4.qmd)
+[Study design IV](study-design-4.qmd)
 
-[Study design IV](study-design-5.qmd)
+[Study design V](study-design-5.qmd)
 
 [Clinical trial I](clinical-trial-1.qmd)
 

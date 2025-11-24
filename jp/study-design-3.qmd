@@ -386,9 +386,9 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 
 [Study design III](study-design-3.qmd)
 
-[Study design III](study-design-4.qmd)
+[Study design IV](study-design-4.qmd)
 
-[Study design IV](study-design-5.qmd)
+[Study design V](study-design-5.qmd)
 
 [Clinical trial I](clinical-trial-1.qmd)
 
