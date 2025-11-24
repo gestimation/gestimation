@@ -3,11 +3,13 @@
 ---------------------------------------------------- */
 
 body {
+  margin: 0;              /* ← これを追加 */
   background: #ffffff;
-  color: #2b1f1a; /* 濃いめのコーヒーブラウン */
+  color: #2b1f1a;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.55;
 }
+
 
 /* 見出し（緊張感を出すために serif をワンポイント） */
 h1, h2, h3 {
@@ -30,14 +32,16 @@ a:hover {
 .navbar {
   background: #ffffff !important;
   border-bottom: 1px solid #e6e0da;
-  margin-bottom: -80 !important;
+  margin-bottom: 0 !important;
 }
 .navbar .navbar-brand,
 .navbar .navbar-nav > li > a {
   color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px; /* お好みで */
 }
 .navbar .navbar-nav > li > a:hover {
-  border-bottom: 2px solid #8b4a24;
+  border-bottom-color: #8b4a24;
 }
 
 /* ----------------------------------------------------
@@ -45,20 +49,6 @@ a:hover {
 ---------------------------------------------------- */
 
 /* Hero section with coffee image, sharp edges */
-.hero {
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  border: none;
-}
-.hero-img {
-  width: 100%;
-  object-fit: cover;
-  max-height: 320px;
-  filter: brightness(0.92); /* 少し落ち着いたトーン */
-}
-
 /* hero text */
 .hero-text {
   padding: 1.5rem 0;
