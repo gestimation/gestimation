@@ -1,4 +1,4 @@
-::: {.hero-header}
+::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
@@ -6,132 +6,131 @@
 
 【キーワード: OS/PFS/DFS/奏効率, PICO/PECO, 観察研究】　【難易度: ★】
 
+------------------------------------------------------------------------
 
----
 ### はじめて研究に取り組む娘と統計家の父
 
-::: {.dialogue}
-
-::: {.voice-daughter}
+:::::::::::::::::::::::::::::::: dialogue
+<p class="voice-daughter">
 私「お父さんってさ、大学で統計学を教えてるんでしょ」
-:::
+</p>
 
-::: {.voice-father}
+::: voice-father
 お父さん「そうだよ」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年のがん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「ないよ」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「仮説がないと調査がデザインできないよ」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「女性より男性の方が、復職率が高いとか？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「待ちなさい。調査対象は決まってるの？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「ん？うちの病院で手術したがん患者さん」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「胃がんでストーマを造設することってあるの？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「ゼロじゃないけど、みたことない」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「そうかなあ」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「うんうん。大学の授業だとね、研究で調べたい疑問がはっきりしないなら、"PICO"と"PECO"という要素を使って構造化してから、研究をデザインしなさいって教えてるよ」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「構造化ねえ。聞いたことある言葉だけど、何をすればいいか、よくわからないんだよね」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、研究デザインの大切な1要素だってこと。同じように大切なI/E（Intervention/Exposure）、C（Comparison）、O（Outcome）をあわせた4つの要素にあてはめて考えてみましょう、というわけ」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「Patientsはわかるよ。ExposureとComparisonははじめて聞いたけど、ストーマ保有者と非保有者ってことだよね。Outcomeってなに？」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「データが集まる前に固められなくない？」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「いやいや調査票をつくるときには固めときたいよね。データ解析はどのソフトを使うつもり？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「R。診療科の先輩が使ってるから」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「Rは得意？」
 :::
 
-::: {.voice-daughter}
+::: voice-daughter
 私「学部の頃、授業あったけどもうわすれたな」
 :::
 
-::: {.voice-father}
+::: voice-father
 お父さん「じゃあRの使い方も身につけなきゃいけないよね。どの関数を使うかもアウトカムによって違うんだよ」
 :::
-:::
+::::::::::::::::::::::::::::::::
 
 ::: callout-note
 <img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **臨床疑問 と研究仮説**
@@ -179,7 +178,6 @@
 :::
 
 ::: {.callout-note title="最後にクイズです"}
-
 がん臨床研究で用いられるアウトカムのひとつに無増悪生存期間（progression-free survival）があります。このアウトカムを測定するには、画像による腫瘍増悪の判定が必要になります。このとき、客観性を高めるため、第三者が画像をみて増悪を判定すると、主治医による増悪の判定と一致しないことがあり得ます。この問題は、中央判定と施設判定の不一致と呼ばれます。以下の選択肢のうち、対処法として適切でないものを選びなさい。
 
 1.  統計解析では、客観性が高い中央判定の結果を採用する
@@ -200,27 +198,27 @@
 
 ### Continuation of their story
 
-[Study design I](study-design-1.md) 
+[Study design I](study-design-1.md)
 
-[Study design II](study-design-2.md) 
+[Study design II](study-design-2.md)
 
-[Study design III](study-design-3.md) 
+[Study design III](study-design-3.md)
 
-[Study design IV](study-design-4.md) 
+[Study design IV](study-design-4.md)
 
-[Clinical trial I](clinical-trial-1.md) 
+[Clinical trial I](clinical-trial-1.md)
 
-[Clinical trial II](clinical-trial-2.md) 
+[Clinical trial II](clinical-trial-2.md)
 
-[Clinical trial III](clinical-trial-3.md) 
+[Clinical trial III](clinical-trial-3.md)
 
-[Epidemiology I](epidemiology-1.md) 
+[Epidemiology I](epidemiology-1.md)
 
-[Epidemiology II](epidemiology-2.md) 
+[Epidemiology II](epidemiology-2.md)
 
-[Epidemiology III](epidemiology-3.md) 
+[Epidemiology III](epidemiology-3.md)
 
-[Epidemiology IV](epidemiology-4.md) 
+[Epidemiology IV](epidemiology-4.md)
 
 [Regression I](logistic-regression-1.md)
 
@@ -230,11 +228,11 @@
 
 [Regression IV](logistic-regression-4.md)
 
-[Causal inference I](causal-inference-1.md) 
+[Causal inference I](causal-inference-1.md)
 
-[Causal inference II](causal-inference-2.md) 
+[Causal inference II](causal-inference-2.md)
 
-[Causal inference III](causal-inference-3.md) 
+[Causal inference III](causal-inference-3.md)
 
 [Causal inference IV](causal-inference-4.md)
 
