@@ -188,9 +188,147 @@ window.Quarto = {
 
 
 
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
 <section id="story-and-quiz-epidemiology-iii" class="level1">
 <h1>Story and Quiz − Epidemiology III</h1>
-<p>【キーワード: 2値・分類データ, リスクの指標と効果の指標, 論文の書き方】　【難易度: ★】</p>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
+</div>
+<hr>
 <section id="リスク比とオッズ比って同じだっけ" class="level3">
 <h3 class="anchored" data-anchor-id="リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</h3>
 <p><strong>私「お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、リスク比とかオッズ比とか計算したなあ。リスク比とオッズ比って結局同じ？みたいな」</strong></p>
@@ -264,17 +402,16 @@ Note
 <p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+このエピソードに関係するクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>最後にクイズです</strong></p>
 <p>リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなるといいました。それでは、2群をオッズ比で比較するときのp値は、リスク比で比較するときのp値より、小さくなる（つまり有意になりやすいので得をする）のでしょうか。実際にデータから計算されたp値だと、検定の種類の選び方に影響されるし、偶然性も入るので、理論上の期待値がどうなるか考えてみてください。</p>
 <ol type="1">
 <li>オッズ比のp値は、リスク比のp値より、期待値の上で小さい</li>
@@ -283,13 +420,13 @@ Note
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -315,7 +452,8 @@ Note
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
 <p><a href="../jp/study-design-2.html">Study design II</a></p>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-4.html">Study design III</a></p>
+<p><a href="../jp/study-design-5.html">Study design IV</a></p>
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>

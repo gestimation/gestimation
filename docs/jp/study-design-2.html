@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -146,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#story-and-quiz-study-design-ii" id="toc-story-and-quiz-study-design-ii" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-ii">Story and Quiz − Study design II</a>
   <ul class="collapse">
-  <li><a href="#アウトカムってなに" id="toc-アウトカムってなに" class="nav-link" data-scroll-target="#アウトカムってなに">アウトカムってなに？</a></li>
+  <li><a href="#データには型がある" id="toc-データには型がある" class="nav-link" data-scroll-target="#データには型がある">データには型がある</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -158,118 +193,246 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
 <section id="story-and-quiz-study-design-ii" class="level1">
 <h1>Story and Quiz − Study design II</h1>
-<p>キーワード: OS/PFS/DFS/奏効率, PICO/PECO, 生存時間データ, 臨床試験 難易度: ★</p>
-<section id="アウトカムってなに" class="level3">
-<h3 class="anchored" data-anchor-id="アウトカムってなに">アウトカムってなに？</h3>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival</p>
+</div>
+<hr>
+<section id="データには型がある" class="level3">
+<h3 class="anchored" data-anchor-id="データには型がある">データには型がある</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”OS”とか”DFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSはがんの再発を調べてるみたいなんだけど。お父さん詳しい？」</p>
+<p>私「お父さんが、さっき、どの関数を使うかもアウトカムによって違うんだよっていってたじゃない？あれ、いまいちピンとこないんだけど。データなんて、全部数字じゃないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「数字には違いないんだけどね。統計解析では、データの型がとても大事なんだ。代表的なのは、連続データ、2値データ、計数データ、生存時間データの4つ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「連続データって、年齢とか血圧みたいな測るやつでしょ？2値データもわかるよ。私が比較したいストーマ保有ありとなしとか」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ご名答。で、計数データは、交通事故の発生件数のような、数をカウントしたデータのこと。生存時間データは、たとえば寿命とかだね。死亡など特定のイベントが起こるまでの時間を扱うデータだよ。今回のがんサバイバー調査でいえば、手術から復職までの時間とか、再発までの時間とかね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。t.test()とかglm()とかsurvfit()とか、なんか呪文みたいなのを」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。パソコンある？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「へ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「パソコン。あるでしょ。RStudioインストールしよう」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はあ、まあ声を掛けたのはこっちだからいいけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「Rではね、連続データを解析するなら、mean()、t.test()、lm() なんかがよく使われる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はあ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「2値データを集計するときはtable()。p値を計算するときはchisq.test()、fisher.test()。複雑な解析はglm(family = binomial) みたいな回帰モデル。生存時間データだと、survfit()、coxph()、それからcifplot()みたいな関数が出てくる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪文なんだって」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「覚えなくていいよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「え、いいの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「大事なのは、どの型のデータに、どんな関数をあてるのかをイメージできること。もっといえば、どんな確率分布を仮定しているかを、なんとなくでいいから思い浮かべてほしいんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確率分布？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「学部でやったでしょ。正規分布（normal distribution）は聞いたことある？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それくらいはね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「私たち統計家はね、統計解析の裏で、なんらかの確率分布を考えてる。連続データの正規分布とか、2値データの2項分布（binomial distribution）とか、計数データのPoisson分布とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は指数分布（exponential distribution）っていうんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はあ。それとRが関係するわけ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。たとえばさ、データを要約するための指標として、割合（proportion）と率（rate）ってのがある。日常生活でもよく使うでしょ？交通事故の発生率とか。でも、日常では、割合と率の違いを意識しないよね。でも、統計の世界では、割合は2項分布のパラメータ、率はPoisson分布のパラメータなんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「割合と率なんて同じ意味でしょ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「違う違う。割合ってパーセントで表すでしょ、女性割合が60%とか。でも、“東京都の1年あたりの交通事故の発生率”を例に考えてみてよ。パーセントにならなくない？交通事故が何回、起きたかを年で割ってるだけだから」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。続けたまえ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「教科書どおりじゃなくていいんだ。“あ、これは正規分布っぽい連続データだから、このあたりの関数かな”とか、0/1のデータだから、このへんの関数かなって、感覚で結びつけられるといいよ。Rの関数もずっと覚えやすくなる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほどね。データの型と分布をイメージできれば、丸暗記不要ってことね。そいつははかどるわ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「また呪文が出てくるんでしょ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。とりあえずlibrary(ggplot2)、library(cifmodeling)って打って。ヒストグラムとKaplan-Meier曲線を教えるよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「とりあえず思考停止で打つわ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「教えてあげてるんだから思考停止しない。Rの機能を追加するとき、install.packages()とlibrary()を使う。ざっくりいうとね、それぞれ、“Rパッケージをパソコンにインストールする”コマンドと、“インストール済みのパッケージを使えるようにする”コマンドなんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふむふむ。じゃあ、install.packages(“cifmodeling”)の方は、一度やったら、それで終わり？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、install.packages(“ggplot2”)は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。library(ggplot2)は、ggplot2を取り出して、“これからグラフを描くからこの道具を使います”ってRに宣言する」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほど。やっとスッキリした。今まで毎回インストールしなきゃいけないのかなって思ってた」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「毎回インストールすると、“コーヒー淹れるたびに豆を買いに行く”ようなものだからね。豆はまとめて買っておいて、飲むときに挽けばいい。パッケージも同じだよ」</p>
 </div>
 </div>
-<p>お父さん「統計解析をしていて、OSとDFSを扱うことはあるよ。OSは全生存期間（overall survival）、DFSは無病生存期間（disease-free survival）のことだよね」</p>
-<p><strong>私「無病生存期間って再発までの日数のこと？」</strong></p>
-<p>お父さん「再発までの日数だったら無再発期間って言葉を選ぶかなあ」</p>
-<p><strong>私「同じじゃないの？」</strong></p>
-<p>お父さん「学術的には違うよ。再発を経験せずに、死亡することもあるでしょ。無病生存期間のポイントは、再発、2次がん、死亡までの期間だってこと。つまり、再発だけでなく、死亡したり別のがんを発症したりしたときも、イベントとして扱われる」</p>
-<p><img src="study-design-2.png" class="img-fluid"></p>
-<p><strong>私「イベント扱いって？」</strong> お父さん「生存時間データは、一般に特定のイベントまでの経過時間なんだ。端的にいうとね、無病生存期間のデータから“3年無病生存確率”を計算するとするでしょ。それは“イベントが起こらない確率”に相当するんだけど、意味合いとしては3年時点で、再発も2次がんも経験せず、生存できる確率を求めることになる」 <strong>私「そういうことか」</strong> お父さん「薬の臨床試験で用いられるアウトカムは、”エンドポイント”とよばれることもあるね。表に、がん臨床試験の主な生存時間エンドポイントを整理してあげるよ（Japan Clinical Oncology Group 2021）」</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>エンドポイント</th>
-<th>イベント1</th>
-<th>イベント2</th>
-<th>イベント3</th>
-<th>イベント4</th>
-<th>打ち切り日</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>全生存期間</td>
-<td>死亡</td>
-<td></td>
-<td></td>
-<td></td>
-<td>最終生存確認日</td>
-</tr>
-<tr class="even">
-<td>無増悪生存期間</td>
-<td>死亡</td>
-<td>増悪/再発</td>
-<td></td>
-<td></td>
-<td>最終無増悪確認日</td>
-</tr>
-<tr class="odd">
-<td>無再発生存期間</td>
-<td>死亡</td>
-<td>再発</td>
-<td></td>
-<td></td>
-<td>最終生存確認日</td>
-</tr>
-<tr class="even">
-<td>無病生存期間</td>
-<td>死亡</td>
-<td>再発</td>
-<td>2次がん</td>
-<td></td>
-<td>最終生存確認日</td>
-</tr>
-<tr class="odd">
-<td>無イベント生存期間</td>
-<td>死亡</td>
-<td>寛解導入失敗</td>
-<td>再発</td>
-<td>2次がん</td>
-<td>最終生存確認日</td>
-</tr>
-<tr class="even">
-<td>治療成功期間</td>
-<td>死亡</td>
-<td>治療中止（治療中の増悪/再発を含む）</td>
-<td>プロトコール治療完了後の増悪/再発</td>
-<td></td>
-<td>最終治療継続確認日または最終無増悪確認日</td>
-</tr>
-</tbody>
-</table>
-<p><strong>私「でかした！」</strong></p>
-<p>お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」</p>
-<p><strong>私「時間原点についてもう少し説明してよ」</strong></p>
-<p>お父さん「じゃあ、生存時間の原点について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」</p>
-<div class="callout callout-style-default callout-note callout-titled" title="臨床エンドポイントと代替エンドポイント">
+<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータの生成">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-臨床エンドポイントと代替エンドポイント
+シミュレーションデータの生成
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>OSとDFSは、特に術後補助化学療法の有効性を評価するときに用いられるアウトカム （エンドポイントともいいます）です。それでは両者は、どのような考え方で使い分けられているのでしょうか。指針の1つになっているのが、医薬品の承認審査の考え方です。たとえば抗悪性腫瘍薬の臨床評価方法に関するガイドライン（厚生労働省2021）では、抗がん剤を承認するためには、生存期間の延長などにもとづき、確実な有効性を示す必要があると述べています。そのため、OSを臨床エンドポイントとみなして、こちらが重視されます。 米国国立衛生研究所（NIH）は、エンドポイントを以下の3つに分類しています（Biomarkers Definitions Working Group 2001）。</p>
+<p>ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。</p>
 <ul>
-<li>バイオマーカー （biological marker or biomarker） 正常な生物学的プロセス、病態形成プロセスあるいは治療的介入に対する薬理学的反応の指標として客観的に測定および評価されるある特性</li>
-<li>臨床エンドポイント（clinical endpoint） 患者がどのように感じ、あるいは機能し、どのくらい生存しているかを反映する特性あるいは変数</li>
-<li>代替エンドポイント（surrogate endpoint） バイオマーカーのうち、臨床エンドポイントの代わりになることが意図されたもので、疫学、治療学、病態生理学または他の科学的根拠にもとづき、臨床上の便益・害の有無を予測することが期待されるもの</li>
+<li><p>年齢：正規分布（rnorm）から生成した連続データ</p></li>
+<li><p>性別・ストーマ保有：2項分布（rbinom関数）から生成した2値データ</p></li>
+<li><p>生存時間：指数分布（rexp関数）から生成した生存時間データ</p></li>
 </ul>
-<p>致死的疾患のための医薬品開発では、代替エンドポイントを用いた臨床試験の結果をもとに承認審査が行われ、臨床エンドポイントによる有効性・安全性の評価は承認後になされることが国際的に許されています。たとえば米国食品医薬品局（FDA）の加速承認制度（Accelerated Approval）には、代替エンドポイントの利用条件などが規定されています。 加速承認制度は、AIDS問題に端を発して、90年代に緊急性の高い医薬品を早期開発するために導入されました。</p>
-<p>術後補助化学療法としての抗がん剤の有効性を評価する臨床試験では、DFSを代替エンドポイントとして採用することがありますが、その最大のメリットは試験期間が短くなることです。ただし、過去の承認審査では、代替エンドポイントの利用が誤った医薬品評価につながったケースが数多く報告されています（Fleming and Demets 1996）。たとえば、進行大腸がんにおける5FU+ロイコボリン併用療法は、臨床試験で腫瘍縮小がみられたにもかかわらず、臨床エンドポイントであるOSを評価すると、ほとんど延命効果がないことが明らかになりました（Fleming and Demets 1996）。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ストーマ保有あり(1)/なし(0)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 性別 0 = 女性, 1 = 男性</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 年齢：正規分布から生成（ストーマあり群を少し高齢に）</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 生存時間：指数分布（ストーマあり群の予後の期待値10年、ストーマなし群の予後の期待値15年）</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>rate  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">15</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>time  <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> rate)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ランダムな打ち切り（0 = 打ち切り, 1 = イベント）</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>status <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">age   =</span> age,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">sex   =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">stoma =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">time  =</span> time,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">status =</span> status</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       age   sex         stoma      time status
+1 59.19077 WOMAN WITHOUT STOMA 17.939751      1
+2 59.46486   MAN WITHOUT STOMA 18.189251      1
+3 55.34491   MAN WITHOUT STOMA  2.445121      1
+4 60.68207   MAN WITHOUT STOMA 46.737429      1
+5 61.79577   MAN WITHOUT STOMA  0.149128      1
+6 62.84530 WOMAN    WITH STOMA  0.298167      1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="連続データと2値データの要約">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+連続データと2値データの要約
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>まず、<code>ggplot2</code>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">fill =</span> stoma)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"AGE"</span>, <span class="at">y =</span> <span class="st">"FREQUENCY"</span>, <span class="at">fill =</span> <span class="st">"STOMA"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="at">STOMA =</span> dat<span class="sc">$</span>stoma, <span class="at">SEX =</span> dat<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               SEX
+STOMA           WOMAN MAN
+  WITHOUT STOMA    43  76
+  WITH STOMA       44  37</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="生存曲線による生存時間データの要約">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+生存曲線による生存時間データの要約
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>次の生存時間データでは、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマあり群より、ストーマなし群の方が、生存曲線が高くなる（生存期間が長くなる）はずです。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>survival_curve <span class="ot">&lt;-</span> <span class="fu">cifcurve</span>(<span class="fu">Event</span>(time, status) <span class="sc">~</span> stoma,<span class="at">data =</span> dat, <span class="at">outcome.type =</span> <span class="st">"survival"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(survival_curve)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -293,7 +456,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -302,7 +465,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は4です。</strong></li>
@@ -315,51 +478,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="もうひとつクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-もうひとつクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>2009～2014年にFDAによって承認されたがん領域の医薬品は、83品目あったそうです。奏効率（腫瘍縮小や完全寛解）がエンドポイントの臨床試験を根拠として承認されたのは、83品目のうち何割だったか、正しいものを選びなさい。</p>
-<ol type="1">
-<li>0～24%</li>
-<li>25～49%</li>
-<li>50～74%</li>
-<li>75～100%</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-解答を表示
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は2です。</strong></li>
-</ul>
-<p>Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。</p>
-</div>
-</div>
-</div>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
 <p><a href="../jp/study-design-2.html">Study design II</a></p>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-4.html">Study design III</a></p>
+<p><a href="../jp/study-design-5.html">Study design IV</a></p>
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>

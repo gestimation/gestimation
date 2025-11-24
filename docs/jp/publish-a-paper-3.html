@@ -158,9 +158,147 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
 <section id="story-and-quiz-publishing-a-paper-iii" class="level1">
 <h1>Story and Quiz − Publishing a paper III</h1>
-<p>【キーワード: p値, リスクの指標と効果の指標, 一般化線型モデル, 論文の書き方】　【難易度: ★】</p>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: p-value, risk- and effect-measures, generalized linear model, paper writing</p>
+</div>
+<hr>
 <section id="統計学のことば" class="level3">
 <h3 class="anchored" data-anchor-id="統計学のことば">統計学のことば</h3>
 <p><strong>私「お父さん、いま論文書いてるんだけどね、専門用語をうまく使えてるか自信なくて。お父さんの話って、統計用語がいろいろ出てくるでしょ。正直いって実感がわかないのもあったんだ。よければ統計用語を日常用語で言い換えてみてくれないかな」</strong></p>
@@ -221,17 +359,16 @@ ul.task-list li input[type="checkbox"] {
 <p>ある事象が生じる確率と、他の変数との関連を調べるための統計手法。2値データがアウトカムのときの回帰モデルの一種。回帰係数の指数（exponential）をとることでオッズ比を計算できる</p>
 <p>割合　proportion</p>
 <p>全体に対してそれが占める分量を表す指標。2値データや分類データを要約するために用いられる。人数を人数で割っているため、単位がキャンセルして単位を持たない（無単位）</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+このエピソードに関係するクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>最後にクイズです</strong></p>
 <p>以下の4つの単語は、正式な統計用語ではありませんが、しばしば臨床試験の文献で目にするものです。このうち、誤りとはいえないものはどれでしょう。</p>
 <ol type="1">
 <li>サンプル数</li>
@@ -241,13 +378,13 @@ Note
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -280,13 +417,13 @@ Note
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -304,7 +441,8 @@ Note
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
 <p><a href="../jp/study-design-2.html">Study design II</a></p>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-4.html">Study design III</a></p>
+<p><a href="../jp/study-design-5.html">Study design IV</a></p>
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>

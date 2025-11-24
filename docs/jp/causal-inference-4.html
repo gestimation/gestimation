@@ -158,9 +158,147 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
 <section id="story-and-quiz-causal-inference-iv" class="level1">
 <h1>Story and Quiz − Causal inference IV</h1>
-<p>【キーワード: DAG, 中間媒介因子, 交絡/情報バイアス/選択バイアス, 共変量の選択, 観察研究】　【難易度: ★★★】</p>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study</p>
+</div>
+<hr>
 <section id="ブロックの意味" class="level3">
 <h3 class="anchored" data-anchor-id="ブロックの意味">ブロックの意味</h3>
 <p><strong>私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」</strong></p>
@@ -216,17 +354,16 @@ Note
 <p>DAGを用いて、CがAとBを有向分離することが確認できたとする。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかる（Pearl 1995）。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+このエピソードに関係するクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>最後にクイズです</strong></p>
 <p>このDAGの解釈として正しいのはどちらでしょうか。</p>
 <ol type="1">
 <li>Cを与えた下で、EとDは条件付独立である</li>
@@ -235,13 +372,13 @@ Note
 <p><img src="causal-inference-4-4.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -276,13 +413,13 @@ Note
 <p><img src="causal-inference-4-5.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="解答を表示">
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-解答を表示
+答えはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -299,7 +436,8 @@ Note
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
 <p><a href="../jp/study-design-2.html">Study design II</a></p>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-4.html">Study design III</a></p>
+<p><a href="../jp/study-design-5.html">Study design IV</a></p>
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>

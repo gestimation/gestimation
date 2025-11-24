@@ -13,7 +13,7 @@
 
 最初の1本はここからどうぞ。
 
-→ [Study design I](study-design-1.md)
+→ [Study design I](study-design-1.qmd)
 
 ------------------------------------------------------------------------
 
@@ -23,61 +23,61 @@
 
 研究仮説、アウトカム、データ、バイアスなど、研究の出発点。
 
--   [Study design I](study-design-1.md)
--   [Study design II](study-design-2.md)
--   [Study design II](study-design-2-1.qmd)
--   [Study design III](study-design-3.md)
--   [Study design IV](study-design-4.md)
+-   [Study design I](study-design-1.qmd)
+-   [Study design II](study-design-2.qmd)
+-   [Study design III](study-design-3.qmd)
+-   [Study design IV](study-design-4.qmd)
+-   [Study design V](study-design-5.qmd)
 
 ### 2. Clinical trial（臨床試験）
 
 ランダム化、盲検化、サンプルサイズなど「臨床試験」の話。
 
--   [Clinical trial I](clinical-trial-1.md)
--   [Clinical trial II](clinical-trial-2.md)
--   [Clinical trial III](clinical-trial-3.md)
+-   [Clinical trial I](clinical-trial-1.qmd)
+-   [Clinical trial II](clinical-trial-2.qmd)
+-   [Clinical trial III](clinical-trial-3.qmd)
 
 ### 3. Epidemiology（疫学）
 
 集団同士を比較するとき、どういう指標が用いられるか。
 
--   [Epidemiology I](epidemiology-1.md)
--   [Epidemiology II](epidemiology-2.md)
--   [Epidemiology III](epidemiology-3.md)
--   [Epidemiology IV](epidemiology-4.md)
+-   [Epidemiology I](epidemiology-1.qmd)
+-   [Epidemiology II](epidemiology-2.qmd)
+-   [Epidemiology III](epidemiology-3.qmd)
+-   [Epidemiology IV](epidemiology-4.qmd)
 
 ### 4. Regression（回帰分析）
 
 ロジスティック回帰を用いたデータ解析について。
 
--   [Regression I](logistic-regression-1.md)
--   [Regression II](logistic-regression-2.md)
--   [Regression III](logistic-regression-3.md)
--   [Regression IV](logistic-regression-4.md)
+-   [Regression I](logistic-regression-1.qmd)
+-   [Regression II](logistic-regression-2.qmd)
+-   [Regression III](logistic-regression-3.qmd)
+-   [Regression IV](logistic-regression-4.qmd)
 
 ### 5. Causal inference（因果推論）
 
 グラフ（DAG）を用いた因果推論の考え方。
 
--   [Causal inference I](causal-inference-1.md)
--   [Causal inference II](causal-inference-2.md)
--   [Causal inference III](causal-inference-3.md)
--   [Causal inference IV](causal-inference-4.md)
+-   [Causal inference I](causal-inference-1.qmd)
+-   [Causal inference II](causal-inference-2.qmd)
+-   [Causal inference III](causal-inference-3.qmd)
+-   [Causal inference IV](causal-inference-4.qmd)
 
 ### 6. Publish a paper（論文化）
 
 図表の作り方、査読コメント、STROBE、推敲のコツ。
 
--   [Publish a paper I](publish-a-paper-1.md)
--   [Publish a paper II](publish-a-paper-2.md)
--   [Publish a paper III](publish-a-paper-3.md)
--   [Publish a paper IV](publish-a-paper-4.md)
+-   [Publish a paper I](publish-a-paper-1.qmd)
+-   [Publish a paper II](publish-a-paper-2.qmd)
+-   [Publish a paper III](publish-a-paper-3.qmd)
+-   [Publish a paper IV](publish-a-paper-4.qmd)
 
 ------------------------------------------------------------------------
 
 ## 読み方
 
--   はじめの4本（Study design I–IV）だけ読めば、研究のゴールをどう設定するかが見えてきます。
+-   はじめの4本（Study design I–V）だけ読めば、研究のゴールをどう設定するかが見えてきます。
 -   興味で選ぶなら
     -   論文の読み方 → Clinical trial
     -   研究から得られる数字の意味 → Epidemiology

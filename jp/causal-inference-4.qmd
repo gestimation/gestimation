@@ -1,0 +1,293 @@
+---
+format:
+  html:
+    toc: true
+---
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+# Story and Quiz − Causal inference IV
+::: serif-block
+　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study
+:::
+
+------------------------------------------------------------------------
+
+### ブロックの意味
+
+**私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」**
+
+お父さん「出てきたね」
+
+**私「あれって、因果の流れが止まるって意味だよね」**
+
+お父さん「うーん、その言い回しは厳密じゃない気がするなあ。ブロックは、DAG上のパスの性質について述べたもので、因果関係とは直接関係ない。パスが合流点を含んでいたり、非合流点を交絡因子として調整したりすることを指すんだけど」
+
+**私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」**
+
+お父さん「うん。専門的には、パスをブロックすると、ノードとノードを”有向分離”できるっていうのがポイントなんだけどなあ。有向分離の定義にも触れておいた方が誤解がなさそうだね」
+
+::: callout-note
+<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **有向分離（d-separation）**
+
+DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表す。以下の2条件を満たすとき、CはAとBを有向分離する（Greenland 1999）。
+
+-   AとBを結ぶ合流点を含まないすべてのパスは、Cの要素を含んでいる
+-   Cに、AとBを結ぶパス上の合流点が含まれているとする。このとき、合流点を調整することでAとBを結ぶパスが生じたとしても、そのパスはCの別の要素を調整することでブロックできる
+:::
+
+**私「話がややこしくなってきた」**
+
+お父さん「そうでしょ。ノードの数が増えると、ノードの集合を考えないといけなくなって、定義が複雑になっちゃう。だから単純なケースで意味を確かめよう。この3つのDAGで、CはEとDを有向分離すると思う？」
+
+![](causal-inference-4-1.png)
+
+**私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」**
+
+お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」
+
+![](causal-inference-4-2.png)
+
+**私「合流点はないよね。だから有向分離するのはAとC？」**
+
+お父さん「それだけじゃないよね。Aだけ、またはCだけでも、有向分離の条件を満たすでしょ」
+
+**私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」**
+
+お父さん「そういうこと。じゃあ次のDAGについて考えようか」
+
+![](causal-inference-4-3.png)
+
+**私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」**
+
+お父さん「そこまでは正しい。だけど有向分離できるのはそれだけじゃない。AとC、またはBとCはどうだろう。Cは合流点だけど、AまたはBによってパスE←A→C←B→Dは遮断できるでしょ」
+
+**私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」**
+
+お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ（バックドア基準とフロントドア基準）（Pearl 1995）」
+
+::: callout-note
+<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **有向分離と条件付独立性**
+
+DAGを用いて、CがAとBを有向分離することが確認できたとする。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかる（Pearl 1995）。
+:::
+
+::: {.callout-note title="このエピソードに関係するクイズです"}
+
+このDAGの解釈として正しいのはどちらでしょうか。
+
+1.  Cを与えた下で、EとDは条件付独立である
+2.  Cを与えても、EとDの間には相関がある
+
+![](causal-inference-4-4.png)
+:::
+
+::: {.callout-note collapse="true" title="答えはこちら"}
+-   **正解と解説**
+
+    正解は2です。
+
+    パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。
+:::
+
+::: callout-note
+<img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"/> **もうひとつクイズです**
+
+このDAGの解釈として正しいのはどちらでしょうか。
+
+1.  Cで条件付けないとき、EとDは独立である。また、Cを与えた下でも、EとDは条件付独立である
+2.  Cで条件付けないとき、EとDには相関がある。一方で、Cを与えた下で、EとDは条件付独立である
+3.  Cで条件付けないとき、EとDは独立である。一方で、Cを与えると、EとDの間には相関がある
+4.  Cで条件付けないとき、EとDには相関がある。また、Cを与えても、EとDの間には相関がある
+
+![](causal-inference-4-5.png)
+:::
+
+::: {.callout-note collapse="true" title="答えはこちら"}
+**正解は4です。**
+
+この場合、最初のクイズとは違って、EとDを結ぶ直接のパスはありませんが、Cは合流点という問題があります。そのためCで調整すると、E←A→C←B→Dというパスが生じてしまい、やはりCでEとDを有向分離することはできません。
+:::
+
+### Continuation of their story
+
+[Study design I](study-design-1.qmd)
+
+[Study design II](study-design-2.qmd)
+
+[Study design III](study-design-3.qmd)
+
+[Study design III](study-design-4.qmd)
+
+[Study design IV](study-design-5.qmd)
+
+[Clinical trial I](clinical-trial-1.qmd)
+
+[Clinical trial II](clinical-trial-2.qmd)
+
+[Clinical trial III](clinical-trial-3.qmd)
+
+[Epidemiology I](epidemiology-1.qmd)
+
+[Epidemiology II](epidemiology-2.qmd)
+
+[Epidemiology III](epidemiology-3.qmd)
+
+[Epidemiology IV](epidemiology-4.qmd)
+
+[Regression I](logistic-regression-1.qmd)
+
+[Regression II](logistic-regression-2.qmd)
+
+[Regression III](logistic-regression-3.qmd)
+
+[Regression IV](logistic-regression-4.qmd)
+
+[Causal inference I](causal-inference-1.qmd)
+
+[Causal inference II](causal-inference-2.qmd)
+
+[Causal inference III](causal-inference-3.qmd)
+
+[Causal inference IV](causal-inference-4.qmd)
+
+[Publish a paper I](publish-a-paper-1.qmd)
+
+[Publish a paper II](publish-a-paper-2.qmd)
+
+[Publish a paper III](publish-a-paper-3.qmd)
+
+[Publish a paper IV](publish-a-paper-4.qmd)

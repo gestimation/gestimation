@@ -15,17 +15,17 @@ website:
       - text: Story and Quiz (JP)
         menu:
           - text: Study design
-            href: jp/study-design-1.md
+            href: jp/study-design-1.qmd
           - text: Clinical trial
-            href: jp/clinical-trial-1.md
+            href: jp/clinical-trial-1.qmd
           - text: Epidemiology
-            href: jp/epidemiology-1.md
+            href: jp/epidemiology-1.qmd
           - text: Regression
-            href: jp/logistic-regression-1.md
+            href: jp/logistic-regression-1.qmd
           - text: Causal inference
-            href: jp/causal-inference-1.md
+            href: jp/causal-inference-1.qmd
           - text: Publishing a paper
-            href: jp/publish-a-paper-1.md
+            href: jp/publish-a-paper-1.qmd
 
 format:
   html:
