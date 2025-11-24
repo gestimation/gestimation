@@ -2,16 +2,12 @@
 format:
   html:
     toc: false
+    css: coffee.scss
 ---
 
-
-
-<div class="hero-text">
-
+::: {.hero-header}
 ![](image/coffee.png){.hero-header-img}
-
-</div>
-
+:::
 
 <div class="content-narrow">
 
@@ -29,15 +25,15 @@ Ideas — like good coffee — are best enjoyed while they are still warm.
 
 <div class="project-card">
 
-## R package **cifmodeling**
+## R package cifmodeling
 
 A toolkit for survival and competing risks analysis in R — the more technical side of my coffee-fueled research.
 
-- Kaplan–Meier and Aalen–Johansen estimation and visualization  
+- Kaplan-Meier and Aalen-Johansen estimation and visualization  
 - **Direct polytomous regression** of cumulative incidence functions
 - Integration with **ggsurvfit**, **modelsummary**, and modern R workflows 
 
-**[Visit the cifmodeling site](https://gestimation.github.io/cifmodeling/)**
+**[Visit the R package cifmodeling site](https://gestimation.github.io/cifmodeling/)**
 
 </div>
 

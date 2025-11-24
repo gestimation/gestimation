@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: "cifmodeling"
+        href: https://gestimation.github.io/cifmodeling/
       - text: Story and Quiz (JP)
         menu:
           - text: Study design

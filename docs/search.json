@@ -109,7 +109,7 @@
     "href": "index.html#r-package-cifmodeling",
     "title": "Coffee and Research are the best when they are hot.",
     "section": "R package cifmodeling",
-    "text": "R package cifmodeling\nA toolkit for survival and competing risks analysis in R — the more technical side of my coffee-fueled research.\n\nKaplan–Meier and Aalen–Johansen estimation and visualization\n\nDirect polytomous regression of cumulative incidence functions\nIntegration with ggsurvfit, modelsummary, and modern R workflows\n\nVisit the cifmodeling site"
+    "text": "R package cifmodeling\nA toolkit for survival and competing risks analysis in R — the more technical side of my coffee-fueled research.\n\nKaplan-Meier and Aalen-Johansen estimation and visualization\n\nDirect polytomous regression of cumulative incidence functions\nIntegration with ggsurvfit, modelsummary, and modern R workflows\n\nVisit the R package cifmodeling site"
   },
   {
     "objectID": "index.html#story-and-quiz-how-i-learned-research-from-my-father",
