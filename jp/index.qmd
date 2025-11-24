@@ -1,8 +1,11 @@
 ---
-title: "Story and Quiz − 私は父から研究を学んだ"
 ---
 
-## ようこそ
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Story and Quiz — 私は父から研究を学んだ
 
 このシリーズは、がんサバイバーの就労支援の話を軸に、研究方法や統計学の考え方を **ストーリー形式** で学ぶ読み物です。
 

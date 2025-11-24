@@ -18,6 +18,10 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+h3 {
+  margin-top: 2.4rem;
+}
+
 /* リンク（濃い茶色、ホバーでほんのり暗く） */
 a {
   color: #8b4a24;
@@ -109,4 +113,23 @@ a:hover {
   height: 260px;      /* お好みで 220〜360px くらいに調整 */
   object-fit: cover;
   display: block;
+}
+
+
+/* Story & Quiz: dialogue voices */
+.voice-father {
+  color: #7a3e1a;   /* 深めのブラウン（父） */
+}
+
+.voice-daughter {
+  color: #234f7c;   /* 深めのブルー（娘） */
+}
+
+.dialogue {
+  margin: 1.2rem 0 1.6rem;
+}
+
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
 }
