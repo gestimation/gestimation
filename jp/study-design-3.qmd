@@ -297,6 +297,7 @@ head(dat)
 OSとRFSは通常の生存時間データですから、前回と同様に、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier生存曲線**で記述します。
 
 ```{r}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
 
 cifplot(Event(time_os, status_os) ~ stoma,
@@ -371,53 +372,3 @@ OS、DFS、RFSは、特に術後補助化学療法の有効性を評価すると
 
 Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。
 :::
-
-### Continuation of their story
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Clinical trial I](clinical-trial-1.qmd)
-
-[Clinical trial II](clinical-trial-2.qmd)
-
-[Clinical trial III](clinical-trial-3.qmd)
-
-[Epidemiology I](epidemiology-1.qmd)
-
-[Epidemiology II](epidemiology-2.qmd)
-
-[Epidemiology III](epidemiology-3.qmd)
-
-[Epidemiology IV](epidemiology-4.qmd)
-
-[Regression I](logistic-regression-1.qmd)
-
-[Regression II](logistic-regression-2.qmd)
-
-[Regression III](logistic-regression-3.qmd)
-
-[Regression IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[Publish a paper I](publish-a-paper-1.qmd)
-
-[Publish a paper II](publish-a-paper-2.qmd)
-
-[Publish a paper III](publish-a-paper-3.qmd)
-
-[Publish a paper IV](publish-a-paper-4.qmd)

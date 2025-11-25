@@ -346,6 +346,7 @@ head(dat)
 まず、`ggplot2`パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
 
 ```{r}
+# install.packages("ggplot2") #インストールが必要なら実行
 library(ggplot2)
 
 ggplot(dat, aes(x = age, fill = stoma)) +
@@ -362,6 +363,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 次の生存時間データでは、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマあり群より、ストーマなし群の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
 
 ```{r}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
 
 survival_curve <- cifcurve(Event(time, status) ~ stoma,data = dat, outcome.type = "survival")
@@ -393,53 +395,3 @@ cifplot(survival_curve)
 
 「死亡率」は死亡件数÷観察人年であり、「率」になります。
 :::
-
-### Continuation of their story
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Clinical trial I](clinical-trial-1.qmd)
-
-[Clinical trial II](clinical-trial-2.qmd)
-
-[Clinical trial III](clinical-trial-3.qmd)
-
-[Epidemiology I](epidemiology-1.qmd)
-
-[Epidemiology II](epidemiology-2.qmd)
-
-[Epidemiology III](epidemiology-3.qmd)
-
-[Epidemiology IV](epidemiology-4.qmd)
-
-[Regression I](logistic-regression-1.qmd)
-
-[Regression II](logistic-regression-2.qmd)
-
-[Regression III](logistic-regression-3.qmd)
-
-[Regression IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[Publish a paper I](publish-a-paper-1.qmd)
-
-[Publish a paper II](publish-a-paper-2.qmd)
-
-[Publish a paper III](publish-a-paper-3.qmd)
-
-[Publish a paper IV](publish-a-paper-4.qmd)

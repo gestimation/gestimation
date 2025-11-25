@@ -182,7 +182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#story-and-quiz-study-design-iii" id="toc-story-and-quiz-study-design-iii" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-iii">Story and Quiz − Study design III</a>
   <ul class="collapse">
   <li><a href="#アウトカムってなに" id="toc-アウトカムってなに" class="nav-link" data-scroll-target="#アウトカムってなに">アウトカムってなに？</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -559,13 +558,14 @@ a:hover {
 <div class="callout-body-container callout-body">
 <p>OSとRFSは通常の生存時間データですから、前回と同様に、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier生存曲線</strong>で記述します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -699,33 +699,6 @@ a:hover {
 </div>
 </div>
 </div>
-</section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
-<p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
-<p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
-<p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
-<p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
-<p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
-<p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
-<p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Regression III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Regression IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">Publish a paper I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">Publish a paper II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">Publish a paper III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
 
 
 </section>
