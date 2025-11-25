@@ -255,6 +255,10 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。
 :::
 
+### 文献
+
+- 田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022
+
 ### Continuation of their story
 
 [Study design I](study-design-1.qmd)
