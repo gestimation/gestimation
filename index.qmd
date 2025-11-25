@@ -177,6 +177,29 @@ A Japanese series of short, warm stories about learning research. Through conver
 **[Read the Story and Quiz series (in Japanese)](./jp/index.qmd)**
 </div>
 
+<div class="project-card">
+
+## Books and related contents
+
+- Causal Inference for Medical Research I. Generalized Linear Models
+
+  **[Publisher site (in Japanese)](https://www.asakura.co.jp/detail.php?book_code=12270)**
+
+- Causal Inference for Medical Research II. Rubin Causal Models
+
+  **[Publisher site (in Japanese)](https://www.asakura.co.jp/detail.php?book_code=12271)**
+
+  **[Learning materials for this book (in Japanese)](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)**
+
+
+- Professor Giant Salamander's Medical Statistics Seminar: Paper Reading Level Up 30
+
+  **[Publisher site (in Japanese)](https://www.yodosha.co.jp/yodobook/book/9784758117975/)**
+
+  **[Learning materials for this book (in Japanese)](https://righteous-manager-7af.notion.site/86216e785f224f3a94af349685e730d2)**
+
+</div>
+
 <div class="about-section">
 
 ## About the author
@@ -185,7 +208,7 @@ A Japanese series of short, warm stories about learning research. Through conver
 
 Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyoto University. He works at the intersection of causal inference and clinical research. He tends to think best with papers, R, and a cup of coffee within reach.
 
-**[More information](./about/about.Rmd)**
+**[More information](./about/)**
 
 </div>
 
