@@ -181,22 +181,29 @@ A Japanese series of short, warm stories about learning research. Through conver
 
 ## Books and related contents
 
-- Causal Inference for Medical Research I. Generalized Linear Models
+- **Causal Inference for Medical Research I. Generalized Linear Models** (in Japanese)
 
-  **[Publisher site (in Japanese)](https://www.asakura.co.jp/detail.php?book_code=12270)**
+  [Publisher site](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-- Causal Inference for Medical Research II. Rubin Causal Models
+- **Causal Inference for Medical Research II. Rubin Causal Models** (in Japanese)
 
-  **[Publisher site (in Japanese)](https://www.asakura.co.jp/detail.php?book_code=12271)**
+  [Publisher site](https://www.asakura.co.jp/detail.php?book_code=12271)
 
-  **[Learning materials for this book (in Japanese)](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)**
+  [Learning materials for this seris](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)
 
+- **Professor Giant Salamander's Medical Statistics Seminar: Paper Reading Level Up 30** (in Japanese)
 
-- Professor Giant Salamander's Medical Statistics Seminar: Paper Reading Level Up 30
+  [Publisher site](https://www.yodosha.co.jp/yodobook/book/9784758117975/)
 
-  **[Publisher site (in Japanese)](https://www.yodosha.co.jp/yodobook/book/9784758117975/)**
+  [Learning materials for this book](https://righteous-manager-7af.notion.site/86216e785f224f3a94af349685e730d2)
+  
 
-  **[Learning materials for this book (in Japanese)](https://righteous-manager-7af.notion.site/86216e785f224f3a94af349685e730d2)**
+- **Sample Sizes for Clinical, Laboratory and Epidemiology Studies** (Japanese translation)
+
+  [Publisher site](https://www.kyoto-up.or.jp/books/9784814003822.html)
+
+  [Learning materials for this book](https://righteous-manager-7af.notion.site/29bdc31f96af4953b7263736cb4ba723)
+  
 
 </div>
 
