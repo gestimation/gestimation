@@ -395,3 +395,9 @@ cifplot(survival_curve)
 
 「死亡率」は死亡件数÷観察人年であり、「率」になります。
 :::
+
+### Continuation of their story
+
+[Study design I](study-design-1.qmd)
+
+[Study design II](study-design-2.qmd)

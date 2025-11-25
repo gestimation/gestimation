@@ -334,3 +334,9 @@ a:hover {
 
 ひとつだけ注意があります。施設判定ではなく中央判定を必ず採用すべき、というわけではありません。施設で増悪になった後、それが追跡状況や画像検査の頻度に影響したり、施設の担当医の治療方針が変化したりすることがあります。このような状況では、施設判定を用いることが適切かもしれません。
 :::
+
+### Continuation of their story
+
+[Study design I](study-design-1.qmd)
+
+[Study design II](study-design-2.qmd)
