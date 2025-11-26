@@ -221,84 +221,73 @@ a:hover {
 
 
 ::: {.callout-note title="シミュレーションデータ（再発あり）の生成"}
-前回の発展形として、シミュレーションデータを使って、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。 CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。
+前回の発展形として、シミュレーションデータを使って、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。
 
-以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。
+以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」generate_dataを定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。
 
 -   ストーマ保有：2項分布（rbinom関数）から生成した2値データ
 
 -   生存時間：指数分布（rexp関数）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）
 
-```{r}
-set.seed(46)
-n <- 200
+前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。
 
-# ストーマ保有あり(1)/なし(0)
-stoma <- rbinom(n, size = 1, prob = 0.4)
-
-# 性別 0 = 女性, 1 = 男性
-sex <- rbinom(n, size = 1, prob = 0.5)
-
-# 年齢：正規分布から生成（ストーマあり群を少し高齢に）
-age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
-
-hazard_relapse   <- ifelse(stoma == 1, 0.20, 0.12)  # 再発ハザード（大きいほど早く起こる）
-hazard_death     <- ifelse(stoma == 1, 0.10, 0.07)  # 死亡ハザード
-hazard_censoring <- 0.05                            # 打ち切りハザード（群に依存しない）
-
-t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
-t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
-t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
-
-## --- 全生存期間（OS） -------------------
-
-time_os   <- pmin(t_death, t_censoring)
-status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
-
-## --- 無再発存期間（RFS） ----------
-
-time_rfs <- pmin(t_relapse, t_death, t_censoring)
-
-status_rfs <- integer(n)
-status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
-status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
-
-## --- 累積再発率（CIR） + 競合リスク ----
-# イベント1: 再発
-# イベント2: 再発を経験しない死亡
-# 0: 打ち切り
-
-time_cir <- pmin(t_relapse, t_death, t_censoring)
-
-status_cir <- integer(n)
-status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
-status_cir[time_cir == t_death & time_cir < t_censoring] <- 2     # イベント2: 競合リスクとしての死亡
-
-## --- データフレームにまとめる --------------------------------
-
-dat <- data.frame(
-  age        = age,
-  sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
-  stoma      = factor(stoma, levels = c(0, 1),
-                      labels = c("WITHOUT STOMA", "WITH STOMA")),
-  time_os    = time_os,
-  status_os  = status_os,
-  time_rfs   = time_rfs,
-  status_rfs = status_rfs,
-  time_cir   = time_cir,
-  status_cir = status_cir
-)
-
-head(dat)
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発存期間（RFS） -------------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
 ```
 :::
 
 ::: {.callout-note title="全生存期間（OS）のKaplan–Meier曲線"}
 OSとRFSは通常の生存時間データですから、前回と同様に、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier生存曲線**で記述します。
 
-```{r}
+```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
+set.seed(46)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
 
 cifplot(Event(time_os, status_os) ~ stoma,
   data         = dat,
@@ -375,9 +364,9 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 
 ### 文献
 
-- [JCOGプロトコールマニュアル version 3.6 [Internet]. 東京: Japan Clinical Oncology Group; 2021](http://www.jcog.jp/doctor/tool/manual.html) 
+- [JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
 
-- [薬生薬審発0331第1号. 抗悪性腫瘍薬の臨床評価方法に関するガイドライン [Internet]. 東京: 厚生労働省医薬・生活衛生局医薬品審査管理課長; 2021](https://www.mhlw.go.jp/web/t_doc?dataId=00tc5801&dataType=1&pageNo=1)
+- [薬生薬審発0331第1号. 抗悪性腫瘍薬の臨床評価方法に関するガイドライン [Internet]. 東京: 厚生労働省医薬・生活衛生局医薬品審査管理課長; 2021](https://www.pmda.go.jp/files/000243746.pdf)
 
 - Biomarkers Definitions Working Group. Biomarkers and surrogate endpoints: preferred definitions and conceptual framework. Clin Pharmacol Ther 2001;69(3):89-95
 
