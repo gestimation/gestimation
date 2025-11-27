@@ -257,7 +257,7 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 
 ### 文献
 
-- 田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022
+- [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
 ### Continuation of their story
 

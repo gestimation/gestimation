@@ -343,4 +343,5 @@ a:hover {
 
 ### 文献
 
-- 田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022
+- [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022] (https://www.asakura.co.jp/detail.php?book_code=12271)
+

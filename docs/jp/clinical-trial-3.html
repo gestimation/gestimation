@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -191,8 +162,6 @@ window.Quarto = {
   <li><a href="#story-and-quiz-clinical-trial-iii" id="toc-story-and-quiz-clinical-trial-iii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-iii">Story and Quiz − Clinical trial III</a>
   <ul class="collapse">
   <li><a href="#お父さんその95信頼区間って本当に95なの" id="toc-お父さんその95信頼区間って本当に95なの" class="nav-link" data-scroll-target="#お父さんその95信頼区間って本当に95なの">お父さん、その95%信頼区間って本当に95%なの？</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -351,7 +320,7 @@ a:hover {
 <p>父「コーヒー淹れたよ」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「ありがとう。あのさ、ちょっと気になったんだけど。“95%信頼区間です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
+<p>娘「ありがとう。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
 </div>
 <div class="voice-father">
 <p>父「ん？そりゃ当たってるよ。仮定した確率分布が正しければね。証明もできるよ」</p>
@@ -422,479 +391,301 @@ coxph()を用いた95%信頼区間のシミュレーション
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>coverage_coxph <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">200</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_coxph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>coverage_200 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">200</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_200)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.955</code></pre>
 </div>
 </div>
 </div>
 </div>
-<p>想定としては：</p>
-<p>coverage_hat ≈ 0.94〜0.96 あたり</p>
-<p>se_mc ≈ 0.007 前後（nsim=1000 の場合）</p>
-<p>娘「coverage_hat が 0.95 に近ければ、 “95%CI の意味はだいたい守られている”ってことね。」</p>
-<p>父「そう。しかも今回はモデル仮定が完全に正しい設定だから、理想に一番近い結果になっているはず」</p>
-<p>◆ 4. サンプルサイズを変えるとどうなる？</p>
-<p>娘がさらに食いつく。</p>
-<p>娘「n を小さくすると coverage はどうなるの？」</p>
-<p>父「いい質問。n を 50, 100, 200, 500 と変えてみよう。」</p>
-<p>父「n が小さいときは、coverage が 0.95 から少しズレることもある。 でも nsim を増やすと、そのブレの傾向も見えてくるよ。」</p>
-<p>◆ 5. “95%CIの意味”を娘なりにまとめる</p>
-<p>娘「じゃあ結局、“95%信頼区間”ってどう理解すればいいの？」</p>
-<p>父はゆっくり答える。</p>
-<p>🌟 父「**同じようなサンプルを何度も集めて</p>
-<p>毎回 95%CI を作ったとき、 “真のパラメータを含む区間” の割合が 0.95 になるように 設計された仕組みだよ。**」</p>
-<p>娘「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね。」</p>
-<p>父「そう。“手続きとしての長期的な性能”の話なんだ。」</p>
-<p>娘はコーヒーを飲みながら頷いた。</p>
-<p>娘「じゃあ、coverage シミュレーションって 『教科書の約束がちゃんと守られているかを実験で確認する』 ってことか。」</p>
-<p>父「その通り。」</p>
 <div class="voice-daughter">
-<p>私「いきなりαとかβとか確率とかいわれてもなあ。ついていけないな」</p>
+<p>娘「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「まずはαエラーとβエラーが臨床試験のどんな結果を表しているか考えると、イメージしやすいかもね。JCOG9502のように試験治療の有効性を検証する試験では、αエラーは標準治療と同じかそれより劣る治療方法が普及してしまうことにつながる。いわば、”αエラー=消費者リスク”といえる。一方で、βエラーは試験治療が本当は有効なのに、開発中止してしまうことを意味する。だから”βエラー=生産者リスク”といわれる。医師の視点で気になるのは、やっぱりαエラーの方だよね」</p>
+<p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>
 </div>
 <div class="voice-daughter">
-<p>私「理屈じゃなくて、数字の実感がないのよ。判断ミスをする確率なんて低い方がいいに決まってるよね。でもどのくらいの確率にするものなの？」</p>
+<p>娘「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「JCOG9502の論文読んだんでしょ。どう書いてあった？」</p>
+<p>お父さん「そうだね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「はいはいみますみます。” The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2”って書いてある。片側検定で、αエラー0.1、βエラー0.2ってことね。そうすると、予定変更後のサンプルサイズは250人になったんだ」</p>
+<p>娘「じゃあ、人数が100人だったどうなるの？人数が減ったら当たりにくくはならないの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。βエラーは0.1か0.2が一般的かな。米国SWOGの統計家たちは、教科書で”新しい治療法が見つかることはさほど多くないため、我々は原則として90%の検出力を推奨している”って述べている（Green, et al.&nbsp;2013）。検出力90%はβエラー0.1のことね」</p>
+<p>お父さん「理論的には当たりにくくなったりはしないよ。95%信頼区間の被覆確率はサンプルサイズによらず95%になるはず。n=100、200、400、800のシミュレーション結果をみてみようか」</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coverage_100 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">100</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>coverage_400 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">400</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coverage_800 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">800</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.956</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_200)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.955</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_400)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.968</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_800)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.953</code></pre>
+</div>
 </div>
 <div class="voice-daughter">
-<p>私「私の研究でもサンプルサイズは250人でよくない？」</p>
+<p>娘「ほんとだ。じゃあ調査人数は何人でもいいってことだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「雑だけどいい線いってる。大体それくらいになりそうだけど、サンプルサイズの計算結果を表にしてあげるから、ちゃんとそれをみて決めよう。いろんな状況があり得るけど、両側αエラー0.05で、βエラーは0.2（検出力0.8）と0.1（検出力0.9）という設定がもっともよく用いられるから、そのときのサンプルサイズを紹介するね。同じ人数の2つの群を比較することを想定しているから、群ごとの人数はサンプルサイズの半分になる」</p>
+<p>お父さん「どういうこと？」</p>
 </div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">検出力80%</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">検出力90%</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>表2. 2群の生存曲線を比較するためのサンプルサイズ（検出力 80%）<br>
-両側 α=0.05, 1−β=0.8<br>
-※ 数値は「2群合計のサンプルサイズ」（割付け比1:1）</p>
+<div class="voice-daughter">
+<p>娘「がんサバイバーの調査票を何人に送るかってこと。だって信頼区間の性能は変わらないんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「あ、ごめん、誤解があったね。サンプルサイズが小さくなると、coverageは同じでも、信頼区間幅が広くなる。今のところ、何人に調査するつもりだった？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「100人から調査票戻ってきたら上出来かなって思ってるけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「やっぱり必要サンプルサイズは計算してなかったか。がんを手術した後の復職率を推定したいってことでいいの？それなら100人でギリギリだと思う」</p>
+</div>
+<div class="voice-daughter">
+<p>私「いや？前にお父さんにPECOを教えてもらったよね。あれから上司と相談して、ストーマを造設した患者の復職状況を造設しなかった患者と比べることにしたの」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうなんだ。そうすると計算が違ってくる。100人だと足りないはず」</p>
+</div>
+<div class="voice-daughter">
+<p>私「へ？なんでそんなことわかるのよ。100人に協力してもらうのってたいへんなのよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「どれだけサンプルサイズが必要なのかについて、統計学的な根拠に基づいて見積もる方法があるんだよ。この表をみてみて。ある書籍から借りてきたものなんだけど（Machin, et al.&nbsp;2022）」</p>
+</div>
+<p>表1. 割合の推定において指定した 95%信頼区間幅のため必要なサンプルサイズ</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>π2</th>
-<th style="text-align: right;">π1=0.1</th>
-<th style="text-align: right;">0.2</th>
-<th style="text-align: right;">0.3</th>
-<th style="text-align: right;">0.4</th>
-<th style="text-align: right;">0.5</th>
-<th style="text-align: right;">0.6</th>
-<th style="text-align: right;">0.7</th>
-<th style="text-align: right;">0.8</th>
+<th>割合 π</th>
+<th style="text-align: right;">0.05</th>
+<th style="text-align: right;">0.10</th>
+<th style="text-align: right;">0.15</th>
+<th style="text-align: right;">0.20</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0.15</td>
-<td style="text-align: right;">964</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td>0.01</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">17</td>
 </tr>
 <tr class="even">
-<td>0.20</td>
-<td style="text-align: right;">296</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.25</td>
-<td style="text-align: right;">156</td>
-<td style="text-align: right;">1826</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.30</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">506</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.35</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">246</td>
-<td style="text-align: right;">2486</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.40</td>
-<td style="text-align: right;">58</td>
+<td>0.02</td>
 <td style="text-align: right;">152</td>
-<td style="text-align: right;">658</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.45</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">308</td>
-<td style="text-align: right;">2894</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.50</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">182</td>
-<td style="text-align: right;">744</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.55</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">340</td>
-<td style="text-align: right;">3034</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.60</td>
-<td style="text-align: right;">32</td>
 <td style="text-align: right;">52</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">198</td>
-<td style="text-align: right;">764</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">19</td>
 </tr>
 <tr class="odd">
-<td>0.65</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">130</td>
-<td style="text-align: right;">342</td>
-<td style="text-align: right;">2900</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td>0.03</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">21</td>
 </tr>
 <tr class="even">
-<td>0.70</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">194</td>
-<td style="text-align: right;">712</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td>0.04</td>
+<td style="text-align: right;">252</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">23</td>
 </tr>
 <tr class="odd">
-<td>0.75</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">312</td>
-<td style="text-align: right;">2492</td>
-<td style="text-align: right;">—</td>
+<td>0.05</td>
+<td style="text-align: right;">304</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">25</td>
 </tr>
 <tr class="even">
-<td>0.80</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">56</td>
-<td style="text-align: right;">86</td>
-<td style="text-align: right;">174</td>
-<td style="text-align: right;">592</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.85</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">34</td>
+<td>0.06</td>
+<td style="text-align: right;">356</td>
+<td style="text-align: right;">95</td>
 <td style="text-align: right;">46</td>
-<td style="text-align: right;">66</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">254</td>
-<td style="text-align: right;">1818</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="odd">
+<td>0.07</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">30</td>
 </tr>
 <tr class="even">
-<td>0.90</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">414</td>
+<td>0.08</td>
+<td style="text-align: right;">458</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">32</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>表3. 2群の生存曲線を比較するためのサンプルサイズ（検出力 90%）<br>
-両側 α=0.05, 1−β=0.9<br>
-※ 数値は「2群合計のサンプルサイズ」（割付け比1:1）</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>π2</th>
-<th style="text-align: right;">π1=0.1</th>
-<th style="text-align: right;">0.2</th>
-<th style="text-align: right;">0.3</th>
-<th style="text-align: right;">0.4</th>
-<th style="text-align: right;">0.5</th>
-<th style="text-align: right;">0.6</th>
-<th style="text-align: right;">0.7</th>
-<th style="text-align: right;">0.8</th>
+<tr class="odd">
+<td>0.09</td>
+<td style="text-align: right;">508</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">35</td>
 </tr>
-</thead>
-<tbody>
+<tr class="even">
+<td>0.10</td>
+<td style="text-align: right;">554</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="odd">
+<td>0.11</td>
+<td style="text-align: right;">604</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td>0.12</td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td>0.13</td>
+<td style="text-align: right;">696</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">44</td>
+</tr>
+<tr class="even">
+<td>0.14</td>
+<td style="text-align: right;">741</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">47</td>
+</tr>
 <tr class="odd">
 <td>0.15</td>
-<td style="text-align: right;">1290</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">784</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">49</td>
+</tr>
+<tr class="even">
+<td>0.16</td>
+<td style="text-align: right;">826</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr class="odd">
+<td>0.17</td>
+<td style="text-align: right;">867</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td>0.18</td>
+<td style="text-align: right;">907</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="odd">
+<td>0.19</td>
+<td style="text-align: right;">945</td>
+<td style="text-align: right;">236</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">58</td>
 </tr>
 <tr class="even">
 <td>0.20</td>
-<td style="text-align: right;">396</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">982</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">60</td>
 </tr>
 <tr class="odd">
 <td>0.25</td>
-<td style="text-align: right;">208</td>
-<td style="text-align: right;">2444</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">1150</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">70</td>
 </tr>
 <tr class="even">
 <td>0.30</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">676</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">1288</td>
+<td style="text-align: right;">320</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">78</td>
 </tr>
 <tr class="odd">
 <td>0.35</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">330</td>
-<td style="text-align: right;">3330</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">1395</td>
+<td style="text-align: right;">347</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">84</td>
 </tr>
 <tr class="even">
 <td>0.40</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">202</td>
-<td style="text-align: right;">880</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">1472</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: right;">89</td>
 </tr>
 <tr class="odd">
 <td>0.45</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">138</td>
-<td style="text-align: right;">412</td>
-<td style="text-align: right;">3876</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
+<td style="text-align: right;">1518</td>
+<td style="text-align: right;">377</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">92</td>
 </tr>
 <tr class="even">
 <td>0.50</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">242</td>
-<td style="text-align: right;">996</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.55</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">82</td>
-<td style="text-align: right;">162</td>
-<td style="text-align: right;">454</td>
-<td style="text-align: right;">4060</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.60</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">120</td>
-<td style="text-align: right;">264</td>
-<td style="text-align: right;">1022</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.65</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">56</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">172</td>
-<td style="text-align: right;">456</td>
-<td style="text-align: right;">3880</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.70</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">258</td>
-<td style="text-align: right;">952</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.75</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">166</td>
-<td style="text-align: right;">416</td>
-<td style="text-align: right;">3336</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="even">
-<td>0.80</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">116</td>
-<td style="text-align: right;">232</td>
-<td style="text-align: right;">796</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr class="odd">
-<td>0.85</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">146</td>
-<td style="text-align: right;">338</td>
-<td style="text-align: right;">2436</td>
-</tr>
-<tr class="even">
-<td>0.90</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">180</td>
-<td style="text-align: right;">548</td>
+<td style="text-align: right;">1533</td>
+<td style="text-align: right;">381</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">93</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
 <div class="voice-father">
-<p>お父さん「ストーマ造設あり・なしの2群があるとして、復職率はそれぞれどれくらいになりそうなの？仮説の値でいいよ」</p>
+<p>お父さん「たとえばなんだけどね。復職率を調べたいとするでしょ。そうすると復職率をどれくらい精確に推定できたかを表す指標が、95%信頼区間だよね。仮に復職率が50%だったとしてみよう。そうすると、50%±10%程度の推定精度がほしいよね。ここでいう±の後の数字が、95%信頼区間の幅になるんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「むずいな。どのくらいなんだろう。なにも不利なことがないなら、手術した後、1年以内に80%は復職してほしいかな。ストーマがあると20%から30%くらいは復職率が下がるんじゃない？調査してみないとわかんないけどね」</p>
+<p>私「ああ、”50%（95%CI 40～60%）”みたいな感じで論文に書くことになるわけだ。40〜60%の場合、95%信頼区間幅は20%ってことね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「なるほど。もし復職状況を生存時間データとして解析するとしたらね。復職できた時点でイベントが発生し、それ以外の患者は打ち切りになる。表2と3は、2群の生存確率を比較するためのもので、生存確率を<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>と表記している。<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>は、がんサバイバー研究でいうとグループごとの”非復職確率”に対応する。つまり復職率が80%と60%だったら、<span class="math inline">\(\pi_1=0.2\)</span>と<span class="math inline">\(\pi_2=0.4\)</span>になる。この数字を使うってことは、暗黙の裡に、1年間追跡することを想定してるんだけどね。表3の対応箇所をみてみてよ」</p>
+<p>お父さん「そういうこと。表では復職率をπという変数で表しているんだけど、”π=0.5”と”信頼区間幅0.2”に対応する数字をみて。93って書いてあるでしょ。これが必要サンプルサイズ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「202人って書いてある。これが調査しないといけない人数ってこと？」</p>
+<p>私「どうだろう。復職率ってもっと高くない？手術したときの年齢にもよるけど、たとえば患者さんが50歳前後だったら、80%はいってほしいなあ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと」</p>
+<p>お父さん「そうなんだ。そうすると復職率80%は非復職率20%と同じことだから、”π=0.2”と”信頼区間幅0.2”のところをみればいい。サンプルサイズは60人」</p>
 </div>
 <div class="voice-daughter">
-<p>私「もし、202人の全員が1年間で追跡できなかったらどうするの？半年までしか調査できなかったとか」</p>
+<p>私「100人で足りてるじゃん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この表のサンプルサイズは、術後1年間100%追跡できるという前提で計算している。サンプルサイズの計算では、本来、それぞれの群のハザード比や生存期間中央値から必要なイベント数を求め、それを観察するために必要な期間を考慮したうえで人数を決めるんだけど、今回は、2パターンの検出力だけみればいいように状況を単純化している。さっき検出力について説明したでしょ。表3は、検出力90%の検定を行うために必要なサンプルサイズで、表2はそれを検出力80%に緩めたときのもの。表2をみると、検出力80%でよければ、152人に調査すればいいみたいだね」</p>
+<p>お父さん「いやいやいや、これは復職率の信頼区間からサンプルサイズを計算したからこうなったんだ。“信頼区間アプローチ”といって、主に探索的研究で使うものなんだよ。ストーマ造設ありとなしの復職率を比べるような仮説検証を目指した研究なら、“仮説検定アプローチ”といって、仮説検定の考え方にそってサンプルサイズを計算しないといけない」</p>
+<div class="voice-daughter">
+<p>私「そっか。だいたいわかった。私、明日も出勤だから、また今度教えてよ。おやすみー」</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -907,7 +698,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>サンプルサイズ設計</strong></p>
-<p>研究計画を立てるときには、サンプルサイズを見積もる必要があります。サンプルサイズの計算は大まかにいえば2種類あって、信頼区間アプローチ（たとえば表1）と仮説検定アプローチ（表2と3）を用いることができます。</p>
+<p>研究計画を立てるときには、サンプルサイズを見積もる必要があります。サンプルサイズの計算は大まかにいえば2種類あって、信頼区間アプローチ（たとえば表1）と仮説検定アプローチ（次回）を用いることができます。</p>
 <p>信頼区間アプローチは、調査や探索的研究で用いられます。このアプローチによって割合を推定するために必要なサンプルサイズを求めるとき、次の数値を設定する必要があります。</p>
 <ul>
 <li>割合の真値（復職率など）</li>
@@ -921,45 +712,6 @@ Note
 </ul>
 <p>サンプルサイズ設計は、βエラーを制御するという意味で、p値と対になる統計手法といえます。</p>
 </div>
-</div>
-<div class="voice-daughter">
-<p>私「ふむ。まだよくわかんないな。JCOG9502では、2本の生存曲線を比べてたでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いま考えてる統計解析って、ストーマ造設あり・なしと復職状況の関係を調べてたんだよね。以前に聞いた話だと、2値データだとロジスティック回帰、生存時間データだとCox回帰を使うんじゃなかったっけ。生存曲線とCox回帰は別の統計手法じゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「正確にいうとね、生存曲線を比較するためのp値はいくつかの統計手法で計算できる。よく使うのはログランク検定とCox回帰のふたつで、表2と3は、ほんとはログランク検定用なんだけど。Cox回帰を使ったとしても、ストーマ造設あり・なし以外の因子がなければ、ログランク検定とほとんど同じ結果になる。特にサンプルサイズが大きければね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「でも、お父さん、観察研究だと交絡因子を調整しないといけないっていったじゃない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん、そういった。でも、交絡因子の影響を前もって予想することは無理だから、表2と3みたいなログランク検定のためのサンプルサイズの公式を、実際には使っている」</p>
-</div>
-<div class="voice-daughter">
-<p>私「お父さん、あとね。表2と3に割付け比1:1って書いてあるでしょ。これって2群の人数が同じってことだよね。</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ、たいていの臨床試験の割付け比は1:1だからね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「でもストーマ保有者って、非保有者より少ないと思うんだけど。半数くらいかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアを利用することになる。割付け比を、1:1から1:0.5、1:0.25に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう。検出力80%だと、サンプルサイズは152人から194人、294人になる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「へー。このソフトウェアは調査と臨床試験のためのものなの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「診断研究やROC曲線にも使えるから、医学研究のほとんどに対応できると思う」</p>
-</div>
-<div class="voice-daughter">
-<p>私「でも、サンプルサイズがすごく増えちゃった。調査する施設を増やすかどうか考えないと」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -993,18 +745,19 @@ Note
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>正解は1です。</strong></p>
+<ul>
+<li><strong>正解は1です</strong></li>
+</ul>
 <p>柔軟に考えてみましょう。生存期間は、日数や年数のような数値データですから、連続データに近い特徴を持っています。連続データでは、中央値（median）は上位50%に相当する値のことですよね。半数以上の対象者がイベントを起こして、生存期間が確定すれば、たとえ打ち切りがあっても、生存期間中央値を求めることができます。もし、予定された追跡期間を全員が完了したとしても、イベントがじゅうぶんに観察されなければ（つまり打ち切りが多かったら）、統計的なテクニックで中央値を計算することはできますが、バイアスが生じる可能性が高くなります。</p>
 </div>
 </div>
 </div>
-</section>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><p>Machin D, Campbell MJ, Tan SB, Tan SH. 医学のためのサンプルサイズ設計（原著第4版）. 京都: 京都大学学術出版会; 2022</p></li>
+<li><p>[Machin D, Campbell MJ, Tan SB, Tan SH. 医学のためのサンプルサイズ設計（原著第4版）. 京都: 京都大学学術出版会; 2022]（https://www.kyoto-up.or.jp/9784814003822.html）</p></li>
 <li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p>Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</p></li>
+<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
@@ -1035,6 +788,8 @@ Note
 <p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
 
 
+</section>
+</div>
 </section>
 </section>
 

@@ -323,7 +323,7 @@ a:hover {
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さん、いま時間ある？前にOS（全生存期間）とDFS（無病生存期間）の違いについて教えてくれたでしょ」</p>
+<p>私「お父さん、いま時間ある？前に全生存期間（OS）と無病生存期間（DFS）の違いについて教えてくれたでしょ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そんなこともあったね」</p>
@@ -400,20 +400,20 @@ coxph()を用いたハザード比の推定
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 132 
+  n= 200, number of events= 131 
 
                   coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.3134    1.3680   0.1745 1.796   0.0725 .
+stomaWITH STOMA 0.4717    1.6027   0.1846 2.555   0.0106 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.368      0.731    0.9718     1.926
+stomaWITH STOMA     1.603     0.6239     1.116     2.301
 
-Concordance= 0.521  (se = 0.024 )
-Likelihood ratio test= 3.21  on 1 df,   p=0.07
-Wald test            = 3.23  on 1 df,   p=0.07
-Score (logrank) test = 3.25  on 1 df,   p=0.07</code></pre>
+Concordance= 0.539  (se = 0.024 )
+Likelihood ratio test= 6.33  on 1 df,   p=0.01
+Wald test            = 6.53  on 1 df,   p=0.01
+Score (logrank) test = 6.64  on 1 df,   p=0.01</code></pre>
 </div>
 </div>
 </div>
@@ -528,7 +528,7 @@ Note
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は4です。</strong></li>
+<li><strong>正解は4です</strong></li>
 </ul>
 <p>有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。</p>
 </div>
