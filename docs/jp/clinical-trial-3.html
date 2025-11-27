@@ -354,6 +354,7 @@ a:hover {
 <div class="voice-daughter">
 <p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
 </div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -401,6 +402,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 </div>
+<div class="dialogue">
 <div class="voice-daughter">
 <p>私「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
 </div>
@@ -418,6 +420,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 <div class="voice-father">
 <p>お父さん「理論的には当たりにくくなったりはしないよ。95%信頼区間の被覆確率はサンプルサイズによらず95%になるはず。n=100、200、400、800のシミュレーション結果をみてみようか」</p>
+</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coverage_100 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">100</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
@@ -440,6 +443,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 <pre><code>[1] 0.953</code></pre>
 </div>
 </div>
+<div class="dialogue">
 <div class="voice-daughter">
 <p>私「ほんとだ、だいたい95%。じゃあ調査人数は何人でもいいってことだ」</p>
 </div>
@@ -690,17 +694,17 @@ coxph()を用いた95%信頼区間のシミュレーション
 <div class="voice-daughter">
 <p>私「そっか。だいたいわかった。私、明日も出勤だから、また今度教えてよ。おやすみー」</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="サンプルサイズ設計">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+サンプルサイズ設計
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>サンプルサイズ設計</strong></p>
 <p>研究計画を立てるときには、サンプルサイズを見積もる必要があります。サンプルサイズの計算は大まかにいえば2種類あって、信頼区間アプローチ（たとえば表1）と仮説検定アプローチ（次回）を用いることができます。</p>
 <p>信頼区間アプローチは、調査や探索的研究で用いられます。このアプローチによって割合を推定するために必要なサンプルサイズを求めるとき、次の数値を設定する必要があります。</p>
 <ul>
@@ -714,7 +718,6 @@ Note
 <li>検出したい効果サイズ（2群間の生存確率の差やハザード比など）</li>
 </ul>
 <p>サンプルサイズ設計は、βエラーを制御するという意味で、p値と対になる統計手法といえます。</p>
-</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">

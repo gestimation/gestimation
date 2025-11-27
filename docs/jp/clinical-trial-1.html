@@ -400,20 +400,18 @@ coxph()を用いたハザード比の推定
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 137 
+  n= 200, number of events= 145 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5045    1.6562   0.1842 2.739  0.00616 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+                  coef exp(coef) se(coef)    z Pr(&gt;|z|)
+stomaWITH STOMA 0.2557    1.2913   0.1727 1.48    0.139
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.656     0.6038     1.154     2.376
+stomaWITH STOMA     1.291     0.7744    0.9205     1.812
 
-Concordance= 0.523  (se = 0.024 )
-Likelihood ratio test= 7.45  on 1 df,   p=0.006
-Wald test            = 7.5  on 1 df,   p=0.006
-Score (logrank) test = 7.65  on 1 df,   p=0.006</code></pre>
+Concordance= 0.523  (se = 0.023 )
+Likelihood ratio test= 2.15  on 1 df,   p=0.1
+Wald test            = 2.19  on 1 df,   p=0.1
+Score (logrank) test = 2.2  on 1 df,   p=0.1</code></pre>
 </div>
 </div>
 </div>
