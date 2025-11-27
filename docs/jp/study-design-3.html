@@ -318,24 +318,23 @@ a:hover {
 <h3 class="anchored" data-anchor-id="アウトカムってなに">アウトカムってなに？</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”OS”とか”DFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSはがんの再発を調べてるみたいなんだけど。お父さん詳しい？」</p>
+<p>私「さっきのアウトカムについてなんだけどね。ジャーナルクラブで臨床試験の論文を読むと出てくる”DFS”とか”RFS”とかの略語もアウトカムだよね？実はよくわからないんだけど、当たり前のように使われているから質問しにくいんだ。DFSとRFS、どっちもがんの再発を調べてるみたいなんだけど。お父さん詳しい？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「統計解析をしていて、OSとDFSを扱うことはあるよ。OSは全生存期間（overall survival）、DFSは無病生存期間（disease-free survival）のことだよね」</p>
+<p>お父さん「もちろん統計解析でDFSを扱うことはあるよ。一番よく出てくるOSは全生存期間（overall survival）だよね。DFSは無病生存期間（disease-free survival）、RFSは無再発生存期間（relapse-free survival）のこと」</p>
 </div>
 <div class="voice-daughter">
-<p>私「無病生存期間って再発までの日数のこと？」</p>
+<p>私「無再発生存期間って再発までの日数のこと？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「再発までの日数だったら無再発期間(relapse-free time)とかって言葉を選ぶかなあ。累積再発率（cumulative incidence of relapse）やCIRって呼ぶことの方が多いけど」</p>
 </div>
 <div class="voice-daughter">
-<p>私「同じじゃないの？」</p>
+<p>私「よけいにわからん。ぜんぶ同じじゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「専門的には違うよ。再発を経験せずに、死亡することもあるでしょ。無病生存期間のポイントは、再発・2次がん・死亡のうち、<strong>どれか最初のイベントまでの時間</strong>を扱うこと。だから、再発だけでなく、死亡したり別のがんを発症したりしたときも、イベントとして扱われるんだ」</p>
+<p>お父さん「生存間解析ではね、細かいけど違うんだ。再発を経験せずに、死亡することもあるでしょ。無病生存期間のポイントは、再発・2次がん・死亡のうち、<strong>どれか最初のイベントまでの時間</strong>を扱うこと。だから、再発だけでなく、死亡したり別のがんを発症したりしたときも、イベントとして扱われるんだ」</p>
 </div>
-<p><img src="study-design-2.png" class="img-fluid"></p>
 <div class="voice-daughter">
 <p>私「イベント扱いって？」</p>
 </div>
@@ -346,7 +345,23 @@ a:hover {
 <p>私「そういうことか」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「薬の臨床試験で用いられるアウトカムは、”エンドポイント”とよばれることもあるね。表に、がん臨床試験の主な生存時間エンドポイントを整理してあげるよ（Japan Clinical Oncology Group 2021）」</p>
+<p>お父さん「RFSでは、イベントは死亡と再発のするのが普通。つまり二次がんはイベントに含めない。無再発期間だったらイベントは再発だけ。図をみたら、イメージしやすくなるかな」</p>
+</div>
+<p><img src="study-design-2.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「一般に、生存時間データは、特定のイベントまでの経過時間なんだ。端的にいうとね、無病生存期間のデータから“3年無病生存確率”を計算するとするでしょ。それは“イベントが起こらない確率”に相当するんだけど、意味合いとしては3年時点で、再発も2次がんも経験せず、生存できる確率を求めることになる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「納得。私はね、無病生存期間の結果が重要だと思うな。再発と2次がん、どっちも起きない方がいい。無再発期間はあまり解析する意味を感じないな。死亡は一番重要なイベントじゃない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。でも、がんが再発した後に死亡した患者は、無再発期間だったとしてもイベント扱いになるよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確かにね。再発前に亡くなるケースって、感染症とか、交通事故とか、原病に関係ないかもしれない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「薬の臨床試験で用いられるアウトカムは、”エンドポイント”とよばれることもあるけど、実際には研究ごとに様々なエンドポイントが用いられる。表に、がん臨床試験の主な生存時間エンドポイントを整理してあげるよ（Japan Clinical Oncology Group 2021）」</p>
 </div>
 <table class="caption-top table">
 <colgroup>
@@ -393,6 +408,14 @@ a:hover {
 <td>最終生存確認日</td>
 </tr>
 <tr class="even">
+<td>無再発期間</td>
+<td>再発</td>
+<td></td>
+<td></td>
+<td></td>
+<td>最終生存確認日</td>
+</tr>
+<tr class="odd">
 <td>無病生存期間</td>
 <td>死亡</td>
 <td>再発</td>
@@ -400,7 +423,7 @@ a:hover {
 <td></td>
 <td>最終生存確認日</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>無イベント生存期間</td>
 <td>死亡</td>
 <td>寛解導入失敗</td>
@@ -408,7 +431,7 @@ a:hover {
 <td>2次がん</td>
 <td>最終生存確認日</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>治療成功期間</td>
 <td>死亡</td>
 <td>治療中止（治療中の増悪/再発を含む）</td>
@@ -425,10 +448,13 @@ a:hover {
 <p>お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「時間原点についてもう少し説明してよ」</p>
+<p>私「時間原点ってはじめて聞いた。もう少し説明してよ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「じゃあ、生存時間の原点について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「観察のスタート時点のことね、たしかに大切。実は今、調査票作ってて、DFSとかOSを正確に知りたかったんだ。聞いてよかった、また相談するね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
@@ -588,6 +614,7 @@ a:hover {
 </div>
 </div>
 </div>
+<div class="dialogue">
 <div class="voice-daughter">
 <p>私「Aalen-Johansen曲線って、Kaplan–Meier曲線のY軸を逆さにしただけじゃないの」</p>
 </div>
@@ -598,7 +625,8 @@ a:hover {
 <p>私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だからOS、RFS、CIRは使い分けることが必要になる」</p>
+<p>お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="臨床エンドポイントと代替エンドポイント">
 <div class="callout-header d-flex align-content-center">
