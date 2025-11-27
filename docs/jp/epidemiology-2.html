@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -377,6 +412,98 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだだと思うんだけど。そこは慣れるしかないなあ」</p>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+シミュレーションデータ（再発あり）の生成
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>前回の発展形として、シミュレーションデータを使って、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。</p>
+<p>以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」generate_dataを定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。</p>
+<ul>
+<li><p>ストーマ保有：2項分布（rbinom関数）から生成した2値データ</p></li>
+<li><p>生存時間：指数分布（rexp関数）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）</p></li>
+</ul>
+<p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>rr_at_10 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs WITHOUT STOMA 
+                      1.126       
+                      [0.744, 1.704]
+                      (p=0.576)   
+
+---------------------------------- 
+
+effect.measure        RR at 10    
+n.events              117 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rr_at_20 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs WITHOUT STOMA 
+                      1.126       
+                      [0.744, 1.704]
+                      (p=0.576)   
+
+---------------------------------- 
+
+effect.measure        RR at 10    
+n.events              117 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rr_at_30 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_30)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs WITHOUT STOMA 
+                      1.126       
+                      [0.744, 1.704]
+                      (p=0.576)   
+
+---------------------------------- 
+
+effect.measure        RR at 10    
+n.events              117 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
@@ -398,7 +525,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -407,7 +534,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>
