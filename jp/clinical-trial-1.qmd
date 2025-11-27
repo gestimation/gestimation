@@ -159,7 +159,7 @@ a:hover {
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さん、いま時間ある？前にOS（全生存期間）とDFS（無病生存期間）の違いについて教えてくれたでしょ」**
+私「お父さん、いま時間ある？前にOS（全生存期間）とDFS（無病生存期間）の違いについて教えてくれたでしょ」
 :::
 
 ::: voice-father
@@ -172,13 +172,12 @@ a:hover {
 
 ![](clinical-trial-2.png)
 
-
 ::: voice-father
 お父さん「この図は、統計学でいうKaplan-Meier曲線 だよ。図AがOS、図BがDFSだね。どちらの図でも、TH群（青の曲線）よりLTA群（赤の曲線）の方が下にある。つまりTH群の方が、治療成績がいい」
 :::
 
 ::: voice-daughter
-私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」**
+私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」
 :::
 
 ::: voice-father
@@ -194,7 +193,7 @@ a:hover {
 :::
 
 ::: voice-daughter
-私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」**
+私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」
 :::
 
 ::: voice-father
@@ -225,19 +224,81 @@ a:hover {
 -   図に示されない情報だが登録期間・追跡期間も要確認
 :::
 
-私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんて言うか教えてよ」**
+::: voice-daughter
+私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんていうか教えてよ」
 :::
 
 ::: voice-father
-お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりを勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がおすすめ（Green, et al. 2013）」
+お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりの指標は、生存時間解析の定番だよ。ハザード比、95%信頼区間、両側p値は、Cox回帰という回帰モデルを当てはめて推定する。片側p値は手で計算する必要があるけど」
 :::
+
+::: {.callout-note title="coxph()を用いたハザード比の推定"}
+ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
+
+```{r echo=FALSE, warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発存期間（RFS） -------------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+```
+
+```{r warning=FALSE}
+# install.packages("survival") #インストールが必要なら実行
+library(survival)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
+summary(fit)
+```
+:::
+
 
 ::: voice-daughter
-私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比 が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」
+私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」
 :::
 
 ::: voice-father
-お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない」
+お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al. 2013）」
 :::
 
 ::: voice-daughter
@@ -252,20 +313,26 @@ a:hover {
 3.  統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する
 
 お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」
+:::
 
-**私「それでいいんじゃない？」**
+::: voice-daughter
+私「それでいいんじゃない？」
 :::
 
 ::: voice-father
 お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、もう少し厳密に考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」
+:::
 
-**私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」**
+::: voice-daughter
+私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」
 :::
 
 ::: voice-father
 お父さん「うんうん。じゃあ別の次の説明をして見てみよう。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」
+:::
 
-**私「普通そう考えるんじゃない？」**
+::: voice-daughter
+私「普通そう考えるんじゃない？」
 :::
 
 ::: voice-father
@@ -306,6 +373,7 @@ a:hover {
 
 ::: voice-daughter
 私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」
+::: 
 ::::::::::::::::::::::::::::::::::::
 
 ::: callout-note
@@ -324,7 +392,11 @@ p値の説明として正しいものは、次のうちどれでしょうか。
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
+<<<<<<< HEAD
 -   **正解は4です**
+=======
+- **正解は4です。**
+>>>>>>> b8f6c033c0197b58efc91caa32358a81df6008cc
 
 有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。
 :::
@@ -333,7 +405,7 @@ p値の説明として正しいものは、次のうちどれでしょうか。
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
-- Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013
+- [Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013](https://www.igaku-shoin.co.jp/book/detail/84805)
 
 ### Continuation of their story
 

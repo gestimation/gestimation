@@ -3,6 +3,8 @@ format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
 body {
   margin: 0;
@@ -135,12 +137,15 @@ a:hover {
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
+
 # Story and Quiz − Study design II
-::: {.serif-block}
+
+::: serif-block
 　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
 :::
 
@@ -148,7 +153,7 @@ a:hover {
 
 ### データには型がある
 
-:::::::::::::::::::::::::::::::::::: dialogue
+::::::::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 私「お父さんが、さっき、どの関数を使うかもアウトカムによって違うんだよっていってたじゃない？あれ、いまいちピンとこないんだけど。データなんて、全部数字じゃないの？」
 :::
@@ -292,7 +297,7 @@ a:hover {
 ::: voice-father
 お父さん「毎回インストールすると、"コーヒー淹れるたびに豆を買いに行く"ようなものだからね。豆はまとめて買っておいて、飲むときに挽けばいい。パッケージも同じだよ」
 :::
-::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::
 
 ::: {.callout-note title="シミュレーションデータの生成"}
 ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。
@@ -303,54 +308,45 @@ a:hover {
 
 -   生存時間：指数分布（rexp関数）から生成した生存時間データ
 
-```{r}
+```{r warning=FALSE}
 set.seed(46)
 
-n <- 200
-
 # ストーマ保有あり(1)/なし(0)
-
-stoma <- rbinom(n, size = 1, prob = 0.4)
+stoma <- rbinom(200, size = 1, prob = 0.4)
 
 # 性別 0 = 女性, 1 = 男性
-
-sex <- rbinom(n, size = 1, prob = 0.5)
+sex <- rbinom(200, size = 1, prob = 0.5)
 
 # 年齢：正規分布から生成（ストーマあり群を少し高齢に）
-
-age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+age <- rnorm(200, mean = 65 + 3 * stoma, sd = 8)
 
 # 生存時間：指数分布（ストーマあり群の予後の期待値10年、ストーマなし群の予後の期待値15年）
-
-rate  <- ifelse(stoma == 1, 1 / 10, 1 / 15)
-time  <- rexp(n, rate = rate)
+hazard <- ifelse(stoma == 1, 1 / 10, 1 / 15)
+time   <- rexp(200, rate = hazard)
 
 # ランダムな打ち切り（0 = 打ち切り, 1 = イベント）
-
-status <- rbinom(n, size = 1, prob = 0.9)
+status <- rbinom(200, size = 1, prob = 0.9)
 
 dat <- data.frame(
-age   = age,
-sex   = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
-stoma = factor(stoma, levels = c(0, 1), labels = c("WITHOUT STOMA", "WITH STOMA")),
-time  = time,
-status = status
+  age    = age,
+  sex    = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+  stoma  = factor(stoma, levels = c(0, 1), labels = c("WITHOUT STOMA", "WITH STOMA")),
+  time   = time,
+  status = status
 )
-
 head(dat)
 ```
 :::
 
 ::: {.callout-note title="連続データと2値データの要約"}
-
 まず、`ggplot2`パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
 
-```{r}
+```{r warning=FALSE}
 # install.packages("ggplot2") #インストールが必要なら実行
 library(ggplot2)
 
 ggplot(dat, aes(x = age, fill = stoma)) +
-geom_histogram(alpha = 0.5, position = "identity", bins = 20) +
+geom_histogram(alpha = 0.5, position = "identity", bins = 10) +
 labs(x = "AGE", y = "FREQUENCY", fill = "STOMA") +
 theme_minimal()
 
@@ -359,15 +355,15 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 :::
 
 ::: {.callout-note title="生存曲線による生存時間データの要約"}
-
 次の生存時間データでは、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマあり群より、ストーマなし群の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
 
-```{r}
+```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
-
-survival_curve <- cifcurve(Event(time, status) ~ stoma,data = dat, outcome.type = "survival")
-cifplot(survival_curve)
+cifplot(Event(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival"
+)
 ```
 :::
 

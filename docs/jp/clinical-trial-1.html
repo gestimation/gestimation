@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -288,7 +323,7 @@ a:hover {
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さん、いま時間ある？前にOS（全生存期間）とDFS（無病生存期間）の違いについて教えてくれたでしょ」**</p>
+<p>私「お父さん、いま時間ある？前にOS（全生存期間）とDFS（無病生存期間）の違いについて教えてくれたでしょ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そんなこともあったね」</p>
@@ -301,7 +336,7 @@ a:hover {
 <p>お父さん「この図は、統計学でいうKaplan-Meier曲線 だよ。図AがOS、図BがDFSだね。どちらの図でも、TH群（青の曲線）よりLTA群（赤の曲線）の方が下にある。つまりTH群の方が、治療成績がいい」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」**</p>
+<p>私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「これは結構難しいな。臨床試験で解析対象から除外されるって、プロトコール逸脱とかよっぽどのことだと思うけど。ふむ。DFSの解析を行うには再発したかどうかを評価しないといけないよね。そのあたり、なにか理由はありそう？」</p>
@@ -313,7 +348,7 @@ a:hover {
 <p>お父さん「この試験って登録何年で、追跡何年なの？それによるでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」**</p>
+<p>私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうすると、必ずしも術後3年以上追跡されるわけじゃないよね。以前、”打ち切り”について話したことがあったよね。生存時間データは、イベントと打ち切りから構成される。3年以内に打ち切りが多いのは不自然だけど、3年以降に追跡が打ち切られるのは計画通りのことだよ」</p>
@@ -338,16 +373,56 @@ a:hover {
 <li>図に示されない情報だが登録期間・追跡期間も要確認</li>
 </ul>
 </div>
-<p>私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんて言うか教えてよ」**</p>
+<div class="voice-daughter">
+<p>私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんていうか教えてよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりを勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がおすすめ（Green, et al.&nbsp;2013）」</p>
+<p>お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりの指標は、生存時間解析の定番だよ。ハザード比、95%信頼区間、両側p値は、Cox回帰という回帰モデルを当てはめて推定する。片側p値は手で計算する必要があるけど」</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いたハザード比の推定">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+coxph()を用いたハザード比の推定
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
+
+  n= 200, number of events= 132 
+
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3134    1.3680   0.1745 1.796   0.0725 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                exp(coef) exp(-coef) lower .95 upper .95
+stomaWITH STOMA     1.368      0.731    0.9718     1.926
+
+Concordance= 0.521  (se = 0.024 )
+Likelihood ratio test= 3.21  on 1 df,   p=0.07
+Wald test            = 3.23  on 1 df,   p=0.07
+Score (logrank) test = 3.25  on 1 df,   p=0.07</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="voice-daughter">
-<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比 が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
+<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない」</p>
+<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）」</p>
 </div>
 <div class="voice-daughter">
 <p>私「p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
@@ -360,15 +435,21 @@ a:hover {
 <li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
 </ol>
 <p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
-<p><strong>私「それでいいんじゃない？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「それでいいんじゃない？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、もう少し厳密に考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
-<p><strong>私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「うんうん。じゃあ別の次の説明をして見てみよう。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
-<p><strong>私「普通そう考えるんじゃない？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「普通そう考えるんじゃない？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
@@ -399,6 +480,7 @@ a:hover {
 </div>
 <div class="voice-daughter">
 <p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -434,7 +516,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -443,9 +525,11 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>正解は4です。</strong></p>
+<ul>
+<li><strong>正解は4です。</strong></li>
+</ul>
 <p>有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。</p>
 </div>
 </div>
@@ -455,7 +539,7 @@ Note
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
 <li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p>Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</p></li>
+<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
