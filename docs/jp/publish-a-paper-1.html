@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clinical-trial-1 – Coffee and Research</title>
+<title>publish-a-paper-1 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -159,10 +124,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-i" id="toc-story-and-quiz-clinical-trial-i" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-i">Story and Quiz − Clinical trial I</a>
+  <li><a href="#story-and-quiz-publishing-a-paper-i" id="toc-story-and-quiz-publishing-a-paper-i" class="nav-link active" data-scroll-target="#story-and-quiz-publishing-a-paper-i">Story and Quiz − Publishing a paper I</a>
   <ul class="collapse">
-  <li><a href="#生存曲線まわりの数値を読み解く" id="toc-生存曲線まわりの数値を読み解く" class="nav-link" data-scroll-target="#生存曲線まわりの数値を読み解く">生存曲線まわりの数値を読み解く</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#editorとreviewerってちがう人なんだ" id="toc-editorとreviewerってちがう人なんだ" class="nav-link" data-scroll-target="#editorとreviewerってちがう人なんだ">EditorとReviewerってちがう人なんだ</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -309,193 +273,71 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-i" class="level1">
-<h1>Story and Quiz − Clinical trial I</h1>
+<section id="story-and-quiz-publishing-a-paper-i" class="level1">
+<h1>Story and Quiz − Publishing a paper I</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: paper writing</p>
 </div>
 <hr>
-<section id="生存曲線まわりの数値を読み解く" class="level3">
-<h3 class="anchored" data-anchor-id="生存曲線まわりの数値を読み解く">生存曲線まわりの数値を読み解く</h3>
+<section id="editorとreviewerってちがう人なんだ" class="level3">
+<h3 class="anchored" data-anchor-id="editorとreviewerってちがう人なんだ">EditorとReviewerってちがう人なんだ</h3>
 <ul>
 <li><p>前回までのあらすじ</p>
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。おなじ復職状況でも、2値データと生存時間データの2通り解析の仕方があると教えられた娘。むかし読んだ論文で、OS・DFSという用語が出てきたことを思い出すのだった。</p></li>
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。調査は終ったが、いざ論文を書くとなると腰が重く、パソコンを閉じて父に話しかけるのだった。</p></li>
 </ul>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、いま時間ある？前に全生存期間（OS）と無病生存期間（DFS）の違いについて教えてくれたでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そんなこともあったね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「真面目に論文を読んでるんだけど、細かいところがよくわかんないんだ。特に統計っぽい言葉の意味がね。ちょっとこの図を見てよ。JCOG9502っていう胃がん手術の術式を比べた臨床試験の論文なの（Sasako, et al.&nbsp;2006）。TH群は開腹創から下縦隔へアプローチする標準的な手術を受けた患者、LTA群は左開胸開腹連続切開によって下縦隔郭清も行った患者のことね」</p>
-</div>
-<p><img src="clinical-trial-2.png" class="img-fluid"></p>
-<div class="voice-father">
-<p>お父さん「この図は、統計学でいうKaplan-Meier曲線 だよ。図AがOS、図BがDFSだね。どちらの図でも、TH群（青の曲線）よりLTA群（赤の曲線）の方が下にある。つまりTH群の方が、治療成績がいい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「これは結構難しいな。臨床試験で解析対象から除外されるって、プロトコール逸脱とかよっぽどのことだと思うけど。ふむ。DFSの解析を行うには再発したかどうかを評価しないといけないよね。そのあたり、なにか理由はありそう？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そっか、腫瘍組織が完全に切除できなかったら、再発とみなしていないのかもしれない。えーっと、論文を読むと、確かにR0切除ができたのは151人って書いてある。そのせいだな多分。それとね、7年目あたりから人数が数人しかいなくなってるの。これってどう思う？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「この試験って登録何年で、追跡何年なの？それによるでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうすると、必ずしも術後3年以上追跡されるわけじゃないよね。以前、”打ち切り”について話したことがあったよね。生存時間データは、イベントと打ち切りから構成される。3年以内に打ち切りが多いのは不自然だけど、3年以降に追跡が打ち切られるのは計画通りのことだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「打ち切りがいつ起きたかなんて、論文を読んでも書いてないよね？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そんなことはない。生存曲線にひげが立ってるでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「このぴょこぴょこしたやつ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうそう。それが打ち切りのシンボル。時間原点の直後にひげがたくさん立ってたら、なにが起きてると思う？研究を始めたらすぐ、患者さんが追跡できなくなって、打ち切りになったってこと。そんな変な研究にはバイアスがあるかもしれないよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「図では、3年以内のひげは数えるほどしかない。じゃあほとんどの患者は3年以上追跡できたんだ。いい研究なんだね」</p>
+<p><strong>私「がんサバイバー調査についてなんだけどね。調査結果がまとまったから、論文を書かなきゃって思ってるんだけど。お父さんって、どこかのジャーナルで統計エディターしてたよね。論文って、どんな感じで書くと、採択されやすいのかな」</strong></p>
+<p>お父さん「どんな感じねえ。医学が専門ってわけじゃないから、いいにくいな。自分自身はどう思うの？」</p>
+<p><strong>私「はやってる研究テーマを扱ったものは通りやすそう。免疫チェックポイント阻害薬みたいな新薬とか、新しい診断基準とか？あ、ランダム化臨床試験は、調査より注目されるし、きっと有利ね」</strong></p>
+<p>お父さん「そのイメージはまずまずあってるかな。エディターをやってて感じるのは、採択するときの基準は、突き詰めて考えると2つしかない。第一に、その研究から得られた結論の価値（value）は高いか。第二に、結論は正しい方法論（methodology）で導かれているか。ランダム化臨床試験が正しい方法っていってるわけじゃないよ。エディターやレビュワーは、臨床試験でも、観察研究でも、それぞれの分野で妥当とみなされているような方法論に従って行われているかを、チェックしてるってこと」</p>
+<p><strong>私「あれ？エディターとレビュワーって違う人？」</strong></p>
+<p>お父さん「もちろん。採択されるかどうかは、ピアレビュー（査読）の結果で決まるでしょ。レビュワーの役割は、論文や学会抄録を読んで、採点したり、修正（revise）を求めるときはどこを直してほしいかコメントしたりすること。エディターの役割は、一言でいうとジャーナルを編集すること。編集事務局を運営したり、編集方針を決めたり、レビュワーを割り当てたりする。採択するかどうかはエディターが判断するし、査読コメントを著者に送ることもある。たとえばね、カバーレターってあるでしょ。論文につける手紙」</p>
+<p><strong>私「聞いたことないよ。そんなのあるんだ」</strong></p>
+<p>お父さん「そっか。カバーレターの宛先は、レビュワーじゃなくてエディターだよっていおうとしたんだけど。カバーレターは、たいてい編集委員長（Editor-In-Chief）宛に書くんだ」</p>
+<p><strong>私「ふーん。カバーレターって大切？」</strong></p>
+<p>お父さん「どうだろう。お父さんは割とカバーレターで研究の価値をアピールする方だけど、定型文でいいっていう人もいる。周りの研究者に聞いても、どれくらい重視するかはまちまち。読まないエディターもいるのも事実」</p>
+<p><strong>私「そういうもんか。ピアレビューがなにかはどこかで聞いたことあるよ。ジャーナルからコメントがきて、著者がそれに回答するんだよね。でも、裏ではエディターじゃなくてレビュワーが採点してるんだ」</strong></p>
+<p>お父さん「ジャーナルによって、多段階評価だったり数字をつけたりするけどね。エディターが採点結果とコメントをみて、採択（accept）、大修正（major revision）、小修正（minor revision）、不採択（reject）のどれか決める。ピアレビューを経ないと、論文が粗製乱造されてしまう。だから、研究者はみんなピアレビューという仕組みを大切にしている」</p>
+<p><strong>私「ちなみにお父さんお金もらってる？」</strong></p>
+<p>お父さん「いや？ボランティア。利益相反とかいわれるとややこしいから、むしろどこからもお金を受け取りたくない。2019年にレビュワーの利益相反が問題になったことがあってね。それ以来、そのジャーナル（BMJ）は、査読コメントや著者の回答をサイトで公開するようになった。ピアレビューのプロセスが知りたければ、そのサイトをみてみたらいいよ。論文投稿するときは、論文を書くだけじゃなくて、英語でやり取りしなきゃいけないことが意外と多いから、参考になるかもしれない」</p>
+<p><strong>私「ふむふむ。話を元に戻すとさ。採択される基準は、価値と方法論っていってたよね。具体的にはどうすればいいの？」</strong></p>
+<p>お父さん「エディターはたくさんの論文をさばかなきゃいけないから、ざっとタイトルと抄録だけ目を通すことが多い。だから、どのあたりに研究の価値があるか、方法論は正しいか、といったことを抄録でアピールしたいよね」</p>
+<p><strong>私「ふむふむ」</strong></p>
+<p>お父さん「たいていの臨床医学系のジャーナルでは、構造化抄録を採用しているから、なにをどこに書けばいいかはわかりやすい。JAMAの抄録がどんな要素から構成されてるかみてみようか」</p>
 <ul>
-<li>アットリスク数は時点ごとの人数を表す</li>
-<li>ひげは打ち切りを表す</li>
-<li>図に示されない情報だが登録期間・追跡期間も要確認</li>
+<li><strong>Importance</strong>（研究の重要性）</li>
+<li><strong>Objective</strong>（目的）</li>
+<li><strong>Design, setting and participants</strong>（デザイン、状況設定、参加者）</li>
+<li><strong>Exposures</strong>（曝露）</li>
+<li><strong>Main outcomes and measures</strong>（主要アウトカムとその測定方法）</li>
+<li><strong>Results</strong>（結果）</li>
+<li><strong>Conclusions and relevance</strong>（結論と意義）</li>
 </ul>
-</div>
-<div class="voice-daughter">
-<p>私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんていうか教えてよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりの指標は、生存時間解析の定番だよ。ハザード比、95%信頼区間、両側p値は、Cox回帰という回帰モデルを当てはめて推定する。片側p値は手で計算する必要があるけど」</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いたハザード比の推定">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-coxph()を用いたハザード比の推定
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
-
-  n= 200, number of events= 131 
-
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5000    1.6487   0.1855 2.695  0.00704 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-                exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.649     0.6065     1.146     2.372
-
-Concordance= 0.547  (se = 0.024 )
-Likelihood ratio test= 6.99  on 1 df,   p=0.008
-Wald test            = 7.26  on 1 df,   p=0.007
-Score (logrank) test = 7.41  on 1 df,   p=0.006</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="voice-daughter">
-<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）」</p>
-</div>
-<div class="voice-daughter">
-<p>私「p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。 p値 に関する説明をいくつかしてみようか。</p>
-<ol type="1">
-<li>p値は帰無仮説が正しい確率である</li>
-<li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
-<li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
-</ol>
-<p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それでいいんじゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、もう少し厳密に考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。じゃあ別の次の説明をして見てみよう。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「普通そう考えるんじゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ科学的に重要じゃないってこと？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういう意味で言ったわけじゃないけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はいはい。お父さん、話長くない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「もう最後にするよ。説明3の“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、同等性 （equivalence）試験や非劣性 （non-inferiority）試験を組む必要がある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ホパテの悲劇</strong></p>
-<p>脳循環改善薬という古い薬をご存知でしょうか？ この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
-</div>
-</div>
+<p><strong>私「JAMAの抄録はこうなのね。研究の価値は、”Importance”と”Conclusions and relevance”に書けばいい。研究方法も、どんな要素が求められるか、デザインから測定方法まで指定されてる。確かにわかりやすい。参加者、曝露、主要アウトカムは、PECOの通りに書けばいいよね」</strong></p>
+<p>お父さん「それでいいと思う。がんサバイバーの調査の価値はなにって聞かれたらなんて答える？」</p>
+<p><strong>私「まず、がん手術後に仕事に就けるかどうかは、生活に関わる大きな問題だっていうのが前提かな。そして、どんな患者が苦労していて、就労支援を求めているのかを調べて、ストーマ造設が関連することがわかったっていうのが、研究をやった意義なんだと思うけど」</strong></p>
+<p>お父さん「うんうん。それが抄録を読んだ人に伝わるように書こう。たとえばこんな感じでどうだろう」</p>
+<ul>
+<li><strong>Importance</strong>: Although prognosis of early rectal cancer has been improved, little is known about employment problems after surgery.</li>
+<li><strong>Objective</strong>: To compare employment status between patients with and without stoma</li>
+<li><strong>Design, setting and participants</strong>: A mail survey was conducted at 3 hospitals in Japan. Participants were 20-to-80-year-old patients with clinical stage I–III rectal cancer who were employed at diagnosis and received curative surgery from 2010 to 2020. Participants were followed up using self-administered questionnaires for 12 months.</li>
+<li><strong>Exposures</strong>: Stoma creation</li>
+<li><strong>Main outcomes and measures</strong>: Return-to-work at 12 months after surgery</li>
+<li><strong>Results</strong>: AAA patients were responded and the response rate was BB%. The median time to return-to-work was CC months and the proportion of working patients at 12 months after surgery was DD%. The odds ratio for delayed return-to-work was EEE (95% confidence interval FFF to GGG, p=HHH) after adjustment for age, sex and income.</li>
+<li><strong>Conclusions and relevance</strong>: Stoma creation in rectal cancer is associated with a difficulty in return-to-work. Further support for employment is necessary.</li>
+</ul>
+<p>お父さん「この文章で工夫した点は4つある。まず、今回みたいに日本で調査を行う場合、海外の研究者は日本の事情を知らないでしょ。どんな方法で参加者が選ばれたのか気にされることが多い。だから、参加者についてきちんと説明するといい。単に直腸がん患者って書くんじゃなくて”patients with clinical stage I–III rectal cancer who were employed at the time of diagnosis and received curative surgery from 20XX to 20YY”とかね」</p>
+<p><strong>私「ふんふん」</strong></p>
+<p>お父さん「2つ目の工夫は、回答率（response rate）を示すこと。回答率が低いと、選択バイアスがあるかもしれないからね」</p>
+<p><strong>私「その次はなに？」</strong></p>
+<p>お父さん「交絡因子を調整しなさいっていったでしょ。この点は、観察研究の査読では必ず確認される。本文に書いてあればいいことなんだけど、抄録でも、オッズ比を示すときに”after adjustment for age, sex and income”のような説明があると、気が利いてるって思ってもらえるかもしれない」</p>
+<p><strong>私「なるほどね。2つ目と3つ目は、バイアスがどれくらいあるかについて書いたんだね。最後のひとつは？」</strong></p>
+<p>お父さん「つまらないテクニックなんだけど。“Return-to-work”や “20-to-80-year-old patients”のように、単語をハイフンでつなぐと、文字数を節約できる。普通に”patients aged 20 to 80 years”って書くと6文字も使っちゃうでしょ。抄録には文字数の制限があるからね」</p>
+<p><strong>私「じゃあさ、少し話がそれるんだけど、主語と時制について聞いていい？”A mail survey was conducted at 3 hospitals in Japan.”っていう一文があるけど、受動態にするのが普通なの？それに、調査はすでに行われたから、時制は過去形なんだよね。IntroductionとConclusionsは現在形だけど」</strong></p>
+<p>お父さん「論文を書くときは、Weを主語にしない方が、客観的だからいいっていう考え方がある。でも最近は、主語をはっきりさせた方が正確に記述できるといってる人もいる。ぜんぜん別の表現もできて、”Study design was a mail survey at 3 hospitals in Japan”というように、研究方法を説明する文体でも書ける。こうすると情報が増えたわけだから、より正確で、かしこまったニュアンスになる。この場合は、受動態でも能動態でも、不自然ってことはない」</p>
+<p><strong>私「時制については？」</strong></p>
+<p>お父さん「普遍的な現象や法則性を表すときは現在形を使う。結論を現在形で書くと、「ストーマ造設は職場復帰の難しさに関わることが明らかになった」っていうニュアンスになる。過去形を使って、“Stoma creation in rectal cancer was associated with a difficulty in return-to-work.”と書くと、「今回の調査では」関連があったという限定的な意味になる」</p>
+<p><strong>私「じゃあ主語と時制はいま教えられた通りで書いてみる」</strong></p>
+<p>お父さん「うんうん。ちなみにね、凝った英語を使う必要はないよ。論文は、“concise”つまり簡潔な表現が好ましいとされる。接続詞や関係代名詞を多用しちゃって、一文が長くなりがちな人もいるけど、最初はそうしない方がいい。短い文章が続いていても変じゃない」</p>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -506,17 +348,19 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値の説明として正しいものは、次のうちどれでしょうか。</p>
+<p>文献を引用するときのスタイルは、ジャーナルの投稿規定で決められています。なかでも、もっとも多く採用されているのは、医学雑誌編集者国際委員会が1978年に定めたバンクーバースタイルです。</p>
+<p>JCOG9502論文を、バンクーバースタイルで表記すると、以下のようになります。さて、2つの□に入る記号として正しい組み合わせは、次のうちどれでしょうか。</p>
+<p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006 □ 7(8) □ 644-51</p>
 <ol type="1">
-<li>帰無仮説が正しい確率である</li>
-<li>対立仮説が正しい確率である</li>
-<li>0.05よりも小さいと有意差があると判断する</li>
-<li>1、2、3すべて誤り</li>
+<li>“:”と”:”</li>
+<li>“;”と”;”</li>
+<li>“:”と”;”</li>
+<li>“;”と”:”</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -525,22 +369,16 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は4です</strong></li>
-</ul>
-<p>有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。</p>
+<p><strong>正解は4です。</strong></p>
+<p>バンクーバースタイルでは、論文を引用するとき、文献リストを以下のように書きます。ただし、著者が多数のときは、”et al.”と省略することがあります。</p>
+<p>[著者名（苗字+名前のイニシャル）]. [記事名]. [ジャーナル名]. [発行年]; [巻]: [ページの範囲]</p>
+<p>ちなみに、書籍を引用するときは、以下のように書きます。</p>
+<p>[著者名（苗字+名前のイニシャル）]. [書籍名]. [版]. [出版社の所在地]: [出版社]; [出版年]</p>
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
-</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>

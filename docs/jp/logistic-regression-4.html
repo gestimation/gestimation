@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clinical-trial-1 – Coffee and Research</title>
+<title>logistic-regression-4 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,6 +68,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -159,9 +153,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-i" id="toc-story-and-quiz-clinical-trial-i" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-i">Story and Quiz − Clinical trial I</a>
+  <li><a href="#story-and-quiz-logistic-regression-iv" id="toc-story-and-quiz-logistic-regression-iv" class="nav-link active" data-scroll-target="#story-and-quiz-logistic-regression-iv">Story and Quiz − Logistic regression IV</a>
   <ul class="collapse">
-  <li><a href="#生存曲線まわりの数値を読み解く" id="toc-生存曲線まわりの数値を読み解く" class="nav-link" data-scroll-target="#生存曲線まわりの数値を読み解く">生存曲線まわりの数値を読み解く</a></li>
+  <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
@@ -309,179 +303,16 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-i" class="level1">
-<h1>Story and Quiz − Clinical trial I</h1>
+<section id="story-and-quiz-logistic-regression-iv" class="level1">
+<h1>Story and Quiz − Logistic regression IV</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
 </div>
 <hr>
-<section id="生存曲線まわりの数値を読み解く" class="level3">
-<h3 class="anchored" data-anchor-id="生存曲線まわりの数値を読み解く">生存曲線まわりの数値を読み解く</h3>
-<ul>
-<li><p>前回までのあらすじ</p>
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。おなじ復職状況でも、2値データと生存時間データの2通り解析の仕方があると教えられた娘。むかし読んだ論文で、OS・DFSという用語が出てきたことを思い出すのだった。</p></li>
-</ul>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、いま時間ある？前に全生存期間（OS）と無病生存期間（DFS）の違いについて教えてくれたでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そんなこともあったね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「真面目に論文を読んでるんだけど、細かいところがよくわかんないんだ。特に統計っぽい言葉の意味がね。ちょっとこの図を見てよ。JCOG9502っていう胃がん手術の術式を比べた臨床試験の論文なの（Sasako, et al.&nbsp;2006）。TH群は開腹創から下縦隔へアプローチする標準的な手術を受けた患者、LTA群は左開胸開腹連続切開によって下縦隔郭清も行った患者のことね」</p>
-</div>
-<p><img src="clinical-trial-2.png" class="img-fluid"></p>
-<div class="voice-father">
-<p>お父さん「この図は、統計学でいうKaplan-Meier曲線 だよ。図AがOS、図BがDFSだね。どちらの図でも、TH群（青の曲線）よりLTA群（赤の曲線）の方が下にある。つまりTH群の方が、治療成績がいい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そこまではわかるの。知りたいのは細かいところなんだってば。最初につまずいたのが、生存曲線の下に書いてあるアットリスク数 （number at risk）でね。これって時点ごとの人数のことでしょ。図Aと図Bの手術時点の人数を見てよ。図Aは82人と85人、図Bは76人と75人で、左右で解析された人数が違うの。理由はわかる？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「これは結構難しいな。臨床試験で解析対象から除外されるって、プロトコール逸脱とかよっぽどのことだと思うけど。ふむ。DFSの解析を行うには再発したかどうかを評価しないといけないよね。そのあたり、なにか理由はありそう？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そっか、腫瘍組織が完全に切除できなかったら、再発とみなしていないのかもしれない。えーっと、論文を読むと、確かにR0切除ができたのは151人って書いてある。そのせいだな多分。それとね、7年目あたりから人数が数人しかいなくなってるの。これってどう思う？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「この試験って登録何年で、追跡何年なの？それによるでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「登録期間は1995年から2003年だから、8年。生存時間データは2006年までのものを解析したって書いてあるな。そうすると追跡期間は最短で3年かな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうすると、必ずしも術後3年以上追跡されるわけじゃないよね。以前、”打ち切り”について話したことがあったよね。生存時間データは、イベントと打ち切りから構成される。3年以内に打ち切りが多いのは不自然だけど、3年以降に追跡が打ち切られるのは計画通りのことだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「打ち切りがいつ起きたかなんて、論文を読んでも書いてないよね？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そんなことはない。生存曲線にひげが立ってるでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「このぴょこぴょこしたやつ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうそう。それが打ち切りのシンボル。時間原点の直後にひげがたくさん立ってたら、なにが起きてると思う？研究を始めたらすぐ、患者さんが追跡できなくなって、打ち切りになったってこと。そんな変な研究にはバイアスがあるかもしれないよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「図では、3年以内のひげは数えるほどしかない。じゃあほとんどの患者は3年以上追跡できたんだ。いい研究なんだね」</p>
-<ul>
-<li>アットリスク数は時点ごとの人数を表す</li>
-<li>ひげは打ち切りを表す</li>
-<li>図に示されない情報だが登録期間・追跡期間も要確認</li>
-</ul>
-</div>
-<div class="voice-daughter">
-<p>私「あとさ、図に書かれている英語についてなんだけど、”hazard ratio”、”95% CI”、”one-sided p”、”two-sided p”は日本語でなんていうか教えてよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ハザード比、95%信頼区間、片側p値、両側p値かな。このあたりの指標は、生存時間解析の定番だよ。ハザード比、95%信頼区間、両側p値は、Cox回帰という回帰モデルを当てはめて推定する。片側p値は手で計算する必要があるけど」</p>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いたハザード比の推定">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-coxph()を用いたハザード比の推定
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
-
-  n= 200, number of events= 131 
-
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5000    1.6487   0.1855 2.695  0.00704 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-                exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.649     0.6065     1.146     2.372
-
-Concordance= 0.547  (se = 0.024 )
-Likelihood ratio test= 6.99  on 1 df,   p=0.008
-Wald test            = 7.26  on 1 df,   p=0.007
-Score (logrank) test = 7.41  on 1 df,   p=0.006</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="voice-daughter">
-<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）」</p>
-</div>
-<div class="voice-daughter">
-<p>私「p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。 p値 に関する説明をいくつかしてみようか。</p>
-<ol type="1">
-<li>p値は帰無仮説が正しい確率である</li>
-<li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
-<li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
-</ol>
-<p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それでいいんじゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、もう少し厳密に考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はーん。そういう理屈っぽいことが言いたかったわけね。じゃあそういう言い回しはやめます」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。じゃあ別の次の説明をして見てみよう。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「普通そう考えるんじゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ科学的に重要じゃないってこと？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういう意味で言ったわけじゃないけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はいはい。お父さん、話長くない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「もう最後にするよ。説明3の“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、同等性 （equivalence）試験や非劣性 （non-inferiority）試験を組む必要がある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
-</div>
-</div>
+<section id="ロジスティック回帰の計算ができない理由" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</h3>
+<p><strong>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</strong></p>
+<p>お父さん「そうだったね。じゃあ、続けてロジスティック回帰の下で、2人の対象者を比べるとどうなるかって話をするね」</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -492,10 +323,55 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ホパテの悲劇</strong></p>
-<p>脳循環改善薬という古い薬をご存知でしょうか？ この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
+<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>回帰係数とオッズ比の関係</strong></p>
+<p>共変量が1個のとき、ロジスティック回帰は</p>
+<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
+<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
+<p><span class="math inline">\(\log(\frac{\pi_1}{1-\pi_1})=\beta_0\)</span></p>
+<p><span class="math inline">\(\log(\frac{\pi_2}{1-\pi_2})=\beta_0+\beta_1\)</span></p>
+<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
+<p><span class="math inline">\((\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
+<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
 </div>
 </div>
+<p><strong>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</strong></p>
+<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
+<p><strong>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</strong></p>
+<p>お父さん「そういうこと。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。リンク関数はそれぞれ別の関数になる」</p>
+<p><strong>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ロジスティック回帰の推定</strong></p>
+<p>先ほど述べたアウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>の同時確率の式に、データ<span class="math inline">\(y_1,y_2,...,y_N\)</span>を代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。ただし、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、同時確率の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
+<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
+<p><strong>完全分離</strong></p>
+<p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
+<p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
+<p>を計算したとき、その値によって、<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。</p>
+<p><strong>多重共線性</strong></p>
+<p>二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。</p>
+</div>
+</div>
+<p><strong>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</strong></p>
+<p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
+<p><strong>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</strong></p>
+<p>お父さん「まあね。はやりだよね」</p>
+<p><strong>私「統計学と機械学習ってどう違うの？同じ？」</strong></p>
+<p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
+<p><strong>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</strong></p>
+<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は、統計的推測が基礎にあるってことかな。統計的推測っていうのは、標本から母集団を調べるっていう考え方のこと。手法でいうと、p値とか信頼区間とか、ああいうやつね。パラメータの数が多すぎると、これらの手法は性能が下がるんだ」</p>
+<p><strong>私「機械学習に統計的推測って考え方はないの？」</strong></p>
+<p>お父さん「機械学習やってる人も統計学は学んでいるから、ないとはいわないけど、あんまりこだわってないんじゃない？画像認識するとき、p値なんていらないでしょ」</p>
+<p><strong>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</strong></p>
+<p>お父さん「ん？思ったより芯を食った説明ができてるじゃない。さすがだね」</p>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -506,12 +382,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値の説明として正しいものは、次のうちどれでしょうか。</p>
+<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます（これを一般化線型モデルといいます）。リンク関数をうまく指定することによって、オッズ比以外の関連の指標を求められることが知られています。</p>
+<p>次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
 <ol type="1">
-<li>帰無仮説が正しい確率である</li>
-<li>対立仮説が正しい確率である</li>
-<li>0.05よりも小さいと有意差があると判断する</li>
-<li>1、2、3すべて誤り</li>
+<li>リスク差</li>
+<li>リスク比</li>
+<li>ハザード比</li>
+<li>1、2、3すべて求めることができる</li>
 </ol>
 </div>
 </div>
@@ -530,7 +407,10 @@ Note
 <ul>
 <li><strong>正解は4です</strong></li>
 </ul>
-<p>有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。</p>
+<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。</p>
+<p>リスク差を求めるには、g(π)=π つまり恒等関数を指定します。</p>
+<p>リスク比を求めるには、g(π)=log⁡(π) つまり対数関数を指定します。</p>
+<p>ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。</p>
 </div>
 </div>
 </div>
@@ -538,8 +418,7 @@ Note
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
