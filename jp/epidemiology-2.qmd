@@ -203,7 +203,7 @@ $M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}$
 $\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)$
 
 
-```{r warning=FALSE}
+```{r echo=FALSE, warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
@@ -298,7 +298,7 @@ cifplot(Event(time_os, status_os) ~ stoma,
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-お父さん「はっきりいうとね、ハザードが直感的にわかる研究者の方が少ないよ。だから安心していい」
+お父さん「はっきりいうとね、ハザードが直感的にわかる人の方が少ないよ。だから安心していい」
 :::
 
 ::: voice-daughter
@@ -306,7 +306,7 @@ cifplot(Event(time_os, status_os) ~ stoma,
 :::
 
 ::: voice-father
-お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい。」
+お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」
 :::
 
 ::: voice-daughter
