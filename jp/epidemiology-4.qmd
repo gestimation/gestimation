@@ -225,16 +225,14 @@ a:hover {
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解と解説**
+-   **正解は1です**
 
-    正解は1です。
-
-    ロジスティック回帰の共変量に、数値を代入することで、確率を計算することができます。共変量として、2群（たとえば抗がん剤投与群と緩和療法群）を指定すれば、それぞれの群の確率が求まりますよね。その比をとれば、リスク比が計算できます。
+ロジスティック回帰の共変量に、数値を代入することで、確率を計算することができます。共変量として、2群（たとえば抗がん剤投与群と緩和療法群）を指定すれば、それぞれの群の確率が求まりますよね。その比をとれば、リスク比が計算できます。
 :::
 
 ### 文献
 
-1.  Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6
+- Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6
 
 ### Continuation of their story
 

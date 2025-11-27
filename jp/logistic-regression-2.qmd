@@ -253,7 +253,7 @@ a:hover {
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解は1です。**
+-   **正解は1です**
 
 少なくとも、ベルギーの数学者Queteletが1838年に出版した書籍に、ロジット関数の式が示されています。ロジスティックという単語は、同じくベルギーの数学者Verhulstが1845年にProceeding of Belgian Royal Academyで、初めて用いられたとされています。
 

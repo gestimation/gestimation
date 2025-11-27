@@ -201,16 +201,14 @@ OR=1 SOR=1 \| 0.50 0.44 0.67 \| 0.33 0.25 0.51 \| 0.25 0.17 0.41 \| 0.20 0.11 0.
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解と解説**
+-   **正解は3です**
 
-    正解は3です。
-
-    リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定です。
+リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定です。
 :::
 
 ### 文献
 
-1.  Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6
+- Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6
 
 ### Continuation of their story
 

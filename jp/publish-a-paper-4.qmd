@@ -381,7 +381,7 @@ The study was stopped after the interim analysis, because patients assigned LTA 
 :::
 
 ::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解は1の日本です。**
+-   **正解は1の日本です**
 
 明治時代、伊藤博文がアメリカに視察に行ったとき、同じ大蔵省にいて語学が堪能だった福地源一郎を同行して、英語の翻訳をさせたそうです。統計という言葉もこのとき生まれたといわれています。
 
