@@ -162,6 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#story-and-quiz-clinical-trial-iii" id="toc-story-and-quiz-clinical-trial-iii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-iii">Story and Quiz − Clinical trial III</a>
   <ul class="collapse">
   <li><a href="#お父さんその95信頼区間って本当に95なの" id="toc-お父さんその95信頼区間って本当に95なの" class="nav-link" data-scroll-target="#お父さんその95信頼区間って本当に95なの">お父さん、その95%信頼区間って本当に95%なの？</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -320,37 +322,37 @@ a:hover {
 <p>父「コーヒー淹れたよ」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「ありがとう。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
+<p>私「ありがとう。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
 </div>
 <div class="voice-father">
 <p>父「ん？そりゃ当たってるよ。仮定した確率分布が正しければね。証明もできるよ」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「ふーん。じゃあ正しいんだ。ほとんど間違わないってすごいね」</p>
+<p>私「ふーん。じゃあ正しいんだ。ほとんど間違わないってすごいね」</p>
 </div>
 <div class="voice-father">
 <p>父「ああ、言葉だけで95%っていわれても実感がわかないよね。じゃあ今日はRでハザード比の95%信頼区間の被覆確率（coverage）を出してみようか。シミュレーションでね」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「coverage？つまり、本当に100回に95回あたるかどうか？」</p>
+<p>私「coverage？つまり、本当に100回に95回あたるかどうか？」</p>
 </div>
 <div class="voice-father">
 <p>父「そう。教科書の約束が、シミュレーションデータでどの程度守られているかを確かめる実験だよ。前提条件を整理しよう。2群比較の生存曲線を比べる」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「ストーマあり群とストーマなし群ね」</p>
+<p>私「ストーマあり群とストーマなし群ね」</p>
 </div>
 <div class="voice-father">
 <p>父「そうだね、ストーマあり群とストーマなし群のOSを比べよう。真のハザード比は1.5、つまりストーマあり群の方が寿命が1.5倍短い。ハザード比の95%信頼区間は、1000回シミュレーションしたら、1.5を約950回は含んでいるはず」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「これがcoverageね」</p>
+<p>私「これがcoverageね」</p>
 </div>
 <div class="voice-father">
 <p>父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Coxモデルの仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
+<p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
 <div class="callout-header d-flex align-content-center">
@@ -400,19 +402,19 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 <div class="voice-daughter">
-<p>娘「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
+<p>私「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね」</p>
+<p>私「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「じゃあ、人数が100人だったどうなるの？人数が減ったら当たりにくくはならないの？」</p>
+<p>私「じゃあ、人数が100人だったどうなるの？人数が減ったら当たりにくくはならないの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「理論的には当たりにくくなったりはしないよ。95%信頼区間の被覆確率はサンプルサイズによらず95%になるはず。n=100、200、400、800のシミュレーション結果をみてみようか」</p>
@@ -439,13 +441,13 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 <div class="voice-daughter">
-<p>娘「ほんとだ。じゃあ調査人数は何人でもいいってことだ」</p>
+<p>私「ほんとだ、だいたい95%。じゃあ調査人数は何人でもいいってことだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「どういうこと？」</p>
+<p>お父さん「ん？どういう意味？」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「がんサバイバーの調査票を何人に送るかってこと。だって信頼区間の性能は変わらないんでしょ」</p>
+<p>私「がんサバイバー何人に調査票を送るかってこと。だって信頼区間の性能は人数によらないんでしょ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「あ、ごめん、誤解があったね。サンプルサイズが小さくなると、coverageは同じでも、信頼区間幅が広くなる。今のところ、何人に調査するつもりだった？」</p>
@@ -684,6 +686,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 <div class="voice-father">
 <p>お父さん「いやいやいや、これは復職率の信頼区間からサンプルサイズを計算したからこうなったんだ。“信頼区間アプローチ”といって、主に探索的研究で使うものなんだよ。ストーマ造設ありとなしの復職率を比べるような仮説検証を目指した研究なら、“仮説検定アプローチ”といって、仮説検定の考え方にそってサンプルサイズを計算しないといけない」</p>
+</div>
 <div class="voice-daughter">
 <p>私「そっか。だいたいわかった。私、明日も出勤だから、また今度教えてよ。おやすみー」</p>
 </div>
@@ -752,6 +755,7 @@ Note
 </div>
 </div>
 </div>
+</section>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
@@ -788,8 +792,6 @@ Note
 <p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
 
 
-</section>
-</div>
 </section>
 </section>
 

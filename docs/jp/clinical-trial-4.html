@@ -895,8 +895,20 @@ Note
 <p>私「でもストーマ保有者って、非保有者より少ないと思うんだけど。半数くらいかな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。 パッケージpowerSurvEpiで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:!、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」</p>
+<p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。 powerSurvEpiパッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:!、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」</p>
 </div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>Rパッケージを用いたサンプルサイズ設計</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("powerSurvEpi") #インストールが必要なら実行</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(powerSurvEpi)</span>
@@ -938,6 +950,9 @@ Note
  41 161 </code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="dialogue">
 <div class="voice-father">
 <p>お父さん「割付け比Kが1（1:1）、0.5（2:1）、0.25（4:1）だと、必要サンプルサイズ（nE+nC）は100人から177人、202に変化するみたいだね」</p>
 </div>
@@ -968,7 +983,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -977,7 +992,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>
