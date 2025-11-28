@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Study design V
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, confounding/information-bias/selection-bias, observational study
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, confounding/information-bias/selection-bias, observational study
 :::
 
 ------------------------------------------------------------------------

@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Epidemiology III
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing
+　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing
 :::
 
 ------------------------------------------------------------------------

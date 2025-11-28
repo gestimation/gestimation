@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Epidemiology I
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
+　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
 :::
 
 ------------------------------------------------------------------------
@@ -280,6 +280,8 @@ $VF=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -287,6 +289,8 @@ $VF=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 

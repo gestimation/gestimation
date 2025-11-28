@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Clinical trial II
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
 :::
 
 ------------------------------------------------------------------------
@@ -306,6 +306,8 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -313,6 +315,8 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 

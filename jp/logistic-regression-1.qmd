@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Logistic regression I
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing
+　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing
 :::
 
 ------------------------------------------------------------------------
@@ -404,6 +404,8 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -411,6 +413,8 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 

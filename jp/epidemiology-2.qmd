@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Epidemiology II
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
+　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
 :::
 
 ------------------------------------------------------------------------

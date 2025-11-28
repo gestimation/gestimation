@@ -146,7 +146,7 @@ a:hover {
 # Story and Quiz − Study design I
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study
 :::
 
 ------------------------------------------------------------------------

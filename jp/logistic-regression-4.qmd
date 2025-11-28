@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Logistic regression IV
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation
+　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation
 :::
 
 ------------------------------------------------------------------------
@@ -277,6 +277,8 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -284,6 +286,8 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 

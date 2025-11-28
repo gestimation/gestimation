@@ -146,7 +146,7 @@ a:hover {
 # Story and Quiz − Clinical trial I
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
 :::
 
 ------------------------------------------------------------------------
@@ -421,6 +421,8 @@ p値の説明として正しいものは、次のうちどれでしょうか。
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -428,6 +430,8 @@ p値の説明として正しいものは、次のうちどれでしょうか。
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 

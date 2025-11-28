@@ -312,7 +312,7 @@ a:hover {
 <section id="story-and-quiz-clinical-trial-i" class="level1">
 <h1>Story and Quiz − Clinical trial I</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 </div>
 <hr>
 <section id="生存曲線まわりの数値を読み解く" class="level3">
@@ -412,20 +412,18 @@ coxph()を用いたハザード比の推定
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 148 
+  n= 200, number of events= 143 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)    
-stomaWITH STOMA 0.5861    1.7969   0.1724 3.399 0.000675 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
+stomaWITH STOMA 0.1235    1.1315   0.1707 0.724    0.469
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.797     0.5565     1.282     2.519
+stomaWITH STOMA     1.131     0.8838    0.8098     1.581
 
-Concordance= 0.571  (se = 0.023 )
-Likelihood ratio test= 11.11  on 1 df,   p=9e-04
-Wald test            = 11.56  on 1 df,   p=7e-04
-Score (logrank) test = 11.87  on 1 df,   p=6e-04</code></pre>
+Concordance= 0.528  (se = 0.024 )
+Likelihood ratio test= 0.52  on 1 df,   p=0.5
+Wald test            = 0.52  on 1 df,   p=0.5
+Score (logrank) test = 0.52  on 1 df,   p=0.5</code></pre>
 </div>
 </div>
 </div>
@@ -563,10 +561,12 @@ Score (logrank) test = 11.87  on 1 df,   p=6e-04</code></pre>
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
+<p><a href="../jp/clinical-trial-4.html">Clinical trial IV</a></p>
 <p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
 <p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
 <p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
 <p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
+<p><a href="../jp/epidemiology-5.html">Epidemiology V</a></p>
 <p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
 <p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
 <p><a href="../jp/logistic-regression-3.html">Regression III</a></p>

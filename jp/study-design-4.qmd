@@ -143,7 +143,7 @@ a:hover {
 # Story and Quiz − Study design IV
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, generalized linear model, survival/competing-risk, observational study
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, generalized linear model, survival/competing-risk, observational study
 :::
 
 ------------------------------------------------------------------------

@@ -146,7 +146,7 @@ a:hover {
 # Story and Quiz − Study design II
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
 :::
 
 ------------------------------------------------------------------------

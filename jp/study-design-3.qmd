@@ -143,7 +143,7 @@ a:hover {
 
 # Story and Quiz − Study design III
 ::: {.serif-block}
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, survival/competing-risk, clinical trial
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, survival/competing-risk, clinical trial
 :::
 
 ------------------------------------------------------------------------

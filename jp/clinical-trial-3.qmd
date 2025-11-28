@@ -142,7 +142,7 @@ a:hover {
 # Story and Quiz − Clinical trial III
 
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial
 :::
 
 ------------------------------------------------------------------------
@@ -484,6 +484,8 @@ print(coverage_800)
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -491,6 +493,8 @@ print(coverage_800)
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 
