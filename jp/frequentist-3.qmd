@@ -257,7 +257,7 @@ p値と仮説検定（hypothesis test）は、研究仮説が正しいかどう�
 
 JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。
 
-次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。
+次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。
 
 p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。
 :::
@@ -300,31 +300,33 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 [Study design V](study-design-5.qmd)
 
-[Clinical trial I](clinical-trial-1.qmd)
+[Frequentist thinking I](frequentist-1.qmd)
 
-[Clinical trial II](clinical-trial-2.qmd)
+[Frequentist thinking II](frequentist-2.qmd)
 
-[Clinical trial III](clinical-trial-3.qmd)
+[Frequentist thinking III](frequentist-3.qmd)
 
-[Clinical trial IV](clinical-trial-4.qmd)
+[Frequentist thinking IV](frequentist-4.qmd)
 
-[Epidemiology I](epidemiology-1.qmd)
+[Frequentist thinking V](frequentist-5.qmd)
 
-[Epidemiology II](epidemiology-2.qmd)
+[Effects and time I](effects-1.qmd)
 
-[Epidemiology III](epidemiology-3.qmd)
+[Effects and time II](effects-2.qmd)
 
-[Epidemiology IV](epidemiology-4.qmd)
+[Effects and time III](effects-3.qmd)
 
-[Epidemiology V](epidemiology-5.qmd)
+[Effects and time IV](effects-4.qmd)
 
-[Regression I](logistic-regression-1.qmd)
+[Effects and time V](effects-5.qmd)
 
-[Regression II](logistic-regression-2.qmd)
+[Adjusting for bias I](logistic-regression-1.qmd)
 
-[Regression III](logistic-regression-3.qmd)
+[Adjusting for bias II](logistic-regression-2.qmd)
 
-[Regression IV](logistic-regression-4.qmd)
+[Adjusting for bias III](logistic-regression-3.qmd)
+
+[Adjusting for bias IV](logistic-regression-4.qmd)
 
 [Causal inference I](causal-inference-1.qmd)
 
@@ -334,10 +336,10 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 [Causal inference IV](causal-inference-4.qmd)
 
-[Publish a paper I](publish-a-paper-1.qmd)
+[The Craft of research I](publish-a-paper-1.qmd)
 
-[Publish a paper II](publish-a-paper-2.qmd)
+[The Craft of research II](publish-a-paper-2.qmd)
 
-[Publish a paper III](publish-a-paper-3.qmd)
+[The Craft of research III](publish-a-paper-3.qmd)
 
-[Publish a paper IV](publish-a-paper-4.qmd)
+[The Craft of research IV](publish-a-paper-4.qmd)

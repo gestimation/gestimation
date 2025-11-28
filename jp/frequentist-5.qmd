@@ -438,6 +438,10 @@ ssizeCT.default(
 ::: voice-father
 お父さん「気持ちはわかるよ。頻度論の立場で厳密に研究をデザインすると、だいたい最初は“そんなに集められないよ”って顔になるからね」
 :::
+
+::: voice-daughter
+私「でも、サンプルサイズの意味がわかったから、しょうがないやるかって思ったよ。シミュレーションで失敗しちゃった調査が、私の調査だったらきっついもん。調査の繰り返したときのことをイメージできると、研究が俯瞰的に見えてくるね」
+:::
 :::::::::::::::::::::::::::::::::
 
 
@@ -464,16 +468,6 @@ ssizeCT.default(
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
 ### Continuation of their story
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
 
 [Study design I](study-design-1.qmd)
 

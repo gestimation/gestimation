@@ -267,16 +267,6 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 [Study design V](study-design-5.qmd)
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
 [Frequentist thinking I](frequentist-1.qmd)
 
 [Frequentist thinking II](frequentist-2.qmd)
