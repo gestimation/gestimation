@@ -460,7 +460,7 @@ print(coverage_800)
 
 ### 文献
 
-- [Machin D, Campbell MJ, Tan SB, Tan SH. 医学のためのサンプルサイズ設計（原著第4版）. 京都: 京都大学学術出版会; 2022]（https://www.kyoto-up.or.jp/9784814003822.html）
+- [Machin D, Campbell MJ, Tan SB, Tan SH. 医学のためのサンプルサイズ設計（原著第4版）. 京都: 京都大学学術出版会; 2022](https://www.kyoto-up.or.jp/9784814003822.html)
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 

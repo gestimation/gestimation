@@ -317,10 +317,22 @@ a:hover {
 <hr>
 <section id="生存曲線まわりの数値を読み解く" class="level3">
 <h3 class="anchored" data-anchor-id="生存曲線まわりの数値を読み解く">生存曲線まわりの数値を読み解く</h3>
-<ul>
-<li><p>前回までのあらすじ</p>
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。おなじ復職状況でも、2値データと生存時間データの2通り解析の仕方があると教えられた娘。むかし読んだ論文で、OS・DFSという用語が出てきたことを思い出すのだった。</p></li>
-</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="前回までのあらすじ">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+前回までのあらすじ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。おなじ復職状況でも、2値データと生存時間データの2通り解析の仕方があると教えられた娘。上司に読むことを勧められた論文で、OS・DFSという用語が出てきたことを思い出すのだった。</p>
+</div>
+</div>
+</div>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「お父さん、いま時間ある？前に全生存期間（OS）と無病生存期間（DFS）の違いについて教えてくれたでしょ」</p>
@@ -400,20 +412,18 @@ coxph()を用いたハザード比の推定
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 146 
+  n= 200, number of events= 138 
 
-                  coef exp(coef) se(coef)    z Pr(&gt;|z|)  
-stomaWITH STOMA 0.3356    1.3988   0.1695 1.98   0.0477 *
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
+stomaWITH STOMA 0.1950    1.2153   0.1735 1.124    0.261
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.399     0.7149     1.003      1.95
+stomaWITH STOMA     1.215     0.8228     0.865     1.707
 
-Concordance= 0.538  (se = 0.024 )
-Likelihood ratio test= 3.87  on 1 df,   p=0.05
-Wald test            = 3.92  on 1 df,   p=0.05
-Score (logrank) test = 3.95  on 1 df,   p=0.05</code></pre>
+Concordance= 0.54  (se = 0.024 )
+Likelihood ratio test= 1.25  on 1 df,   p=0.3
+Wald test            = 1.26  on 1 df,   p=0.3
+Score (logrank) test = 1.27  on 1 df,   p=0.3</code></pre>
 </div>
 </div>
 </div>
@@ -516,7 +526,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -525,7 +535,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は4です</strong></li>

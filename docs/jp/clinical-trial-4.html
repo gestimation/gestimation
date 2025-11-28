@@ -404,7 +404,7 @@ a:hover {
 </div>
 <div class="callout-body-container callout-body">
 <p>これまで、臨床試験JCOG9502（Sasako, et al.&nbsp;2006）の文脈に沿って、片側p値と両側p値の違いも交えながら、p値について解説してきました。しかし本質的に重要なのは、p値を用いた判断に、どのような合理性があるのか、ということです。</p>
-<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果も<span class="math inline">\(p&lt;0.05\)</span>と<span class="math inline">\(p≥0.05\)</span>の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
+<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果もp&lt;0.05とp≥0.05の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
 <p>このうち、臨床試験の結果から判断を誤ってしまうケースは2つです。つまり、効果があるのにp≥0.05になってしまうケースと、効果がないのに（帰無仮説が正しいのに）p&lt;0.05になってしまうケースです。仮説検定では、前者をαエラー（alpha error）、後者をβエラー（beta error）と呼んでいます。また、βエラーを1から引いたものを検出力（power）と呼んでいます。</p>
 <table class="caption-top table">
 <thead>
@@ -431,7 +431,7 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「まあ当たり前だよね。治療効果がないのに、有意に効いたって論文を書くのも間違いだし、治療効果があるのに、有意にならないのも研究失敗だし」</p>
+<p>私「まあ当たり前だよね。左開胸開腹連続切開をしたLTA群で予後がよくならないのに、有意に効いたって判断したら間違いだし、逆にいい術式なのに、結果的に有意にならなかったらそれも研究失敗だし」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。でも、正確にいうと、αエラー・βエラーは”統計学的に有意”とかp値とかとは、直接関係する概念じゃない。別に、効果があるかどうか判定する基準は、p値じゃなくてもいいわけだからね。ポイントはね、p&lt;0.05は、αエラーだけをコントロールする基準だってこと」</p>
@@ -453,7 +453,7 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「いきなりαとかβとか確率とかいわれてもなあ。ついていけないな」</p>
+<p>私「ナプキンに描いてくれた表自体はわかるんだけどね。そこからαとかβとか確率とかいわれてもなあ。ついていけないな」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「まずはαエラーとβエラーが臨床試験のどんな結果を表しているか考えると、イメージしやすいかもね。JCOG9502のように試験治療の有効性を検証する試験では、αエラーは標準治療と同じかそれより劣る治療方法が普及してしまうことにつながる。いわば、”αエラー=消費者リスク”といえる。一方で、βエラーは試験治療が本当は有効なのに、開発中止してしまうことを意味する。だから”βエラー=生産者リスク”といわれる。医師の視点で気になるのは、やっぱりαエラーの方だよね」</p>
@@ -923,17 +923,16 @@ a:hover {
 <p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。 powerSurvEpiパッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:!、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Rパッケージを用いたサンプルサイズ設計">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Rパッケージを用いたサンプルサイズ設計
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>Rパッケージを用いたサンプルサイズ設計</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("powerSurvEpi") #インストールが必要なら実行</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(powerSurvEpi)</span>

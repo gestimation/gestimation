@@ -155,7 +155,7 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-epidemiology-i" id="toc-story-and-quiz-epidemiology-i" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-i">Story and Quiz − Epidemiology I</a>
   <ul class="collapse">
-  <li><a href="#って100人いたら98人に効くって思わない" id="toc-って100人いたら98人に効くって思わない" class="nav-link" data-scroll-target="#って100人いたら98人に効くって思わない">98%って100人いたら98人に効くって思わない？</a></li>
+  <li><a href="#疾患リスクとターゲット集団" id="toc-疾患リスクとターゲット集団" class="nav-link" data-scroll-target="#疾患リスクとターゲット集団">疾患リスクとターゲット集団</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -308,81 +308,29 @@ a:hover {
 <p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing</p>
 </div>
 <hr>
-<section id="って100人いたら98人に効くって思わない" class="level3">
-<h3 class="anchored" data-anchor-id="って100人いたら98人に効くって思わない">98%って100人いたら98人に効くって思わない？</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="前回までのあらすじ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-前回までのあらすじ
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。それからというもの、父は娘に統計の話をふるチャンスをうかがっていた。</p>
-</div>
-</div>
-</div>
+<section id="疾患リスクとターゲット集団" class="level3">
+<h3 class="anchored" data-anchor-id="疾患リスクとターゲット集団">疾患リスクとターゲット集団</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「コーヒー飲む？お父さん」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「ああ、ありがとう。おいしいね」</p>
+<p>お父さん「ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「うん、ホットコーヒーあったまるよね。そういえばこの前出たワクチンってすごいね。有効率98%だって」</p>
+<p>私「そうね、昔よりは少なくなったんじゃない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。でもさ、ワクチンの有効率って意外と計算が難しいんだよ。プラセボに比べてって意味だから」</p>
+<p>お父さん「でも、日本のがんの統計上は、まだまだ喫煙は健康問題のひとつなんだ。がん罹患のリスク要因は、感染症、喫煙、飲酒の順に影響が大きいと推定されている」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ん？100人いたら98人に効くって意味じゃないの？」</p>
+<p>私「喫煙率は下がってるのにちょっと意外だね。でもどのがん登録でも、喫煙情報は絶対調べるよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「違う違う。プラセボの効果に比べて、どのくらい感染を予防できるっていう意味のパーセントなんだ。論文ではともかく日常会話では誤解されやすい言葉だよね」</p>
+<p>お父さん「感染症、喫煙、飲酒が、がん罹患に寄与する割合は、16%、15%、6%っていわれてる。この指標を、集団寄与割合っていうんだけど、これもただのパーセントじゃない」</p>
 </div>
+<div class="voice-daughter">
+<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="リスクを比較するための基本的な指標">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-リスクを比較するための基本的な指標
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>医学では分野によってさまざまな指標が用いられており、特に割合を比較する指標にはわかりにくいものが少なくありません。群1で得られた疾患リスク（割合）を<span class="math inline">\(\pi_1\)</span>、群2の疾患リスク（割合）を<span class="math inline">\(\pi_2\)</span>とすると、2群を比較するために、以下のような指標が用いられます。なお、これらの指標を使うときは、どちらの群を基準に比較しているかを意識することが大切です。ここでは群2を基準にとっています。</p>
-<ul>
-<li><p>リスク差（risk difference、絶対リスク減少）</p>
-<p><span class="math inline">\(RD={\pi_1}-{\pi_2}\)</span></p></li>
-<li><p>リスク比（risk ratio）</p>
-<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p></li>
-<li><p>オッズ比（odds ratio）</p>
-<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p></li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="治療後のリスクを比較するための指標">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-治療後のリスクを比較するための指標
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>特に、2種類の治療のどちらが有効か評価する状況では、以下の指標もよく用いられます。どちらの指標でも<span class="math inline">\(\pi_2&gt;\pi_1\)</span>と想定されています。ワクチン有効率では、群2はプラセボ群です。</p>
-<ul>
-<li><p>Number needed to treat（NNT）</p>
-<p><span class="math inline">\(NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}\)</span></p></li>
-<li><p>ワクチン有効率（vaccine efficacy、相対リスク減少） <span class="math inline">\(VF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
-</ul>
+<div class="voice-father">
+<p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="寄与割合とその関連指標">
@@ -513,13 +461,7 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「へー、確かにパーセントっていわれるとただの割合と思いがちだよね。お父さんって、頭の中にいつもこんな計算式があるの？いきなり式が出てくると違和感あるなあ。統計学と医学ってだいぶ雰囲気が違うね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「もう慣れちゃったのかもね。でも、式で書かないと、ワクチン有効率がなんなのか、わからないでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「確かにね。数字だけみると、レトリックに騙されちゃいそう。Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
+<p>私「これもワクチン有効率と同じだね。パーセントっていわれるとただの割合と思っちゃう。よく考えると、Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そっか、そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
@@ -623,7 +565,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -632,7 +574,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は3です</strong></li>
