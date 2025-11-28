@@ -282,8 +282,8 @@ a:hover {
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **統計手法を選ぶときの3つのポイント**
+
+::: {.callout-note title="シミュレーションデータの生成"}
 
 **データの型** アウトカムはデータの型によって4種類に分類されます。
 
