@@ -139,7 +139,7 @@ a:hover {
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Epidemiology IV
+# Story and Quiz − Effects and time III
 
 ::: serif-block
 　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing
@@ -346,31 +346,33 @@ print(odds_ratio)
 
 [Study design V](study-design-5.qmd)
 
-[Clinical trial I](clinical-trial-1.qmd)
+[Frequentist thinking I](frequentist-1.qmd)
 
-[Clinical trial II](clinical-trial-2.qmd)
+[Frequentist thinking II](frequentist-2.qmd)
 
-[Clinical trial III](clinical-trial-3.qmd)
+[Frequentist thinking III](frequentist-3.qmd)
 
-[Clinical trial IV](clinical-trial-4.qmd)
+[Frequentist thinking IV](frequentist-4.qmd)
 
-[Epidemiology I](epidemiology-1.qmd)
+[Frequentist thinking V](frequentist-5.qmd)
 
-[Epidemiology II](epidemiology-2.qmd)
+[Effects and time I](effects-1.qmd)
 
-[Epidemiology III](epidemiology-3.qmd)
+[Effects and time II](effects-2.qmd)
 
-[Epidemiology IV](epidemiology-4.qmd)
+[Effects and time III](effects-3.qmd)
 
-[Epidemiology V](epidemiology-5.qmd)
+[Effects and time IV](effects-4.qmd)
 
-[Regression I](logistic-regression-1.qmd)
+[Effects and time V](effects-5.qmd)
 
-[Regression II](logistic-regression-2.qmd)
+[Adjusting for bias I](logistic-regression-1.qmd)
 
-[Regression III](logistic-regression-3.qmd)
+[Adjusting for bias II](logistic-regression-2.qmd)
 
-[Regression IV](logistic-regression-4.qmd)
+[Adjusting for bias III](logistic-regression-3.qmd)
+
+[Adjusting for bias IV](logistic-regression-4.qmd)
 
 [Causal inference I](causal-inference-1.qmd)
 
@@ -380,10 +382,10 @@ print(odds_ratio)
 
 [Causal inference IV](causal-inference-4.qmd)
 
-[Publish a paper I](publish-a-paper-1.qmd)
+[The Craft of research I](publish-a-paper-1.qmd)
 
-[Publish a paper II](publish-a-paper-2.qmd)
+[The Craft of research II](publish-a-paper-2.qmd)
 
-[Publish a paper III](publish-a-paper-3.qmd)
+[The Craft of research III](publish-a-paper-3.qmd)
 
-[Publish a paper IV](publish-a-paper-4.qmd)
+[The Craft of research IV](publish-a-paper-4.qmd)

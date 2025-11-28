@@ -139,7 +139,7 @@ a:hover {
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Epidemiology V
+# Story and Quiz − Effects and time IV
 
 ::: serif-block
 　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing
@@ -253,7 +253,7 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 ### 文献
 
-- VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017 ;28(6):e58–e60
+- VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017;28(6):e58–e60
 
 ### Continuation of their story
 
@@ -267,31 +267,43 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 [Study design V](study-design-5.qmd)
 
-[Clinical trial I](clinical-trial-1.qmd)
+[Study design I](study-design-1.qmd)
 
-[Clinical trial II](clinical-trial-2.qmd)
+[Study design II](study-design-2.qmd)
 
-[Clinical trial III](clinical-trial-3.qmd)
+[Study design III](study-design-3.qmd)
 
-[Clinical trial IV](clinical-trial-4.qmd)
+[Study design IV](study-design-4.qmd)
 
-[Epidemiology I](epidemiology-1.qmd)
+[Study design V](study-design-5.qmd)
 
-[Epidemiology II](epidemiology-2.qmd)
+[Frequentist thinking I](frequentist-1.qmd)
 
-[Epidemiology III](epidemiology-3.qmd)
+[Frequentist thinking II](frequentist-2.qmd)
 
-[Epidemiology IV](epidemiology-4.qmd)
+[Frequentist thinking III](frequentist-3.qmd)
 
-[Epidemiology V](epidemiology-5.qmd)
+[Frequentist thinking IV](frequentist-4.qmd)
 
-[Regression I](logistic-regression-1.qmd)
+[Frequentist thinking V](frequentist-5.qmd)
 
-[Regression II](logistic-regression-2.qmd)
+[Effects and time I](effects-1.qmd)
 
-[Regression III](logistic-regression-3.qmd)
+[Effects and time II](effects-2.qmd)
 
-[Regression IV](logistic-regression-4.qmd)
+[Effects and time III](effects-3.qmd)
+
+[Effects and time IV](effects-4.qmd)
+
+[Effects and time V](effects-5.qmd)
+
+[Adjusting for bias I](logistic-regression-1.qmd)
+
+[Adjusting for bias II](logistic-regression-2.qmd)
+
+[Adjusting for bias III](logistic-regression-3.qmd)
+
+[Adjusting for bias IV](logistic-regression-4.qmd)
 
 [Causal inference I](causal-inference-1.qmd)
 
@@ -301,10 +313,10 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 [Causal inference IV](causal-inference-4.qmd)
 
-[Publish a paper I](publish-a-paper-1.qmd)
+[The Craft of research I](publish-a-paper-1.qmd)
 
-[Publish a paper II](publish-a-paper-2.qmd)
+[The Craft of research II](publish-a-paper-2.qmd)
 
-[Publish a paper III](publish-a-paper-3.qmd)
+[The Craft of research III](publish-a-paper-3.qmd)
 
-[Publish a paper IV](publish-a-paper-4.qmd)
+[The Craft of research IV](publish-a-paper-4.qmd)

@@ -139,7 +139,7 @@ a:hover {
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Epidemiology II
+# Story and Quiz − Effects and time II
 
 ::: serif-block
 　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
