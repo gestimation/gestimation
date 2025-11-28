@@ -368,7 +368,7 @@ a:hover {
 <p>私「リスク比は変化するけどハザード比は変化しないの？ぴんとこないなあ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「えーっと、教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
+<p>お父さん「えーっと、リスク比が変化しないわけじゃなくて…。ちょっとナプキンとペンをとってくれる？教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="生存曲線とハザードの関係">
@@ -382,14 +382,12 @@ a:hover {
 </div>
 <div class="callout-body-container callout-body">
 <p>Kaplan-Meier曲線もまた、割合の一種と考えることができますが、見え方がずいぶん違います。つまり、Kaplan-Meier曲線はグラフですし、時間の概念が含まれたりします。さらに、Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法ですし、ハザード比との関係が重要です。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。</p>
-<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<em>x</em>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<em>x</em>の関数<em>S</em>(<em>x</em>)で表す」ということになります。</p>
-<p>関数<em>S</em>(<em>x</em>)を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）を、<em>λ</em>で表します。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
+<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<span class="math inline">\(x\)</span>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<span class="math inline">\(x\)</span>の関数<span class="math inline">\(S(x)\)</span>で表す」ということになります。</p>
+<p>関数<span class="math inline">\(S(x)\)</span>を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）は、<span class="math inline">\(λ\)</span>という記号で表すことが普通です。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
 <p><span class="math inline">\(S(x)=\mathrm{exp}(-\lambda x)\)</span></p>
-<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<em>M</em>は、生存確率50%つまり<em>S</em>(<em>x</em>)=0.5になるような時間<em>x</em>のことです。つまり、指数分布では<span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span>と関係が成り立つので、生存時間中央値<em>M</em>は、ハザード<em>λ</em>から以下のように計算することができます。</p>
-<p><span class="math inline">\(M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}\)</span></p>
-<p>最後に、時点<em>x</em>の疾患リスクを<em>π</em>とすると、リスクとハザードは、以下の式で結びついています。</p>
+<p>ここまでくれば簡単なのですが、最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク<span class="math inline">\(π\)</span>は、特定時点<span class="math inline">\(x\)</span>までに疾患を発症する確率を表しています。つまり、疾患リスク<span class="math inline">\(π\)</span>とハザード<span class="math inline">\(λ\)</span>は、時点<span class="math inline">\(x\)</span>の生存関数を<span class="math inline">\(S(x)\)</span>を介して、以下の式で結びついています。</p>
 <p><span class="math inline">\(\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)\)</span></p>
-<p>イメージしやすいように、以前<code>cifmodeling</code>パッケージの<code>cifplot()</code>で描いたKaplan–Meier曲線をもう一度示しておきます。</p>
+<p>イメージしやすいように、以前<code>cifmodeling</code>パッケージの<code>cifplot()</code>で描いたKaplan–Meier曲線を置いておきます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -416,7 +414,31 @@ a:hover {
 <p>私「わからん。数式はわからん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだだと思うんだけど。そこは慣れるしかないなあ。次にハザード比」</p>
+<p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだと思うんだけど。ハザードを具体的に考えるときは、生存時間中央値と結びつけるのが手だよ」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="ハザードと生存時間中央値の関係">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ハザードと生存時間中央値の関係
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<span class="math inline">\(M\)</span>は、生存確率50%つまり<span class="math inline">\(S(x)=0.5\)</span>になるような時間<span class="math inline">\(x\)</span>のことです。つまり、指数分布では</p>
+<p><span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span></p>
+<p>と関係が成り立つので、生存時間中央値<span class="math inline">\(M\)</span>は、ハザード<span class="math inline">\(λ\)</span>から以下のように計算することができます。</p>
+<p><span class="math inline">\(M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}\)</span></p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あ、これはちょっとわかった気がする寿命が2倍になったらハザードは1/2ってことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、指数分布の下で計算すると、だけどね。ハザード比は、まさにハザードの比によって、集団ごとの生存曲線を比較する指標なんだ」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="リスクとハザード比の関係">
@@ -429,7 +451,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
+<p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
 <p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。</p>
 <ul>
 <li><p>ハザード比（指数分布を仮定）</p>
@@ -444,31 +466,32 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「はっきりいうとね、ハザードが直感的にわかる人の方が少ないよ。だから安心していい」</p>
+<p>お父さん「はっきりいうとね、ハザードやハザード比が直感的にわかる人の方が少ないよ。だから安心していい」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」</p>
+<p>私「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「見えない時計？」</p>
+<p>私「見えない時計？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療B群の人は、少し遅い時計を持っている。ハザード比は、その2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
+<p>私「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「ただし、ここが重要。時計の進み方は、必ずしも一定とは限らない。最初は治療Bが有利でも、途中から追いつかれることだってある」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「それ、実際の患者さんでもあるかも！」</p>
+<p>私「それ、実際の患者さんでもあるかも！」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータにおける時点ごとのリスク比の推定">
 <div class="callout-header d-flex align-content-center">
@@ -553,7 +576,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 <p>ハザード比は一定の下でデータを生成していますが、時間が経つにつれリスク比は小さく推定されることがわかります。冒頭のKaplan-Meier曲線もあわせてみてみてください。</p>
 </div>
 </div>
-</div>
+<p>:::::::::::::::::::::::::::::::::</p>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -574,7 +597,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -583,7 +606,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>
