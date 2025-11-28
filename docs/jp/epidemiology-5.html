@@ -155,7 +155,7 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-epidemiology-v" id="toc-story-and-quiz-epidemiology-v" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-v">Story and Quiz − Epidemiology V</a>
   <ul class="collapse">
-  <li><a href="#リスク比とオッズ比って同じだっけ" id="toc-リスク比とオッズ比って同じだっけ" class="nav-link" data-scroll-target="#リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</a></li>
+  <li><a href="#リスク比とオッズ比って結局同じ" id="toc-リスク比とオッズ比って結局同じ" class="nav-link" data-scroll-target="#リスク比とオッズ比って結局同じ">リスク比とオッズ比って、結局同じ？</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
@@ -309,11 +309,11 @@ a:hover {
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
 </div>
 <hr>
-<section id="リスク比とオッズ比って同じだっけ" class="level3">
-<h3 class="anchored" data-anchor-id="リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</h3>
+<section id="リスク比とオッズ比って結局同じ" class="level3">
+<h3 class="anchored" data-anchor-id="リスク比とオッズ比って結局同じ">リスク比とオッズ比って、結局同じ？</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、リスク比とかオッズ比とか計算したなあ。リスク比とオッズ比って結局同じ？みたいな」</p>
+<p>私「お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、オッズ比の計算問題を解いたことがあったなあ。リスク比とオッズ比って結局同じ使い方をするの？みたいな」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「ああ、この前、膵がんの数値例で計算したとき、リスク比とオッズ比はどちらも3倍だったね。でも、これはたまたま。もっと正確にいうと、膵がんのようにリスクが低いと、リスク比とオッズ比は近い値になるんだ。ほら、リスク比とオッズ比の数式を見比べてよ。リスク比とオッズ比の違いって、<span class="math inline">\(1-\pi_1\)</span>と<span class="math inline">\(1-\pi_2\)</span>があるかどうかでしょ。リスクが低いと、ここがほとんど1になるから、リスク比とオッズ比の差がなくなる」</p>
@@ -343,7 +343,7 @@ a:hover {
 <p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p>
 <p><span class="math inline">\(SOR=\sqrt{\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}}\)</span></p>
 <p><span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>のどちらかが0.2を超えると、リスク比とオッズ比はまったく違う値になることがわかります。リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなります。また、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が0.2～0.7の範囲であれば、リスク比とオッズ比の平方根は、高々0.11しか違いません。</p>
-<p>2群の疾患リスクを0.1から0.9まで動かしたときのリスク比、オッズ比、オッズ比の平方根</p>
+<p>2群の疾患リスクを0.1から0.9まで動かしたときのリスク比（RR）、オッズ比（OR）、オッズ比の平方根（SOR）</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -654,10 +654,16 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
+<p>私「この表、いっぱい数字があって見方がよくわからないな。対角のところがRR=OR=SOR=1になるのは、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が同じ値だからだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ごめんごめん、説明が必要だよね。RRに近いのは、ORとSORのどっちかをみてほしいんだ。さっき話した通り、古い教科書ではオッズ比はリスク比の近似だって教えるけど、実際にいろんな組み合わせで計算すると、そうならないことがある。っていうか、表をみるとRRとOR、結構ずれてない？むしろオッズ比の平方根をとった方が、近い値になるよっていう指摘もあるんだ（VanderWeele 2017）」</p>
+</div>
+<div class="voice-daughter">
 <p>私「平方根なんて論文書くとき勝手に計算していいのかね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。Methodsで説明していれば。でも、ふつうのコホート研究をするんだったら、リスク比を計算するのが素直だと思うけど」</p>
+<p>お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。推定方法の一種として、論文のMethodsで説明していればね。でも、よっぽど特殊な状況じゃなければ、リスク比を計算するのが素直だと思うけど。前回話したように、層別などの調整を行うとき、リスク比はとても扱いやすい指標だからね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="ケース・コントロール研究とオッズ比">
@@ -714,7 +720,7 @@ a:hover {
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li>Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6</li>
+<li>VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017 ;28(6):e58–e60</li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">

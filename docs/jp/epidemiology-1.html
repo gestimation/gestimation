@@ -356,7 +356,34 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>医学では分野によってさまざまな指標が用いられており、特に割合を比較する指標にはわかりにくいものが少なくありません。群1で得られた疾患リスク（割合）を<span class="math inline">\(\pi_1\)</span>、群2の疾患リスク（割合）を<span class="math inline">\(\pi_2\)</span>とすると、2群を比較するために、以下のような指標が用いられます。なお、これらの指標を使うときは、どちらの群を基準に比較しているかを意識することが大切です。ここでは群2を基準にとっています。</p>
+<p>医学では分野によってさまざまな指標が用いられており、特に割合を比較する指標にはわかりにくいものが少なくありません。割合を理解するための最初のステップは、分割表で集計したデータをイメージすることです。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>群1</th>
+<th>群2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>発症あり</td>
+<td>A人</td>
+<td>B人</td>
+</tr>
+<tr class="even">
+<td>発症なし</td>
+<td>C人</td>
+<td>D人</td>
+</tr>
+<tr class="odd">
+<td>発症リスク</td>
+<td>_1</td>
+<td>_2</td>
+</tr>
+</tbody>
+</table>
+<p>この表では人数や割合を、具体的な数字ではなく、A、B、C、Dや群1・群2の発症リスク<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>を使って表しています。2群ごとの割合<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>の比較では、以下のような指標が用いられます。</p>
 <ul>
 <li><p>リスク差（risk difference、絶対リスク減少）</p>
 <p><span class="math inline">\(RD={\pi_1}-{\pi_2}\)</span></p></li>
@@ -365,6 +392,7 @@ a:hover {
 <li><p>オッズ比（odds ratio）</p>
 <p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p></li>
 </ul>
+<p>これらの指標を使うときは、どちらの群を基準に比較しているかを意識することが大切です。上の式では群2を基準にとっています。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="治療後のリスクを比較するための指標">
@@ -435,6 +463,11 @@ a:hover {
 <td>発症なし</td>
 <td>990</td>
 <td>800</td>
+</tr>
+<tr class="odd">
+<td>発症リスク</td>
+<td>1%</td>
+<td>20%</td>
 </tr>
 </tbody>
 </table>
