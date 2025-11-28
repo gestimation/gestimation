@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -190,7 +155,7 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-epidemiology-ii" id="toc-story-and-quiz-epidemiology-ii" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-ii">Story and Quiz − Epidemiology II</a>
   <ul class="collapse">
-  <li><a href="#リスクと時間の関係" id="toc-リスクと時間の関係" class="nav-link" data-scroll-target="#リスクと時間の関係">リスクと時間の関係</a></li>
+  <li><a href="#疾患リスクとターゲット集団" id="toc-疾患リスクとターゲット集団" class="nav-link" data-scroll-target="#疾患リスクとターゲット集団">疾患リスクとターゲット集団</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -340,218 +305,244 @@ a:hover {
 <section id="story-and-quiz-epidemiology-ii" class="level1">
 <h1>Story and Quiz − Epidemiology II</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing</p>
+<p>　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing</p>
 </div>
 <hr>
-<section id="リスクと時間の関係" class="level3">
-<h3 class="anchored" data-anchor-id="リスクと時間の関係">リスクと時間の関係</h3>
+<section id="疾患リスクとターゲット集団" class="level3">
+<h3 class="anchored" data-anchor-id="疾患リスクとターゲット集団">疾患リスクとターゲット集団</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんさ、さっき寄与割合を計算してるのをみてて思ったんだけどね。またわからないことがあるんだ」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「なに？」</p>
+<p>お父さん「ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」</p>
+<p>私「そうね、昔よりは少なくなったんじゃない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」</p>
+<p>お父さん「でも、日本のがんの統計上は、まだまだ喫煙は健康問題のひとつなんだ。がん罹患のリスク要因は、感染症、喫煙、飲酒の順に影響が大きいと推定されている」</p>
 </div>
 <div class="voice-daughter">
-<p>私「寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」</p>
+<p>私「喫煙率は下がってるのにちょっと意外だね。でもどのがん登録でも、喫煙情報は絶対調べるよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、無理やり時間を通じてハザード比は一定と仮定して、計算してる」</p>
+<p>お父さん「感染症、喫煙、飲酒が、がん罹患に寄与する割合は、16%、15%、6%っていわれてる。この指標を、集団寄与割合っていうんだけど、これもただのパーセントじゃない」</p>
 </div>
 <div class="voice-daughter">
-<p>私「リスク比は変化するけどハザード比は変化しないの？ぴんとこないなあ」</p>
+<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「えーっと、教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
+<p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="生存曲線とハザードの関係">
+<div class="callout callout-style-default callout-note callout-titled" title="寄与割合とその関連指標">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-生存曲線とハザードの関係
+寄与割合とその関連指標
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Kaplan-Meier曲線もまた、割合の一種と考えることができますが、見え方がずいぶん違います。つまり、Kaplan-Meier曲線はグラフですし、時間の概念が含まれたりします。さらに、Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法ですし、ハザード比との関係が重要です。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。</p>
-<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<em>x</em>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<em>x</em>の関数<em>S</em>(<em>x</em>)で表す」ということになります。</p>
-<p>関数<em>S</em>(<em>x</em>)を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）を、<em>λ</em>で表します。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
-<p><span class="math inline">\(S(x)=\mathrm{exp}(-\lambda x)\)</span></p>
-<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<em>M</em>は、生存確率50%つまり<em>S</em>(<em>x</em>)=0.5になるような時間<em>x</em>のことです。つまり、指数分布では<span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span>と関係が成り立つので、生存時間中央値<em>M</em>は、ハザード<em>λ</em>から以下のように計算することができます。</p>
-<p><span class="math inline">\(M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}\)</span></p>
-<p>最後に、時点<em>x</em>の疾患リスクを<em>π</em>とすると、リスクとハザードは、以下の式で結びついています。</p>
-<p><span class="math inline">\(\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)\)</span></p>
-<p>イメージしやすいように、以前<code>cifmodeling</code>パッケージの<code>cifplot()</code>で描いたKaplan–Meier曲線をもう一度示しておきます。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="epidemiology-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「わからん。数式はわからん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだだと思うんだけど。そこは慣れるしかないなあ。次にハザード比」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="リスクとハザード比の関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-リスクとハザード比の関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
-<p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。</p>
+<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction）という別の指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる呼ばれ方をしており、どのような集団をターゲットとするかで定義も変わるので、正確に扱うべきです。</p>
+<p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
 <ul>
-<li><p>ハザード比（指数分布を仮定）</p>
-<p><span class="math inline">\(HR=\frac{\lambda_1}{\lambda_2}=\frac{M_2}{M_1}=\frac{\mathrm{log}(\pi_1)}{\mathrm{log}(\pi_2)}\)</span></p></li>
+<li><p>Excess fraction（またはrisk fraction）</p>
+<p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
 </ul>
-<p>指数分布では、ハザードは時間を通じて一定でした。その一方で、Cox比例ハザードモデルでは、ハザードを時間の関数<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>と考え、しかも両者が比例関係にあると仮定します。</p>
+<p>一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
 <ul>
-<li><p>ハザード比（比例ハザード性を仮定）</p>
-<p><span class="math inline">\(HR=\frac{\lambda_1(x)}{\lambda_2(x)}\)</span></p></li>
+<li><p>Preventable fraction</p>
+<p><span class="math inline">\(PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
 </ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 42%">
+<col style="width: 20%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指標</th>
+<th>分母（ターゲット集団）</th>
+<th>何を表す？</th>
+<th>いつ使う？</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Excess fraction（寄与割合）</td>
+<td><strong>曝露者だけ</strong>（E=1）</td>
+<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
+<td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Preventable fraction（予防寄与割合）</td>
+<td><strong>曝露者だけ</strong>（E=1）</td>
+<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
+<td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Population attributable fraction（集団寄与割合）</td>
+<td><strong>全員</strong>（集団全体）</td>
+<td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
+<td>公衆衛生・医療政策で、曝露をなくせば集団でどれだけ減るかを評価するとき</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数値例</strong></p>
+<p>いくつかの指標の数値例を示しておきましょう。この表は、 曝露と膵がんリスクの関係を調べる仮想的なコホート研究から得られたデータを表しています。上の式を用いて、リスク差、リスク比、オッズ比、excess fractionを求めると、以下のような結果が得られます。ワクチン有効率と同じように、excess fractionもパーセントで示すことがあるため、要注意です。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>曝露あり</th>
+<th>曝露なし</th>
+<th>効果の指標</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>合計</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>15</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>365</td>
+<td>868</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>3.9%</td>
+<td>1.4%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　リスク差</td>
+<td></td>
+<td></td>
+<td>2.5%</td>
+</tr>
+<tr class="even">
+<td>　リスク比</td>
+<td></td>
+<td></td>
+<td>3倍</td>
+</tr>
+<tr class="odd">
+<td>　オッズ比</td>
+<td></td>
+<td></td>
+<td>3倍</td>
+</tr>
+<tr class="even">
+<td>　Excess fraction</td>
+<td></td>
+<td></td>
+<td>74%</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="dialogue">
+<div class="voice-daughter">
+<p>私「これもワクチン有効率と同じだね。パーセントっていわれるとただの割合と思っちゃう。よく考えると、Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「はっきりいうとね、ハザードが直感的にわかる人の方が少ないよ。だから安心していい」</p>
+<p>お父さん「そっか、そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」</p>
+<p>私「ふんふん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」</p>
+<p>お父さん「残りの2人は、本当はがんだったのに、検診では見つけられなかった。そのため、67歳と73歳で亡くなった。つまり、がん検診後の生存期間は7年と13年。じゃあ、仮にこの2人を60歳のとき根治切除できたとしたら、生存期間は何割長くなるだろう」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「見えない時計？」</p>
+<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」**</p>
 </div>
 <div class="voice-father">
-<p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療B群の人は、少し遅い時計を持っている。ハザード比は、その2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
+<p>お父さん「じゃあ、別の質問をするよ。もし、がん検診陽性の2人を60歳のとき根治切除できなかったとしたら、生存期間はどれくらい失われる？」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
+<p>私「(10-15)/15=-0.33だから、33%減っちゃうね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ただし、ここが重要。時計の進み方は、必ずしも一定とは限らない。最初は治療Bが有利でも、途中から追いつかれることだってある」</p>
+<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。さっきのexcess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
 </div>
 <div class="voice-daughter">
-<p>娘「それ、実際の患者さんでもあるかも！」</p>
+<p>私「なるほど、ターゲット集団を分母にとるのね。ターゲットがあるのが、リスク差とかリスク比とかとの違いってわけだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
+<p>お父さん「いや？効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータにおける時点ごとのリスク比の推定">
+<div class="voice-daughter">
+<p>私「まあねえ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「つまり臨床試験の集団全体がターゲット集団になる。因果リスク差とか、因果リスク比っていう言葉があるんだけど、これは集団全体に別の治療をしたときや、集団全体がリスク因子に曝露したとき、リスクがどう変化するかを表してるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。じゃあワクチン有効率はどうなの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ワクチン有効率も臨床試験で推定するよね。だからそのワクチンのターゲット全体が、ワクチンを接種したとき、それがプラセボだったときに比べ、何割感染症が減るかっていう解釈になる。現場では、既存のワクチンが普及していることがほとんどでしょ。そこにワクチン有効率98%の新しいワクチンを投入しても、感染症が98%減ることにはならない」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="ターゲット集団">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-シミュレーションデータにおける時点ごとのリスク比の推定
+ターゲット集団
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、<strong>時点ごとのリスク比（RR）</strong> を推定してみます。<strong>ハザード比</strong>は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、<code>cifmodeling</code>の<code>polyreg()</code>では、時点を通じて一定のリスク比だけでなく、任意の時点tごとのリスク比も推定できます。</p>
-<p>先ほどのシミュレーションデータを使って、<code>time.point</code>を変えた<code>polyreg()</code>を当てはめることで、術後5年・10年・20年時点の死亡リスク比を推定します。アウトカム（OS）は<code>Event(time_os,status_os)</code>、曝露変数であるストーマの有無は<code>exposure="stoma"</code>で指定しています。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">5</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.367       
-                      [1.006, 1.856]
-                      (p=0.045)   
-
----------------------------------- 
-
-effect.measure        RR at 5     
-n.events              89 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rr_at_10 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.126       
-                      [0.744, 1.704]
-                      (p=0.576)   
-
----------------------------------- 
-
-effect.measure        RR at 10    
-n.events              117 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rr_at_20 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">20</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.078       
-                      [0.720, 1.613]
-                      (p=0.714)   
-
----------------------------------- 
-
-effect.measure        RR at 20    
-n.events              137 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
+<p>治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。</p>
 </div>
 </div>
-<p>ハザード比は一定の下でデータを生成していますが、時間が経つにつれリスク比は小さく推定されることがわかります。冒頭のKaplan-Meier曲線もあわせてみてみてください。</p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「もうひとつ気を付けないといけないのは、リスクには時間の概念が隠れていること。検診後10年時点の死亡確率を考えてみよう。陽性2人の死亡確率は0%、陰性2人の死亡確率50%だよね。このときのexcess fractionはわかる？」</p>
 </div>
+<div class="voice-daughter">
+<p>私「うん。(0.5-0)/0.5=1でしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう、つまり根治切除していれば、がん陰性の2人の死亡は100%防げたという意味になる。でもさ、がん検診後、12年経つとどうなる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「(0.5-0.5)/0.5=0になるね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、がん検診後、20年経つと？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「生存者はいなくなるね。(1-1)/1=0かな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていいうのは、リスク比やオッズ比も同じだけどね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほどね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「まとめるとね、“何%減る”とか”何%に効く”というパーセントを見たら、どの集団のことなのか、どの時点のリスクかを意識しよう、ということだね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -564,17 +555,17 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Kaplan-Meier法による生存曲線の推定が妥当な状況として正しいのは、次のうちどれでしょうか。</p>
+<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります。先ほど用いたがん検診の例で考えましょう。仮にがん検診の感度が100%だったら、先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、どれくらい減ると期待されるでしょうか。</p>
 <ol type="1">
-<li>生存時間が正規分布するとき</li>
-<li>打ち切りの理由が疾患の悪化によらないとき</li>
-<li>2群の打ち切り確率に統計学的な有意差がなかったとき</li>
-<li>試験治療群とコントロール群の間で比例ハザード性が成り立つとき</li>
+<li>0%</li>
+<li>33%</li>
+<li>50%</li>
+<li>100%</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -583,12 +574,15 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は2です</strong></li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これは<em>t</em>検定やCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法でもっとも重要な仮定です。</p>
+<p>この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除後できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。</p>
+<p>この計算は、集団全体をターゲットとする寄与割合（population attributable fraction）を求めていることに他なりません。集団全体における曝露割合を<em>p</em>で書くと、population attributable fractionは、以下の式で表されます。</p>
+<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p>
+<p>がん検診の例では、<em>p</em>=0.5、15年死亡リスク比は<em>RR</em>=2なので、これを代入すると、<em>PAF</em>=0.5(2-1)/{0.5(2-1)+1}=0.33となり、上の正解と一致します。</p>
 </div>
 </div>
 </div>

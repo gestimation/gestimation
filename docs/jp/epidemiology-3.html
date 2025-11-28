@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -155,8 +190,7 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-epidemiology-iii" id="toc-story-and-quiz-epidemiology-iii" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-iii">Story and Quiz − Epidemiology III</a>
   <ul class="collapse">
-  <li><a href="#リスク比とオッズ比って同じだっけ" id="toc-リスク比とオッズ比って同じだっけ" class="nav-link" data-scroll-target="#リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#リスクと時間の関係" id="toc-リスクと時間の関係" class="nav-link" data-scroll-target="#リスクと時間の関係">リスクと時間の関係</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -306,371 +340,218 @@ a:hover {
 <section id="story-and-quiz-epidemiology-iii" class="level1">
 <h1>Story and Quiz − Epidemiology III</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
+<p>　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing</p>
 </div>
 <hr>
-<section id="リスク比とオッズ比って同じだっけ" class="level3">
-<h3 class="anchored" data-anchor-id="リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</h3>
+<section id="リスクと時間の関係" class="level3">
+<h3 class="anchored" data-anchor-id="リスクと時間の関係">リスクと時間の関係</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、リスク比とかオッズ比とか計算したなあ。リスク比とオッズ比って結局同じ？みたいな」**</p>
+<p>私「お父さんさ、さっき寄与割合を計算してるのをみてて思ったんだけどね。またわからないことがあるんだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、この前、膵がんの数値例で計算したとき、リスク比とオッズ比はどちらも3倍だったね。でも、これはたまたま。もっと正確にいうと、膵がんのようにリスクが低いと、リスク比とオッズ比は近い値になるんだ。ほら、リスク比とオッズ比の数式を見比べてよ。リスク比とオッズ比の違いって、<span class="math inline">\(1-\pi_1\)</span>と<span class="math inline">\(1-\pi_2\)</span>があるかどうかでしょ。リスクが低いと、ここがほとんど1になるから、リスク比とオッズ比の差がなくなる」</p>
+<p>お父さん「なに？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「まあ、私も論文読むとき別に区別してないけど」</p>
+<p>私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「えーっと、状況によってはそれはよくない。疾患や対象集団によっては、リスクが低いときばかりじゃないからね。最近の論文だと、オッズ比をリスク比の代わりに使うなら、そのままの値じゃなくて、オッズ比の平方根を報告した方がいいっていうものもある」</p>
+<p>お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なにそれ、またお作法が増えたの？」</p>
+<p>私「寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、無理やり時間を通じてハザード比は一定と仮定して、計算してる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「リスク比は変化するけどハザード比は変化しないの？ぴんとこないなあ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「えーっと、教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="リスク比はオッズ比の近似か">
+<div class="callout callout-style-default callout-note callout-titled" title="生存曲線とハザードの関係">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-リスク比はオッズ比の近似か
+生存曲線とハザードの関係
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>表1は、2群の疾患リスク<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>の数値を0.1から0.9まで動かして、リスク比、オッズ比、オッズ比の平方根（square root of OR）を計算したものです。</p>
-<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p>
-<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p>
-<p><span class="math inline">\(SOR=\sqrt{\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}}\)</span></p>
-<p><span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>のどちらかが0.2を超えると、リスク比とオッズ比はまったく違う値になることがわかります。リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなります。また、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が0.2～0.7の範囲であれば、リスク比とオッズ比の平方根は、高々0.11しか違いません。</p>
-<p>2群の疾患リスクを0.1から0.9まで動かしたときのリスク比、オッズ比、オッズ比の平方根</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>0.1</th>
-<th>0.2</th>
-<th>0.3</th>
-<th>0.4</th>
-<th>0.5</th>
-<th>0.6</th>
-<th>0.7</th>
-<th>0.8</th>
-<th>0.9</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.1</td>
-<td>RR=1</td>
-<td>0.50</td>
-<td>0.33</td>
-<td>0.25</td>
-<td>0.20</td>
-<td>0.17</td>
-<td>0.14</td>
-<td>0.13</td>
-<td>0.11</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>OR=1</td>
-<td>0.44</td>
-<td>0.25</td>
-<td>0.17</td>
-<td>0.11</td>
-<td>0.07</td>
-<td>0.05</td>
-<td>0.03</td>
-<td>0.01</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>SOR=1</td>
-<td>0.67</td>
-<td>0.51</td>
-<td>0.41</td>
-<td>0.33</td>
-<td>0.27</td>
-<td>0.22</td>
-<td>0.17</td>
-<td>0.11</td>
-</tr>
-<tr class="even">
-<td>0.2</td>
-<td></td>
-<td>RR=1</td>
-<td>0.67</td>
-<td>0.50</td>
-<td>0.40</td>
-<td>0.33</td>
-<td>0.29</td>
-<td>0.25</td>
-<td>0.22</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.58</td>
-<td>0.38</td>
-<td>0.25</td>
-<td>0.17</td>
-<td>0.11</td>
-<td>0.06</td>
-<td>0.03</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.76</td>
-<td>0.61</td>
-<td>0.50</td>
-<td>0.41</td>
-<td>0.33</td>
-<td>0.25</td>
-<td>0.17</td>
-</tr>
-<tr class="odd">
-<td>0.3</td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.75</td>
-<td>0.60</td>
-<td>0.50</td>
-<td>0.43</td>
-<td>0.38</td>
-<td>0.33</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.64</td>
-<td>0.43</td>
-<td>0.29</td>
-<td>0.18</td>
-<td>0.11</td>
-<td>0.05</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.80</td>
-<td>0.65</td>
-<td>0.53</td>
-<td>0.43</td>
-<td>0.33</td>
-<td>0.22</td>
-</tr>
-<tr class="even">
-<td>0.4</td>
-<td></td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.80</td>
-<td>0.67</td>
-<td>0.57</td>
-<td>0.50</td>
-<td>0.44</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.67</td>
-<td>0.44</td>
-<td>0.29</td>
-<td>0.17</td>
-<td>0.07</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.82</td>
-<td>0.67</td>
-<td>0.53</td>
-<td>0.41</td>
-<td>0.27</td>
-</tr>
-<tr class="odd">
-<td>0.5</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.83</td>
-<td>0.71</td>
-<td>0.63</td>
-<td>0.56</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.67</td>
-<td>0.43</td>
-<td>0.25</td>
-<td>0.11</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.82</td>
-<td>0.65</td>
-<td>0.50</td>
-<td>0.33</td>
-</tr>
-<tr class="even">
-<td>0.6</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.86</td>
-<td>0.75</td>
-<td>0.67</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.64</td>
-<td>0.38</td>
-<td>0.17</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.80</td>
-<td>0.61</td>
-<td>0.41</td>
-</tr>
-<tr class="odd">
-<td>0.7</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.88</td>
-<td>0.78</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.58</td>
-<td>0.26</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.76</td>
-<td>0.51</td>
-</tr>
-<tr class="even">
-<td>0.8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>RR=1</td>
-<td>0.89</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>OR=1</td>
-<td>0.44</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>SOR=1</td>
-<td>0.67</td>
-</tr>
-</tbody>
-</table>
+<p>Kaplan-Meier曲線もまた、割合の一種と考えることができますが、見え方がずいぶん違います。つまり、Kaplan-Meier曲線はグラフですし、時間の概念が含まれたりします。さらに、Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法ですし、ハザード比との関係が重要です。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。</p>
+<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<em>x</em>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<em>x</em>の関数<em>S</em>(<em>x</em>)で表す」ということになります。</p>
+<p>関数<em>S</em>(<em>x</em>)を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）を、<em>λ</em>で表します。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
+<p><span class="math inline">\(S(x)=\mathrm{exp}(-\lambda x)\)</span></p>
+<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<em>M</em>は、生存確率50%つまり<em>S</em>(<em>x</em>)=0.5になるような時間<em>x</em>のことです。つまり、指数分布では<span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span>と関係が成り立つので、生存時間中央値<em>M</em>は、ハザード<em>λ</em>から以下のように計算することができます。</p>
+<p><span class="math inline">\(M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}\)</span></p>
+<p>最後に、時点<em>x</em>の疾患リスクを<em>π</em>とすると、リスクとハザードは、以下の式で結びついています。</p>
+<p><span class="math inline">\(\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)\)</span></p>
+<p>イメージしやすいように、以前<code>cifmodeling</code>パッケージの<code>cifplot()</code>で描いたKaplan–Meier曲線をもう一度示しておきます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="epidemiology-3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「平方根なんて論文書くとき勝手に計算していいのかね」</p>
+<p>私「わからん。数式はわからん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。Methodsで説明していれば。でも、ふつうのコホート研究をするんだったら、リスク比を計算するのが素直だと思うけど」</p>
+<p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだだと思うんだけど。そこは慣れるしかないなあ。次にハザード比」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="ケース・コントロール研究とオッズ比">
+<div class="callout callout-style-default callout-note callout-titled" title="リスクとハザード比の関係">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ケース・コントロール研究とオッズ比
+リスクとハザード比の関係
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。</p>
+<p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<em>x</em>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
+<p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。</p>
+<ul>
+<li><p>ハザード比（指数分布を仮定）</p>
+<p><span class="math inline">\(HR=\frac{\lambda_1}{\lambda_2}=\frac{M_2}{M_1}=\frac{\mathrm{log}(\pi_1)}{\mathrm{log}(\pi_2)}\)</span></p></li>
+</ul>
+<p>指数分布では、ハザードは時間を通じて一定でした。その一方で、Cox比例ハザードモデルでは、ハザードを時間の関数<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>と考え、しかも両者が比例関係にあると仮定します。</p>
+<ul>
+<li><p>ハザード比（比例ハザード性を仮定）</p>
+<p><span class="math inline">\(HR=\frac{\lambda_1(x)}{\lambda_2(x)}\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「はっきりいうとね、ハザードが直感的にわかる人の方が少ないよ。だから安心していい」</p>
+</div>
+<div class="voice-daughter">
+<p>娘「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」</p>
+</div>
+<div class="voice-daughter">
+<p>娘「見えない時計？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療B群の人は、少し遅い時計を持っている。ハザード比は、その2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>娘「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ただし、ここが重要。時計の進み方は、必ずしも一定とは限らない。最初は治療Bが有利でも、途中から追いつかれることだってある」</p>
+</div>
+<div class="voice-daughter">
+<p>娘「それ、実際の患者さんでもあるかも！」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータにおける時点ごとのリスク比の推定">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+シミュレーションデータにおける時点ごとのリスク比の推定
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、<strong>時点ごとのリスク比（RR）</strong> を推定してみます。<strong>ハザード比</strong>は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、<code>cifmodeling</code>の<code>polyreg()</code>では、時点を通じて一定のリスク比だけでなく、任意の時点tごとのリスク比も推定できます。</p>
+<p>先ほどのシミュレーションデータを使って、<code>time.point</code>を変えた<code>polyreg()</code>を当てはめることで、術後5年・10年・20年時点の死亡リスク比を推定します。アウトカム（OS）は<code>Event(time_os,status_os)</code>、曝露変数であるストーマの有無は<code>exposure="stoma"</code>で指定しています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">5</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs 0 
+                      1.367       
+                      [1.006, 1.856]
+                      (p=0.045)   
+
+---------------------------------- 
+
+effect.measure        RR at 5     
+n.events              89 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rr_at_10 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs 0 
+                      1.126       
+                      [0.744, 1.704]
+                      (p=0.576)   
+
+---------------------------------- 
+
+effect.measure        RR at 10    
+n.events              117 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rr_at_20 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">20</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                      event 1 (no competing risk)
+---------------------------------- 
+stoma, WITH STOMA vs 0 
+                      1.078       
+                      [0.720, 1.613]
+                      (p=0.714)   
+
+---------------------------------- 
+
+effect.measure        RR at 20    
+n.events              137 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
+n.parameters          2           
+converged.by          Converged in objective function
+nleqslv.message       Function criterion near zero</code></pre>
+</div>
+</div>
+<p>ハザード比は一定の下でデータを生成していますが、時間が経つにつれリスク比は小さく推定されることがわかります。冒頭のKaplan-Meier曲線もあわせてみてみてください。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -683,16 +564,17 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなるといいました。それでは、2群をオッズ比で比較するときのp値は、リスク比で比較するときのp値より、小さくなる（つまり有意になりやすいので得をする）のでしょうか。実際にデータから計算されたp値だと、検定の種類の選び方に影響されるし、偶然性も入るので、理論上の期待値がどうなるか考えてみてください。</p>
+<p>Kaplan-Meier法による生存曲線の推定が妥当な状況として正しいのは、次のうちどれでしょうか。</p>
 <ol type="1">
-<li>オッズ比のp値は、リスク比のp値より、期待値の上で小さい</li>
-<li>オッズ比のp値は、リスク比のp値より、期待値の上で大きい</li>
-<li>オッズ比のp値は、リスク比のp値と、期待値の上で等しい</li>
+<li>生存時間が正規分布するとき</li>
+<li>打ち切りの理由が疾患の悪化によらないとき</li>
+<li>2群の打ち切り確率に統計学的な有意差がなかったとき</li>
+<li>試験治療群とコントロール群の間で比例ハザード性が成り立つとき</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -701,21 +583,15 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><strong>正解は2です</strong></li>
 </ul>
-<p>リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定です。</p>
+<p>Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これは<em>t</em>検定やCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法でもっとも重要な仮定です。</p>
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li>Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6</li>
-</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>epidemiology-12 – Coffee and Research</title>
+<title>epidemiology-5 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -153,9 +124,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-epidemiology-i" id="toc-story-and-quiz-epidemiology-i" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-i">Story and Quiz − Epidemiology I</a>
+  <li><a href="#story-and-quiz-epidemiology-v" id="toc-story-and-quiz-epidemiology-v" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-v">Story and Quiz − Epidemiology V</a>
   <ul class="collapse">
-  <li><a href="#疾患リスクとターゲット集団" id="toc-疾患リスクとターゲット集団" class="nav-link" data-scroll-target="#疾患リスクとターゲット集団">疾患リスクとターゲット集団</a></li>
+  <li><a href="#リスク差とリスク比どっちを使う" id="toc-リスク差とリスク比どっちを使う" class="nav-link" data-scroll-target="#リスク差とリスク比どっちを使う">リスク差とリスク比、どっちを使う？</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -302,158 +274,194 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-epidemiology-i" class="level1">
-<h1>Story and Quiz − Epidemiology I</h1>
+<section id="story-and-quiz-epidemiology-v" class="level1">
+<h1>Story and Quiz − Epidemiology V</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing</p>
+<p>　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
 </div>
 <hr>
-<section id="疾患リスクとターゲット集団" class="level3">
-<h3 class="anchored" data-anchor-id="疾患リスクとターゲット集団">疾患リスクとターゲット集団</h3>
+<section id="リスク差とリスク比どっちを使う" class="level3">
+<h3 class="anchored" data-anchor-id="リスク差とリスク比どっちを使う">リスク差とリスク比、どっちを使う？</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
+<p>お父さん「医学部で習ったことがあるかもしれないけど、コホート研究とリスクが疫学の基本なんだ。だから公衆衛生や臨床研究をしている人の間では、オッズ比よりリスク比の方がわかりやすいとされている。一方でね、統計学で注目するのは、それぞれの指標の数学的な性質なんだ。オッズ比は数学的にいい面と悪い面がある。いいところは、”リスクの数値”と”1からリスクを引いた数値”が対称に出てくるような数式をしていること。生存確率と死亡確率をひっくり返しても同じって言ったらいいかな」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうね、昔よりは少なくなったんじゃない？」</p>
+<p>私「ふーんそうなんだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でも、日本のがんの統計上は、まだまだ喫煙は健康問題のひとつなんだ。がん罹患のリスク要因は、感染症、喫煙、飲酒の順に影響が大きいと推定されている」</p>
+<p>お父さん「後は、ケース・コントロール研究のような、コホートの一部の情報しかない状況でも計算できるし、ロジスティック回帰のようなモデリングするとき利用しやすいのがいいところかな。悪い面はね、層別解析をしたとき、ちょっと不自然な計算結果になる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「喫煙率は下がってるのにちょっと意外だね。でもどのがん登録でも、喫煙情報は絶対調べるよね」</p>
+<p>私「へー。それは困るじゃない。層別なんてしたことないけど」**</p>
 </div>
 <div class="voice-father">
-<p>お父さん「感染症、喫煙、飲酒が、がん罹患に寄与する割合は、16%、15%、6%っていわれてる。この指標を、集団寄与割合っていうんだけど、これもただのパーセントじゃない」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
+<p>お父さん「次の2つの表を比べてみてよ」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="寄与割合とその関連指標">
+<div class="callout callout-style-default callout-note callout-titled" title="層別した指標の併合可能性">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標
+層別した指標の併合可能性
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction）という別の指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる呼ばれ方をしており、どのような集団をターゲットとするかで定義も変わるので、正確に扱うべきです。</p>
-<p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
-<ul>
-<li><p>Excess fraction（またはrisk fraction）</p>
-<p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
-</ul>
-<p>一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
-<ul>
-<li><p>Preventable fraction</p>
-<p><span class="math inline">\(PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
-</ul>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 42%">
-<col style="width: 20%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>指標</th>
-<th>分母（ターゲット集団）</th>
-<th>何を表す？</th>
-<th>いつ使う？</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Excess fraction（寄与割合）</td>
-<td><strong>曝露者だけ</strong>（E=1）</td>
-<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
-<td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Preventable fraction（予防寄与割合）</td>
-<td><strong>曝露者だけ</strong>（E=1）</td>
-<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
-<td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Population attributable fraction（集団寄与割合）</td>
-<td><strong>全員</strong>（集団全体）</td>
-<td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
-<td>公衆衛生・医療政策で、曝露をなくせば集団でどれだけ減るかを評価するとき</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>数値例</strong></p>
-<p>いくつかの指標の数値例を示しておきましょう。この表は、 曝露と膵がんリスクの関係を調べる仮想的なコホート研究から得られたデータを表しています。上の式を用いて、リスク差、リスク比、オッズ比、excess fractionを求めると、以下のような結果が得られます。ワクチン有効率と同じように、excess fractionもパーセントで示すことがあるため、要注意です。</p>
+<p>表1と表2は、がん患者100人のランダム化臨床試験を想定して作った数値例です。表1では100人全体における死亡リスクを、表2はステージIIIの50人とステージIVの50人に層別した死亡リスクを示しています。</p>
+<p>まず、抗がん剤投与群の死亡リスクをみてください。ステージIIIでは死亡リスクは20%と低く、ステージIVでは40%と高いことがわかります。そして全体の死亡リスクは、ステージIIIとステージIVの平均（30%）です。このように、リスクには、層別する前の値が、層別した後の平均になるという性質があります。</p>
+<p>これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、併合可能（collapsible）と呼んでいます。</p>
+<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。リスク比は一定であるにも関わらず、同じ比の指標がばらつくのは、好ましい性質ではありません。</p>
+<p>表1. がん患者100人を対象にした仮想的なランダム化臨床試験における死亡リスクとリスク差・リスク比・オッズ比</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
-<th>曝露あり</th>
-<th>曝露なし</th>
+<th>緩和療法群</th>
+<th>抗がん剤投与群</th>
 <th>効果の指標</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>合計</td>
+<td>合計（100人）</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>　膵がんあり</td>
+<td>　死亡</td>
+<td>30</td>
 <td>15</td>
-<td>12</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>　膵がんなし</td>
-<td>365</td>
-<td>868</td>
+<td>　生存</td>
+<td>20</td>
+<td>35</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>　リスク</td>
-<td>3.9%</td>
-<td>1.4%</td>
+<td>　死亡リスク</td>
+<td>60%</td>
+<td>30%</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>　リスク差</td>
 <td></td>
 <td></td>
-<td>2.5%</td>
+<td>-30%</td>
 </tr>
 <tr class="even">
 <td>　リスク比</td>
 <td></td>
 <td></td>
-<td>3倍</td>
+<td>0.50倍</td>
 </tr>
 <tr class="odd">
 <td>　オッズ比</td>
 <td></td>
 <td></td>
-<td>3倍</td>
+<td>0.29倍</td>
+</tr>
+</tbody>
+</table>
+<p>表2. 層別後の死亡リスクとリスク差・リスク比・オッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>緩和療法群</th>
+<th>抗がん剤投与群</th>
+<th>効果の指標</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ステージIII（50人）</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
-<td>　Excess fraction</td>
+<td>　死亡</td>
+<td>10</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　生存</td>
+<td>15</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　死亡リスク</td>
+<td>40%</td>
+<td>20%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　リスク差</td>
 <td></td>
 <td></td>
-<td>74%</td>
+<td>-20%</td>
+</tr>
+<tr class="even">
+<td>　リスク比</td>
+<td></td>
+<td></td>
+<td>0.50倍</td>
+</tr>
+<tr class="odd">
+<td>　オッズ比</td>
+<td></td>
+<td></td>
+<td>0.38倍</td>
+</tr>
+<tr class="even">
+<td>ステージIV（50人）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　死亡</td>
+<td>20</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　生存</td>
+<td>5</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　死亡リスク</td>
+<td>80%</td>
+<td>40%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク差</td>
+<td></td>
+<td></td>
+<td>-40%</td>
+</tr>
+<tr class="odd">
+<td>　リスク比</td>
+<td></td>
+<td></td>
+<td>0.50倍</td>
+</tr>
+<tr class="even">
+<td>　オッズ比</td>
+<td></td>
+<td></td>
+<td>0.17倍</td>
 </tr>
 </tbody>
 </table>
@@ -461,90 +469,25 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「これもワクチン有効率と同じだね。パーセントっていわれるとただの割合と思っちゃう。よく考えると、Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
+<p>私「ていうかさ。どうせ割合同士を比べるんだから、わざわざ比を計算する必要ないと思うんだけど。パーセントの差でよくない？＋10%とか－10%とか。じゅうぶんでしょ」**</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そっか、そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「うん、リスク差はもっと使われていいと思う。でも、リスク差にも欠点がある。複数の研究を集めてメタアナリシスをするとき、それぞれの研究から得られたリスク差やリスク比をひとつの値に要約するでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふんふん」</p>
+<p>私「ああ、みたことある」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「残りの2人は、本当はがんだったのに、検診では見つけられなかった。そのため、67歳と73歳で亡くなった。つまり、がん検診後の生存期間は7年と13年。じゃあ、仮にこの2人を60歳のとき根治切除できたとしたら、生存期間は何割長くなるだろう」</p>
+<p>お父さん「このとき問題になるのが、コントロール群（プラセボ群や緩和療法群）で観察されたリスクが、研究によって低かったり高かったりすることなんだ。同じ疾患や治療を扱っていても、予後のいい患者ばかり集めた研究もあれば、予後の悪い患者を対象にした研究もあるでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」**</p>
+<p>私「そりゃあるよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「じゃあ、別の質問をするよ。もし、がん検診陽性の2人を60歳のとき根治切除できなかったとしたら、生存期間はどれくらい失われる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「(10-15)/15=-0.33だから、33%減っちゃうね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。さっきのexcess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほど、ターゲット集団を分母にとるのね。ターゲットがあるのが、リスク差とかリスク比とかとの違いってわけだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まあねえ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「つまり臨床試験の集団全体がターゲット集団になる。因果リスク差とか、因果リスク比っていう言葉があるんだけど、これは集団全体に別の治療をしたときや、集団全体がリスク因子に曝露したとき、リスクがどう変化するかを表してるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。じゃあワクチン有効率はどうなの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ワクチン有効率も臨床試験で推定するよね。だからそのワクチンのターゲット全体が、ワクチンを接種したとき、それがプラセボだったときに比べ、何割感染症が減るかっていう解釈になる。現場では、既存のワクチンが普及していることがほとんどでしょ。そこにワクチン有効率98%の新しいワクチンを投入しても、感染症が98%減ることにはならない」</p>
+<p>お父さん「リスク差、リスク比、オッズ比で、どれがコントロール群のリスクの影響を受けやすいかを、55件のメタアナリシスのデータを使って調べた研究がある（Furukawa, Guyatt, Griffith 2002）。その結果、リスク差は、研究ごとにリスクが変動すると、その影響でばらついていた。一方で、リスク比やオッズ比は、研究を通じて安定していることがわかった。だから、リスク差だけでも、リスク比やオッズ比のような比の指標だけでも、論文で示す情報としては不足があるっていうのが結論になる」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="ターゲット集団">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ターゲット集団
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-father">
-<p>お父さん「もうひとつ気を付けないといけないのは、リスクには時間の概念が隠れていること。検診後10年時点の死亡確率を考えてみよう。陽性2人の死亡確率は0%、陰性2人の死亡確率50%だよね。このときのexcess fractionはわかる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。(0.5-0)/0.5=1でしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう、つまり根治切除していれば、がん陰性の2人の死亡は100%防げたという意味になる。でもさ、がん検診後、12年経つとどうなる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「(0.5-0.5)/0.5=0になるね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ、がん検診後、20年経つと？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「生存者はいなくなるね。(1-1)/1=0かな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていいうのは、リスク比やオッズ比も同じだけどね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほどね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まとめるとね、“何%減る”とか”何%に効く”というパーセントを見たら、どの集団のことなのか、どの時点のリスクかを意識しよう、ということだね」</p>
-</div>
-</div>
+<p>臨床研究の結果報告では、絶対指標（リスク差やKaplan-Meier曲線）と相対指標（リスク比やハザード比）の両方を示す</p>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -555,17 +498,15 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります。先ほど用いたがん検診の例で考えましょう。仮にがん検診の感度が100%だったら、先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、どれくらい減ると期待されるでしょうか。</p>
+<p>2値データの解析で用いられるロジスティック回帰は、「確率」ではなく「オッズ」をモデル化しており、オッズ比を求めるためによく用いられます（回帰係数の指数がオッズ比）。さて、ロジスティック回帰を用いて、リスク比を計算することができるでしょうか。</p>
 <ol type="1">
-<li>0%</li>
-<li>33%</li>
-<li>50%</li>
-<li>100%</li>
+<li>ロジスティック回帰を用いてリスク比を計算できる</li>
+<li>ロジスティック回帰を用いてリスク比を計算できない</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -574,18 +515,21 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><strong>正解は1です</strong></li>
 </ul>
-<p>この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除後できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。</p>
-<p>この計算は、集団全体をターゲットとする寄与割合（population attributable fraction）を求めていることに他なりません。集団全体における曝露割合を<em>p</em>で書くと、population attributable fractionは、以下の式で表されます。</p>
-<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p>
-<p>がん検診の例では、<em>p</em>=0.5、15年死亡リスク比は<em>RR</em>=2なので、これを代入すると、<em>PAF</em>=0.5(2-1)/{0.5(2-1)+1}=0.33となり、上の正解と一致します。</p>
+<p>ロジスティック回帰の共変量に、数値を代入することで、確率を計算することができます。共変量として、2群（たとえば抗がん剤投与群と緩和療法群）を指定すれば、それぞれの群の確率が求まりますよね。その比をとれば、リスク比が計算できます。</p>
 </div>
 </div>
 </div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li>Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6</li>
+</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>

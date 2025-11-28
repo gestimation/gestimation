@@ -204,6 +204,7 @@ a:hover {
     $NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}$
 
 -   ワクチン有効率（vaccine efficacy、相対リスク減少）
+
     $VF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR$
 :::
 

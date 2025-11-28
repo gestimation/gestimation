@@ -1,0 +1,311 @@
+---
+format:
+  html:
+    toc: true
+---
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+# Story and Quiz − Epidemiology V
+
+::: serif-block
+　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing
+:::
+
+------------------------------------------------------------------------
+
+### リスク差とリスク比、どっちを使う？
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「医学部で習ったことがあるかもしれないけど、コホート研究とリスクが疫学の基本なんだ。だから公衆衛生や臨床研究をしている人の間では、オッズ比よりリスク比の方がわかりやすいとされている。一方でね、統計学で注目するのは、それぞれの指標の数学的な性質なんだ。オッズ比は数学的にいい面と悪い面がある。いいところは、”リスクの数値”と”1からリスクを引いた数値”が対称に出てくるような数式をしていること。生存確率と死亡確率をひっくり返しても同じって言ったらいいかな」
+:::
+
+::: voice-daughter
+私「ふーんそうなんだ」
+:::
+
+::: voice-father
+お父さん「後は、ケース・コントロール研究のような、コホートの一部の情報しかない状況でも計算できるし、ロジスティック回帰のようなモデリングするとき利用しやすいのがいいところかな。悪い面はね、層別解析をしたとき、ちょっと不自然な計算結果になる」
+:::
+
+::: voice-daughter
+私「へー。それは困るじゃない。層別なんてしたことないけど」**
+:::
+
+::: voice-father
+お父さん「次の2つの表を比べてみてよ」
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note title="層別した指標の併合可能性"}
+表1と表2は、がん患者100人のランダム化臨床試験を想定して作った数値例です。表1では100人全体における死亡リスクを、表2はステージIIIの50人とステージIVの50人に層別した死亡リスクを示しています。
+
+まず、抗がん剤投与群の死亡リスクをみてください。ステージIIIでは死亡リスクは20%と低く、ステージIVでは40%と高いことがわかります。そして全体の死亡リスクは、ステージIIIとステージIVの平均（30%）です。このように、リスクには、層別する前の値が、層別した後の平均になるという性質があります。
+
+これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、併合可能（collapsible）と呼んでいます。
+
+一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。リスク比は一定であるにも関わらず、同じ比の指標がばらつくのは、好ましい性質ではありません。
+
+表1. がん患者100人を対象にした仮想的なランダム化臨床試験における死亡リスクとリスク差・リスク比・オッズ比
+
+|               | 緩和療法群 | 抗がん剤投与群 | 効果の指標 |
+|---------------|------------|----------------|------------|
+| 合計（100人） |            |                |            |
+| 　死亡        | 30         | 15             |            |
+| 　生存        | 20         | 35             |            |
+| 　死亡リスク  | 60%        | 30%            |            |
+| 　リスク差    |            |                | -30%       |
+| 　リスク比    |            |                | 0.50倍     |
+| 　オッズ比    |            |                | 0.29倍     |
+
+表2. 層別後の死亡リスクとリスク差・リスク比・オッズ比
+
+|                     | 緩和療法群 | 抗がん剤投与群 | 効果の指標 |
+|---------------------|------------|----------------|------------|
+| ステージIII（50人） |            |                |            |
+| 　死亡              | 10         | 5              |            |
+| 　生存              | 15         | 20             |            |
+| 　死亡リスク        | 40%        | 20%            |            |
+| 　リスク差          |            |                | -20%       |
+| 　リスク比          |            |                | 0.50倍     |
+| 　オッズ比          |            |                | 0.38倍     |
+| ステージIV（50人）  |            |                |            |
+| 　死亡              | 20         | 10             |            |
+| 　生存              | 5          | 15             |            |
+| 　死亡リスク        | 80%        | 40%            |            |
+| 　リスク差          |            |                | -40%       |
+| 　リスク比          |            |                | 0.50倍     |
+| 　オッズ比          |            |                | 0.17倍     |
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「ていうかさ。どうせ割合同士を比べるんだから、わざわざ比を計算する必要ないと思うんだけど。パーセントの差でよくない？＋10%とか－10%とか。じゅうぶんでしょ」**
+:::
+
+::: voice-father
+お父さん「うん、リスク差はもっと使われていいと思う。でも、リスク差にも欠点がある。複数の研究を集めてメタアナリシスをするとき、それぞれの研究から得られたリスク差やリスク比をひとつの値に要約するでしょ」
+:::
+
+::: voice-daughter
+私「ああ、みたことある」
+:::
+
+::: voice-father
+お父さん「このとき問題になるのが、コントロール群（プラセボ群や緩和療法群）で観察されたリスクが、研究によって低かったり高かったりすることなんだ。同じ疾患や治療を扱っていても、予後のいい患者ばかり集めた研究もあれば、予後の悪い患者を対象にした研究もあるでしょ」
+:::
+
+::: voice-daughter
+私「そりゃあるよね」
+:::
+
+::: voice-father
+お父さん「リスク差、リスク比、オッズ比で、どれがコントロール群のリスクの影響を受けやすいかを、55件のメタアナリシスのデータを使って調べた研究がある（Furukawa, Guyatt, Griffith 2002）。その結果、リスク差は、研究ごとにリスクが変動すると、その影響でばらついていた。一方で、リスク比やオッズ比は、研究を通じて安定していることがわかった。だから、リスク差だけでも、リスク比やオッズ比のような比の指標だけでも、論文で示す情報としては不足があるっていうのが結論になる」
+:::
+::::::::::::::::::::::::::::::::: 
+
+
+
+臨床研究の結果報告では、絶対指標（リスク差やKaplan-Meier曲線）と相対指標（リスク比やハザード比）の両方を示す
+
+::: {.callout-note title="このエピソードに関係するクイズです"}
+
+2値データの解析で用いられるロジスティック回帰は、「確率」ではなく「オッズ」をモデル化しており、オッズ比を求めるためによく用いられます（回帰係数の指数がオッズ比）。さて、ロジスティック回帰を用いて、リスク比を計算することができるでしょうか。
+
+1.  ロジスティック回帰を用いてリスク比を計算できる
+2.  ロジスティック回帰を用いてリスク比を計算できない
+:::
+
+::: {.callout-note collapse="true" title="答えはこちら"}
+-   **正解は1です**
+
+ロジスティック回帰の共変量に、数値を代入することで、確率を計算することができます。共変量として、2群（たとえば抗がん剤投与群と緩和療法群）を指定すれば、それぞれの群の確率が求まりますよね。その比をとれば、リスク比が計算できます。
+:::
+
+### 文献
+
+- Furukawa TA, Guyatt GH, Griffith LE. Can we individualize the ‘number needed to treat’? An empirical study of summary effect measures in meta-analysis. Int J Epidemiol 2002; 31: 72-6
+
+### Continuation of their story
+
+[Study design I](study-design-1.qmd)
+
+[Study design II](study-design-2.qmd)
+
+[Study design III](study-design-3.qmd)
+
+[Study design IV](study-design-4.qmd)
+
+[Study design V](study-design-5.qmd)
+
+[Clinical trial I](clinical-trial-1.qmd)
+
+[Clinical trial II](clinical-trial-2.qmd)
+
+[Clinical trial III](clinical-trial-3.qmd)
+
+[Epidemiology I](epidemiology-1.qmd)
+
+[Epidemiology II](epidemiology-2.qmd)
+
+[Epidemiology III](epidemiology-3.qmd)
+
+[Epidemiology IV](epidemiology-4.qmd)
+
+[Regression I](logistic-regression-1.qmd)
+
+[Regression II](logistic-regression-2.qmd)
+
+[Regression III](logistic-regression-3.qmd)
+
+[Regression IV](logistic-regression-4.qmd)
+
+[Causal inference I](causal-inference-1.qmd)
+
+[Causal inference II](causal-inference-2.qmd)
+
+[Causal inference III](causal-inference-3.qmd)
+
+[Causal inference IV](causal-inference-4.qmd)
+
+[Publish a paper I](publish-a-paper-1.qmd)
+
+[Publish a paper II](publish-a-paper-2.qmd)
+
+[Publish a paper III](publish-a-paper-3.qmd)
+
+[Publish a paper IV](publish-a-paper-4.qmd)
