@@ -182,8 +182,7 @@ Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p �
 
 A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **統計的有意性とp値に関するASA声明**
+::: {.callout-note title="統計的有意性とp値に関するASA声明"}
 
 あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。
 
@@ -247,8 +246,8 @@ After 8 years of slow accrual, the JCOG data and safety monitoring committee app
 :::
 :::::::::::::::::::::::::::::::::
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **片側p値と両側p値**
+
+::: {.callout-note title="片側p値と両側p値"}
 
 p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。
 

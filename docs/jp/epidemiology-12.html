@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clinical-trial-2 – Coffee and Research</title>
+<title>epidemiology-12 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -124,10 +153,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-ii" id="toc-story-and-quiz-clinical-trial-ii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-ii">Story and Quiz − Clinical trial II</a>
+  <li><a href="#story-and-quiz-epidemiology-i" id="toc-story-and-quiz-epidemiology-i" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-i">Story and Quiz − Epidemiology I</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#って100人いたら98人に効くって思わない" id="toc-って100人いたら98人に効くって思わない" class="nav-link" data-scroll-target="#って100人いたら98人に効くって思わない">98%って100人いたら98人に効くって思わない？</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -274,110 +302,305 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-ii" class="level1">
-<h1>Story and Quiz − Clinical trial II</h1>
+<section id="story-and-quiz-epidemiology-i" class="level1">
+<h1>Story and Quiz − Epidemiology I</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing</p>
 </div>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
+<section id="って100人いたら98人に効くって思わない" class="level3">
+<h3 class="anchored" data-anchor-id="って100人いたら98人に効くって思わない">98%って100人いたら98人に効くって思わない？</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="前回までのあらすじ">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+前回までのあらすじ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。それからというもの、父は娘に統計の話をふるチャンスをうかがっていた。</p>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「コーヒー飲む？お父さん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、ありがとう。おいしいね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん、ホットコーヒーあったまるよね。そういえばこの前出たワクチンってすごいね。有効率98%だって」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。でもさ、ワクチンの有効率って意外と計算が難しいんだよ。プラセボに比べてって意味だから」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ん？100人いたら98人に効くって意味じゃないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「違う違う。プラセボの効果に比べて、どのくらい感染を予防できるっていう意味のパーセントなんだ。論文ではともかく日常会話では誤解されやすい言葉だよね」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="リスクを比較するための基本的な指標">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+リスクを比較するための基本的な指標
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>医学では分野によってさまざまな指標が用いられており、特に割合を比較する指標にはわかりにくいものが少なくありません。群1で得られた疾患リスク（割合）を<span class="math inline">\(\pi_1\)</span>、群2の疾患リスク（割合）を<span class="math inline">\(\pi_2\)</span>とすると、2群を比較するために、以下のような指標が用いられます。なお、これらの指標を使うときは、どちらの群を基準に比較しているかを意識することが大切です。ここでは群2を基準にとっています。</p>
+<ul>
+<li><p>リスク差（risk difference、絶対リスク減少）</p>
+<p><span class="math inline">\(RD={\pi_1}-{\pi_2}\)</span></p></li>
+<li><p>リスク比（risk ratio）</p>
+<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p></li>
+<li><p>オッズ比（odds ratio）</p>
+<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="治療後のリスクを比較するための指標">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+治療後のリスクを比較するための指標
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>特に、2種類の治療のどちらが有効か評価する状況では、以下の指標もよく用いられます。どちらの指標でも<span class="math inline">\(\pi_2&gt;\pi_1\)</span>と想定されています。ワクチン有効率では、群2はプラセボ群です。</p>
+<ul>
+<li><p>Number needed to treat（NNT）</p>
+<p><span class="math inline">\(NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}\)</span></p></li>
+<li><p>ワクチン有効率（vaccine efficacy、相対リスク減少） <span class="math inline">\(VF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="寄与割合とその関連指標">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+寄与割合とその関連指標
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction）という別の指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる呼ばれ方をしており、どのような集団をターゲットとするかで定義も変わるので、正確に扱うべきです。</p>
+<p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
+<ul>
+<li><p>Excess fraction（またはrisk fraction）</p>
+<p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
+</ul>
+<p>一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
+<ul>
+<li><p>Preventable fraction</p>
+<p><span class="math inline">\(PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 42%">
+<col style="width: 20%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指標</th>
+<th>分母（ターゲット集団）</th>
+<th>何を表す？</th>
+<th>いつ使う？</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Excess fraction（寄与割合）</td>
+<td><strong>曝露者だけ</strong>（E=1）</td>
+<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
+<td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Preventable fraction（予防寄与割合）</td>
+<td><strong>曝露者だけ</strong>（E=1）</td>
+<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
+<td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Population attributable fraction（集団寄与割合）</td>
+<td><strong>全員</strong>（集団全体）</td>
+<td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
+<td>公衆衛生・医療政策で、曝露をなくせば集団でどれだけ減るかを評価するとき</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数値例</strong></p>
+<p>いくつかの指標の数値例を示しておきましょう。この表は、 曝露と膵がんリスクの関係を調べる仮想的なコホート研究から得られたデータを表しています。上の式を用いて、リスク差、リスク比、オッズ比、excess fractionを求めると、以下のような結果が得られます。ワクチン有効率と同じように、excess fractionもパーセントで示すことがあるため、要注意です。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>曝露あり</th>
+<th>曝露なし</th>
+<th>効果の指標</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>合計</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>15</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>365</td>
+<td>868</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>3.9%</td>
+<td>1.4%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　リスク差</td>
+<td></td>
+<td></td>
+<td>2.5%</td>
+</tr>
+<tr class="even">
+<td>　リスク比</td>
+<td></td>
+<td></td>
+<td>3倍</td>
+</tr>
+<tr class="odd">
+<td>　オッズ比</td>
+<td></td>
+<td></td>
+<td>3倍</td>
+</tr>
+<tr class="even">
+<td>　Excess fraction</td>
+<td></td>
+<td></td>
+<td>74%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へー、確かにパーセントっていわれるとただの割合と思いがちだよね。お父さんって、頭の中にいつもこんな計算式があるの？いきなり式が出てくると違和感あるなあ。統計学と医学ってだいぶ雰囲気が違うね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「もう慣れちゃったのかもね。でも、式で書かないと、ワクチン有効率がなんなのか、わからないでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確かにね。数字だけみると、レトリックに騙されちゃいそう。Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そっか、そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「残りの2人は、本当はがんだったのに、検診では見つけられなかった。そのため、67歳と73歳で亡くなった。つまり、がん検診後の生存期間は7年と13年。じゃあ、仮にこの2人を60歳のとき根治切除できたとしたら、生存期間は何割長くなるだろう」</p>
+</div>
+<div class="voice-daughter">
+<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」**</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、別の質問をするよ。もし、がん検診陽性の2人を60歳のとき根治切除できなかったとしたら、生存期間はどれくらい失われる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「(10-15)/15=-0.33だから、33%減っちゃうね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。さっきのexcess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほど、ターゲット集団を分母にとるのね。ターゲットがあるのが、リスク差とかリスク比とかとの違いってわけだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いや？効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「まあねえ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「つまり臨床試験の集団全体がターゲット集団になる。因果リスク差とか、因果リスク比っていう言葉があるんだけど、これは集団全体に別の治療をしたときや、集団全体がリスク因子に曝露したとき、リスクがどう変化するかを表してるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。じゃあワクチン有効率はどうなの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ワクチン有効率も臨床試験で推定するよね。だからそのワクチンのターゲット全体が、ワクチンを接種したとき、それがプラセボだったときに比べ、何割感染症が減るかっていう解釈になる。現場では、既存のワクチンが普及していることがほとんどでしょ。そこにワクチン有効率98%の新しいワクチンを投入しても、感染症が98%減ることにはならない」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="ターゲット集団">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ターゲット集団
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。</p>
+</div>
+</div>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき、気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
+<p>お父さん「もうひとつ気を付けないといけないのは、リスクには時間の概念が隠れていること。検診後10年時点の死亡確率を考えてみよう。陽性2人の死亡確率は0%、陰性2人の死亡確率50%だよね。このときのexcess fractionはわかる？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
+<p>私「うん。(0.5-0)/0.5=1でしょ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
+<p>お父さん「そう、つまり根治切除していれば、がん陰性の2人の死亡は100%防げたという意味になる。でもさ、がん検診後、12年経つとどうなる？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
+<p>私「(0.5-0.5)/0.5=0になるね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
+<p>お父さん「じゃあ、がん検診後、20年経つと？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
-</div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-default callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
+<p>私「生存者はいなくなるね。(1-1)/1=0かな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
+<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていいうのは、リスク比やオッズ比も同じだけどね」</p>
 </div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
 <div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
+<p>私「なるほどね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-片側p値と両側p値
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+<p>お父さん「まとめるとね、“何%減る”とか”何%に効く”というパーセントを見たら、どの集団のことなのか、どの時点のリスクかを意識しよう、ということだね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -390,17 +613,17 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります。先ほど用いたがん検診の例で考えましょう。仮にがん検診の感度が100%だったら、先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、どれくらい減ると期待されるでしょうか。</p>
 <ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+<li>0%</li>
+<li>33%</li>
+<li>50%</li>
+<li>100%</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -409,23 +632,18 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は3です</strong></li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+<p>この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除後できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。</p>
+<p>この計算は、集団全体をターゲットとする寄与割合（population attributable fraction）を求めていることに他なりません。集団全体における曝露割合を<em>p</em>で書くと、population attributable fractionは、以下の式で表されます。</p>
+<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p>
+<p>がん検診の例では、<em>p</em>=0.5、15年死亡リスク比は<em>RR</em>=2なので、これを代入すると、<em>PAF</em>=0.5(2-1)/{0.5(2-1)+1}=0.33となり、上の正解と一致します。</p>
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p>[Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33] (日本語訳: https://www.biometrics.gr.jp)</p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
-</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>

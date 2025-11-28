@@ -384,22 +384,27 @@ a:hover {
 <p>私「p値とかASA声明については聞いたよね。でも、エラーって言葉はでてこなかったな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「じゃあ、話はそこからだね」</p>
+<p>お父さん「じゃあ、話はそこからだね。ちょっとそこのナプキンとペンをとって」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ん？これのこと？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ありがとう。αエラー・βエラーは、表にしないと説明できないからね」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="αエラーとβエラー">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+αエラーとβエラー
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>αエラーとβエラー</strong></p>
 <p>これまで、臨床試験JCOG9502（Sasako, et al.&nbsp;2006）の文脈に沿って、片側p値と両側p値の違いも交えながら、p値について解説してきました。しかし本質的に重要なのは、p値を用いた判断に、どのような合理性があるのか、ということです。</p>
-<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果もp&lt;0.05とp≥0.05の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
+<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果も<span class="math inline">\(p&lt;0.05\)</span>と<span class="math inline">\(p≥0.05\)</span>の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
 <p>このうち、臨床試験の結果から判断を誤ってしまうケースは2つです。つまり、効果があるのにp≥0.05になってしまうケースと、効果がないのに（帰無仮説が正しいのに）p&lt;0.05になってしまうケースです。仮説検定では、前者をαエラー（alpha error）、後者をβエラー（beta error）と呼んでいます。また、βエラーを1から引いたものを検出力（power）と呼んでいます。</p>
 <table class="caption-top table">
 <thead>
@@ -422,6 +427,26 @@ Note
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「まあ当たり前だよね。治療効果がないのに、有意に効いたって論文を書くのも間違いだし、治療効果があるのに、有意にならないのも研究失敗だし」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。でも、正確にいうと、αエラー・βエラーは”統計学的に有意”とかp値とかとは、直接関係する概念じゃない。別に、効果があるかどうか判定する基準は、p値じゃなくてもいいわけだからね。ポイントはね、p&lt;0.05は、αエラーだけをコントロールする基準だってこと」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="αエラー、βエラー、p値">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+αエラー、βエラー、p値
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>αエラーとβエラーが生じる確率を考えてみましょう。理論的に考えると、サンプルサイズが大きくなるほど、ランダム誤差は小さくなります。αエラーとβエラーも同じで、サンプルサイズが大きいほど小さくなる（判断を誤りにくくなる）性質があります。しかし、2つのエラーはトレードオフの関係にあります。サンプルサイズが一定だと、両方同時に小さくすることはできません。そこで通常は、αエラーを優先して、事前に決めた水準よりも小さく保たれるような判定方式を用います。これが仮説検定であり、事前に決めた水準のことを有意水準と呼びます。実は、p&lt;0.05で判定することと有意水準を5%と設定することは、同じ意味です。</p>
 <p>ややこしいのですが、JCOG9502では症例登録に予定より時間がかかったため、有意水準10%、つまり全生存期間の片側p値を0.1と比べる方式が採用されました。この方式では、LTAに延命効果がなくても、100回に10回はαエラーが生じてしまい、LTAが有効と判定してしまうことになります。つまり、有意水準が5%から10%に高くなると、判断を誤る確率が増える代わりに、サンプルサイズが小さくて済むわけです。</p>
 </div>
@@ -983,7 +1008,7 @@ Note
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -992,7 +1017,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>
