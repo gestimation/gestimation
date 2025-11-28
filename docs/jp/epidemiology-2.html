@@ -343,13 +343,18 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction）という別の指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる呼ばれ方をしており、どのような集団をターゲットとするかで定義も変わるので、正確に扱うべきです。</p>
+<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction/excess fraction）という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団をターゲットとするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。</p>
 <p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
 <ul>
-<li><p>Excess fraction（またはrisk fraction）</p>
+<li><p>Excess fraction</p>
 <p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
 </ul>
-<p>一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
+<p>また、excess fractionのターゲット集団を群1から集団全体（群1+群2）にした指標は、population attributable fractionと呼ばれています。<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
+<ul>
+<li><p>Population attributable fraction</p>
+<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p></li>
+</ul>
+<p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
 <ul>
 <li><p>Preventable fraction</p>
 <p><span class="math inline">\(PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
@@ -365,7 +370,7 @@ a:hover {
 <thead>
 <tr class="header">
 <th>指標</th>
-<th>分母（ターゲット集団）</th>
+<th>ターゲット集団</th>
 <th>何を表す？</th>
 <th>いつ使う？</th>
 <th></th>
@@ -374,21 +379,21 @@ a:hover {
 <tbody>
 <tr class="odd">
 <td>Excess fraction（寄与割合）</td>
-<td><strong>曝露者だけ</strong>（E=1）</td>
+<td><strong>曝露だけ</strong></td>
 <td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
 <td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
 <td></td>
 </tr>
 <tr class="even">
 <td>Preventable fraction（予防寄与割合）</td>
-<td><strong>曝露者だけ</strong>（E=1）</td>
+<td><strong>曝露だけ</strong></td>
 <td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
 <td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>Population attributable fraction（集団寄与割合）</td>
-<td><strong>全員</strong>（集団全体）</td>
+<td><strong>曝露+非曝露</strong></td>
 <td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
 <td>公衆衛生・医療政策で、曝露をなくせば集団でどれだけ減るかを評価するとき</td>
 <td></td>
@@ -493,13 +498,13 @@ a:hover {
 <p>私「(10-15)/15=-0.33だから、33%減っちゃうね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。さっきのexcess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
+<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。この例では生存期間で説明したけど、疾患リスクでもターゲット集団に依存する点は同じ。Excess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど、ターゲット集団を分母にとるのね。ターゲットがあるのが、リスク差とかリスク比とかとの違いってわけだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「いや？効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
+<p>お父さん「そういうわけでもないんだ。効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「まあねえ」</p>
@@ -566,7 +571,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります。先ほど用いたがん検診の例で考えましょう。仮にがん検診の感度が100%だったら、先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、どれくらい減ると期待されるでしょうか。</p>
+<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります（population attributable fraction）。先ほど用いたがん検診の例で考えましょう。仮にがん検診の精度が高くなって、感度を100%にできたとしましょう。先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、4人のうち、どのくらい減ると期待されるでしょうか。</p>
 <ol type="1">
 <li>0%</li>
 <li>33%</li>
@@ -591,7 +596,7 @@ a:hover {
 <li><strong>正解は3です</strong></li>
 </ul>
 <p>この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除後できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。</p>
-<p>この計算は、集団全体をターゲットとする寄与割合（population attributable fraction）を求めていることに他なりません。集団全体における曝露割合を<span class="math inline">\(p\)</span>で書くと、population attributable fractionは、以下の式で表されます。</p>
+<p>この計算は、集団全体をターゲットとする寄与割合を求めていることに他なりません。集団全体における曝露割合を<span class="math inline">\(p\)</span>で書くと、population attributable fractionは、以下の式で表されます。</p>
 <p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p>
 <p>がん検診の例では、<span class="math inline">\(p=0.5\)</span>、15年死亡リスク比は<span class="math inline">\(RR=2\)</span>なので、これを代入すると、<span class="math inline">\(PAF=0.5(2-1)/{0.5(2-1)+1}=0.33\)</span>となり、上の正解と一致します。</p>
 </div>
@@ -608,10 +613,12 @@ a:hover {
 <p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
 <p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
 <p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
+<p><a href="../jp/clinical-trial-4.html">Clinical trial IV</a></p>
 <p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
 <p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
 <p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
 <p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
+<p><a href="../jp/epidemiology-5.html">Epidemiology V</a></p>
 <p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
 <p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
 <p><a href="../jp/logistic-regression-3.html">Regression III</a></p>

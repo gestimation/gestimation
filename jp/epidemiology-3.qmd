@@ -404,6 +404,8 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 
 [Clinical trial III](clinical-trial-3.qmd)
 
+[Clinical trial IV](clinical-trial-4.qmd)
+
 [Epidemiology I](epidemiology-1.qmd)
 
 [Epidemiology II](epidemiology-2.qmd)
@@ -411,6 +413,8 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 [Epidemiology III](epidemiology-3.qmd)
 
 [Epidemiology IV](epidemiology-4.qmd)
+
+[Epidemiology V](epidemiology-5.qmd)
 
 [Regression I](logistic-regression-1.qmd)
 
