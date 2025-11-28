@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -126,7 +155,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#story-and-quiz-epidemiology-v" id="toc-story-and-quiz-epidemiology-v" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-v">Story and Quiz − Epidemiology V</a>
   <ul class="collapse">
-  <li><a href="#リスク差とリスク比どっちを使う" id="toc-リスク差とリスク比どっちを使う" class="nav-link" data-scroll-target="#リスク差とリスク比どっちを使う">リスク差とリスク比、どっちを使う？</a></li>
+  <li><a href="#リスク比とオッズ比って同じだっけ" id="toc-リスク比とオッズ比って同じだっけ" class="nav-link" data-scroll-target="#リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -278,225 +309,368 @@ a:hover {
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
 </div>
 <hr>
-<section id="リスク差とリスク比どっちを使う" class="level3">
-<h3 class="anchored" data-anchor-id="リスク差とリスク比どっちを使う">リスク差とリスク比、どっちを使う？</h3>
+<section id="リスク比とオッズ比って同じだっけ" class="level3">
+<h3 class="anchored" data-anchor-id="リスク比とオッズ比って同じだっけ">リスク比とオッズ比って同じだっけ</h3>
 <div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、リスク比とかオッズ比とか計算したなあ。リスク比とオッズ比って結局同じ？みたいな」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「医学部で習ったことがあるかもしれないけど、コホート研究とリスクが疫学の基本なんだ。だから公衆衛生や臨床研究をしている人の間では、オッズ比よりリスク比の方がわかりやすいとされている。一方でね、統計学で注目するのは、それぞれの指標の数学的な性質なんだ。オッズ比は数学的にいい面と悪い面がある。いいところは、”リスクの数値”と”1からリスクを引いた数値”が対称に出てくるような数式をしていること。生存確率と死亡確率をひっくり返しても同じって言ったらいいかな」</p>
+<p>お父さん「ああ、この前、膵がんの数値例で計算したとき、リスク比とオッズ比はどちらも3倍だったね。でも、これはたまたま。もっと正確にいうと、膵がんのようにリスクが低いと、リスク比とオッズ比は近い値になるんだ。ほら、リスク比とオッズ比の数式を見比べてよ。リスク比とオッズ比の違いって、<span class="math inline">\(1-\pi_1\)</span>と<span class="math inline">\(1-\pi_2\)</span>があるかどうかでしょ。リスクが低いと、ここがほとんど1になるから、リスク比とオッズ比の差がなくなる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふーんそうなんだ」</p>
+<p>私「まあ、私も論文読むとき別に区別してないけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「後は、ケース・コントロール研究のような、コホートの一部の情報しかない状況でも計算できるし、ロジスティック回帰のようなモデリングするとき利用しやすいのがいいところかな。悪い面はね、層別解析をしたとき、ちょっと不自然な計算結果になる」</p>
+<p>お父さん「えーっと、状況によってはそれはよくない。疾患や対象集団によっては、リスクが低いときばかりじゃないからね。最近の論文だと、オッズ比をリスク比の代わりに使うなら、そのままの値じゃなくて、オッズ比の平方根を報告した方がいいっていうものもある」</p>
 </div>
 <div class="voice-daughter">
-<p>私「へー。それは困るじゃない。層別なんてしたことないけど」**</p>
-</div>
-<div class="voice-father">
-<p>お父さん「次の2つの表を比べてみてよ」</p>
+<p>私「なにそれ、またお作法が増えたの？」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="層別した指標の併合可能性">
+<div class="callout callout-style-default callout-note callout-titled" title="リスク比はオッズ比の近似か">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-層別した指標の併合可能性
+リスク比はオッズ比の近似か
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>表1と表2は、がん患者100人のランダム化臨床試験を想定して作った数値例です。表1では100人全体における死亡リスクを、表2はステージIIIの50人とステージIVの50人に層別した死亡リスクを示しています。</p>
-<p>まず、抗がん剤投与群の死亡リスクをみてください。ステージIIIでは死亡リスクは20%と低く、ステージIVでは40%と高いことがわかります。そして全体の死亡リスクは、ステージIIIとステージIVの平均（30%）です。このように、リスクには、層別する前の値が、層別した後の平均になるという性質があります。</p>
-<p>これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、併合可能（collapsible）と呼んでいます。</p>
-<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。リスク比は一定であるにも関わらず、同じ比の指標がばらつくのは、好ましい性質ではありません。</p>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">ステージによる層別前</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">ステージによる層別後</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>表1. がん患者100人を対象にした仮想的なランダム化臨床試験における死亡リスクとリスク差・リスク比・オッズ比</p>
+<p>表1は、2群の疾患リスク<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>の数値を0.1から0.9まで動かして、リスク比、オッズ比、オッズ比の平方根（square root of OR）を計算したものです。</p>
+<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p>
+<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p>
+<p><span class="math inline">\(SOR=\sqrt{\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}}\)</span></p>
+<p><span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>のどちらかが0.2を超えると、リスク比とオッズ比はまったく違う値になることがわかります。リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなります。また、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が0.2～0.7の範囲であれば、リスク比とオッズ比の平方根は、高々0.11しか違いません。</p>
+<p>2群の疾患リスクを0.1から0.9まで動かしたときのリスク比、オッズ比、オッズ比の平方根</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
-<th>緩和療法群</th>
-<th>抗がん剤投与群</th>
-<th>効果の指標</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>合計（100人）</td>
-<td></td>
-<td></td>
-<td></td>
+<td>0.1</td>
+<td>RR=1</td>
+<td>0.50</td>
+<td>0.33</td>
+<td>0.25</td>
+<td>0.20</td>
+<td>0.17</td>
+<td>0.14</td>
+<td>0.13</td>
+<td>0.11</td>
 </tr>
 <tr class="even">
-<td>　死亡</td>
-<td>30</td>
-<td>15</td>
 <td></td>
+<td>OR=1</td>
+<td>0.44</td>
+<td>0.25</td>
+<td>0.17</td>
+<td>0.11</td>
+<td>0.07</td>
+<td>0.05</td>
+<td>0.03</td>
+<td>0.01</td>
 </tr>
 <tr class="odd">
-<td>　生存</td>
-<td>20</td>
-<td>35</td>
 <td></td>
+<td>SOR=1</td>
+<td>0.67</td>
+<td>0.51</td>
+<td>0.41</td>
+<td>0.33</td>
+<td>0.27</td>
+<td>0.22</td>
+<td>0.17</td>
+<td>0.11</td>
 </tr>
 <tr class="even">
-<td>　死亡リスク</td>
-<td>60%</td>
-<td>30%</td>
+<td>0.2</td>
 <td></td>
+<td>RR=1</td>
+<td>0.67</td>
+<td>0.50</td>
+<td>0.40</td>
+<td>0.33</td>
+<td>0.29</td>
+<td>0.25</td>
+<td>0.22</td>
 </tr>
 <tr class="odd">
-<td>　リスク差</td>
 <td></td>
 <td></td>
-<td>-30%</td>
+<td>OR=1</td>
+<td>0.58</td>
+<td>0.38</td>
+<td>0.25</td>
+<td>0.17</td>
+<td>0.11</td>
+<td>0.06</td>
+<td>0.03</td>
 </tr>
 <tr class="even">
-<td>　リスク比</td>
 <td></td>
 <td></td>
-<td>0.50倍</td>
+<td>SOR=1</td>
+<td>0.76</td>
+<td>0.61</td>
+<td>0.50</td>
+<td>0.41</td>
+<td>0.33</td>
+<td>0.25</td>
+<td>0.17</td>
 </tr>
 <tr class="odd">
-<td>　オッズ比</td>
+<td>0.3</td>
 <td></td>
 <td></td>
-<td>0.29倍</td>
+<td>RR=1</td>
+<td>0.75</td>
+<td>0.60</td>
+<td>0.50</td>
+<td>0.43</td>
+<td>0.38</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.64</td>
+<td>0.43</td>
+<td>0.29</td>
+<td>0.18</td>
+<td>0.11</td>
+<td>0.05</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.80</td>
+<td>0.65</td>
+<td>0.53</td>
+<td>0.43</td>
+<td>0.33</td>
+<td>0.22</td>
+</tr>
+<tr class="even">
+<td>0.4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.80</td>
+<td>0.67</td>
+<td>0.57</td>
+<td>0.50</td>
+<td>0.44</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.67</td>
+<td>0.44</td>
+<td>0.29</td>
+<td>0.17</td>
+<td>0.07</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.82</td>
+<td>0.67</td>
+<td>0.53</td>
+<td>0.41</td>
+<td>0.27</td>
+</tr>
+<tr class="odd">
+<td>0.5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.83</td>
+<td>0.71</td>
+<td>0.63</td>
+<td>0.56</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.67</td>
+<td>0.43</td>
+<td>0.25</td>
+<td>0.11</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.82</td>
+<td>0.65</td>
+<td>0.50</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td>0.6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.86</td>
+<td>0.75</td>
+<td>0.67</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.64</td>
+<td>0.38</td>
+<td>0.17</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.80</td>
+<td>0.61</td>
+<td>0.41</td>
+</tr>
+<tr class="odd">
+<td>0.7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.88</td>
+<td>0.78</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.58</td>
+<td>0.26</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.76</td>
+<td>0.51</td>
+</tr>
+<tr class="even">
+<td>0.8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.89</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.44</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.67</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>表2. 層別後の死亡リスクとリスク差・リスク比・オッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>緩和療法群</th>
-<th>抗がん剤投与群</th>
-<th>効果の指標</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ステージIII（50人）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　死亡</td>
-<td>10</td>
-<td>5</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　生存</td>
-<td>15</td>
-<td>20</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　死亡リスク</td>
-<td>40%</td>
-<td>20%</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　リスク差</td>
-<td></td>
-<td></td>
-<td>-20%</td>
-</tr>
-<tr class="even">
-<td>　リスク比</td>
-<td></td>
-<td></td>
-<td>0.50倍</td>
-</tr>
-<tr class="odd">
-<td>　オッズ比</td>
-<td></td>
-<td></td>
-<td>0.38倍</td>
-</tr>
-<tr class="even">
-<td>ステージIV（50人）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　死亡</td>
-<td>20</td>
-<td>10</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　生存</td>
-<td>5</td>
-<td>15</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　死亡リスク</td>
-<td>80%</td>
-<td>40%</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク差</td>
-<td></td>
-<td></td>
-<td>-40%</td>
-</tr>
-<tr class="odd">
-<td>　リスク比</td>
-<td></td>
-<td></td>
-<td>0.50倍</td>
-</tr>
-<tr class="even">
-<td>　オッズ比</td>
-<td></td>
-<td></td>
-<td>0.17倍</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「ていうかさ。どうせ割合同士を比べるんだから、わざわざ比を計算する必要ないと思うんだけど。パーセントの差でよくない？＋10%とか－10%とか。じゅうぶんでしょ」**</p>
+<p>私「平方根なんて論文書くとき勝手に計算していいのかね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん、リスク差はもっと使われていいと思う。でも、リスク差にも欠点がある。複数の研究を集めてメタアナリシスをするとき、それぞれの研究から得られたリスク差やリスク比をひとつの値に要約するでしょ」</p>
+<p>お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。Methodsで説明していれば。でも、ふつうのコホート研究をするんだったら、リスク比を計算するのが素直だと思うけど」</p>
 </div>
-<div class="voice-daughter">
-<p>私「ああ、みたことある」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「このとき問題になるのが、コントロール群（プラセボ群や緩和療法群）で観察されたリスクが、研究によって低かったり高かったりすることなんだ。同じ疾患や治療を扱っていても、予後のいい患者ばかり集めた研究もあれば、予後の悪い患者を対象にした研究もあるでしょ」</p>
+<div class="callout callout-style-default callout-note callout-titled" title="ケース・コントロール研究とオッズ比">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="voice-daughter">
-<p>私「そりゃあるよね」</p>
+<div class="callout-title-container flex-fill">
+ケース・コントロール研究とオッズ比
 </div>
-<div class="voice-father">
-<p>お父さん「リスク差、リスク比、オッズ比で、どれがコントロール群のリスクの影響を受けやすいかを、55件のメタアナリシスのデータを使って調べた研究がある（Furukawa, Guyatt, Griffith 2002）。その結果、リスク差は、研究ごとにリスクが変動すると、その影響でばらついていた。一方で、リスク比やオッズ比は、研究を通じて安定していることがわかった。だから、リスク差だけでも、リスク比やオッズ比のような比の指標だけでも、論文で示す情報としては不足があるっていうのが結論」</p>
-<div class="voice-daughter">
-<p>私「じゃあどうしたらいいのよ」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「結局、臨床研究で観察された差って、リスク差やワクチン有効率のようなひとつの数字で要約できないんだと思う。結果を報告するときは、絶対指標（リスク差やKaplan-Meier曲線）と相対指標（リスク比やハザード比）の両方を示したり、生存曲線でグラフにするのが正解なんじゃないかな」</p>
+<div class="callout-body-container callout-body">
+<p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -509,15 +683,16 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>2値データの解析で用いられるロジスティック回帰は、「確率」ではなく「オッズ」をモデル化しており、オッズ比を求めるためによく用いられます（回帰係数の指数がオッズ比）。さて、ロジスティック回帰を用いて、リスク比を計算することができるでしょうか。</p>
+<p>リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなるといいました。それでは、2群をオッズ比で比較するときのp値は、リスク比で比較するときのp値より、小さくなる（つまり有意になりやすいので得をする）のでしょうか。実際にデータから計算されたp値だと、検定の種類の選び方に影響されるし、偶然性も入るので、理論上の期待値がどうなるか考えてみてください。</p>
 <ol type="1">
-<li>ロジスティック回帰を用いてリスク比を計算できる</li>
-<li>ロジスティック回帰を用いてリスク比を計算できない</li>
+<li>オッズ比のp値は、リスク比のp値より、期待値の上で小さい</li>
+<li>オッズ比のp値は、リスク比のp値より、期待値の上で大きい</li>
+<li>オッズ比のp値は、リスク比のp値と、期待値の上で等しい</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -526,15 +701,16 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は1です</strong></li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>ロジスティック回帰の共変量に、数値を代入することで、確率を計算することができます。共変量として、2群（たとえば抗がん剤投与群と緩和療法群）を指定すれば、それぞれの群の確率が求まりますよね。その比をとれば、リスク比が計算できます。</p>
+<p>リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定です。</p>
 </div>
 </div>
 </div>
+</section>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
@@ -571,8 +747,6 @@ a:hover {
 <p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
 
 
-</section>
-</div>
 </section>
 </section>
 
