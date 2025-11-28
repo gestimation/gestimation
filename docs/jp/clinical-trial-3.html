@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -161,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#story-and-quiz-clinical-trial-iii" id="toc-story-and-quiz-clinical-trial-iii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-iii">Story and Quiz − Clinical trial III</a>
   <ul class="collapse">
-  <li><a href="#お父さんその95信頼区間って本当に95なの" id="toc-お父さんその95信頼区間って本当に95なの" class="nav-link" data-scroll-target="#お父さんその95信頼区間って本当に95なの">お父さん、その95%信頼区間って本当に95%なの？</a></li>
+  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
@@ -312,412 +277,107 @@ a:hover {
 <section id="story-and-quiz-clinical-trial-iii" class="level1">
 <h1>Story and Quiz − Clinical trial III</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 </div>
 <hr>
-<section id="お父さんその95信頼区間って本当に95なの" class="level3">
-<h3 class="anchored" data-anchor-id="お父さんその95信頼区間って本当に95なの">お父さん、その95%信頼区間って本当に95%なの？</h3>
+<section id="正しくp値を解釈するための考え方" class="level3">
+<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>父「コーヒー淹れたよ」</p>
+<p>お父さん「JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき、気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ありがとう。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
+<p>私「それがルールなんじゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>父「ん？そりゃ当たってるよ。仮定した確率分布が正しければね。証明もできるよ」</p>
+<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふーん。じゃあ正しいんだ。ほとんど間違わないってすごいね」</p>
+<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
 </div>
 <div class="voice-father">
-<p>父「ああ、言葉だけで95%っていわれても実感がわかないよね。じゃあ今日はRでハザード比の95%信頼区間の被覆確率（coverage）を出してみようか。シミュレーションでね」</p>
+<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
 </div>
 <div class="voice-daughter">
-<p>私「coverage？つまり、本当に100回に95回あたるかどうか？」</p>
+<p>私「なんだこの禅問答」</p>
 </div>
-<div class="voice-father">
-<p>父「そう。教科書の約束が、シミュレーションデータでどの程度守られているかを確かめる実験だよ。前提条件を整理しよう。2群比較の生存曲線を比べる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマあり群とストーマなし群ね」</p>
-</div>
-<div class="voice-father">
-<p>父「そうだね、ストーマあり群とストーマなし群のOSを比べよう。真のハザード比は1.5、つまりストーマあり群の方が寿命が1.5倍短い。ハザード比の95%信頼区間は、1000回シミュレーションしたら、1.5を約950回は含んでいるはず」</p>
-</div>
-<div class="voice-daughter">
-<p>私「これがcoverageね」</p>
-</div>
-<div class="voice-father">
-<p>父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Coxモデルの仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
-</div>
-<div class="voice-daughter">
-<p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
+<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
+<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
+<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
+<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
+<div class="callout callout-style-default callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-coxph()を用いた95%信頼区間のシミュレーション
+統計的有意性とp値に関するASA声明
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>calculate_coverage <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">model=</span><span class="fu">c</span>(<span class="st">"coxph"</span>,<span class="st">"finegray"</span>), n, hr1, hr2, hr_true) {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  replications<span class="ot">=</span><span class="dv">1000</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  covered <span class="ot">&lt;-</span> <span class="fu">numeric</span>(replications)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (r <span class="cf">in</span> <span class="fu">seq_len</span>(replications)) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(n, hr1, hr2)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">identical</span>(model, <span class="st">"coxph"</span>)) {</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">identical</span>(model, <span class="st">"finegray"</span>)) {</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      dat<span class="sc">$</span>fstatus_cir <span class="ot">&lt;-</span> <span class="fu">factor</span>(dat<span class="sc">$</span>status_cir,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"censor"</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                           <span class="st">"relapse"</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                                           <span class="st">"death"</span>))</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      fgdat <span class="ot">&lt;-</span> <span class="fu">finegray</span>(<span class="fu">Surv</span>(time_cir, fstatus_cir) <span class="sc">~</span> ., <span class="at">data=</span>dat)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(fgstart, fgstop, fgstatus) <span class="sc">~</span> stoma, <span class="at">weight=</span>fgwt, <span class="at">cluster=</span>id, <span class="at">data=</span>fgdat)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    confidence_interval <span class="ot">&lt;-</span> <span class="fu">confint</span>(fit)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    covered[r] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(confidence_interval[<span class="dv">1</span>] <span class="sc">&lt;=</span> <span class="fu">log</span>(hr_true) <span class="sc">&amp;&amp;</span> <span class="fu">log</span>(hr_true) <span class="sc">&lt;=</span> confidence_interval[<span class="dv">2</span>])</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  coverage <span class="ot">&lt;-</span> <span class="fu">mean</span>(covered)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(coverage)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>coverage_200 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">200</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_200)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.955</code></pre>
+<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
+<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<ol type="1">
+<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
+<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
+<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
+<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
+<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
+<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+</ol>
+<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
+<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
 </div>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>
+<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
 </div>
+<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
 <div class="voice-daughter">
-<p>私「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね」</p>
+<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね」</p>
+<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「じゃあ、人数が100人だったどうなるの？人数が減ったら当たりにくくはならないの？」</p>
+<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「理論的には当たりにくくなったりはしないよ。95%信頼区間の被覆確率はサンプルサイズによらず95%になるはず。n=100、200、400、800のシミュレーション結果をみてみようか」</p>
+<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coverage_100 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">100</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>coverage_400 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">400</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coverage_800 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">800</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.956</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_200)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.955</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_400)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.968</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_800)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.953</code></pre>
-</div>
-</div>
-<div class="dialogue">
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
 <div class="voice-daughter">
-<p>私「ほんとだ、だいたい95%。じゃあ調査人数は何人でもいいってことだ」</p>
+<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ん？どういう意味？」</p>
+<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「がんサバイバー何人に調査票を送るかってこと。だって信頼区間の性能は人数によらないんでしょ」</p>
+<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「あ、ごめん、誤解があったね。サンプルサイズが小さくなると、coverageは同じでも、信頼区間幅が広くなる。今のところ、何人に調査するつもりだった？」</p>
+<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「100人から調査票戻ってきたら上出来かなって思ってるけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「やっぱり必要サンプルサイズは計算してなかったか。がんを手術した後の復職率を推定したいってことでいいの？それなら100人でギリギリだと思う」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いや？前にお父さんにPECOを教えてもらったよね。あれから上司と相談して、ストーマを造設した患者の復職状況を造設しなかった患者と比べることにしたの」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうなんだ。そうすると計算が違ってくる。100人だと足りないはず」</p>
-</div>
-<div class="voice-daughter">
-<p>私「へ？なんでそんなことわかるのよ。100人に協力してもらうのってたいへんなのよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「どれだけサンプルサイズが必要なのかについて、統計学的な根拠に基づいて見積もる方法があるんだよ。この表をみてみて。ある書籍から借りてきたものなんだけど（Machin, et al.&nbsp;2022）」</p>
-</div>
-<p>表1. 割合の推定において指定した 95%信頼区間幅のため必要なサンプルサイズ</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>割合 π</th>
-<th style="text-align: right;">0.05</th>
-<th style="text-align: right;">0.10</th>
-<th style="text-align: right;">0.15</th>
-<th style="text-align: right;">0.20</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.01</td>
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td>0.02</td>
-<td style="text-align: right;">152</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">19</td>
-</tr>
-<tr class="odd">
-<td>0.03</td>
-<td style="text-align: right;">201</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">21</td>
-</tr>
-<tr class="even">
-<td>0.04</td>
-<td style="text-align: right;">252</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">23</td>
-</tr>
-<tr class="odd">
-<td>0.05</td>
-<td style="text-align: right;">304</td>
-<td style="text-align: right;">83</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="even">
-<td>0.06</td>
-<td style="text-align: right;">356</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="odd">
-<td>0.07</td>
-<td style="text-align: right;">407</td>
-<td style="text-align: right;">107</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">30</td>
-</tr>
-<tr class="even">
-<td>0.08</td>
-<td style="text-align: right;">458</td>
-<td style="text-align: right;">118</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">32</td>
-</tr>
-<tr class="odd">
-<td>0.09</td>
-<td style="text-align: right;">508</td>
-<td style="text-align: right;">130</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr class="even">
-<td>0.10</td>
-<td style="text-align: right;">554</td>
-<td style="text-align: right;">139</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">35</td>
-</tr>
-<tr class="odd">
-<td>0.11</td>
-<td style="text-align: right;">604</td>
-<td style="text-align: right;">153</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: right;">40</td>
-</tr>
-<tr class="even">
-<td>0.12</td>
-<td style="text-align: right;">651</td>
-<td style="text-align: right;">164</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">42</td>
-</tr>
-<tr class="odd">
-<td>0.13</td>
-<td style="text-align: right;">696</td>
-<td style="text-align: right;">175</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="even">
-<td>0.14</td>
-<td style="text-align: right;">741</td>
-<td style="text-align: right;">186</td>
-<td style="text-align: right;">83</td>
-<td style="text-align: right;">47</td>
-</tr>
-<tr class="odd">
-<td>0.15</td>
-<td style="text-align: right;">784</td>
-<td style="text-align: right;">196</td>
-<td style="text-align: right;">87</td>
-<td style="text-align: right;">49</td>
-</tr>
-<tr class="even">
-<td>0.16</td>
-<td style="text-align: right;">826</td>
-<td style="text-align: right;">206</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">51</td>
-</tr>
-<tr class="odd">
-<td>0.17</td>
-<td style="text-align: right;">867</td>
-<td style="text-align: right;">216</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">54</td>
-</tr>
-<tr class="even">
-<td>0.18</td>
-<td style="text-align: right;">907</td>
-<td style="text-align: right;">226</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">56</td>
-</tr>
-<tr class="odd">
-<td>0.19</td>
-<td style="text-align: right;">945</td>
-<td style="text-align: right;">236</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">58</td>
-</tr>
-<tr class="even">
-<td>0.20</td>
-<td style="text-align: right;">982</td>
-<td style="text-align: right;">245</td>
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">60</td>
-</tr>
-<tr class="odd">
-<td>0.25</td>
-<td style="text-align: right;">1150</td>
-<td style="text-align: right;">286</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">70</td>
-</tr>
-<tr class="even">
-<td>0.30</td>
-<td style="text-align: right;">1288</td>
-<td style="text-align: right;">320</td>
-<td style="text-align: right;">141</td>
-<td style="text-align: right;">78</td>
-</tr>
-<tr class="odd">
-<td>0.35</td>
-<td style="text-align: right;">1395</td>
-<td style="text-align: right;">347</td>
-<td style="text-align: right;">152</td>
-<td style="text-align: right;">84</td>
-</tr>
-<tr class="even">
-<td>0.40</td>
-<td style="text-align: right;">1472</td>
-<td style="text-align: right;">366</td>
-<td style="text-align: right;">161</td>
-<td style="text-align: right;">89</td>
-</tr>
-<tr class="odd">
-<td>0.45</td>
-<td style="text-align: right;">1518</td>
-<td style="text-align: right;">377</td>
-<td style="text-align: right;">166</td>
-<td style="text-align: right;">92</td>
-</tr>
-<tr class="even">
-<td>0.50</td>
-<td style="text-align: right;">1533</td>
-<td style="text-align: right;">381</td>
-<td style="text-align: right;">167</td>
-<td style="text-align: right;">93</td>
-</tr>
-</tbody>
-</table>
-<div class="voice-father">
-<p>お父さん「たとえばなんだけどね。復職率を調べたいとするでしょ。そうすると復職率をどれくらい精確に推定できたかを表す指標が、95%信頼区間だよね。仮に復職率が50%だったとしてみよう。そうすると、50%±10%程度の推定精度がほしいよね。ここでいう±の後の数字が、95%信頼区間の幅になるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ああ、”50%（95%CI 40～60%）”みたいな感じで論文に書くことになるわけだ。40〜60%の場合、95%信頼区間幅は20%ってことね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうこと。表では復職率をπという変数で表しているんだけど、”π=0.5”と”信頼区間幅0.2”に対応する数字をみて。93って書いてあるでしょ。これが必要サンプルサイズ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「どうだろう。復職率ってもっと高くない？手術したときの年齢にもよるけど、たとえば患者さんが50歳前後だったら、80%はいってほしいなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうなんだ。そうすると復職率80%は非復職率20%と同じことだから、”π=0.2”と”信頼区間幅0.2”のところをみればいい。サンプルサイズは60人」</p>
-</div>
-<div class="voice-daughter">
-<p>私「100人で足りてるじゃん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いやいやいや、これは復職率の信頼区間からサンプルサイズを計算したからこうなったんだ。“信頼区間アプローチ”といって、主に探索的研究で使うものなんだよ。ストーマ造設ありとなしの復職率を比べるような仮説検証を目指した研究なら、“仮説検定アプローチ”といって、仮説検定の考え方にそってサンプルサイズを計算しないといけない」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そっか。だいたいわかった。私、明日も出勤だから、また今度教えてよ。おやすみー」</p>
+<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="サンプルサイズ設計の2つのアプローチ">
+<div class="callout callout-style-default callout-note callout-titled" title="片側p値と両側p値">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-サンプルサイズ設計の2つのアプローチ
+片側p値と両側p値
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>研究計画を立てるときには、サンプルサイズを見積もる必要があります。サンプルサイズの計算は大まかにいえば2種類あって、信頼区間アプローチ（たとえば表1）と仮説検定アプローチ（次回）を用いることができます。</p>
-<p>信頼区間アプローチは、調査や探索的研究で用いられます。このアプローチによって割合を推定するために必要なサンプルサイズを求めるとき、次の数値を設定する必要があります。</p>
-<ul>
-<li>割合の真値（復職率など）</li>
-<li>信頼区間幅</li>
-</ul>
-<p>もうひとつの仮説検定アプローチは、臨床試験や仮説検証型の研究に適しています。このアプローチでは、以下の3つの要素が最低でも必要です。</p>
-<ul>
-<li>有意水準（通常5%）</li>
-<li>検出力（通常80～90%）</li>
-<li>検出したい効果サイズ（2群間の生存確率の差やハザード比など）</li>
-</ul>
-<p>サンプルサイズ設計は、βエラーを制御するという意味で、p値と対になる統計手法といえます。</p>
+<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
+<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
+<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
+<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
+<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
+<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -730,12 +390,12 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>がん臨床試験では、治療からどの程度生存したかを表す指標として、生存期間中央値（median survival）を求めることがあります。これは生存時間データであるOSから計算される値です。さて、生存期間中央値を報告してよいのは、どのような場合でしょうか？</p>
+<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
 <ol type="1">
-<li>半数以上の対象者がイベントを起こしたとき</li>
-<li>目安としてサンプルサイズが100人以上のとき</li>
-<li>すべての対象者が予定された追跡期間を完了したとき</li>
-<li>1、2、3すべて誤り</li>
+<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
+<li>統計学者の間の決まりごと</li>
+<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
+<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
 </ol>
 </div>
 </div>
@@ -752,9 +412,9 @@ coxph()を用いた95%信頼区間のシミュレーション
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は1です</strong></li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>柔軟に考えてみましょう。生存期間は、日数や年数のような数値データですから、連続データに近い特徴を持っています。連続データでは、中央値（median）は上位50%に相当する値のことですよね。半数以上の対象者がイベントを起こして、生存期間が確定すれば、たとえ打ち切りがあっても、生存期間中央値を求めることができます。もし、予定された追跡期間を全員が完了したとしても、イベントがじゅうぶんに観察されなければ（つまり打ち切りが多かったら）、統計的なテクニックで中央値を計算することはできますが、バイアスが生じる可能性が高くなります。</p>
+<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
 </div>
 </div>
 </div>
@@ -762,9 +422,9 @@ coxph()を用いた95%信頼区間のシミュレーション
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><p><a href="https://www.kyoto-up.or.jp/9784814003822.html">Machin D, Campbell MJ, Tan SB, Tan SH. 医学のためのサンプルサイズ設計（原著第4版）. 京都: 京都大学学術出版会; 2022</a></p></li>
 <li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
+<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
+<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">

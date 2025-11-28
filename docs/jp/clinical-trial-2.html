@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -124,9 +159,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-ii" id="toc-story-and-quiz-clinical-trial-ii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-ii">Story and Quiz − Clinical trial II</a>
+  <li><a href="#story-and-quiz-clinical-trial-i" id="toc-story-and-quiz-clinical-trial-i" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-i">Story and Quiz − Clinical trial I</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
+  <li><a href="#生存曲線とハザード比" id="toc-生存曲線とハザード比" class="nav-link" data-scroll-target="#生存曲線とハザード比">生存曲線とハザード比</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
@@ -274,110 +309,148 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-ii" class="level1">
-<h1>Story and Quiz − Clinical trial II</h1>
+<section id="story-and-quiz-clinical-trial-i" class="level1">
+<h1>Story and Quiz − Clinical trial I</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 </div>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
+<section id="生存曲線とハザード比" class="level3">
+<h3 class="anchored" data-anchor-id="生存曲線とハザード比">生存曲線とハザード比</h3>
 <div class="dialogue">
-<div class="voice-father">
-<p>お父さん「JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき、気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
-</div>
 <div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
+<p>私「お父さん、コーヒーのおかわり淹れたよ。続けてJCOG9502のハザード比について教えてよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
+<p>お父さん「ありがとう。図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、TH群よりLTA群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」</p>
 </div>
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
 <div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
+<p>私「要約しやすい？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
+<p>お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。この関係を、Cox回帰とか比例ハザードモデルって呼んでいる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
+<p>私「比例関係だったら交差したらまずいよね」</p>
 </div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-default callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
+<div class="voice-father">
+<p>お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。この話題は後で話すとして、まずはCox回帰をRでやってみよう。パソコンはある？」</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いたハザード比の推定">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
+coxph()を用いたハザード比の推定
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
+
+  n= 200, number of events= 146 
+
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
+stomaWITH STOMA 0.2620    1.2995   0.1738 1.507    0.132
+
+                exp(coef) exp(-coef) lower .95 upper .95
+stomaWITH STOMA       1.3     0.7695    0.9244     1.827
+
+Concordance= 0.534  (se = 0.023 )
+Likelihood ratio test= 2.22  on 1 df,   p=0.1
+Wald test            = 2.27  on 1 df,   p=0.1
+Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="voice-daughter">
+<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。似たような指標のオッズ比やリスク比は、時間経過を考慮しないから、生存時間解析には使われない。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）」</p>
+</div>
+<div class="voice-daughter">
+<p>私「p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。 p値 に関する説明をいくつかしてみようか。</p>
 <ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+<li>p値は帰無仮説が正しい確率である</li>
+<li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
+<li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
 </ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
-</div>
-<div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
+<p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
+<p>私「それでいいんじゃない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
+<p>お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、もう少し厳密に考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はーん。そういう理屈っぽいことがいいたかったわけね。じゃあそういう言い回しはやめます」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うんうん。じゃあ別の次の説明をして見てみよう。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「普通そう考えるんじゃない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ科学的に重要じゃないってこと？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういう意味で言ったわけじゃないけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はいはい。お父さん、話長くない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「もう最後にするよ。説明3の“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、同等性 （equivalence）試験や非劣性 （non-inferiority）試験を組む必要がある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
+</div>
 </div>
 <p><img src="clinical-trial-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="片側p値と両側p値">
+<p><img src="clinical-trial-3.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="ホパテの悲劇">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-片側p値と両側p値
+ホパテの悲劇
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+<p>脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -390,12 +463,12 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>p値の説明として正しいものは、次のうちどれでしょうか。</p>
 <ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+<li>帰無仮説が正しい確率である</li>
+<li>対立仮説が正しい確率である</li>
+<li>0.05よりも小さいと有意差があると判断する</li>
+<li>1、2、3すべて誤り</li>
 </ol>
 </div>
 </div>
@@ -412,9 +485,9 @@ a:hover {
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><strong>正解は4です</strong></li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+<p>有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。</p>
 </div>
 </div>
 </div>
@@ -423,8 +496,9 @@ a:hover {
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
 <li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
+<li><p>Mok TS, Wu YL, Thongprasert S, Yang CH, Chu DT, Saijo N, Sunpaweravong P, Han B, Margono B, Ichinose Y, Nishiwaki Y, Ohe Y, Yang JJ, Chewaskulyong B, Jiang H, Duffield EL, Watkins CL, Armour AA, Fukuoka M. Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma. N Engl J Med 2009;361(10):947-57</p></li>
+<li><p>Miller K, Wang M, Gralow J, Dickler M, Cobleigh M, Perez EA, Shenkier T, Cella D, Davidson NE. Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer. N Engl J Med 2007;357(26):2666-76</p></li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
