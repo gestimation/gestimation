@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>epidemiology-3 – Coffee and Research</title>
+<title>frequentist-3 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,35 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -188,9 +124,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-epidemiology-iii" id="toc-story-and-quiz-epidemiology-iii" class="nav-link active" data-scroll-target="#story-and-quiz-epidemiology-iii">Story and Quiz − Epidemiology III</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz − Frequentist thinking III</a>
   <ul class="collapse">
-  <li><a href="#リスクと時間の関係" id="toc-リスクと時間の関係" class="nav-link" data-scroll-target="#リスクと時間の関係">リスクと時間の関係</a></li>
+  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -337,243 +274,110 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-epidemiology-iii" class="level1">
-<h1>Story and Quiz − Epidemiology III</h1>
+<section id="story-and-quiz-frequentist-thinking-iii" class="level1">
+<h1>Story and Quiz − Frequentist thinking III</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing</p>
+<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 </div>
 <hr>
-<section id="リスクと時間の関係" class="level3">
-<h3 class="anchored" data-anchor-id="リスクと時間の関係">リスクと時間の関係</h3>
+<section id="正しくp値を解釈するための考え方" class="level3">
+<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんさ、さっき寄与割合を計算してるのをみてて思ったんだけどね。またわからないことがあるんだ」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「なに？」</p>
+<p>お父さん「JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき、気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」</p>
+<p>私「それがルールなんじゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」</p>
+<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」</p>
+<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、無理やり時間を通じてハザード比は一定と仮定して、計算してる」</p>
+<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
 </div>
 <div class="voice-daughter">
-<p>私「リスク比は変化するけどハザード比は変化しないの？ぴんとこないなあ」</p>
+<p>私「なんだこの禅問答」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「えーっと、リスク比が変化しないわけじゃなくて…。ちょっとナプキンとペンをとってくれる？教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="生存曲線とハザードの関係">
+<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
+<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
+<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
+<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
+<div class="callout callout-style-default callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-生存曲線とハザードの関係
+統計的有意性とp値に関するASA声明
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Kaplan-Meier曲線もまた、割合の一種と考えることができますが、見え方がずいぶん違います。つまり、Kaplan-Meier曲線はグラフですし、時間の概念が含まれたりします。さらに、Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法ですし、ハザード比との関係が重要です。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。</p>
-<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<span class="math inline">\(x\)</span>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<span class="math inline">\(x\)</span>の関数<span class="math inline">\(S(x)\)</span>で表す」ということになります。</p>
-<p>関数<span class="math inline">\(S(x)\)</span>を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）は、<span class="math inline">\(λ\)</span>という記号で表すことが普通です。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
-<p><span class="math inline">\(S(x)=\mathrm{exp}(-\lambda x)\)</span></p>
-<p>ここまでくれば簡単なのですが、最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク<span class="math inline">\(π\)</span>は、特定時点<span class="math inline">\(x\)</span>までに疾患を発症する確率を表しています。つまり、疾患リスク<span class="math inline">\(π\)</span>とハザード<span class="math inline">\(λ\)</span>は、時点<span class="math inline">\(x\)</span>の生存関数を<span class="math inline">\(S(x)\)</span>を介して、以下の式で結びついています。</p>
-<p><span class="math inline">\(\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)\)</span></p>
-<p>イメージしやすいように、以前<code>cifmodeling</code>パッケージの<code>cifplot()</code>で描いたKaplan–Meier曲線を置いておきます。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="epidemiology-3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
+<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<ol type="1">
+<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
+<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
+<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
+<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
+<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
+<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+</ol>
+<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
+<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「わからん。数式はわからん」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう？数学の難しさ自体は高校レベルなんだけど。きっと理解しにくいのは、数式がデータ上のどういう概念を結びつけているのかっていう部分なんだと思うんだけど。ハザードを具体的に考えるときは、生存時間中央値と結びつけるのが手だよ」</p>
+<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
+</div>
+<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
+<div class="voice-daughter">
+<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
+</div>
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="ハザードと生存時間中央値の関係">
+<div class="callout callout-style-default callout-note callout-titled" title="片側p値と両側p値">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ハザードと生存時間中央値の関係
+片側p値と両側p値
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<span class="math inline">\(M\)</span>は、生存確率50%つまり<span class="math inline">\(S(x)=0.5\)</span>になるような時間<span class="math inline">\(x\)</span>のことです。つまり、指数分布では</p>
-<p><span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span></p>
-<p>と関係が成り立つので、生存時間中央値<span class="math inline">\(M\)</span>は、ハザード<span class="math inline">\(λ\)</span>から以下のように計算することができます。</p>
-<p><span class="math inline">\(M=\frac{\mathrm{log}(0.5)}{\lambda}\approx\frac{0.7}{\lambda}\)</span></p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「あ、これはちょっとわかった気がする。寿命（生存時間中央値）とハザードが逆数の関係ってことね。つまり寿命が2倍になったらハザードは1/2になる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだね、指数分布の下で計算すると、だけどね。ハザード比は、まさにハザードの比をとることで、2つの集団の生存曲線を比較する指標なんだ」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="リスクとハザード比の関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-リスクとハザード比の関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
-<p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。</p>
-<ul>
-<li><p>ハザード比（指数分布を仮定）</p>
-<p><span class="math inline">\(HR=\frac{\lambda_1}{\lambda_2}=\frac{M_2}{M_1}=\frac{\mathrm{log}(\pi_1)}{\mathrm{log}(\pi_2)}\)</span></p></li>
-</ul>
-<p>指数分布では、ハザードは時間を通じて一定でした。その一方で、Cox比例ハザードモデルでは、ハザードを時間の関数<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>と考え、しかも両者が比例関係にあると仮定します。</p>
-<ul>
-<li><p>ハザード比（比例ハザード性を仮定）</p>
-<p><span class="math inline">\(HR=\frac{\lambda_1(x)}{\lambda_2(x)}\)</span></p></li>
-</ul>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-father">
-<p>お父さん「はっきりいうとね、ハザードやハザード比が直感的にわかる人の方が少ないよ。だから安心していい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「見えない時計？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療B群の人は、少し遅い時計を持っている。ハザード比は、その2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ただし、ここが重要。時計の進み方は、必ずしも一定とは限らない。最初は治療Bが有利でも、途中から追いつかれることだってある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それ、実際の患者さんでもあるかも！」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータにおける時点ごとのリスク比の推定">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-シミュレーションデータにおける時点ごとのリスク比の推定
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、<strong>時点ごとのリスク比（RR）</strong> を推定してみます。<strong>ハザード比</strong>は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、<code>cifmodeling</code>の<code>polyreg()</code>では、時点を通じて一定のリスク比だけでなく、任意の時点tごとのリスク比も推定できます。</p>
-<p>先ほどのシミュレーションデータを使って、<code>time.point</code>を変えた<code>polyreg()</code>を当てはめることで、術後5年・10年・20年時点の死亡リスク比を推定します。アウトカム（OS）は<code>Event(time_os,status_os)</code>、曝露変数であるストーマの有無は<code>exposure="stoma"</code>で指定しています。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">5</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.367       
-                      [1.006, 1.856]
-                      (p=0.045)   
-
----------------------------------- 
-
-effect.measure        RR at 5     
-n.events              89 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rr_at_10 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">10</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.126       
-                      [0.744, 1.704]
-                      (p=0.576)   
-
----------------------------------- 
-
-effect.measure        RR at 10    
-n.events              117 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rr_at_20 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">20</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                      event 1 (no competing risk)
----------------------------------- 
-stoma, WITH STOMA vs 0 
-                      1.078       
-                      [0.720, 1.613]
-                      (p=0.714)   
-
----------------------------------- 
-
-effect.measure        RR at 20    
-n.events              137 in N = 200
-median.follow.up      3.54        
-range.follow.up       [0.03, 28.20]
-n.parameters          2           
-converged.by          Converged in objective function
-nleqslv.message       Function criterion near zero</code></pre>
-</div>
-</div>
-<p>ハザード比は一定の下でデータを生成していますが、時間が経つにつれリスク比は小さく推定されることがわかります。冒頭のKaplan-Meier曲線もあわせてみてみてください。</p>
+<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
+<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
+<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
+<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
+<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
+<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -586,17 +390,17 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Kaplan-Meier法による生存曲線の推定が妥当な状況として正しいのは、次のうちどれでしょうか。</p>
+<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
 <ol type="1">
-<li>生存時間が正規分布するとき</li>
-<li>打ち切りの理由が疾患の悪化によらないとき</li>
-<li>2群の打ち切り確率に統計学的な有意差がなかったとき</li>
-<li>試験治療群とコントロール群の間で比例ハザード性が成り立つとき</li>
+<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
+<li>統計学者の間の決まりごと</li>
+<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
+<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -605,15 +409,23 @@ nleqslv.message       Function criterion near zero</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は2です</strong></li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これは<em>t</em>検定やCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法でもっとも重要な仮定です。</p>
+<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
 </div>
 </div>
 </div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
+<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
+<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
@@ -622,27 +434,28 @@ nleqslv.message       Function criterion near zero</code></pre>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
 <p><a href="../jp/study-design-4.html">Study design IV</a></p>
 <p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
-<p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
-<p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
-<p><a href="../jp/clinical-trial-4.html">Clinical trial IV</a></p>
-<p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
-<p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
-<p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
-<p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
-<p><a href="../jp/epidemiology-5.html">Epidemiology V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Regression III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Regression IV</a></p>
+<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
+<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
+<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
+<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
+<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
+<p><a href="../jp/effects-1.html">Effects and time I</a></p>
+<p><a href="../jp/effects-2.html">Effects and time II</a></p>
+<p><a href="../jp/effects-3.html">Effects and time III</a></p>
+<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
+<p><a href="../jp/effects-5.html">Effects and time V</a></p>
+<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
 <p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
 <p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
 <p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
 <p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">Publish a paper I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">Publish a paper II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">Publish a paper III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clinical-trial-3 – Coffee and Research</title>
+<title>effects-4 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -124,9 +153,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-iii" id="toc-story-and-quiz-clinical-trial-iii" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-iii">Story and Quiz − Clinical trial III</a>
+  <li><a href="#story-and-quiz-effects-and-time-iv" id="toc-story-and-quiz-effects-and-time-iv" class="nav-link active" data-scroll-target="#story-and-quiz-effects-and-time-iv">Story and Quiz − Effects and time IV</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
+  <li><a href="#リスク比とオッズ比って結局同じ" id="toc-リスク比とオッズ比って結局同じ" class="nav-link" data-scroll-target="#リスク比とオッズ比って結局同じ">リスク比とオッズ比って、結局同じ？</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
@@ -274,110 +303,380 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-iii" class="level1">
-<h1>Story and Quiz − Clinical trial III</h1>
+<section id="story-and-quiz-effects-and-time-iv" class="level1">
+<h1>Story and Quiz − Effects and time IV</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing</p>
 </div>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
+<section id="リスク比とオッズ比って結局同じ" class="level3">
+<h3 class="anchored" data-anchor-id="リスク比とオッズ比って結局同じ">リスク比とオッズ比って、結局同じ？</h3>
 <div class="dialogue">
-<div class="voice-father">
-<p>お父さん「JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき、気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
-</div>
 <div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
+<p>私「この大福うまいな。やっぱお茶よりコーヒーだわ。お父さんの話を聞いてて、国試の勉強してたときのことを思い出した。保健統計だったか、疫学だったかの問題で、オッズ比の計算問題を解いたことがあったなあ。リスク比とオッズ比って結局同じ使い方をするの？みたいな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
+<p>お父さん「ああ、この前、膵がんの数値例で計算したとき、リスク比とオッズ比はどちらも3倍だったね。でも、これはたまたま。もっと正確にいうと、膵がんのようにリスクが低いと、リスク比とオッズ比は近い値になるんだ。ほら、リスク比とオッズ比の数式を見比べてよ。リスク比とオッズ比の違いって、<span class="math inline">\(1-\pi_1\)</span>と<span class="math inline">\(1-\pi_2\)</span>があるかどうかでしょ。リスクが低いと、ここがほとんど1になるから、リスク比とオッズ比の差がなくなる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
+<p>私「まあ、私も論文読むとき別に区別してないけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
+<p>お父さん「えーっと、状況によってはそれはよくない。疾患や対象集団によっては、リスクが低いときばかりじゃないからね。最近の論文だと、オッズ比をリスク比の代わりに使うなら、そのままの値じゃなくて、オッズ比の平方根を報告した方がいいっていうものもある」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
+<p>私「なにそれ、またお作法が増えたの？」</p>
 </div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-default callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="リスク比はオッズ比の近似か">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
+リスク比はオッズ比の近似か
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
+<p>表1は、2群の疾患リスク<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>の数値を0.1から0.9まで動かして、リスク比、オッズ比、オッズ比の平方根（square root of OR）を計算したものです。</p>
+<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p>
+<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p>
+<p><span class="math inline">\(SOR=\sqrt{\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}}\)</span></p>
+<p><span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>のどちらかが0.2を超えると、リスク比とオッズ比はまったく違う値になることがわかります。リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなります。また、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が0.2～0.7の範囲であれば、リスク比とオッズ比の平方根は、高々0.11しか違いません。</p>
+<p>2群の疾患リスクを0.1から0.9まで動かしたときのリスク比（RR）、オッズ比（OR）、オッズ比の平方根（SOR）</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1</td>
+<td>RR=1</td>
+<td>0.50</td>
+<td>0.33</td>
+<td>0.25</td>
+<td>0.20</td>
+<td>0.17</td>
+<td>0.14</td>
+<td>0.13</td>
+<td>0.11</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>OR=1</td>
+<td>0.44</td>
+<td>0.25</td>
+<td>0.17</td>
+<td>0.11</td>
+<td>0.07</td>
+<td>0.05</td>
+<td>0.03</td>
+<td>0.01</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>SOR=1</td>
+<td>0.67</td>
+<td>0.51</td>
+<td>0.41</td>
+<td>0.33</td>
+<td>0.27</td>
+<td>0.22</td>
+<td>0.17</td>
+<td>0.11</td>
+</tr>
+<tr class="even">
+<td>0.2</td>
+<td></td>
+<td>RR=1</td>
+<td>0.67</td>
+<td>0.50</td>
+<td>0.40</td>
+<td>0.33</td>
+<td>0.29</td>
+<td>0.25</td>
+<td>0.22</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.58</td>
+<td>0.38</td>
+<td>0.25</td>
+<td>0.17</td>
+<td>0.11</td>
+<td>0.06</td>
+<td>0.03</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.76</td>
+<td>0.61</td>
+<td>0.50</td>
+<td>0.41</td>
+<td>0.33</td>
+<td>0.25</td>
+<td>0.17</td>
+</tr>
+<tr class="odd">
+<td>0.3</td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.75</td>
+<td>0.60</td>
+<td>0.50</td>
+<td>0.43</td>
+<td>0.38</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.64</td>
+<td>0.43</td>
+<td>0.29</td>
+<td>0.18</td>
+<td>0.11</td>
+<td>0.05</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.80</td>
+<td>0.65</td>
+<td>0.53</td>
+<td>0.43</td>
+<td>0.33</td>
+<td>0.22</td>
+</tr>
+<tr class="even">
+<td>0.4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.80</td>
+<td>0.67</td>
+<td>0.57</td>
+<td>0.50</td>
+<td>0.44</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.67</td>
+<td>0.44</td>
+<td>0.29</td>
+<td>0.17</td>
+<td>0.07</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.82</td>
+<td>0.67</td>
+<td>0.53</td>
+<td>0.41</td>
+<td>0.27</td>
+</tr>
+<tr class="odd">
+<td>0.5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.83</td>
+<td>0.71</td>
+<td>0.63</td>
+<td>0.56</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.67</td>
+<td>0.43</td>
+<td>0.25</td>
+<td>0.11</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.82</td>
+<td>0.65</td>
+<td>0.50</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td>0.6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.86</td>
+<td>0.75</td>
+<td>0.67</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.64</td>
+<td>0.38</td>
+<td>0.17</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.80</td>
+<td>0.61</td>
+<td>0.41</td>
+</tr>
+<tr class="odd">
+<td>0.7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.88</td>
+<td>0.78</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.58</td>
+<td>0.26</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.76</td>
+<td>0.51</td>
+</tr>
+<tr class="even">
+<td>0.8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RR=1</td>
+<td>0.89</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>OR=1</td>
+<td>0.44</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SOR=1</td>
+<td>0.67</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「この表、いっぱい数字があって見方がよくわからないな。対角のところがRR=OR=SOR=1になるのは、<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>が同じ値だからだよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
+<p>お父さん「ごめんごめん、説明が必要だよね。RRに近いのは、ORとSORのどっちかをみてほしいんだ。さっき話した通り、古い教科書ではオッズ比はリスク比の近似だって教えるけど、実際にいろんな組み合わせで計算すると、そうならないことがある。っていうか、表をみるとRRとOR、結構ずれてない？むしろオッズ比の平方根をとった方が、近い値になるよっていう指摘もあるんだ（VanderWeele 2017）」</p>
 </div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
 <div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
+<p>私「平方根なんて論文書くとき勝手に計算していいのかね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
+<p>お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。推定方法の一種として、論文のMethodsで説明していればね。でも、よっぽど特殊な状況じゃなければ、リスク比を計算するのが素直だと思うけど。前回話したように、層別などの調整を行うとき、リスク比はとても扱いやすい指標だからね」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="片側p値と両側p値">
+<div class="callout callout-style-default callout-note callout-titled" title="ケース・コントロール研究とオッズ比">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-片側p値と両側p値
+ケース・コントロール研究とオッズ比
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+<p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -390,12 +689,11 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなるといいました。それでは、2群をオッズ比で比較するときのp値は、リスク比で比較するときのp値より、小さくなる（つまり有意になりやすいので得をする）のでしょうか。実際にデータから計算されたp値だと、検定の種類の選び方に影響されるし、偶然性も入るので、理論上の期待値がどうなるか考えてみてください。</p>
 <ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+<li>オッズ比のp値は、リスク比のp値より、期待値の上で小さい</li>
+<li>オッズ比のp値は、リスク比のp値より、期待値の上で大きい</li>
+<li>オッズ比のp値は、リスク比のp値と、期待値の上で等しい</li>
 </ol>
 </div>
 </div>
@@ -414,7 +712,7 @@ a:hover {
 <ul>
 <li><strong>正解は3です</strong></li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+<p>リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定、ということが統計学で知られています。直感的な説明をすると、“同じデータから同じ情報を引き出している”から、どの指標を使って差を推定しても、検定としての力は変わらないのです。</p>
 </div>
 </div>
 </div>
@@ -422,9 +720,7 @@ a:hover {
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+<li>VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017;28(6):e58–e60</li>
 </ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
@@ -434,27 +730,28 @@ a:hover {
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
 <p><a href="../jp/study-design-4.html">Study design IV</a></p>
 <p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
-<p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
-<p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
-<p><a href="../jp/clinical-trial-4.html">Clinical trial IV</a></p>
-<p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
-<p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
-<p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
-<p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
-<p><a href="../jp/epidemiology-5.html">Epidemiology V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Regression III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Regression IV</a></p>
+<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
+<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
+<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
+<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
+<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
+<p><a href="../jp/effects-1.html">Effects and time I</a></p>
+<p><a href="../jp/effects-2.html">Effects and time II</a></p>
+<p><a href="../jp/effects-3.html">Effects and time III</a></p>
+<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
+<p><a href="../jp/effects-5.html">Effects and time V</a></p>
+<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
 <p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
 <p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
 <p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
 <p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">Publish a paper I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">Publish a paper II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">Publish a paper III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>clinical-trial-2 – Coffee and Research</title>
+<title>frequentist-2 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-clinical-trial-i" id="toc-story-and-quiz-clinical-trial-i" class="nav-link active" data-scroll-target="#story-and-quiz-clinical-trial-i">Story and Quiz − Clinical trial I</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-ii" id="toc-story-and-quiz-frequentist-thinking-ii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-ii">Story and Quiz − Frequentist thinking II</a>
   <ul class="collapse">
   <li><a href="#生存曲線とハザード比" id="toc-生存曲線とハザード比" class="nav-link" data-scroll-target="#生存曲線とハザード比">生存曲線とハザード比</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
@@ -309,8 +309,8 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-clinical-trial-i" class="level1">
-<h1>Story and Quiz − Clinical trial I</h1>
+<section id="story-and-quiz-frequentist-thinking-ii" class="level1">
+<h1>Story and Quiz − Frequentist thinking II</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 </div>
@@ -358,18 +358,18 @@ coxph()を用いたハザード比の推定
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 146 
+  n= 200, number of events= 147 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
-stomaWITH STOMA 0.2620    1.2995   0.1738 1.507    0.132
+                   coef exp(coef) se(coef)     z Pr(&gt;|z|)
+stomaWITH STOMA 0.08475   1.08844  0.17084 0.496     0.62
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA       1.3     0.7695    0.9244     1.827
+stomaWITH STOMA     1.088     0.9187    0.7787     1.521
 
-Concordance= 0.534  (se = 0.023 )
-Likelihood ratio test= 2.22  on 1 df,   p=0.1
-Wald test            = 2.27  on 1 df,   p=0.1
-Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
+Concordance= 0.523  (se = 0.024 )
+Likelihood ratio test= 0.24  on 1 df,   p=0.6
+Wald test            = 0.25  on 1 df,   p=0.6
+Score (logrank) test = 0.25  on 1 df,   p=0.6</code></pre>
 </div>
 </div>
 </div>
@@ -384,12 +384,14 @@ Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
 <p>私「p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。 p値 に関する説明をいくつかしてみようか。</p>
+<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。まあ、頻度論（frequentist）の立場で統計学を学ばないと、なかなか難しいんだけどね。p値に関する説明をいくつかしてみようか」</p>
+</div>
 <ol type="1">
 <li>p値は帰無仮説が正しい確率である</li>
 <li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
 <li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
 </ol>
+<div class="voice-father">
 <p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
 </div>
 <div class="voice-daughter">
@@ -426,7 +428,7 @@ Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
 <p>私「はいはい。お父さん、話長くない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「もう最後にするよ。説明3の“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
+<p>お父さん「もう最後にするよ。三つ目の説明“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
@@ -463,7 +465,7 @@ Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値の説明として正しいものは、次のうちどれでしょうか。</p>
+<p>頻度論によるp値の説明として正しいものは、次のうちどれでしょうか。</p>
 <ol type="1">
 <li>帰無仮説が正しい確率である</li>
 <li>対立仮説が正しい確率である</li>
@@ -508,27 +510,28 @@ Score (logrank) test = 2.29  on 1 df,   p=0.1</code></pre>
 <p><a href="../jp/study-design-3.html">Study design III</a></p>
 <p><a href="../jp/study-design-4.html">Study design IV</a></p>
 <p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/clinical-trial-1.html">Clinical trial I</a></p>
-<p><a href="../jp/clinical-trial-2.html">Clinical trial II</a></p>
-<p><a href="../jp/clinical-trial-3.html">Clinical trial III</a></p>
-<p><a href="../jp/clinical-trial-4.html">Clinical trial IV</a></p>
-<p><a href="../jp/epidemiology-1.html">Epidemiology I</a></p>
-<p><a href="../jp/epidemiology-2.html">Epidemiology II</a></p>
-<p><a href="../jp/epidemiology-3.html">Epidemiology III</a></p>
-<p><a href="../jp/epidemiology-4.html">Epidemiology IV</a></p>
-<p><a href="../jp/epidemiology-5.html">Epidemiology V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Regression III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Regression IV</a></p>
+<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
+<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
+<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
+<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
+<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
+<p><a href="../jp/effects-1.html">Effects and time I</a></p>
+<p><a href="../jp/effects-2.html">Effects and time II</a></p>
+<p><a href="../jp/effects-3.html">Effects and time III</a></p>
+<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
+<p><a href="../jp/effects-5.html">Effects and time V</a></p>
+<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
 <p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
 <p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
 <p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
 <p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">Publish a paper I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">Publish a paper II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">Publish a paper III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
 </section>

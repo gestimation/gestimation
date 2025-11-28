@@ -140,14 +140,23 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
+
 # Story and Quiz — 私は父から研究を学んだ
 
-このシリーズは、がんサバイバーの就労支援の話を軸に、研究方法や統計学の考え方を **ストーリー形式** で学ぶ読み物です。
+このシリーズは、がんサバイバーの就労支援の話を軸に、研究方法や統計学の考え方を **ストーリー形式** で学ぶ読み物です。医師である娘と、統計家である父のコーヒーチャットを追いながら、
 
--   研究をはじめる前に、**「全体像」や「言葉の感覚」** をつかみたい人へ
--   1話あたり数分で読めて、**じんわりと核心がわかる** 軽い語り口
--   Study design → Clinical trial → Epidemiology → Causal inference → Publish\
-    と読み進むうちに、医学研究の入り口と出口がつながります
+1. 研究の設計
+2. 頻度論（Frequentist）のものの見方
+3. 効果指標と時間
+4. バイアス調整と回帰
+5. 因果推論
+6. 研究結果をエビデンスにする営み
+
+と、少しずつ視点が高くなっていきます。
+
+- 研究をはじめる前に、**「全体像」や「言葉の感覚」** をつかみたい人へ
+- 1話あたり数分で読めて、**じんわりと核心がわかる** 軽い語り口
+- どこから読んでもよいけれど、通して読むと「研究という営み」の地図になります
 
 最初の1本はここからどうぞ。
 
@@ -157,69 +166,74 @@ a:hover {
 
 ## シリーズ一覧
 
-### 1. Study design（臨床研究の設計）
+### 1. Study design
 
-研究仮説、アウトカム、データ、バイアスなど、研究の出発点。
+**研究仮説**、**アウトカム**、**2値データと生存時間データ**、**調査に潜むバイアス**。娘は父に研究の出発点について尋ねます。
 
--   [Study design I](study-design-1.qmd)
--   [Study design II](study-design-2.qmd)
--   [Study design III] （近日公開）
--   [Study design IV]
--   [Study design V]
+- [Study design I](study-design-1.qmd)
+- [Study design II](study-design-2.qmd)
+- [Study design III]（近日公開）
+- [Study design IV]
+- [Study design V]
 
-### 2. Clinical trial（臨床試験）
+### 2. Frequentist thinking
 
-ランダム化、盲検化、サンプルサイズなど「臨床試験」の話。
+がん臨床試験を題材に、「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の直観**を扱います。
 
--   [Clinical trial I]
--   [Clinical trial II]
--   [Clinical trial III]
+- [Frequentist thinking I]
+- [Frequentist thinking II]
+- [Frequentist thinking III]
+- [Frequentist thinking IV]
+- [Frequentist thinking V]
 
-### 3. Epidemiology（疫学）
+### 3. Effects and time
 
-集団同士を比較するとき、どういう指標が用いられるか。
+リスク・リスク差・リスク比・オッズ比、NNT、ワクチン有効率、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線の視点から眺めます。
 
--   [Epidemiology I]
--   [Epidemiology II]
--   [Epidemiology III]
--   [Epidemiology IV]
+- [Effects and time I]
+- [Effects and time II]
+- [Effects and time III]
+- [Effects and time IV]
+- [Effects and time V]
 
-### 4. Regression（回帰分析）
+### 4. Adjusting for bias
 
-ロジスティック回帰を用いたデータ解析について。
+**ロジスティック回帰による調整**と**交絡**。
 
--   [Regression I]
--   [Regression II]
--   [Regression III]
--   [Regression IV]
+- [Adjusting for bias I]
+- [Adjusting for bias II]
+- [Adjusting for bias III]
+- [Adjusting for bias IV]
 
-### 5. Causal inference（因果推論）
+### 5. Causal inference
 
-グラフ（DAG）を用いた因果推論の考え方。
+有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、できるだけ数式を使わずに扱います。
 
--   [Causal inference I]
--   [Causal inference II]
--   [Causal inference III]
--   [Causal inference IV]
+- [Causal inference I]
+- [Causal inference II]
+- [Causal inference III]
+- [Causal inference IV]
 
-### 6. Publish a paper（論文投稿）
+### 6. The Craft of Research
 
-図表の作り方、査読コメント、STROBE、推敲のコツ。
+図表の作り方、STROBE、査読コメントへの対応、推敲のコツ。研究結果を正確に伝え、質の高いエビデンスを創ろうとする**研究者の姿**を描きます。
 
--   [Publish a paper I]
--   [Publish a paper II]
--   [Publish a paper III]
--   [Publish a paper IV]
+- [The Craft of Research I]
+- [The Craft of Research II]
+- [The Craft of Research III]
+- [The Craft of Research IV]
 
 ------------------------------------------------------------------------
 
 ## 読み方
 
--   最初のシリーズ（Study design I–V）だけ読めば、研究のゴールをどう設定するかが見えてきます。
--   興味で選ぶなら
-    -   論文の読み方 → Clinical trial
-    -   研究から得られる数字の意味 → Epidemiology
-    -   統計解析の実践 → Regression
-    -   統計解析をもう一歩深く → Causal inference
-    -   書き方 → Publish a paper
--   すべて独立して読めるけれど、通読すると「地図」が頭に入ります。要するに、研究を題材にした気軽な読み物だと思ってください。
+- まずは **Study design I–V** だけ読めば、  
+  「どんな問いを立てて、どんなデータを集めるか」というゴールの輪郭が見えてきます。
+- 興味で選ぶなら：
+  - **論文の読み方の足場をつくりたい** → Frequentist thinking / Effects and time
+  - **解析まわりをもう少しきちんとしたい** → Adjusting for bias
+  - **因果の考え方を整理したい** → Causal inference
+  - **最終的に論文として形にしたい** → The Craft of Research
+- どのエピソードも、それだけで読めるように書いていますが、  
+  通して読むと「研究という営み」の地図が、少しずつ頭の中にできあがっていきます。  
+  コーヒー片手に、気になったところから読んでみてください。

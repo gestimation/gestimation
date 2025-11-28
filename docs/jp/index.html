@@ -128,12 +128,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#シリーズ一覧" id="toc-シリーズ一覧" class="nav-link" data-scroll-target="#シリーズ一覧">シリーズ一覧</a>
   <ul class="collapse">
-  <li><a href="#study-design臨床研究の設計" id="toc-study-design臨床研究の設計" class="nav-link" data-scroll-target="#study-design臨床研究の設計">1. Study design（臨床研究の設計）</a></li>
-  <li><a href="#clinical-trial臨床試験" id="toc-clinical-trial臨床試験" class="nav-link" data-scroll-target="#clinical-trial臨床試験">2. Clinical trial（臨床試験）</a></li>
-  <li><a href="#epidemiology疫学" id="toc-epidemiology疫学" class="nav-link" data-scroll-target="#epidemiology疫学">3. Epidemiology（疫学）</a></li>
-  <li><a href="#regression回帰分析" id="toc-regression回帰分析" class="nav-link" data-scroll-target="#regression回帰分析">4. Regression（回帰分析）</a></li>
-  <li><a href="#causal-inference因果推論" id="toc-causal-inference因果推論" class="nav-link" data-scroll-target="#causal-inference因果推論">5. Causal inference（因果推論）</a></li>
-  <li><a href="#publish-a-paper論文投稿" id="toc-publish-a-paper論文投稿" class="nav-link" data-scroll-target="#publish-a-paper論文投稿">6. Publish a paper（論文投稿）</a></li>
+  <li><a href="#study-design" id="toc-study-design" class="nav-link" data-scroll-target="#study-design">1. Study design</a></li>
+  <li><a href="#frequentist-thinking" id="toc-frequentist-thinking" class="nav-link" data-scroll-target="#frequentist-thinking">2. Frequentist thinking</a></li>
+  <li><a href="#effects-and-time" id="toc-effects-and-time" class="nav-link" data-scroll-target="#effects-and-time">3. Effects and time</a></li>
+  <li><a href="#adjusting-for-bias" id="toc-adjusting-for-bias" class="nav-link" data-scroll-target="#adjusting-for-bias">4. Adjusting for bias</a></li>
+  <li><a href="#causal-inference" id="toc-causal-inference" class="nav-link" data-scroll-target="#causal-inference">5. Causal inference</a></li>
+  <li><a href="#the-craft-of-research" id="toc-the-craft-of-research" class="nav-link" data-scroll-target="#the-craft-of-research">6. The Craft of Research</a></li>
   </ul></li>
   <li><a href="#読み方" id="toc-読み方" class="nav-link" data-scroll-target="#読み方">読み方</a></li>
   </ul></li>
@@ -283,61 +283,72 @@ a:hover {
 </div>
 <section id="story-and-quiz-私は父から研究を学んだ" class="level1">
 <h1>Story and Quiz — 私は父から研究を学んだ</h1>
-<p>このシリーズは、がんサバイバーの就労支援の話を軸に、研究方法や統計学の考え方を <strong>ストーリー形式</strong> で学ぶ読み物です。</p>
+<p>このシリーズは、がんサバイバーの就労支援の話を軸に、研究方法や統計学の考え方を <strong>ストーリー形式</strong> で学ぶ読み物です。医師である娘と、統計家である父のコーヒーチャットを追いながら、</p>
+<ol type="1">
+<li>研究の設計</li>
+<li>頻度論（Frequentist）のものの見方</li>
+<li>効果指標と時間</li>
+<li>バイアス調整と回帰</li>
+<li>因果推論</li>
+<li>研究結果をエビデンスにする営み</li>
+</ol>
+<p>と、少しずつ視点が高くなっていきます。</p>
 <ul>
 <li>研究をはじめる前に、<strong>「全体像」や「言葉の感覚」</strong> をつかみたい人へ</li>
 <li>1話あたり数分で読めて、<strong>じんわりと核心がわかる</strong> 軽い語り口</li>
-<li>Study design → Clinical trial → Epidemiology → Causal inference → Publish<br>
-と読み進むうちに、医学研究の入り口と出口がつながります</li>
+<li>どこから読んでもよいけれど、通して読むと「研究という営み」の地図になります</li>
 </ul>
 <p>最初の1本はここからどうぞ。</p>
 <p>→ <a href="../jp/study-design-1.html">Study design I</a></p>
 <hr>
 <section id="シリーズ一覧" class="level2">
 <h2 class="anchored" data-anchor-id="シリーズ一覧">シリーズ一覧</h2>
-<section id="study-design臨床研究の設計" class="level3">
-<h3 class="anchored" data-anchor-id="study-design臨床研究の設計">1. Study design（臨床研究の設計）</h3>
-<p>研究仮説、アウトカム、データ、バイアスなど、研究の出発点。</p>
+<section id="study-design" class="level3">
+<h3 class="anchored" data-anchor-id="study-design">1. Study design</h3>
+<p><strong>研究仮説</strong>、<strong>アウトカム</strong>、<strong>2値データと生存時間データ</strong>、<strong>調査に潜むバイアス</strong>。娘は父に研究の出発点について尋ねます。</p>
 <ul>
 <li><a href="../jp/study-design-1.html">Study design I</a></li>
 <li><a href="../jp/study-design-2.html">Study design II</a></li>
-<li>[Study design III] （近日公開）</li>
+<li>[Study design III]（近日公開）</li>
 <li>[Study design IV]</li>
 <li>[Study design V]</li>
 </ul>
 </section>
-<section id="clinical-trial臨床試験" class="level3">
-<h3 class="anchored" data-anchor-id="clinical-trial臨床試験">2. Clinical trial（臨床試験）</h3>
-<p>ランダム化、盲検化、サンプルサイズなど「臨床試験」の話。</p>
+<section id="frequentist-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-thinking">2. Frequentist thinking</h3>
+<p>がん臨床試験を題材に、「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という<strong>頻度論の直観</strong>を扱います。</p>
 <ul>
-<li>[Clinical trial I]</li>
-<li>[Clinical trial II]</li>
-<li>[Clinical trial III]</li>
+<li>[Frequentist thinking I]</li>
+<li>[Frequentist thinking II]</li>
+<li>[Frequentist thinking III]</li>
+<li>[Frequentist thinking IV]</li>
+<li>[Frequentist thinking V]</li>
 </ul>
 </section>
-<section id="epidemiology疫学" class="level3">
-<h3 class="anchored" data-anchor-id="epidemiology疫学">3. Epidemiology（疫学）</h3>
-<p>集団同士を比較するとき、どういう指標が用いられるか。</p>
+<section id="effects-and-time" class="level3">
+<h3 class="anchored" data-anchor-id="effects-and-time">3. Effects and time</h3>
+<p>リスク・リスク差・リスク比・オッズ比、NNT、ワクチン有効率、そして<strong>時間とともに変化する効果</strong>を、生存曲線・累積発生曲線の視点から眺めます。</p>
 <ul>
-<li>[Epidemiology I]</li>
-<li>[Epidemiology II]</li>
-<li>[Epidemiology III]</li>
-<li>[Epidemiology IV]</li>
+<li>[Effects and time I]</li>
+<li>[Effects and time II]</li>
+<li>[Effects and time III]</li>
+<li>[Effects and time IV]</li>
+<li>[Effects and time V]</li>
 </ul>
 </section>
-<section id="regression回帰分析" class="level3">
-<h3 class="anchored" data-anchor-id="regression回帰分析">4. Regression（回帰分析）</h3>
-<p>ロジスティック回帰を用いたデータ解析について。</p>
+<section id="adjusting-for-bias" class="level3">
+<h3 class="anchored" data-anchor-id="adjusting-for-bias">4. Adjusting for bias</h3>
+<p><strong>ロジスティック回帰による調整</strong>と<strong>交絡</strong>。</p>
 <ul>
-<li>[Regression I]</li>
-<li>[Regression II]</li>
-<li>[Regression III]</li>
-<li>[Regression IV]</li>
+<li>[Adjusting for bias I]</li>
+<li>[Adjusting for bias II]</li>
+<li>[Adjusting for bias III]</li>
+<li>[Adjusting for bias IV]</li>
 </ul>
 </section>
-<section id="causal-inference因果推論" class="level3">
-<h3 class="anchored" data-anchor-id="causal-inference因果推論">5. Causal inference（因果推論）</h3>
-<p>グラフ（DAG）を用いた因果推論の考え方。</p>
+<section id="causal-inference" class="level3">
+<h3 class="anchored" data-anchor-id="causal-inference">5. Causal inference</h3>
+<p>有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための<strong>因果の言葉</strong>を、できるだけ数式を使わずに扱います。</p>
 <ul>
 <li>[Causal inference I]</li>
 <li>[Causal inference II]</li>
@@ -345,14 +356,14 @@ a:hover {
 <li>[Causal inference IV]</li>
 </ul>
 </section>
-<section id="publish-a-paper論文投稿" class="level3">
-<h3 class="anchored" data-anchor-id="publish-a-paper論文投稿">6. Publish a paper（論文投稿）</h3>
-<p>図表の作り方、査読コメント、STROBE、推敲のコツ。</p>
+<section id="the-craft-of-research" class="level3">
+<h3 class="anchored" data-anchor-id="the-craft-of-research">6. The Craft of Research</h3>
+<p>図表の作り方、STROBE、査読コメントへの対応、推敲のコツ。研究結果を正確に伝え、質の高いエビデンスを創ろうとする<strong>研究者の姿</strong>を描きます。</p>
 <ul>
-<li>[Publish a paper I]</li>
-<li>[Publish a paper II]</li>
-<li>[Publish a paper III]</li>
-<li>[Publish a paper IV]</li>
+<li>[The Craft of Research I]</li>
+<li>[The Craft of Research II]</li>
+<li>[The Craft of Research III]</li>
+<li>[The Craft of Research IV]</li>
 </ul>
 <hr>
 </section>
@@ -360,16 +371,18 @@ a:hover {
 <section id="読み方" class="level2">
 <h2 class="anchored" data-anchor-id="読み方">読み方</h2>
 <ul>
-<li>最初のシリーズ（Study design I–V）だけ読めば、研究のゴールをどう設定するかが見えてきます。</li>
-<li>興味で選ぶなら
+<li>まずは <strong>Study design I–V</strong> だけ読めば、<br>
+「どんな問いを立てて、どんなデータを集めるか」というゴールの輪郭が見えてきます。</li>
+<li>興味で選ぶなら：
 <ul>
-<li>論文の読み方 → Clinical trial</li>
-<li>研究から得られる数字の意味 → Epidemiology</li>
-<li>統計解析の実践 → Regression</li>
-<li>統計解析をもう一歩深く → Causal inference</li>
-<li>書き方 → Publish a paper</li>
+<li><strong>論文の読み方の足場をつくりたい</strong> → Frequentist thinking / Effects and time</li>
+<li><strong>解析まわりをもう少しきちんとしたい</strong> → Adjusting for bias</li>
+<li><strong>因果の考え方を整理したい</strong> → Causal inference</li>
+<li><strong>最終的に論文として形にしたい</strong> → The Craft of Research</li>
 </ul></li>
-<li>すべて独立して読めるけれど、通読すると「地図」が頭に入ります。要するに、研究を題材にした気軽な読み物だと思ってください。</li>
+<li>どのエピソードも、それだけで読めるように書いていますが、<br>
+通して読むと「研究という営み」の地図が、少しずつ頭の中にできあがっていきます。<br>
+コーヒー片手に、気になったところから読んでみてください。</li>
 </ul>
 
 
