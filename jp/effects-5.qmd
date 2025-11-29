@@ -196,8 +196,11 @@ $S(x)=\mathrm{exp}(-\lambda x)$
 ここまでくれば簡単なのですが、最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク$π$は、特定時点$x$までに疾患を発症する確率を表しています。つまり、疾患リスク$π$とハザード$λ$は、時点$x$の生存関数を$S(x)$を介して、以下の式で結びついています。
 
 $\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)$
+:::
 
-```{r echo=FALSE, warning=FALSE}
+
+::: {.callout-note collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
@@ -244,7 +247,9 @@ generate_data <- function(n=200, hr1, hr2) {
   )
 }
 ```
+:::
 
+::: {.callout-note title="cifplot()によるKaplan-Meier曲線"}
 イメージしやすいように、以前`cifmodeling`パッケージの`cifplot()`で描いたKaplan–Meier曲線を置いておきます。
 
 ```{r warning=FALSE}

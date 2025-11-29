@@ -256,7 +256,9 @@ a:hover {
 -   生存時間：指数分布（rexp関数）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）
 
 前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。
+:::
 
+::: {.callout-note collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
@@ -305,6 +307,7 @@ generate_data <- function(n=200, hr1, hr2) {
 }
 ```
 :::
+
 
 ::: {.callout-note title="全生存期間（OS）のKaplan–Meier曲線"}
 OSとRFSは通常の生存時間データですから、前回と同様に、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier生存曲線**で記述します。

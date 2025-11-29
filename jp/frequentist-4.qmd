@@ -202,8 +202,11 @@ a:hover {
 
 ::: {.callout-note title="coxph()を用いた95%信頼区間のシミュレーション"}
 ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
+:::
 
-```{r echo=FALSE, warning=FALSE}
+
+::: {.callout-note collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
@@ -250,9 +253,11 @@ generate_data <- function(n=200, hr1, hr2) {
   )
 }
 ```
+:::
 
+
+::: {.callout-note collapse="true" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら"}
 ```{r warning=FALSE}
-# install.packages("survival") #インストールが必要なら実行
 calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true) {
   set.seed(46)
   replications=1000
@@ -277,12 +282,19 @@ calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true
   coverage <- mean(covered)
   return(coverage)
 }
+```
+:::
 
+
+::: {.callout-note title="calculate_coverage()の実行"}
+```{r warning=FALSE}
+# install.packages("survival") #インストールが必要なら実行
 library(survival)
 coverage_200 <- calculate_coverage(model="coxph", n=200, hr1=2, hr2=1.5, hr_true=1.5)
 print(coverage_200)
 ```
 :::
+
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
