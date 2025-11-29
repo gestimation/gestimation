@@ -252,3 +252,4 @@ a:hover {
 
 ![](study-design-5.png)
 :::
+### End of the episode on Study design
