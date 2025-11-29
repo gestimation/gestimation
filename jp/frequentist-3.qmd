@@ -238,7 +238,7 @@ After 8 years of slow accrual, the JCOG data and safety monitoring committee app
 :::
 
 ::: voice-father
-お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」
+お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験は、試験治療群の成績が、標準治療群よりいいかどうかを調べるっていうポリシーだから、片側p値を使ってる（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」
 :::
 
 ::: voice-daughter
@@ -280,6 +280,8 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 
 ### 文献
+
+- [JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 

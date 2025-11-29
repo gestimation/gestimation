@@ -383,7 +383,6 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 :::
 
 
-
 ### Continuation of their story
 
 [Study design I](study-design-1.qmd)

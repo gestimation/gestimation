@@ -401,8 +401,6 @@ OS、DFS、RFSは、特に術後補助化学療法の有効性を評価すると
 
 ### 文献
 
-- [JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
-
 - [薬生薬審発0331第1号. 抗悪性腫瘍薬の臨床評価方法に関するガイドライン [Internet]. 東京: 厚生労働省医薬・生活衛生局医薬品審査管理課長; 2021](https://www.pmda.go.jp/files/000243746.pdf)
 
 - Biomarkers Definitions Working Group. Biomarkers and surrogate endpoints: preferred definitions and conceptual framework. Clin Pharmacol Ther 2001;69(3):89-95
