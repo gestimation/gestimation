@@ -200,12 +200,12 @@ a:hover {
 :::::::::::::::::::::::::::::::::
 
 
-::: {.callout-note title="coxph()を用いた95%信頼区間のシミュレーション"}
+::: {.callout-note appearance="simple"  title="coxph()を用いた95%信頼区間のシミュレーション"}
 ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
 :::
 
 
-::: {.callout-note collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
@@ -256,7 +256,7 @@ generate_data <- function(n=200, hr1, hr2) {
 :::
 
 
-::: {.callout-note collapse="true" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら"}
 ```{r warning=FALSE}
 calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true) {
   set.seed(46)
@@ -286,7 +286,7 @@ calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true
 :::
 
 
-::: {.callout-note title="calculate_coverage()の実行"}
+::: {.callout-note appearance="simple"  title="calculate_coverage()の実行"}
 ```{r warning=FALSE}
 # install.packages("survival") #インストールが必要なら実行
 library(survival)
@@ -437,7 +437,7 @@ print(coverage_800)
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note title="サンプルサイズ設計の2つのアプローチ"}
+::: {.callout-note appearance="simple"  title="サンプルサイズ設計の2つのアプローチ"}
 研究計画を立てるときには、サンプルサイズを見積もる必要があります。サンプルサイズの計算は大まかにいえば2種類あって、信頼区間アプローチ（たとえば表1）と仮説検定アプローチ（次回）を用いることができます。
 
 信頼区間アプローチは、調査や探索的研究で用いられます。このアプローチによって割合を推定するために必要なサンプルサイズを求めるとき、次の数値を設定する必要があります。
@@ -454,7 +454,7 @@ print(coverage_800)
 サンプルサイズ設計は、βエラーを制御するという意味で、p値と対になる統計手法といえます。
 :::
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
 
 がん臨床試験では、治療からどの程度生存したかを表す指標として、生存期間中央値（median survival）を求めることがあります。これは生存時間データであるOSから計算される値です。さて、生存期間中央値を報告してよいのは、どのような場合でしょうか？
 
@@ -464,10 +464,23 @@ print(coverage_800)
 4.  1、2、3すべて誤り
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解は1です**
+::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
 
-柔軟に考えてみましょう。生存期間は、日数や年数のような数値データですから、連続データに近い特徴を持っています。連続データでは、中央値（median）は上位50%に相当する値のことですよね。半数以上の対象者がイベントを起こして、生存期間が確定すれば、たとえ打ち切りがあっても、生存期間中央値を求めることができます。もし、予定された追跡期間を全員が完了したとしても、イベントがじゅうぶんに観察されなければ（つまり打ち切りが多かったら）、統計的なテクニックで中央値を計算することはできますが、バイアスが生じる可能性が高くなります。
+臨床検査の正常範囲の意味として正しいのはどれでしょうか。
+
+1.  ある集団からのランダムサンプルにおいて検査値の平均±1.96×標準偏差
+2.  健常人集団における検査値の95%が含まれる範囲
+3.  健常人集団における検査値の平均±1.96×標準誤差
+4.  ある集団からのランダムサンプルにおいて検査値の95%が含まれる範囲
+
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+-   **正解は2です**
+
+標準偏差（SD）と標準誤差（SE）の区別が重要です。前者は「検査値自体が個人間でどのくらいばらつくか」を、後者は「平均の推定がどのくらい精確か」を表しています。そして、「平均±1.96×標準偏差」は、正規分布における「95%が含まれる範囲」に相当しています。
+
+なお、似て非なる範囲に「平均±1.96×標準誤差」があります。これは頻度論統計学（frequentist statistics）において95%信頼区間（confidence interval）と呼ばれる区間です。
 :::
 
 ### 文献

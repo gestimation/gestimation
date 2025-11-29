@@ -180,11 +180,11 @@ a:hover {
 お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。この話題は後で話すとして、まずはCox回帰をRでやってみよう。パソコンはある？」
 :::
 
-::: {.callout-note title="coxph()を用いたハザード比の推定"}
+::: {.callout-note appearance="simple"  title="coxph()を用いたハザード比の推定"}
 ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のエピソードでは、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
 :::
 
-::: {.callout-note collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
@@ -234,7 +234,7 @@ generate_data <- function(n=200, hr1, hr2) {
 ```
 :::
 
-::: {.callout-note title="coxph()の実行"}
+::: {.callout-note appearance="simple"  title="coxph()の実行"}
 ```{r warning=FALSE}
 # install.packages("survival") #インストールが必要なら実行
 library(survival)
@@ -335,12 +335,12 @@ summary(fit)
 
 ![](clinical-trial-3.png)
 
-::: {.callout-note title="ホパテの悲劇"}
+::: {.callout-note appearance="simple"  title="ホパテの悲劇"}
 
 脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。
 :::
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
 頻度論によるp値の説明として正しいものは、次のうちどれでしょうか。
 
 1.  帰無仮説が正しい確率である
@@ -349,7 +349,7 @@ summary(fit)
 4.  1、2、3すべて誤り
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
 -   **正解は4です**
 
 有意と判断する基準（有意水準）が5%であれば3は正しいのですが、試験によっては有意水準が5%でないこともあります。実はJCOG9502では中間解析が行われていて、その結果、早期中止になったという経緯があります。一般に中間解析では、5%より低い有意水準で検定が行われます。ただし、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためでした。

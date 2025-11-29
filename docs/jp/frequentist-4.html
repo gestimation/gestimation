@@ -355,7 +355,7 @@ a:hover {
 <p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -368,7 +368,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 <p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -430,7 +430,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -471,7 +471,7 @@ generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="calculate_coverage()の実行">
+<div class="callout callout-style-simple callout-note callout-titled" title="calculate_coverage()の実行">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -785,7 +785,7 @@ calculate_coverage()の実行
 <p>私「そっか。だいたいわかった。私、明日も出勤だから、また今度教えてよ。おやすみー」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="サンプルサイズ設計の2つのアプローチ">
+<div class="callout callout-style-simple callout-note callout-titled" title="サンプルサイズ設計の2つのアプローチ">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -810,7 +810,7 @@ calculate_coverage()の実行
 <p>サンプルサイズ設計は、βエラーを制御するという意味で、p値と対になる統計手法といえます。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -829,8 +829,27 @@ calculate_coverage()の実行
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>臨床検査の正常範囲の意味として正しいのはどれでしょうか。</p>
+<ol type="1">
+<li>ある集団からのランダムサンプルにおいて検査値の平均±1.96×標準偏差</li>
+<li>健常人集団における検査値の95%が含まれる範囲</li>
+<li>健常人集団における検査値の平均±1.96×標準誤差</li>
+<li>ある集団からのランダムサンプルにおいて検査値の95%が含まれる範囲</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -839,12 +858,13 @@ calculate_coverage()の実行
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は1です</strong></li>
+<li><strong>正解は2です</strong></li>
 </ul>
-<p>柔軟に考えてみましょう。生存期間は、日数や年数のような数値データですから、連続データに近い特徴を持っています。連続データでは、中央値（median）は上位50%に相当する値のことですよね。半数以上の対象者がイベントを起こして、生存期間が確定すれば、たとえ打ち切りがあっても、生存期間中央値を求めることができます。もし、予定された追跡期間を全員が完了したとしても、イベントがじゅうぶんに観察されなければ（つまり打ち切りが多かったら）、統計的なテクニックで中央値を計算することはできますが、バイアスが生じる可能性が高くなります。</p>
+<p>標準偏差（SD）と標準誤差（SE）の区別が重要です。前者は「検査値自体が個人間でどのくらいばらつくか」を、後者は「平均の推定がどのくらい精確か」を表しています。そして、「平均±1.96×標準偏差」は、正規分布における「95%が含まれる範囲」に相当しています。</p>
+<p>なお、似て非なる範囲に「平均±1.96×標準誤差」があります。これは頻度論統計学（frequentist statistics）において95%信頼区間（confidence interval）と呼ばれる区間です。</p>
 </div>
 </div>
 </div>

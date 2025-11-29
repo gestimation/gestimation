@@ -337,7 +337,7 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。この話題は後で話すとして、まずはCox回帰をRでやってみよう。パソコンはある？」</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()を用いたハザード比の推定">
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()を用いたハザード比の推定">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -350,7 +350,7 @@ coxph()を用いたハザード比の推定
 <p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -412,7 +412,7 @@ coxph()を用いたハザード比の推定
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="coxph()の実行">
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()の実行">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -432,20 +432,18 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 147 
+  n= 200, number of events= 135 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.4267    1.5321   0.1720 2.481   0.0131 *
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
+stomaWITH STOMA 0.2826    1.3266   0.1751 1.614    0.107
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.532     0.6527     1.094     2.146
+stomaWITH STOMA     1.327     0.7538    0.9412      1.87
 
-Concordance= 0.54  (se = 0.023 )
-Likelihood ratio test= 5.96  on 1 df,   p=0.01
-Wald test            = 6.15  on 1 df,   p=0.01
-Score (logrank) test = 6.24  on 1 df,   p=0.01</code></pre>
+Concordance= 0.546  (se = 0.025 )
+Likelihood ratio test= 2.56  on 1 df,   p=0.1
+Wald test            = 2.6  on 1 df,   p=0.1
+Score (logrank) test = 2.62  on 1 df,   p=0.1</code></pre>
 </div>
 </div>
 </div>
@@ -518,7 +516,7 @@ Score (logrank) test = 6.24  on 1 df,   p=0.01</code></pre>
 </div>
 <p><img src="clinical-trial-2.png" class="img-fluid"></p>
 <p><img src="clinical-trial-3.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-note callout-titled" title="ホパテの悲劇">
+<div class="callout callout-style-simple callout-note callout-titled" title="ホパテの悲劇">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -531,7 +529,7 @@ Score (logrank) test = 6.24  on 1 df,   p=0.01</code></pre>
 <p>脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -550,7 +548,7 @@ Score (logrank) test = 6.24  on 1 df,   p=0.01</code></pre>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

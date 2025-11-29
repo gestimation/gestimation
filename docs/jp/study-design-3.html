@@ -457,7 +457,7 @@ a:hover {
 <p>私「観察のスタート時点のことね、たしかに大切。実は今、調査票作ってて、DFSとかOSを正確に知りたかったんだ。聞いてよかった、また相談するね」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
+<div class="callout callout-style-simple callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -476,7 +476,7 @@ a:hover {
 <p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -538,7 +538,7 @@ a:hover {
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="全生存期間（OS）のKaplan–Meier曲線">
+<div class="callout callout-style-simple callout-note callout-titled" title="全生存期間（OS）のKaplan–Meier曲線">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -570,7 +570,7 @@ a:hover {
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="無再発生存期間（RFS）のKaplan–Meier曲線">
+<div class="callout callout-style-simple callout-note callout-titled" title="無再発生存期間（RFS）のKaplan–Meier曲線">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -596,7 +596,7 @@ a:hover {
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="累積発生率（CIR）のAalen-Johansen曲線の違い">
+<div class="callout callout-style-simple callout-note callout-titled" title="累積発生率（CIR）のAalen-Johansen曲線の違い">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -643,7 +643,7 @@ a:hover {
 <p>お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="臨床エンドポイントと代替エンドポイント">
+<div class="callout callout-style-simple callout-note callout-titled" title="臨床エンドポイントと代替エンドポイント">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -657,7 +657,7 @@ a:hover {
 <p>その一方で、術後補助化学療法としての抗がん剤の有効性を評価する臨床試験では、代替エンドポイント（surrogate endpoint）として採用することがあります。代替エンドポイントとは、臨床エンドポイントの代わりになることが意図されたもので、臨床上の便益・害の有無を予測することが期待されるものと定義されます。DFSのような代替エンドポイントを用いる最大のメリットは、試験期間が短くなることです。ただし、過去の承認審査では、代替エンドポイントの利用が誤った医薬品評価につながったケースが数多く報告されています（Fleming and Demets 1996）。たとえば、進行大腸がんにおける5FU+ロイコボリン併用療法は、臨床試験で腫瘍縮小がみられたにもかかわらず、臨床エンドポイントであるOSを評価すると、ほとんど延命効果がないことが明らかになりました（Fleming and Demets 1996）。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -667,16 +667,16 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>2009～2014年にFDAによって承認されたがん領域の医薬品は、83品目あったそうです。奏効率（腫瘍縮小や完全寛解）がエンドポイントの臨床試験を根拠として承認されたのは、83品目のうち何割だったか、正しいものを選びなさい。</p>
+<p>がん臨床研究で用いられるアウトカムのひとつに無増悪生存期間（progression-free survival）があります。このアウトカムを測定するには、画像による腫瘍増悪の判定が必要になります。このとき、客観性を高めるため、第三者が画像をみて増悪を判定すると、主治医による増悪の判定と一致しないことがあり得ます。この問題は、中央判定と施設判定の不一致と呼ばれます。以下の選択肢のうち、対処法として適切でないものを選びなさい。</p>
 <ol type="1">
-<li>0～24%</li>
-<li>25～49%</li>
-<li>50～74%</li>
-<li>75～100%</li>
+<li>統計解析では、客観性が高い中央判定の結果を採用する</li>
+<li>統計解析では、中央判定と施設判定のうち、先に起きたものを採用する</li>
+<li>症例検討会を開き、中央判定と施設判定の結果が一致しない患者の扱いを医学的に決定する</li>
+<li>中央判定を採用した解析と、施設判定を採用した解析の、2通りを行う</li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -691,7 +691,8 @@ a:hover {
 <ul>
 <li><strong>正解は2です</strong></li>
 </ul>
-<p>Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。</p>
+<p>中央判定と施設判定のうち、先に起きたものを採用すると、無増悪生存期間が短くなる方向にバイアスが生じるため、適切ではありません。</p>
+<p>ひとつだけ注意があります。施設判定ではなく中央判定を必ず採用すべき、というわけではありません。施設で増悪になった後、それが追跡状況や画像検査の頻度に影響したり、施設の担当医の治療方針が変化したりすることがあります。このような状況では、施設判定を用いることが適切かもしれません。</p>
 </div>
 </div>
 </div>
