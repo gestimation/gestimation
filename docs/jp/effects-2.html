@@ -336,22 +336,24 @@ a:hover {
 <p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標1">
+<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標1. 集団寄与割合">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標1
+寄与割合とその関連指標1. 集団寄与割合
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction/excess fraction）という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団をターゲットとするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。</p>
-<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、population attributable fractionと呼ばれています。<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。 ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
+<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、population attributable fractionと呼ばれています。ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
 <ul>
-<li><p>Population attributable fraction</p>
-<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p></li>
+<li>Population attributable fraction</li>
 </ul>
+<p><span class="math display">\[
+PAF=\frac{p(RR-1)}{p(RR-1)+1}
+\]</span></p>
 </div>
 </div>
 <div class="dialogue">
@@ -362,25 +364,27 @@ a:hover {
 <p>お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。実はこれはワクチン有効率とほとんど同じ式だったりする」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標2">
+<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標2
+寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
 <ul>
-<li><p>Excess fraction</p>
-<p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
+<li>Excess fraction <span class="math display">\[
+EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
+\]</span></li>
 </ul>
 <p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
 <ul>
-<li><p>Preventable fraction</p>
-<p><span class="math inline">\(PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
+<li>Preventable fraction <span class="math display">\[
+PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
+\]</span></li>
 </ul>
 <table class="caption-top table">
 <colgroup>
@@ -401,28 +405,36 @@ a:hover {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Excess fraction（寄与割合）</td>
-<td><strong>曝露だけ</strong></td>
-<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
-<td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Preventable fraction（予防寄与割合）</td>
-<td><strong>曝露だけ</strong></td>
-<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
-<td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Population attributable fraction（集団寄与割合）</td>
+<td>PAF（集団寄与割合）</td>
 <td><strong>曝露+非曝露</strong></td>
 <td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
 <td>公衆衛生・医療政策で、曝露をなくせば集団でどれだけ減るかを評価するとき</td>
 <td></td>
 </tr>
+<tr class="even">
+<td>EF（寄与割合）</td>
+<td><strong>曝露だけ</strong></td>
+<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
+<td>喫煙、飲酒、化学物質などの有害曝露の個人への影響を知りたいとき</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>PF（予防寄与割合）</td>
+<td><strong>曝露だけ</strong></td>
+<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
+<td>ワクチン・検診・運動などの予防法が、個人のリスクをどれだけ下げたか知りたいとき</td>
+<td></td>
+</tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「余計にわかんない。使い分けもわかんないしパーセントがなにを意味するのか謎」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「まあコーヒーを飲んでゆっくり考えよう。まずは具体的な計算結果をみてみてよ」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="コホート研究の数値例">
@@ -500,10 +512,10 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「余計にわかんない。使い分けもわかんないしパーセントがなにを意味するのか謎」</p>
+<p>私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「でしょ。それにね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふんふん」</p>
@@ -512,7 +524,7 @@ a:hover {
 <p>お父さん「残りの2人は、本当はがんだったのに、検診では見つけられなかった。そのため、67歳と73歳で亡くなった。つまり、がん検診後の生存期間は7年と13年。じゃあ、仮にこの2人を60歳のとき根治切除できたとしたら、生存期間は何割長くなるだろう」</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」**</p>
+<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「じゃあ、別の質問をするよ。もし、がん検診陽性の2人を60歳のとき根治切除できなかったとしたら、生存期間はどれくらい失われる？」</p>
@@ -575,7 +587,7 @@ a:hover {
 <p>私「生存者はいなくなるね。(1-1)/1=0かな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていいうのは、リスク比やオッズ比も同じだけどね」</p>
+<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていうのは、リスク比やオッズ比も同じだけどね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほどね」</p>

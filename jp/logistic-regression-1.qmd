@@ -478,7 +478,7 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 
 ![](clinical-trial-2.png)
 
-![](clinical-trial-3.png)
+
 
 
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
