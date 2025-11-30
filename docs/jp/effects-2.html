@@ -311,8 +311,10 @@ a:hover {
 <section id="疾患リスクとターゲット集団" class="level3">
 <h3 class="anchored" data-anchor-id="疾患リスクとターゲット集団">疾患リスクとターゲット集団</h3>
 <div class="dialogue">
+<p>私「コーヒーお代わりいる？お父さん」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
+<p>お父さん「ああ、ありがとう。おいしいね。ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「そうね、昔よりは少なくなったんじゃない？」</p>
@@ -332,27 +334,47 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
 </div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標">
+<p>:::::::::::::::::::::::::::::::::</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標
+寄与割合とその関連指標1
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction/excess fraction）という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団をターゲットとするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。</p>
+<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、population attributable fractionと呼ばれています。<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。 ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
+<ul>
+<li><p>Population attributable fraction</p>
+<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ふーん。集団寄与割合はリスク比だけじゃなくて、リスク因子の割合がわからないと計算できないんだね。でも、まあ、これもワクチン有効率と同じパターンだね。パーセントっていわれるとただの割合と思っちゃう。集団寄与割合のパーセントって、よく考えるとなにを意味するのか謎」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。実はこれはワクチン有効率とほとんど同じ式だったりする」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+寄与割合とその関連指標2
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
 <ul>
 <li><p>Excess fraction</p>
 <p><span class="math inline">\(EF=\frac{\pi_1-\pi_2}{\pi_1}=1-\frac{1}{RR}\)</span></p></li>
-</ul>
-<p>また、excess fractionのターゲット集団を群1から集団全体（群1+群2）にした指標は、population attributable fractionと呼ばれています。<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
-<ul>
-<li><p>Population attributable fraction</p>
-<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p></li>
 </ul>
 <p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
 <ul>
@@ -477,10 +499,10 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「これもワクチン有効率と同じだね。パーセントっていわれるとただの割合と思っちゃう。よく考えると、Excess fractionなんて、パーセントがなにを意味するのか謎」</p>
+<p>私「余計にわかんない。使い分けもわかんないしパーセントがなにを意味するのか謎」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そっか、そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「そうだよね。あのね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふんふん」</p>
@@ -581,7 +603,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -590,7 +612,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は3です</strong></li>

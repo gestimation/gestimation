@@ -223,7 +223,7 @@ a:hover {
 
 -   ワクチン有効率（vaccine efficacy、相対リスク減少）
 
-    $VF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR$
+    $VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR$
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
@@ -257,7 +257,7 @@ $\pi_1 = 40/1000 = 0.04$
 
 $\pi_2 = 800/1000 = 0.8$ 
 
-$VF=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
+$VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 :::
 
 ::: voice-daughter
@@ -271,7 +271,7 @@ $VF=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 ::::::::::::::::::::::::::::::::: 
 
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-奏効率（response rate）とは、抗がん剤による治療を行った結果、何割の患者で腫瘍が縮小したか（完全奏効または部分奏効を達成したか）や血液から腫瘍細胞が消えたか（完全寛解）を表す指標です。この用語は広く用いられていますが、Japan Clinical Oncology Group（JCOG）では奏効割合（response proportion）という表現を好んでいます（Japan Clinical Oncology Group 2025）。
+奏効率（response rate）とは、抗がん剤による治療を行った結果、何割の患者で腫瘍が縮小したか（完全奏効または部分奏効を達成したか）や血液から腫瘍細胞が消えたか（完全寛解）を表す指標です。この用語は広く用いられていますが、Japan Clinical Oncology Group（JCOG）という臨床試験グループでは奏効割合（response proportion）という表現を好んでいます（Japan Clinical Oncology Group 2025）。
 
 さて、次の指標のうち、率（rate）に該当するのはどれでしょうか。
 

@@ -153,11 +153,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-logistic-regression-i" id="toc-story-and-quiz-logistic-regression-i" class="nav-link active" data-scroll-target="#story-and-quiz-logistic-regression-i">Story and Quiz − Logistic regression I</a>
+  <li><a href="#story-and-quiz-adjusting-for-bias-i" id="toc-story-and-quiz-adjusting-for-bias-i" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-i">Story and Quiz − Adjusting for bias I</a>
   <ul class="collapse">
   <li><a href="#どうしてオッズ比が無限大になっちゃったの" id="toc-どうしてオッズ比が無限大になっちゃったの" class="nav-link" data-scroll-target="#どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -303,23 +301,47 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-logistic-regression-i" class="level1">
-<h1>Story and Quiz − Logistic regression I</h1>
+<section id="story-and-quiz-adjusting-for-bias-i" class="level1">
+<h1>Story and Quiz − Adjusting for bias I</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing</p>
 </div>
 <hr>
 <section id="どうしてオッズ比が無限大になっちゃったの" class="level3">
 <h3 class="anchored" data-anchor-id="どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</h3>
-<ul>
-<li><p>前回までのあらすじ</p>
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、女医である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。その後いくつか質問するうちに、父のことを「こいつ使える」と思い始めたのだった。</p></li>
-</ul>
-<p><strong>私「これみてよ、お父さん」</strong></p>
+<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+前回までのあらすじ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、女医である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。その後いくつか質問するうちに、父のことを「こいつ使える」と思い始めたのだった。</p>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「これみてよ、お父さん」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ん？どうしたの、この資料」</p>
-<p><strong>私「前に相談したがんサバイバーの復職状況を調べる研究についてなんだけどね、うちの診療科だけだけど調査票が集まったから、解析してみたの。その結果をまとめた資料よ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「前に相談したがんサバイバーの復職状況を調べる研究についてなんだけどね、うちの診療科だけだけど調査票が集まったから、解析してみたの。その結果をまとめた資料よ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ああ、あれね。ストーマ造設と復職率の関連を調べることにしたんだっけ。資料のどこをみればいいの？」</p>
-<p><strong>私「この表なんだけど。教えられた通り、ロジスティック回帰をしてみたんだ。その結果をまとめたよ。どうかな」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「この表なんだけど。教えられた通り、ロジスティック回帰をしてみたんだ。その結果をまとめたよ。どうかな」</p>
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
@@ -389,24 +411,29 @@ a:hover {
 </tr>
 </tbody>
 </table>
+<div class="dialogue">
+<div class="voice-father">
 <p>お父さん「ふむふむ。よくあるロジスティック回帰の結果だね。この表、上司にみせるんでしょ。その前にちょっと手直しした方がいいかもね」</p>
-<p><strong>私「やっぱり？そんな気がしてみてもらおうと思ったんだ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱり？そんな気がしてみてもらおうと思ったんだ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「まず、Intercept、STOMA、AGE、SEX、INCOMEっていうのがわからないよ。Intercept以外は共変量（covariates）のことだよね」</p>
-<p><strong>私「共変量って？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「共変量って？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「共変量っていうのは、ロジスティック回帰に入れる説明変数のこと。復職率を規定する要因っていえばいいかな。それと、Interceptは回帰式でいう切片項のこと。統計ソフトウェアのアウトプットをそのまま表にしたんでしょ？きっとストーマ、年齢、性別、年収という変数を使ったんだと思うんだけど、データ上の変数名がそのままになっている。それに、出てきた数字をぜんぶ載せると、表がうるさくない？」</p>
-<p><strong>私「たしかに」</strong></p>
-<p>お父さん「たしかにじゃなくてさ。表を作成するときには、情報が自然に入ってくるように、読者の立場で考えなくちゃ」</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="voice-daughter">
+<p>私「たしかに」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「たしかにじゃなくてさ。表を作成するときには、情報が自然に入ってくるように、読者の立場で考えなくちゃ。具体的な注意点はこんなところかな」</p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>表を作成するとき注意すべきことのリスト</strong></p>
 <ul>
 <li>読者の立場で考える</li>
 <li>表のフォーマットに従う</li>
@@ -414,30 +441,47 @@ Note
 <li>表タイトル・脚注を利用して補足情報を伝える</li>
 <li>数え尽くしの原則を守る</li>
 </ul>
-</div>
-</div>
+<div class="dialogue">
+<div class="voice-father">
 <p>お父さん「ロジスティック回帰からいろんな指標が出せるけど、表にはオッズ比、95%信頼区間、p値だけあれば普通はじゅうぶんだよ」</p>
-<p><strong>私「それはこの表にも載ってるよね」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「それはこの表にも載ってるよね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「載っていません。この表の”推定値”は、みたところ回帰係数の値でしょ。それをオッズ比（odds ratio）に換算しないといけない。換算するには、回帰係数βの指数をとって、OR=exp(β)を求めればいい」</p>
-<p><strong>私「そうなのか。ストーマのオッズ比はexp(1.41)=4.1倍ってことね。あれ？exp(25.72)を計算してみると、パソコンに表示できないくらいに大きい数字になったんだけど。ほとんど無限大に近い数字だ。性別の影響が強いのかな。年収はexp(-0.00)？なんか変だな」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「そうなのか。ストーマのオッズ比はexp(1.41)=4.1倍ってことね。あれ？exp(25.72)を計算してみると、パソコンに表示できないくらいに大きい数字になったんだけど。ほとんど無限大に近い数字だ。性別の影響が強いのかな。年収はexp(-0.00)？なんか変だな」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「これはよくあるトラブルだよ」</p>
-<p><strong>私「そうなの？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「そうなの？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「復職しなかった患者さんはほとんど女性だったんじゃない？擬似完全分離（quasi-complete separation）っていう計算上の問題が起きちゃってて、性別の回帰係数を、うまく推定できていないんだ」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="完全分離">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+完全分離
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>完全分離</strong></p>
 <p>ロジスティック回帰の回帰係数は、最尤法という汎用的な推定方法によって計算されます。ただし、データから必ずしも最尤法の解が求まるわけではありません。これが完全分離（complete separation）や擬似完全分離（quasi-complete separation）という問題です。完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。これらの問題が起きると、回帰係数が求まらなかったり、不安定だったりするわけですから、共変量の数の削減や、最尤法以外の推定方法の利用など、なんらかの対処が必要になります。</p>
 </div>
 </div>
+<div class="dialogue">
+<div class="voice-father">
 <p>お父さん「というわけで、正しい計算ができていないわけだから、ロジスティック回帰の結果を示すのはやめた方がいい。性別だけじゃなくて年収も問題だね。単位が円のまま扱うと、桁が大きすぎて数字が読めない。単位を万円にして、年収が1万円増えたら復職率がどう変化するかを示すといいんじゃないかな。性別と年収の扱いは気になると思うけど、今はこれくらいにしよう。表の体裁を直してあげるよ」</p>
+</div>
+</div>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -493,55 +537,68 @@ Note
 </tbody>
 </table>
 <p>*手術後1年以内の復職をアウトカムとした多変量ロジスティック回帰</p>
-<p><strong>私「あれ？オッズ比4.13倍ってことは、復職率がだいたい4倍になったってこと？そんなことある？」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あれ？オッズ比4.13倍ってことは、復職率がだいたい4倍になったってこと？そんなことある？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「違う違う。あのね、オッズ比はオッズの比をとったもの。オッズっていうのは、復職率を<span class="math inline">\(\pi\)</span>で表すと、それを<span class="math inline">\(\pi/(1-\pi)\)</span>と変換したものなんだ。<span class="math inline">\(\pi\)</span>が0に近いときは、オッズ比は<span class="math inline">\(\pi\)</span>の比に近い値になるんだけど、復職率の場合はそうじゃないよね。今回は、復職できない確率が約4倍になったって意味だよ」</p>
-<p><strong>私「わかりにくいのう」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「わかりにくいのう」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「じゃあ、どこに気を付けて手直ししたか説明するね。ロジスティック回帰では、共変量はなにで、どう扱ったかを正確に伝えることが大切なんだ。データをみると、年齢は65歳未満か以上かで分類した2値データみたいだね。そういうときは、何歳で分類したか、どの分類を基準にしたかわからないと、結果を読み取れない。また、連続データでは、忘れがちだけど単位が必要。年収の単位を円から万円にして、表に追記しておいたよ」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項1. フォーマット">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+注意事項1. フォーマット
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>注意事項1. フォーマット</strong></p>
 <p>論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。</p>
 <p>数字の意味をわかりやすく伝えるためには、どこにどのような情報を配置するかに気を配るべきです。さきほどの表では、列が指標の種類を表すというシンプルな方針を採用しています。そのため、数字がオッズ比、95%信頼区間、p値に対応することが一目でわかります。また、必要な情報から順に読み取れるように、各行または各列の順序にも気を配りたいところです。</p>
 <p>ある程度大きな表であれば、情報はグループにわけられることが普通です。表のフォーマットも、グループが視覚的にわかりやすいように工夫できます。たとえば後に出てくる表1では、行と列でそれぞれグループ化がなされています。行をグループ化するときには字下げ（indent）を用います。性別の内訳を示すために字下げがなされていますよね。また、列をグループ化するときにはスパナ（spanner）を用います。“ストーマ保有者”、“ストーマ非保有者”といった列の見出しを、スパナヘッド（spanner head）といいます。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項2. 単位・表示桁数">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+注意事項2. 単位・表示桁数
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>注意事項2. 単位・表示桁数</strong></p>
 <p>表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。</p>
 <p>数字の表示桁数は、ある程度桁数やルールが統一されていなければ、印象を悪くします。統計ソフトウェアが出力する数字は桁数が大きいことがありますが、そのまま表に示す必要はありません。有効数字2桁または3桁か、もともとの測定値より桁数を1桁大きく示すのが基本です。</p>
 <p>日本工業規格（Z 9041-1:1999）によると、平均の有効数字は、測定値より1～2桁大きく、標準偏差の有効数字は、最大でも3桁程度といわれています。つまり、むやみに数字の表示桁数を増やしても精確性が増すわけではないのです。年齢を例に挙げると、測定単位は「歳」なので、小数点1桁まで示すとよいでしょう。表1の年齢の平均・標準偏差では、そのようになっています。p値については、小数点以下2桁か3桁まで報告すれば、有意水準（0.05が多い）との大小関係が読み取ることができるので、必要十分でしょう。</p>
 </div>
 </div>
-<p><strong>私「表の作り方をご助言いただけるのはありがたいんだけどさ、肝心のロジスティック回帰はどうすればいいんだろ」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「表の作り方をご助言いただけるのはありがたいんだけどさ、肝心のロジスティック回帰はどうすればいいんだろ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「擬似完全分離を避けるには、共変量の数を削らすのがわかりやすい。今回はサンプルサイズが不足しているみたいだから、他の共変量はすべて使わないで、単にストーマ造設と復職率だけの関連を調べたらどうかな？その場合も、通常の<span class="math inline">\(\chi^2\)</span>検定は使わない方がいいよ。Fisherの正確検定とClopper-Pearson信頼区間っていう方法が推奨されている」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="2値データの解析においてサンプルサイズが不足したときの指針">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+2値データの解析においてサンプルサイズが不足したときの指針
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>2値データの解析においてサンプルサイズが不足したときの指針</strong></p>
 <ul>
 <li>ロジスティック回帰の共変量の数を減らす（目安としてパラメータの数のおよそ5倍のイベント数が必要）</li>
 <li><span class="math inline">\(\chi^2\)</span>検定ではなくFisher正確検定を用いる</li>
@@ -549,10 +606,20 @@ Note
 </ul>
 </div>
 </div>
-<p><strong>私「でも、ロジスティック回帰で交絡因子を調整しなさいっていったのはお父さんなんだよ」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「でも、ロジスティック回帰で交絡因子を調整しなさいっていったのはお父さんなんだよ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうだね、それは重要な問題だよね。じゃあ、ストーマ保有者と非保有者で、年齢、性別、年収の分布がどれくらい違うかをまず確認しようか。前にも話したとおり、年収を尋ねたことでバイアスが生じていないかとか、年収を尋ねて欠測が多いんじゃないかとか、いろいろ気になるし。もし分布が揃ってたら、調整しなくても影響は小さいかもしれない」</p>
-<p><strong>私「あ、その表なら資料にあるよ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「あ、その表なら資料にあるよ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「じゃあ、あとはストーマ造設と復職率の関連を表にするだけだね。資料には、以下の表1と表2を載せればいいよ」</p>
+</div>
+</div>
 <p>表1. 20XX～20YY年にZZ病院で手術を受け、がんサバイバー復職率調査に回答した直腸がん患者80人の背景因子の記述</p>
 <table class="caption-top table">
 <thead>
@@ -642,52 +709,81 @@ Note
 </table>
 <p>*Clopper-Pearson法</p>
 <p>†Fisher正確検定</p>
+<div class="dialogue">
+<div class="voice-father">
 <p>お父さん「集団のアウトカムを比較したいときは、その前に表1のようにそれぞれの集団の背景因子を記述するべきだよ。ストーマ保有者は20人しかいなくて、非保有者に比べて、平均年齢が低くて、女性が多いわけだ。やっぱり最終的にはロジスティック回帰で、背景因子の違いを調整しないといけないかもね。現時点での調査の回答率はどうだった？」</p>
-<p><strong>私「調査票は100人に送って、80人から回収できたから、回答率は80%かな」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「調査票は100人に送って、80人から回収できたから、回答率は80%かな」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「項目ごとの無回答（item non-response）についてはどう？」</p>
-<p><strong>私「そっか、調査票を回収できたかと、項目ごとの回答があったかは別だもんね。年齢は全員回答してくれたよ。性別は1人記入していなかった。項目ごとの回答数まで、表に示した方がよかった？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「そっか、調査票を回収できたかと、項目ごとの回答があったかは別だもんね。年齢は全員回答してくれたよ。性別は1人記入していなかった。項目ごとの回答数まで、表に示した方がよかった？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ううん、論文ではそこまで細かい数字は示さないことが多い。重要な変数が欠測してたりするなら別だけどね。たとえばさ、ロジスティック回帰を行うとき、性別不明はどう扱ったの？」</p>
-<p><strong>私「統計ソフトウェアのマニュアル調べたら、欠測は自動的に除外されるんだって」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「統計ソフトウェアのマニュアル調べたら、欠測は自動的に除外されるんだって」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうすると解析対象の人数が80人じゃなくて79人に減るんだから、表を作るときにそこを説明しておかないといけないんじゃない？一般に、ロジスティック回帰の結果を示す表だけだと、どんなデータかわかりにくいっていう問題がある。復職できなかったのは3人しかいないって、表2をみるまで気づかなかったよ？まだ1施設からのデータしか集まってないからでしょ。それじゃあロジスティック回帰はしたくてもできないよね」</p>
-<p><strong>私「確かにね。そのあたりの状況を、読者に伝えなきゃって気持ちが足りなかったみたい」</strong></p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+<div class="voice-daughter">
+<p>私「確かにね。そのあたりの状況を、読者に伝えなきゃって気持ちが足りなかったみたい」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項3. 表タイトル・脚注">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+注意事項3. 表タイトル・脚注
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>注意事項3. 表タイトル・脚注</strong></p>
 <p>読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。</p>
 <p>表には様々な数字が示されますから、どういった指標かわかりにくいときがしばしばあります。もしかしたら、複雑な統計手法から計算されたものかもしれません。データを解析するために用いた統計手法は、方法のセクションで説明することが基本ですが、読者への配慮として、表の脚注（footnote）を利用することもあります。表1でいえば、括弧内の数字の意味は自明ではないので、“平均（SD）または%”と脚注がついていますよね。表2の脚注には、どの統計手法を用いて信頼区間とp値を計算したかが説明されています。このように読者にとってなじみのない指標や表現には、補足説明が必要です。</p>
 <p>脚注を参照するための記号には、a、b、cまたは*、†、‡、§、¶を用いるのが正式です。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項4. 数え尽くしの原則">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+注意事項4. 数え尽くしの原則
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>注意事項4. 数え尽くしの原則</strong></p>
 <p>統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。</p>
 <p>統計家の間では、数え尽くしの原則（principle of exhaustion）という言葉があります。分類変数の分類が複雑だったり、欠測データがあったりするときには、分類ひとつひとつの人数を合計し、それが全体の人数に合うかどうかを確認せよ、というのがこの原則の教えです。最初に作成した表では人数が示されておらず、どのようなデータが解析されたのかわかりません。一方、表1・表2では、何人が解析対象で、何人が復職したのかが記述されています。さらに、数え尽くすと全体80人や100%に一致することから、正しく集計されたことが読み取れます。</p>
 </div>
 </div>
-<p><strong>私「ちなみにお父さん、もし”臨床疑問と研究仮説”で例を挙げてくれたときの研究仮説3みたいに、研究の目的が復職率と関連する因子の探索だとしたら、何か変わることはある？」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ちなみにお父さん、もし”臨床疑問と研究仮説”で例を挙げてくれたときの研究仮説3みたいに、研究の目的が復職率と関連する因子の探索だとしたら、何か変わることはある？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「どんな特徴を持った患者が、復職が難しいのか、予測因子をみつけたいってことかな。予測因子の候補となるデータがあるなら、それをロジスティック回帰の共変量に入れることで、予測因子の探索を行うことができるよね」</p>
-<p><strong>私「うんうん」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「うんうん」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「予測因子の探索では、特定の因子に関心がないってことが第一の違いだよ。ストーマと復職率の関連を調べるときは、ストーマのオッズ比やp値を求めることがゴールでしょ。予測因子の探索では、予測因子の候補をできるだけたくさん集めて、どの因子をモデルに入れたら予測精度が高いか、逆にどの因子は要らないかを調べることがゴールになる。これを変数選択っていうんだ」</p>
-<p><strong>私「ゴールは違ってもさ、p値を使えばよくない？有意な因子をモデルに入れたらいいんでしょ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「ゴールは違ってもさ、p値を使えばよくない？有意な因子をモデルに入れたらいいんでしょ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そういうやり方もあるけどね。予測2乗誤差、ROC曲線、AICといった予測精度の指標はいっぱいあって、それを利用することも多い。もうひとつ注意した方がいいのは、予測因子の候補や、どのような基準で変数選択するかを、事前に決めておくこと。事前に決めておかないと、どうしても研究者の主観が入っているんじゃないかって批判されるからね」</p>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -708,7 +804,7 @@ Note
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -767,7 +863,6 @@ Note
 </div>
 </div>
 </div>
-</section>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
@@ -810,6 +905,8 @@ Note
 <p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
+</section>
+</div>
 </section>
 </section>
 

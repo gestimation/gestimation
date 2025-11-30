@@ -153,7 +153,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-logistic-regression-iv" id="toc-story-and-quiz-logistic-regression-iv" class="nav-link active" data-scroll-target="#story-and-quiz-logistic-regression-iv">Story and Quiz − Logistic regression IV</a>
+  <li><a href="#story-and-quiz-adjusting-for-bias-iv" id="toc-story-and-quiz-adjusting-for-bias-iv" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-iv">Story and Quiz − Adjusting for bias IV</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
@@ -303,27 +303,32 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-logistic-regression-iv" class="level1">
-<h1>Story and Quiz − Logistic regression IV</h1>
+<section id="story-and-quiz-adjusting-for-bias-iv" class="level1">
+<h1>Story and Quiz − Adjusting for bias IV</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
 </div>
 <hr>
 <section id="ロジスティック回帰の計算ができない理由" class="level3">
 <h3 class="anchored" data-anchor-id="ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</h3>
-<p><strong>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうだったね。じゃあ、続けてロジスティック回帰の下で、2人の対象者を比べるとどうなるかって話をするね」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="回帰係数とオッズ比の関係">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+回帰係数とオッズ比の関係
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>回帰係数とオッズ比の関係</strong></p>
 <p>共変量が1個のとき、ロジスティック回帰は</p>
 <p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
 <p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
@@ -334,22 +339,34 @@ Note
 <p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
 </div>
 </div>
-<p><strong>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」**</p>
+</div>
+<div class="voice-father">
 <p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
-<p><strong>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そういうこと。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。リンク関数はそれぞれ別の関数になる」</p>
-<p><strong>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</strong></p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+<div class="voice-daughter">
+<p>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ロジスティック回帰の推定
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ロジスティック回帰の推定</strong></p>
+<p><strong>推定に用いられる関数</strong></p>
 <p>先ほど述べたアウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>の同時確率の式に、データ<span class="math inline">\(y_1,y_2,...,y_N\)</span>を代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。ただし、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、同時確率の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
 <p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
 <p><strong>完全分離</strong></p>
@@ -360,18 +377,44 @@ Note
 <p>二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。</p>
 </div>
 </div>
-<p><strong>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
-<p><strong>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「まあね。はやりだよね」</p>
-<p><strong>私「統計学と機械学習ってどう違うの？同じ？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「統計学と機械学習ってどう違うの？同じ？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
-<p><strong>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は、統計的推測が基礎にあるってことかな。統計的推測っていうのは、標本から母集団を調べるっていう考え方のこと。手法でいうと、p値とか信頼区間とか、ああいうやつね。パラメータの数が多すぎると、これらの手法は性能が下がるんだ」</p>
-<p><strong>私「機械学習に統計的推測って考え方はないの？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「機械学習に統計的推測って考え方はないの？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「機械学習やってる人も統計学は学んでいるから、ないとはいわないけど、あんまりこだわってないんじゃない？画像認識するとき、p値なんていらないでしょ」</p>
-<p><strong>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ん？思ったより芯を食った説明ができてるじゃない。さすがだね」</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

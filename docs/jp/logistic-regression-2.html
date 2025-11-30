@@ -124,10 +124,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-logistic-regression-ii" id="toc-story-and-quiz-logistic-regression-ii" class="nav-link active" data-scroll-target="#story-and-quiz-logistic-regression-ii">Story and Quiz − Logistic regression II</a>
+  <li><a href="#story-and-quiz-adjusting-for-bias-ii" id="toc-story-and-quiz-adjusting-for-bias-ii" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-ii">Story and Quiz − Adjusting for bias II</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -273,35 +272,62 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-logistic-regression-ii" class="level1">
-<h1>Story and Quiz − Logistic regression II</h1>
+<section id="story-and-quiz-adjusting-for-bias-ii" class="level1">
+<h1>Story and Quiz − Adjusting for bias II</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias</p>
 </div>
 <hr>
 <section id="ロジスティック回帰で調整するってどういうこと" class="level3">
 <h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
-<p><strong>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。以前、観察研究では交絡因子を調整しないといけない、とかいってたよね」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。以前、観察研究では交絡因子を調整しないといけない、とかいってたよね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ああ、そんな話もあったね」</p>
-<p><strong>私「でもさ、調整しないオッズ比も計算できるでしょ。どっちが正しいのかってどうやればわかるの？統計学の本を読んでも、書いてなくて」</strong></p>
+<div class="voice-daughter">
+<p>私「でもさ、調整しないオッズ比も計算できるでしょ。どっちが正しいのかってどうやればわかるの？統計学の本を読んでも、書いてなくて」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「それは統計学だけではわからない問題なんだ。データがどんな確率分布に従っているか、誰も知らないからね。因果推論や医学知識を使って判断すべき問題になる」</p>
-<p><strong>私「なにそれ？統計学の話じゃないの？ロジスティック回帰について聞いてるんだけど」</strong></p>
+<div class="voice-daughter">
+<p>私「なにそれ？統計学の話じゃないの？ロジスティック回帰について聞いてるんだけど」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そう思うよねえ。じゃあちょっと時間をかけて説明させてよ。」</p>
-<p><strong>私「いいけど」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「いいけど」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「疫学の分野での話なんだけどね。40年前に、コーヒーが膵がんを増やすんじゃないか、っていう論文がでたことがある」</p>
-<p><strong>私「いかにもありそうな話だね」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「いかにもありそうな話だね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲んでいる人のような曝露集団と、うまく比較できるようなコントロールを選ぶことは、ほとんどの場合難しい。だから、疫学の教科書では、コントロールと比較するときには、第3の因子が隠れていないかどうかに注意しなければいけないと書いてある」</p>
-<p><strong>私「ふんふん」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「それでは問題です。コーヒーと膵がんの論文で、実際に問題になった第3の因子はなんでしょう？」</p>
-<p><strong>私「え？えーっと」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「え？えーっと」</p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="logistic-regression-1.png" class="img-fluid figure-img"></p>
 <figcaption>図2.png</figcaption>
 </figure>
 </div>
+<div class="voice-father">
 <p>お父さん「答えはこちら」</p>
-<div class="callout callout-style-default callout-note callout-titled" title="お父さんの答えは？">
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -323,21 +349,29 @@ a:hover {
 </div>
 </div>
 </div>
-<p><strong>私「へえ、そんな話があったんだ」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へえ、そんな話があったんだ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「じゃあさ、こういう第3の因子を無視して解析してしまうとどうなる？」</p>
-<p><strong>私「それくらいわかるよ。バイアスが生じるんでしょ」</strong></p>
+<div class="voice-daughter">
+<p>私「それくらいわかるよ。バイアスが生じるんでしょ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そういうこと。こういう因子は、疫学では交絡因子（confounder）と呼ばれているんだけど、ロジスティック回帰で調整しないといけない。調整したときとしないときで、まったく違った結果が得られるっていう数値例を示そう」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Simpsonのパラドックス
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>Simpsonのパラドックス</strong></p>
 <p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのかみてみましょう。ここでは層別解析を用いて説明しますが、ロジスティック回帰でオッズ比を求めたときも、同じ計算結果になります（交互作用をうまく入れる必要がありますが）。</p>
 <p>表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
 <p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
@@ -442,12 +476,26 @@ Note
 </table>
 </div>
 </div>
-<p><strong>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そう、交絡因子を無視して、間違った研究結果を報告してしまうとまずいでしょ。もうひとつ注目してほしいのが、喫煙とコーヒーの関連。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
-<p><strong>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」**</p>
+</div>
+<div class="voice-father">
 <p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。もし仮に、 コーヒー摂取・非摂取という介入をランダムに割付けるランダム化介入試験を行ったらどうなると思う？」</p>
-<p><strong>私「両群で喫煙割合は、ほぼ同じになるはず」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「両群で喫煙割合は、ほぼ同じになるはず」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「うん。そうすると、ランダム化介入試験で得られるオッズ比は、喫煙・非喫煙別の結果を平均することになるから、全体でも1倍に近い結果になると予想される。つまり、層別する前のオッズ比3倍という結果は、コーヒーではなく喫煙が真の原因となって生じた見かけの関連なので、層別した後のオッズ比が正しい。だから、ロジスティック回帰で調整オッズ比を求めるべきなんだ」</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -486,7 +534,6 @@ Note
 </div>
 </div>
 </div>
-</section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
@@ -523,6 +570,11 @@ Note
 <p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
+</section>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

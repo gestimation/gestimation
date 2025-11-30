@@ -153,7 +153,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-logistic-regression-iii" id="toc-story-and-quiz-logistic-regression-iii" class="nav-link active" data-scroll-target="#story-and-quiz-logistic-regression-iii">Story and Quiz − Logistic regression III</a>
+  <li><a href="#story-and-quiz-adjusting-for-bias-iii" id="toc-story-and-quiz-adjusting-for-bias-iii" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-iii">Story and Quiz − Adjusting for bias III</a>
   <ul class="collapse">
   <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
@@ -302,32 +302,47 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-logistic-regression-iii" class="level1">
-<h1>Story and Quiz − Logistic regression III</h1>
+<section id="story-and-quiz-adjusting-for-bias-iii" class="level1">
+<h1>Story and Quiz − Adjusting for bias III</h1>
 <div class="serif-block">
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
 </div>
 <hr>
 <section id="数式を使ってロジスティック回帰を教えてよ" class="level3">
 <h3 class="anchored" data-anchor-id="数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</h3>
+<div class="dialogue">
+<div class="voice-father">
 <p>お父さん「ロジスティック回帰はね、医学研究でよく使うから知っておいた方がいいよ。簡単にいうと、2値データのための回帰モデルの一種。ストーマ造設、年齢、性別、年収といった共変量が、復職の有無のような2通りの値をとるアウトカムとどの程度相関するかを、調べることができる」</p>
-<p><strong>私「もうちょっと統計っぽく教えてよ」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「もうちょっと統計っぽく教えてよ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「ん？統計手法には、パラメトリック法とノンパラメトリック法があるけど、ロジスティック回帰はパラメトリックモデルの一種として位置づけられる。最近の教科書では、一般化線型モデルのひとつとして扱われることが多いかな」</p>
-<p><strong>私「そういうんじゃなくてさ。最初から順序立てて教えてほしいっていうか」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうんじゃなくてさ。最初から順序立てて教えてほしいっていうか」**</p>
+</div>
+<div class="voice-father">
 <p>お父さん「数式使っていいの？」</p>
-<p><strong>私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいやだから、一度正式な説明を聞いてみたいって思って」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいやだから、一度正式な説明を聞いてみたいって思って」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「じゃあ定義から話すかな」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ロジスティック回帰
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ロジスティック回帰</strong></p>
 <p>アウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>が、0または1で表される個人の反応の有無を表す2値変数で、<span class="math inline">\(\Pr (Y_i=1)=\pi_i\)</span>という確率で独立に分布しているとします。このとき<span class="math inline">\(N\)</span>人の対象者の同時分布は</p>
 <p><span class="math inline">\(\Pr (Y_1=y_1,...,Y_N=y_N)=\prod_{i=1}^N {\pi_i}^{y_i} (1-\pi_i)^{1-y_i}\)</span></p>
 <p>という2項分布の積の形で表現できます。</p>
@@ -337,19 +352,24 @@ Note
 <p>この式の係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>を回帰係数（regression coefficients）、特に<span class="math inline">\(\beta_0\)</span>を切片項（intercept）といいます。正規分布は平均と分散というパラメータで形状が決まりますよね。それと同じように、ロジスティック回帰の確率分布は、回帰係数というパラメータによって規定されます。</p>
 </div>
 </div>
-<p><strong>私「ふむふむ。まず、</strong><span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>っていうのは、<span class="math inline">\(N\)</span>人の対象者の復職の有無みたいなものね。その同時分布の式が出てきた。つまり、ロジスティック回帰も、確率分布の一種なんだ」</p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ふむふむ。まず、**<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>っていうのは、<span class="math inline">\(N\)</span>人の対象者の復職の有無みたいなものね。その同時分布の式が出てきた。つまり、ロジスティック回帰も、確率分布の一種なんだ」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そう。ただし、確率分布の式に、共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が含まれていて、アウトカムと共変量の関連の強さを、回帰係数が決めるんだ。確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、アウトカムと共変量の関係は、ロジット関数で結びつくと仮定していること」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="リンク関数とロジット関数">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+リンク関数とロジット関数
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>リンク関数とロジット関数</strong></p>
 <p>個人レベルのパラメータと共変量との関係を結びつける1対1の単調な変換</p>
 <p><span class="math inline">\(g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
 <p>のことを、一般にリンク関数（link function）といいます。ロジスティック回帰のリンク関数は、定義で述べた通り</p>
@@ -357,19 +377,24 @@ Note
 <p>です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。</p>
 </div>
 </div>
-<p><strong>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」**</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数の形状">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ロジット関数の形状
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>ロジット関数の形状</strong></p>
 <p>仮に共変量が1個で、連続データだったとしましょう。確率<span class="math inline">\(\pi_i\)</span>と共変量<span class="math inline">\(X_i\)</span>の関係は、ロジット関数を通じて</p>
 <p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
 <p>という式で表されることになります。</p>
@@ -383,8 +408,14 @@ Note
 </div>
 </div>
 </div>
-<p><strong>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そういうこと」</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
