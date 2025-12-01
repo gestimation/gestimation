@@ -1,0 +1,494 @@
+# Story and Quiz ? Frequentist thinking II
+
+Keywords: OS/PFS/DFS/response, p-value, survival/competing risks, clinical trial
+
+---
+
+### Survival curves and hazard ratios
+
+> *Recap*  
+> Our junior doctor in Japan is reading the JCOG9502 gastric cancer trial,  
+> comparing two surgical approaches:
+> 
+> - **TH**: transhiatal approach  
+> - **LTA**: left thoracoabdominal approach   
+> 
+> In *Frequentist thinking I*, she learned how to read the **Kaplan?Meier curves**  
+> and the **numbers at risk**.  
+> Now she wants to understand the **hazard ratios** printed next to the curves.
+
+---
+
+Me: “Dad, coffee refill.  
+Can we keep talking about JCOG9502 and these hazard ratios?”
+
+Dad: “Thanks. Let’s do it.  
+
+You’re looking at:
+
+- Figure A: *hazard ratio of death* = **1.36**  
+- Figure B: *hazard ratio of recurrence or death* = **1.29**
+
+Both summarize the difference between the TH and LTA groups.  
+Here the **LTA group has worse prognosis**,  
+so its hazard is higher,  
+and the **Kaplan?Meier curve for LTA lies below** the TH curve.”
+
+Me: “The paper says ‘hazard ratio 1.36’,  
+but visually it just looks like one curve is sitting below the other.  
+What does it mean to say it ‘summarizes’ the difference?”
+
+Dad: “Look at the shape of the curves:
+
+- The TH curve is nicely **above** the LTA curve  
+- They don’t really cross,  
+  except maybe at the far right where only a handful of patients remain
+
+That’s exactly the kind of situation  
+where a **single hazard ratio** summarizes the difference well.”
+
+Me: “Because the curves are ‘roughly parallel’, right?”
+
+Dad: “Yes ? in a **log-hazard** sense.  
+
+The **Cox proportional hazards model** assumes:
+
+> The hazard in one group  
+> is a **constant multiple** of the hazard in the other group  
+> over time.
+
+That’s the **proportional hazards** assumption.  
+If the curves cross a lot,  
+or get closer then farther apart,  
+a single hazard ratio is harder to interpret.”
+
+Me: “So if they cross badly,  
+the model is forcing a single number on something  
+that doesn’t really have a single-number story.”
+
+Dad: “Exactly.  
+In JCOG9502, both **OS** and **DFS** curves look fairly well behaved,  
+and the hazard ratios for OS and DFS point in the same direction.  
+That makes the results **very interpretable**.”
+
+Me: “Okay, that’s the big picture.  
+Now, how do we actually *get* a hazard ratio in R?”
+
+Dad: “Time to meet `coxph()` from the **survival** package.”
+
+---
+
+### Estimating the hazard ratio with `coxph()`
+
+Dad: “Remember the simulation function we used earlier, `generate_data()`?  
+It creates:
+
+- a **stoma** group and a **non-stoma** group, and  
+- survival times for **overall survival (OS)** and other endpoints.
+
+We’ll use that again.”
+
+```r
+generate_data <- function(n = 200, hr1, hr2) {
+  # Stoma: 1 = with stoma, 0 = without stoma
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  # Sex: 0 = WOMAN, 1 = MAN
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  # Age: stoma group slightly older
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+
+  # Hazards (larger = earlier event)
+  hazard_relapse   <- ifelse(stoma == 1, hr1 * 0.10, 0.10)
+  hazard_death     <- ifelse(stoma == 1, hr2 * 0.10, 0.10)
+  hazard_censoring <- 0.05
+
+  # Latent times
+  t_relapse   <- rexp(n, rate = hazard_relapse)
+  t_death     <- rexp(n, rate = hazard_death)
+  t_censoring <- rexp(n, rate = hazard_censoring)
+
+  ## --- Overall survival (OS) ---
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = death, 0 = censored
+
+  ## --- Relapse-free survival (RFS) ---
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1  # relapse
+  status_rfs[time_rfs == t_death   & time_rfs < t_censoring] <- 1  # death
+
+  ## --- Cumulative incidence of relapse (CIR) with competing risk ---
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1  # event 1: relapse
+  status_cir[time_cir == t_death   & time_cir < t_censoring] <- 2  # event 2: death
+
+  data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+
+
+
+Now fit a Cox model for overall survival:
+
+
+# install.packages("survival") # if needed
+library(survival)
+
+set.seed(46)
+dat <- generate_data(hr1 = 2, hr2 = 1.5)  # true HR for death = 1.5
+
+fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
+summary(fit)
+
+You might see an output like:
+
+
+n= 200, number of events= 140 
+
+                  coef exp(coef) se(coef)    z  Pr(>|z|)
+stomaWITH STOMA  0.277    1.319    0.171  1.62   0.105
+
+              exp(coef) exp(-coef) lower .95 upper .95
+stomaWITH STOMA    1.319     0.758     0.944     1.843
+
+
+
+Me: “Okay, so:
+
+exp(coef) = 1.319
+→ the estimated hazard ratio (WITH STOMA vs WITHOUT STOMA)
+
+p-value ? 0.10
+→ not ‘significant’ at the 0.05 level.
+
+Roughly speaking, that means:
+
+‘Survival tends to be worse in the stoma group,
+but the difference is not statistically significant.’
+
+Right?”
+
+Dad: “As a first pass, yes.
+
+Also notice:
+
+exp(coef) = 1.319 is close to the true HR we built into the data: 1.5
+
+The 95% CI (about 0.94 to 1.84) includes 1,
+which matches the p-value being > 0.05.”
+
+Me: “And hazard ratio itself is… a kind of rate ratio, right?”
+
+Dad: “Exactly:
+
+The hazard is like an instantaneous event rate
+(events per person-time).
+
+The hazard ratio compares those rates between two groups.
+
+Other measures like risk ratios and odds ratios
+don’t account for follow-up time,
+so they’re not the main characters in survival analysis.
+
+If you’re studying cancer clinical trials,
+you really want to be comfortable with hazard ratios.
+That’s where books like Clinical Trials in Oncology
+by the SWOG statisticians are very helpful. ”
+
+What p-values are not
+
+Me: “About p-values though…
+
+I’ve been saying things in journal club like:
+
+‘p < 0.05, so the result is significant,’
+
+without feeling I actually understand them.
+
+Let me try to say what I thought they meant:
+
+‘The hazard ratio is less than 1, so LTA is worse than TH.’
+
+‘If p < 0.05, it’s statistically significant,
+so we’ve found something scientifically important.’
+
+‘If p ? 0.05, there’s no significant difference,
+so we can say the treatments are equivalent.’
+
+Is that all wrong?”
+
+Dad: “Some of it is okay,
+but the details matter.
+
+Let’s look at three common statements people make about p-values:
+
+‘The p-value is the probability that the null hypothesis is true.’
+
+‘If the p-value is small and statistically significant,
+that means we’ve found a scientifically important result.’
+
+‘If the result is not statistically significant,
+we should accept the null hypothesis as true.’
+
+We’ll poke holes in each of these.”
+
+1. “p is the probability the null is true”
+
+Dad: “In JCOG9502,
+a natural null hypothesis is:
+
+H?: ‘The survival curves of the LTA and TH groups are equal.’
+
+Do you think the p-value is
+‘the probability that H? is true’?”
+
+Me: “Honestly?
+That’s what I’ve been telling myself.”
+
+Dad: “Let’s be a bit pedantic for a moment.
+
+‘H? is true’ is a statement, a proposition.
+It’s either true or false.
+It’s not a random variable.
+
+In the frequentist framework,
+we define probabilities for random events
+(like results of repeated trials),
+not for truth values of hypotheses.
+
+So saying
+‘p is the probability that H? is true’
+isn’t really meaningful.”
+
+Me: “So the null hypothesis doesn’t have a ‘chance of being true’
+in the frequentist world.
+It’s either true or not;
+we just don’t know which.”
+
+Dad: “Exactly.
+The p-value is something else entirely
+?we’ll come back to its proper definition in a later episode.”
+
+2. “Small p-value = scientifically important”
+
+Dad: “Next:
+‘If p is small and statistically significant,
+the result is scientifically important.’
+True or false?”
+
+Me: “It feels true.
+When people present at conferences,
+everyone gravitates to the p<0.05 results.”
+
+Dad: “Look at the JCOG9502 paper again.
+They report several p-values, none particularly small.
+
+Would you say the trial was scientifically unimportant
+just because the p-values aren’t tiny?”
+
+Me: “No.
+The conclusion that LTA doesn’t beat TH
+and might actually be worse
+is clinically important,
+even if p isn’t spectacularly small.”
+
+Dad: “Exactly.
+
+Scientific importance depends on:
+
+effect size,
+
+clinical context,
+
+safety profile,
+
+cost,
+
+and many other things.
+
+p-values can flag results that are unlikely under the null,
+but they don’t tell you whether a result is
+medically meaningful, affordable, or practice-changing.”
+
+Me: “So:
+
+‘Small p = important’
+
+is a bad habit, not a theorem.”
+
+Dad: “Right.”
+
+3. “Non-significant = treatments are equivalent”
+
+Dad: “The third statement:
+
+‘If the result is not statistically significant,
+we should accept the null hypothesis as true.’
+
+What do you think?”
+
+Me: “I remember reading something like:
+
+‘p-values are designed for rejecting hypotheses,
+not for accepting them.’
+
+So I guess this is wrong too.
+But in practice,
+people really do say
+‘no significant difference → treatments are equivalent.’”
+
+Dad: “And that can be dangerous.
+
+In drug development there’s a classic story
+about cerebral circulation-improving drugs in Japan.
+
+For a long time,
+me-too drugs were compared to an older drug
+(ホパンテン酸カルシウム, often known as Hopate)
+and judged ‘non-inferior’
+because there was no significant difference
+between the two.
+
+But those studies weren’t properly designed
+as non-inferiority trials?
+they just said:
+
+‘p ? 0.05, so the new drug is not inferior.’
+
+Later, when placebo-controlled trials were finally done,
+none of those drugs proved clearly better than placebo,
+and the original reference drug was even withdrawn over safety concerns.
+
+It’s often called the ‘Hopate tragedy’.”
+
+Me: “…yikes.
+So ‘non-significant’ was used as if it meant ‘good enough’,
+and then it turned out nothing was actually working.”
+
+Dad: “Exactly.
+
+To claim:
+
+equivalence (‘the two treatments are similar enough’), or
+
+non-inferiority (‘new is not worse than standard by more than X’),
+
+you need a specific study design and analysis:
+
+pre-specified margins,
+
+appropriate sample size,
+
+and tests tailored to those hypotheses.
+
+Just seeing p ? 0.05 in a standard superiority test
+is not enough.”
+
+Me: “So let me summarize:
+
+p is not the probability the null is true.
+
+‘Small p = scientifically important’ is wrong.
+
+‘Non-significant = treatments are equivalent’ is wrong.
+
+And statistics is pretty fussy about
+the difference between ‘no evidence of difference’
+and ‘evidence of no difference.’”
+
+Dad: “Beautifully put.”
+
+A small twist: significance level is not always 0.05
+
+Dad: “One more nuance:
+
+We often learn that:
+
+‘If p < 0.05, the result is significant.’
+
+But the significance level doesn’t have to be 0.05.
+In some trials, especially with interim analyses,
+the effective significance threshold is smaller.
+
+In JCOG9502, there was an interim analysis,
+and the trial was stopped early
+because the LTA approach had little chance of ever beating TH
+? a futility stopping, not a victory.
+
+So even the ‘0.05’ part is not universal.”
+
+Me: “Right, so saying
+
+‘p < 0.05 = significant’
+
+is already making an assumption about α.
+That’s okay as shorthand in some contexts,
+but not a definition of what a p-value is.”
+
+Dad: “Exactly.”
+
+A quiz related to this episode
+
+From a frequentist perspective,
+which of the following statements about the p-value is correct?
+
+It is the probability that the null hypothesis is true.
+
+It is the probability that the alternative hypothesis is true.
+
+If it is smaller than 0.05, the result is significant.
+
+None of the above.
+
+Answer
+
+The best answer is 4: none of the above.
+
+1 and 2:
+In the frequentist framework,
+we do not assign probabilities to
+‘the null is true’ or ‘the alternative is true’;
+hypotheses are not random variables.
+
+3:
+The threshold for ‘significance’ (the significance level, α)
+is chosen in advance and doesn’t have to be 0.05.
+With interim analyses or special designs,
+α may be lower than 0.05.
+
+The (informal) textbook definition you may have seen is closer to:
+
+“The p-value is the probability,
+under the null hypothesis,
+of observing a result as extreme as or more extreme than
+the one actually observed.”
+
+Even that wording hides some subtleties,
+but it’s already very different from
+“the probability the null is true.”
+
+We’ll unpack the formal definition
+and its implications in the next Frequentist thinking episodes.
+
+References
+
+Sasako M, Sano T, Yamamoto S, et al.; Japan Clinical Oncology Group (JCOG9502).
+Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial.
+Lancet Oncol. 2006;7(8):644?651.
+
+Green S, Benedetti J, Smith A, Crowley J.
+Clinical Trials in Oncology, 3rd ed. Chapman & Hall/CRC; 2012.
+
+PMDA and related reports on re-evaluation of cerebral circulation?improving drugs and placebo-controlled trials.

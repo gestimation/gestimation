@@ -124,10 +124,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz − Frequentist thinking III</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz ? Frequentist thinking III</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#how-to-interpret-p-values-the-right-way" id="toc-how-to-interpret-p-values-the-right-way" class="nav-link" data-scroll-target="#how-to-interpret-p-values-the-right-way">How to interpret p-values the right way</a></li>
+  <li><a href="#the-asas-six-principles-in-plain-language" id="toc-the-asas-six-principles-in-plain-language" class="nav-link" data-scroll-target="#the-asas-six-principles-in-plain-language">The ASA’s six principles (in plain language)</a></li>
+  <li><a href="#multiplicity-and-selective-inference-the-best-p-value-trap" id="toc-multiplicity-and-selective-inference-the-best-p-value-trap" class="nav-link" data-scroll-target="#multiplicity-and-selective-inference-the-best-p-value-trap">Multiplicity and selective inference: the ‘best’ p-value trap</a></li>
+  <li><a href="#reading-jcog9502-why-α-0.1-shows-up" id="toc-reading-jcog9502-why-α-0.1-shows-up" class="nav-link" data-scroll-target="#reading-jcog9502-why-α-0.1-shows-up">Reading JCOG9502: why α = 0.1 shows up</a></li>
+  <li><a href="#multiple-p-values-in-one-figure-what-do-we-read" id="toc-multiple-p-values-in-one-figure-what-do-we-read" class="nav-link" data-scroll-target="#multiple-p-values-in-one-figure-what-do-we-read">Multiple p-values in one figure: what do we read?</a></li>
+  <li><a href="#one-sided-vs-two-sided-p-values-the-coin-example" id="toc-one-sided-vs-two-sided-p-values-the-coin-example" class="nav-link" data-scroll-target="#one-sided-vs-two-sided-p-values-the-coin-example">One-sided vs two-sided p-values: the coin example</a></li>
+  <li><a href="#the-frequentist-mindset-repeating-the-trial-in-your-head" id="toc-the-frequentist-mindset-repeating-the-trial-in-your-head" class="nav-link" data-scroll-target="#the-frequentist-mindset-repeating-the-trial-in-your-head">The frequentist mindset: repeating the trial in your head</a></li>
+  <li><a href="#a-quiz-related-to-this-episode" id="toc-a-quiz-related-to-this-episode" class="nav-link" data-scroll-target="#a-quiz-related-to-this-episode">A quiz related to this episode</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -139,327 +146,405 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
 <section id="story-and-quiz-frequentist-thinking-iii" class="level1">
-<h1>Story and Quiz − Frequentist thinking III</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
-</div>
+<h1>Story and Quiz ? Frequentist thinking III</h1>
+<p>Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
-</div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
-</div>
-<div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-片側p値と両側p値
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
-<ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は3です</strong></li>
-</ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
-</div>
-</div>
-</div>
+<section id="how-to-interpret-p-values-the-right-way" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-interpret-p-values-the-right-way">How to interpret p-values the right way</h3>
+<p>Dad: “Remember when we talked about the survival curves and p-values in the JCOG9502 trial (Sasako et al.&nbsp;2006)?<br>
+There’s something that’s been bothering me.</p>
+<p>Why is it that <em>p &lt; 0.05</em> is treated as the magic line for ‘statistical significance’?”</p>
+<p>Me: “Isn’t that just… the rule?”</p>
+<p>Dad: “That’s exactly the problem.<br>
+If you treat it as a rule, you’ll misread papers.</p>
+<p>Let me ask: when you read a paper, you start from the <strong>Abstract</strong>, right?<br>
+Where do you usually go next?”</p>
+<p>Me: “The <strong>Results</strong> section, obviously.<br>
+I want to know what they found as soon as possible.”</p>
+<p>Dad: “I totally get that.</p>
+<p>But when it comes to <strong>p-values</strong>,<br>
+if you jump straight to the numbers without context,<br>
+you’re almost guaranteed to misunderstand them.</p>
+<p>There has been so much confusion about p-values<br>
+that the <strong>American Statistical Association (ASA)</strong><br>
+actually issued an official statement<br>
+for non-statisticians?researchers, practitioners, science writers?<br>
+to clarify what p-values can and cannot do.</p>
+<p>The story started with this Q&amp;A posted in an ASA forum back in 2014.”</p>
+<p>Me: “Hit me.”</p>
+<p>Dad: “Paraphrasing:</p>
+<blockquote class="blockquote">
+<p>Q: Why do so many colleges and grad schools teach ‘p ? 0.05’?<br>
+A: Because that’s what journals and the scientific community use.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Q: Why do so many people still use ‘p ? 0.05’?<br>
+A: Because that’s what they were taught in college and grad school.</p>
+</blockquote>
+<p>Kind of a statistical <strong>Zen riddle</strong>, isn’t it?”</p>
+<p>Me: “Yeah, that’s circular enough to be called a koan.”</p>
+<hr>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="the-asas-six-principles-in-plain-language" class="level3">
+<h3 class="anchored" data-anchor-id="the-asas-six-principles-in-plain-language">The ASA’s six principles (in plain language)</h3>
+<p>Dad: “In 2016, the ASA summarized <strong>six principles</strong> to promote better use and interpretation of p-values.”</p>
+<p>Me: “Can you translate those into normal human language?”</p>
+<p>Dad: “Let me try. In my own words:</p>
+<ol type="1">
+<li>A p-value is <strong>one measure</strong> of how incompatible the data are<br>
+with a specific statistical model (including the null hypothesis).<br>
+</li>
+<li>A p-value is <strong>not</strong>
 <ul>
-<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+<li>the probability that the hypothesis is true, or<br>
+</li>
+<li>the probability that the data came from ‘chance alone’.<br>
+</li>
+</ul></li>
+<li>Scientific conclusions and policy decisions <strong>should not</strong> rest solely on<br>
+whether a p-value is smaller or larger than some fixed cutoff.<br>
+</li>
+<li>To draw proper inferences, you need <strong>transparency</strong>:<br>
+all analyses, not just the convenient ones, must be reported.<br>
+</li>
+<li>A small p-value does <strong>not</strong> automatically mean<br>
+the effect is large or important.<br>
+</li>
+<li>A p-value, by itself, is a <strong>weak piece of evidence</strong><br>
+about models or hypotheses.</li>
+</ol>
+<p>The big picture is:</p>
+<blockquote class="blockquote">
+<p>You can’t interpret a p-value correctly<br>
+without looking at the whole research process?<br>
+study design, data collection, analysis choices,<br>
+and how many tests were actually run.”</p>
+</blockquote>
+<p>Me: “So when people treat p &lt; 0.05 as a magic ‘publish’ button,<br>
+they’re ignoring basically all of that.”</p>
+<p>Dad: “Exactly.”</p>
+<hr>
+</section>
+<section id="multiplicity-and-selective-inference-the-best-p-value-trap" class="level3">
+<h3 class="anchored" data-anchor-id="multiplicity-and-selective-inference-the-best-p-value-trap">Multiplicity and selective inference: the ‘best’ p-value trap</h3>
+<p>Dad: “Look at <strong>Principle 4</strong> again?about transparency.</p>
+<p>The ASA statement warns that if you:</p>
+<ul>
+<li>run many different analyses,<br>
+</li>
+<li>then only report the <strong>nicest-looking p-values</strong>,</li>
 </ul>
+<p>those p-values are basically <strong>no longer interpretable</strong>.</p>
+<p>In plain language:</p>
+<blockquote class="blockquote">
+<p>If you fish long enough,<br>
+you’ll almost always catch something ‘significant’.”</p>
+</blockquote>
+<p>Me: “So this is what people call <strong>p-hacking</strong> or <strong>selective reporting</strong>, right?”</p>
+<p>Dad: “Yes.<br>
+It’s a major reason why journals end up full of <strong>false positives</strong>.</p>
+<p>Statisticians call this whole mess <strong>multiplicity</strong><br>
+or <strong>selective inference</strong>.”</p>
+<p>Me: “So when I see a surprising p-value in a paper,<br>
+I should quietly wonder:</p>
+<blockquote class="blockquote">
+<p>‘How many analyses did they really run<br>
+before selecting this one?’”</p>
+</blockquote>
+<p>Dad: “That’s the right instinct.”</p>
+<hr>
+</section>
+<section id="reading-jcog9502-why-α-0.1-shows-up" class="level3">
+<h3 class="anchored" data-anchor-id="reading-jcog9502-why-α-0.1-shows-up">Reading JCOG9502: why α = 0.1 shows up</h3>
+<p>Dad: “Let’s go back to <strong>JCOG9502</strong> for a moment.</p>
+<p>Take another look at their <strong>Statistical Analysis</strong> section.</p>
+<p>They say (paraphrased):</p>
+<blockquote class="blockquote">
+<p>After 8 years of slow accrual,<br>
+the data and safety monitoring committee<br>
+approved an amendment to the sample size and analysis plan.<br>
+The amended plan used a total sample size of 250 patients,<br>
+<strong>one-sided alpha = 0.1</strong>,<br>
+and beta = 0.2,<br>
+with 12 years of accrual and 8 years of follow-up.</p>
+</blockquote>
+<p>Me: “Wait.<br>
+They’re comparing p to <strong>0.1</strong>?<br>
+Not 0.05?”</p>
+<p>Dad: “Yes.</p>
+<p>Because recruitment was difficult,<br>
+they relaxed the <strong>significance level</strong> to 0.1<br>
+as a kind of last resort.</p>
+<p>Strictly speaking,<br>
+you don’t <em>want</em> to change the alpha level mid-trial.<br>
+But the clinical question was important,<br>
+and the trial still provided useful information,<br>
+so it was written up and widely read.”</p>
+<p>Me: “I totally skipped that part.<br>
+JCOG is… surprisingly flexible.”</p>
+<hr>
+</section>
+<section id="multiple-p-values-in-one-figure-what-do-we-read" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-p-values-in-one-figure-what-do-we-read">Multiple p-values in one figure: what do we read?</h3>
+<p>Dad: “Now look closely at the survival figures in JCOG9502.</p>
+<p>You’ll see:</p>
+<ul>
+<li>two curves in Figure A (overall survival),<br>
+</li>
+<li>two curves in Figure B (disease-free survival),<br>
+</li>
+<li>and <strong>four p-values</strong> printed around them:<br>
+one-sided and two-sided for each.”</li>
+</ul>
+<p>Me: “That’s exactly why I came to you.</p>
+<p>I <em>did</em> think about it, you know.</p>
+<p>Since <strong>overall survival (OS)</strong> is the primary endpoint,<br>
+Figure A is the main one to look at.</p>
+<p>But even just in Figure A<br>
+there’s a <strong>one-sided p</strong> and a <strong>two-sided p</strong>.<br>
+That’s where my brain stalled.”</p>
+<p>Dad: “The logic isn’t too bad once you separate policy from math.</p>
+<p>In a typical clinical trial comparing:</p>
+<ul>
+<li>a <strong>test treatment</strong> and<br>
+</li>
+<li>a <strong>standard treatment</strong>,</li>
+</ul>
+<p>we can do:</p>
+<ul>
+<li>a <strong>one-sided test</strong>:<br>
+declare significance only if the test arm is better, or<br>
+</li>
+<li>a <strong>two-sided test</strong>:<br>
+consider both ‘test better’ and ‘test worse’ as important.”</li>
+</ul>
+<p>Me: “The JCOG9502 protocol said:</p>
+<ul>
+<li>LTA = <strong>test treatment</strong><br>
+</li>
+<li>TH = <strong>standard treatment</strong></li>
+</ul>
+<p>probably because LTA is more invasive,<br>
+so they were hoping it would improve survival.</p>
+<p>So they only wanted to declare success<br>
+if <strong>LTA clearly beat TH</strong>.</p>
+<p>That’s a one-sided hypothesis, right?”</p>
+<p>Dad: “Exactly.</p>
+<p>But here comes the twist:</p>
+<ul>
+<li>In most modern trials,<br>
+<strong>two-sided p-values</strong> are the default.<br>
+</li>
+<li>JCOG, however, has a tradition of focusing on<br>
+‘Is the experimental treatment better than standard?’<br>
+and uses <strong>one-sided p-values</strong> accordingly.</li>
+</ul>
+<p>In JCOG9502:</p>
+<ul>
+<li>the <strong>one-sided p-values</strong> are used<br>
+for the primary decision about effectiveness,<br>
+</li>
+<li>while the <strong>two-sided p-values</strong> are effectively<br>
+provided as <strong>reference</strong>.</li>
+</ul>
+<p>So for the main efficacy question,<br>
+Figure A’s <strong>one-sided p-value</strong> is the key.”</p>
+<p>Me: “Okay.</p>
+<p>Then for my project?<br>
+comparing return-to-work between <strong>stoma vs no stoma</strong>?<br>
+there’s no natural ‘test’ vs ‘standard’ treatment.</p>
+<p>So I should stick with <strong>two-sided p-values</strong>.”</p>
+<p>Dad: “Exactly.<br>
+From both a statistical and clinical perspective,<br>
+two-sided makes more sense there.”</p>
+<hr>
+</section>
+<section id="one-sided-vs-two-sided-p-values-the-coin-example" class="level3">
+<h3 class="anchored" data-anchor-id="one-sided-vs-two-sided-p-values-the-coin-example">One-sided vs two-sided p-values: the coin example</h3>
+<p>Dad: “Let’s step away from cancer trials and use a <strong>coin toss</strong>.</p>
+<p>Suppose you toss a coin and get <strong>six heads in a row</strong>.</p>
+<p>Is the coin biased?”</p>
+<p>Me: “Intuitively, it feels suspicious.”</p>
+<p>Dad: “Under the null hypothesis:</p>
+<blockquote class="blockquote">
+<p>The coin is fair; probability of heads = 1/2.</p>
+</blockquote>
+<p>the probability of <strong>six heads in a row</strong> is:</p>
+<ul>
+<li>(1/2)? = 0.015625</li>
+</ul>
+<p>And the probability of <strong>six tails in a row</strong> is the same.</p>
+<p>If you define ‘extreme’ as<br>
+‘all outcomes on one side of the coin’, then:</p>
+<ul>
+<li>one-sided p-value (heads only) ? 0.0156<br>
+</li>
+<li>two-sided p-value (heads or tails) ? 0.0312</li>
+</ul>
+<p>So:</p>
+<ul>
+<li><strong>one-sided p</strong> looks only at ‘heads-side extremeness’<br>
+</li>
+<li><strong>two-sided p</strong> looks at extremeness in <strong>either direction</strong>.”</li>
+</ul>
+<p>Me: “So for a cancer trial:</p>
+<ul>
+<li>one-sided p-value:<br>
+‘Do we see a difference <em>in the expected direction</em><br>
+(test treatment better)?’<br>
+</li>
+<li>two-sided p-value:<br>
+‘Do we see a difference,<br>
+in <em>either</em> direction?’”</li>
+</ul>
+<p>Dad: “Exactly.”</p>
+<hr>
+</section>
+<section id="the-frequentist-mindset-repeating-the-trial-in-your-head" class="level3">
+<h3 class="anchored" data-anchor-id="the-frequentist-mindset-repeating-the-trial-in-your-head">The frequentist mindset: repeating the trial in your head</h3>
+<p>Dad: “Back to JCOG9502.</p>
+<p>In hypothesis testing we usually follow <strong>three steps</strong>:</p>
+<ol type="1">
+<li><p><strong>Specify the hypotheses.</strong><br>
+In JCOG9502, the two plausible truths are:</p>
+<ul>
+<li>‘LTA improves overall survival compared with TH’, or<br>
+</li>
+<li>‘LTA has no effect on overall survival compared with TH’.</li>
+</ul>
+<p>Hypothesis testing focuses on the ‘no effect’ statement<br>
+as the <strong>null hypothesis</strong>.</p></li>
+<li><p><strong>Imagine the data under the null.</strong><br>
+Think about repeating the same randomized trial<br>
+with the same 167 patients<br>
+(or an equivalent population) <strong>1,000 times</strong>.</p>
+<p>That’s the <strong>frequentist mindset</strong>:<br>
+even if there’s truly no difference,<br>
+random variation means sometimes LTA looks better,<br>
+sometimes TH looks better,<br>
+but over many repetitions,<br>
+the observed differences will cluster around zero.</p></li>
+<li><p><strong>Compare the actual data to that imagined distribution.</strong><br>
+The <strong>p-value</strong> is:</p>
+<blockquote class="blockquote">
+<p>the probability, under the null hypothesis,<br>
+of getting a difference in survival curves<br>
+at least as extreme as what we observed.</p>
+</blockquote>
+<ul>
+<li>If the p-value is <strong>small</strong>, we say:<br>
+“This kind of extreme difference<br>
+would almost never happen by chance alone<br>
+if the survival curves were truly equal.”<br>
+So we reject the null.<br>
+</li>
+<li>If the p-value is <strong>large</strong>, we say:<br>
+“This is the kind of difference<br>
+that happens all the time under the null.”<br>
+So we <strong>don’t</strong> reject the null.”</li>
+</ul></li>
+</ol>
+<p>Me: “So:</p>
+<blockquote class="blockquote">
+<p>p-value =<br>
+‘How surprising is our observed difference<br>
+<em>if</em> the survival curves were actually the same?’</p>
+</blockquote>
+<p>not:</p>
+<blockquote class="blockquote">
+<p>‘What’s the probability that the curves are the same?’”</p>
+</blockquote>
+<p>Dad: “Exactly.”</p>
+<hr>
+</section>
+<section id="a-quiz-related-to-this-episode" class="level3">
+<h3 class="anchored" data-anchor-id="a-quiz-related-to-this-episode">A quiz related to this episode</h3>
+<p>In most randomized clinical trials<br>
+(excluding <strong>non-inferiority</strong> and <strong>equivalence</strong> trials),<br>
+why are <strong>two-sided p-values</strong> used as the default?</p>
+<ol type="1">
+<li>Because we want to draw conclusions<br>
+whether the test treatment is better <em>or</em> worse<br>
+than the control whenever there is a difference.<br>
+</li>
+<li>Because statisticians agreed on it as a technical rule.<br>
+</li>
+<li>Because international regulators decided<br>
+to standardize on two-sided p-values<br>
+to avoid confusion across trials.<br>
+</li>
+<li>Because random error can fluctuate<br>
+in both the positive and negative direction.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The intended best answer is <strong>3</strong>.</p>
+<p>This is largely a matter of <strong>regulatory history and harmonization</strong>.</p>
+<ul>
+<li>In 1998, the <strong>ICH E9 guideline</strong> on <em>Statistical Principles for Clinical Trials</em><br>
+was agreed upon by regulators in the US, Europe, and Japan.<br>
+</li>
+<li>As part of that harmonization,<br>
+using <strong>two-sided p-values as the default</strong><br>
+became standard practice for confirmatory trials.</li>
+</ul>
+<p>Of course:</p>
+<ul>
+<li><strong>1</strong> and <strong>4</strong> contain reasonable intuition about<br>
+why two-sided testing is often appropriate,<br>
+but the main reason we see two-sided p-values<br>
+in almost all registrational trials today<br>
+is this <strong>international agreement</strong>.</li>
+</ul>
+<p>In short:</p>
+<blockquote class="blockquote">
+<p>Two-sided p-values are the default<br>
+not because 0.05 is sacred,<br>
+but because regulators decided<br>
+that the world needed a <strong>common convention</strong>.”</p>
+</blockquote>
+<hr>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502).<br>
+Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial.<br>
+<em>Lancet Oncol.</em> 2006;7(8):644?651.</p></li>
+<li><p>Wasserstein RL, Lazar NA.<br>
+The ASA’s statement on p-values: Context, process, and purpose.<br>
+<em>The American Statistician.</em> 2016;70(2):129?133.</p></li>
+<li><p>International Conference on Harmonisation (ICH).<br>
+E9: Statistical principles for clinical trials. 1998.</p></li>
+<li><p>(Japanese commentary) Yoshimura I.<br>
+On significance levels and the number of confirmatory clinical trials.<br>
+<em>Japanese Journal of Biometrics.</em> 2003;24:S3?S9.</p></li>
+</ul>
+<hr>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<ul>
+<li><a href="study-design-1.html">Study design I</a><br>
+</li>
+<li><a href="study-design-2.html">Study design II</a><br>
+</li>
+<li><a href="study-design-3.html">Study design III</a><br>
+</li>
+<li><a href="study-design-4.html">Study design IV</a><br>
+</li>
+<li><a href="study-design-5.html">Study design V</a><br>
+</li>
+<li><a href="frequentist-1.html">Frequentist thinking I</a><br>
+</li>
+<li><a href="frequentist-2.html">Frequentist thinking II</a><br>
+</li>
+<li><strong>Frequentist thinking III</strong> (this page)<br>
+</li>
+<li>Frequentist thinking IV (coming soon)<br>
+</li>
+<li>Frequentist thinking V (coming soon)</li>
+</ul>
 
 
 </section>

@@ -1,0 +1,527 @@
+# Story and Quiz ? Frequentist thinking IV
+
+Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial
+
+---
+
+### gDad, is that 95% confidence interval *really* 95%?h
+
+Dad: gCoffeefs ready.h
+
+Me: gPerfect, thanks. Soc therefs something Ifve been wondering.  
+
+People say *ethis is a 95% confidence intervalf* in such a matter-of-fact way.  
+But is it **really** 95%? Like, does it actually hit the true value 95% of the time?h
+
+Dad: gGood question.  
+
+Under the assumed probability model, yes ? **in theory** it does.  
+We can even prove it mathematically.h
+
+Me: gSo itfs just true.  
+Almost never wrong. That soundsc suspiciously strong.h
+
+Dad: gI agree it feels abstract.  
+
+So today, why donft we *check it* with R?  
+Letfs look at the **coverage probability** of the 95% confidence interval  
+for a **hazard ratio**, using simulation.h
+
+Me: gCoverage meaningc  
+how often the interval actually contains the true hazard ratio,  
+if you repeat the study many times?h
+
+Dad: gExactly.  
+
+Wefll simulate data over and over,  
+calculate a 95% confidence interval each time,  
+and count how often the interval includes the true value.  
+
+That proportion is the **coverage**.  
+This is a kind of **virtual experiment**  
+to see how well frequentist promises are kept.  
+
+Letfs set the stage: you want to compare **two survival curves**, right?h
+
+Me: gYes. Stoma vs no stoma.h
+
+Dad: gRight ? letfs compare overall survival (OS)  
+between **WITH STOMA** and **WITHOUT STOMA**.  
+
+Wefll assume the **true hazard ratio** is 1.5:  
+the stoma group has a 1.5-times higher hazard of death,  
+i.e. shorter survival.
+
+If we simulate 1,000 datasets under that model  
+and build a **95% confidence interval** for the hazard ratio each time,  
+we expect the interval to contain 1.5 in roughly **950 out of 1000** runs.h
+
+Me: gThat proportion ? how often it hits 1.5 ?  
+is the **coverage**.h
+
+Dad: gExactly.
+
+Wefll generate survival times from **exponential distributions**  
+for both groups,  
+and use another exponential for **censoring times**.  
+
+In this set-up, all the assumptions of the Cox model are satisfied,  
+so theoretically the 95% confidence interval  
+should have **95% coverage**.h
+
+Me: gSo all we need to do is check  
+whether reality matches theory in simulation.h
+
+---
+
+### Simulating 95% CI coverage with `coxph()`
+
+Dad: gThere are several ways to estimate a hazard ratio,  
+but one of the most common is `coxph()` from the **survival** package.  
+
+Remember our `generate_data()` function from earlier episodes?  
+Wefll reuse it.h
+
+```r
+generate_data <- function(n = 200, hr1, hr2) {
+  # Stoma: 1 = WITH STOMA, 0 = WITHOUT STOMA
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  # Sex: 0 = WOMAN, 1 = MAN
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  # Age: stoma group slightly older
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+
+  # Hazards (bigger = earlier event)
+  hazard_relapse   <- ifelse(stoma == 1, hr1 * 0.10, 0.10)
+  hazard_death     <- ifelse(stoma == 1, hr2 * 0.10, 0.10)
+  hazard_censoring <- 0.05
+
+  # Latent times
+  t_relapse   <- rexp(n, rate = hazard_relapse)
+  t_death     <- rexp(n, rate = hazard_death)
+  t_censoring <- rexp(n, rate = hazard_censoring)
+
+  ## --- Overall survival (OS) ---
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = death, 0 = censored
+
+  ## --- Relapse-free survival (RFS) ---
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1  # relapse
+  status_rfs[time_rfs == t_death   & time_rfs < t_censoring] <- 1  # death
+
+  ## --- Cumulative incidence of relapse (CIR) with competing risk ---
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1  # relapse
+  status_cir[time_cir == t_death   & time_cir < t_censoring] <- 2  # death
+
+  data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+
+Dad: gNow wefll write a function
+that repeatedly generates data, fits a model,
+and checks whether the 95% confidence interval
+covers the true hazard ratio.h
+
+
+calculate_coverage <- function(model = c("coxph", "finegray"),
+                               n, hr1, hr2, hr_true) {
+  model <- match.arg(model)
+  set.seed(46)
+  replications <- 1000
+  covered <- logical(replications)
+
+  for (r in seq_len(replications)) {
+    dat <- generate_data(n, hr1, hr2)
+
+    if (identical(model, "coxph")) {
+      fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
+    } else if (identical(model, "finegray")) {
+      # Fine?Gray model for competing risks (subdistribution hazards)
+      dat$fstatus_cir <- factor(dat$status_cir,
+                                levels = 0:2,
+                                labels = c("censor", "relapse", "death"))
+      fgdat <- finegray(Surv(time_cir, fstatus_cir) ~ ., data = dat)
+      fit <- coxph(Surv(fgstart, fgstop, fgstatus) ~ stoma,
+                   weight = fgwt, cluster = id, data = fgdat)
+    }
+
+    ci_log <- confint(fit)  # CI for log(HR)
+    covered[r] <- (ci_log[1] <= log(hr_true) && log(hr_true) <= ci_log[2])
+  }
+
+  mean(covered)  # estimated coverage
+}
+
+
+Now run the simulation for n = 200,
+true hazard ratio hr_true = 1.5:
+
+# install.packages("survival") # if needed
+library(survival)
+
+coverage_200 <- calculate_coverage(
+  model   = "coxph",
+  n       = 200,
+  hr1     = 2,
+  hr2     = 1.5,
+  hr_true = 1.5
+)
+print(coverage_200)
+# [1] 0.955   (for example)
+
+
+
+Me: gSo about 95.5% of the intervals contained the true HR of 1.5.
+Thatfs pretty close to the promised 95%.h
+
+Dad: gExactly.
+
+This is what we mean by saying
+a 95% confidence interval has 95% coverage in the long run,
+when the model assumptions hold.h
+
+What 95% CI does not mean
+
+Me: gSo how should I interpret a 95% confidence interval in words?
+
+Before I ask, let me say what Ifve been secretly thinking:
+
+eIn this one study, there is a 95% probability
+that the true hazard ratio lies inside this interval.f
+
+Thatfs wrong, isnft it?h
+
+Dad: gFrom the frequentist viewpoint, yes, thatfs not correct.
+
+The classic textbook explanation is:
+
+If we repeated the same kind of study many times,
+and each time constructed a 95% confidence interval in the same way,
+then 95% of those intervals would contain the true value.
+
+So 95% refers to the procedurefs long-run performance,
+not the probability that ethis particular interval is correctf.h
+
+Me: gSo the interval itself is either:
+
+eluckyf (includes the true value), or
+
+eunluckyf (misses it),
+
+but we donft attach a probability to that
+within a single completed study.h
+
+Dad: gExactly.
+The 95% is attached to the method, not the one realized interval.h
+
+Does sample size affect coverage?
+
+Me: gIf coverage is about long-run behavior,
+does sample size matter?
+
+I mean, if I have fewer patients,
+shouldnft the method emissf the true value more often?h
+
+Dad: gGood instinct, but in theory,
+for a correctly specified model,
+a 95% confidence interval should have 95% coverage
+no matter what the sample size is.
+
+Letfs check with the simulation:
+
+n = 100
+
+n = 200
+
+n = 400
+
+n = 800h
+
+
+coverage_100 <- calculate_coverage(model = "coxph", n = 100,
+                                   hr1 = 2, hr2 = 1.5, hr_true = 1.5)
+coverage_400 <- calculate_coverage(model = "coxph", n = 400,
+                                   hr1 = 2, hr2 = 1.5, hr_true = 1.5)
+coverage_800 <- calculate_coverage(model = "coxph", n = 800,
+                                   hr1 = 2, hr2 = 1.5, hr_true = 1.5)
+
+print(coverage_100)
+print(coverage_200)
+print(coverage_400)
+print(coverage_800)
+# For example:
+# [1] 0.956
+# [1] 0.955
+# [1] 0.968
+# [1] 0.953
+
+
+
+Me: gTheyfre all around 0.95.
+
+So with fewer patients,
+the coverage is still about 95%.
+Does that mean sample size doesnft matter?h
+
+Dad: gThatfs the trap.
+
+Coverage stays about the same,
+but interval width changes a lot.
+
+With small n:
+
+intervals are wider,
+
+estimates are noisier.
+
+With large n:
+
+intervals are narrower,
+
+estimates are more precise.h
+
+Me: gRightc I forgot about the length of the interval.
+
+So for my cancer survivor survey,
+I canft just say ecoverage is fine, any sample size works.fh
+
+Dad: gExactly.
+
+Sample size is about how precisely you can estimate something,
+not whether the 95% procedure hits 95% in the long run.h
+
+From CI to sample size: how many patients do we need?
+
+Me: gBack to real life.
+
+For our return-to-work study,
+I was vaguely thinking:
+
+eIf we get around 100 responses, that would be great.f
+
+Do we really need to do more math than that?h
+
+Dad: gYou just said coverage was fine with n=100,
+so that sounded like e100 is enoughfc didnft it?h
+
+Me: gGuilty as charged.h
+
+Dad: gLetfs be more systematic.
+
+There are roughly two approaches to sample size planning:
+
+The confidence interval approach
+
+The hypothesis testing approachh
+
+Me: gWhatfs the difference?h
+
+Dad: gIn the confidence interval approach,
+you start from:
+
+the parameter you want to estimate
+(e.g. the return-to-work proportion), and
+
+how narrow you want the interval to be.
+
+Therefs a classic table in Machin et al.fs sample size book
+that gives required sample sizes for estimating a proportion
+with a given 95% CI width.
+
+For example (paraphrased):
+
+If the true proportion ﾎ is 0.5
+and you want a 95% CI with total width 0.20
+(i.e. 50% }10%),
+you need about 93 patients.
+
+If ﾎ is 0.2 and you want the same width 0.20
+(20% }10%),
+you need about 60 patients.
+
+So for a return-to-work rate around 80%
+(i.e. non-return rate 20%),
+60 patients might be enough
+to estimate the proportion with that level of precision.h
+
+Me: gSo my rough target of 100 responses
+doesnft sound completely crazy, at least for estimating the overall rate.h
+
+Dad: gRight.
+
+But your actual plan is not just:
+
+eEstimate the return-to-work rate in all patients.f
+
+Itfs:
+
+eCompare the return-to-work rate
+between stoma vs no stoma groups.f
+
+Thatfs more a hypothesis-testing style question.h
+
+Me: gSo we need the other approach.h
+
+Two approaches to sample size
+
+Dad: gFormally:
+
+1. Confidence interval approach
+
+Often used for surveys or exploratory studies.
+To plan the sample size, you specify:
+
+The anticipated true proportion (e.g. return-to-work rate)
+
+The acceptable width of the 95% confidence interval
+
+The table (or formula) then tells you how many patients you need.
+
+2. Hypothesis testing approach
+
+More common in clinical trials and confirmatory studies.
+Here you need at least:
+
+Significance level (, often 5%)
+
+Power (1?ﾀ, often 80?90%)
+
+Effect size you want to be able to detect
+(e.g. difference in survival at 5 years,
+or a target hazard ratio)
+
+This is matched to the idea of Type I error () and Type II error (ﾀ).
+In a sense, sample size planning is the partner of p-values:
+instead of only controlling ,
+you also deliberately control ﾀ by planning n.h
+
+Me: gSo for my stoma vs no stoma comparison,
+I should really:
+
+decide what difference in return-to-work rate
+would be clinically meaningful, and
+
+choose  and power,
+
+then calculate the sample size from there.h
+
+Dad: gExactly.
+Thatfs hypothesis-testing-based sample size planning.h
+
+Me: gRight.
+Okay, I need to sleep ? clinic starts early tomorrow.
+
+Letfs continue the sample size story next time.h
+
+Dad: gDeal. Sweet dreams.h
+
+Two sides of the same coin: normal ranges and 95% CI
+
+Me: gBefore we wrap up,
+one last question.
+
+Laboratory test reports often show a enormal rangef.
+People sometimes say:
+
+eThat range corresponds to 95% of healthy individuals.f
+
+Is that tied to the same 95% as confidence intervals?h
+
+Dad: gGood question.
+Theyfre related, but not the same thing.
+
+Roughly:
+
+A reference (normal) range is about
+where most individualsf test values lie.
+
+A 95% confidence interval is about
+how precisely you have estimated a mean or parameter.
+
+For a normally distributed test:
+
+emean } 1.96 ~ standard deviation (SD)f
+captures about 95% of individual values.
+
+emean } 1.96 ~ standard error (SE)f
+is a 95% confidence interval for the mean.h
+
+Me: gSo SD = variability between individuals,
+SE = uncertainty in the mean.h
+
+Dad: gExactly.h
+
+A quiz related to this episode
+
+Which of the following best describes
+the meaning of a normal reference range for a lab test?
+
+The mean } 1.96 ~ standard deviation
+in a random sample from some population.
+
+The range that contains 95% of values
+in a healthy reference population.
+
+The mean } 1.96 ~ standard error
+in a healthy reference population.
+
+The range that contains 95% of values
+in any random sample from any population.
+
+Answer
+
+The best answer is 2.
+
+Standard deviation (SD) describes
+how much individual test values vary between people.
+
+Standard error (SE) describes
+how precise our estimate of the mean is.
+
+For a normally distributed test:
+
+mean } 1.96 ~ SD
+? the range containing 95% of individual values
+
+mean } 1.96 ~ SE
+? the 95% confidence interval for the mean
+
+So:
+
+(1) is just a formula; it doesnft say which population.
+
+(3) confuses SE with SD.
+
+(4) is too vague and not restricted to a healthy population.
+
+A reference (normal) range is defined
+by the distribution of values in a healthy population,
+not by the uncertainty in the mean.
+
+References
+
+Machin D, Campbell MJ, Tan SB, Tan SH.
+Sample Size Tables for Clinical Studies, 4th ed.
+(Japanese edition: 繩ŵ߂̃TvTCY݌v).
+
+Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502).
+Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial.
+Lancet Oncol. 2006;7(8):644?651.
+
+Green J, Benedetti J, Smith A, Crowley J.
+Clinical Trials in Oncology, 2nd Japanese edition (original 3rd ed).

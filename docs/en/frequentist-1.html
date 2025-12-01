@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>study-design-1 – Coffee and Research</title>
+<title>frequentist-1 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,9 +124,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-i" id="toc-story-and-quiz-study-design-i" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-i">Story and Quiz − Study design I</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-i" id="toc-story-and-quiz-frequentist-thinking-i" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-i">Story and Quiz ? Frequentist thinking I</a>
   <ul class="collapse">
-  <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
+  <li><a href="#reading-the-numbers-around-a-survival-curve" id="toc-reading-the-numbers-around-a-survival-curve" class="nav-link" data-scroll-target="#reading-the-numbers-around-a-survival-curve">Reading the numbers around a survival curve</a></li>
+  <li><a href="#hazard-ratio-confidence-interval-and-p-values" id="toc-hazard-ratio-confidence-interval-and-p-values" class="nav-link" data-scroll-target="#hazard-ratio-confidence-interval-and-p-values">Hazard ratio, confidence interval, and p-values</a></li>
+  <li><a href="#a-quiz-related-to-this-episode" id="toc-a-quiz-related-to-this-episode" class="nav-link" data-scroll-target="#a-quiz-related-to-this-episode">A quiz related to this episode</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -138,335 +141,284 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-study-design-i" class="level1">
-<h1>Story and Quiz − Study design I</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study</p>
-</div>
+<section id="story-and-quiz-frequentist-thinking-i" class="level1">
+<h1>Story and Quiz ? Frequentist thinking I</h1>
+<p>Keywords: OS/PFS/DFS/response, p-value, survival/competing risks, clinical trial</p>
 <hr>
-<section id="はじめて研究に取り組む娘と統計家の父" class="level3">
-<h3 class="anchored" data-anchor-id="はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんってさ、大学で統計学を教えてるんでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年のがん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ないよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「仮説がないと調査がデザインできないよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「女性より男性の方が、復職率が高いとか？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「待ちなさい。調査対象は決まってるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？うちの病院で手術したがん患者さん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「胃がんでストーマを造設することってあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ゼロじゃないけど、みたことない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうかなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。大学の授業だとね、研究で調べたい疑問がはっきりしないなら、“PICO”と”PECO”という要素を使って、研究をデザインしなさいって教えてるよ。研究の構造化ってやつ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化？実際怪しいな、そこ。いや、聞いたことはある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化ねえ。聞いたことある言葉だけど、何をすればいいか、よくわからないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、研究デザインの大切な1要素だってこと」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Patientsはわかるよ。それ以外は？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Pと同様に大切な、I/E（Intervention/Exposure）、C（Comparison）、O（Outcome）をあわせた4つの要素にあてはめて考えてみましょう、というわけ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ExposureとComparisonははじめて聞いたけど、私の場合はストーマ保有者と非保有者ってことだよね。Outcomeってなに？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「データが集まる前に固められなくない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「R。診療科の先輩が使ってるから」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Rは得意？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「学部の頃、授業あったけどもうわすれたな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="臨床疑問と研究仮説">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-臨床疑問と研究仮説
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、臨床疑問（clinical question）といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を研究仮説（research hypothesis）として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。</p>
+<section id="reading-the-numbers-around-a-survival-curve" class="level3">
+<h3 class="anchored" data-anchor-id="reading-the-numbers-around-a-survival-curve">Reading the numbers around a survival curve</h3>
+<blockquote class="blockquote">
+<p><em>Recap from the previous series</em><br>
+A junior doctor in Japan is starting her first research project,<br>
+guided (sometimes pushed) by her statistician father.<br>
+With his help, she learned to use <strong>PICO/PECO</strong> to frame a question,<br>
+and decided to study the relationship between <strong>stoma</strong> and<br>
+<strong>return-to-work</strong> among cancer survivors.<br>
+She also learned that the same clinical question can be analyzed<br>
+as <strong>binary data</strong> or <strong>survival time data</strong>.<br>
+Now, her boss has recommended a surgical oncology paper,<br>
+and she’s trying to decode the graphs.</p>
+</blockquote>
+<hr>
+<p>Me: “Dad, are you still awake? I’m making coffee.”</p>
+<p>Dad: “If there’s coffee, I’m awake.<br>
+What are you reading?”</p>
+<p>Me: “Thanks. And milk, please.</p>
+<p>I’m reading this <strong>gastric cancer surgery</strong> paper.<br>
+It’s a randomized trial called <strong>JCOG9502</strong> that compares two surgical approaches.<br>
+You know, you explained <strong>OS</strong> and <strong>DFS</strong> to me the other day,<br>
+and now they’re all over this paper. I thought I should actually understand them.”</p>
+<p>Dad: “JCOG9502… yes, that’s the trial comparing<br>
+two surgical approaches for tumors near the cardia.” :contentReference<span data-index="0">oaicite:0</span></p>
+<p>Me: “Right. They randomized patients to:</p>
 <ul>
-<li>どのような患者が対象か（Patients/Population）</li>
-<li>どのような要因に注目するか（Intervention/Exposure）</li>
-<li>それを何と比較するのか（Comparison）</li>
-<li>患者にどのようなアウトカムが生じたのか（Outcome）</li>
+<li>a <strong>standard transhiatal approach</strong> (the <em>TH</em> group), and<br>
+</li>
+<li>a <strong>left thoracoabdominal approach</strong> (the <em>LTA</em> group).</li>
 </ul>
-<p>上の会話で出てきた”PICO”や”PECO”は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。</p>
-<p>がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。</p>
+<p>There’s a figure with two <strong>Kaplan?Meier curves</strong>:</p>
 <ul>
-<li><p>研究仮説1</p>
-<p>P: 根治切除後の直腸がん患者</p>
-<p>E: ストーマ造設あり</p>
-<p>C: ストーマ造設なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li>Figure A: <strong>overall survival (OS)</strong><br>
+</li>
+<li>Figure B: <strong>disease-free survival (DFS)</strong></li>
 </ul>
-<p>ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。</p>
+<p>In both, the TH group (blue) looks better than the LTA group (red).<br>
+So far so good ? lower curve = worse outcome.</p>
+<p>But what’s confusing me is all the <strong>numbers around the curves</strong>.”</p>
+<p>Dad: “Let me guess: the <strong>number at risk</strong> and the little marks on the curves.”</p>
+<p>Me: “Exactly.</p>
+<p>Under each figure there’s a row of numbers ?<br>
+that’s the <strong>number at risk</strong>, right?</p>
+<p>Here’s the first thing that bothered me:<br>
+At time zero, the numbers <strong>don’t match</strong> between OS and DFS.</p>
 <ul>
-<li><p>研究仮説2</p>
-<p>P: 根治切除後のがん患者</p>
-<p>E: 「仕事とがん治療の両立お役立ちノート」の配布あり</p>
-<p>C: 「仕事とがん治療の両立お役立ちノート」の配布なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li>In the OS figure, it’s <strong>82 vs 85</strong>.<br>
+</li>
+<li>In the DFS figure, it’s <strong>76 vs 75</strong>.</li>
 </ul>
-<p>就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。</p>
+<p>Same trial, same randomization…<br>
+so why are they analyzing different numbers of patients?”</p>
+<p>Dad: “Good catch.</p>
+<p>In a randomized trial, you usually start with the same number in each arm.<br>
+If the analysis set is smaller,<br>
+it’s often because the outcome definition requires a certain condition.</p>
+<p>For <strong>DFS</strong>, you need to know whether<br>
+the tumor was <strong>completely resected</strong> and then followed for recurrence.</p>
+<p>Does the paper say anything about ‘R0 resection’?”</p>
+<p>Me: “Let me check…<br>
+Here: it says <strong>151 patients</strong> achieved R0 resection.</p>
+<p>So they must be analyzing <strong>DFS only in those R0 patients</strong><br>
+? which explains why the DFS figure starts with fewer patients<br>
+than the OS figure.”</p>
+<p>Dad: “Exactly.<br>
+So:</p>
 <ul>
-<li><p>研究仮説3</p>
-<p>「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」</p></li>
+<li>OS: almost all eligible randomized patients<br>
+</li>
+<li>DFS: only those with <strong>curative (R0) resection</strong></li>
 </ul>
-<p>PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ランダム誤差とバイアスへ対処するために様々な工夫がなされますが、それを検討するタイミングは、研究計画段階と統計解析段階にわけることができます。これを踏まえて、臨床研究の考え方として正しいのは、次のうちどれでしょうか。</p>
+<p>That’s why the <strong>number at risk at time zero is different</strong> between the two plots.”</p>
+<p>Me: “Okay, that makes sense.<br>
+The other thing is the <strong>tail</strong> of the curves.</p>
+<p>Around year 7, the numbers at risk get really small ?<br>
+only a few patients left in each group.</p>
+<p>I was wondering:<br>
+does that mean many patients were <strong>lost to follow-up</strong>?”</p>
+<p>Dad: “Not necessarily.</p>
+<p>We need to check:</p>
+<ul>
+<li><strong>accrual period</strong> (when patients were enrolled), and<br>
+</li>
+<li><strong>follow-up period</strong> (up to when outcomes were collected).”</li>
+</ul>
+<p>Me: “The paper says:</p>
+<ul>
+<li>Registration period: 1995?2003<br>
+</li>
+<li>Survival data analyzed up to 2006</li>
+</ul>
+<p>So accrual took about 8 years,<br>
+and they followed up survival until 2006.”</p>
+<p>Dad: “Right.</p>
+<p>That means the <strong>minimum</strong> follow-up for the last patients enrolled<br>
+is only about 3 years.</p>
+<p>So:</p>
+<ul>
+<li>Not everyone gets 7+ years of follow-up.<br>
+</li>
+<li>It’s expected that the <strong>number at risk</strong> shrinks a lot in later years.</li>
+</ul>
+<p>For survival time data,<br>
+remember we talked about <strong>censoring</strong> before?<br>
+Survival data consists of:</p>
+<ul>
+<li><strong>events</strong> (like death), and<br>
+</li>
+<li><strong>censored observations</strong> (end of follow-up without event).”</li>
+</ul>
+<p>Me: “I remember.<br>
+But the paper doesn’t list censoring times in a table.<br>
+How am I supposed to see them?”</p>
+<p>Dad: “Look at the survival curves again.<br>
+Do you see the little <strong>ticks</strong> on the lines?”</p>
+<p>Me: “These small vertical marks?”</p>
+<p>Dad: “Yes. Those are the <strong>censoring symbols</strong>.</p>
+<p>Each tick marks a time when a patient was <strong>censored</strong> ?<br>
+for example, lost to follow-up or end of planned follow-up.</p>
+<p>If you saw a ton of ticks very soon after time zero,<br>
+you’d worry:</p>
+<blockquote class="blockquote">
+<p>‘Are patients disappearing from follow-up<br>
+right after enrollment?’</p>
+</blockquote>
+<p>That could mean serious <strong>bias</strong>.”</p>
+<p>Me: “In this figure,<br>
+there are only a few ticks before year 3,<br>
+and more after that.</p>
+<p>So most patients were followed for at least 3 years,<br>
+and later censoring is mainly due to <strong>the study ending</strong>,<br>
+not people disappearing.”</p>
+<p>Dad: “Exactly.<br>
+That’s what you want to see.”</p>
+<p>Me: “So if I summarize what I’ve learned so far:</p>
+<ul>
+<li><strong>Number at risk</strong> = how many patients are still under observation<br>
+(not yet had the event and not censored) at each time point.<br>
+</li>
+<li>The little <strong>ticks on the curve</strong> = censoring events.<br>
+</li>
+<li>I should also check the <strong>accrual period</strong> and <strong>follow-up period</strong><br>
+to interpret long follow-up tails correctly.”</li>
+</ul>
+<p>Dad: “Perfect summary.</p>
+<p>Also, notice something else:<br>
+from 1995 to 2006, this trial took <strong>over ten years</strong><br>
+to complete enrollment and collect survival data.</p>
+<p>Every point on that curve<br>
+represents a lot of work by clinicians, staff,<br>
+and of course patients.”</p>
+<p>Me: “Yeah…<br>
+looking at the figure that way makes it feel heavier.”</p>
+<hr>
+</section>
+<section id="hazard-ratio-confidence-interval-and-p-values" class="level3">
+<h3 class="anchored" data-anchor-id="hazard-ratio-confidence-interval-and-p-values">Hazard ratio, confidence interval, and p-values</h3>
+<p>Me: “By the way, around the curves,<br>
+there are all these <strong>stats words</strong>:</p>
+<ul>
+<li><em>hazard ratio</em><br>
+</li>
+<li><em>95% CI</em><br>
+</li>
+<li><em>one-sided p</em><br>
+</li>
+<li><em>two-sided p</em></li>
+</ul>
+<p>I know the English, but I don’t know if I really understand them.”</p>
+<p>Dad: “In Japanese we usually say:</p>
+<ul>
+<li>ハザード比 = hazard ratio<br>
+</li>
+<li>95%信頼区間 = 95% confidence interval<br>
+</li>
+<li>片側p値 = one-sided p-value<br>
+</li>
+<li>両側p値 = two-sided p-value</li>
+</ul>
+<p>These are classic <strong>frequentist</strong> summaries in survival analysis.</p>
+<p>Most of them come from <strong>Cox regression</strong>,<br>
+which estimates <strong>hazard ratios</strong> between groups.”</p>
+<p>Me: “And we’re about to dive into those in this series, right?”</p>
+<p>Dad: “Exactly.</p>
+<p>In ‘Frequentist thinking’,<br>
+we’ll unpack:</p>
+<ul>
+<li>what hazard ratios actually mean,<br>
+</li>
+<li>what a <strong>95% confidence interval</strong> is (and isn’t), and<br>
+</li>
+<li>what we’re really saying when we quote a <strong>p-value</strong>.”</li>
+</ul>
+<p>Me: “Okay.<br>
+Then for now I’ll just memorize the names<br>
+and wait for the proper explanations.”</p>
+<hr>
+</section>
+<section id="a-quiz-related-to-this-episode" class="level3">
+<h3 class="anchored" data-anchor-id="a-quiz-related-to-this-episode">A quiz related to this episode</h3>
+<p>Sometimes clinicians use <strong>“remaining life expectancy”</strong><br>
+to explain prognosis after gastrectomy.</p>
+<p>Looking at the JCOG9502 figures,<br>
+can we read <strong>postoperative life expectancy</strong> directly from the curves?</p>
 <ol type="1">
-<li>ランダム誤差は統計解析を工夫すれば対処できる。だから研究デザインではバイアスについて検討すべき</li>
-<li>ランダム誤差もバイアスも統計解析を工夫すれば対処できる</li>
-<li>統計解析段階では工夫するにも限界がある</li>
-<li>臨床試験では研究デザインが重要。観察研究では統計解析が重要</li>
+<li>Yes, from the OS Kaplan?Meier curve (Figure A).<br>
+</li>
+<li>Yes, from the DFS Kaplan?Meier curve (Figure B).<br>
+</li>
+<li>No, we can’t read it directly from either.</li>
 </ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p><strong>Answer</strong></p>
+<p>The best choice is <strong>1</strong>.</p>
+<p>To describe “how long patients live after surgery”,<br>
+we use <strong>overall survival time</strong>.</p>
+<p>Two common summary measures are:</p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li>the <strong>mean</strong> survival time, and<br>
+</li>
+<li>the <strong>median</strong> survival time.</li>
 </ul>
-<p>サンプルサイズが小さすぎることが、ランダム誤差の一番の原因です。こう考えると、ランダム誤差・バイアスのどちらも、研究計画段階でじゅうぶんに検討しておかないと、後から取り返しがつかないかもしれません。</p>
-</div>
-</div>
-</div>
+<p>From a Kaplan?Meier curve,<br>
+the <strong>median survival time</strong> is easier to read:</p>
+<ul>
+<li>Survival time is a <strong>time-to-event variable</strong> (continuous-like).<br>
+</li>
+<li>The <strong>median</strong> is the time by which <strong>50%</strong> of the patients have had the event.<br>
+</li>
+<li>On the OS curve, that corresponds to the time when<br>
+the <strong>survival probability drops to 50%</strong>.</li>
+</ul>
+<p>So, if the OS curve reaches 50%,<br>
+you can read off the <strong>median survival time</strong> at that point.</p>
+<p>In contrast, DFS mixes together:</p>
+<ul>
+<li>recurrence,<br>
+</li>
+<li>second cancers, and<br>
+</li>
+<li>death.</li>
+</ul>
+<p>It doesn’t directly answer<br>
+“how long do patients live after surgery?”<br>
+So for “remaining life expectancy after surgery”,<br>
+OS is the relevant curve.</p>
+<hr>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502).<br>
+Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia:<br>
+a randomised controlled trial. <em>Lancet Oncol.</em> 2006;7(8):644?651. :contentReference<span data-index="1">oaicite:1</span></li>
+</ul>
+<hr>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<ul>
+<li><a href="study-design-1.html">Study design I</a><br>
+</li>
+<li><a href="study-design-2.html">Study design II</a><br>
+</li>
+<li><a href="study-design-3.html">Study design III</a><br>
+</li>
+<li><a href="study-design-4.html">Study design IV</a><br>
+</li>
+<li><a href="study-design-5.html">Study design V</a><br>
+</li>
+<li><a href="frequentist-1.html">Frequentist thinking I</a><br>
+</li>
+<li>Frequentist thinking II (coming soon)</li>
+</ul>
 
 
 </section>

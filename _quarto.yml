@@ -3,7 +3,10 @@ project:
   output-dir: docs
   resources:
     - coffee.scss
-  
+    - from-coffee-chat-to-r/study-design.R
+    - from-coffee-chat-to-r/frequentist.R
+    - from-coffee-chat-to-r/effects.R
+    
 website:
   title: "Coffee and Research"
   navbar:

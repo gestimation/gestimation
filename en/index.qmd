@@ -164,10 +164,6 @@ a:hover {
 - [Study design IV](12/15公開予定)
 - [Study design V](12/15公開予定)
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
-
-- [study-design.R](../from-coffee-chat-to-r/study-design.R)
-
 ### 2. Frequentist thinking — 統計学の実践
 
 がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の思想**を父は語ります。

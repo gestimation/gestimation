@@ -1,0 +1,292 @@
+# Story and Quiz − Study design V
+
+Keywords: hard vs soft endpoints, selection / information / confounding bias, random error
+
+---
+
+### “Hard endpoints” and soft feelings
+
+Me: “I’m home… completely drained.  
+Is there anything sweet?”
+
+Dad: “There’s a strawberry daifuku. And I just brewed coffee.”
+
+Me: “You are objectively improving my quality of life.  
+Today was rough. Clinic was packed, and the train home was rush-hour level insane.”
+
+Dad: “That sounds like classic Japanese hospital plus Tokyo commute.  
+Here, coffee.”
+
+Me: “Thanks.  
+So, there’s something I wanted to ask.  
+
+You know how people in oncology love to say **‘hard endpoint’** and **‘soft endpoint’**?”
+
+Dad: “Yes, people say that a lot.”
+
+Me: “One of my senior colleagues is really into clinical trials.  
+She keeps saying things like:
+
+> ‘Return-to-work is such a **soft endpoint**.  
+> OS is a **hard endpoint**.  
+> Soft is bad, hard is good.’
+
+And every time she says that,  
+I feel like my return-to-work study is being gently dissed.  
+
+I sort of get what she means, but not really.”
+
+Dad: “I can imagine the tone.  
+
+The way people use those words is a bit loose.  
+If we want to be clearer,  
+it might help to think in terms of:
+
+- **objective** vs  
+- **subjective**.”
+
+Me: “So OS is ‘hard’ because it’s objective?”
+
+Dad: “Pretty much.  
+
+For **overall survival (OS)**, you only need:
+
+- date of death, and  
+- date of last confirmation of being alive.
+
+That’s relatively straightforward.
+
+For something like **progression-free survival (PFS)**,  
+you need to decide **when progression happened**.  
+That depends on:
+
+- imaging timing,  
+- how you interpret the scans,  
+- sometimes even symptoms and lab data.
+
+There’s more **judgment** involved.  
+That’s why people call it a **soft endpoint**.”
+
+Me: “And return-to-work is even more ‘soft’, right?  
+We’re asking about patients’ own perceptions, jobs, feelings…”
+
+Dad: “Right, but that doesn’t make it meaningless.  
+
+I think what your colleague *meant* was something like:
+
+> ‘When you work with soft endpoints,  
+> try to measure them as **consistently** and **objectively** as possible.’”
+
+Me: “So not ‘soft = trash’, but ‘soft = more room for bias, so be careful’.”
+
+Dad: “Exactly.  
+
+Even ‘hard’ endpoints like death can be biased  
+if follow-up is sloppy.
+
+If, for example, you only track deaths in patients  
+who keep coming to the hospital,  
+you might systematically **miss deaths**  
+in those who stop showing up.
+
+So:
+
+- ‘Hard’ ≠ ‘automatically free of bias’  
+- ‘Soft’ ≠ ‘automatically useless’.”
+
+Me: “Okay, that makes me feel better about my study.  
+I’ll phrase it as: *‘a soft endpoint, measured with hard discipline.’*”
+
+Dad: “That’s actually a great line for the methods section.”
+
+---
+
+### Three familiar troublemakers: selection, information, confounding
+
+Me: “For my **mail survey**, what kinds of bias should I watch out for?”
+
+Dad: “Mail surveys are especially vulnerable to **selection bias**.”
+
+Me: “Because some people just never respond?”
+
+Dad: “Exactly.  
+
+If the people who respond are systematically different  
+from those who don’t,  
+your sample stops representing your target population.
+
+For example:
+
+- Patients who are doing well  
+  may be more likely to answer.  
+- Patients who are very sick, depressed, or busy  
+  may be less likely to answer.
+
+Then your estimated **return-to-work rate**  
+can be **too optimistic**.”
+
+Me: “So that’s **selection bias**:  
+bias from how people end up in the analysis dataset.”
+
+Dad: “Right.  
+
+Another classic one is **information bias**:  
+problems in how data are **measured or reported**.
+
+For example, if you ask about **household income**,  
+some people may exaggerate a bit,  
+and others may under-report.  
+If that pattern is not random,  
+your income variable is systematically off.”
+
+Me: “And confounding is the ‘third variable’  
+that makes cause-and-effect look different from reality.”
+
+Dad: “Exactly.  
+We talked about that with **stoma** and **age**:
+
+- Stoma group is older on average.  
+- Older patients are less likely to return to work.
+
+If you just compare stoma vs no-stoma  
+without adjusting for age,  
+you might blame the stoma  
+for what is actually an age effect.  
+
+That’s **confounding**.”
+
+Me: “So in my notes, I’ll write:
+
+- **Selection bias**: who ends up in the study  
+- **Information bias**: how variables are measured  
+- **Confounding**: third-factor distortion of group comparisons.”
+
+Dad: “Perfect summary.  
+
+Those three are the basic troublemakers  
+we want to keep in mind at the **study design** stage.”
+
+---
+
+### Random error vs bias — the archery analogy
+
+Me: “You also mentioned **random error**  
+versus **bias** in one of your lectures.  
+Can you give me the short version?”
+
+Dad: “Sure.
+
+Imagine you’re doing **archery**:
+
+- If your arrows hit all around the target,  
+  but on average around the center,  
+  that’s **random error** — big spread, no systematic shift.
+
+- If your arrows are tightly grouped  
+  but always off to the right,  
+  that’s **bias** — systematic deviation.”
+
+Me: “So:
+
+- Random error = noisy but honest  
+- Bias = precise but wrong?”
+
+Dad: “Very nicely put.
+
+- **Random error** can be reduced by  
+  larger sample size and appropriate methods.  
+- **Bias** usually cannot be fixed later  
+  just by fancy statistics.
+
+To reduce bias,  
+you need to:
+
+- design the study carefully, and  
+- collect data thoughtfully.”
+
+Me: “So the job of statistics is not just to compute p-values,  
+but to:
+
+1. keep **random error** under control, and  
+2. keep **bias** as close to zero as possible.”
+
+Dad: “Exactly.  
+If you ignore bias,  
+no amount of R code will save you.”
+
+Me: “I’ll remember that  
+when I’m tempted to ‘fix’ everything with another regression.”
+
+---
+
+### A small quiz about bias
+
+Which of the following best illustrates **selection bias**  
+in your return-to-work survey?
+
+1. Patients who are worried about their income  
+   tend to slightly exaggerate their salary on the questionnaire.  
+2. Older patients are more likely to have a stoma,  
+   and older patients are less likely to return to work.  
+3. Patients who are already back at work  
+   are much more likely to return the questionnaire  
+   than patients who are not working.  
+4. Different doctors interpret the same CT scans differently  
+   when judging tumor progression.  
+
+**Answer**
+
+The best example of **selection bias** is **3**.
+
+- **1**: Patients misreporting their salary  
+  → **information bias**  
+- **2**: Age distorting the stoma–return-to-work relationship  
+  → **confounding**  
+- **3**: Return-to-work status affects who responds  
+  → **selection bias**  
+- **4**: Differences in how progression is judged  
+  → another form of **information bias**
+
+In real studies,  
+more than one type of bias can be present at the same time,  
+which is why good design and cautious interpretation matter.
+
+---
+
+### Wrapping up the “Study design” mini-series
+
+Me: “Okay, so if I try to summarize this whole Study design arc:
+
+1. Start from a **clinical question**,  
+   and turn it into a **research hypothesis** using PICO/PECO.  
+2. Decide what kind of **outcome** you’re using  
+   (continuous, binary, count, survival / competing risks),  
+   and pick methods that match.  
+3. Think carefully about **time origin** and **endpoints**  
+   – OS / DFS / PFS / soft vs hard.  
+4. Pay attention to **data type**, **repeated measures**,  
+   and **confounding** when choosing models.  
+5. Design the study to minimize **selection bias**, **information bias**,  
+   and **confounding**,  
+   and remember:  
+   statistics can’t magically erase a bad design.”
+
+Dad: “That’s an excellent summary.  
+If you walk into your first study with that much in your head,  
+you’re already ahead of where many people start.”
+
+Me: “Good.  
+Then I’ll keep using you as my in-house statistician,  
+if that’s okay.”
+
+Dad: “As long as the coffee keeps coming, deal.”
+
+---
+
+### Continuation of their story
+
+- [Study design I](study-design-1.html)  
+- [Study design II](study-design-2.html)  
+- [Study design III](study-design-3.html)  
+- [Study design IV](study-design-4.html)  
+- [Study design V](study-design-5.html)

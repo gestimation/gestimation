@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>frequentist-3 – Coffee and Research</title>
+<title>study-design-1 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,11 +124,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz − Frequentist thinking III</a>
+  <li><a href="#from-coffee-chat-to-research-study-design-i" id="toc-from-coffee-chat-to-research-study-design-i" class="nav-link active" data-scroll-target="#from-coffee-chat-to-research-study-design-i">From Coffee Chat to Research − Study design I</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#a-daughter-starting-her-first-research-and-her-statistician-father" id="toc-a-daughter-starting-her-first-research-and-her-statistician-father" class="nav-link" data-scroll-target="#a-daughter-starting-her-first-research-and-her-statistician-father">A daughter starting her first research, and her statistician father</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -274,194 +272,317 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-frequentist-thinking-iii" class="level1">
-<h1>Story and Quiz − Frequentist thinking III</h1>
+<section id="from-coffee-chat-to-research-study-design-i" class="level1">
+<h1>From Coffee Chat to Research − Study design I</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
+<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study</p>
 </div>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
+<section id="a-daughter-starting-her-first-research-and-her-statistician-father" class="level3">
+<h3 class="anchored" data-anchor-id="a-daughter-starting-her-first-research-and-her-statistician-father">A daughter starting her first research, and her statistician father</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
+<p>Me: “So… you really are a professor in statistics, right?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
+<p>Dad: “In Japan, yes. One of the many.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
+<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into <strong>supporting cancer patients in returning to work</strong> since the Cancer Control Act in Japan was revised. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
+<p>Dad: “Half my territory, half yours. You see the patients, I only see the data. So, do you have any <strong>clinical question or hypothesis</strong> in mind?”</p>
 </div>
 <div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
+<p>Me: “Honestly? Not really. I was sort of hoping I could just collect a lot of data first and think later. Is that illegal?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
+<p>Dad: “Not illegal, but not safe. Without at least a <strong>working hypothesis</strong>, it’s hard to design a good study.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
+<p>Me: “Okay, okay. If I have to say something… I’m curious about which patients have a harder time staying in work.</p>
+<p>Not just men vs women, but things like <strong>cancer stage</strong> and <strong>treatment</strong>. I work in GI surgery, so I keep wondering about <strong>patients with a stoma</strong>. Can they really keep doing the same job as before surgery?”</p>
 </div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="voice-father">
+<p>Dad: “That’s already a good start. You’re close to a research question.”</p>
 </div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
+<div class="voice-daughter">
+<p>Me: “Really? I was just thinking out loud. Fine, I guess I’ll start drafting a questionnaire. That actually helped. Thanks.”</p>
 </div>
+<div class="voice-father">
+<p>Dad: “Hold on. Have you decided on your <strong>study population</strong> yet?”</p>
 </div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<div class="voice-daughter">
+<p>Me: “Um… patients with cancer who had surgery at our hospital?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Do you see many stomas in gastric cancer patients?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “It’s not impossible, but honestly, almost never.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. If your main interest is stomas, it might make sense to <strong>focus on cancers where stomas are common</strong>, like rectal cancer.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So you’re saying narrow the population?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. If you <strong>narrow the target population</strong>, you can ask <strong>more detailed questions</strong> and improve <strong>comparability</strong> between groups. If you want to compare patients <em>with</em> and <em>without</em> a stoma, it’s better to keep the cancer site consistent.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Comparability…such a statistics word. But yeah, if the background is all over the place, it’s a mess. I do get that.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “On the other hand, if you <strong>broaden the population</strong>, you gain <strong>generalizability</strong>. If your goal were to estimate the <strong>return-to-work rate among all cancer survivors in Japan</strong>, you wouldn’t limit the cancer site, and you might want data from <strong>multiple hospitals</strong>, not just ours.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Right now, with only our hospital, calling it a ‘real-world survey’ would be a bit bold. So ‘high generalizability’ basically means ‘other hospitals could actually use the results as a reference’?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s a good way to put it. See, you <em>do</em> think statistically.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Don’t flatter me just to get free clinical consulting.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In class, I tell my students this:</p>
+<blockquote class="blockquote">
+<p>When your clinical question is still vague,<br>
+try to express it using <strong>PICO</strong> or <strong>PECO</strong><br>
+before you design the study.</p>
+</blockquote>
+<p>It sounds fancy, but it’s just a framework.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I’ve heard the words PICO, PECO…but nobody really explains what to <em>do</em> with them.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s walk through it using your case. In PICO/PECO:</p>
+</div>
+<ul>
+<li><strong>P</strong> is <strong>Patients/Population</strong><br>
+</li>
+<li><strong>I/E</strong> is <strong>Intervention/Exposure</strong><br>
+</li>
+<li><strong>C</strong> is <strong>Comparison</strong><br>
+</li>
+<li><strong>O</strong> is <strong>Outcome</strong></li>
+</ul>
+<div class="dialogue">
+<div class="voice-father">
+<p>These four pieces are like the minimum ingredients for a study recipe. In a clinical trial, we usually talk about <strong>Intervention</strong> (I). In observational studies like your survey, we talk about <strong>Exposure</strong> (E).”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay, P is like, ‘rectal cancer patients after curative surgery in our hospital’. For E and C… maybe ‘with stoma’ vs ‘without stoma’?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And O is your <strong>outcome</strong>, that is to say, what you want to measure. In your case, something about <strong>return to work</strong>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So outcome is the thing we call OS, DFS, response rate, that kind of stuff?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. In statistical analysis, the <strong>outcome variable</strong> is the most important part. So deciding <strong>what the outcome is</strong> is a key step in planning.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Can I really fix that before collecting any data? Feels like I’m committing too early.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “If you don’t fix it before designing the questionnaire, you’ll regret it later. Once you start collecting data, by the way, what software are you planning to use?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “R. That’s what everyone in my department uses.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “How comfortable are you with R?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “We had it in undergrad, but at this point I’ve forgotten everything except that semicolons stress me out less than parentheses.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “So we’ll need to get you used to R again. Which R functions you use will depend on the <strong>type of outcome</strong> you choose.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So step zero is:</p>
 <ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+<li>Turn my vague hunch into a proper question using <strong>P, E, C, O</strong><br>
+</li>
+<li>Decide on the outcome<br>
+</li>
+<li>Then figure out how to survive R and not embarrass myself at journal club</li>
 </ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
+<p>That’s the plan?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
+<p>Dad: “That’s a very good summary. If you bring me questions like that, I’m happy to be used as a resource.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
+<p>Me: “Deal. I’ll bring the clinical mess, you translate it into statistics. Very efficient division of labor.”</p>
 </div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
+<div class="callout callout-style-simple callout-note callout-titled" title="Clinical questions and research hypotheses">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-片側p値と両側p値
+Clinical questions and research hypotheses
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+<p>In everyday clinical work in Japan, you naturally start to notice small curiosities:</p>
+<ul>
+<li>“Do my older patients really have worse outcomes?”<br>
+</li>
+<li>“Is this new support program actually helping?”</li>
+</ul>
+<p>These are <strong>clinical questions</strong>.</p>
+<p>To turn them into research, we want to re-express them as <strong>research hypotheses</strong>.</p>
+<p>A research hypothesis is built from the <strong>minimum elements</strong> needed for study design:</p>
+<ul>
+<li>What kind of patients? (<strong>Patients/Population</strong>)<br>
+</li>
+<li>What factor are we focusing on? (<strong>Intervention/Exposure</strong>)<br>
+</li>
+<li>What are we comparing it to? (<strong>Comparison</strong>)<br>
+</li>
+<li>What outcomes are we interested in? (<strong>Outcome</strong>)</li>
+</ul>
+<p>That’s exactly what <strong>PICO/PECO</strong> helps you write down.</p>
+<section id="example-research-hypothesis-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-1">Example: Research hypothesis 1</h4>
+<blockquote class="blockquote">
+<p>Among rectal cancer patients after curative resection in Japan,<br>
+is there a difference in <strong>return-to-work within one year</strong><br>
+between those with and without a stoma?</p>
+</blockquote>
+<ul>
+<li><strong>P</strong>: Rectal cancer patients after curative resection<br>
+</li>
+<li><strong>E</strong>: Stoma present<br>
+</li>
+<li><strong>C</strong>: Stoma absent<br>
+</li>
+<li><strong>O</strong>: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here you’d compare the <strong>return-to-work proportion</strong><br>
+between the stoma and non-stoma groups.</p>
+<p>What to choose for <strong>C (Comparison)</strong> is important.<br>
+If you only know the return-to-work rate in the stoma group,<br>
+it’s hard to say whether that number is “high” or “low”.<br>
+Having a clear comparison group improves <strong>interpretability</strong>.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-2">Example: Research hypothesis 2</h4>
+<blockquote class="blockquote">
+<p>Among cancer patients after curative surgery,<br>
+does providing a <strong>guidebook on balancing work and cancer treatment</strong><br>
+increase the proportion who return to work within one year?</p>
+</blockquote>
+<ul>
+<li><strong>P</strong>: Patients with cancer after curative surgery<br>
+</li>
+<li><strong>E</strong>: Received the guidebook<br>
+</li>
+<li><strong>C</strong>: Did not receive the guidebook<br>
+</li>
+<li><strong>O</strong>: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here P is broader,<br>
+so the results could potentially apply<br>
+to a <strong>wider range of patients</strong>.<br>
+This is an example of <strong>higher generalizability</strong>.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-3-exploratory" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-3-exploratory">Example: Research hypothesis 3 (exploratory)</h4>
+<blockquote class="blockquote">
+<p>“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities,<br>
+stoma, preoperative employment status, household income, cancer insurance,<br>
+and use of employment support services<br>
+associated with return-to-work within one year?”</p>
+</blockquote>
+<p>In exploratory studies like this,<br>
+P is clear, but E and C are <strong>not just one thing</strong>—<br>
+we’re screening multiple potential <strong>risk factors</strong>.</p>
+<p>So “structuring the question”<br>
+doesn’t mean you have to force every study<br>
+into a clean PECO shape.</p>
+<p>What matters is:</p>
+<blockquote class="blockquote">
+<p>For this question,<br>
+what is the <strong>minimal set of elements</strong><br>
+I need to design a coherent study?</p>
+</blockquote>
+<p>That’s the habit we want to build.</p>
+</section>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+A quiz related to this episode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>In oncology, one common outcome is <strong>progression-free survival (PFS)</strong>. To measure PFS, we need to determine <strong>tumor progression</strong> based on imaging. Sometimes a central review committee evaluates images<br>
+to make this more objective. In that case, there may be discrepancies between:</p>
+<ul>
+<li>the progression date according to the <strong>central review</strong>, and<br>
+</li>
+<li>the progression date according to the <strong>local investigator</strong>.</li>
+</ul>
+<p>This issue is called a <strong>disagreement between central and local assessment</strong>. Which of the following is <strong>not appropriate</strong> as a way to handle this in a clinical trial?</p>
 <ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+<li>In the primary analysis, use the results of the central review, which is considered more objective.<br>
+</li>
+<li>In the primary analysis, define progression as whichever date comes first: central or local.<br>
+</li>
+<li>Hold a case review meeting and decide how to handle discrepant cases based on medical judgment.<br>
+</li>
+<li>Perform two analyses: one using central assessment, and one using local assessment.</li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-答えはこちら
+Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は3です</strong></li>
-</ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+<p>The correct answer is <strong>2</strong>.</p>
+<p>If you define the event as<br>
+“whichever progression date comes first (central or local)”,<br>
+you are more likely to <strong>shorten PFS artificially</strong>,<br>
+because you systematically choose the earlier of the two dates.</p>
+<p>That introduces <strong>bias</strong>.</p>
+<p>This doesn’t mean you must always use central review;<br>
+in some contexts, local assessment may better reflect<br>
+real clinical decision-making.<br>
+But “always take the earlier date”<br>
+is not an appropriate general rule.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
-</ul>
-</section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<p><a href="../en/study-design-1.html">Study design I</a></p>
+<p><a href="../en/study-design-2.html">Study design II</a></p>
 
 
+</section>
+</div>
+</div>
 </section>
 </section>
 

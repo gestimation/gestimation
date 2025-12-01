@@ -1,0 +1,296 @@
+# Story and Quiz ? Frequentist thinking I
+
+Keywords: OS/PFS/DFS/response, p-value, survival/competing risks, clinical trial
+
+---
+
+### Reading the numbers around a survival curve
+
+> *Recap from the previous series*  
+> A junior doctor in Japan is starting her first research project,  
+> guided (sometimes pushed) by her statistician father.  
+> With his help, she learned to use **PICO/PECO** to frame a question,  
+> and decided to study the relationship between **stoma** and  
+> **return-to-work** among cancer survivors.  
+> She also learned that the same clinical question can be analyzed  
+> as **binary data** or **survival time data**.  
+> Now, her boss has recommended a surgical oncology paper,  
+> and she’s trying to decode the graphs.
+
+---
+
+Me: “Dad, are you still awake? I’m making coffee.”
+
+Dad: “If there’s coffee, I’m awake.  
+What are you reading?”
+
+Me: “Thanks. And milk, please.  
+
+I’m reading this **gastric cancer surgery** paper.  
+It’s a randomized trial called **JCOG9502** that compares two surgical approaches.  
+You know, you explained **OS** and **DFS** to me the other day,  
+and now they’re all over this paper. I thought I should actually understand them.”
+
+Dad: “JCOG9502… yes, that’s the trial comparing  
+two surgical approaches for tumors near the cardia.” :contentReference[oaicite:0]{index=0}  
+
+Me: “Right. They randomized patients to:
+
+- a **standard transhiatal approach** (the *TH* group), and  
+- a **left thoracoabdominal approach** (the *LTA* group).
+
+There’s a figure with two **Kaplan?Meier curves**:
+
+- Figure A: **overall survival (OS)**  
+- Figure B: **disease-free survival (DFS)**
+
+In both, the TH group (blue) looks better than the LTA group (red).  
+So far so good ? lower curve = worse outcome.  
+
+But what’s confusing me is all the **numbers around the curves**.”
+
+Dad: “Let me guess: the **number at risk** and the little marks on the curves.”
+
+Me: “Exactly.  
+
+Under each figure there’s a row of numbers ?  
+that’s the **number at risk**, right?  
+
+Here’s the first thing that bothered me:  
+At time zero, the numbers **don’t match** between OS and DFS.
+
+- In the OS figure, it’s **82 vs 85**.  
+- In the DFS figure, it’s **76 vs 75**.
+
+Same trial, same randomization…  
+so why are they analyzing different numbers of patients?”
+
+Dad: “Good catch.  
+
+In a randomized trial, you usually start with the same number in each arm.  
+If the analysis set is smaller,  
+it’s often because the outcome definition requires a certain condition.
+
+For **DFS**, you need to know whether  
+the tumor was **completely resected** and then followed for recurrence.
+
+Does the paper say anything about ‘R0 resection’?”
+
+Me: “Let me check…  
+Here: it says **151 patients** achieved R0 resection.  
+
+So they must be analyzing **DFS only in those R0 patients**  
+? which explains why the DFS figure starts with fewer patients  
+than the OS figure.”
+
+Dad: “Exactly.  
+So:
+
+- OS: almost all eligible randomized patients  
+- DFS: only those with **curative (R0) resection**
+
+That’s why the **number at risk at time zero is different** between the two plots.”
+
+Me: “Okay, that makes sense.  
+The other thing is the **tail** of the curves.
+
+Around year 7, the numbers at risk get really small ?  
+only a few patients left in each group.  
+
+I was wondering:  
+does that mean many patients were **lost to follow-up**?”
+
+Dad: “Not necessarily.  
+
+We need to check:
+
+- **accrual period** (when patients were enrolled), and  
+- **follow-up period** (up to when outcomes were collected).”
+
+Me: “The paper says:
+
+- Registration period: 1995?2003  
+- Survival data analyzed up to 2006
+
+So accrual took about 8 years,  
+and they followed up survival until 2006.”
+
+Dad: “Right.  
+
+That means the **minimum** follow-up for the last patients enrolled  
+is only about 3 years.
+
+So:
+
+- Not everyone gets 7+ years of follow-up.  
+- It’s expected that the **number at risk** shrinks a lot in later years.
+
+For survival time data,  
+remember we talked about **censoring** before?  
+Survival data consists of:
+
+- **events** (like death), and  
+- **censored observations** (end of follow-up without event).”
+
+Me: “I remember.  
+But the paper doesn’t list censoring times in a table.  
+How am I supposed to see them?”
+
+Dad: “Look at the survival curves again.  
+Do you see the little **ticks** on the lines?”
+
+Me: “These small vertical marks?”
+
+Dad: “Yes. Those are the **censoring symbols**.
+
+Each tick marks a time when a patient was **censored** ?  
+for example, lost to follow-up or end of planned follow-up.
+
+If you saw a ton of ticks very soon after time zero,  
+you’d worry:
+
+> ‘Are patients disappearing from follow-up  
+> right after enrollment?’
+
+That could mean serious **bias**.”
+
+Me: “In this figure,  
+there are only a few ticks before year 3,  
+and more after that.  
+
+So most patients were followed for at least 3 years,  
+and later censoring is mainly due to **the study ending**,  
+not people disappearing.”
+
+Dad: “Exactly.  
+That’s what you want to see.”
+
+Me: “So if I summarize what I’ve learned so far:
+
+- **Number at risk** = how many patients are still under observation  
+  (not yet had the event and not censored) at each time point.  
+- The little **ticks on the curve** = censoring events.  
+- I should also check the **accrual period** and **follow-up period**  
+  to interpret long follow-up tails correctly.”
+
+Dad: “Perfect summary.  
+
+Also, notice something else:  
+from 1995 to 2006, this trial took **over ten years**  
+to complete enrollment and collect survival data.  
+
+Every point on that curve  
+represents a lot of work by clinicians, staff,  
+and of course patients.”
+
+Me: “Yeah…  
+looking at the figure that way makes it feel heavier.”
+
+---
+
+### Hazard ratio, confidence interval, and p-values
+
+Me: “By the way, around the curves,  
+there are all these **stats words**:
+
+- *hazard ratio*  
+- *95% CI*  
+- *one-sided p*  
+- *two-sided p*
+
+I know the English, but I don’t know if I really understand them.”
+
+Dad: “In Japanese we usually say:
+
+- ハザード比 = hazard ratio  
+- 95%信頼区間 = 95% confidence interval  
+- 片側p値 = one-sided p-value  
+- 両側p値 = two-sided p-value
+
+These are classic **frequentist** summaries in survival analysis.
+
+Most of them come from **Cox regression**,  
+which estimates **hazard ratios** between groups.”
+
+Me: “And we’re about to dive into those in this series, right?”
+
+Dad: “Exactly.  
+
+In ‘Frequentist thinking’,  
+we’ll unpack:
+
+- what hazard ratios actually mean,  
+- what a **95% confidence interval** is (and isn’t), and  
+- what we’re really saying when we quote a **p-value**.”
+
+Me: “Okay.  
+Then for now I’ll just memorize the names  
+and wait for the proper explanations.”
+
+---
+
+### A quiz related to this episode
+
+Sometimes clinicians use **“remaining life expectancy”**  
+to explain prognosis after gastrectomy.
+
+Looking at the JCOG9502 figures,  
+can we read **postoperative life expectancy** directly from the curves?
+
+1. Yes, from the OS Kaplan?Meier curve (Figure A).  
+2. Yes, from the DFS Kaplan?Meier curve (Figure B).  
+3. No, we can’t read it directly from either.  
+
+**Answer**
+
+The best choice is **1**.
+
+To describe “how long patients live after surgery”,  
+we use **overall survival time**.
+
+Two common summary measures are:
+
+- the **mean** survival time, and  
+- the **median** survival time.
+
+From a Kaplan?Meier curve,  
+the **median survival time** is easier to read:
+
+- Survival time is a **time-to-event variable** (continuous-like).  
+- The **median** is the time by which **50%** of the patients have had the event.  
+- On the OS curve, that corresponds to the time when  
+  the **survival probability drops to 50%**.
+
+So, if the OS curve reaches 50%,  
+you can read off the **median survival time** at that point.
+
+In contrast, DFS mixes together:
+
+- recurrence,  
+- second cancers, and  
+- death.
+
+It doesn’t directly answer  
+“how long do patients live after surgery?”  
+So for “remaining life expectancy after surgery”,  
+OS is the relevant curve.
+
+---
+
+### References
+
+- Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502).  
+  Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia:  
+  a randomised controlled trial. *Lancet Oncol.* 2006;7(8):644?651. :contentReference[oaicite:1]{index=1}  
+
+---
+
+### Continuation of their story
+
+- [Study design I](study-design-1.html)  
+- [Study design II](study-design-2.html)  
+- [Study design III](study-design-3.html)  
+- [Study design IV](study-design-4.html)  
+- [Study design V](study-design-5.html)  
+- [Frequentist thinking I](frequentist-1.html)  
+- Frequentist thinking II (coming soon)

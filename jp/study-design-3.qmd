@@ -414,5 +414,3 @@ OS、DFS、RFSは、特に術後補助化学療法の有効性を評価すると
 [Study design I](study-design-1.qmd)
 
 [Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)

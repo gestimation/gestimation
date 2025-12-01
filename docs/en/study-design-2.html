@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>study-design-1 – Coffee and Research</title>
+<title>study-design-2 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -124,11 +153,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-i" id="toc-story-and-quiz-study-design-i" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-i">Story and Quiz − Study design I</a>
+  <li><a href="#story-and-quiz-study-design-ii" id="toc-story-and-quiz-study-design-ii" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-ii">Story and Quiz − Study design II</a>
   <ul class="collapse">
-  <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#data-have-types" id="toc-data-have-types" class="nav-link" data-scroll-target="#data-have-types">Data have types</a></li>
+  <li><a href="#generating-simulated-data" id="toc-generating-simulated-data" class="nav-link" data-scroll-target="#generating-simulated-data">Generating simulated data</a></li>
   </ul></li>
+  <li><a href="#stoma-1-with-stoma-0-without-stoma" id="toc-stoma-1-with-stoma-0-without-stoma" class="nav-link" data-scroll-target="#stoma-1-with-stoma-0-without-stoma">Stoma: 1 = with stoma, 0 = without stoma</a></li>
+  <li><a href="#sex-0-woman-1-man" id="toc-sex-0-woman-1-man" class="nav-link" data-scroll-target="#sex-0-woman-1-man">Sex: 0 = WOMAN, 1 = MAN</a></li>
+  <li><a href="#age-normal-distribution-stoma-group-slightly-older" id="toc-age-normal-distribution-stoma-group-slightly-older" class="nav-link" data-scroll-target="#age-normal-distribution-stoma-group-slightly-older">Age: normal distribution (stoma group slightly older)</a></li>
+  <li><a href="#survival-time-exponential-distribution" id="toc-survival-time-exponential-distribution" class="nav-link" data-scroll-target="#survival-time-exponential-distribution">Survival time: exponential distribution</a></li>
+  <li><a href="#expected-survival-10-years-with-stoma-vs-15-years-without" id="toc-expected-survival-10-years-with-stoma-vs-15-years-without" class="nav-link" data-scroll-target="#expected-survival-10-years-with-stoma-vs-15-years-without">expected survival 10 years (with stoma) vs 15 years (without)</a></li>
+  <li><a href="#random-censoring-0-censored-1-event" id="toc-random-censoring-0-censored-1-event" class="nav-link" data-scroll-target="#random-censoring-0-censored-1-event">Random censoring: 0 = censored, 1 = event</a></li>
+  <li><a href="#install.packagesggplot2-if-needed" id="toc-install.packagesggplot2-if-needed" class="nav-link" data-scroll-target="#install.packagesggplot2-if-needed">install.packages(“ggplot2”) # if needed</a></li>
+  <li><a href="#devtoolsinstall_githubgestimationcifmodeling-if-needed" id="toc-devtoolsinstall_githubgestimationcifmodeling-if-needed" class="nav-link" data-scroll-target="#devtoolsinstall_githubgestimationcifmodeling-if-needed">devtools::install_github(“gestimation/cifmodeling”) # if needed</a></li>
   </ul>
 </nav>
     </div>
@@ -138,338 +175,268 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-study-design-i" class="level1">
-<h1>Story and Quiz − Study design I</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study</p>
-</div>
+<section id="story-and-quiz-study-design-ii" class="level1">
+<h1>Story and Quiz − Study design II</h1>
+<p>Keywords: OS/PFS/DFS/response, continuous/binary/count/survival</p>
 <hr>
-<section id="はじめて研究に取り組む娘と統計家の父" class="level3">
-<h3 class="anchored" data-anchor-id="はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんってさ、大学で統計学を教えてるんでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年のがん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ないよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「仮説がないと調査がデザインできないよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「女性より男性の方が、復職率が高いとか？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「待ちなさい。調査対象は決まってるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？うちの病院で手術したがん患者さん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「胃がんでストーマを造設することってあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ゼロじゃないけど、みたことない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうかなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。大学の授業だとね、研究で調べたい疑問がはっきりしないなら、“PICO”と”PECO”という要素を使って、研究をデザインしなさいって教えてるよ。研究の構造化ってやつ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化？実際怪しいな、そこ。いや、聞いたことはある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化ねえ。聞いたことある言葉だけど、何をすればいいか、よくわからないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、研究デザインの大切な1要素だってこと」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Patientsはわかるよ。それ以外は？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Pと同様に大切な、I/E（Intervention/Exposure）、C（Comparison）、O（Outcome）をあわせた4つの要素にあてはめて考えてみましょう、というわけ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ExposureとComparisonははじめて聞いたけど、私の場合はストーマ保有者と非保有者ってことだよね。Outcomeってなに？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「データが集まる前に固められなくない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「R。診療科の先輩が使ってるから」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Rは得意？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「学部の頃、授業あったけどもうわすれたな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="臨床疑問と研究仮説">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-臨床疑問と研究仮説
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、臨床疑問（clinical question）といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を研究仮説（research hypothesis）として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。</p>
+<section id="data-have-types" class="level3">
+<h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
+<p>Me: “Okay, coffee is ready.<br>
+Can I borrow you a bit longer?”</p>
+<p>Dad: “If coffee is involved, yes.”</p>
+<p>Me: “You said something earlier that stuck with me.<br>
+That <em>which R function we use depends on the outcome</em>.<br>
+I didn’t really get that.</p>
+<p>In the end, aren’t all data just… numbers?”</p>
+<p>Dad: “They’re all numbers, yes.<br>
+But for statistics, the <strong>type of data</strong> matters a lot.</p>
+<p>Very roughly, we use four big categories:</p>
 <ul>
-<li>どのような患者が対象か（Patients/Population）</li>
-<li>どのような要因に注目するか（Intervention/Exposure）</li>
-<li>それを何と比較するのか（Comparison）</li>
-<li>患者にどのようなアウトカムが生じたのか（Outcome）</li>
+<li><strong>Continuous data</strong><br>
+</li>
+<li><strong>Binary / categorical data</strong><br>
+</li>
+<li><strong>Count data</strong><br>
+</li>
+<li><strong>Survival time data</strong>.”</li>
 </ul>
-<p>上の会話で出てきた”PICO”や”PECO”は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。</p>
-<p>がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。</p>
+<p>Me: “Continuous data is things we <strong>measure</strong>, right?<br>
+Like age or blood pressure.</p>
+<p>Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”</p>
+<p>Dad: “Perfect.<br>
+<strong>Count data</strong> is when you literally count events,<br>
+like the number of traffic accidents.</p>
+<p><strong>Survival time data</strong> is things like <strong>lifespan</strong> —<br>
+time from some starting point until an event, such as death.</p>
+<p>In your case, that could be <strong>time from surgery to returning to work</strong>,<br>
+or <strong>time to recurrence</strong>.”</p>
+<p>Me: “When you say it like that,<br>
+they definitely feel like different beasts.</p>
+<p>But in the R course I took,<br>
+we just typed whatever they put on the slides —<br>
+<code>t.test()</code>, <code>glm()</code>, <code>survfit()</code>…<br>
+It all felt like a spellbook.”</p>
+<p>Dad: “That’s a common side effect of R lectures.<br>
+Do you have your laptop?”</p>
+<p>Me: “That sounds like the beginning of homework.”</p>
+<p>Dad: “Let’s just say ‘a practical demonstration’.<br>
+Bring it here — we’ll install RStudio if it’s not there.”</p>
+<p>Me: “I knew this was coming.<br>
+Look, I know my stats skills are still beginner level,<br>
+and I <em>do</em> need R for my own research.</p>
+<p>So fine, I’ll get my laptop.<br>
+But I expect maximum efficiency from this session.”</p>
+<p>Dad: “I’ll try.<br>
+In R, for <strong>continuous data</strong>, we often use:</p>
 <ul>
-<li><p>研究仮説1</p>
-<p>P: 根治切除後の直腸がん患者</p>
-<p>E: ストーマ造設あり</p>
-<p>C: ストーマ造設なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li><code>mean()</code><br>
+</li>
+<li><code>t.test()</code><br>
+</li>
+<li><code>lm()</code>.”</li>
 </ul>
-<p>ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。</p>
+<p>Me: “Those at least sound familiar.”</p>
+<p>Dad: “For <strong>binary data</strong>, we summarize with <code>table()</code>,<br>
+and to get p-values we use <code>chisq.test()</code> or <code>fisher.test()</code>.</p>
+<p>For more complex analyses,<br>
+we move to <strong>regression models</strong> like<br>
+<code>glm(family = binomial)</code>.</p>
+<p>For <strong>survival time data</strong>,<br>
+we use things like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
+<p>Me: “There’s no way I can memorize all that.<br>
+I’ll just mix everything up again.”</p>
+<p>Dad: “You don’t need to memorize every function name.”</p>
+<p>Me: “I like where this is going.”</p>
+<p>Dad: “What you <em>do</em> want is a rough map in your head:</p>
 <ul>
-<li><p>研究仮説2</p>
-<p>P: 根治切除後のがん患者</p>
-<p>E: 「仕事とがん治療の両立お役立ちノート」の配布あり</p>
-<p>C: 「仕事とがん治療の両立お役立ちノート」の配布なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li>‘This looks like <strong>continuous data</strong>,<br>
+so probably that family of methods.’<br>
+</li>
+<li>‘This is <strong>0/1 data</strong>,<br>
+so I need methods designed for binary data.’</li>
 </ul>
-<p>就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。</p>
+<p>If you can picture the <strong>data type</strong>,<br>
+the appropriate R functions become much easier to remember.”</p>
+<p>Me: “So instead of memorizing spells,<br>
+I should recognize the kind of creature I’m dealing with.”</p>
+<p>Dad: “Exactly.<br>
+And one more layer down,<br>
+we’re also thinking about <strong>probability distributions</strong>.”</p>
+<p>Me: “Ah, here comes the math.”</p>
+<p>Dad: “Nothing too heavy.<br>
+You’ve heard of the <strong>normal distribution</strong>, right?”</p>
+<p>Me: “That one survived from undergrad, yes.”</p>
+<p>Dad: “For statistics, we imagine that behind the data<br>
+there’s some <strong>probability distribution</strong>:</p>
 <ul>
-<li><p>研究仮説3</p>
-<p>「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」</p></li>
+<li>Continuous data → often <strong>normal distribution</strong><br>
+</li>
+<li>Binary data → <strong>binomial distribution</strong><br>
+</li>
+<li>Count data → <strong>Poisson distribution</strong><br>
+</li>
+<li>Survival time data → there’s no single standard,<br>
+but a simple one is the <strong>exponential distribution</strong>.</li>
 </ul>
-<p>PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ランダム誤差とバイアスへ対処するために様々な工夫がなされますが、それを検討するタイミングは、研究計画段階と統計解析段階にわけることができます。これを踏まえて、臨床研究の考え方として正しいのは、次のうちどれでしょうか。</p>
-<ol type="1">
-<li>ランダム誤差は統計解析を工夫すれば対処できる。だから研究デザインではバイアスについて検討すべき</li>
-<li>ランダム誤差もバイアスも統計解析を工夫すれば対処できる</li>
-<li>統計解析段階では工夫するにも限界がある</li>
-<li>臨床試験では研究デザインが重要。観察研究では統計解析が重要</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>You don’t have to remember the formulas,<br>
+just the general matching:</p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li>continuous ⇔ normal-ish<br>
+</li>
+<li>yes/no ⇔ binomial-ish<br>
+</li>
+<li>counts ⇔ Poisson-ish.”</li>
 </ul>
-<p>サンプルサイズが小さすぎることが、ランダム誤差の一番の原因です。こう考えると、ランダム誤差・バイアスのどちらも、研究計画段階でじゅうぶんに検討しておかないと、後から取り返しがつかないかもしれません。</p>
-</div>
-</div>
-</div>
+<p>Me: “So how does that help with R?”</p>
+<p>Dad: “For example,<br>
+we often talk about <strong>proportions</strong> and <strong>rates</strong> in medicine.</p>
+<p>We casually throw around words like ‘prevalence’ or ‘mortality rate’.<br>
+But in statistics:</p>
+<ul>
+<li><strong>Proportion</strong> → parameter of a <em>binomial</em> distribution<br>
+</li>
+<li><strong>Rate</strong> → parameter of a <em>Poisson</em> distribution.”</li>
+</ul>
+<p>Me: “But in normal conversation, ‘proportion’ and ‘rate’<br>
+are almost interchangeable.”</p>
+<p>Dad: “Right, in everyday language they get blurred.<br>
+Statistically, they’re different.</p>
+<p>A <strong>proportion</strong> is something you’d express as a <strong>percentage</strong>:<br>
+‘60% of the participants were women.’</p>
+<p>A <strong>rate</strong> relates to <strong>events over time</strong>.<br>
+For example, think of:</p>
+<blockquote class="blockquote">
+<p>‘Annual rate of traffic accidents in Tokyo.’</p>
+</blockquote>
+<p>You wouldn’t express that as ‘120% per year’.<br>
+It’s something like ‘X accidents per year’.”</p>
+<p>Me: “Okay, that’s finally clicking.<br>
+So proportion is like ‘out of this group,<br>
+how many have the characteristic’,<br>
+and rate is like ‘how fast things are happening over time’.”</p>
+<p>Dad: “Exactly.<br>
+And with that in mind,<br>
+let’s do a small R demo — nothing painful.”</p>
+<p>Me: “You always say that right before something painful.”</p>
+<p>Dad: “We’ll simulate:</p>
+<ul>
+<li><strong>Age</strong> (continuous data)<br>
+</li>
+<li><strong>Sex, stoma</strong> (binary data)<br>
+</li>
+<li><strong>Survival time</strong> (survival data)</li>
+</ul>
+<p>Then we’ll run some basic summaries.”</p>
+<p>Me: “Okay.<br>
+I’ll type what you tell me,<br>
+but I want to understand the big picture, not just more spells.”</p>
+<p>Dad: “Deal.<br>
+First, a quick note about R packages.</p>
+<p>To <strong>install</strong> a package on your computer,<br>
+you use <code>install.packages()</code>.<br>
+To <strong>use</strong> an installed package in your current session,<br>
+you use <code>library()</code>.</p>
+<p>R’s like a bookshelf:</p>
+<ul>
+<li><code>install.packages()</code> → buy the book and put it on the shelf<br>
+</li>
+<li><code>library()</code> → pull the book off the shelf and open it.”</li>
+</ul>
+<p>Me: “So <code>install.packages("cifmodeling")</code> is a one-time thing,<br>
+and <code>library(cifmodeling)</code> is what I run each time I actually use it.”</p>
+<p>Dad: “Exactly.<br>
+Reinstalling every time would be like going out<br>
+to buy coffee beans <strong>every single morning</strong>.”</p>
+<p>Me: “No, thank you.<br>
+Okay, show me the simulated data.”</p>
+<hr>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<section id="generating-simulated-data" class="level3">
+<h3 class="anchored" data-anchor-id="generating-simulated-data">Generating simulated data</h3>
+<p>Here we’ll use R to create a simple dataset and run basic analyses<br>
+for <strong>continuous</strong>, <strong>binary</strong>, and <strong>survival</strong> data.</p>
+<p>The theme is a two-group comparison:<br>
+patients <strong>with</strong> and <strong>without</strong> a stoma.</p>
+<ul>
+<li><strong>Age</strong>: continuous, from a <strong>normal distribution</strong> using <code>rnorm()</code><br>
+</li>
+<li><strong>Sex, stoma</strong>: binary, from a <strong>binomial distribution</strong> using <code>rbinom()</code><br>
+</li>
+<li><strong>Survival time</strong>: from an <strong>exponential distribution</strong> using <code>rexp()</code></li>
+</ul>
+<p>```r set.seed(46)</p>
+</section>
+</section>
+<section id="stoma-1-with-stoma-0-without-stoma" class="level1">
+<h1>Stoma: 1 = with stoma, 0 = without stoma</h1>
+<p>stoma &lt;- rbinom(200, size = 1, prob = 0.4)</p>
+</section>
+<section id="sex-0-woman-1-man" class="level1">
+<h1>Sex: 0 = WOMAN, 1 = MAN</h1>
+<p>sex &lt;- rbinom(200, size = 1, prob = 0.5)</p>
+</section>
+<section id="age-normal-distribution-stoma-group-slightly-older" class="level1">
+<h1>Age: normal distribution (stoma group slightly older)</h1>
+<p>age &lt;- rnorm(200, mean = 65 + 3 * stoma, sd = 8)</p>
+</section>
+<section id="survival-time-exponential-distribution" class="level1">
+<h1>Survival time: exponential distribution</h1>
+</section>
+<section id="expected-survival-10-years-with-stoma-vs-15-years-without" class="level1">
+<h1>expected survival 10 years (with stoma) vs 15 years (without)</h1>
+<p>hazard &lt;- ifelse(stoma == 1, 1 / 10, 1 / 15) time &lt;- rexp(200, rate = hazard)</p>
+</section>
+<section id="random-censoring-0-censored-1-event" class="level1">
+<h1>Random censoring: 0 = censored, 1 = event</h1>
+<p>status &lt;- rbinom(200, size = 1, prob = 0.9)</p>
+<p>dat &lt;- data.frame( age = age, sex = factor(sex, levels = c(0, 1), labels = c(“WOMAN”, “MAN”)), stoma = factor(stoma, levels = c(0, 1), labels = c(“WITHOUT STOMA”, “WITH STOMA”)), time = time, status = status )</p>
+<p>head(dat) # age sex stoma time status # 1 59.19077 WOMAN WITHOUT STOMA 17.939751 1 # 2 59.46486 MAN WITHOUT STOMA 18.189251 1 # 3 55.34491 MAN WITHOUT STOMA 2.445121 1 # 4 60.68207 MAN WITHOUT STOMA 46.737429 1 # 5 61.79577 MAN WITHOUT STOMA 0.149128 1 # 6 62.84530 WOMAN WITH STOMA 0.298167 1</p>
+<p>Summarizing continuous and binary data</p>
+<p>First, let’s describe age and sex in the stoma vs non-stoma groups.</p>
+</section>
+<section id="install.packagesggplot2-if-needed" class="level1">
+<h1>install.packages(“ggplot2”) # if needed</h1>
+<p>library(ggplot2)</p>
+<p>ggplot(dat, aes(x = age, fill = stoma)) + geom_histogram(alpha = 0.5, position = “identity”, bins = 10) + labs(x = “AGE”, y = “FREQUENCY”, fill = “STOMA”) + theme_minimal()</p>
+<p>You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.</p>
+<p>table(STOMA = dat<span class="math inline">\(stoma, SEX = dat\)</span>sex) # SEX # STOMA WOMAN MAN # WITHOUT STOMA 43 76 # WITH STOMA 44 37</p>
+<p>The histogram is a typical tool for continuous data</p>
+<p>The contingency table is a basic tool for categorical data</p>
+<p>Summarizing survival time data with survival curves</p>
+<p>For survival time data, we want to describe how long patients survive without the event.</p>
+<p>Here we use cifplot() from the cifmodeling package to draw Kaplan–Meier curves for overall survival.</p>
+</section>
+<section id="devtoolsinstall_githubgestimationcifmodeling-if-needed" class="level1">
+<h1>devtools::install_github(“gestimation/cifmodeling”) # if needed</h1>
+<p>library(cifmodeling)</p>
+<p>cifplot( Event(time, status) ~ stoma, data = dat, outcome.type = “survival” )</p>
+<p>Event(time, status) tells R which variables represent the time and event indicator</p>
+<p>outcome.type = “survival” asks for a survival curve</p>
+<p>Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
+<p>A quiz related to this episode</p>
+<p>The word “response rate” is often used in oncology.</p>
+<p>Roughly speaking, it describes:</p>
+<p>“What proportion of patients achieved tumor shrinkage (such as complete or partial response)?”</p>
+<p>In hematologic malignancies, it might refer to the proportion who achieved complete remission.</p>
+<p>Now, among the following, which one is truly a rate in the statistical sense?</p>
+<p>Batting average</p>
+<p>Male-to-female ratio</p>
+<p>Prevalence</p>
+<p>Mortality rate</p>
+<p>Answer</p>
+<p>The correct answer is 4.</p>
+<p>Let’s review:</p>
+<p>A ratio is one quantity divided by another (e.g., BMI = weight ÷ height²)</p>
+<p>A proportion is “number in subgroup ÷ total number” and is bound between 0 and 1 (or 0–100%)</p>
+<p>A rate is “number of events ÷ person-time”</p>
+<p>So:</p>
+<p>Batting average = hits ÷ at-bats → proportion</p>
+<p>Male-to-female ratio = men ÷ women → ratio</p>
+<p>Prevalence = people with disease ÷ total people → proportion</p>
+<p>Mortality rate = deaths ÷ person-years → rate</p>
+<p>In statistics, being picky with words like this helps us choose the right models and interpret results correctly.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

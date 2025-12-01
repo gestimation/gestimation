@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>study-design-1 – Coffee and Research</title>
+<title>frequentist-4 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,11 +124,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-i" id="toc-story-and-quiz-study-design-i" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-i">Story and Quiz − Study design I</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-iv" id="toc-story-and-quiz-frequentist-thinking-iv" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iv">Story and Quiz ? Frequentist thinking IV</a>
   <ul class="collapse">
-  <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#gdad-is-that-95-confidence-interval-really-95h" id="toc-gdad-is-that-95-confidence-interval-really-95h" class="nav-link" data-scroll-target="#gdad-is-that-95-confidence-interval-really-95h">gDad, is that 95% confidence interval <em>really</em> 95%?h</a></li>
+  <li><a href="#simulating-95-ci-coverage-with-coxph" id="toc-simulating-95-ci-coverage-with-coxph" class="nav-link" data-scroll-target="#simulating-95-ci-coverage-with-coxph">Simulating 95% CI coverage with <code>coxph()</code></a></li>
   </ul></li>
+  <li><a href="#install.packagessurvival-if-needed" id="toc-install.packagessurvival-if-needed" class="nav-link" data-scroll-target="#install.packagessurvival-if-needed">install.packages(“survival”) # if needed</a></li>
   </ul>
 </nav>
     </div>
@@ -138,338 +139,232 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-study-design-i" class="level1">
-<h1>Story and Quiz − Study design I</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study</p>
-</div>
+<section id="story-and-quiz-frequentist-thinking-iv" class="level1">
+<h1>Story and Quiz ? Frequentist thinking IV</h1>
+<p>Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial</p>
 <hr>
-<section id="はじめて研究に取り組む娘と統計家の父" class="level3">
-<h3 class="anchored" data-anchor-id="はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんってさ、大学で統計学を教えてるんでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年のがん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ないよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「仮説がないと調査がデザインできないよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「女性より男性の方が、復職率が高いとか？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「待ちなさい。調査対象は決まってるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？うちの病院で手術したがん患者さん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「胃がんでストーマを造設することってあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ゼロじゃないけど、みたことない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうかなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。大学の授業だとね、研究で調べたい疑問がはっきりしないなら、“PICO”と”PECO”という要素を使って、研究をデザインしなさいって教えてるよ。研究の構造化ってやつ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化？実際怪しいな、そこ。いや、聞いたことはある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化ねえ。聞いたことある言葉だけど、何をすればいいか、よくわからないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、研究デザインの大切な1要素だってこと」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Patientsはわかるよ。それ以外は？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Pと同様に大切な、I/E（Intervention/Exposure）、C（Comparison）、O（Outcome）をあわせた4つの要素にあてはめて考えてみましょう、というわけ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ExposureとComparisonははじめて聞いたけど、私の場合はストーマ保有者と非保有者ってことだよね。Outcomeってなに？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「データが集まる前に固められなくない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「R。診療科の先輩が使ってるから」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Rは得意？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「学部の頃、授業あったけどもうわすれたな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="臨床疑問と研究仮説">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-臨床疑問と研究仮説
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、臨床疑問（clinical question）といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を研究仮説（research hypothesis）として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。</p>
-<ul>
-<li>どのような患者が対象か（Patients/Population）</li>
-<li>どのような要因に注目するか（Intervention/Exposure）</li>
-<li>それを何と比較するのか（Comparison）</li>
-<li>患者にどのようなアウトカムが生じたのか（Outcome）</li>
-</ul>
-<p>上の会話で出てきた”PICO”や”PECO”は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。</p>
-<p>がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。</p>
-<ul>
-<li><p>研究仮説1</p>
-<p>P: 根治切除後の直腸がん患者</p>
-<p>E: ストーマ造設あり</p>
-<p>C: ストーマ造設なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
-</ul>
-<p>ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。</p>
-<ul>
-<li><p>研究仮説2</p>
-<p>P: 根治切除後のがん患者</p>
-<p>E: 「仕事とがん治療の両立お役立ちノート」の配布あり</p>
-<p>C: 「仕事とがん治療の両立お役立ちノート」の配布なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
-</ul>
-<p>就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。</p>
-<ul>
-<li><p>研究仮説3</p>
-<p>「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」</p></li>
-</ul>
-<p>PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ランダム誤差とバイアスへ対処するために様々な工夫がなされますが、それを検討するタイミングは、研究計画段階と統計解析段階にわけることができます。これを踏まえて、臨床研究の考え方として正しいのは、次のうちどれでしょうか。</p>
+<section id="gdad-is-that-95-confidence-interval-really-95h" class="level3">
+<h3 class="anchored" data-anchor-id="gdad-is-that-95-confidence-interval-really-95h">gDad, is that 95% confidence interval <em>really</em> 95%?h</h3>
+<p>Dad: gCoffeefs ready.h</p>
+<p>Me: gPerfect, thanks. Soc therefs something Ifve been wondering.</p>
+<p>People say <em>ethis is a 95% confidence intervalf</em> in such a matter-of-fact way.<br>
+But is it <strong>really</strong> 95%? Like, does it actually hit the true value 95% of the time?h</p>
+<p>Dad: gGood question.</p>
+<p>Under the assumed probability model, yes ? <strong>in theory</strong> it does.<br>
+We can even prove it mathematically.h</p>
+<p>Me: gSo itfs just true.<br>
+Almost never wrong. That soundsc suspiciously strong.h</p>
+<p>Dad: gI agree it feels abstract.</p>
+<p>So today, why donft we <em>check it</em> with R?<br>
+Letfs look at the <strong>coverage probability</strong> of the 95% confidence interval<br>
+for a <strong>hazard ratio</strong>, using simulation.h</p>
+<p>Me: gCoverage meaningc<br>
+how often the interval actually contains the true hazard ratio,<br>
+if you repeat the study many times?h</p>
+<p>Dad: gExactly.</p>
+<p>Wefll simulate data over and over,<br>
+calculate a 95% confidence interval each time,<br>
+and count how often the interval includes the true value.</p>
+<p>That proportion is the <strong>coverage</strong>.<br>
+This is a kind of <strong>virtual experiment</strong><br>
+to see how well frequentist promises are kept.</p>
+<p>Letfs set the stage: you want to compare <strong>two survival curves</strong>, right?h</p>
+<p>Me: gYes. Stoma vs no stoma.h</p>
+<p>Dad: gRight ? letfs compare overall survival (OS)<br>
+between <strong>WITH STOMA</strong> and <strong>WITHOUT STOMA</strong>.</p>
+<p>Wefll assume the <strong>true hazard ratio</strong> is 1.5:<br>
+the stoma group has a 1.5-times higher hazard of death,<br>
+i.e.&nbsp;shorter survival.</p>
+<p>If we simulate 1,000 datasets under that model<br>
+and build a <strong>95% confidence interval</strong> for the hazard ratio each time,<br>
+we expect the interval to contain 1.5 in roughly <strong>950 out of 1000</strong> runs.h</p>
+<p>Me: gThat proportion ? how often it hits 1.5 ?<br>
+is the <strong>coverage</strong>.h</p>
+<p>Dad: gExactly.</p>
+<p>Wefll generate survival times from <strong>exponential distributions</strong><br>
+for both groups,<br>
+and use another exponential for <strong>censoring times</strong>.</p>
+<p>In this set-up, all the assumptions of the Cox model are satisfied,<br>
+so theoretically the 95% confidence interval<br>
+should have <strong>95% coverage</strong>.h</p>
+<p>Me: gSo all we need to do is check<br>
+whether reality matches theory in simulation.h</p>
+<hr>
+</section>
+<section id="simulating-95-ci-coverage-with-coxph" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-95-ci-coverage-with-coxph">Simulating 95% CI coverage with <code>coxph()</code></h3>
+<p>Dad: gThere are several ways to estimate a hazard ratio,<br>
+but one of the most common is <code>coxph()</code> from the <strong>survival</strong> package.</p>
+<p>Remember our <code>generate_data()</code> function from earlier episodes?<br>
+Wefll reuse it.h</p>
+<p>```r generate_data &lt;- function(n = 200, hr1, hr2) { # Stoma: 1 = WITH STOMA, 0 = WITHOUT STOMA stoma &lt;- rbinom(n, size = 1, prob = 0.4) # Sex: 0 = WOMAN, 1 = MAN sex &lt;- rbinom(n, size = 1, prob = 0.5) # Age: stoma group slightly older age &lt;- rnorm(n, mean = 65 + 3 * stoma, sd = 8)</p>
+<p># Hazards (bigger = earlier event) hazard_relapse &lt;- ifelse(stoma == 1, hr1 * 0.10, 0.10) hazard_death &lt;- ifelse(stoma == 1, hr2 * 0.10, 0.10) hazard_censoring &lt;- 0.05</p>
+<p># Latent times t_relapse &lt;- rexp(n, rate = hazard_relapse) t_death &lt;- rexp(n, rate = hazard_death) t_censoring &lt;- rexp(n, rate = hazard_censoring)</p>
+<p>## — Overall survival (OS) — time_os &lt;- pmin(t_death, t_censoring) status_os &lt;- as.integer(t_death &lt;= t_censoring) # 1 = death, 0 = censored</p>
+<p>## — Relapse-free survival (RFS) — time_rfs &lt;- pmin(t_relapse, t_death, t_censoring) status_rfs &lt;- integer(n) status_rfs[time_rfs == t_relapse &amp; time_rfs &lt; t_censoring] &lt;- 1 # relapse status_rfs[time_rfs == t_death &amp; time_rfs &lt; t_censoring] &lt;- 1 # death</p>
+<p>## — Cumulative incidence of relapse (CIR) with competing risk — time_cir &lt;- pmin(t_relapse, t_death, t_censoring) status_cir &lt;- integer(n) status_cir[time_cir == t_relapse &amp; time_cir &lt; t_censoring] &lt;- 1 # relapse status_cir[time_cir == t_death &amp; time_cir &lt; t_censoring] &lt;- 2 # death</p>
+<p>data.frame( id = 1:n, sex = factor(sex, levels = c(0, 1), labels = c(“WOMAN”, “MAN”)), age = age, stoma = factor(stoma, levels = c(0, 1), labels = c(“WITHOUT STOMA”, “WITH STOMA”)), time_os = time_os, status_os = status_os, time_rfs = time_rfs, status_rfs = status_rfs, time_cir = time_cir, status_cir = status_cir ) }</p>
+<p>Dad: gNow wefll write a function that repeatedly generates data, fits a model, and checks whether the 95% confidence interval covers the true hazard ratio.h</p>
+<p>calculate_coverage &lt;- function(model = c(“coxph”, “finegray”), n, hr1, hr2, hr_true) { model &lt;- match.arg(model) set.seed(46) replications &lt;- 1000 covered &lt;- logical(replications)</p>
+<p>for (r in seq_len(replications)) { dat &lt;- generate_data(n, hr1, hr2)</p>
+<pre><code>if (identical(model, "coxph")) {
+  fit &lt;- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
+} else if (identical(model, "finegray")) {
+  # Fine?Gray model for competing risks (subdistribution hazards)
+  dat$fstatus_cir &lt;- factor(dat$status_cir,
+                            levels = 0:2,
+                            labels = c("censor", "relapse", "death"))
+  fgdat &lt;- finegray(Surv(time_cir, fstatus_cir) ~ ., data = dat)
+  fit &lt;- coxph(Surv(fgstart, fgstop, fgstatus) ~ stoma,
+               weight = fgwt, cluster = id, data = fgdat)
+}
+
+ci_log &lt;- confint(fit)  # CI for log(HR)
+covered[r] &lt;- (ci_log[1] &lt;= log(hr_true) &amp;&amp; log(hr_true) &lt;= ci_log[2])</code></pre>
+<p>}</p>
+<p>mean(covered) # estimated coverage }</p>
+<p>Now run the simulation for n = 200, true hazard ratio hr_true = 1.5:</p>
+</section>
+</section>
+<section id="install.packagessurvival-if-needed" class="level1">
+<h1>install.packages(“survival”) # if needed</h1>
+<p>library(survival)</p>
+<p>coverage_200 &lt;- calculate_coverage( model = “coxph”, n = 200, hr1 = 2, hr2 = 1.5, hr_true = 1.5 ) print(coverage_200) # [1] 0.955 (for example)</p>
+<p>Me: gSo about 95.5% of the intervals contained the true HR of 1.5. Thatfs pretty close to the promised 95%.h</p>
+<p>Dad: gExactly.</p>
+<p>This is what we mean by saying a 95% confidence interval has 95% coverage in the long run, when the model assumptions hold.h</p>
+<p>What 95% CI does not mean</p>
+<p>Me: gSo how should I interpret a 95% confidence interval in words?</p>
+<p>Before I ask, let me say what Ifve been secretly thinking:</p>
+<p>eIn this one study, there is a 95% probability that the true hazard ratio lies inside this interval.f</p>
+<p>Thatfs wrong, isnft it?h</p>
+<p>Dad: gFrom the frequentist viewpoint, yes, thatfs not correct.</p>
+<p>The classic textbook explanation is:</p>
+<p>If we repeated the same kind of study many times, and each time constructed a 95% confidence interval in the same way, then 95% of those intervals would contain the true value.</p>
+<p>So 95% refers to the procedurefs long-run performance, not the probability that ethis particular interval is correctf.h</p>
+<p>Me: gSo the interval itself is either:</p>
+<p>eluckyf (includes the true value), or</p>
+<p>eunluckyf (misses it),</p>
+<p>but we donft attach a probability to that within a single completed study.h</p>
+<p>Dad: gExactly. The 95% is attached to the method, not the one realized interval.h</p>
+<p>Does sample size affect coverage?</p>
+<p>Me: gIf coverage is about long-run behavior, does sample size matter?</p>
+<p>I mean, if I have fewer patients, shouldnft the method emissf the true value more often?h</p>
+<p>Dad: gGood instinct, but in theory, for a correctly specified model, a 95% confidence interval should have 95% coverage no matter what the sample size is.</p>
+<p>Letfs check with the simulation:</p>
+<p>n = 100</p>
+<p>n = 200</p>
+<p>n = 400</p>
+<p>n = 800h</p>
+<p>coverage_100 &lt;- calculate_coverage(model = “coxph”, n = 100, hr1 = 2, hr2 = 1.5, hr_true = 1.5) coverage_400 &lt;- calculate_coverage(model = “coxph”, n = 400, hr1 = 2, hr2 = 1.5, hr_true = 1.5) coverage_800 &lt;- calculate_coverage(model = “coxph”, n = 800, hr1 = 2, hr2 = 1.5, hr_true = 1.5)</p>
+<p>print(coverage_100) print(coverage_200) print(coverage_400) print(coverage_800) # For example: # [1] 0.956 # [1] 0.955 # [1] 0.968 # [1] 0.953</p>
+<p>Me: gTheyfre all around 0.95.</p>
+<p>So with fewer patients, the coverage is still about 95%. Does that mean sample size doesnft matter?h</p>
+<p>Dad: gThatfs the trap.</p>
+<p>Coverage stays about the same, but interval width changes a lot.</p>
+<p>With small n:</p>
+<p>intervals are wider,</p>
+<p>estimates are noisier.</p>
+<p>With large n:</p>
+<p>intervals are narrower,</p>
+<p>estimates are more precise.h</p>
+<p>Me: gRightc I forgot about the length of the interval.</p>
+<p>So for my cancer survivor survey, I canft just say ecoverage is fine, any sample size works.fh</p>
+<p>Dad: gExactly.</p>
+<p>Sample size is about how precisely you can estimate something, not whether the 95% procedure hits 95% in the long run.h</p>
+<p>From CI to sample size: how many patients do we need?</p>
+<p>Me: gBack to real life.</p>
+<p>For our return-to-work study, I was vaguely thinking:</p>
+<p>eIf we get around 100 responses, that would be great.f</p>
+<p>Do we really need to do more math than that?h</p>
+<p>Dad: gYou just said coverage was fine with n=100, so that sounded like e100 is enoughfc didnft it?h</p>
+<p>Me: gGuilty as charged.h</p>
+<p>Dad: gLetfs be more systematic.</p>
+<p>There are roughly two approaches to sample size planning:</p>
+<p>The confidence interval approach</p>
+<p>The hypothesis testing approachh</p>
+<p>Me: gWhatfs the difference?h</p>
+<p>Dad: gIn the confidence interval approach, you start from:</p>
+<p>the parameter you want to estimate (e.g.&nbsp;the return-to-work proportion), and</p>
+<p>how narrow you want the interval to be.</p>
+<p>Therefs a classic table in Machin et al.fs sample size book that gives required sample sizes for estimating a proportion with a given 95% CI width.</p>
+<p>For example (paraphrased):</p>
+<p>If the true proportion ﾎ is 0.5 and you want a 95% CI with total width 0.20 (i.e.&nbsp;50% }10%), you need about 93 patients.</p>
+<p>If ﾎ is 0.2 and you want the same width 0.20 (20% }10%), you need about 60 patients.</p>
+<p>So for a return-to-work rate around 80% (i.e.&nbsp;non-return rate 20%), 60 patients might be enough to estimate the proportion with that level of precision.h</p>
+<p>Me: gSo my rough target of 100 responses doesnft sound completely crazy, at least for estimating the overall rate.h</p>
+<p>Dad: gRight.</p>
+<p>But your actual plan is not just:</p>
+<p>eEstimate the return-to-work rate in all patients.f</p>
+<p>Itfs:</p>
+<p>eCompare the return-to-work rate between stoma vs no stoma groups.f</p>
+<p>Thatfs more a hypothesis-testing style question.h</p>
+<p>Me: gSo we need the other approach.h</p>
+<p>Two approaches to sample size</p>
+<p>Dad: gFormally:</p>
 <ol type="1">
-<li>ランダム誤差は統計解析を工夫すれば対処できる。だから研究デザインではバイアスについて検討すべき</li>
-<li>ランダム誤差もバイアスも統計解析を工夫すれば対処できる</li>
-<li>統計解析段階では工夫するにも限界がある</li>
-<li>臨床試験では研究デザインが重要。観察研究では統計解析が重要</li>
+<li>Confidence interval approach</li>
 </ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は3です</strong></li>
-</ul>
-<p>サンプルサイズが小さすぎることが、ランダム誤差の一番の原因です。こう考えると、ランダム誤差・バイアスのどちらも、研究計画段階でじゅうぶんに検討しておかないと、後から取り返しがつかないかもしれません。</p>
-</div>
-</div>
-</div>
-</section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<p>Often used for surveys or exploratory studies. To plan the sample size, you specify:</p>
+<p>The anticipated true proportion (e.g.&nbsp;return-to-work rate)</p>
+<p>The acceptable width of the 95% confidence interval</p>
+<p>The table (or formula) then tells you how many patients you need.</p>
+<ol start="2" type="1">
+<li>Hypothesis testing approach</li>
+</ol>
+<p>More common in clinical trials and confirmatory studies. Here you need at least:</p>
+<p>Significance level (, often 5%)</p>
+<p>Power (1?ﾀ, often 80?90%)</p>
+<p>Effect size you want to be able to detect (e.g.&nbsp;difference in survival at 5 years, or a target hazard ratio)</p>
+<p>This is matched to the idea of Type I error () and Type II error (ﾀ). In a sense, sample size planning is the partner of p-values: instead of only controlling , you also deliberately control ﾀ by planning n.h</p>
+<p>Me: gSo for my stoma vs no stoma comparison, I should really:</p>
+<p>decide what difference in return-to-work rate would be clinically meaningful, and</p>
+<p>choose and power,</p>
+<p>then calculate the sample size from there.h</p>
+<p>Dad: gExactly. Thatfs hypothesis-testing-based sample size planning.h</p>
+<p>Me: gRight. Okay, I need to sleep ? clinic starts early tomorrow.</p>
+<p>Letfs continue the sample size story next time.h</p>
+<p>Dad: gDeal. Sweet dreams.h</p>
+<p>Two sides of the same coin: normal ranges and 95% CI</p>
+<p>Me: gBefore we wrap up, one last question.</p>
+<p>Laboratory test reports often show a enormal rangef. People sometimes say:</p>
+<p>eThat range corresponds to 95% of healthy individuals.f</p>
+<p>Is that tied to the same 95% as confidence intervals?h</p>
+<p>Dad: gGood question. Theyfre related, but not the same thing.</p>
+<p>Roughly:</p>
+<p>A reference (normal) range is about where most individualsf test values lie.</p>
+<p>A 95% confidence interval is about how precisely you have estimated a mean or parameter.</p>
+<p>For a normally distributed test:</p>
+<p>emean } 1.96 ~ standard deviation (SD)f captures about 95% of individual values.</p>
+<p>emean } 1.96 ~ standard error (SE)f is a 95% confidence interval for the mean.h</p>
+<p>Me: gSo SD = variability between individuals, SE = uncertainty in the mean.h</p>
+<p>Dad: gExactly.h</p>
+<p>A quiz related to this episode</p>
+<p>Which of the following best describes the meaning of a normal reference range for a lab test?</p>
+<p>The mean } 1.96 ~ standard deviation in a random sample from some population.</p>
+<p>The range that contains 95% of values in a healthy reference population.</p>
+<p>The mean } 1.96 ~ standard error in a healthy reference population.</p>
+<p>The range that contains 95% of values in any random sample from any population.</p>
+<p>Answer</p>
+<p>The best answer is 2.</p>
+<p>Standard deviation (SD) describes how much individual test values vary between people.</p>
+<p>Standard error (SE) describes how precise our estimate of the mean is.</p>
+<p>For a normally distributed test:</p>
+<p>mean } 1.96 ~ SD ? the range containing 95% of individual values</p>
+<p>mean } 1.96 ~ SE ? the 95% confidence interval for the mean</p>
+<p>So:</p>
+<ol type="1">
+<li><p>is just a formula; it doesnft say which population.</p></li>
+<li><p>confuses SE with SD.</p></li>
+<li><p>is too vague and not restricted to a healthy population.</p></li>
+</ol>
+<p>A reference (normal) range is defined by the distribution of values in a healthy population, not by the uncertainty in the mean.</p>
+<p>References</p>
+<p>Machin D, Campbell MJ, Tan SB, Tan SH. Sample Size Tables for Clinical Studies, 4th ed. (Japanese edition: 繩ŵ߂̃TvTCY݌v).</p>
+<p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol. 2006;7(8):644?651.</p>
+<p>Green J, Benedetti J, Smith A, Crowley J. Clinical Trials in Oncology, 2nd Japanese edition (original 3rd ed).</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

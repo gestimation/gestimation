@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>frequentist-3 – Coffee and Research</title>
+<title>study-design-4 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,10 +124,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz − Frequentist thinking III</a>
+  <li><a href="#story-and-quiz-study-design-iv" id="toc-story-and-quiz-study-design-iv" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-iv">Story and Quiz − Study design IV</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#turning-a-questionnaire-into-data" id="toc-turning-a-questionnaire-into-data" class="nav-link" data-scroll-target="#turning-a-questionnaire-into-data">Turning a questionnaire into “data”</a></li>
+  <li><a href="#categorical-data-vs-survival-time-data" id="toc-categorical-data-vs-survival-time-data" class="nav-link" data-scroll-target="#categorical-data-vs-survival-time-data">Categorical data vs survival time data</a></li>
+  <li><a href="#a-quick-map-of-data-types-and-methods" id="toc-a-quick-map-of-data-types-and-methods" class="nav-link" data-scroll-target="#a-quick-map-of-data-types-and-methods">A quick map of data types and methods</a></li>
+  <li><a href="#repeated-measurements-and-confounding" id="toc-repeated-measurements-and-confounding" class="nav-link" data-scroll-target="#repeated-measurements-and-confounding">Repeated measurements and confounding</a></li>
+  <li><a href="#a-quiz-related-to-this-episode" id="toc-a-quiz-related-to-this-episode" class="nav-link" data-scroll-target="#a-quiz-related-to-this-episode">A quiz related to this episode</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -139,327 +142,366 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-frequentist-thinking-iii" class="level1">
-<h1>Story and Quiz − Frequentist thinking III</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
-</div>
+<section id="story-and-quiz-study-design-iv" class="level1">
+<h1>Story and Quiz − Study design IV</h1>
+<p>Keywords: continuous/binary/count/survival, competing risks, confounding, observational study</p>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
-</div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
-</div>
-<div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-片側p値と両側p値
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
-<ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="turning-a-questionnaire-into-data" class="level3">
+<h3 class="anchored" data-anchor-id="turning-a-questionnaire-into-data">Turning a questionnaire into “data”</h3>
+<p>Me: “Hey Dad, quick question. And yes, there’s coffee.”</p>
+<p>Dad: “Then I’m listening.”</p>
+<p>Me: “You remember that <strong>return-to-work survey</strong> for cancer survivors?<br>
+I finally drafted the questionnaire we’re going to mail from our hospital.<br>
+Can you take a look and tell me if it’s… statistically suicidal?”</p>
+<p>Dad: “Let’s see.”</p>
+<p><em>(He reads quietly for a minute.)</em></p>
+<p>Dad: “How exactly are you going to define the <strong>return-to-work rate</strong>?”</p>
+<p>Me: “That’s already a hard question?”</p>
+<p>Dad: “Yup. It always is.”</p>
+<p>Me: “Okay… here’s how I was thinking.<br>
+Among all patients who had curative surgery,<br>
+I want to know who <strong>has returned to work</strong> and who <strong>hasn’t</strong><br>
+within a certain time period.</p>
+<p>I don’t want to restrict the denominator<br>
+to only those who <em>say</em> they want to go back to work,<br>
+because some people might have given up because of workplace issues.”</p>
+<p>Dad: “Good. That’s a thoughtful choice.<br>
+So what time window are you using?”</p>
+<p>Me: “I don’t want to use ‘survey date’ because<br>
+the response timing will vary a lot between patients.<br>
+So I was thinking of defining it as:</p>
+<blockquote class="blockquote">
+<p>‘Returned to work within 1 year after surgery.’</p>
+</blockquote>
+<p>And then I realized…<br>
+I should probably ask for the <strong>actual date of return-to-work</strong> in the questionnaire.”</p>
+<p>Dad: “Yes, that date is very useful.</p>
+<p>If you have it, you can turn the same answer into:</p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><strong>Categorical data</strong><br>
+(returned within 1 year: yes/no), and<br>
+</li>
+<li><strong>Survival time data</strong><br>
+(time from discharge to return-to-work).”</li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
-</div>
-</div>
-</div>
+<p>Me: “Two birds with one question. Efficient.<br>
+What about patients who <strong>die</strong> after surgery, though?”</p>
+<p>Dad: “Important point.<br>
+If someone dies after your <strong>time origin</strong>,<br>
+you shouldn’t quietly drop them from the denominator.</p>
+<p>That would create bias—especially in a cancer survivor study.”</p>
+<p>Me: “So what should I do?”</p>
+<p>Dad: “In longitudinal studies for cancer patients, I always tell people:</p>
+<ol type="1">
+<li>Decide a clear <strong>time origin</strong><br>
+– for you, I’d recommend the <strong>discharge date</strong>.<br>
+</li>
+<li>Decide a <strong>follow-up period</strong><br>
+– here, ‘1 year after discharge’.<br>
+</li>
+<li>Make a serious effort to collect outcome information<br>
+for <strong>all patients</strong> in P, including deaths.</li>
+</ol>
+<p>If P is ‘rectal cancer patients after curative surgery at our hospital’,<br>
+you want to know what happened to <em>all</em> of them,<br>
+not just the ones who kindly mail back questionnaires.”</p>
+<p>Me: “Right. I don’t want to design a study<br>
+where the only people included are those with good energy and good stationery habits.”</p>
+<hr>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="categorical-data-vs-survival-time-data" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-data-vs-survival-time-data">Categorical data vs survival time data</h3>
+<p>Dad: “Let’s organize this a bit.<br>
+What is your <strong>outcome</strong> in this study?”</p>
+<p>Me: “The main one is:</p>
+<blockquote class="blockquote">
+<p>Returned to work within one year after discharge (yes/no).”</p>
+</blockquote>
+<p>Dad: “Perfect.<br>
+That gives you <strong>binary data</strong>:</p>
 <ul>
-<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+<li>1 = returned within 1 year<br>
+</li>
+<li>0 = did not return within 1 year</li>
 </ul>
+<p>You can then compute:</p>
+<ul>
+<li>the <strong>return-to-work proportion</strong> in each group, and<br>
+</li>
+<li>compare them.”</li>
+</ul>
+<p>Me: “Including patients who died, as ‘did not return’, right?”</p>
+<p>Dad: “Yes, as long as that’s clearly defined and consistent.</p>
+<p>But if you want a richer picture,<br>
+you could use <strong>three categories</strong> instead of just two:</p>
+<ol type="1">
+<li>Returned within 1 year<br>
+</li>
+<li>Alive but did not return within 1 year<br>
+</li>
+<li>Died within 1 year without returning to work</li>
+</ol>
+<p>That already separates ‘can’t work because I died’<br>
+from ‘still alive but didn’t go back’.”</p>
+<p>Me: “Okay, that does sound more honest.”</p>
+<p>Dad: “Now, if you also collect the <strong>date of return-to-work</strong>,<br>
+you can create <strong>survival time data</strong>.”</p>
+<p>Me: “Even though the event is not ‘death’?”</p>
+<p>Dad: “Right.<br>
+‘Survival time’ is a bit misleading as a name.</p>
+<p>Statistically, what matters is:</p>
+<blockquote class="blockquote">
+<p>time from the <strong>time origin</strong> to the <strong>event of interest</strong>.</p>
+</blockquote>
+<p>In your case, the event is ‘return-to-work’.”</p>
+<p>Me: “So if someone is discharged on April 1<br>
+and returns to work on April 30,<br>
+time-to-event = 30 days.”</p>
+<p>Dad: “Exactly.</p>
+<p>Now think about patients who haven’t returned to work<br>
+by the time you close the survey.</p>
+<p>For them, <strong>time-to-return</strong> isn’t observed yet.<br>
+That’s where <strong>censoring</strong> comes in.”</p>
+<p>Me: “Right. They’re still in limbo.”</p>
+<p>Dad: “So survival time data always comes as a <strong>pair</strong>:</p>
+<ul>
+<li>a time variable, and<br>
+</li>
+<li>an <strong>event indicator</strong>.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>time = min( time to return-to-work, time to last follow-up )<br>
+</li>
+<li>event = 1 if returned, 0 if not returned by last follow-up.”</li>
+</ul>
+<p>Me: “And where do <strong>deaths</strong> go in that picture?”</p>
+<p>Dad: “There are two ways to think about it.</p>
+<ol type="1">
+<li><p>A simple approach:<br>
+treat deaths as ‘did not return to work’,<br>
+and let them contribute their time until death.<br>
+In the event indicator, death would be coded as <strong>no event</strong><br>
+if you only care about return-to-work.</p></li>
+<li><p>A more refined approach: <strong>competing risks</strong>.<br>
+Here, death is not just ‘censored’—<br>
+it’s a <strong>competing event</strong> that prevents return-to-work from happening.”</p></li>
+</ol>
+<p>Me: “Competing risks again.<br>
+You really like those.”</p>
+<p>Dad: “They show up a lot in medical data.</p>
+<p>If you treat all deaths as just censored,<br>
+you’re implicitly saying:</p>
+<blockquote class="blockquote">
+<p>‘If they hadn’t died, their chance of returning-to-work<br>
+would be the same as for people still alive.’</p>
+</blockquote>
+<p>In reality, that’s often not true.”</p>
+<p>Me: “Yeah, that would be… optimistic.”</p>
+<hr>
+</section>
+<section id="a-quick-map-of-data-types-and-methods" class="level3">
+<h3 class="anchored" data-anchor-id="a-quick-map-of-data-types-and-methods">A quick map of data types and methods</h3>
+<p>Dad: “Since we’ve talked about data types a few times now,<br>
+let’s draw a little map.</p>
+<p>Say we’re thinking about:</p>
+<ul>
+<li>what kind of <strong>outcome</strong> we have,<br>
+</li>
+<li>whether we have <strong>repeated measurements</strong>, and<br>
+</li>
+<li>whether we need to <strong>adjust for confounding</strong>.”</li>
+</ul>
+<p>Me: “This sounds like the part where you normally pull out a slide.”</p>
+<p>Dad: “Today we get the short version.”</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 25%">
+<col style="width: 14%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data type</th>
+<th>Repeated within person?</th>
+<th>Confounding?</th>
+<th>Typical methods</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Continuous</td>
+<td>No</td>
+<td>No</td>
+<td>t-test, Wilcoxon rank-sum</td>
+</tr>
+<tr class="even">
+<td>Continuous</td>
+<td>No</td>
+<td>Yes</td>
+<td>Linear regression</td>
+</tr>
+<tr class="odd">
+<td>Continuous</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Mixed-effects model, GEE</td>
+</tr>
+<tr class="even">
+<td>Binary (yes/no)</td>
+<td>No</td>
+<td>No</td>
+<td>χ² test</td>
+</tr>
+<tr class="odd">
+<td>Binary</td>
+<td>No</td>
+<td>Yes</td>
+<td>Logistic regression</td>
+</tr>
+<tr class="even">
+<td>Binary</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Mixed-effects logistic, GEE</td>
+</tr>
+<tr class="odd">
+<td>Count</td>
+<td>No</td>
+<td>Yes</td>
+<td>Poisson regression</td>
+</tr>
+<tr class="even">
+<td>Survival time</td>
+<td>No</td>
+<td>No</td>
+<td>Kaplan–Meier curve</td>
+</tr>
+<tr class="odd">
+<td>Survival time</td>
+<td>No</td>
+<td>Yes</td>
+<td>Cox regression</td>
+</tr>
+<tr class="even">
+<td>Competing risks</td>
+<td>No</td>
+<td>No</td>
+<td>Aalen–Johansen curve (cumulative incidence)</td>
+</tr>
+<tr class="odd">
+<td>Competing risks</td>
+<td>No</td>
+<td>Yes</td>
+<td>Fine–Gray model</td>
+</tr>
+</tbody>
+</table>
+<p>Me: “So for my study:</p>
+<ul>
+<li><p>‘Returned to work within 1 year (yes/no)’<br>
+→ binary outcome → logistic regression.</p></li>
+<li><p>‘Time from discharge to return-to-work’<br>
+→ survival outcome → Cox regression.</p></li>
+</ul>
+<p>And if I treat death as a competing risk for return-to-work,<br>
+I’d use an Aalen–Johansen curve for descriptive stuff?”</p>
+<p>Dad: “Exactly.<br>
+That’s already a good grasp of the landscape.”</p>
+<hr>
+</section>
+<section id="repeated-measurements-and-confounding" class="level3">
+<h3 class="anchored" data-anchor-id="repeated-measurements-and-confounding">Repeated measurements and confounding</h3>
+<p>Me: “Where do repeated measures come in?”</p>
+<p>Dad: “Imagine you use the same questionnaire<br>
+multiple times for each patient:</p>
+<ul>
+<li>pre-surgery<br>
+</li>
+<li>at 6 months<br>
+</li>
+<li>at 12 months</li>
+</ul>
+<p>Then you’d have multiple data points <strong>within each person</strong>.<br>
+Those are <strong>correlated</strong> — your own responses are more similar to each other<br>
+than to some random patient’s.”</p>
+<p>Me: “So I can’t just pretend they’re all independent.”</p>
+<p>Dad: “Right.<br>
+That’s when you use methods like:</p>
+<ul>
+<li><strong>random-effects (mixed) models</strong>, or<br>
+</li>
+<li><strong>GEE (generalized estimating equations)</strong>.</li>
+</ul>
+<p>They’re built to handle within-person correlation.”</p>
+<p>Me: “And confounding is the ‘third variable’ that messes with the comparison, right?”</p>
+<p>Dad: “Exactly.<br>
+Suppose older patients are both:</p>
+<ul>
+<li>more likely to have a stoma, and<br>
+</li>
+<li>less likely to return to work.</li>
+</ul>
+<p>If you simply compare stoma vs no-stoma without adjusting for <strong>age</strong>,<br>
+your estimated effect of stoma will be <strong>biased</strong>.</p>
+<p>That’s where logistic regression or Cox regression<br>
+—with age and other factors—<br>
+helps you <strong>adjust for confounding</strong>.”</p>
+<p>Me: “So in randomized trials, we use randomization<br>
+to balance those things in advance.</p>
+<p>But in observational studies like mine,<br>
+we depend more on modeling and design.”</p>
+<p>Dad: “Precisely.<br>
+That’s the big difference between ‘trial world’ and ‘real-world data’.”</p>
+<hr>
+</section>
+<section id="a-quiz-related-to-this-episode" class="level3">
+<h3 class="anchored" data-anchor-id="a-quiz-related-to-this-episode">A quiz related to this episode</h3>
+<p>In which situation is the <strong>Kaplan–Meier method</strong> appropriate<br>
+for estimating a survival curve?</p>
+<ol type="1">
+<li>When survival times follow a normal distribution.<br>
+</li>
+<li>When the reasons for censoring are unrelated to prognosis.<br>
+</li>
+<li>When the censoring proportions of two groups<br>
+do not differ significantly in a statistical test.<br>
+</li>
+<li>When the proportional hazards assumption holds<br>
+between the treatment and control groups.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The correct answer is <strong>2</strong>.</p>
+<p>Kaplan–Meier does <strong>not</strong> require:</p>
+<ul>
+<li>normality of survival times (that’s more for t-tests), nor<br>
+</li>
+<li>proportional hazards (that’s a key assumption for the Cox model).</li>
+</ul>
+<p>What it <em>does</em> assume is that <strong>censoring is non-informative</strong>:</p>
+<blockquote class="blockquote">
+<p>Being censored is essentially independent<br>
+of the patient’s underlying risk of the event.</p>
+</blockquote>
+<p>If sicker patients are more likely to be lost to follow-up,<br>
+or if follow-up intensity depends strongly on prognosis,<br>
+Kaplan–Meier curves can become biased.</p>
+<hr>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<ul>
+<li><a href="study-design-1.html">Study design I</a><br>
+</li>
+<li><a href="study-design-2.html">Study design II</a><br>
+</li>
+<li><a href="study-design-3.html">Study design III</a><br>
+</li>
+<li><a href="study-design-4.html">Study design IV</a><br>
+</li>
+<li><a href="study-design-5.html">Study design V</a></li>
+</ul>
 
 
 </section>

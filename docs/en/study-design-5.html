@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>frequentist-3 – Coffee and Research</title>
+<title>study-design-5 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,10 +124,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-frequentist-thinking-iii" id="toc-story-and-quiz-frequentist-thinking-iii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iii">Story and Quiz − Frequentist thinking III</a>
+  <li><a href="#story-and-quiz-study-design-v" id="toc-story-and-quiz-study-design-v" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-v">Story and Quiz − Study design V</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#hard-endpoints-and-soft-feelings" id="toc-hard-endpoints-and-soft-feelings" class="nav-link" data-scroll-target="#hard-endpoints-and-soft-feelings">“Hard endpoints” and soft feelings</a></li>
+  <li><a href="#three-familiar-troublemakers-selection-information-confounding" id="toc-three-familiar-troublemakers-selection-information-confounding" class="nav-link" data-scroll-target="#three-familiar-troublemakers-selection-information-confounding">Three familiar troublemakers: selection, information, confounding</a></li>
+  <li><a href="#random-error-vs-bias-the-archery-analogy" id="toc-random-error-vs-bias-the-archery-analogy" class="nav-link" data-scroll-target="#random-error-vs-bias-the-archery-analogy">Random error vs bias — the archery analogy</a></li>
+  <li><a href="#a-small-quiz-about-bias" id="toc-a-small-quiz-about-bias" class="nav-link" data-scroll-target="#a-small-quiz-about-bias">A small quiz about bias</a></li>
+  <li><a href="#wrapping-up-the-study-design-mini-series" id="toc-wrapping-up-the-study-design-mini-series" class="nav-link" data-scroll-target="#wrapping-up-the-study-design-mini-series">Wrapping up the “Study design” mini-series</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -139,327 +142,278 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-frequentist-thinking-iii" class="level1">
-<h1>Story and Quiz − Frequentist thinking III</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial</p>
-</div>
+<section id="story-and-quiz-study-design-v" class="level1">
+<h1>Story and Quiz − Study design V</h1>
+<p>Keywords: hard vs soft endpoints, selection / information / confounding bias, random error</p>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意って言ったの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
-</div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
-</div>
-<div class="voice-father">
-<p>お父さん「JCOG9502論文についてもう少し説明するね。Statistical Analysis（統計解析）のところを読み返してみて。alpha error（αエラー）っていうのは、有意水準とも言うけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策で有意水準を0.1に緩めたみたい。本当は試験途中に有意水準は変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「それが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-片側p値と両側p値
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
-<ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="hard-endpoints-and-soft-feelings" class="level3">
+<h3 class="anchored" data-anchor-id="hard-endpoints-and-soft-feelings">“Hard endpoints” and soft feelings</h3>
+<p>Me: “I’m home… completely drained.<br>
+Is there anything sweet?”</p>
+<p>Dad: “There’s a strawberry daifuku. And I just brewed coffee.”</p>
+<p>Me: “You are objectively improving my quality of life.<br>
+Today was rough. Clinic was packed, and the train home was rush-hour level insane.”</p>
+<p>Dad: “That sounds like classic Japanese hospital plus Tokyo commute.<br>
+Here, coffee.”</p>
+<p>Me: “Thanks.<br>
+So, there’s something I wanted to ask.</p>
+<p>You know how people in oncology love to say <strong>‘hard endpoint’</strong> and <strong>‘soft endpoint’</strong>?”</p>
+<p>Dad: “Yes, people say that a lot.”</p>
+<p>Me: “One of my senior colleagues is really into clinical trials.<br>
+She keeps saying things like:</p>
+<blockquote class="blockquote">
+<p>‘Return-to-work is such a <strong>soft endpoint</strong>.<br>
+OS is a <strong>hard endpoint</strong>.<br>
+Soft is bad, hard is good.’</p>
+</blockquote>
+<p>And every time she says that,<br>
+I feel like my return-to-work study is being gently dissed.</p>
+<p>I sort of get what she means, but not really.”</p>
+<p>Dad: “I can imagine the tone.</p>
+<p>The way people use those words is a bit loose.<br>
+If we want to be clearer,<br>
+it might help to think in terms of:</p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><strong>objective</strong> vs<br>
+</li>
+<li><strong>subjective</strong>.”</li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
-</div>
-</div>
-</div>
+<p>Me: “So OS is ‘hard’ because it’s objective?”</p>
+<p>Dad: “Pretty much.</p>
+<p>For <strong>overall survival (OS)</strong>, you only need:</p>
+<ul>
+<li>date of death, and<br>
+</li>
+<li>date of last confirmation of being alive.</li>
+</ul>
+<p>That’s relatively straightforward.</p>
+<p>For something like <strong>progression-free survival (PFS)</strong>,<br>
+you need to decide <strong>when progression happened</strong>.<br>
+That depends on:</p>
+<ul>
+<li>imaging timing,<br>
+</li>
+<li>how you interpret the scans,<br>
+</li>
+<li>sometimes even symptoms and lab data.</li>
+</ul>
+<p>There’s more <strong>judgment</strong> involved.<br>
+That’s why people call it a <strong>soft endpoint</strong>.”</p>
+<p>Me: “And return-to-work is even more ‘soft’, right?<br>
+We’re asking about patients’ own perceptions, jobs, feelings…”</p>
+<p>Dad: “Right, but that doesn’t make it meaningless.</p>
+<p>I think what your colleague <em>meant</em> was something like:</p>
+<blockquote class="blockquote">
+<p>‘When you work with soft endpoints,<br>
+try to measure them as <strong>consistently</strong> and <strong>objectively</strong> as possible.’”</p>
+</blockquote>
+<p>Me: “So not ‘soft = trash’, but ‘soft = more room for bias, so be careful’.”</p>
+<p>Dad: “Exactly.</p>
+<p>Even ‘hard’ endpoints like death can be biased<br>
+if follow-up is sloppy.</p>
+<p>If, for example, you only track deaths in patients<br>
+who keep coming to the hospital,<br>
+you might systematically <strong>miss deaths</strong><br>
+in those who stop showing up.</p>
+<p>So:</p>
+<ul>
+<li>‘Hard’ ≠ ‘automatically free of bias’<br>
+</li>
+<li>‘Soft’ ≠ ‘automatically useless’.”</li>
+</ul>
+<p>Me: “Okay, that makes me feel better about my study.<br>
+I’ll phrase it as: <em>‘a soft endpoint, measured with hard discipline.’</em>”</p>
+<p>Dad: “That’s actually a great line for the methods section.”</p>
+<hr>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="three-familiar-troublemakers-selection-information-confounding" class="level3">
+<h3 class="anchored" data-anchor-id="three-familiar-troublemakers-selection-information-confounding">Three familiar troublemakers: selection, information, confounding</h3>
+<p>Me: “For my <strong>mail survey</strong>, what kinds of bias should I watch out for?”</p>
+<p>Dad: “Mail surveys are especially vulnerable to <strong>selection bias</strong>.”</p>
+<p>Me: “Because some people just never respond?”</p>
+<p>Dad: “Exactly.</p>
+<p>If the people who respond are systematically different<br>
+from those who don’t,<br>
+your sample stops representing your target population.</p>
+<p>For example:</p>
 <ul>
-<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+<li>Patients who are doing well<br>
+may be more likely to answer.<br>
+</li>
+<li>Patients who are very sick, depressed, or busy<br>
+may be less likely to answer.</li>
 </ul>
+<p>Then your estimated <strong>return-to-work rate</strong><br>
+can be <strong>too optimistic</strong>.”</p>
+<p>Me: “So that’s <strong>selection bias</strong>:<br>
+bias from how people end up in the analysis dataset.”</p>
+<p>Dad: “Right.</p>
+<p>Another classic one is <strong>information bias</strong>:<br>
+problems in how data are <strong>measured or reported</strong>.</p>
+<p>For example, if you ask about <strong>household income</strong>,<br>
+some people may exaggerate a bit,<br>
+and others may under-report.<br>
+If that pattern is not random,<br>
+your income variable is systematically off.”</p>
+<p>Me: “And confounding is the ‘third variable’<br>
+that makes cause-and-effect look different from reality.”</p>
+<p>Dad: “Exactly.<br>
+We talked about that with <strong>stoma</strong> and <strong>age</strong>:</p>
+<ul>
+<li>Stoma group is older on average.<br>
+</li>
+<li>Older patients are less likely to return to work.</li>
+</ul>
+<p>If you just compare stoma vs no-stoma<br>
+without adjusting for age,<br>
+you might blame the stoma<br>
+for what is actually an age effect.</p>
+<p>That’s <strong>confounding</strong>.”</p>
+<p>Me: “So in my notes, I’ll write:</p>
+<ul>
+<li><strong>Selection bias</strong>: who ends up in the study<br>
+</li>
+<li><strong>Information bias</strong>: how variables are measured<br>
+</li>
+<li><strong>Confounding</strong>: third-factor distortion of group comparisons.”</li>
+</ul>
+<p>Dad: “Perfect summary.</p>
+<p>Those three are the basic troublemakers<br>
+we want to keep in mind at the <strong>study design</strong> stage.”</p>
+<hr>
+</section>
+<section id="random-error-vs-bias-the-archery-analogy" class="level3">
+<h3 class="anchored" data-anchor-id="random-error-vs-bias-the-archery-analogy">Random error vs bias — the archery analogy</h3>
+<p>Me: “You also mentioned <strong>random error</strong><br>
+versus <strong>bias</strong> in one of your lectures.<br>
+Can you give me the short version?”</p>
+<p>Dad: “Sure.</p>
+<p>Imagine you’re doing <strong>archery</strong>:</p>
+<ul>
+<li><p>If your arrows hit all around the target,<br>
+but on average around the center,<br>
+that’s <strong>random error</strong> — big spread, no systematic shift.</p></li>
+<li><p>If your arrows are tightly grouped<br>
+but always off to the right,<br>
+that’s <strong>bias</strong> — systematic deviation.”</p></li>
+</ul>
+<p>Me: “So:</p>
+<ul>
+<li>Random error = noisy but honest<br>
+</li>
+<li>Bias = precise but wrong?”</li>
+</ul>
+<p>Dad: “Very nicely put.</p>
+<ul>
+<li><strong>Random error</strong> can be reduced by<br>
+larger sample size and appropriate methods.<br>
+</li>
+<li><strong>Bias</strong> usually cannot be fixed later<br>
+just by fancy statistics.</li>
+</ul>
+<p>To reduce bias,<br>
+you need to:</p>
+<ul>
+<li>design the study carefully, and<br>
+</li>
+<li>collect data thoughtfully.”</li>
+</ul>
+<p>Me: “So the job of statistics is not just to compute p-values,<br>
+but to:</p>
+<ol type="1">
+<li>keep <strong>random error</strong> under control, and<br>
+</li>
+<li>keep <strong>bias</strong> as close to zero as possible.”</li>
+</ol>
+<p>Dad: “Exactly.<br>
+If you ignore bias,<br>
+no amount of R code will save you.”</p>
+<p>Me: “I’ll remember that<br>
+when I’m tempted to ‘fix’ everything with another regression.”</p>
+<hr>
+</section>
+<section id="a-small-quiz-about-bias" class="level3">
+<h3 class="anchored" data-anchor-id="a-small-quiz-about-bias">A small quiz about bias</h3>
+<p>Which of the following best illustrates <strong>selection bias</strong><br>
+in your return-to-work survey?</p>
+<ol type="1">
+<li>Patients who are worried about their income<br>
+tend to slightly exaggerate their salary on the questionnaire.<br>
+</li>
+<li>Older patients are more likely to have a stoma,<br>
+and older patients are less likely to return to work.<br>
+</li>
+<li>Patients who are already back at work<br>
+are much more likely to return the questionnaire<br>
+than patients who are not working.<br>
+</li>
+<li>Different doctors interpret the same CT scans differently<br>
+when judging tumor progression.</li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The best example of <strong>selection bias</strong> is <strong>3</strong>.</p>
+<ul>
+<li><strong>1</strong>: Patients misreporting their salary<br>
+→ <strong>information bias</strong><br>
+</li>
+<li><strong>2</strong>: Age distorting the stoma–return-to-work relationship<br>
+→ <strong>confounding</strong><br>
+</li>
+<li><strong>3</strong>: Return-to-work status affects who responds<br>
+→ <strong>selection bias</strong><br>
+</li>
+<li><strong>4</strong>: Differences in how progression is judged<br>
+→ another form of <strong>information bias</strong></li>
+</ul>
+<p>In real studies,<br>
+more than one type of bias can be present at the same time,<br>
+which is why good design and cautious interpretation matter.</p>
+<hr>
+</section>
+<section id="wrapping-up-the-study-design-mini-series" class="level3">
+<h3 class="anchored" data-anchor-id="wrapping-up-the-study-design-mini-series">Wrapping up the “Study design” mini-series</h3>
+<p>Me: “Okay, so if I try to summarize this whole Study design arc:</p>
+<ol type="1">
+<li>Start from a <strong>clinical question</strong>,<br>
+and turn it into a <strong>research hypothesis</strong> using PICO/PECO.<br>
+</li>
+<li>Decide what kind of <strong>outcome</strong> you’re using<br>
+(continuous, binary, count, survival / competing risks),<br>
+and pick methods that match.<br>
+</li>
+<li>Think carefully about <strong>time origin</strong> and <strong>endpoints</strong><br>
+– OS / DFS / PFS / soft vs hard.<br>
+</li>
+<li>Pay attention to <strong>data type</strong>, <strong>repeated measures</strong>,<br>
+and <strong>confounding</strong> when choosing models.<br>
+</li>
+<li>Design the study to minimize <strong>selection bias</strong>, <strong>information bias</strong>,<br>
+and <strong>confounding</strong>,<br>
+and remember:<br>
+statistics can’t magically erase a bad design.”</li>
+</ol>
+<p>Dad: “That’s an excellent summary.<br>
+If you walk into your first study with that much in your head,<br>
+you’re already ahead of where many people start.”</p>
+<p>Me: “Good.<br>
+Then I’ll keep using you as my in-house statistician,<br>
+if that’s okay.”</p>
+<p>Dad: “As long as the coffee keeps coming, deal.”</p>
+<hr>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<ul>
+<li><a href="study-design-1.html">Study design I</a><br>
+</li>
+<li><a href="study-design-2.html">Study design II</a><br>
+</li>
+<li><a href="study-design-3.html">Study design III</a><br>
+</li>
+<li><a href="study-design-4.html">Study design IV</a><br>
+</li>
+<li><a href="study-design-5.html">Study design V</a></li>
+</ul>
 
 
 </section>

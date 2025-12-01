@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>study-design-1 – Coffee and Research</title>
+<title>frequentist-2 – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,11 +124,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-i" id="toc-story-and-quiz-study-design-i" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-i">Story and Quiz − Study design I</a>
+  <li><a href="#story-and-quiz-frequentist-thinking-ii" id="toc-story-and-quiz-frequentist-thinking-ii" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-ii">Story and Quiz ? Frequentist thinking II</a>
   <ul class="collapse">
-  <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#survival-curves-and-hazard-ratios" id="toc-survival-curves-and-hazard-ratios" class="nav-link" data-scroll-target="#survival-curves-and-hazard-ratios">Survival curves and hazard ratios</a></li>
+  <li><a href="#estimating-the-hazard-ratio-with-coxph" id="toc-estimating-the-hazard-ratio-with-coxph" class="nav-link" data-scroll-target="#estimating-the-hazard-ratio-with-coxph">Estimating the hazard ratio with <code>coxph()</code></a></li>
   </ul></li>
+  <li><a href="#install.packagessurvival-if-needed" id="toc-install.packagessurvival-if-needed" class="nav-link" data-scroll-target="#install.packagessurvival-if-needed">install.packages(“survival”) # if needed</a></li>
   </ul>
 </nav>
     </div>
@@ -138,338 +139,234 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-<div class="hero-header">
-<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="story-and-quiz-study-design-i" class="level1">
-<h1>Story and Quiz − Study design I</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, observational study</p>
-</div>
+<section id="story-and-quiz-frequentist-thinking-ii" class="level1">
+<h1>Story and Quiz ? Frequentist thinking II</h1>
+<p>Keywords: OS/PFS/DFS/response, p-value, survival/competing risks, clinical trial</p>
 <hr>
-<section id="はじめて研究に取り組む娘と統計家の父" class="level3">
-<h3 class="anchored" data-anchor-id="はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんってさ、大学で統計学を教えてるんでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年のがん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ないよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「仮説がないと調査がデザインできないよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「女性より男性の方が、復職率が高いとか？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「待ちなさい。調査対象は決まってるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？うちの病院で手術したがん患者さん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「胃がんでストーマを造設することってあるの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ゼロじゃないけど、みたことない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうかなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。大学の授業だとね、研究で調べたい疑問がはっきりしないなら、“PICO”と”PECO”という要素を使って、研究をデザインしなさいって教えてるよ。研究の構造化ってやつ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化？実際怪しいな、そこ。いや、聞いたことはある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「構造化ねえ。聞いたことある言葉だけど、何をすればいいか、よくわからないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、研究デザインの大切な1要素だってこと」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Patientsはわかるよ。それ以外は？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Pと同様に大切な、I/E（Intervention/Exposure）、C（Comparison）、O（Outcome）をあわせた4つの要素にあてはめて考えてみましょう、というわけ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ExposureとComparisonははじめて聞いたけど、私の場合はストーマ保有者と非保有者ってことだよね。Outcomeってなに？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「データが集まる前に固められなくない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「R。診療科の先輩が使ってるから」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Rは得意？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「学部の頃、授業あったけどもうわすれたな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="臨床疑問と研究仮説">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-臨床疑問と研究仮説
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、臨床疑問（clinical question）といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を研究仮説（research hypothesis）として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。</p>
+<section id="survival-curves-and-hazard-ratios" class="level3">
+<h3 class="anchored" data-anchor-id="survival-curves-and-hazard-ratios">Survival curves and hazard ratios</h3>
+<blockquote class="blockquote">
+<p><em>Recap</em><br>
+Our junior doctor in Japan is reading the JCOG9502 gastric cancer trial,<br>
+comparing two surgical approaches:</p>
 <ul>
-<li>どのような患者が対象か（Patients/Population）</li>
-<li>どのような要因に注目するか（Intervention/Exposure）</li>
-<li>それを何と比較するのか（Comparison）</li>
-<li>患者にどのようなアウトカムが生じたのか（Outcome）</li>
+<li><strong>TH</strong>: transhiatal approach<br>
+</li>
+<li><strong>LTA</strong>: left thoracoabdominal approach</li>
 </ul>
-<p>上の会話で出てきた”PICO”や”PECO”は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。</p>
-<p>がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。</p>
+<p>In <em>Frequentist thinking I</em>, she learned how to read the <strong>Kaplan?Meier curves</strong><br>
+and the <strong>numbers at risk</strong>.<br>
+Now she wants to understand the <strong>hazard ratios</strong> printed next to the curves.</p>
+</blockquote>
+<hr>
+<p>Me: “Dad, coffee refill.<br>
+Can we keep talking about JCOG9502 and these hazard ratios?”</p>
+<p>Dad: “Thanks. Let’s do it.</p>
+<p>You’re looking at:</p>
 <ul>
-<li><p>研究仮説1</p>
-<p>P: 根治切除後の直腸がん患者</p>
-<p>E: ストーマ造設あり</p>
-<p>C: ストーマ造設なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li>Figure A: <em>hazard ratio of death</em> = <strong>1.36</strong><br>
+</li>
+<li>Figure B: <em>hazard ratio of recurrence or death</em> = <strong>1.29</strong></li>
 </ul>
-<p>ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。</p>
+<p>Both summarize the difference between the TH and LTA groups.<br>
+Here the <strong>LTA group has worse prognosis</strong>,<br>
+so its hazard is higher,<br>
+and the <strong>Kaplan?Meier curve for LTA lies below</strong> the TH curve.”</p>
+<p>Me: “The paper says ‘hazard ratio 1.36’,<br>
+but visually it just looks like one curve is sitting below the other.<br>
+What does it mean to say it ‘summarizes’ the difference?”</p>
+<p>Dad: “Look at the shape of the curves:</p>
 <ul>
-<li><p>研究仮説2</p>
-<p>P: 根治切除後のがん患者</p>
-<p>E: 「仕事とがん治療の両立お役立ちノート」の配布あり</p>
-<p>C: 「仕事とがん治療の両立お役立ちノート」の配布なし</p>
-<p>O: 手術後1年以内の復職の有無</p></li>
+<li>The TH curve is nicely <strong>above</strong> the LTA curve<br>
+</li>
+<li>They don’t really cross,<br>
+except maybe at the far right where only a handful of patients remain</li>
 </ul>
-<p>就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。</p>
+<p>That’s exactly the kind of situation<br>
+where a <strong>single hazard ratio</strong> summarizes the difference well.”</p>
+<p>Me: “Because the curves are ‘roughly parallel’, right?”</p>
+<p>Dad: “Yes ? in a <strong>log-hazard</strong> sense.</p>
+<p>The <strong>Cox proportional hazards model</strong> assumes:</p>
+<blockquote class="blockquote">
+<p>The hazard in one group<br>
+is a <strong>constant multiple</strong> of the hazard in the other group<br>
+over time.</p>
+</blockquote>
+<p>That’s the <strong>proportional hazards</strong> assumption.<br>
+If the curves cross a lot,<br>
+or get closer then farther apart,<br>
+a single hazard ratio is harder to interpret.”</p>
+<p>Me: “So if they cross badly,<br>
+the model is forcing a single number on something<br>
+that doesn’t really have a single-number story.”</p>
+<p>Dad: “Exactly.<br>
+In JCOG9502, both <strong>OS</strong> and <strong>DFS</strong> curves look fairly well behaved,<br>
+and the hazard ratios for OS and DFS point in the same direction.<br>
+That makes the results <strong>very interpretable</strong>.”</p>
+<p>Me: “Okay, that’s the big picture.<br>
+Now, how do we actually <em>get</em> a hazard ratio in R?”</p>
+<p>Dad: “Time to meet <code>coxph()</code> from the <strong>survival</strong> package.”</p>
+<hr>
+</section>
+<section id="estimating-the-hazard-ratio-with-coxph" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-the-hazard-ratio-with-coxph">Estimating the hazard ratio with <code>coxph()</code></h3>
+<p>Dad: “Remember the simulation function we used earlier, <code>generate_data()</code>?<br>
+It creates:</p>
 <ul>
-<li><p>研究仮説3</p>
-<p>「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」</p></li>
+<li>a <strong>stoma</strong> group and a <strong>non-stoma</strong> group, and<br>
+</li>
+<li>survival times for <strong>overall survival (OS)</strong> and other endpoints.</li>
 </ul>
-<p>PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ランダム誤差とバイアスへ対処するために様々な工夫がなされますが、それを検討するタイミングは、研究計画段階と統計解析段階にわけることができます。これを踏まえて、臨床研究の考え方として正しいのは、次のうちどれでしょうか。</p>
+<p>We’ll use that again.”</p>
+<p>```r generate_data &lt;- function(n = 200, hr1, hr2) { # Stoma: 1 = with stoma, 0 = without stoma stoma &lt;- rbinom(n, size = 1, prob = 0.4) # Sex: 0 = WOMAN, 1 = MAN sex &lt;- rbinom(n, size = 1, prob = 0.5) # Age: stoma group slightly older age &lt;- rnorm(n, mean = 65 + 3 * stoma, sd = 8)</p>
+<p># Hazards (larger = earlier event) hazard_relapse &lt;- ifelse(stoma == 1, hr1 * 0.10, 0.10) hazard_death &lt;- ifelse(stoma == 1, hr2 * 0.10, 0.10) hazard_censoring &lt;- 0.05</p>
+<p># Latent times t_relapse &lt;- rexp(n, rate = hazard_relapse) t_death &lt;- rexp(n, rate = hazard_death) t_censoring &lt;- rexp(n, rate = hazard_censoring)</p>
+<p>## — Overall survival (OS) — time_os &lt;- pmin(t_death, t_censoring) status_os &lt;- as.integer(t_death &lt;= t_censoring) # 1 = death, 0 = censored</p>
+<p>## — Relapse-free survival (RFS) — time_rfs &lt;- pmin(t_relapse, t_death, t_censoring) status_rfs &lt;- integer(n) status_rfs[time_rfs == t_relapse &amp; time_rfs &lt; t_censoring] &lt;- 1 # relapse status_rfs[time_rfs == t_death &amp; time_rfs &lt; t_censoring] &lt;- 1 # death</p>
+<p>## — Cumulative incidence of relapse (CIR) with competing risk — time_cir &lt;- pmin(t_relapse, t_death, t_censoring) status_cir &lt;- integer(n) status_cir[time_cir == t_relapse &amp; time_cir &lt; t_censoring] &lt;- 1 # event 1: relapse status_cir[time_cir == t_death &amp; time_cir &lt; t_censoring] &lt;- 2 # event 2: death</p>
+<p>data.frame( id = 1:n, sex = factor(sex, levels = c(0, 1), labels = c(“WOMAN”, “MAN”)), age = age, stoma = factor(stoma, levels = c(0, 1), labels = c(“WITHOUT STOMA”, “WITH STOMA”)), time_os = time_os, status_os = status_os, time_rfs = time_rfs, status_rfs = status_rfs, time_cir = time_cir, status_cir = status_cir ) }</p>
+<p>Now fit a Cox model for overall survival:</p>
+</section>
+</section>
+<section id="install.packagessurvival-if-needed" class="level1">
+<h1>install.packages(“survival”) # if needed</h1>
+<p>library(survival)</p>
+<p>set.seed(46) dat &lt;- generate_data(hr1 = 2, hr2 = 1.5) # true HR for death = 1.5</p>
+<p>fit &lt;- coxph(Surv(time_os, status_os) ~ stoma, data = dat) summary(fit)</p>
+<p>You might see an output like:</p>
+<p>n= 200, number of events= 140</p>
+<pre><code>              coef exp(coef) se(coef)    z  Pr(&gt;|z|)</code></pre>
+<p>stomaWITH STOMA 0.277 1.319 0.171 1.62 0.105</p>
+<pre><code>          exp(coef) exp(-coef) lower .95 upper .95</code></pre>
+<p>stomaWITH STOMA 1.319 0.758 0.944 1.843</p>
+<p>Me: “Okay, so:</p>
+<p>exp(coef) = 1.319 → the estimated hazard ratio (WITH STOMA vs WITHOUT STOMA)</p>
+<p>p-value ? 0.10 → not ‘significant’ at the 0.05 level.</p>
+<p>Roughly speaking, that means:</p>
+<p>‘Survival tends to be worse in the stoma group, but the difference is not statistically significant.’</p>
+<p>Right?”</p>
+<p>Dad: “As a first pass, yes.</p>
+<p>Also notice:</p>
+<p>exp(coef) = 1.319 is close to the true HR we built into the data: 1.5</p>
+<p>The 95% CI (about 0.94 to 1.84) includes 1, which matches the p-value being &gt; 0.05.”</p>
+<p>Me: “And hazard ratio itself is… a kind of rate ratio, right?”</p>
+<p>Dad: “Exactly:</p>
+<p>The hazard is like an instantaneous event rate (events per person-time).</p>
+<p>The hazard ratio compares those rates between two groups.</p>
+<p>Other measures like risk ratios and odds ratios don’t account for follow-up time, so they’re not the main characters in survival analysis.</p>
+<p>If you’re studying cancer clinical trials, you really want to be comfortable with hazard ratios. That’s where books like Clinical Trials in Oncology by the SWOG statisticians are very helpful. ”</p>
+<p>What p-values are not</p>
+<p>Me: “About p-values though…</p>
+<p>I’ve been saying things in journal club like:</p>
+<p>‘p &lt; 0.05, so the result is significant,’</p>
+<p>without feeling I actually understand them.</p>
+<p>Let me try to say what I thought they meant:</p>
+<p>‘The hazard ratio is less than 1, so LTA is worse than TH.’</p>
+<p>‘If p &lt; 0.05, it’s statistically significant, so we’ve found something scientifically important.’</p>
+<p>‘If p ? 0.05, there’s no significant difference, so we can say the treatments are equivalent.’</p>
+<p>Is that all wrong?”</p>
+<p>Dad: “Some of it is okay, but the details matter.</p>
+<p>Let’s look at three common statements people make about p-values:</p>
+<p>‘The p-value is the probability that the null hypothesis is true.’</p>
+<p>‘If the p-value is small and statistically significant, that means we’ve found a scientifically important result.’</p>
+<p>‘If the result is not statistically significant, we should accept the null hypothesis as true.’</p>
+<p>We’ll poke holes in each of these.”</p>
 <ol type="1">
-<li>ランダム誤差は統計解析を工夫すれば対処できる。だから研究デザインではバイアスについて検討すべき</li>
-<li>ランダム誤差もバイアスも統計解析を工夫すれば対処できる</li>
-<li>統計解析段階では工夫するにも限界がある</li>
-<li>臨床試験では研究デザインが重要。観察研究では統計解析が重要</li>
+<li>“p is the probability the null is true”</li>
 </ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は3です</strong></li>
-</ul>
-<p>サンプルサイズが小さすぎることが、ランダム誤差の一番の原因です。こう考えると、ランダム誤差・バイアスのどちらも、研究計画段階でじゅうぶんに検討しておかないと、後から取り返しがつかないかもしれません。</p>
-</div>
-</div>
-</div>
-</section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<p>Dad: “In JCOG9502, a natural null hypothesis is:</p>
+<p>H?: ‘The survival curves of the LTA and TH groups are equal.’</p>
+<p>Do you think the p-value is ‘the probability that H? is true’?”</p>
+<p>Me: “Honestly? That’s what I’ve been telling myself.”</p>
+<p>Dad: “Let’s be a bit pedantic for a moment.</p>
+<p>‘H? is true’ is a statement, a proposition. It’s either true or false. It’s not a random variable.</p>
+<p>In the frequentist framework, we define probabilities for random events (like results of repeated trials), not for truth values of hypotheses.</p>
+<p>So saying ‘p is the probability that H? is true’ isn’t really meaningful.”</p>
+<p>Me: “So the null hypothesis doesn’t have a ‘chance of being true’ in the frequentist world. It’s either true or not; we just don’t know which.”</p>
+<p>Dad: “Exactly. The p-value is something else entirely ?we’ll come back to its proper definition in a later episode.”</p>
+<ol start="2" type="1">
+<li>“Small p-value = scientifically important”</li>
+</ol>
+<p>Dad: “Next: ‘If p is small and statistically significant, the result is scientifically important.’ True or false?”</p>
+<p>Me: “It feels true. When people present at conferences, everyone gravitates to the p&lt;0.05 results.”</p>
+<p>Dad: “Look at the JCOG9502 paper again. They report several p-values, none particularly small.</p>
+<p>Would you say the trial was scientifically unimportant just because the p-values aren’t tiny?”</p>
+<p>Me: “No. The conclusion that LTA doesn’t beat TH and might actually be worse is clinically important, even if p isn’t spectacularly small.”</p>
+<p>Dad: “Exactly.</p>
+<p>Scientific importance depends on:</p>
+<p>effect size,</p>
+<p>clinical context,</p>
+<p>safety profile,</p>
+<p>cost,</p>
+<p>and many other things.</p>
+<p>p-values can flag results that are unlikely under the null, but they don’t tell you whether a result is medically meaningful, affordable, or practice-changing.”</p>
+<p>Me: “So:</p>
+<p>‘Small p = important’</p>
+<p>is a bad habit, not a theorem.”</p>
+<p>Dad: “Right.”</p>
+<ol start="3" type="1">
+<li>“Non-significant = treatments are equivalent”</li>
+</ol>
+<p>Dad: “The third statement:</p>
+<p>‘If the result is not statistically significant, we should accept the null hypothesis as true.’</p>
+<p>What do you think?”</p>
+<p>Me: “I remember reading something like:</p>
+<p>‘p-values are designed for rejecting hypotheses, not for accepting them.’</p>
+<p>So I guess this is wrong too. But in practice, people really do say ‘no significant difference → treatments are equivalent.’”</p>
+<p>Dad: “And that can be dangerous.</p>
+<p>In drug development there’s a classic story about cerebral circulation-improving drugs in Japan.</p>
+<p>For a long time, me-too drugs were compared to an older drug (ホパンテン酸カルシウム, often known as Hopate) and judged ‘non-inferior’ because there was no significant difference between the two.</p>
+<p>But those studies weren’t properly designed as non-inferiority trials? they just said:</p>
+<p>‘p ? 0.05, so the new drug is not inferior.’</p>
+<p>Later, when placebo-controlled trials were finally done, none of those drugs proved clearly better than placebo, and the original reference drug was even withdrawn over safety concerns.</p>
+<p>It’s often called the ‘Hopate tragedy’.”</p>
+<p>Me: “…yikes. So ‘non-significant’ was used as if it meant ‘good enough’, and then it turned out nothing was actually working.”</p>
+<p>Dad: “Exactly.</p>
+<p>To claim:</p>
+<p>equivalence (‘the two treatments are similar enough’), or</p>
+<p>non-inferiority (‘new is not worse than standard by more than X’),</p>
+<p>you need a specific study design and analysis:</p>
+<p>pre-specified margins,</p>
+<p>appropriate sample size,</p>
+<p>and tests tailored to those hypotheses.</p>
+<p>Just seeing p ? 0.05 in a standard superiority test is not enough.”</p>
+<p>Me: “So let me summarize:</p>
+<p>p is not the probability the null is true.</p>
+<p>‘Small p = scientifically important’ is wrong.</p>
+<p>‘Non-significant = treatments are equivalent’ is wrong.</p>
+<p>And statistics is pretty fussy about the difference between ‘no evidence of difference’ and ‘evidence of no difference.’”</p>
+<p>Dad: “Beautifully put.”</p>
+<p>A small twist: significance level is not always 0.05</p>
+<p>Dad: “One more nuance:</p>
+<p>We often learn that:</p>
+<p>‘If p &lt; 0.05, the result is significant.’</p>
+<p>But the significance level doesn’t have to be 0.05. In some trials, especially with interim analyses, the effective significance threshold is smaller.</p>
+<p>In JCOG9502, there was an interim analysis, and the trial was stopped early because the LTA approach had little chance of ever beating TH ? a futility stopping, not a victory.</p>
+<p>So even the ‘0.05’ part is not universal.”</p>
+<p>Me: “Right, so saying</p>
+<p>‘p &lt; 0.05 = significant’</p>
+<p>is already making an assumption about α. That’s okay as shorthand in some contexts, but not a definition of what a p-value is.”</p>
+<p>Dad: “Exactly.”</p>
+<p>A quiz related to this episode</p>
+<p>From a frequentist perspective, which of the following statements about the p-value is correct?</p>
+<p>It is the probability that the null hypothesis is true.</p>
+<p>It is the probability that the alternative hypothesis is true.</p>
+<p>If it is smaller than 0.05, the result is significant.</p>
+<p>None of the above.</p>
+<p>Answer</p>
+<p>The best answer is 4: none of the above.</p>
+<p>1 and 2: In the frequentist framework, we do not assign probabilities to ‘the null is true’ or ‘the alternative is true’; hypotheses are not random variables.</p>
+<p>3: The threshold for ‘significance’ (the significance level, α) is chosen in advance and doesn’t have to be 0.05. With interim analyses or special designs, α may be lower than 0.05.</p>
+<p>The (informal) textbook definition you may have seen is closer to:</p>
+<p>“The p-value is the probability, under the null hypothesis, of observing a result as extreme as or more extreme than the one actually observed.”</p>
+<p>Even that wording hides some subtleties, but it’s already very different from “the probability the null is true.”</p>
+<p>We’ll unpack the formal definition and its implications in the next Frequentist thinking episodes.</p>
+<p>References</p>
+<p>Sasako M, Sano T, Yamamoto S, et al.; Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol. 2006;7(8):644?651.</p>
+<p>Green S, Benedetti J, Smith A, Crowley J. Clinical Trials in Oncology, 3rd ed.&nbsp;Chapman &amp; Hall/CRC; 2012.</p>
+<p>PMDA and related reports on re-evaluation of cerebral circulation?improving drugs and placebo-controlled trials.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

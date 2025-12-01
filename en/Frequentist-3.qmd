@@ -1,0 +1,422 @@
+# Story and Quiz ? Frequentist thinking III
+
+Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
+
+---
+
+### How to interpret p-values the right way
+
+Dad: “Remember when we talked about the survival curves and p-values in the JCOG9502 trial (Sasako et al. 2006)?   
+There’s something that’s been bothering me.  
+
+Why is it that *p < 0.05* is treated as the magic line for ‘statistical significance’?”
+
+Me: “Isn’t that just… the rule?”
+
+Dad: “That’s exactly the problem.  
+If you treat it as a rule, you’ll misread papers.  
+
+Let me ask: when you read a paper, you start from the **Abstract**, right?  
+Where do you usually go next?”
+
+Me: “The **Results** section, obviously.  
+I want to know what they found as soon as possible.”
+
+Dad: “I totally get that.  
+
+But when it comes to **p-values**,  
+if you jump straight to the numbers without context,  
+you’re almost guaranteed to misunderstand them.
+
+There has been so much confusion about p-values  
+that the **American Statistical Association (ASA)**  
+actually issued an official statement  
+for non-statisticians?researchers, practitioners, science writers?  
+to clarify what p-values can and cannot do.   
+
+The story started with this Q&A posted in an ASA forum back in 2014.”
+
+Me: “Hit me.”
+
+Dad: “Paraphrasing:
+
+> Q: Why do so many colleges and grad schools teach ‘p ? 0.05’?  
+> A: Because that’s what journals and the scientific community use.
+
+> Q: Why do so many people still use ‘p ? 0.05’?  
+> A: Because that’s what they were taught in college and grad school.
+
+Kind of a statistical **Zen riddle**, isn’t it?”
+
+Me: “Yeah, that’s circular enough to be called a koan.”
+
+---
+
+### The ASA’s six principles (in plain language)
+
+Dad: “In 2016, the ASA summarized **six principles** to promote better use and interpretation of p-values.”   
+
+Me: “Can you translate those into normal human language?”
+
+Dad: “Let me try. In my own words:
+
+1. A p-value is **one measure** of how incompatible the data are  
+   with a specific statistical model (including the null hypothesis).  
+2. A p-value is **not**  
+   - the probability that the hypothesis is true, or  
+   - the probability that the data came from ‘chance alone’.  
+3. Scientific conclusions and policy decisions **should not** rest solely on  
+   whether a p-value is smaller or larger than some fixed cutoff.  
+4. To draw proper inferences, you need **transparency**:  
+   all analyses, not just the convenient ones, must be reported.  
+5. A small p-value does **not** automatically mean  
+   the effect is large or important.  
+6. A p-value, by itself, is a **weak piece of evidence**  
+   about models or hypotheses.
+
+The big picture is:
+
+> You can’t interpret a p-value correctly  
+> without looking at the whole research process?  
+> study design, data collection, analysis choices,  
+> and how many tests were actually run.”
+
+Me: “So when people treat p < 0.05 as a magic ‘publish’ button,  
+they’re ignoring basically all of that.”
+
+Dad: “Exactly.”
+
+---
+
+### Multiplicity and selective inference: the ‘best’ p-value trap
+
+Dad: “Look at **Principle 4** again?about transparency.
+
+The ASA statement warns that if you:
+
+- run many different analyses,  
+- then only report the **nicest-looking p-values**,  
+
+those p-values are basically **no longer interpretable**.   
+
+In plain language:
+
+> If you fish long enough,  
+> you’ll almost always catch something ‘significant’.”
+
+Me: “So this is what people call **p-hacking** or **selective reporting**, right?”
+
+Dad: “Yes.  
+It’s a major reason why journals end up full of **false positives**.  
+
+Statisticians call this whole mess **multiplicity**  
+or **selective inference**.”
+
+Me: “So when I see a surprising p-value in a paper,  
+I should quietly wonder:
+
+> ‘How many analyses did they really run  
+> before selecting this one?’”
+
+Dad: “That’s the right instinct.”
+
+---
+
+### Reading JCOG9502: why α = 0.1 shows up
+
+Dad: “Let’s go back to **JCOG9502** for a moment.  
+
+Take another look at their **Statistical Analysis** section.   
+
+They say (paraphrased):
+
+> After 8 years of slow accrual,  
+> the data and safety monitoring committee  
+> approved an amendment to the sample size and analysis plan.  
+> The amended plan used a total sample size of 250 patients,  
+> **one-sided alpha = 0.1**,  
+> and beta = 0.2,  
+> with 12 years of accrual and 8 years of follow-up.
+
+Me: “Wait.  
+They’re comparing p to **0.1**?  
+Not 0.05?”
+
+Dad: “Yes.  
+
+Because recruitment was difficult,  
+they relaxed the **significance level** to 0.1  
+as a kind of last resort.
+
+Strictly speaking,  
+you don’t *want* to change the alpha level mid-trial.  
+But the clinical question was important,  
+and the trial still provided useful information,  
+so it was written up and widely read.”
+
+Me: “I totally skipped that part.  
+JCOG is… surprisingly flexible.”
+
+---
+
+### Multiple p-values in one figure: what do we read?
+
+Dad: “Now look closely at the survival figures in JCOG9502.  
+
+You’ll see:
+
+- two curves in Figure A (overall survival),  
+- two curves in Figure B (disease-free survival),  
+- and **four p-values** printed around them:  
+  one-sided and two-sided for each.”
+
+Me: “That’s exactly why I came to you.  
+
+I *did* think about it, you know.  
+
+Since **overall survival (OS)** is the primary endpoint,  
+Figure A is the main one to look at.  
+
+But even just in Figure A  
+there’s a **one-sided p** and a **two-sided p**.  
+That’s where my brain stalled.”
+
+Dad: “The logic isn’t too bad once you separate policy from math.
+
+In a typical clinical trial comparing:
+
+- a **test treatment** and  
+- a **standard treatment**,
+
+we can do:
+
+- a **one-sided test**:  
+  declare significance only if the test arm is better, or  
+- a **two-sided test**:  
+  consider both ‘test better’ and ‘test worse’ as important.”
+
+Me: “The JCOG9502 protocol said:
+
+- LTA = **test treatment**  
+- TH = **standard treatment**
+
+probably because LTA is more invasive,  
+so they were hoping it would improve survival.
+
+So they only wanted to declare success  
+if **LTA clearly beat TH**.  
+
+That’s a one-sided hypothesis, right?”
+
+Dad: “Exactly.  
+
+But here comes the twist:  
+
+- In most modern trials,  
+  **two-sided p-values** are the default.   
+- JCOG, however, has a tradition of focusing on  
+  ‘Is the experimental treatment better than standard?’  
+  and uses **one-sided p-values** accordingly.
+
+In JCOG9502:
+
+- the **one-sided p-values** are used  
+  for the primary decision about effectiveness,  
+- while the **two-sided p-values** are effectively  
+  provided as **reference**.
+
+So for the main efficacy question,  
+Figure A’s **one-sided p-value** is the key.”
+
+Me: “Okay.  
+
+Then for my project?  
+comparing return-to-work between **stoma vs no stoma**?  
+there’s no natural ‘test’ vs ‘standard’ treatment.  
+
+So I should stick with **two-sided p-values**.”
+
+Dad: “Exactly.  
+From both a statistical and clinical perspective,  
+two-sided makes more sense there.”
+
+---
+
+### One-sided vs two-sided p-values: the coin example
+
+Dad: “Let’s step away from cancer trials and use a **coin toss**.
+
+Suppose you toss a coin and get **six heads in a row**.
+
+Is the coin biased?”
+
+Me: “Intuitively, it feels suspicious.”
+
+Dad: “Under the null hypothesis:
+
+> The coin is fair; probability of heads = 1/2.
+
+the probability of **six heads in a row** is:
+
+- (1/2)? = 0.015625
+
+And the probability of **six tails in a row** is the same.
+
+If you define ‘extreme’ as  
+‘all outcomes on one side of the coin’, then:
+
+- one-sided p-value (heads only) ? 0.0156  
+- two-sided p-value (heads or tails) ? 0.0312
+
+So:
+
+- **one-sided p** looks only at ‘heads-side extremeness’  
+- **two-sided p** looks at extremeness in **either direction**.”
+
+Me: “So for a cancer trial:
+
+- one-sided p-value:  
+  ‘Do we see a difference *in the expected direction*  
+  (test treatment better)?’  
+- two-sided p-value:  
+  ‘Do we see a difference,  
+  in *either* direction?’”
+
+Dad: “Exactly.”
+
+---
+
+### The frequentist mindset: repeating the trial in your head
+
+Dad: “Back to JCOG9502.  
+
+In hypothesis testing we usually follow **three steps**:
+
+1. **Specify the hypotheses.**  
+   In JCOG9502, the two plausible truths are:
+
+   - ‘LTA improves overall survival compared with TH’, or  
+   - ‘LTA has no effect on overall survival compared with TH’.
+
+   Hypothesis testing focuses on the ‘no effect’ statement  
+   as the **null hypothesis**.
+
+2. **Imagine the data under the null.**  
+   Think about repeating the same randomized trial  
+   with the same 167 patients  
+   (or an equivalent population) **1,000 times**.  
+
+   That’s the **frequentist mindset**:  
+   even if there’s truly no difference,  
+   random variation means sometimes LTA looks better,  
+   sometimes TH looks better,  
+   but over many repetitions,  
+   the observed differences will cluster around zero.
+
+3. **Compare the actual data to that imagined distribution.**  
+   The **p-value** is:
+
+   > the probability, under the null hypothesis,  
+   > of getting a difference in survival curves  
+   > at least as extreme as what we observed.
+
+   - If the p-value is **small**, we say:  
+     “This kind of extreme difference  
+     would almost never happen by chance alone  
+     if the survival curves were truly equal.”  
+     So we reject the null.  
+   - If the p-value is **large**, we say:  
+     “This is the kind of difference  
+     that happens all the time under the null.”  
+     So we **don’t** reject the null.”
+
+Me: “So:
+
+> p-value =  
+> ‘How surprising is our observed difference  
+> *if* the survival curves were actually the same?’  
+
+not:
+
+> ‘What’s the probability that the curves are the same?’”
+
+Dad: “Exactly.”
+
+---
+
+### A quiz related to this episode
+
+In most randomized clinical trials  
+(excluding **non-inferiority** and **equivalence** trials),  
+why are **two-sided p-values** used as the default?
+
+1. Because we want to draw conclusions  
+   whether the test treatment is better *or* worse  
+   than the control whenever there is a difference.  
+2. Because statisticians agreed on it as a technical rule.  
+3. Because international regulators decided  
+   to standardize on two-sided p-values  
+   to avoid confusion across trials.  
+4. Because random error can fluctuate  
+   in both the positive and negative direction.
+
+**Answer**
+
+The intended best answer is **3**.
+
+This is largely a matter of **regulatory history and harmonization**.
+
+- In 1998, the **ICH E9 guideline** on *Statistical Principles for Clinical Trials*  
+  was agreed upon by regulators in the US, Europe, and Japan.   
+- As part of that harmonization,  
+  using **two-sided p-values as the default**  
+  became standard practice for confirmatory trials.   
+
+Of course:
+
+- **1** and **4** contain reasonable intuition about  
+  why two-sided testing is often appropriate,  
+  but the main reason we see two-sided p-values  
+  in almost all registrational trials today  
+  is this **international agreement**.
+
+In short:
+
+> Two-sided p-values are the default  
+> not because 0.05 is sacred,  
+> but because regulators decided  
+> that the world needed a **common convention**.”
+
+---
+
+### References
+
+- Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M; Japan Clinical Oncology Group (JCOG9502).  
+  Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial.  
+  *Lancet Oncol.* 2006;7(8):644?651.   
+
+- Wasserstein RL, Lazar NA.  
+  The ASA’s statement on p-values: Context, process, and purpose.  
+  *The American Statistician.* 2016;70(2):129?133.   
+
+- International Conference on Harmonisation (ICH).  
+  E9: Statistical principles for clinical trials. 1998.   
+
+- (Japanese commentary) Yoshimura I.  
+  On significance levels and the number of confirmatory clinical trials.  
+  *Japanese Journal of Biometrics.* 2003;24:S3?S9.
+
+---
+
+### Continuation of their story
+
+- [Study design I](study-design-1.html)  
+- [Study design II](study-design-2.html)  
+- [Study design III](study-design-3.html)  
+- [Study design IV](study-design-4.html)  
+- [Study design V](study-design-5.html)  
+- [Frequentist thinking I](frequentist-1.html)  
+- [Frequentist thinking II](frequentist-2.html)  
+- **Frequentist thinking III** (this page)  
+- Frequentist thinking IV (coming soon)  
+- Frequentist thinking V (coming soon)

@@ -1,0 +1,368 @@
+# Story and Quiz − Study design II
+
+Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
+
+---
+
+### Data have types
+
+Me: “Okay, coffee is ready.  
+Can I borrow you a bit longer?”
+
+Dad: “If coffee is involved, yes.”
+
+Me: “You said something earlier that stuck with me.  
+That *which R function we use depends on the outcome*.  
+I didn’t really get that.  
+
+In the end, aren’t all data just… numbers?”
+
+Dad: “They’re all numbers, yes.  
+But for statistics, the **type of data** matters a lot.  
+
+Very roughly, we use four big categories:
+
+- **Continuous data**  
+- **Binary / categorical data**  
+- **Count data**  
+- **Survival time data**.”
+
+Me: “Continuous data is things we **measure**, right?  
+Like age or blood pressure.  
+
+Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”
+
+Dad: “Perfect.  
+**Count data** is when you literally count events,  
+like the number of traffic accidents.  
+
+**Survival time data** is things like **lifespan** —  
+time from some starting point until an event, such as death.  
+
+In your case, that could be **time from surgery to returning to work**,  
+or **time to recurrence**.”
+
+Me: “When you say it like that,  
+they definitely feel like different beasts.  
+
+But in the R course I took,  
+we just typed whatever they put on the slides —  
+`t.test()`, `glm()`, `survfit()`…  
+It all felt like a spellbook.”
+
+Dad: “That’s a common side effect of R lectures.  
+Do you have your laptop?”
+
+Me: “That sounds like the beginning of homework.”
+
+Dad: “Let’s just say ‘a practical demonstration’.  
+Bring it here — we’ll install RStudio if it’s not there.”
+
+Me: “I knew this was coming.  
+Look, I know my stats skills are still beginner level,  
+and I *do* need R for my own research.  
+
+So fine, I’ll get my laptop.  
+But I expect maximum efficiency from this session.”
+
+Dad: “I’ll try.  
+In R, for **continuous data**, we often use:
+
+- `mean()`  
+- `t.test()`  
+- `lm()`.”
+
+Me: “Those at least sound familiar.”
+
+Dad: “For **binary data**, we summarize with `table()`,  
+and to get p-values we use `chisq.test()` or `fisher.test()`.  
+
+For more complex analyses,  
+we move to **regression models** like  
+`glm(family = binomial)`.
+
+For **survival time data**,  
+we use things like `survfit()`, `coxph()`, and `cifplot()`.”
+
+Me: “There’s no way I can memorize all that.  
+I’ll just mix everything up again.”
+
+Dad: “You don’t need to memorize every function name.”
+
+Me: “I like where this is going.”
+
+Dad: “What you *do* want is a rough map in your head:
+
+- ‘This looks like **continuous data**,  
+  so probably that family of methods.’  
+- ‘This is **0/1 data**,  
+  so I need methods designed for binary data.’  
+
+If you can picture the **data type**,  
+the appropriate R functions become much easier to remember.”
+
+Me: “So instead of memorizing spells,  
+I should recognize the kind of creature I’m dealing with.”
+
+Dad: “Exactly.  
+And one more layer down,  
+we’re also thinking about **probability distributions**.”
+
+Me: “Ah, here comes the math.”
+
+Dad: “Nothing too heavy.  
+You’ve heard of the **normal distribution**, right?”
+
+Me: “That one survived from undergrad, yes.”
+
+Dad: “For statistics, we imagine that behind the data  
+there’s some **probability distribution**:
+
+- Continuous data → often **normal distribution**  
+- Binary data → **binomial distribution**  
+- Count data → **Poisson distribution**  
+- Survival time data → there’s no single standard,  
+  but a simple one is the **exponential distribution**.
+
+You don’t have to remember the formulas,  
+just the general matching:
+
+- continuous ⇔ normal-ish  
+- yes/no ⇔ binomial-ish  
+- counts ⇔ Poisson-ish.”
+
+Me: “So how does that help with R?”
+
+Dad: “For example,  
+we often talk about **proportions** and **rates** in medicine.  
+
+We casually throw around words like ‘prevalence’ or ‘mortality rate’.  
+But in statistics:
+
+- **Proportion** → parameter of a *binomial* distribution  
+- **Rate** → parameter of a *Poisson* distribution.”
+
+Me: “But in normal conversation, ‘proportion’ and ‘rate’  
+are almost interchangeable.”
+
+Dad: “Right, in everyday language they get blurred.  
+Statistically, they’re different.
+
+A **proportion** is something you’d express as a **percentage**:  
+‘60% of the participants were women.’
+
+A **rate** relates to **events over time**.  
+For example, think of:
+
+> ‘Annual rate of traffic accidents in Tokyo.’
+
+You wouldn’t express that as ‘120% per year’.  
+It’s something like ‘X accidents per year’.”
+
+Me: “Okay, that’s finally clicking.  
+So proportion is like ‘out of this group,  
+how many have the characteristic’,  
+and rate is like ‘how fast things are happening over time’.”
+
+Dad: “Exactly.  
+And with that in mind,  
+let’s do a small R demo — nothing painful.”
+
+Me: “You always say that right before something painful.”
+
+Dad: “We’ll simulate:
+
+- **Age** (continuous data)  
+- **Sex, stoma** (binary data)  
+- **Survival time** (survival data)
+
+Then we’ll run some basic summaries.”
+
+Me: “Okay.  
+I’ll type what you tell me,  
+but I want to understand the big picture, not just more spells.”
+
+Dad: “Deal.  
+First, a quick note about R packages.
+
+To **install** a package on your computer,  
+you use `install.packages()`.  
+To **use** an installed package in your current session,  
+you use `library()`.
+
+R’s like a bookshelf:
+
+- `install.packages()` → buy the book and put it on the shelf  
+- `library()` → pull the book off the shelf and open it.”
+
+Me: “So `install.packages("cifmodeling")` is a one-time thing,  
+and `library(cifmodeling)` is what I run each time I actually use it.”
+
+Dad: “Exactly.  
+Reinstalling every time would be like going out  
+to buy coffee beans **every single morning**.”
+
+Me: “No, thank you.  
+Okay, show me the simulated data.”
+
+---
+
+### Generating simulated data
+
+Here we’ll use R to create a simple dataset and run basic analyses  
+for **continuous**, **binary**, and **survival** data.  
+
+The theme is a two-group comparison:  
+patients **with** and **without** a stoma.
+
+- **Age**: continuous, from a **normal distribution** using `rnorm()`  
+- **Sex, stoma**: binary, from a **binomial distribution** using `rbinom()`  
+- **Survival time**: from an **exponential distribution** using `rexp()`
+
+```r
+set.seed(46)
+
+# Stoma: 1 = with stoma, 0 = without stoma
+stoma <- rbinom(200, size = 1, prob = 0.4)
+
+# Sex: 0 = WOMAN, 1 = MAN
+sex <- rbinom(200, size = 1, prob = 0.5)
+
+# Age: normal distribution (stoma group slightly older)
+age <- rnorm(200, mean = 65 + 3 * stoma, sd = 8)
+
+# Survival time: exponential distribution
+#   expected survival 10 years (with stoma) vs 15 years (without)
+hazard <- ifelse(stoma == 1, 1 / 10, 1 / 15)
+time   <- rexp(200, rate = hazard)
+
+# Random censoring: 0 = censored, 1 = event
+status <- rbinom(200, size = 1, prob = 0.9)
+
+dat <- data.frame(
+  age    = age,
+  sex    = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+  stoma  = factor(stoma, levels = c(0, 1),
+                  labels = c("WITHOUT STOMA", "WITH STOMA")),
+  time   = time,
+  status = status
+)
+
+head(dat)
+#         age   sex         stoma      time status
+# 1 59.19077 WOMAN WITHOUT STOMA 17.939751      1
+# 2 59.46486   MAN WITHOUT STOMA 18.189251      1
+# 3 55.34491   MAN WITHOUT STOMA  2.445121      1
+# 4 60.68207   MAN WITHOUT STOMA 46.737429      1
+# 5 61.79577   MAN WITHOUT STOMA  0.149128      1
+# 6 62.84530 WOMAN    WITH STOMA  0.298167      1
+
+
+
+Summarizing continuous and binary data
+
+First, let’s describe age and sex
+in the stoma vs non-stoma groups.
+
+# install.packages("ggplot2") # if needed
+library(ggplot2)
+
+ggplot(dat, aes(x = age, fill = stoma)) +
+  geom_histogram(alpha = 0.5, position = "identity", bins = 10) +
+  labs(x = "AGE", y = "FREQUENCY", fill = "STOMA") +
+  theme_minimal()
+
+
+You should see that the age distribution
+for the stoma group is slightly shifted to the right
+(older on average), because that’s how we simulated it.
+
+table(STOMA = dat$stoma, SEX = dat$sex)
+#                   SEX
+# STOMA            WOMAN MAN
+# WITHOUT STOMA      43  76
+# WITH STOMA         44  37
+
+
+The histogram is a typical tool for continuous data
+
+The contingency table is a basic tool for categorical data
+
+Summarizing survival time data with survival curves
+
+For survival time data,
+we want to describe how long patients survive without the event.
+
+Here we use cifplot() from the cifmodeling package
+to draw Kaplan–Meier curves for overall survival.
+
+# devtools::install_github("gestimation/cifmodeling") # if needed
+library(cifmodeling)
+
+cifplot(
+  Event(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival"
+)
+
+
+Event(time, status) tells R which variables represent
+the time and event indicator
+
+outcome.type = "survival" asks for a survival curve
+
+Under our simulation,
+the non-stoma group should have better survival,
+so its curve will lie above the stoma group.
+
+A quiz related to this episode
+
+The word “response rate” is often used in oncology.
+
+Roughly speaking, it describes:
+
+“What proportion of patients achieved tumor shrinkage
+(such as complete or partial response)?”
+
+In hematologic malignancies,
+it might refer to the proportion who achieved complete remission.
+
+Now, among the following,
+which one is truly a rate in the statistical sense?
+
+Batting average
+
+Male-to-female ratio
+
+Prevalence
+
+Mortality rate
+
+Answer
+
+The correct answer is 4.
+
+Let’s review:
+
+A ratio is one quantity divided by another
+(e.g., BMI = weight ÷ height²)
+
+A proportion is
+“number in subgroup ÷ total number”
+and is bound between 0 and 1 (or 0–100%)
+
+A rate is
+“number of events ÷ person-time”
+
+So:
+
+Batting average = hits ÷ at-bats → proportion
+
+Male-to-female ratio = men ÷ women → ratio
+
+Prevalence = people with disease ÷ total people → proportion
+
+Mortality rate = deaths ÷ person-years → rate
+
+In statistics, being picky with words like this
+helps us choose the right models and interpret results correctly.
