@@ -150,7 +150,7 @@ Each story can be reproduced with R code. Whether you want to learn deeply or ju
 
 ------------------------------------------------------------------------
 
-## Series
+## Episodes
 
 ### 1. Study design — Where research begins
 
