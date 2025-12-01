@@ -242,7 +242,7 @@ Me: “Don’t flatter me just to get free clinical consulting.”
 Dad: “In class, I tell my students this:  
 
 > When your clinical question is still vague,  
-> try to express it using **PICO** or **PECO**  
+> try to express it using PICO or PECO
 > before you design the study.
 
 It sounds fancy, but it’s just a framework.”
@@ -264,7 +264,7 @@ Dad: “Let’s walk through it using your case. In PICO/PECO:
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-These four pieces are like the minimum ingredients for a study recipe. In a clinical trial, we usually talk about **Intervention** (I). In observational studies like your survey, we talk about **Exposure** (E).”
+These four pieces are like the minimum ingredients for a study recipe. In a clinical trial, we usually talk about Intervention (I). In observational studies like your survey, we talk about Exposure (E).”
 :::
 
 ::: voice-daughter
@@ -272,7 +272,7 @@ Me: “Okay, P is like, ‘rectal cancer patients after curative surgery in our 
 :::
 
 ::: voice-father
-Dad: “Exactly. And O is your **outcome**, that is to say, what you want to measure. In your case, something about **return to work**.”
+Dad: “Exactly. And O is your outcome, that is to say, what you want to measure. In your case, something about return to work.”
 :::
 
 ::: voice-daughter
@@ -280,7 +280,7 @@ Me: “So outcome is the thing we call OS, DFS, response rate, that kind of stuf
 :::
 
 ::: voice-father
-Dad: “Right. In statistical analysis, the **outcome variable** is the most important part. So deciding **what the outcome is** is a key step in planning.”
+Dad: “Right. In statistical analysis, the **outcome variable** is the most important part. So deciding what the outcome is is a key step in planning.”
 :::
 
 ::: voice-daughter
@@ -310,7 +310,7 @@ Dad: “So we’ll need to get you used to R again. Which R functions you use wi
 ::: voice-daughter
 Me: “So step zero is:  
 
-1. Turn my vague hunch into a proper question using **P, E, C, O**  
+1. Turn my vague hunch into a proper question using P, E, C, O
 2. Decide on the outcome  
 3. Then figure out how to survive R and not embarrass myself at journal club
 
@@ -325,8 +325,6 @@ Dad: “That’s a very good summary. If you bring me questions like that, I’m
 Me: “Deal. I’ll bring the clinical mess, you translate it into statistics. Very efficient division of labor.”
 :::
 
-
-
 ::: {.callout-note appearance="simple" title="Clinical questions and research hypotheses"}
 
 In everyday clinical work in Japan, you naturally start to notice small curiosities:
@@ -334,29 +332,23 @@ In everyday clinical work in Japan, you naturally start to notice small curiosit
 - “Do my older patients really have worse outcomes?”  
 - “Is this new support program actually helping?”
 
-These are **clinical questions**.
+These are **clinical questions**. To turn them into research, we want to re-express them as **research hypotheses**. A research hypothesis is built from the **minimum elements** needed for study design:
 
-To turn them into research, we want to re-express them as **research hypotheses**.
-
-A research hypothesis is built from the **minimum elements** needed for study design:
-
-- **P: Patients/Population**  
-- **I/E: Intervention/Exposure**  
-- **C: Comparison**  
-- **O: Outcome**
+- P: Patients/Population
+- I/E: Intervention/Exposure
+- C: Comparison
+- O: Outcome
 
 That’s exactly what **PICO/PECO** helps you write down.
 
 #### Example: Research hypothesis 1
 
-> Among rectal cancer patients after curative resection in Japan,  
-> is there a difference in **return-to-work within one year**  
-> between those with and without a stoma?
+Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within one year** between those with and without a stoma?
 
-- **P**: Rectal cancer patients after curative resection  
-- **E**: Stoma present  
-- **C**: Stoma absent  
-- **O**: Returned to work within one year after surgery (yes/no)
+- P: Rectal cancer patients after curative resection  
+- E: Stoma present  
+- C: Stoma absent  
+- O: Returned to work within one year after surgery (yes/no)
 
 Here you’d compare the **return-to-work proportion** between the stoma and non-stoma groups.
 
@@ -366,36 +358,23 @@ Having a clear comparison group improves **interpretability**.
 
 #### Example: Research hypothesis 2
 
-> Among cancer patients after curative surgery,  
-> does providing a **guidebook on balancing work and cancer treatment**  
-> increase the proportion who return to work within one year?
+Among cancer patients after curative surgery, does providing a **guidebook on balancing work and cancer treatment** increase the proportion who return to work within one year?
 
-- **P**: Patients with cancer after curative surgery  
-- **E**: Received the guidebook  
-- **C**: Did not receive the guidebook  
-- **O**: Returned to work within one year after surgery (yes/no)
+- P: Patients with cancer after curative surgery  
+- E: Received the guidebook  
+- C: Did not receive the guidebook  
+- O: Returned to work within one year after surgery (yes/no)
 
 Here P is broader, so the results could potentially apply to a **wider range of patients**. This is an example of **higher generalizability**.
 ---
 
 #### Example: Research hypothesis 3 (exploratory)
 
-> “Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities,  
-> stoma, preoperative employment status, household income, cancer insurance,  
-> and use of employment support services  
-> associated with return-to-work within one year?”
+“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
 
 In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential **risk factors**.
 
-So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape.
-
-What matters is:
-
-> For this question,  
-> what is the **minimal set of elements**  
-> I need to design a coherent study?
-
-That’s the habit we want to build.
+So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the **minimal set of elements** needed to design a coherent study for your question. 
 :::
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}

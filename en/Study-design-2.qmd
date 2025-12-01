@@ -258,39 +258,39 @@ Me: “That one survived from undergrad, yes.”
 Dad: “For statistics, we imagine that behind the data  
 there’s some **probability distribution**:
 
-- Continuous data → often **normal distribution**  
-- Binary data → **binomial distribution**  
-- Count data → **Poisson distribution**  
-- Survival time data → there’s no single standard,  
-  but a simple one is the **exponential distribution**.
+- Continuous data: often normal distribution
+- Binary data: binomial distribution 
+- Count data: Poisson distribution
+- Survival time data: there’s no single standard, but a simple one is the exponential distribution.
 
-You don’t have to remember the formulas,  
-just the general matching:
-
-- continuous ⇔ normal-ish  
-- yes/no ⇔ binomial-ish  
-- counts ⇔ Poisson-ish.”
+You don’t have to remember the formulas, just the general matching”
 ::: 
+:::::::::::::::::::::::::::::::::
 
+- continuous: normal-ish  
+- yes/no: binomial-ish  
+- counts: Poisson-ish
+
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 Me: “So how does that help with R?”
 ::: 
 
 ::: voice-father
-Dad: “For example, we often talk about **proportions** and **rates** in medicine. We casually throw around words like prevalence or mortality rate. But in statistics they are: "
+Dad: “For example, we often talk about **proportions** and **rates** in medicine. We casually throw around words like prevalence or mortality rate. But in statistics they are clearly different. "
 ::: 
 :::::::::::::::::::::::::::::::::
 
-- Proportion: parameter of a *binomial* distribution  
-- Rate: parameter of a *Poisson* distribution.
+- Proportion: a parameter of a *binomial* distribution  
+- Rate: a parameter of a *Poisson* distribution.
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “But in normal conversation, **proportion** and **rate** are almost interchangeable.”
+Me: “But in normal conversation, proportion and rate are almost interchangeable.”
 ::: 
 
 ::: voice-father
-Dad: “Right, in everyday language they get blurred. Statistically, they’re different. A **proportion** is something you’d express as a **percentage**, such as "60% of the participants were women." A **rate** relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
+Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A **proportion** is something you’d express as a **percentage**, such as "60% of the participants were women." A **rate** relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
 ::: 
 
 ::: voice-daughter
