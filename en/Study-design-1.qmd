@@ -179,9 +179,7 @@ Dad: “Not illegal, but not safe. Without at least a **working hypothesis**, it
 :::
 
 ::: voice-daughter
-Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work.  
-
-Not just men vs women, but things like **tumor stage** and **treatment**. I work in GI surgery, so I keep wondering about **patients with a stoma**. Can they really keep doing the same job as before surgery?”
+Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work. Not just men vs women, but things like **tumor stage** and **treatment**. I work in GI surgery, so I keep wondering about **patients with a stoma**. Can they really keep doing the same job as before surgery?”
 :::
 
 ::: voice-father
@@ -257,11 +255,12 @@ Me: “I’ve heard the words PICO, PECO...but nobody really explains what to *d
 ::: voice-father
 Dad: “Let’s walk through it using your case. In PICO/PECO:
 :::
+::::::::::::::::::::::::::::::::: 
 
-- **P** is **Patients/Population**  
-- **I/E** is **Intervention/Exposure**  
-- **C** is **Comparison**  
-- **O** is **Outcome**
+- What kind of patients? (**Patients/Population**)  
+- What factor are we focusing on? (**Intervention/Exposure**)  
+- What are we comparing it to? (**Comparison**)  
+- What outcomes are we interested in? (**Outcome**)
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
@@ -341,10 +340,10 @@ To turn them into research, we want to re-express them as **research hypotheses*
 
 A research hypothesis is built from the **minimum elements** needed for study design:
 
-- What kind of patients? (**Patients/Population**)  
-- What factor are we focusing on? (**Intervention/Exposure**)  
-- What are we comparing it to? (**Comparison**)  
-- What outcomes are we interested in? (**Outcome**)
+- **P: Patients/Population**  
+- **I/E: Intervention/Exposure**  
+- **C: Comparison**  
+- **O: Outcome**
 
 That’s exactly what **PICO/PECO** helps you write down.
 
@@ -359,14 +358,10 @@ That’s exactly what **PICO/PECO** helps you write down.
 - **C**: Stoma absent  
 - **O**: Returned to work within one year after surgery (yes/no)
 
-Here you’d compare the **return-to-work proportion**  
-between the stoma and non-stoma groups.
+Here you’d compare the **return-to-work proportion** between the stoma and non-stoma groups.
 
-What to choose for **C (Comparison)** is important.  
-If you only know the return-to-work rate in the stoma group,  
-it’s hard to say whether that number is “high” or “low”.  
-Having a clear comparison group improves **interpretability**.
-
+What to choose for **C (Comparison)** is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.  
+Having a clear comparison group improves **interpretability**. 
 ---
 
 #### Example: Research hypothesis 2
@@ -380,11 +375,7 @@ Having a clear comparison group improves **interpretability**.
 - **C**: Did not receive the guidebook  
 - **O**: Returned to work within one year after surgery (yes/no)
 
-Here P is broader,  
-so the results could potentially apply  
-to a **wider range of patients**.  
-This is an example of **higher generalizability**.
-
+Here P is broader, so the results could potentially apply to a **wider range of patients**. This is an example of **higher generalizability**.
 ---
 
 #### Example: Research hypothesis 3 (exploratory)
@@ -394,13 +385,9 @@ This is an example of **higher generalizability**.
 > and use of employment support services  
 > associated with return-to-work within one year?”
 
-In exploratory studies like this,  
-P is clear, but E and C are **not just one thing**—  
-we’re screening multiple potential **risk factors**.
+In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential **risk factors**.
 
-So “structuring the question”  
-doesn’t mean you have to force every study  
-into a clean PECO shape.
+So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape.
 
 What matters is:
 
@@ -413,8 +400,7 @@ That’s the habit we want to build.
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
-In oncology, one common outcome is **progression-free survival (PFS)**. To measure PFS, we need to determine **tumor progression** based on imaging. Sometimes a central review committee evaluates images  
-to make this more objective. In that case, there may be discrepancies between:
+In oncology, one common outcome is **progression-free survival (PFS)**. To measure PFS, we need to determine **tumor progression** based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:
 
 - the progression date according to the **central review**, and  
 - the progression date according to the **local investigator**.
@@ -428,21 +414,11 @@ This issue is called a **disagreement between central and local assessment**. Wh
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **2**.
 
-The correct answer is **2**.
+If you define the event as “whichever progression date comes first (central or local)”, you are more likely to **shorten PFS artificially**, because you systematically choose the earlier of the two dates. That introduces bias.
 
-If you define the event as  
-“whichever progression date comes first (central or local)”,  
-you are more likely to **shorten PFS artificially**,  
-because you systematically choose the earlier of the two dates.  
-
-That introduces **bias**.
-
-This doesn’t mean you must always use central review;  
-in some contexts, local assessment may better reflect  
-real clinical decision-making.  
-But “always take the earlier date”  
-is not an appropriate general rule.
+This doesn’t mean you must always use central review; in some contexts, local assessment may better reflect real clinical decision-making. But “always take the earlier date” is not an appropriate general rule.
 :::
 
 ### Continuation of their story

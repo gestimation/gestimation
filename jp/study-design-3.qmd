@@ -407,8 +407,6 @@ OS、DFS、RFSは、特に術後補助化学療法の有効性を評価すると
 
 - Fleming TR and DeMets DL. Surrogate end points in clinical trials: are we being misled? Ann Intern Med 1996;125(7):605-13
 
-- Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration's approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7
-
 ### Continuation of their story
 
 [Study design I](study-design-1.qmd)
