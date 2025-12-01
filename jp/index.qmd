@@ -160,9 +160,9 @@ a:hover {
 
 - [Study design I](study-design-1.qmd)
 - [Study design II](study-design-2.qmd)
-- [Study design III](12/8公開予定)
-- [Study design IV](12/15公開予定)
-- [Study design V](12/15公開予定)
+- [Study design III]　【12/8公開予定】
+- [Study design IV]　【12/15公開予定】
+- [Study design V]　【12/15公開予定】
 
 このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
 

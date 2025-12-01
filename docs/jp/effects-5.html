@@ -526,7 +526,7 @@ cifplot()によるKaplan-Meier曲線
 </div>
 <div class="callout-body-container callout-body">
 <p>群1と群2のアウトカムを比較する状況を考えましょう。群1の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_1\)</span>、群2の時点<span class="math inline">\(x\)</span>の疾患リスクを<span class="math inline">\(\pi_2\)</span>とします。さらに、それぞれの群のハザードを<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>、生存時間中央値を<span class="math inline">\(M_1\)</span>と<span class="math inline">\(M_2\)</span>とします。</p>
-<p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。</p>
+<p>上で述べた関係式を適用すると、指数分布の下で、ハザード比は以下のように表現することができます。ハザード比と、ハザード・生存時間中央値・疾患リスクの関係を表す式ですね。</p>
 <p><span class="math display">\[
 HR=\frac{\lambda_1}{\lambda_2}=\frac{M_2}{M_1}=\frac{\mathrm{log}(1-\pi_1)}{\mathrm{log}(1-\pi_2)}
 \]</span></p>
@@ -547,19 +547,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「そうそう、数式ばっかじゃねむくなる」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="比例ハザード性が崩れた臨床試験の例">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-比例ハザード性が崩れた臨床試験の例
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p><img src="clinical-trial-3.png" class="img-fluid"></p>
-</div>
-</div>
 <div class="dialogue">
 <div class="voice-father">
 <p>お父さん「これはステージIIIB～IVの肺がん患者の臨床試験で、ゲフィチニブと化学療法を比較している。図Aでは6ヶ月まではゲフィチニブ群の無増悪生存確率が低く、それ以降は高くなっているでしょ。こういうときは比例ハザード性が成り立っていないから、ハザード比に意味はない」</p>
@@ -586,7 +574,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「見えない時計？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療B群の人は、少し遅い時計を持っている。ハザード比は、その2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
+<p>お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療Bの人は、少し遅い時計を持っている。ハザード比は、2つの時計が“どれくらい違う速さで動くか”の比なんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」</p>
@@ -598,7 +586,13 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「それ、実際の患者さんでもあるかも！」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
+<p>お父さん「まとめると、このたとえ話の主張はこんなこと。</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>ハザード比は、2つの時計が“どれくらい違う速さで動くか”の比に例えられる。 比例ハザード性が成り立たないと、最初は一方の治療が有利でも、途中から追いつかれることもある</p>
+</blockquote>
+</blockquote>
+<p>それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="シミュレーションデータにおける時点ごとのリスク比の推定">
@@ -611,7 +605,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、<strong>時点ごとのリスク比（RR）</strong> を推定してみます。<strong>ハザード比</strong>は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、<code>cifmodeling</code>の<code>polyreg()</code>では、時点を通じて一定のリスク比だけでなく、任意の時点tごとのリスク比も推定できます。</p>
+<p>さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、<strong>時点ごとのリスク比（RR）</strong> を推定してみます。<strong>ハザード比</strong>は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、<code>cifmodeling</code>の<code>polyreg()</code>では、時点を通じて一定のリスク比だけでなく、任意の時点ごとのリスク比も推定できます。</p>
 <p>先ほどのシミュレーションデータを使って、<code>time.point</code>を変えた<code>polyreg()</code>を当てはめることで、術後5年・10年・20年時点の死亡リスク比を推定します。アウトカム（OS）は<code>Event(time_os,status_os)</code>、曝露変数であるストーマの有無は<code>exposure="stoma"</code>で指定しています。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
@@ -689,10 +683,10 @@ nleqslv.message       Function criterion near zero</code></pre>
 <p>私「時間と効果って、分けて考えられないんだね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「だってそうでしょ？効果って時間とともに生じるものだもの。それが因果の定義のひとつでもある」</p>
+<p>お父さん「だってそうでしょ？効果って時間とともに生じるものだもの。それが因果の定義のひとつでもある。時間とともに効果の大きさが変化するなら、ハザード比に頼らず、時点ごとにリスクを比べる必要がある」</p>
 </div>
 <div class="voice-daughter">
-<p>私「確かに。生存曲線を見るっていうのは、効果を表す数字に、時間の視点を加えるってことなんだね」</p>
+<p>私「確かに。生存曲線を見るっていうのは、因果効果に時間の視点を加えるってことなんだね」</p>
 </div>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>

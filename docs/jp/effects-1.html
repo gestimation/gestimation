@@ -349,6 +349,10 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう率（rate）とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが95%って意味だから」</p>
 </div>
+<ul>
+<li>ワクチン有効率（vaccine efficacy）は、疫学でいう率（rate）ではない</li>
+<li>プラセボ効果との相対比較のための指標</li>
+</ul>
 <div class="voice-daughter">
 <p>私「ん？100人いたら95人に効くって意味じゃないの？」</p>
 </div>
@@ -395,13 +399,23 @@ a:hover {
 </table>
 <p>この表では人数や割合を、具体的な数字ではなく、A、B、C、Dや群1・群2の発症リスク<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>を使って表しています。2群ごとの割合<span class="math inline">\(\pi_1\)</span>と<span class="math inline">\(\pi_2\)</span>の比較では、以下のような指標が用いられます。</p>
 <ul>
-<li><p>リスク差（risk difference、絶対リスク減少）</p>
-<p><span class="math inline">\(RD={\pi_1}-{\pi_2}\)</span></p></li>
-<li><p>リスク比（risk ratio）</p>
-<p><span class="math inline">\(RR=\frac{\pi_1}{\pi_2}\)</span></p></li>
-<li><p>オッズ比（odds ratio）</p>
-<p><span class="math inline">\(OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}\)</span></p></li>
+<li>リスク差（risk difference、絶対リスク減少）</li>
 </ul>
+<p><span class="math display">\[
+RD={\pi_1}-{\pi_2}
+\]</span></p>
+<ul>
+<li>リスク比（risk ratio）</li>
+</ul>
+<p><span class="math display">\[
+RR=\frac{\pi_1}{\pi_2}
+\]</span></p>
+<ul>
+<li>オッズ比（odds ratio）</li>
+</ul>
+<p><span class="math display">\[
+OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}
+\]</span></p>
 <p>これらの指標を使うときは、どちらの群を基準に比較しているかを意識することが大切です。上の式では群2を基準にとっています。</p>
 </div>
 </div>
@@ -417,11 +431,17 @@ a:hover {
 <div class="callout-body-container callout-body">
 <p>特に、2種類の治療のどちらが有効か調べるために比較するケースでは、以下の指標もよく用いられます。どちらの指標でも<span class="math inline">\(\pi_2&gt;\pi_1\)</span>と想定されています。ワクチン有効率では、群2はプラセボを受けていると考えてください。</p>
 <ul>
-<li><p>Number needed to treat（NNT）</p>
-<p><span class="math inline">\(NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}\)</span></p></li>
-<li><p>ワクチン有効率（vaccine efficacy、相対リスク減少）</p>
-<p><span class="math inline">\(VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR\)</span></p></li>
+<li>Number needed to treat（NNT）</li>
 </ul>
+<p><span class="math display">\[
+NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}
+\]</span></p>
+<ul>
+<li>ワクチン有効率（vaccine efficacy、相対リスク減少）</li>
+</ul>
+<p><span class="math display">\[
+VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
+\]</span></p>
 </div>
 </div>
 <div class="dialogue">
@@ -483,7 +503,7 @@ a:hover {
 <p>私「確かにね。95%有効っていう数字だけみると、”ほぼ確実に救える”って意味に捉えがちだけど、よく考えたらワクチンにそこまでの効果はないよね。統計を使ったレトリックに騙されちゃいそう」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でも日常会話でそんなこと気にしてられないでしょ。だから誤解が多い。パーセント表記が逆に誤解を生んでる疫学の指標は、他にもあるよ」</p>
+<p>お父さん「でも日常会話でそんなこと気にしてられないでしょ。だから間違って使われることが多い。<strong>パーセント表記が逆に誤解を生んでる</strong>疫学の指標は、他にもあるよ」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">

@@ -141,32 +141,36 @@ a:hover {
 :::
 
 
-# コーヒーを淹れて、言葉を交わす。湯気とともに時は流れ、統計の世界が少しずつ広がっていく。
+# Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.
 
-このサイトは、統計家の父と医師の娘が交わす小さなコーヒーチャットから生まれました。
-日常の疑問、論文で気になるまま読み進めた箇所、ふと理解が曖昧なままにしていた概念——それらを対話のペースでやわらかく解きほぐしていきます。
+This site grew out of small coffee chats between a statistician father and his physician daughter.
+Over coffee, they move back and forth between clinic and code, papers and everyday life —
+turning “I sort of get this” moments into questions they can actually work through.
 
-難しい統計手法や数式も、冬のマグカップから感じるぬくもりのように、温度のある言葉でそっと説明します。
-物語はRコードで再現可能。
-深く学びたい人も、少し立ち止まりたい人も、夜の静かな時間に読む小さなエッセイのように、どうぞゆっくり味わってください。
+Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.  
+Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.
 
 ------------------------------------------------------------------------
 
-## シリーズ一覧
+## Series
 
-### 1. Study design — 研究の出発点
+### 1. Study design — Where research begins
 
-研究は「どんな問いを立てるか」から始まります。PICO/PECO、アウトカムの選び方、バイアスの防ぎ方...。娘は父に研究の出発点について尋ねます。
+Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.
 
 - [Study design I](study-design-1.qmd)
 - [Study design II](study-design-2.qmd)
-- [Study design III](12/8公開予定)
-- [Study design IV](12/15公開予定)
-- [Study design V](12/15公開予定)
+- [Study design III]
+- [Study design IV]
+- [Study design V]
 
-### 2. Frequentist thinking — 統計学の実践
+You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
 
-がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の思想**を父は語ります。
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)
+
+### 2. Frequentist thinking — Practicing statistics
+
+Using a cancer clinical trial as a running example, the father talks about the **frequentist idea** of “what would happen to these numbers if we could repeat the study many times?”
 
 - [Frequentist thinking I]
 - [Frequentist thinking II]
@@ -174,10 +178,9 @@ a:hover {
 - [Frequentist thinking IV]
 - [Frequentist thinking V]
 
-### 3. Effects and time — 効果は時間とともに
+### 3. Effects and time — How effects evolve
 
-リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。
-因果推論に先立って立体的なデータの見方が静かに育ちます。
+Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and **effects that change over time** are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.
 
 - [Effects and time I]
 - [Effects and time II]
@@ -185,27 +188,27 @@ a:hover {
 - [Effects and time IV]
 - [Effects and time V]
 
-### 4. Adjusting for bias — 回帰分析の風景
+### 4. Adjusting for bias — The landscape of regression
 
-**ロジスティック回帰による調整**と**交絡**。
+Here we meet **logistic regression for adjustment** and **confounding** — what it is, and what it is not.
 
 - [Adjusting for bias I]
 - [Adjusting for bias II]
 - [Adjusting for bias III]
 - [Adjusting for bias IV]
 
-### 5. Causal inference — 因果を見つけるために
+### 5. Causal inference — Thinking about “what if”
 
-有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、できるだけ数式を使わずに扱います。
+Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor paths. We try to talk about the **language of causality** needed to think about “what would have happened if...?”, using as few formulas as possible.
 
 - [Causal inference I]
 - [Causal inference II]
 - [Causal inference III]
 - [Causal inference IV]
 
-### 6. The Craft of Research — 研究の営み
+### 6. The Craft of Research — The work of doing research
 
-研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者のための静かな講義。
+How do we present results? How do we design figures and tables? How do we revise a manuscript, and how do we live with peer review? This series is a quiet set of lectures on “life after statistics” for people doing research.
 
 - [The Craft of Research I]
 - [The Craft of Research II]
@@ -214,15 +217,16 @@ a:hover {
 
 ------------------------------------------------------------------------
 
-## 読み方
+## How to read this site
 
-- まずは **Study design I–V** だけ読めば、  
-  「どんな問いを立てて、どんなデータを集めるか」というゴールの輪郭が見えてきます。
-- 興味で選ぶなら：
-  - **論文の読み方の足場をつくりたい** → Frequentist thinking / Effects and time
-  - **解析まわりをもう少しきちんとしたい** → Adjusting for bias
-  - **因果の考え方を整理したい** → Causal inference
-  - **最終的に論文として形にしたい** → The Craft of Research
-- どのエピソードも、それだけで読めるように書いていますが、  
-  通して読むと「研究という営み」の地図が、少しずつ頭の中にできあがっていきます。  
-  お好みの飲み物を片手に、気になったところから読んでみてください。
+- If you start with **Study design I–V**,  
+  you will get a first outline of “what question to ask, and what data to collect to answer it.”
+- If you want to choose by interest:
+  - **To build a better footing for reading papers** → Frequentist thinking / Effects and time  
+  - **To tidy up your analysis practice** → Adjusting for bias  
+  - **To organize how you think about causality** → Causal inference  
+  - **To eventually publish your work as a paper** → The Craft of Research
+- Each episode is written so that you *can* read it on its own.  
+  But if you read across the series, a mental map of “what research is as a practice” starts to form in the background.
+
+Pick any place that catches your eye, grab your favourite drink, and read at the pace that feels right for you.
