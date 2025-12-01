@@ -181,7 +181,7 @@ Dad: “Not illegal, but not safe. Without at least a **working hypothesis**, it
 ::: voice-daughter
 Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work.  
 
-Not just men vs women, but things like **cancer stage** and **treatment**. I work in GI surgery, so I keep wondering about **patients with a stoma**. Can they really keep doing the same job as before surgery?”
+Not just men vs women, but things like **tumor stage** and **treatment**. I work in GI surgery, so I keep wondering about **patients with a stoma**. Can they really keep doing the same job as before surgery?”
 :::
 
 ::: voice-father

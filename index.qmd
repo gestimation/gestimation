@@ -168,11 +168,11 @@ A toolkit for survival and competing risks analysis in R — the more technical 
 
 ## Story and Quiz — *How I learned research from my father*
 
-A Japanese series of short, warm stories about learning research. Through conversations between a father and daughter, the essentials of research unfold naturally.
+A Japanese series of short, warm stories about learning research written in both Japanese and English. Through conversations between a father and daughter, the essentials of research unfold naturally.
 
 - For readers who want to grasp the *feel* of research before opening a textbook  
 - Light, conversational chapters you can read in a few minutes  
-- From Study Design → Clinical Trials → Epidemiology → Regression → Causal Inference → Publication
+- From Study Design → Frequentist thinking → Understanding effects and time → Adjusting for bias → Causal Inference → Publication
 
 **[Read the Story and Quiz series (in Japanese)](./jp/index.qmd)**
 </div>
