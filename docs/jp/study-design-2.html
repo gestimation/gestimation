@@ -339,7 +339,7 @@ a:hover {
 <p>お父さん「ご名答。で、計数データは、交通事故の発生件数のような、数をカウントしたデータのこと。生存時間データは、たとえば寿命とかだね。死亡など特定のイベントが起こるまでの時間を扱うデータだよ。今回のがんサバイバー調査でいえば、手術から復職までの時間とか、再発までの時間とかね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。t.test()とかglm()とかsurvfit()とか、なんか呪文みたいなのを」</p>
+<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。<code>t.test()</code>とか<code>glm()</code>とか<code>survfit()</code>とか、なんか呪文みたいなのを」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。パソコンある？」</p>
@@ -354,13 +354,13 @@ a:hover {
 <p>私「はあ、まあ声を掛けたのはこっちだからいいけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「Rではね、連続データを解析するなら、mean()、t.test()、lm() なんかがよく使われる」</p>
+<p>お父さん「Rではね、連続データを解析するなら、<code>mean()</code>、<code>t.test()</code> なんかがよく使われる」</p>
 </div>
 <div class="voice-daughter">
 <p>私「はあ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「2値データを集計するときはtable()。p値を計算するときはchisq.test()、fisher.test()。複雑な解析はglm(family = binomial) みたいな回帰モデル。生存時間データだと、survfit()、coxph()、それからcifplot()みたいな関数が出てくる」</p>
+<p>お父さん「2値データを集計するときは<code>table()</code>。p値を計算するときは<code>fisher.test()</code>。複雑な解析は<code>glm(family = binomial)</code> みたいな回帰モデル。生存時間データだと、<code>survfit()</code>、<code>coxph()</code>、それから<code>cifplot()</code>みたいな関数が出てくる」</p>
 </div>
 <div class="voice-daughter">
 <p>私「そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪文なんだって」</p>
@@ -414,19 +414,19 @@ a:hover {
 <p>私「また呪文が出てくるんでしょ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。とりあえずlibrary(ggplot2)、library(cifmodeling)って打って。ヒストグラムとKaplan-Meier曲線を教えるよ」</p>
+<p>お父さん「そうだね。とりあえず<code>library(ggplot2)</code>、<code>library(cifmodeling)</code>って打って。ヒストグラムとKaplan-Meier曲線を教えるよ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「とりあえず思考停止で打つわ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「教えてあげてるんだから思考停止しない。Rの機能を追加するとき、install.packages()とlibrary()を使う。ざっくりいうとね、それぞれ、“Rパッケージをパソコンにインストールする”コマンドと、“インストール済みのパッケージを使えるようにする”コマンドなんだ」</p>
+<p>お父さん「教えてあげてるんだから思考停止しない。Rの機能を追加するとき、<code>install.packages()</code>と<code>library()</code>を使う。ざっくりいうとね、それぞれ、“Rパッケージをパソコンにインストールする”コマンドと、“インストール済みのパッケージを使えるようにする”コマンドなんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふむふむ。じゃあ、install.packages(“cifmodeling”)の方は、一度やったら、それで終わり？」</p>
+<p>私「ふむふむ。じゃあインストールの方は、一度やったら、それで終わり？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、install.packages(“ggplot2”)は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。library(ggplot2)は、ggplot2を取り出して、“これからグラフを描くからこの道具を使います”ってRに宣言する」</p>
+<p>お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、<code>install.packages("ggplot2")</code>は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。<code>library(ggplot2)</code>は、<code>ggplot2()</code>を取り出して、“これからグラフを描くからこの道具を使います”ってRに宣言する」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど。やっとスッキリした。今まで毎回インストールしなきゃいけないのかなって思ってた」</p>
@@ -447,9 +447,9 @@ a:hover {
 <div class="callout-body-container callout-body">
 <p>ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。</p>
 <ul>
-<li><p>年齢：正規分布（rnorm）から生成した連続データ</p></li>
-<li><p>性別・ストーマ保有：2項分布（rbinom関数）から生成した2値データ</p></li>
-<li><p>生存時間：指数分布（rexp関数）から生成した生存時間データ</p></li>
+<li><p>年齢：正規分布<code>rnorm()</code>から生成した連続データ</p></li>
+<li><p>性別・ストーマ保有：2項分布<code>rbinom()</code>から生成した2値データ</p></li>
+<li><p>生存時間：指数分布<code>rexp()</code>から生成した生存時間データ</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>

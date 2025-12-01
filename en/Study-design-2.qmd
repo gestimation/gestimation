@@ -206,7 +206,7 @@ Me: “I knew this was coming. Look, I know my stats skills are still beginner l
 ::: 
 
 ::: voice-father
-Dad: “I’ll try. In R, for **continuous data**, we often use `mean()`, `t.test()` and `lm()`.”
+Dad: “I’ll try. In R, for **continuous data**, we often use `mean()` and `t.test()`.”
 ::: 
 
 ::: voice-daughter
@@ -214,7 +214,7 @@ Me: “Those at least sound familiar.”
 ::: 
 
 ::: voice-father
-Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `chisq.test()` or `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival time data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
+Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival time data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
 ::: 
 
 ::: voice-daughter
@@ -323,7 +323,7 @@ Dad: “Deal. First, a quick note about R packages. To **install** a package on 
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “So `install.packages("cifmodeling")` is a one-time thing, and `library(cifmodeling)` is what I run each time I actually use it.”
+Me: “So install is a one-time thing, and `library()` is what I run each time I actually use it.”
 ::: 
 
 ::: voice-father
