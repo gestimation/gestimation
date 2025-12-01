@@ -388,3 +388,5 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 [Study design I](study-design-1.qmd)
 
 [Study design II](study-design-2.qmd)
+
+[Study design III](study-design-3.qmd)

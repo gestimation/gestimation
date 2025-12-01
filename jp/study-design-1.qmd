@@ -353,3 +353,5 @@ PECOになりにくい研究仮説もあります。たとえば、疾患発生�
 [Study design I](study-design-1.qmd)
 
 [Study design II](study-design-2.qmd)
+
+[Study design III](study-design-3.qmd)
