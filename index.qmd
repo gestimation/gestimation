@@ -144,7 +144,7 @@ a:hover {
 
 # Coffee and Research are the best when they are hot.
 
-Welcome.  
+Welcome to Coffee and Research — a place to think, learn, and explore.
 This is a quiet corner where I keep my thoughts on statistics, causal inference, and clinical research.  
 Ideas — like good coffee — are best enjoyed while they are still warm.
 
@@ -168,7 +168,7 @@ A toolkit for survival and competing risks analysis in R — the more technical 
 
 ## Story and Quiz — *How I learned research from my father*
 
-A Japanese series of short, warm stories about learning research written in both Japanese and English. Through conversations between a father and daughter, the essentials of research unfold naturally.
+A series of short, warm stories about learning research written in both Japanese and English. Through conversations between a father and daughter, the essentials of research unfold naturally.
 
 - For readers who want to grasp the *feel* of research before opening a textbook  
 - Light, conversational chapters you can read in a few minutes  

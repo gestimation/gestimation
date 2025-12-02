@@ -544,7 +544,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>お父さん「指数分布の式はね、ハザードが<span class="math inline">\(x\)</span>に依存しないでしょ。つまりハザード自体が一定なんだ。Cox回帰の方は<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間の関数なんだけど、ハザード比だけが一定っていうことを表している。これが比例ハザード性だよ。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうそう、数式ばっかじゃねむくなる」</p>
+<p>私「よかった、数式ばっかじゃねむくなる」</p>
 </div>
 </div>
 <p><img src="clinical-trial-3.png" class="img-fluid"></p>
@@ -613,7 +613,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs WITHOUT STOMA 
+stoma, WITH STOMA vs 0 
                       1.367       
                       [1.006, 1.856]
                       (p=0.045)   
@@ -635,7 +635,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs WITHOUT STOMA 
+stoma, WITH STOMA vs 0 
                       1.126       
                       [0.744, 1.704]
                       (p=0.576)   
@@ -657,7 +657,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs WITHOUT STOMA 
+stoma, WITH STOMA vs 0 
                       1.078       
                       [0.720, 1.613]
                       (p=0.714)   
@@ -673,15 +673,14 @@ converged.by          Converged in objective function
 nleqslv.message       Function criterion near zero</code></pre>
 </div>
 </div>
-<p>ハザード比は一定の下でデータを生成していますが、時間が経つにつれリスク比は小さく推定されることがわかります。冒頭のKaplan-Meier曲線もあわせてみてみてください。</p>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「時間と効果って、分けて考えられないんだね」</p>
+<p>私「ハザード比は一定のデータを作ったのに、リスク比は1.367、1.126、1.078と徐々に小さく推定されてる。冒頭のKaplan-Meier曲線でも、最初の5年あたりがいちばん差が開いているもんね。時間と効果って、分けて考えられないんだね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「だってそうでしょ？効果って時間とともに生じるものだもの。それが因果の定義のひとつでもある。時間とともに効果の大きさが変化するなら、ハザード比に頼らず、時点ごとにリスクを比べる必要がある」</p>
+<p>お父さん「だってそうでしょ？効果って時間とともに生じるものだもの。それが因果の定義のひとつでもある。時間とともに効果の大きさが変化するなら、ハザード比に頼っちゃだめ。もっと丁寧に時点ごとにリスクを比べないと」</p>
 </div>
 <div class="voice-daughter">
 <p>私「そういわれると納得感あるなあ、ハザード比だけ使えばいいって方がシンプルで私好みだったんだけど。生存曲線を見るっていうのは、因果効果に時間の視点を加えるってことなんだね」</p>

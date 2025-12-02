@@ -465,7 +465,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>前回の発展形として、シミュレーションデータを使って、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。</p>
+<p>前回より少しだけがんの臨床研究を意識して、シミュレーションデータにおける、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。</p>
 <p>以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」generate_dataを定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。なお、generate_data()やこのシミュレーションデータは、今後の解説でも再利用する予定です。</p>
 <ul>
 <li><p>ストーマ保有：2項分布（rbinom関数）から生成した2値データ</p></li>
@@ -546,7 +546,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>OSとRFSは通常の生存時間データですから、前回と同様に、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier生存曲線</strong>で記述します。</p>
+<p>OSとRFSは通常の生存時間データですから、前回と同様に、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>で記述します。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -594,13 +594,13 @@ a:hover {
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="累積発生率（CIR）のAalen-Johansen曲線の違い">
+<div class="callout callout-style-simple callout-note callout-titled" title="累積再発率（CIR）のAalen-Johansen曲線">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-累積発生率（CIR）のAalen-Johansen曲線の違い
+累積再発率（CIR）のAalen-Johansen曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -634,11 +634,9 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。</p>
 <blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>誤解されやすいが、Kaplan–Meier曲線（生存関数）とAalen-Johansen曲線（累積発生関数）は まったく異なる統計手法である。</p>
+<p>生存曲線（Kaplan–Meier曲線）と累積発生曲線（Aalen-Johansen曲線）はまったく異なる統計手法なので 競合リスクがあるときはAalen-Johansen曲線を用いる。</p>
 </blockquote>
-</blockquote>
-<p>CIRの解析で、Kaplan–Meier推定量を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（<code>status_cir=2</code>）ではなく打ち切り（<code>status_cir=0</code>）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。</p>
+<p>CIRの解析で、Kaplan–Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（<code>status_cir=2</code>）ではなく打ち切り（<code>status_cir=0</code>）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。</p>
 </div>
 <div class="voice-daughter">
 <p>私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」</p>

@@ -219,7 +219,137 @@ a:hover {
 :::
 
 ::: voice-father
-お父さん「調査票を郵送するんでしょ。そういうとき、回答してくれない患者が多いと偏りが生じやすいから、回答率を挙げる工夫をするといい。たとえば、調査票で年収って聞いてる？」
+お父さん「そうだね、前も話したけど競合リスクとかかな？生存時間解析ではイベント・競合リスクの扱いによってバイアスが生じることがある」
+:::
+:::::::::::::::::::::::::::::::::
+
+
+::: {.callout-note appearance="simple" title="シミュレーションデータ（再発あり）におけるKaplan-Meier曲線のバイアス"}
+以前生成したシミュレーションデータにおける累積再発率（CIR）の解析では、再発の前に死亡した患者（競合リスク）を発生させたことを覚えていますか？競合リスク存在下でKaplan-Meier曲線を用いるとバイアスが生じることは、簡単な実験で確かめることができます。
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発存期間（RFS） -------------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+```
+:::
+
+
+::: {.callout-note appearance="simple"  title="累積再発率（CIR）のAalen-Johansen曲線"}
+Kaplan–Meier曲線とAalen-Johansen曲線は、どちらも`cifmodeling`パッケージの`cifplot()`を使って生成できますが、イベントのコーディングを入力する`code.event1`、`code.event2`とデータの型を表す`outcome.type`を、指定する必要があります。`generate_data()`で生成したシミュレーションデータでは、CIRのイベントは以下のようにコーディングされていました。
+
+- `status_cir=1` : 再発
+- `status_cir=2` : 再発を経験しない死亡
+- `status_cir=0` : 打ち切り
+
+以下のRスクリプトでは、最初の`cifplot()`により、再発（`code.event1=1`）に関するAalen-Johansen曲線（`aj_event1`）を出力しています。縦軸は累積発生確率ではなく、1-累積発生確率を選んでいる点にも注意してください（`type.y="surv"`）。そして次の`cifplot()`ではイベントを入れ替えて、再発を経験しない死亡（`code.event1=1`）に関するAalen-Johansen曲線（`aj_event2`）を出力し、`cifpanel()`に用いて2つの図を左右に配置したひとつの図を表示しています。左右の累積発生確率の和に注目してください。この図からは、再発の累積発生確率と（再発を経験しない）死亡の累積発生確率の和は、時間が経つにつれ1に近づくが、1を超えることはないことがわかります。仮に打ち切りがなかったとしたら、再発と（再発を経験しない）死亡のどちらか一方しか生じないため、Aalen-Johansen曲線の和が1を超えないのは自然なことです。
+
+```{r}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
+library(cifmodeling)
+set.seed(46)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+
+aj_event1 <- cifplot(Event(time_cir, status_cir) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk", 
+  type.y       = "surv",
+  code.event1  = 1, 
+  code.event2  = 2
+)
+aj_event2 <- cifplot(Event(time_cir, status_cir) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk", 
+  type.y       = "risk",
+  code.event1  = 2, 
+  code.event2  = 1
+)
+aj_list <- list(aj_event1$plot, aj_event2$plot)
+aj_panel <- cifpanel(rows.columns.panel = c(1,2), plots=aj_list)
+print(aj_panel)
+```
+:::
+
+::: {.callout-note appearance="simple"  title="累積再発率（CIR）のKaplan–Meier曲線"}
+実際の研究では、死亡を打ち切りとして扱った生存時間解析の結果をしばしば目にします。この解析に対応するKaplan–Meier曲線は、以下のようにイベントのコーディングを変更し、`outcome.type="survival"`を指定することで出力できます。
+
+- `status_cir1=1` : 再発
+- `status_cir1=0` : 再発を経験しない死亡/打ち切り
+- `status_cir2=1` : 再発を経験しない死亡
+- `status_cir2=0` : 再発/打ち切り
+
+新しく作ったイベント変数`status_cir1`と`status_cir2`を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。Aalen-Johansen曲線の和とは異なり、Kaplan–Meier曲線の和が1を超えていることが読み取れたでしょうか。
+
+```{r}
+dat$status_cir1 <- as.numeric(dat$status_cir==1)
+km_event1 <- cifplot(Event(time_cir, status_cir1) ~ stoma,
+  data         = dat,
+  outcome.type = "survival", 
+  type.y       = "surv"
+)
+dat$status_cir2 <- as.numeric(dat$status_cir==2)
+km_event2 <- cifplot(Event(time_cir, status_cir2) ~ stoma,
+  data         = dat,
+  outcome.type = "survival", 
+  type.y       = "risk"
+)
+km_list <- list(km_event1$plot, km_event2$plot)
+km_panel <- cifpanel(rows.columns.panel = c(1,2), plots=km_list)
+print(km_panel)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「なるほどね。再発確率と死亡確率の和が1を超えることはあり得ないってことは、Kaplan–Meier曲線にバイアスが生じていることの証拠だっていいたいのね。でも、こんなマニアックなバイアスじゃなくて、調査を行う上でなにに注意した方がいいか聞いたつもりだったんだけど」
+:::
+
+::: voice-father
+お父さん「調査票を郵送するんでしょ。そういうとき、**回答してくれない患者が多いと偏りが生じやすい**から、回答率を挙げる工夫をするといい。たとえば、調査票で年収って聞いてる？」
 :::
 
 ::: voice-daughter
@@ -231,11 +361,11 @@ a:hover {
 :::
 
 ::: voice-daughter
-私「それって交絡のこと？」
+私「それって**交絡**のこと？」
 :::
 
 ::: voice-father
-お父さん「交絡ってどこで聞いたの？よく知ってるね。あれもバイアスの一種だけど、今回のとは違う。回答率の差やなにか理由があって回答してくれない場合は、母集団からのサンプル抽出に影響する”選択バイアス”といって、区別されるんだ。それに、年収って尋ねられると、過大申告してしまいがちだよね。このように集めた情報自体に偏りがあることを、”情報バイアス”と呼んでいる。調査や観察研究の計画に関する授業では、バイアスを3種類に大別して考えるといいって教えている。
+お父さん「交絡ってどこで聞いたの？よく知ってるね。あれもバイアスの一種だけど、今回のとは違う。回答率の差やなにか理由があって回答してくれない場合は、母集団からのサンプル抽出に影響する**選択バイアス**といって、区別されるんだ。それに、年収って尋ねられると、過大申告してしまいがちだよね。このように集めた情報自体に偏りがあることを、**情報バイアス**と呼んでいる。調査や観察研究の計画に関する授業では、バイアスを3種類に大別して考えるといいって教えている。
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -259,7 +389,7 @@ a:hover {
 
 統計学は誤差を扱う学問ですが、臨床研究ではランダム誤差（random error）とバイアス（bias）を区別することが大切です。ランダム誤差は、基本的にはゼロを中心としたばらつきを想定しています。一方で、得られた推定値が真の値から系統的にずれていることを、バイアスといいます。臨床研究における統計学の目標は、ランダム誤差を制御し、バイアスを可能な限りゼロに近づけることです。
 
-たとえるなら、ランダム誤差は的の中心を狙って矢を放つときのばらつき、バイアスは狙いが中心からずれている状態といえます。ランダム誤差は適切な統計手法を用いたり、サンプルサイズを大きくすることで減少させることができますが、バイアスは研究デザインやデータ収集方法を工夫しないと、解消できません。これが"Study design"シリーズの最後のテーマでした。
+たとえるなら、ランダム誤差は的の中心を狙って矢を放つときのばらつき、バイアスは狙いが中心からずれている状態といえます。競合リスクの扱いを間違ったとき生じるKaplan-Meier曲線のバイアスは、ランダム誤差ではありませんよね。ランダム誤差はサンプルサイズを大きくすることで減少させることができますが、バイアスは研究デザインやデータ収集方法を工夫しないと、解消できません。これが"Study design"シリーズの最後のテーマでした。
 
 ![](study-design-5.png)
 :::

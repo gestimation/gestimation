@@ -325,7 +325,7 @@ a:hover {
 <p>Dad: “If coffee is involved, yes.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “You said something earlier that stuck with me. That <em>which R function we use depends on the outcome</em>. I didn’t really get that. In the end, aren’t all data just… numbers?”</p>
+<p>Me: “You said something earlier that stuck with me. That <em>which R function we use depends on the outcome</em>. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
@@ -342,7 +342,7 @@ a:hover {
 <p>Me: “Continuous data is things we <strong>measure</strong>, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Perfect. <strong>Count data</strong> is when you literally count events, like the number of traffic accidents. <strong>Survival time data</strong> is things like <strong>lifespan</strong> — time from some starting point until an event, such as death. In your case, that could be <strong>time from surgery to returning to work</strong>, or <strong>time to recurrence</strong>.”</p>
+<p>Dad: “Perfect. <strong>Count data</strong> is when you literally count events, like the number of traffic accidents. <strong>Survival data</strong> is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “When you say it like that, they definitely feel like different beasts. But in the R course I took, we just typed whatever they put on the slides — <code>t.test()</code>, <code>glm()</code>, <code>survfit()</code>… It all felt like a spellbook.”</p>
@@ -397,15 +397,14 @@ You’ve heard of the <strong>normal distribution</strong>, right?”</p>
 <p>Me: “That one survived from undergrad, yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “For statistics, we imagine that behind the data<br>
-there’s some <strong>probability distribution</strong>:</p>
+<p>Dad: “For statistics, we imagine that behind the data there’s some <strong>probability distribution</strong>:</p>
 <ul>
 <li>Continuous data: often normal distribution</li>
 <li>Binary data: binomial distribution</li>
 <li>Count data: Poisson distribution</li>
-<li>Survival time data: there’s no single standard, but a simple one is the exponential distribution.</li>
+<li>Survival data: there’s no single standard, but a simple one is the exponential distribution. Otherwise described as a <strong>nonparametric</strong> distribution.</li>
 </ul>
-<p>You don’t have to remember the formulas, just the general matching”</p>
+<p>You don’t have to remember the formulas, just the general matching. ”</p>
 </div>
 </div>
 <ul>
@@ -414,6 +413,7 @@ there’s some <strong>probability distribution</strong>:</p>
 <li>yes/no: binomial-ish<br>
 </li>
 <li>counts: Poisson-ish</li>
+<li>survival: nonparametric</li>
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
@@ -424,9 +424,9 @@ there’s some <strong>probability distribution</strong>:</p>
 </div>
 </div>
 <ul>
-<li>Proportion: a parameter of a <em>binomial</em> distribution<br>
+<li>Proportion: a parameter of binomial distribution<br>
 </li>
-<li>Rate: a parameter of a <em>Poisson</em> distribution.</li>
+<li>Rate: a parameter of Poisson distribution</li>
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
@@ -550,7 +550,7 @@ Summarizing continuous and binary data
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="study-design-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Study-design-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -587,7 +587,7 @@ Summarizing survival data with survival curves
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="study-design-2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Study-design-2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -642,8 +642,8 @@ Answer
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../en/study-design-1.html">Study design I</a></p>
-<p><a href="../en/study-design-2.html">Study design II</a></p>
+<p><a href="study-design-1.qmd">Study design I</a></p>
+<p><a href="study-design-2.qmd">Study design II</a></p>
 
 
 </section>
