@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>publish-a-paper-1 – Coffee and Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../coffee.scss">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Coffee and Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gestimation.github.io/cifmodeling/"> 
+<span class="menu-text">cifmodeling</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-story-and-quiz-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Story and Quiz (JP)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-story-and-quiz-(jp">    
+        <li>
+    <a class="dropdown-item" href="../jp/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#story-and-quiz-publishing-a-paper-i" id="toc-story-and-quiz-publishing-a-paper-i" class="nav-link active" data-scroll-target="#story-and-quiz-publishing-a-paper-i">Story and Quiz − Publishing a paper I</a>
+  <ul class="collapse">
+  <li><a href="#editorとreviewerってちがう人なんだ" id="toc-editorとreviewerってちがう人なんだ" class="nav-link" data-scroll-target="#editorとreviewerってちがう人なんだ">EditorとReviewerってちがう人なんだ</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="story-and-quiz-publishing-a-paper-i" class="level1">
+<h1>Story and Quiz − Publishing a paper I</h1>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: paper writing</p>
+</div>
+<hr>
+<section id="editorとreviewerってちがう人なんだ" class="level3">
+<h3 class="anchored" data-anchor-id="editorとreviewerってちがう人なんだ">EditorとReviewerってちがう人なんだ</h3>
+<ul>
+<li><p>前回までのあらすじ</p>
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。調査は終ったが、いざ論文を書くとなると腰が重く、パソコンを閉じて父に話しかけるのだった。</p></li>
+</ul>
+<p><strong>私「がんサバイバー調査についてなんだけどね。調査結果がまとまったから、論文を書かなきゃって思ってるんだけど。お父さんって、どこかのジャーナルで統計エディターしてたよね。論文って、どんな感じで書くと、採択されやすいのかな」</strong></p>
+<p>お父さん「どんな感じねえ。医学が専門ってわけじゃないから、いいにくいな。自分自身はどう思うの？」</p>
+<p><strong>私「はやってる研究テーマを扱ったものは通りやすそう。免疫チェックポイント阻害薬みたいな新薬とか、新しい診断基準とか？あ、ランダム化臨床試験は、調査より注目されるし、きっと有利ね」</strong></p>
+<p>お父さん「そのイメージはまずまずあってるかな。エディターをやってて感じるのは、採択するときの基準は、突き詰めて考えると2つしかない。第一に、その研究から得られた結論の価値（value）は高いか。第二に、結論は正しい方法論（methodology）で導かれているか。ランダム化臨床試験が正しい方法っていってるわけじゃないよ。エディターやレビュワーは、臨床試験でも、観察研究でも、それぞれの分野で妥当とみなされているような方法論に従って行われているかを、チェックしてるってこと」</p>
+<p><strong>私「あれ？エディターとレビュワーって違う人？」</strong></p>
+<p>お父さん「もちろん。採択されるかどうかは、ピアレビュー（査読）の結果で決まるでしょ。レビュワーの役割は、論文や学会抄録を読んで、採点したり、修正（revise）を求めるときはどこを直してほしいかコメントしたりすること。エディターの役割は、一言でいうとジャーナルを編集すること。編集事務局を運営したり、編集方針を決めたり、レビュワーを割り当てたりする。採択するかどうかはエディターが判断するし、査読コメントを著者に送ることもある。たとえばね、カバーレターってあるでしょ。論文につける手紙」</p>
+<p><strong>私「聞いたことないよ。そんなのあるんだ」</strong></p>
+<p>お父さん「そっか。カバーレターの宛先は、レビュワーじゃなくてエディターだよっていおうとしたんだけど。カバーレターは、たいてい編集委員長（Editor-In-Chief）宛に書くんだ」</p>
+<p><strong>私「ふーん。カバーレターって大切？」</strong></p>
+<p>お父さん「どうだろう。お父さんは割とカバーレターで研究の価値をアピールする方だけど、定型文でいいっていう人もいる。周りの研究者に聞いても、どれくらい重視するかはまちまち。読まないエディターもいるのも事実」</p>
+<p><strong>私「そういうもんか。ピアレビューがなにかはどこかで聞いたことあるよ。ジャーナルからコメントがきて、著者がそれに回答するんだよね。でも、裏ではエディターじゃなくてレビュワーが採点してるんだ」</strong></p>
+<p>お父さん「ジャーナルによって、多段階評価だったり数字をつけたりするけどね。エディターが採点結果とコメントをみて、採択（accept）、大修正（major revision）、小修正（minor revision）、不採択（reject）のどれか決める。ピアレビューを経ないと、論文が粗製乱造されてしまう。だから、研究者はみんなピアレビューという仕組みを大切にしている」</p>
+<p><strong>私「ちなみにお父さんお金もらってる？」</strong></p>
+<p>お父さん「いや？ボランティア。利益相反とかいわれるとややこしいから、むしろどこからもお金を受け取りたくない。2019年にレビュワーの利益相反が問題になったことがあってね。それ以来、そのジャーナル（BMJ）は、査読コメントや著者の回答をサイトで公開するようになった。ピアレビューのプロセスが知りたければ、そのサイトをみてみたらいいよ。論文投稿するときは、論文を書くだけじゃなくて、英語でやり取りしなきゃいけないことが意外と多いから、参考になるかもしれない」</p>
+<p><strong>私「ふむふむ。話を元に戻すとさ。採択される基準は、価値と方法論っていってたよね。具体的にはどうすればいいの？」</strong></p>
+<p>お父さん「エディターはたくさんの論文をさばかなきゃいけないから、ざっとタイトルと抄録だけ目を通すことが多い。だから、どのあたりに研究の価値があるか、方法論は正しいか、といったことを抄録でアピールしたいよね」</p>
+<p><strong>私「ふむふむ」</strong></p>
+<p>お父さん「たいていの臨床医学系のジャーナルでは、構造化抄録を採用しているから、なにをどこに書けばいいかはわかりやすい。JAMAの抄録がどんな要素から構成されてるかみてみようか」</p>
+<ul>
+<li><strong>Importance</strong>（研究の重要性）</li>
+<li><strong>Objective</strong>（目的）</li>
+<li><strong>Design, setting and participants</strong>（デザイン、状況設定、参加者）</li>
+<li><strong>Exposures</strong>（曝露）</li>
+<li><strong>Main outcomes and measures</strong>（主要アウトカムとその測定方法）</li>
+<li><strong>Results</strong>（結果）</li>
+<li><strong>Conclusions and relevance</strong>（結論と意義）</li>
+</ul>
+<p><strong>私「JAMAの抄録はこうなのね。研究の価値は、”Importance”と”Conclusions and relevance”に書けばいい。研究方法も、どんな要素が求められるか、デザインから測定方法まで指定されてる。確かにわかりやすい。参加者、曝露、主要アウトカムは、PECOの通りに書けばいいよね」</strong></p>
+<p>お父さん「それでいいと思う。がんサバイバーの調査の価値はなにって聞かれたらなんて答える？」</p>
+<p><strong>私「まず、がん手術後に仕事に就けるかどうかは、生活に関わる大きな問題だっていうのが前提かな。そして、どんな患者が苦労していて、就労支援を求めているのかを調べて、ストーマ造設が関連することがわかったっていうのが、研究をやった意義なんだと思うけど」</strong></p>
+<p>お父さん「うんうん。それが抄録を読んだ人に伝わるように書こう。たとえばこんな感じでどうだろう」</p>
+<ul>
+<li><strong>Importance</strong>: Although prognosis of early rectal cancer has been improved, little is known about employment problems after surgery.</li>
+<li><strong>Objective</strong>: To compare employment status between patients with and without stoma</li>
+<li><strong>Design, setting and participants</strong>: A mail survey was conducted at 3 hospitals in Japan. Participants were 20-to-80-year-old patients with clinical stage I–III rectal cancer who were employed at diagnosis and received curative surgery from 2010 to 2020. Participants were followed up using self-administered questionnaires for 12 months.</li>
+<li><strong>Exposures</strong>: Stoma creation</li>
+<li><strong>Main outcomes and measures</strong>: Return-to-work at 12 months after surgery</li>
+<li><strong>Results</strong>: AAA patients were responded and the response rate was BB%. The median time to return-to-work was CC months and the proportion of working patients at 12 months after surgery was DD%. The odds ratio for delayed return-to-work was EEE (95% confidence interval FFF to GGG, p=HHH) after adjustment for age, sex and income.</li>
+<li><strong>Conclusions and relevance</strong>: Stoma creation in rectal cancer is associated with a difficulty in return-to-work. Further support for employment is necessary.</li>
+</ul>
+<p>お父さん「この文章で工夫した点は4つある。まず、今回みたいに日本で調査を行う場合、海外の研究者は日本の事情を知らないでしょ。どんな方法で参加者が選ばれたのか気にされることが多い。だから、参加者についてきちんと説明するといい。単に直腸がん患者って書くんじゃなくて”patients with clinical stage I–III rectal cancer who were employed at the time of diagnosis and received curative surgery from 20XX to 20YY”とかね」</p>
+<p><strong>私「ふんふん」</strong></p>
+<p>お父さん「2つ目の工夫は、回答率（response rate）を示すこと。回答率が低いと、選択バイアスがあるかもしれないからね」</p>
+<p><strong>私「その次はなに？」</strong></p>
+<p>お父さん「交絡因子を調整しなさいっていったでしょ。この点は、観察研究の査読では必ず確認される。本文に書いてあればいいことなんだけど、抄録でも、オッズ比を示すときに”after adjustment for age, sex and income”のような説明があると、気が利いてるって思ってもらえるかもしれない」</p>
+<p><strong>私「なるほどね。2つ目と3つ目は、バイアスがどれくらいあるかについて書いたんだね。最後のひとつは？」</strong></p>
+<p>お父さん「つまらないテクニックなんだけど。“Return-to-work”や “20-to-80-year-old patients”のように、単語をハイフンでつなぐと、文字数を節約できる。普通に”patients aged 20 to 80 years”って書くと6文字も使っちゃうでしょ。抄録には文字数の制限があるからね」</p>
+<p><strong>私「じゃあさ、少し話がそれるんだけど、主語と時制について聞いていい？”A mail survey was conducted at 3 hospitals in Japan.”っていう一文があるけど、受動態にするのが普通なの？それに、調査はすでに行われたから、時制は過去形なんだよね。IntroductionとConclusionsは現在形だけど」</strong></p>
+<p>お父さん「論文を書くときは、Weを主語にしない方が、客観的だからいいっていう考え方がある。でも最近は、主語をはっきりさせた方が正確に記述できるといってる人もいる。ぜんぜん別の表現もできて、”Study design was a mail survey at 3 hospitals in Japan”というように、研究方法を説明する文体でも書ける。こうすると情報が増えたわけだから、より正確で、かしこまったニュアンスになる。この場合は、受動態でも能動態でも、不自然ってことはない」</p>
+<p><strong>私「時制については？」</strong></p>
+<p>お父さん「普遍的な現象や法則性を表すときは現在形を使う。結論を現在形で書くと、「ストーマ造設は職場復帰の難しさに関わることが明らかになった」っていうニュアンスになる。過去形を使って、“Stoma creation in rectal cancer was associated with a difficulty in return-to-work.”と書くと、「今回の調査では」関連があったという限定的な意味になる」</p>
+<p><strong>私「じゃあ主語と時制はいま教えられた通りで書いてみる」</strong></p>
+<p>お父さん「うんうん。ちなみにね、凝った英語を使う必要はないよ。論文は、“concise”つまり簡潔な表現が好ましいとされる。接続詞や関係代名詞を多用しちゃって、一文が長くなりがちな人もいるけど、最初はそうしない方がいい。短い文章が続いていても変じゃない」</p>
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>文献を引用するときのスタイルは、ジャーナルの投稿規定で決められています。なかでも、もっとも多く採用されているのは、医学雑誌編集者国際委員会が1978年に定めたバンクーバースタイルです。</p>
+<p>JCOG9502論文を、バンクーバースタイルで表記すると、以下のようになります。さて、2つの□に入る記号として正しい組み合わせは、次のうちどれでしょうか。</p>
+<p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006 □ 7(8) □ 644-51</p>
+<ol type="1">
+<li>“:”と”:”</li>
+<li>“;”と”;”</li>
+<li>“:”と”;”</li>
+<li>“;”と”:”</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>正解は4です。</strong></p>
+<p>バンクーバースタイルでは、論文を引用するとき、文献リストを以下のように書きます。ただし、著者が多数のときは、”et al.”と省略することがあります。</p>
+<p>[著者名（苗字+名前のイニシャル）]. [記事名]. [ジャーナル名]. [発行年]; [巻]: [ページの範囲]</p>
+<p>ちなみに、書籍を引用するときは、以下のように書きます。</p>
+<p>[著者名（苗字+名前のイニシャル）]. [書籍名]. [版]. [出版社の所在地]: [出版社]; [出版年]</p>
+</div>
+</div>
+</div>
+</section>
+<section id="continuation-of-their-story" class="level3">
+<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<p><a href="../jp/study-design-1.html">Study design I</a></p>
+<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<p><a href="../jp/study-design-3.html">Study design III</a></p>
+<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-5.html">Study design V</a></p>
+<p><a href="clinical-trial-1.qmd">Clinical trial I</a></p>
+<p><a href="clinical-trial-2.qmd">Clinical trial II</a></p>
+<p><a href="clinical-trial-3.qmd">Clinical trial III</a></p>
+<p><a href="epidemiology-1.qmd">Epidemiology I</a></p>
+<p><a href="epidemiology-2.qmd">Epidemiology II</a></p>
+<p><a href="epidemiology-3.qmd">Epidemiology III</a></p>
+<p><a href="epidemiology-4.qmd">Epidemiology IV</a></p>
+<p><a href="../jp/logistic-regression-1.html">Regression I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Regression II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Regression III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Regression IV</a></p>
+<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
+<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
+<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
+<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">Publish a paper I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">Publish a paper II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">Publish a paper III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">Publish a paper IV</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
