@@ -324,6 +324,7 @@ Dad: “That’s a very good summary. If you bring me questions like that, I’m
 ::: voice-daughter
 Me: “Deal. I’ll bring the clinical mess, you translate it into statistics. Very efficient division of labor.”
 :::
+:::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" title="Clinical questions and research hypotheses"}
 

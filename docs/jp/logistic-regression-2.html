@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -126,7 +155,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#story-and-quiz-adjusting-for-bias-ii" id="toc-story-and-quiz-adjusting-for-bias-ii" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-ii">Story and Quiz − Adjusting for bias II</a>
   <ul class="collapse">
-  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
+  <li><a href="#どうしてオッズ比が無限大になっちゃったの" id="toc-どうしてオッズ比が無限大になっちゃったの" class="nav-link" data-scroll-target="#どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,225 +306,441 @@ a:hover {
 <section id="story-and-quiz-adjusting-for-bias-ii" class="level1">
 <h1>Story and Quiz − Adjusting for bias II</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias</p>
+<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing</p>
 </div>
 <hr>
-<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
+<section id="どうしてオッズ比が無限大になっちゃったの" class="level3">
+<h3 class="anchored" data-anchor-id="どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。以前、観察研究では交絡因子を調整しないといけない、とかいってたよね」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「ああ、そんな話もあったね」</p>
-<div class="voice-daughter">
-<p>私「でもさ、調整しないオッズ比も計算できるでしょ。どっちが正しいのかってどうやればわかるの？統計学の本を読んでも、書いてなくて」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それは統計学だけではわからない問題なんだ。データがどんな確率分布に従っているか、誰も知らないからね。因果推論や医学知識を使って判断すべき問題になる」</p>
-<div class="voice-daughter">
-<p>私「なにそれ？統計学の話じゃないの？ロジスティック回帰について聞いてるんだけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう思うよねえ。じゃあちょっと時間をかけて説明させてよ。」</p>
+<p>お父さん「あのさ、昨日のロジスティック回帰の表の続きをしない？コーヒー淹れたから」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いいけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「疫学の分野での話なんだけどね。40年前に、コーヒーが膵がんを増やすんじゃないか、っていう論文がでたことがある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いかにもありそうな話だね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲んでいる人のような曝露集団と、うまく比較できるようなコントロールを選ぶことは、ほとんどの場合難しい。だから、疫学の教科書では、コントロールと比較するときには、第3の因子が隠れていないかどうかに注意しなければいけないと書いてある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふんふん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それでは問題です。コーヒーと膵がんの論文で、実際に問題になった第3の因子はなんでしょう？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「え？えーっと」</p>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-1.png" class="img-fluid figure-img"></p>
-<figcaption>図2.png</figcaption>
-</figure>
-</div>
-<div class="voice-father">
-<p>お父さん「答えはこちら」</p>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-お父さんの答えは？
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-2.png" class="img-fluid figure-img"></p>
-<figcaption>図1.png</figcaption>
-</figure>
+<p>私「ん、いいよ。この表だよね」</p>
 </div>
 </div>
-</div>
-</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>パラメータ</th>
+<th>自由度</th>
+<th>推定値</th>
+<th>標準誤差</th>
+<th>95%信頼区間</th>
+<th>χ2</th>
+<th>p値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>1</td>
+<td>-27.25</td>
+<td>3.03</td>
+<td>-33.20～21.30</td>
+<td>80.55</td>
+<td>&lt;0.01</td>
+</tr>
+<tr class="even">
+<td>STOMA</td>
+<td>1</td>
+<td>1.41</td>
+<td>1.54</td>
+<td>-16.1～4.45</td>
+<td>0.84</td>
+<td>0.3588</td>
+</tr>
+<tr class="odd">
+<td>AGE</td>
+<td>1</td>
+<td>1.47</td>
+<td>1.48</td>
+<td>-1.42～4.36</td>
+<td>0.99</td>
+<td>0.3197</td>
+</tr>
+<tr class="even">
+<td>SEX</td>
+<td>1</td>
+<td>25.72</td>
+<td>0.00</td>
+<td>25.72～25.72</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>INCOME</td>
+<td>1</td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>-0.00～0.00</td>
+<td>0.58</td>
+<td>0.4481</td>
+</tr>
+</tbody>
+</table>
 <div class="dialogue">
+<div class="voice-father">
+<p>お父さん「この表は間違いじゃないんだけどもっとよくできる。表を作成するときには、情報が自然に入ってくるように、読者の立場で考えなくちゃ。具体的な注意点はこんなところかな」</p>
+</div>
+</div>
+<ul>
+<li>読者の立場で考える</li>
+<li>表のフォーマットに従う</li>
+<li>単位・表示桁数に気を配る</li>
+<li>表タイトル・脚注を利用して補足情報を伝える</li>
+<li>数え尽くしの原則を守る</li>
+</ul>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ロジスティック回帰からいろんな指標が出せるけど、表にはオッズ比、95%信頼区間、p値だけあれば普通はじゅうぶんだよ」</p>
+</div>
 <div class="voice-daughter">
-<p>私「へえ、そんな話があったんだ」</p>
+<p>私「それはこの表にも載ってるよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「じゃあさ、こういう第3の因子を無視して解析してしまうとどうなる？」</p>
+<p>お父さん「載っていません。この表の”推定値”は、みたところ回帰係数の値でしょ。それをオッズ比（odds ratio）に換算しないといけない。換算するには、回帰係数βの指数をとって、OR=exp(β)を求めればいい」</p>
+</div>
 <div class="voice-daughter">
-<p>私「それくらいわかるよ。バイアスが生じるんでしょ」</p>
+<p>私「そうなのか。ストーマのオッズ比はexp(1.41)=4.1倍ってことね。あれ？exp(25.72)を計算してみると、パソコンに表示できないくらいに大きい数字になったんだけど。ほとんど無限大に近い数字だ。性別の影響が強いのかな。年収はexp(-0.00)？なんか変だな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。こういう因子は、疫学では交絡因子（confounder）と呼ばれているんだけど、ロジスティック回帰で調整しないといけない。調整したときとしないときで、まったく違った結果が得られるっていう数値例を示そう」</p>
+<p>お父さん「これはよくあるトラブルだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そうなの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「復職しなかった患者さんはほとんど女性だったんじゃない？擬似完全分離（quasi-complete separation）っていう計算上の問題が起きちゃってて、性別の回帰係数を、うまく推定できていないんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
+<div class="callout callout-style-simple callout-note callout-titled" title="完全分離">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Simpsonのパラドックス
+完全分離
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのかみてみましょう。ここでは層別解析を用いて説明しますが、ロジスティック回帰でオッズ比を求めたときも、同じ計算結果になります（交互作用をうまく入れる必要がありますが）。</p>
-<p>表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
-<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
-<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
-<p>表1. 層別前の膵がんリスクとオッズ比</p>
+<p>ロジスティック回帰の回帰係数は、最尤法という汎用的な推定方法によって計算されます。ただし、データから必ずしも最尤法の解が求まるわけではありません。これが完全分離（complete separation）や擬似完全分離（quasi-complete separation）という問題です。完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。これらの問題が起きると、回帰係数が求まらなかったり、不安定だったりするわけですから、共変量の数の削減や、最尤法以外の推定方法の利用など、なんらかの対処が必要になります。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「というわけで、正しい計算ができていないわけだから、ロジスティック回帰の結果を示すのはやめた方がいい。性別だけじゃなくて年収も問題だね。単位が円のまま扱うと、桁が大きすぎて数字が読めない。単位を万円にして、年収が1万円増えたら復職率がどう変化するかを示すといいんじゃないかな。性別と年収の扱いは気になると思うけど、今はこれくらいにしよう。表の体裁を直してあげるよ」</p>
+</div>
+</div>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
 <th>オッズ比</th>
+<th>95%信頼区間</th>
+<th>p値</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>合計</td>
-<td></td>
+<td>ストーマなし</td>
+<td>（基準）</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>　膵がんあり</td>
-<td>15</td>
-<td>12</td>
+<td>ストーマあり</td>
+<td>4.13</td>
+<td>0.20～85.23</td>
+<td>0.36</td>
+</tr>
+<tr class="odd">
+<td>65歳未満</td>
+<td>（基準）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>65歳以上</td>
+<td>4.35</td>
+<td>0.24～78.60</td>
+<td>0.32</td>
+</tr>
+<tr class="odd">
+<td>女性</td>
+<td>（基準）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>男性</td>
+<td>∞</td>
+<td>∞～∞</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>　膵がんなし</td>
-<td>365</td>
-<td>868</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>3.9%</td>
-<td>1.4%</td>
-<td>3倍</td>
+<td>年収（万円）</td>
+<td>1.00</td>
+<td>0.98～1.01</td>
+<td>0.45</td>
 </tr>
 </tbody>
 </table>
-<p>表2. 層別後の膵がんリスクとオッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
-<th>オッズ比</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>14</td>
-<td>4</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>266</td>
-<td>76</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>5.0%</td>
-<td>5.0%</td>
-<td>1倍</td>
-</tr>
-<tr class="odd">
-<td>非喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>1</td>
-<td>8</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>99</td>
-<td>792</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>1.0%</td>
-<td>1.0%</td>
-<td>1倍</td>
-</tr>
-</tbody>
-</table>
+<p>*手術後1年以内の復職をアウトカムとした多変量ロジスティック回帰</p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あれ？オッズ比4.13倍ってことは、復職率がだいたい4倍になったってこと？そんなことある？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「違う違う。あのね、オッズ比はオッズの比をとったもの。オッズっていうのは、復職率を<span class="math inline">\(\pi\)</span>で表すと、それを<span class="math inline">\(\pi/(1-\pi)\)</span>と変換したものなんだ。<span class="math inline">\(\pi\)</span>が0に近いときは、オッズ比は<span class="math inline">\(\pi\)</span>の比に近い値になるんだけど、復職率の場合はそうじゃないよね。今回は、復職できない確率が約4倍になったって意味だよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「わかりにくいのう」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、どこに気を付けて手直ししたか説明するね。ロジスティック回帰では、共変量はなにで、どう扱ったかを正確に伝えることが大切なんだ。データをみると、年齢は65歳未満か以上かで分類した2値データみたいだね。そういうときは、何歳で分類したか、どの分類を基準にしたかわからないと、結果を読み取れない。また、連続データでは、忘れがちだけど単位が必要。年収の単位を円から万円にして、表に追記しておいたよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項1. フォーマット">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項1. フォーマット
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。</p>
+<p>数字の意味をわかりやすく伝えるためには、どこにどのような情報を配置するかに気を配るべきです。さきほどの表では、列が指標の種類を表すというシンプルな方針を採用しています。そのため、数字がオッズ比、95%信頼区間、p値に対応することが一目でわかります。また、必要な情報から順に読み取れるように、各行または各列の順序にも気を配りたいところです。</p>
+<p>ある程度大きな表であれば、情報はグループにわけられることが普通です。表のフォーマットも、グループが視覚的にわかりやすいように工夫できます。たとえば後に出てくる表1では、行と列でそれぞれグループ化がなされています。行をグループ化するときには字下げ（indent）を用います。性別の内訳を示すために字下げがなされていますよね。また、列をグループ化するときにはスパナ（spanner）を用います。“ストーマ保有者”、“ストーマ非保有者”といった列の見出しを、スパナヘッド（spanner head）といいます。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項2. 単位・表示桁数">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項2. 単位・表示桁数
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。</p>
+<p>数字の表示桁数は、ある程度桁数やルールが統一されていなければ、印象を悪くします。統計ソフトウェアが出力する数字は桁数が大きいことがありますが、そのまま表に示す必要はありません。有効数字2桁または3桁か、もともとの測定値より桁数を1桁大きく示すのが基本です。</p>
+<p>日本工業規格（Z 9041-1:1999）によると、平均の有効数字は、測定値より1～2桁大きく、標準偏差の有効数字は、最大でも3桁程度といわれています。つまり、むやみに数字の表示桁数を増やしても精確性が増すわけではないのです。年齢を例に挙げると、測定単位は「歳」なので、小数点1桁まで示すとよいでしょう。表1の年齢の平均・標準偏差では、そのようになっています。p値については、小数点以下2桁か3桁まで報告すれば、有意水準（0.05が多い）との大小関係が読み取ることができるので、必要十分でしょう。</p>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</p>
+<p>私「表の作り方をご助言いただけるのはありがたいんだけどさ、肝心のロジスティック回帰はどうすればいいんだろ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう、交絡因子を無視して、間違った研究結果を報告してしまうとまずいでしょ。もうひとつ注目してほしいのが、喫煙とコーヒーの関連。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
+<p>お父さん「擬似完全分離を避けるには、共変量の数を削らすのがわかりやすい。今回はサンプルサイズが不足しているみたいだから、他の共変量はすべて使わないで、単にストーマ造設と復職率だけの関連を調べたらどうかな？その場合も、通常の<span class="math inline">\(\chi^2\)</span>検定は使わない方がいいよ。Fisherの正確検定とClopper-Pearson信頼区間っていう方法が推奨されている」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="2値データの解析においてサンプルサイズが不足したときの指針">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2値データの解析においてサンプルサイズが不足したときの指針
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>ロジスティック回帰の共変量の数を減らす（目安としてパラメータの数のおよそ5倍のイベント数が必要）</li>
+<li><span class="math inline">\(\chi^2\)</span>検定ではなくFisher正確検定を用いる</li>
+<li>2項分布に基づく信頼区間（Clopper-Pearson信頼区間）を用いる（田中2022）</li>
+</ul>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「でも、ロジスティック回帰で交絡因子を調整しなさいっていったのはお父さんなんだよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、それは重要な問題だよね。じゃあ、ストーマ保有者と非保有者で、年齢、性別、年収の分布がどれくらい違うかをまず確認しようか。前にも話したとおり、年収を尋ねたことでバイアスが生じていないかとか、年収を尋ねて欠測が多いんじゃないかとか、いろいろ気になるし。もし分布が揃ってたら、調整しなくても影響は小さいかもしれない」</p>
 </div>
 <div class="voice-daughter">
-<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」**</p>
+<p>私「あ、その表なら資料にあるよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。もし仮に、 コーヒー摂取・非摂取という介入をランダムに割付けるランダム化介入試験を行ったらどうなると思う？」</p>
+<p>お父さん「じゃあ、あとはストーマ造設と復職率の関連を表にするだけだね。資料には、以下の表1と表2を載せればいいよ」</p>
+</div>
+</div>
+<p>表1. 20XX～20YY年にZZ病院で手術を受け、がんサバイバー復職率調査に回答した直腸がん患者80人の背景因子の記述</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>ストーマ保有者（N=20）</th>
+<th>ストーマ非保有者（N=60）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>年齢（歳）</td>
+<td>57.0 (8.6)</td>
+<td>65.5 (10.4)</td>
+</tr>
+<tr class="even">
+<td>65歳以上</td>
+<td>10.0%</td>
+<td>51.7%</td>
+</tr>
+<tr class="odd">
+<td>性別</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　男性</td>
+<td>35.0%</td>
+<td>53.3%</td>
+</tr>
+<tr class="odd">
+<td>　女性</td>
+<td>60.0%</td>
+<td>46.7%</td>
+</tr>
+<tr class="even">
+<td>　不明</td>
+<td>5.0%</td>
+<td>0.0%</td>
+</tr>
+<tr class="odd">
+<td>年収（万円）</td>
+<td>508 (77)</td>
+<td>514 (101)</td>
+</tr>
+</tbody>
+</table>
+<p>*平均（SD）または%</p>
+<p>表2. 直腸がん患者のうちストーマ保有者20人と非保有者60人の復職率の比較</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 7%">
+<col style="width: 28%">
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>N</th>
+<th>1年以内に復職せず</th>
+<th>復職率</th>
+<th>95%信頼区間*</th>
+<th>p値†</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ストーマあり</td>
+<td>20</td>
+<td>1</td>
+<td>95.0%</td>
+<td>75.1～99.9%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ストーマなし</td>
+<td>60</td>
+<td>2</td>
+<td>96.7%</td>
+<td>88.5～99.6%</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<p>*Clopper-Pearson法</p>
+<p>†Fisher正確検定</p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「集団のアウトカムを比較したいときは、その前に表1のようにそれぞれの集団の背景因子を記述するべきだよ。ストーマ保有者は20人しかいなくて、非保有者に比べて、平均年齢が低くて、女性が多いわけだ。やっぱり最終的にはロジスティック回帰で、背景因子の違いを調整しないといけないかもね。現時点での調査の回答率はどうだった？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「両群で喫煙割合は、ほぼ同じになるはず」</p>
+<p>私「調査票は100人に送って、80人から回収できたから、回答率は80%かな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。そうすると、ランダム化介入試験で得られるオッズ比は、喫煙・非喫煙別の結果を平均することになるから、全体でも1倍に近い結果になると予想される。つまり、層別する前のオッズ比3倍という結果は、コーヒーではなく喫煙が真の原因となって生じた見かけの関連なので、層別した後のオッズ比が正しい。だから、ロジスティック回帰で調整オッズ比を求めるべきなんだ」</p>
+<p>お父さん「項目ごとの無回答（item non-response）についてはどう？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そっか、調査票を回収できたかと、項目ごとの回答があったかは別だもんね。年齢は全員回答してくれたよ。性別は1人記入していなかった。項目ごとの回答数まで、表に示した方がよかった？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ううん、論文ではそこまで細かい数字は示さないことが多い。重要な変数が欠測してたりするなら別だけどね。たとえばさ、ロジスティック回帰を行うとき、性別不明はどう扱ったの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「統計ソフトウェアのマニュアル調べたら、欠測は自動的に除外されるんだって」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうすると解析対象の人数が80人じゃなくて79人に減るんだから、表を作るときにそこを説明しておかないといけないんじゃない？一般に、ロジスティック回帰の結果を示す表だけだと、どんなデータかわかりにくいっていう問題がある。復職できなかったのは3人しかいないって、表2をみるまで気づかなかったよ？まだ1施設からのデータしか集まってないからでしょ。それじゃあロジスティック回帰はしたくてもできないよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確かにね。そのあたりの状況を、読者に伝えなきゃって気持ちが足りなかったみたい」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項3. 表タイトル・脚注">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項3. 表タイトル・脚注
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。</p>
+<p>表には様々な数字が示されますから、どういった指標かわかりにくいときがしばしばあります。もしかしたら、複雑な統計手法から計算されたものかもしれません。データを解析するために用いた統計手法は、方法のセクションで説明することが基本ですが、読者への配慮として、表の脚注（footnote）を利用することもあります。表1でいえば、括弧内の数字の意味は自明ではないので、“平均（SD）または%”と脚注がついていますよね。表2の脚注には、どの統計手法を用いて信頼区間とp値を計算したかが説明されています。このように読者にとってなじみのない指標や表現には、補足説明が必要です。</p>
+<p>脚注を参照するための記号には、a、b、cまたは*、†、‡、§、¶を用いるのが正式です。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項4. 数え尽くしの原則">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項4. 数え尽くしの原則
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。</p>
+<p>統計家の間では、数え尽くしの原則（principle of exhaustion）という言葉があります。分類変数の分類が複雑だったり、欠測データがあったりするときには、分類ひとつひとつの人数を合計し、それが全体の人数に合うかどうかを確認せよ、というのがこの原則の教えです。最初に作成した表では人数が示されておらず、どのようなデータが解析されたのかわかりません。一方、表1・表2では、何人が解析対象で、何人が復職したのかが記述されています。さらに、数え尽くすと全体80人や100%に一致することから、正しく集計されたことが読み取れます。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ちなみにお父さん、もし”臨床疑問と研究仮説”で例を挙げてくれたときの研究仮説3みたいに、研究の目的が復職率と関連する因子の探索だとしたら、何か変わることはある？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「どんな特徴を持った患者が、復職が難しいのか、予測因子をみつけたいってことかな。予測因子の候補となるデータがあるなら、それをロジスティック回帰の共変量に入れることで、予測因子の探索を行うことができるよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うんうん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「予測因子の探索では、特定の因子に関心がないってことが第一の違いだよ。ストーマと復職率の関連を調べるときは、ストーマのオッズ比やp値を求めることがゴールでしょ。予測因子の探索では、予測因子の候補をできるだけたくさん集めて、どの因子をモデルに入れたら予測精度が高いか、逆にどの因子は要らないかを調べることがゴールになる。これを変数選択っていうんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ゴールは違ってもさ、p値を使えばよくない？有意な因子をモデルに入れたらいいんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうやり方もあるけどね。予測2乗誤差、ROC曲線、AICといった予測精度の指標はいっぱいあって、それを利用することも多い。もうひとつ注意した方がいいのは、予測因子の候補や、どのような基準で変数選択するかを、事前に決めておくこと。事前に決めておかないと、どうしても研究者の主観が入っているんじゃないかって批判されるからね」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -516,7 +763,7 @@ Simpsonのパラドックス
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -525,7 +772,7 @@ Simpsonのパラドックス
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>
@@ -534,6 +781,13 @@ Simpsonのパラドックス
 </div>
 </div>
 </div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
 <p><a href="../jp/study-design-1.html">Study design I</a></p>
@@ -570,11 +824,6 @@ Simpsonのパラドックス
 <p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
-</section>
-</div>
-</div>
-</div>
-</div>
 </section>
 </section>
 

@@ -191,6 +191,7 @@ window.Quarto = {
   <li><a href="#story-and-quiz-frequentist-thinking-v" id="toc-story-and-quiz-frequentist-thinking-v" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-v">Story and Quiz − Frequentist thinking V</a>
   <ul class="collapse">
   <li><a href="#あれ何人に調査すればいいんだろう" id="toc-あれ何人に調査すればいいんだろう" class="nav-link" data-scroll-target="#あれ何人に調査すればいいんだろう">あれ？何人に調査すればいいんだろう</a></li>
+  <li><a href="#サンプルサイズ設計によるβエラーの制御" id="toc-サンプルサイズ設計によるβエラーの制御" class="nav-link" data-scroll-target="#サンプルサイズ設計によるβエラーの制御">サンプルサイズ設計によるβエラーの制御</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#end-of-the-episode-on-frequentist-thinking" id="toc-end-of-the-episode-on-frequentist-thinking" class="nav-link" data-scroll-target="#end-of-the-episode-on-frequentist-thinking">End of the episode on Frequentist thinking</a></li>
   </ul></li>
@@ -436,9 +437,7 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「そうだね。でも、正確にいうと、αエラー・βエラーは”統計学的に有意”とかp値とかとは、直接関係する概念じゃない。別に、効果があるかどうか判定する基準は、p値じゃなくてもいいわけだからね。ポイントはね、</p>
 <blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>p&lt;0.05は、αエラーだけをコントロールする基準</p>
-</blockquote>
+<p>p&lt;0.05は、αエラーだけを制御する基準</p>
 </blockquote>
 <p>だってこと」</p>
 </div>
@@ -457,6 +456,9 @@ a:hover {
 <p>ややこしいのですが、JCOG9502では症例登録に予定より時間がかかったため、有意水準10%、つまり全生存期間の片側p値を0.1と比べる方式が採用されました。この方式では、LTAに延命効果がなくても、100回に10回はαエラーが生じてしまい、LTAが有効と判定してしまうことになります。つまり、有意水準が5%から10%に高くなると、判断を誤る確率が増える代わりに、サンプルサイズが小さくて済むわけです。</p>
 </div>
 </div>
+</section>
+<section id="サンプルサイズ設計によるβエラーの制御" class="level3">
+<h3 class="anchored" data-anchor-id="サンプルサイズ設計によるβエラーの制御">サンプルサイズ設計によるβエラーの制御</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「ナプキンに描いてくれた表自体はわかるんだけどね。そこからαとかβとか確率とかいわれてもなあ。ついていけないな」</p>
@@ -476,9 +478,7 @@ a:hover {
 <div class="voice-father">
 <p>お父さん「そういうこと。βエラーは0.1か0.2が一般的かな。米国SWOGの統計家たちは、教科書で以下のように述べている（Green, et al.&nbsp;2013）。</p>
 <blockquote class="blockquote">
-<blockquote class="blockquote">
 <p>新しい治療法が見つかることはさほど多くないため、我々は原則として90%の検出力を推奨している</p>
-</blockquote>
 </blockquote>
 <p>検出力90%はβエラー0.1のことね」</p>
 </div>

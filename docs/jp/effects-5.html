@@ -191,6 +191,7 @@ window.Quarto = {
   <li><a href="#story-and-quiz-effects-and-time-v" id="toc-story-and-quiz-effects-and-time-v" class="nav-link active" data-scroll-target="#story-and-quiz-effects-and-time-v">Story and Quiz − Effects and time V</a>
   <ul class="collapse">
   <li><a href="#リスクと時間の関係" id="toc-リスクと時間の関係" class="nav-link" data-scroll-target="#リスクと時間の関係">リスクと時間の関係</a></li>
+  <li><a href="#ハザード比が意味を持つとき持たないとき" id="toc-ハザード比が意味を持つとき持たないとき" class="nav-link" data-scroll-target="#ハザード比が意味を持つとき持たないとき">ハザード比が意味を持つとき、持たないとき</a></li>
   <li><a href="#end-of-the-episode-on-effects-and-time" id="toc-end-of-the-episode-on-effects-and-time" class="nav-link" data-scroll-target="#end-of-the-episode-on-effects-and-time">End of the episode on Effects and time</a></li>
   </ul></li>
   </ul>
@@ -515,6 +516,9 @@ cifplot()によるKaplan-Meier曲線
 <p>お父さん「そうだね、たとえるならハザードはコーヒーにとっての気温みたいなもの。寒いとコーヒーが覚める時間が短くなる。これがハザードが高いってこと。正確に逆数になるのは、指数分布の下で計算するときだけどね。ハザード比は、まさにハザードの比をとったものだよ。2つの集団の生存曲線を比較するときに使う」</p>
 </div>
 </div>
+</section>
+<section id="ハザード比が意味を持つとき持たないとき" class="level3">
+<h3 class="anchored" data-anchor-id="ハザード比が意味を持つとき持たないとき">ハザード比が意味を持つとき、持たないとき</h3>
 <div class="callout callout-style-simple callout-note callout-titled" title="リスクとハザード比の関係">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -613,7 +617,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs 0 
+stoma, WITH STOMA vs WITHOUT STOMA 
                       1.367       
                       [1.006, 1.856]
                       (p=0.045)   
@@ -635,7 +639,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs 0 
+stoma, WITH STOMA vs WITHOUT STOMA 
                       1.126       
                       [0.744, 1.704]
                       (p=0.576)   
@@ -657,7 +661,7 @@ nleqslv.message       Function criterion near zero</code></pre>
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
-stoma, WITH STOMA vs 0 
+stoma, WITH STOMA vs WITHOUT STOMA 
                       1.078       
                       [0.720, 1.613]
                       (p=0.714)   
