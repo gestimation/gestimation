@@ -342,6 +342,8 @@ These are **clinical questions**. To turn them into research, we want to re-expr
 
 That’s exactly what **PICO/PECO** helps you write down.
 
+---
+
 #### Example: Research hypothesis 1
 
 Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within one year** between those with and without a stoma?
@@ -355,6 +357,7 @@ Here you’d compare the return-to-work proportion between the stoma and non-sto
 
 What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.  
 Having a clear comparison group improves interpretability. 
+
 ---
 
 #### Example: Research hypothesis 2
@@ -366,7 +369,8 @@ Among cancer patients after curative surgery, does providing a guidebook on bala
 - C: Did not receive the guidebook  
 - O: Returned to work within one year after surgery (yes/no)
 
-Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
+Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability..
+
 ---
 
 #### Example: Research hypothesis 3 (exploratory)
