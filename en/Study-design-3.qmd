@@ -215,7 +215,7 @@ Me: “And OS is just time to death.”
 :::
 
 ::: voice-father
-Dad: “Right. So if you look at 3-year OS and 3-year DFS for the same trial. Then, 3-year DFS ≤ 3-year OS, because DFS counts *more things* as events.”
+Dad: “Right. So if you look at 3-year OS and 3-year DFS for the same trial, 3-year DFS is always less than or equal to 3-year OS, because DFS counts more things as events.”
 :::
 
 ::: voice-daughter
@@ -300,7 +300,8 @@ Dad: “Let’s use R again. We’ll simulate two groups with and without stoma.
 - CIR curves with death as the competing risk
 
 ::: {.callout-note appearance="simple" title="Generating simulated data with relapse"}
-The following code defines a “function” generate_data() in R that produces three types of survival outcomes involving not only death but also recurrence. The OS event is “death,” the RFS event is “death and recurrence.” The CIR event is “recurrence,” but death is treated as a competing risk. Note that generate_data() and this simulation data will be reused in future explanations.
+
+The following code defines an R function, `generate_data()`, that produces a binary variable, stoma, and three related survival outcomes, OS, RFS and CIR. We’ll reuse `generate_data()` and this simulated dataset in later episodes.
 
 - Stoma: binary, from a binomial distribution using `rbinom()`  
 
@@ -421,7 +422,7 @@ Me: “The curve for relapse looks a bit like a survival curve turned upside dow
 :::
 
 ::: voice-father
-Dad: “Visually, yes. But conceptually it’s different. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate **cumulative incidence functions** with the Aalen–Johansen method, which respects the fact that death is another type of event. Other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”
+Dad: “Visually, yes. But conceptually it’s different. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate **cumulative incidence functions** with the Aalen–Johansen method, which respects the fact that death is another type of event. In other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”
 :::
 
 ::: voice-daughter
@@ -459,7 +460,7 @@ Dad: “That’s a healthy attitude.”
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
-In oncology, one common outcome is **progression-free survival (PFS)**. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:
+This one is about how we define progression and events in trials using **progression-free survival (PFS)**. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:
 
 - the progression date according to the **central review**, and  
 - the progression date according to the **local investigator**.

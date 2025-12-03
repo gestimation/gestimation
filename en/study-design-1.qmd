@@ -369,7 +369,7 @@ Among cancer patients after curative surgery, does providing a guidebook on bala
 - C: Did not receive the guidebook  
 - O: Returned to work within one year after surgery (yes/no)
 
-Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability..
+Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
 
 ---
 
