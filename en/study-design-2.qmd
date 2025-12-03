@@ -134,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -150,8 +150,8 @@ a:hover {
 
 # Study design II − Data Have Types
 
-::: serif-block
-　　　　　　　　Keywords: outcome, simulation
+::: {.serif-block .text-right}
+Keywords: outcome, simulation
 :::
 
 ------------------------------------------------------------------------

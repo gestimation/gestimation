@@ -134,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -149,10 +149,9 @@ a:hover {
 :::
 # Study design 5 − When Bias Creeps In
 
-::: serif-block
-　　　　　　　　Keywords: confounding, observational study, simulation, survival/competing-risk, study design
+::: {.serif-block .text-right}
+Keywords: confounding, observational study, simulation, survival/competing-risk, study design
 :::
-
 ------------------------------------------------------------------------
 
 ### 調査で気をつけておくべきバイアス

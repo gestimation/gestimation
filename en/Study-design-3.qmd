@@ -134,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -151,8 +151,8 @@ a:hover {
 
 # Study design III − A First Step into Survival and Competing Risks Analysis with R
 
-::: {.serif-block}
-　　　　　　　　Keywords: clinical trial, outcome, simulation, survival/competing-risk
+::: {.serif-block .text-right}
+Keywords: clinical trial, outcome, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------

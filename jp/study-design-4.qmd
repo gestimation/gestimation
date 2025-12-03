@@ -134,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -150,10 +150,9 @@ a:hover {
 
 # Study design IV − The Bridge from Data Collection to Analysis
 
-::: serif-block
-　　　　　　　　Keywords: generalized linear model, outcome, simulation, survival/competing-risk
+::: {.serif-block .text-right}
+Keywords: generalized linear model, outcome, simulation, survival/competing-risk
 :::
-
 ------------------------------------------------------------------------
 
 ### 調査項目とデータの型

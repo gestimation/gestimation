@@ -134,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -150,8 +150,8 @@ a:hover {
 
 # Study design I − A Story of Coffee Chat and Research Hypothesis
 
-::: serif-block
-　　　　　　　　Keywords: observational study, outcome, study design
+::: {.serif-block .text-right}
+Keywords: observational study, outcome, study design
 :::
 
 ------------------------------------------------------------------------
