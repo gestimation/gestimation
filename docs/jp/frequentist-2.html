@@ -142,6 +142,17 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <span class="menu-text">cifmodeling</span></a>
   </li>  
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-story-and-quiz-(en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Story and Quiz (EN)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-story-and-quiz-(en">    
+        <li>
+    <a class="dropdown-item" href="../en/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-story-and-quiz-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Story and Quiz (JP)</span>
     </a>
@@ -441,18 +452,20 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 150 
+  n= 200, number of events= 143 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
-stomaWITH STOMA 0.2589    1.2956   0.1678 1.543    0.123
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3676    1.4442   0.1721 2.136   0.0327 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.296     0.7719    0.9325       1.8
+stomaWITH STOMA     1.444     0.6924     1.031     2.024
 
-Concordance= 0.535  (se = 0.023 )
-Likelihood ratio test= 2.34  on 1 df,   p=0.1
-Wald test            = 2.38  on 1 df,   p=0.1
-Score (logrank) test = 2.39  on 1 df,   p=0.1</code></pre>
+Concordance= 0.543  (se = 0.024 )
+Likelihood ratio test= 4.48  on 1 df,   p=0.03
+Wald test            = 4.56  on 1 df,   p=0.03
+Score (logrank) test = 4.61  on 1 df,   p=0.03</code></pre>
 </div>
 </div>
 </div>

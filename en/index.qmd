@@ -157,7 +157,7 @@ Each story can be reproduced with R code. Whether you want to learn deeply or ju
 Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.
 
 - [Study design I](study-design-1.qmd)
-- [Study design II](study-design-2.qmd)
+- [Study design II] (coming soon)
 - [Study design III]
 - [Study design IV]
 - [Study design V]

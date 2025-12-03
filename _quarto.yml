@@ -16,6 +16,11 @@ website:
         text: Home
       - text: "cifmodeling"
         href: https://gestimation.github.io/cifmodeling/
+        
+      - text: Story and Quiz (EN)
+        menu:
+          - text: Study design
+            href: en/study-design-1.qmd
       - text: Story and Quiz (JP)
         menu:
           - text: Study design
