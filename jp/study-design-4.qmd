@@ -392,3 +392,11 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 
 - [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12271)
 
+
+### エピソード
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.qmd)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]

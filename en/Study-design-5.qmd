@@ -434,10 +434,11 @@ Dad: “As long as the coffee keeps coming, deal.”
 
 ---
 
-### Continuation of their story
+### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
-- [Study design I](study-design-1.html)  
-- [Study design II](study-design-2.html)  
-- [Study design III](study-design-3.html)  
-- [Study design IV](study-design-4.html)  
-- [Study design V](study-design-5.html)
+- [Reading a Paper over a Cup of Coffee]
+- [P-Value Explanations That Seem Plausible at First Glance]
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Understanding Confidence Intervals via Hypothetical Replications in R]
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+

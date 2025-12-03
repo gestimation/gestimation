@@ -153,142 +153,145 @@ a:hover {
 ::: {.serif-block .text-right}
 Keywords: generalized linear model, outcome, simulation, survival/competing-risk
 :::
-
----
+------------------------------------------------------------------------
 
 ### Turning a questionnaire into “data”
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
 Me: “Hey Dad, quick question. And yes, there’s coffee.”
+:::
 
+::: voice-father
 Dad: “Then I’m listening.”
+:::
 
-Me: “You remember that **return-to-work survey** for cancer survivors?  
-I finally drafted the questionnaire we’re going to mail from our hospital.  
-Can you take a look and tell me if it’s… statistically suicidal?”
+::: voice-daughter
+Me: “You remember that return-to-work survey for cancer survivors? I finally drafted the questionnaire we’re going to mail from our hospital. Can you take a look and tell me if it’s...statistically suicidal?”
+:::
 
-Dad: “Let’s see.”
+::: voice-father
+Dad: “Let’s see...How exactly are you going to define the **return-to-work proportion**?”
+:::
 
-*(He reads quietly for a minute.)*
-
-Dad: “How exactly are you going to define the **return-to-work rate**?”
-
+::: voice-daughter
 Me: “That’s already a hard question?”
+:::
 
+::: voice-father
 Dad: “Yup. It always is.”
+:::
 
-Me: “Okay… here’s how I was thinking.  
-Among all patients who had curative surgery,  
-I want to know who **has returned to work** and who **hasn’t**  
-within a certain time period.  
+::: voice-daughter
+Me: “Okay...here’s how I was thinking. Among all patients who had curative surgery, I want to know who **has returned to work** and who **hasn’t** within a certain time period. I don’t want to restrict the denominator to only those who *say* they want to go back to work, because some people might have given up because of workplace issues.”
+:::
 
-I don’t want to restrict the denominator  
-to only those who *say* they want to go back to work,  
-because some people might have given up because of workplace issues.”
+::: voice-father
+Dad: “Good. That’s a thoughtful choice. So what time window are you using?”
+:::
 
-Dad: “Good. That’s a thoughtful choice.  
-So what time window are you using?”
-
-Me: “I don’t want to use ‘survey date’ because  
-the response timing will vary a lot between patients.  
-So I was thinking of defining it as:
+::: voice-daughter
+Me: “I don’t want to use ‘survey date’ because the response timing will vary a lot between patients. So I was thinking of defining it as:
 
 > ‘Returned to work within 1 year after surgery.’
 
-And then I realized…  
-I should probably ask for the **actual date of return-to-work** in the questionnaire.”
+And then I realized... I should probably ask for the **actual date of return-to-work** in the questionnaire.”
+:::
 
-Dad: “Yes, that date is very useful.  
+::: voice-father
+Dad: “Yes, that date is very useful. If you have it, you can turn the same answer into:"
+:::
 
-If you have it, you can turn the same answer into:
+- Categorical data (returned within 1 year: yes/no)
+- Survival data (time from discharge to return-to-work)
 
-- **Categorical data**  
-  (returned within 1 year: yes/no), and  
-- **Survival time data**  
-  (time from discharge to return-to-work).”
+::: voice-daughter
+Me: “Two birds with one question. Efficient. What about patients who **die** after surgery, though?”
+:::
 
-Me: “Two birds with one question. Efficient.  
-What about patients who **die** after surgery, though?”
+::: voice-father
+Dad: “Important point. If someone dies after your **time origin**, you shouldn’t quietly drop them from the denominator. That would create bias—especially in a cancer survivor study.”
+:::
 
-Dad: “Important point.  
-If someone dies after your **time origin**,  
-you shouldn’t quietly drop them from the denominator.  
-
-That would create bias—especially in a cancer survivor study.”
-
+::: voice-daughter
 Me: “So what should I do?”
+:::
 
-Dad: “In longitudinal studies for cancer patients, I always tell people:
+::: voice-father
+Dad: “In follow-up studies of cancer patients, I always tell people:"
+:::
 
-1. Decide a clear **time origin**  
-   – for you, I’d recommend the **discharge date**.  
-2. Decide a **follow-up period**  
-   – here, ‘1 year after discharge’.  
-3. Make a serious effort to collect outcome information  
-   for **all patients** in P, including deaths.
+1. Decide a clear **time origin** – for you, I’d recommend the **discharge date**.  
+2. Decide a **follow-up period** – here, ‘1 year after discharge’.  
+3. Make a serious effort to collect outcome information for **all patients** in the target population, including deaths.
 
-If P is ‘rectal cancer patients after curative surgery at our hospital’,  
-you want to know what happened to *all* of them,  
-not just the ones who kindly mail back questionnaires.”
+::: voice-father
+Dad: “If the target population is ‘rectal cancer patients after curative surgery at our hospital’, you want to know what happened to *all* of them, not just the ones who kindly mail back questionnaires.”
+:::
 
-Me: “Right. I don’t want to design a study  
-where the only people included are those with good energy and good stationery habits.”
-
----
+::: voice-daughter
+Me: “Right. I don’t want to design a study where the only people included are those with good energy and good stationery habits.”
+:::
 
 ### Categorical data vs survival time data
 
-Dad: “Let’s organize this a bit.  
-What is your **outcome** in this study?”
+::: voice-father
+Dad: “Let’s organize this a bit. What is your **outcome** in this study?”
+:::
 
+::: voice-daughter
 Me: “The main one is:
 
 > Returned to work within one year after discharge (yes/no).”
+:::
 
-Dad: “Perfect.  
-That gives you **binary data**:
+::: voice-father
+Dad: “Perfect. That gives you binary data. You can then compute the **return-to-work proportion** in each group, and compare them.”
+:::
 
-- 1 = returned within 1 year  
-- 0 = did not return within 1 year
-
-You can then compute:
-
-- the **return-to-work proportion** in each group, and  
-- compare them.”
-
+::: voice-daughter
 Me: “Including patients who died, as ‘did not return’, right?”
+:::
 
-Dad: “Yes, as long as that’s clearly defined and consistent.  
-
-But if you want a richer picture,  
-you could use **three categories** instead of just two:
+::: voice-father
+Dad: “Yes, as long as that’s clearly defined and consistent. But if you want a richer picture,  
+you could use **three categories** instead of just two:”
 
 1. Returned within 1 year  
 2. Alive but did not return within 1 year  
 3. Died within 1 year without returning to work
 
-That already separates ‘can’t work because I died’  
-from ‘still alive but didn’t go back’.”
+::: voice-father
+Dad: "That already separates ‘can’t work because I died’ from ‘still alive but didn’t go back’.”
+:::
 
+::: voice-daughter
 Me: “Okay, that does sound more honest.”
+:::
 
-Dad: “Now, if you also collect the **date of return-to-work**,  
-you can create **survival time data**.”
+::: voice-father
+Dad: “Now, if you also collect the **date of return-to-work**, you can create **survival data**.”
+:::
 
+::: voice-daughter
 Me: “Even though the event is not ‘death’?”
+:::
 
-Dad: “Right.  
-‘Survival time’ is a bit misleading as a name.  
-
-Statistically, what matters is:
+::: voice-father
+Dad: “Right. ‘Survival time’ is a bit misleading as a name. Statistically, what matters is:
 
 > time from the **time origin** to the **event of interest**.
 
 In your case, the event is ‘return-to-work’.”
+:::
 
+::: voice-daughter
 Me: “So if someone is discharged on April 1  
 and returns to work on April 30,  
 time-to-event = 30 days.”
+:::
 
+::: voice-father
 Dad: “Exactly.  
 
 Now think about patients who haven’t returned to work  
@@ -296,10 +299,14 @@ by the time you close the survey.
 
 For them, **time-to-return** isn’t observed yet.  
 That’s where **censoring** comes in.”
+:::
 
+::: voice-daughter
 Me: “Right. They’re still in limbo.”
+:::
 
-Dad: “So survival time data always comes as a **pair**:
+::: voice-father
+Dad: “So survival data always comes as a **pair**:
 
 - a time variable, and  
 - an **event indicator**.
@@ -308,9 +315,13 @@ For example:
 
 - time = min( time to return-to-work, time to last follow-up )  
 - event = 1 if returned, 0 if not returned by last follow-up.”
+:::
 
+::: voice-daughter
 Me: “And where do **deaths** go in that picture?”
+:::
 
+::: voice-father
 Dad: “There are two ways to think about it.
 
 1. A simple approach:  
@@ -322,10 +333,13 @@ Dad: “There are two ways to think about it.
 2. A more refined approach: **competing risks**.  
    Here, death is not just ‘censored’—  
    it’s a **competing event** that prevents return-to-work from happening.”
+:::
 
-Me: “Competing risks again.  
-You really like those.”
+::: voice-daughter
+Me: “Competing risks again. You really like those.”
+:::
 
+::: voice-father
 Dad: “They show up a lot in medical data.  
 
 If you treat all deaths as just censored,  
@@ -335,13 +349,17 @@ you’re implicitly saying:
 > would be the same as for people still alive.’
 
 In reality, that’s often not true.”
+:::
 
+::: voice-daughter
 Me: “Yeah, that would be… optimistic.”
+:::
 
 ---
 
 ### A quick map of data types and methods
 
+::: voice-father
 Dad: “Since we’ve talked about data types a few times now,  
 let’s draw a little map.  
 
@@ -350,10 +368,15 @@ Say we’re thinking about:
 - what kind of **outcome** we have,  
 - whether we have **repeated measurements**, and  
 - whether we need to **adjust for confounding**.”
+:::
 
+::: voice-daughter
 Me: “This sounds like the part where you normally pull out a slide.”
+:::
 
+::: voice-father
 Dad: “Today we get the short version.”
+:::
 
 | Data type         | Repeated within person? | Confounding? | Typical methods                        |
 |-------------------|-------------------------|--------------|----------------------------------------|
@@ -369,6 +392,7 @@ Dad: “Today we get the short version.”
 | Competing risks   | No                      | No           | Aalen–Johansen curve (cumulative incidence) |
 | Competing risks   | No                      | Yes          | Fine–Gray model                        |
 
+::: voice-daughter
 Me: “So for my study:
 
 - ‘Returned to work within 1 year (yes/no)’  
@@ -379,7 +403,9 @@ Me: “So for my study:
 
 And if I treat death as a competing risk for return-to-work,  
 I’d use an Aalen–Johansen curve for descriptive stuff?”
+:::
 
+::: voice-father
 Dad: “Exactly.  
 That’s already a good grasp of the landscape.”
 
@@ -387,8 +413,11 @@ That’s already a good grasp of the landscape.”
 
 ### Repeated measurements and confounding
 
+::: voice-daughter
 Me: “Where do repeated measures come in?”
+:::
 
+::: voice-father
 Dad: “Imagine you use the same questionnaire  
 multiple times for each patient:
 
@@ -399,21 +428,27 @@ multiple times for each patient:
 Then you’d have multiple data points **within each person**.  
 Those are **correlated** — your own responses are more similar to each other  
 than to some random patient’s.”
+:::
 
+::: voice-daughter
 Me: “So I can’t just pretend they’re all independent.”
+:::
 
-Dad: “Right.  
-That’s when you use methods like:
+::: voice-father
+Dad: “Right. That’s when you use methods like:
 
 - **random-effects (mixed) models**, or  
 - **GEE (generalized estimating equations)**.
 
 They’re built to handle within-person correlation.”
+:::
 
+::: voice-daughter
 Me: “And confounding is the ‘third variable’ that messes with the comparison, right?”
+:::
 
-Dad: “Exactly.  
-Suppose older patients are both:
+::: voice-father
+Dad: “Exactly. Suppose older patients are both:
 
 - more likely to have a stoma, and  
 - less likely to return to work.
@@ -424,54 +459,47 @@ your estimated effect of stoma will be **biased**.
 That’s where logistic regression or Cox regression  
 —with age and other factors—  
 helps you **adjust for confounding**.”
+:::
 
+::: voice-daughter
 Me: “So in randomized trials, we use randomization  
 to balance those things in advance.  
 
 But in observational studies like mine,  
 we depend more on modeling and design.”
+:::
 
-Dad: “Precisely.  
-That’s the big difference between ‘trial world’ and ‘real-world data’.”
+::: voice-father
+Dad: “Precisely. That’s the big difference between ‘trial world’ and ‘real-world data’.”
+:::
 
----
 
-### A quiz related to this episode
-
-In which situation is the **Kaplan–Meier method** appropriate  
-for estimating a survival curve?
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+In which situation is the **Kaplan–Meier method** appropriate for estimating a survival curve?
 
 1. When survival times follow a normal distribution.  
 2. When the reasons for censoring are unrelated to prognosis.  
-3. When the censoring proportions of two groups  
-   do not differ significantly in a statistical test.  
-4. When the proportional hazards assumption holds  
-   between the treatment and control groups.  
+3. When the censoring proportions of two groups do not differ significantly in a statistical test.  
+4. When the proportional hazards assumption holds between the treatment and control groups.  
+:::
 
-**Answer**
 
-The correct answer is **2**.
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+- The correct answer is **2**.
 
-Kaplan–Meier does **not** require:
+The Kaplan–Meier method does **not** require:
 
 - normality of survival times (that’s more for t-tests), nor  
 - proportional hazards (that’s a key assumption for the Cox model).
 
-What it *does* assume is that **censoring is non-informative**:
+What it *does* assume is that **censoring is non-informative**. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.
+:::
 
-> Being censored is essentially independent  
-> of the patient’s underlying risk of the event.
 
-If sicker patients are more likely to be lost to follow-up,  
-or if follow-up intensity depends strongly on prognosis,  
-Kaplan–Meier curves can become biased.
+### Episodes
 
----
-
-### Continuation of their story
-
-- [Study design I](study-design-1.html)  
-- [Study design II](study-design-2.html)  
-- [Study design III](study-design-3.html)  
-- [Study design IV](study-design-4.html)  
-- [Study design V](study-design-5.html)
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.qmd)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
