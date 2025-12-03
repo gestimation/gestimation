@@ -1,0 +1,442 @@
+---
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# From Coffee Chat to Research − Study design II
+
+::: serif-block
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
+:::
+
+------------------------------------------------------------------------
+
+### Data have types
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “Okay, coffee is ready. Can I borrow you a bit longer?”
+::: 
+
+::: voice-father
+Dad: “If coffee is involved, yes.”
+::: 
+
+::: voice-daughter
+Me: “You said something earlier that stuck with me. That *which R function we use depends on the outcome*. I didn’t really get that. In the end, aren’t all data just ... numbers?”
+::: 
+
+::: voice-father
+Dad: “They’re all numbers, yes. But for statistics, the **type of data** matters a lot. Very roughly, we use four big categories."
+::: 
+::::::::::::::::::::::::::::::::: 
+
+- Continuous data
+- Binary / categorical data
+- Count data
+- Survival time data
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “Continuous data is things we **measure**, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”
+::: 
+
+::: voice-father
+Dad: “Perfect. **Count data** is when you literally count events, like the number of traffic accidents. **Survival data** is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”
+::: 
+
+::: voice-daughter
+Me: “When you say it like that, they definitely feel like different beasts. But in the R course I took, we just typed whatever they put on the slides — `t.test()`, `glm()`, `survfit()`... It all felt like a spellbook.”
+::: 
+
+::: voice-father
+Dad: “That’s a common side effect of R lectures. Do you have your laptop?”
+::: 
+
+::: voice-daughter
+Me: “That sounds like the beginning of homework.”
+::: 
+
+::: voice-father
+Dad: “Let’s just say "a practical demonstration". Bring it here — we’ll install RStudio if it’s not there.”
+::: 
+
+::: voice-daughter
+Me: “I knew this was coming. Look, I know my stats skills are still beginner level, and I *do* need R for my own research. So fine, I’ll get my laptop. But I expect maximum efficiency from this session.”
+::: 
+
+::: voice-father
+Dad: “I’ll try. In R, for **continuous data**, we often use `mean()` and `t.test()`.”
+::: 
+
+::: voice-daughter
+Me: “Those at least sound familiar.”
+::: 
+
+::: voice-father
+Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival time data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
+::: 
+
+::: voice-daughter
+Me: “There’s no way I can memorize all that. I’ll just mix everything up again.”
+::: 
+
+::: voice-father
+Dad: “You don’t need to memorize every function name.”
+::: 
+
+::: voice-daughter
+Me: “I like where this is going.”
+::: 
+
+::: voice-father
+Dad: “What you *do* want is a rough map in your head. If you can picture the **data type**, the appropriate R functions become much easier to remember.”
+::: 
+
+::: voice-daughter
+Me: “So instead of memorizing spells, I should recognize the kind of creature I’m dealing with.”
+::: 
+
+::: voice-father
+Dad: “Exactly. And one more layer down, we’re also thinking about **probability distributions**.”
+::: 
+
+::: voice-daughter
+Me: “Ah, here comes the math.”
+::: 
+
+::: voice-father
+Dad: “Nothing too heavy.  
+You’ve heard of the **normal distribution**, right?”
+::: 
+
+::: voice-daughter
+Me: “That one survived from undergrad, yes.”
+::: 
+
+::: voice-father
+Dad: “For statistics, we imagine that behind the data there’s some **probability distribution**:
+
+- Continuous data: often normal distribution
+- Binary data: binomial distribution 
+- Count data: Poisson distribution
+- Survival data: there’s no single standard, but a simple one is the exponential distribution. Otherwise described as a **nonparametric** distribution. 
+
+You don’t have to remember the formulas, just the general matching. ”
+::: 
+:::::::::::::::::::::::::::::::::
+
+- continuous: normal-ish  
+- yes/no: binomial-ish  
+- counts: Poisson-ish
+- survival: nonparametric
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “So how does that help with R?”
+::: 
+
+::: voice-father
+Dad: “For example, we often talk about **proportions** and **rates** in medicine. We casually throw around words like prevalence or mortality rate. But in statistics they are clearly different. "
+::: 
+:::::::::::::::::::::::::::::::::
+
+- Proportion: a parameter of binomial distribution  
+- Rate: a parameter of Poisson distribution
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “But in normal conversation, proportion and rate are almost interchangeable.”
+::: 
+
+::: voice-father
+Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A **proportion** is something you’d express as a **percentage**, such as "60% of the participants were women." A **rate** relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
+::: 
+
+::: voice-daughter
+Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”
+::: 
+
+::: voice-father
+Dad: “Exactly. And with that in mind, let’s do a small R demo — nothing painful.”
+::: 
+
+::: voice-daughter
+Me: “You always say that right before something painful.”
+::: 
+
+::: voice-father
+Dad: “We’ll simulate age (continuous data), sex, stoma (binary data) and survival time. Then we’ll run some basic summaries.”
+::: 
+
+::: voice-daughter
+Me: “Okay. I’ll type what you tell me, but I want to understand the big picture, not just more spells.”
+::: 
+
+::: voice-father
+Dad: “Deal. First, a quick note about R packages. To **install** a package on your computer, you use `install.packages()`. To **use** an installed package in your current session, you use `library()`. R’s like a bookshelf."
+::: 
+:::::::::::::::::::::::::::::::::
+
+- `install.packages()`: buy the book and put it on the shelf  
+- `library()`: pull the book off the shelf and open it.”
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “So install is a one-time thing, and `library()` is what I run each time I actually use it.”
+::: 
+
+::: voice-father
+Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans **every single morning**.”
+::: 
+
+::: voice-daughter
+Me: “No, thank you. Okay, show me the simulated data.”
+::: 
+:::::::::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple" title="Generating simulated data"}
+
+Here we’ll use R to create a simple dataset and run basic analyses for **continuous**, **binary**, and **survival** data. The theme is a two-group comparison: patients with and without a stoma.
+
+- Age: continuous, from a normal distribution using `rnorm()`  
+
+- Sex, stoma: binary, from a binomial distribution using `rbinom()`  
+
+- Survival time: from an exponential distribution using `rexp()`
+
+
+```{r warning=FALSE}
+set.seed(46)
+
+# Stoma: 1 = with stoma, 0 = without stoma
+stoma <- rbinom(200, size = 1, prob = 0.4)
+
+# Sex: 0 = WOMAN, 1 = MAN
+sex <- rbinom(200, size = 1, prob = 0.5)
+
+# Age: normal distribution (stoma group slightly older)
+age <- rnorm(200, mean = 65 + 3 * stoma, sd = 8)
+
+# Survival time: exponential distribution
+#   expected survival 10 years (with stoma) vs 15 years (without)
+hazard <- ifelse(stoma == 1, 1 / 10, 1 / 15)
+time   <- rexp(200, rate = hazard)
+
+# Random censoring: 0 = censored, 1 = event
+status <- rbinom(200, size = 1, prob = 0.9)
+
+dat <- data.frame(
+  age    = age,
+  sex    = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+  stoma  = factor(stoma, levels = c(0, 1),
+                  labels = c("WITHOUT STOMA", "WITH STOMA")),
+  time   = time,
+  status = status
+)
+
+head(dat)
+```
+:::
+
+
+::: {.callout-note appearance="simple" title="Summarizing continuous and binary data"}
+
+First, let’s describe age and sex in the stoma vs non-stoma groups using a *histogram* and *contingency table*. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.
+
+```{r warning=FALSE}
+# install.packages("ggplot2") # if needed
+library(ggplot2)
+
+ggplot(dat, aes(x = age, fill = stoma)) +
+geom_histogram(alpha = 0.5, position = "identity", bins = 10) +
+labs(x = "AGE", y = "FREQUENCY", fill = "STOMA") +
+theme_minimal()
+
+table(STOMA = dat$stoma, SEX = dat$sex)
+```
+:::
+
+::: {.callout-note appearance="simple" title="Summarizing survival data with survival curves"}
+
+
+For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw **the Kaplan–Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
+
+# devtools::install_github("gestimation/cifmodeling") # if needed
+
+```{r warning=FALSE}
+# devtools::install_github("gestimation/cifmodeling") # If necessary
+library(cifmodeling)
+cifplot(Event(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+
+From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.
+
+1.  0～24%
+2.  25～49%
+3.  50～74%
+4.  75～100%
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="Answer"}
+-   The correct answer is **2**.
+
+According to the review by Kim and Prasad (2016), 31 out of 83 products were reported to have been approved based on response rate results. Furthermore, the breakdown of endpoints differs between standard approval and accelerated approval. For standard approval, 48 out of 55 products were evaluated based on overall survival, progression-free survival, or disease-free survival. In contrast, for accelerated approval, the majority of products were based on Phase II trial results where response rate was the primary endpoint.
+:::
+
+### Reference
+
+- Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration's approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7
+
+### Continuation of their story
+
+[Study design I](study-design-1.qmd)
+
+[Study design II](study-design-2.qmd)
+
