@@ -158,11 +158,11 @@ a:hover {
 
 研究は「どんな問いを立てるか」から始まります。PICO/PECO、アウトカムの選び方、バイアスの防ぎ方...。娘は父に研究の出発点について尋ねます。
 
-- [Study design I](study-design-1.qmd)
-- [Study design II](study-design-2.qmd)
-- [Study design III]　【12/8公開予定】
-- [Study design IV]　【12/15公開予定】
-- [Study design V]　【12/15公開予定】
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R]　【12/8公開予定】
+- [Outcomes: The Bridge from Data Collection to Analysis]　【12/15公開予定】
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/22公開予定】
 
 このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
 
@@ -172,22 +172,23 @@ a:hover {
 
 がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の思想**を父は語ります。
 
-- [Frequentist thinking I]
-- [Frequentist thinking II]
-- [Frequentist thinking III]
-- [Frequentist thinking IV]
-- [Frequentist thinking V]
+
+- [Reading a Paper over a Cup of Coffee]
+- [P-Value Explanations That Seem Plausible at First Glance]
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Understanding Confidence Intervals via Hypothetical Replications in R]
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
 ### 3. Effects and time — 効果は時間とともに
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。
 因果推論に先立って立体的なデータの見方が静かに育ちます。
 
-- [Effects and time I]
-- [Effects and time II]
-- [Effects and time III]
-- [Effects and time IV]
-- [Effects and time V]
+- [Silent Confusions Hidden in Percentages]
+- [Who Is This Percentage About? Target Populations and Attributable Fractions]
+- [Collapsibility of Effect Measures in Marginal and Stratified Tables]
+- [Risk Ratios and Odds Ratios: When Approximation Works]
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
 ### 4. Adjusting for bias — 回帰分析の風景
 
@@ -197,6 +198,7 @@ a:hover {
 - [Adjusting for bias II]
 - [Adjusting for bias III]
 - [Adjusting for bias IV]
+- [Adjusting for bias V]
 
 ### 5. Causal inference — 因果を見つけるために
 
@@ -206,6 +208,7 @@ a:hover {
 - [Causal inference II]
 - [Causal inference III]
 - [Causal inference IV]
+- [Causal inference V]
 
 ### 6. The Craft of Research — 研究の営み
 

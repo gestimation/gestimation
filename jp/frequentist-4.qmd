@@ -214,7 +214,7 @@ Keywords: clinical trial, simulation, study design, survival/competing-risk
 :::
 
 
-::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
@@ -265,7 +265,7 @@ generate_data <- function(n=200, hr1, hr2) {
 :::
 
 
-::: {.callout-note appearance="simple"  collapse="true" title="generate_data()とcoxph()を呼んでシミュレーションを行うcalculate_coverage()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="calculate_coverage()のコードはこちら（generate_data()とcoxph()を呼んでシミュレーションを実行）"}
 ```{r warning=FALSE}
 calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true) {
   set.seed(46)

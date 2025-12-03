@@ -207,8 +207,7 @@ $S(x)=\mathrm{exp}(-\lambda x)$
 $\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)$
 :::
 
-
-::: {.callout-note appearance="simple" collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)

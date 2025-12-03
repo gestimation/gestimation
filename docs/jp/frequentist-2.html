@@ -390,13 +390,13 @@ coxph()を用いたハザード比の推定
 <p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="データ生成に用いるgenerate_data()のコードはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-データ生成に用いるgenerate_data()のコードはこちら
+generate_data()のコードはこちら（データ生成に使用）
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -472,20 +472,20 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 147 
+  n= 200, number of events= 143 
 
-                  coef exp(coef) se(coef)    z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5085    1.6627   0.1684 3.02  0.00253 **
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
+stomaWITH STOMA 0.5531    1.7387   0.1719 3.218  0.00129 **
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.663     0.6014     1.195     2.313
+stomaWITH STOMA     1.739     0.5752     1.241     2.435
 
-Concordance= 0.573  (se = 0.023 )
-Likelihood ratio test= 9.09  on 1 df,   p=0.003
-Wald test            = 9.12  on 1 df,   p=0.003
-Score (logrank) test = 9.31  on 1 df,   p=0.002</code></pre>
+Concordance= 0.572  (se = 0.023 )
+Likelihood ratio test= 9.98  on 1 df,   p=0.002
+Wald test            = 10.36  on 1 df,   p=0.001
+Score (logrank) test = 10.61  on 1 df,   p=0.001</code></pre>
 </div>
 </div>
 </div>

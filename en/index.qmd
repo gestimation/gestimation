@@ -165,11 +165,11 @@ Each story can be reproduced with R code. Whether you want to learn deeply or ju
 
 Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.
 
-- [Study design I](study-design-1.qmd)
-- [Study design II] (coming soon)
-- [Study design III]
-- [Study design IV]
-- [Study design V]
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R] (coming soon)
+- [Outcomes: The Bridge from Data Collection to Analysis]
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
 
@@ -179,21 +179,22 @@ You can download the full R script for this episode here. If you are curious abo
 
 Using a cancer clinical trial as a running example, the father talks about the **frequentist idea** of “what would happen to these numbers if we could repeat the study many times?”
 
-- [Frequentist thinking I]
-- [Frequentist thinking II]
-- [Frequentist thinking III]
-- [Frequentist thinking IV]
-- [Frequentist thinking V]
+- [Reading a Paper over a Cup of Coffee]
+- [P-Value Explanations That Seem Plausible at First Glance]
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Understanding Confidence Intervals via Hypothetical Replications in R]
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
 ### 3. Effects and time — How effects evolve
 
 Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and **effects that change over time** are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.
 
-- [Effects and time I]
-- [Effects and time II]
-- [Effects and time III]
-- [Effects and time IV]
-- [Effects and time V]
+- [Silent Confusions Hidden in Percentages]
+- [Who Is This Percentage About? Target Populations and Attributable Fractions]
+- [Collapsibility of Effect Measures in Marginal and Stratified Tables]
+- [Risk Ratios and Odds Ratios: When Approximation Works]
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
+
 
 ### 4. Adjusting for bias — The landscape of regression
 
@@ -203,6 +204,7 @@ Here we meet **logistic regression for adjustment** and **confounding** — what
 - [Adjusting for bias II]
 - [Adjusting for bias III]
 - [Adjusting for bias IV]
+- [Adjusting for bias V]
 
 ### 5. Causal inference — Thinking about “what if”
 
@@ -212,6 +214,7 @@ Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor pa
 - [Causal inference II]
 - [Causal inference III]
 - [Causal inference IV]
+- [Causal inference V]
 
 ### 6. The Craft of Research — The work of doing research
 

@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 03 Dec 2025 07:50:12 GMT</lastBuildDate>
+<lastBuildDate>Wed, 03 Dec 2025 08:55:12 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -420,7 +420,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Wed, 03 Dec 2025 07:50:12 GMT</pubDate>
+  <pubDate>Wed, 03 Dec 2025 08:55:12 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -1141,7 +1141,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Wed, 03 Dec 2025 07:50:12 GMT</pubDate>
+  <pubDate>Wed, 03 Dec 2025 08:55:12 GMT</pubDate>
 </item>
 </channel>
 </rss>
