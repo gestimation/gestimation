@@ -163,7 +163,7 @@ Dad: “If coffee is involved, yes.”
 ::: 
 
 ::: voice-daughter
-Me: “You said something earlier that stuck with me. That which *R function we use depends on the outcome*. I didn’t really get that. In the end, aren’t all data just ... numbers?”
+Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just ... numbers?”
 ::: 
 
 ::: voice-father
@@ -198,7 +198,7 @@ Me: “That sounds like the beginning of homework.”
 ::: 
 
 ::: voice-father
-Dad: “Let’s just say "a practical demonstration". Bring it here — we’ll install RStudio if it’s not there.”
+Dad: “Let’s just say it’s a practical demonstration. Bring it here — we’ll install RStudio if it’s not there.”
 ::: 
 
 ::: voice-daughter
@@ -259,7 +259,7 @@ Dad: “For statistics, we imagine that behind the data there’s some probabili
 - Continuous data: often **normal distribution**
 - Binary data: **binomial distribution**
 - Count data: **Poisson distribution**
-- Survival data: there’s no single standard, but a simple one is the **exponential distribution**. Otherwise described as a **nonparametric** distribution. 
+- Survival data: there’s no single standard, but a simple one is the **exponential distribution**. Often, though, we just treat it **nonparametrically** without any specific distributions. 
 
 You don’t have to remember the formulas, just the general matching. ”
 ::: 
@@ -289,7 +289,7 @@ Me: “But in normal conversation, proportion and rate are almost interchangeabl
 ::: 
 
 ::: voice-father
-Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as "60% of the participants were women." A rate relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
+Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as “60% of the participants were women.” A rate relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
 ::: 
 
 ::: voice-daughter
@@ -313,7 +313,7 @@ Me: “Okay. I’ll type what you tell me, but I want to understand the big pict
 ::: 
 
 ::: voice-father
-Dad: “Deal. First, a quick note about R packages. To **install** a package on your computer, you use `install.packages()`. To **use** an installed package in your current session, you use `library()`. R’s like a bookshelf."
+Dad: “Deal. First, a quick note about R packages. To **install** a package on your computer, you use `install.packages()`. To **use** an installed package in your current session, you use `library()`. R is like a bookshelf."
 ::: 
 :::::::::::::::::::::::::::::::::
 
@@ -398,7 +398,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 
 ::: {.callout-note appearance="simple" title="Summarizing survival data with survival curves"}
 
-For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw **the Kaplan–Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
+For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw **the Kaplan–Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
 
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") # if needed

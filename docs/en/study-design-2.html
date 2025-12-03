@@ -334,7 +334,7 @@ a:hover {
 <p>Dad: “If coffee is involved, yes.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “You said something earlier that stuck with me. That which <em>R function we use depends on the outcome</em>. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
+<p>Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
@@ -363,7 +363,7 @@ a:hover {
 <p>Me: “That sounds like the beginning of homework.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Let’s just say”a practical demonstration”. Bring it here — we’ll install RStudio if it’s not there.”</p>
+<p>Dad: “Let’s just say it’s a practical demonstration. Bring it here — we’ll install RStudio if it’s not there.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “I knew this was coming. Look, I know my stats skills are still beginner level, and I <em>do</em> need R for my own research. So fine, I’ll get my laptop. But I expect maximum efficiency from this session.”</p>
@@ -410,7 +410,7 @@ a:hover {
 <li>Continuous data: often <strong>normal distribution</strong></li>
 <li>Binary data: <strong>binomial distribution</strong></li>
 <li>Count data: <strong>Poisson distribution</strong></li>
-<li>Survival data: there’s no single standard, but a simple one is the <strong>exponential distribution</strong>. Otherwise described as a <strong>nonparametric</strong> distribution.</li>
+<li>Survival data: there’s no single standard, but a simple one is the <strong>exponential distribution</strong>. Often, though, we just treat it <strong>nonparametrically</strong> without any specific distributions.</li>
 </ul>
 <p>You don’t have to remember the formulas, just the general matching. ”</p>
 </div>
@@ -441,7 +441,7 @@ a:hover {
 <p>Me: “But in normal conversation, proportion and rate are almost interchangeable.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as”60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
+<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”</p>
@@ -459,7 +459,7 @@ a:hover {
 <p>Me: “Okay. I’ll type what you tell me, but I want to understand the big picture, not just more spells.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Deal. First, a quick note about R packages. To <strong>install</strong> a package on your computer, you use <code>install.packages()</code>. To <strong>use</strong> an installed package in your current session, you use <code>library()</code>. R’s like a bookshelf.”</p>
+<p>Dad: “Deal. First, a quick note about R packages. To <strong>install</strong> a package on your computer, you use <code>install.packages()</code>. To <strong>use</strong> an installed package in your current session, you use <code>library()</code>. R is like a bookshelf.”</p>
 </div>
 </div>
 <ul>
@@ -582,7 +582,7 @@ Summarizing survival data with survival curves
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
+<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") # if needed</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>

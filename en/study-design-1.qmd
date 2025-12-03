@@ -395,7 +395,7 @@ When formulating study design, the Latin expression “ceteris paribus” often 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 -   The correct answer is **3**.
 
-The concept of “ceteris paribus” is almost equal to the conditions of compatibility. 
+The concept of “ceteris paribus” is very close to the idea of **comparability** between groups.
 :::
 
 ### Continuation of their story
