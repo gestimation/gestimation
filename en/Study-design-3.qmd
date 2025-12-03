@@ -1,109 +1,244 @@
-# Story and Quiz − Study design III
-
-Keywords: OS/PFS/DFS/response, survival/competing risks, clinical trial
-
 ---
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# From Coffee Chat to Research − Study design III
+
+::: serif-block
+　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing risks, clinical trial
+:::
+
+------------------------------------------------------------------------
 
 ### What exactly is an “outcome”?
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
 Me: “Hey Dad, can I pick your brain again?”
+:::
 
+::: voice-father
 Dad: “That depends. Is there coffee involved?”
+:::
 
-Me: “Already poured.  
-So… about *outcomes*.  
+::: voice-daughter
+Me: “Already poured. So... about outcomes. In journal club, all these abbreviations show up: **OS**, **DFS**, **RFS**, **PFS**... Everyone talks like they’re obvious, but I’m honestly fuzzy on the details. I know they’re supposed to be outcomes, but what’s really different between things like **DFS** and **RFS**? You deal with these all the time, right?” 
+:::
 
-In journal club, all these abbreviations show up: **OS**, **DFS**, **RFS**, **PFS**…  
-Everyone talks like they’re obvious, but I’m honestly fuzzy on the details.  
+::: voice-father
+Dad: “I do. The one you probably see most is **OS**: overall survival. Then there’s **disease-free survival (DFS)** and **relapse-free survival (RFS)**.”
+::: 
 
-I know they’re supposed to be outcomes,  
-but what’s really different between things like **DFS** and **RFS**?  
-You deal with these all the time, right?”
-
-Dad: “I do.  
-The one you probably see most is **OS**: overall survival.  
-
-Then there’s:
-
-- **DFS**: disease-free survival  
-- **RFS**: relapse-free survival.”
-
+::: voice-daughter
 Me: “RFS sounds like ‘number of days until relapse’ in my head.”
+:::
 
-Dad: “If we literally meant ‘number of days until relapse’,  
-we’d probably call it **relapse-free time**.  
-You’ll also see terms like **cumulative incidence of relapse (CIR)**.”
+::: voice-father
+Dad: “If we literally meant ‘number of days until relapse’, we’d probably call it **relapse-free time**. You’ll also see terms like **cumulative incidence of relapse (CIR)**.”
+:::
 
+::: voice-daughter
 Me: “Acronyms are multiplying, not shrinking. Help.”
+:::
 
-Dad: “Let’s slow it down.  
+::: voice-father
+Dad: “Let’s slow it down. In survival analysis, we’re always looking at **time from some origin to an event**. The twist is what we call an **event**. For **DFS**, we often count as events:
+:::
 
-In survival analysis, we’re always looking at **time from some origin to an event**.  
-The twist is what we call an **event**.
+- recurrence
+- second primary cancer
+- death
 
-For **DFS**, we often count as events:
-
-- recurrence,  
-- second primary cancer, and  
-- death.
-
+::: voice-father
 We’re asking:  
+> ‘How long do patients stay alive without recurrence and without second cancer?’”
+:::
 
-> ‘How long do patients stay alive **without recurrence and without second cancer**?’”
+::: voice-daughter
+Me: “So if someone gets a second cancer, that’s already an event in DFS, even if they’re alive.”
+:::
 
-Me: “So if someone gets a second cancer,  
-that’s already an event in DFS, even if they’re alive.”
+::: voice-father
+Dad: “Exactly. For **RFS**, it’s usually:
+:::
 
-Dad: “Exactly.
+- recurrence
+- death
 
-For **RFS**, it’s usually:
+::: voice-father
+Dad: “Second cancers generally don’t count as events there.”
+:::
 
-- **recurrence**, and  
-- **death**.
+::: voice-daughter
+Me: “And OS is just time to death.”
+:::
 
-Second cancers generally don’t count as events there.”
+::: voice-father
+Dad: “Right. So if you look at 3-year OS and 3-year DFS for the same trial. Then, 3-year DFS ≤ 3-year OS, because DFS counts *more things* as events.”
+:::
 
-Me: “And OS is just: time to death, period.”
+::: voice-daughter
+Me: “Got it. But from a patient’s point of view, ‘no recurrence and no second cancer’ sounds pretty important. So DFS feels meaningful. RFS... I’m less sure. And death is obviously the most serious event of all.”
+:::
 
-Dad: “Right.  
+::: voice-father
+Dad: “Agreed. But notice:
+:::
 
-So if you look at 3-year OS and 3-year DFS for the same trial:
+- If someone **relapses** and later dies, they’re already an event in RFS at the time of relapse, even before death.  
 
-- 3-year **DFS** ≤ 3-year **OS**,  
-  because DFS counts **more things** as events.”
+- If someone dies **before relapse**, the cause might be an infection, accident, or something unrelated to the original cancer.”
 
-Me: “Got it.  
-But from a patient’s point of view,  
-‘no recurrence and no second cancer’ sounds pretty important.  
-
-So DFS feels meaningful.  
-RFS… I’m less sure.  
-And death is obviously the most serious event of all.”
-
-Dad: “Agreed.  
-But notice:
-
-- If someone **relapses** and later dies,  
-  they’re already an event in RFS at the time of relapse,  
-  even before death.  
-
-- If someone dies **before relapse**,  
-  the cause might be an infection, accident,  
-  or something unrelated to the original cancer.”
-
+::: voice-daughter
 Me: “So not all deaths are equal in terms of ‘cancer story’.”
+:::
 
-Dad: “Exactly.  
+::: voice-father
+Dad: “Exactly. Let me show you a simplified table of common **survival endpoints in cancer trials**. Think of it as a map, not a legal document.”
+:::
 
-Let me show you a simplified table  
-of common **survival endpoints in cancer trials**.  
-Think of it as a map, not a legal document.”
-
----
-
-### Major survival endpoints in oncology (conceptual map)
-
-| Endpoint                           | What counts as an event? (conceptually)                          |
+| Endpoint                           | What counts as an event?                          |
 |-----------------------------------|-------------------------------------------------------------------|
 | Overall survival (**OS**)         | Death from any cause                                             |
 | Progression-free survival (**PFS**)| Progression/relapse **or** death                                 |
@@ -112,106 +247,102 @@ Think of it as a map, not a legal document.”
 | Disease-free survival (**DFS**)   | Relapse, second cancer, **or** death                             |
 | Event-free survival (**EFS**)     | Death, induction failure, relapse, second cancer (depends on trial) |
 
-Dad: “The key idea is:
+::: voice-father
+Dad: “The key idea is:”
+:::
 
-- OS cares only about **death**.  
-- DFS cares about **any recurrence / second cancer / death**.  
-- RFS sits in between.”
+- OS cares only about **death** 
+- DFS cares about **any recurrence / second cancer / death**
+- RFS sits in between
 
-Me: “Okay, that really helps.  
-And the **time origin** is… usually when treatment starts?”
+::: voice-daughter
+Me: “Okay, that really helps. And the **time origin** is... usually when treatment starts?”
+:::
 
-Dad: “Good question.  
+::: voice-father
+Dad: “Good question. Common choices for the **time origin** are:”
+:::
 
-Common choices for the **time origin** are:
+- date of **surgery**  
+- date of **randomization/registration** in a trial  
+- date of **diagnosis**
 
-- date of **surgery**,  
-- date of **randomization/registration** in a trial,  
-- or sometimes date of **diagnosis**.
+::: voice-father
+Dad: “For **postoperative adjuvant therapy**, using the **date of surgery** is natural. If you used date of discharge instead, deaths before discharge would be invisible in your analysis, which can be a big problem.”
+:::
 
-For **postoperative adjuvant therapy**,  
-using the **date of surgery** is natural.  
+::: voice-daughter
+Me: “So if I’m evaluating adjuvant chemo after surgery, time zero = surgery date is the cleanest. If I pick a weird origin, I’m basically throwing away part of the story.”
+:::
 
-If you used date of discharge instead,  
-deaths before discharge would be invisible in your analysis,  
-which can be a big problem.”
+::: voice-father
+Dad: “Exactly. Time origin is like the zero point on your ruler: if you set it wrong, all the distances become hard to interpret.”
+:::
 
-Me: “So if I’m evaluating adjuvant chemo after surgery,  
-time zero = surgery date is the cleanest.  
-If I pick a weird origin, I’m basically throwing away part of the story.”
 
-Dad: “Exactly.  
-Time origin is like the zero point on your ruler:  
-if you set it wrong, all the distances become hard to interpret.”
+### Survival analysis and competing risks analysis
 
----
-
-### Simulating OS, RFS, and relapse incidence (CIR)
-
+::: voice-father
 Dad: “Want to see how OS, RFS, and CIR behave in data?”
+:::
 
+::: voice-daughter
 Me: “That’s a dangerous question, but yes.”
+:::
 
-Dad: “Let’s use R again.  
-We’ll simulate two groups:
-
-- **With stoma**  
-- **Without stoma**
-
-We’ll give the stoma group a higher risk of:
-
-- **relapse** and  
-- **death**
-
-and see how that shows up in:
+::: voice-father
+Dad: “Let’s use R again. We’ll simulate two groups with and without stoma. We’ll give the stoma group a higher risk of relapse and death. And see how that shows up in:”
+:::
+:::::::::::::::::::::::::::::::::
 
 - OS curves  
 - RFS curves  
-- **cumulative incidence of relapse** (CIR).”
+- CIR curves with death as the competing risk
 
----
+::: {.callout-note appearance="simple" title="Generating simulated data with relapse"}
+The following code defines a “function” generate_data() in R that produces three types of survival outcomes involving not only death but also recurrence. The OS event is “death,” the RFS event is “death and recurrence.” The CIR event is “recurrence,” but death is treated as a competing risk. Note that generate_data() and this simulation data will be reused in future explanations.
 
-### R code: generating data with relapse and death
+- Stoma: binary, from a binomial distribution using `rbinom()`  
 
-```r
-generate_data <- function(n = 200, hr1, hr2) {
-  # Stoma: 1 = with stoma, 0 = without stoma
+- Survival time: from an exponential distribution using `rexp()` (calculated from random numbers for t_relapse, t_death, t_censoring)
+
+In a previous episode, we summarized survival data without competing risks, and we used the Kaplan-Meier curve for that, right? In contrast, for analyzing data with competing risks, it is formally correct to use the Aalen-Johansen curve instead of the Kaplan-Meier curve.
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="Code of generate_data() used for data generation"}
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
   stoma <- rbinom(n, size = 1, prob = 0.4)
-  # Sex: 0 = WOMAN, 1 = MAN
   sex <- rbinom(n, size = 1, prob = 0.5)
-  # Age: normal distribution (stoma group slightly older)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
-
-  # Hazards for relapse and death
-  # (larger hazard = earlier event)
-  hazard_relapse   <- ifelse(stoma == 1, hr1 * 0.10, 0.10)
-  hazard_death     <- ifelse(stoma == 1, hr2 * 0.10, 0.10)
-  hazard_censoring <- 0.05
-
-  # Latent times to relapse, death, and censoring
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # hazard for relapse
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # hazard for death
+  hazard_censoring <- 0.05                               # hazard for censoring
+  
+  # Latent times to relapse, death, and censoring ----------------
   t_relapse   <- rexp(n, rate = hazard_relapse)
   t_death     <- rexp(n, rate = hazard_death)
   t_censoring <- rexp(n, rate = hazard_censoring)
 
-  ## --- Overall survival (OS) ---
+  ## --- Overall survival (OS) -----------------------------------
   time_os   <- pmin(t_death, t_censoring)
   status_os <- as.integer(t_death <= t_censoring)  # 1 = death, 0 = censored
-
-  ## --- Relapse-free survival (RFS) ---
-  time_rfs   <- pmin(t_relapse, t_death, t_censoring)
+  
+  ## --- Relapse-free survival (RFS) -----------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
   status_rfs <- integer(n)
-  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1  # relapse
-  status_rfs[time_rfs == t_death   & time_rfs < t_censoring] <- 1  # death
-
-  ## --- Cumulative incidence of relapse (CIR) ---
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # relapse
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # death
+  
+  ## --- Cumulative incidence of relapse (CIR) -------------------
   time_cir <- pmin(t_relapse, t_death, t_censoring)
-
-  # 1 = relapse (event of interest), 2 = death (competing risk)
+  
   status_cir <- integer(n)
-  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1
-  status_cir[time_cir == t_death   & time_cir < t_censoring] <- 2
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # relapse
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # death (competing risk)
 
-  data.frame(
+  dat <- data.frame(
     id         = 1:n,
     sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
     age        = age,
@@ -225,172 +356,134 @@ generate_data <- function(n = 200, hr1, hr2) {
     status_cir = status_cir
   )
 }
+```
+:::
 
 
-Kaplan–Meier curves for OS and RFS
-# devtools::install_github("gestimation/cifmodeling") # if needed
+::: {.callout-note appearance="simple"  title="Kaplan–Meier curves for OS"}
+Since OS and RFS are standard survival data, we will describe them using **Kaplan–Meier curves**, as before, using the `cifplot()` function from the `cifmodeling` package.
+
+```{r warning=FALSE}
+# devtools::install_github("gestimation/cifmodeling") # if needed 
 library(cifmodeling)
-
 set.seed(46)
-dat <- generate_data(hr1 = 2, hr2 = 1.5)
+dat <- generate_data(hr1=2, hr2=1.5)
 
-# Overall survival (OS)
-cifplot(
-  Event(time_os, status_os) ~ stoma,
+cifplot(Event(time_os, status_os) ~ stoma,
   data         = dat,
   outcome.type = "survival",
   label.y      = "Overall survival"
 )
+```
+:::
 
-# Relapse-free survival (RFS)
-cifplot(
-  Event(time_rfs, status_rfs) ~ stoma,
+::: {.callout-note appearance="simple"  title="Kaplan–Meier curves for RFS"}
+
+```{r}
+cifplot(Event(time_rfs, status_rfs) ~ stoma,
   data         = dat,
   outcome.type = "survival",
   label.y      = "Relapse-free survival"
 )
+```
+:::
 
+::: {.callout-note appearance="simple"  title="Aalen-Johansen curves for CIR"}
 
-With stoma: higher hazards → lower curves
+The following code inputs the risk of recurrence by coding `Event(time_cir, status_cir)`.
 
-OS curve lies above the RFS curve,
-because RFS counts more kinds of events
+- `status_cir=1` : Event of interest (recurrence)
+- `status_cir=2` : Competing risk (death not experiencing recurrence)
+- `status_cir=0` : Censoring
 
-Aalen–Johansen curve for cumulative incidence of relapse
+Furthermore, by specifying `outcome.type = “competing-risk”`, it plots the **Aalen-Johansen curve**.
 
-Now let’s focus on relapse as the event of interest,
-and treat death without prior relapse as a competing risk.
-
-Me: “Competing risk…
-like an event that ‘steals the chance’ for relapse to happen?”
-
-Dad: “Exactly.
-If a patient dies before relapse,
-we’ll never see relapse in that patient’s timeline.
-Death ‘competes’ with relapse.”
-
-In the code below:
-
-status_cir = 1 → relapse (event of interest)
-
-status_cir = 2 → death as competing risk
-
-status_cir = 0 → censored
-
-cifplot(
-  Event(time_cir, status_cir) ~ stoma,
+```{r}
+cifplot(Event(time_cir, status_cir) ~ stoma,
   data         = dat,
   outcome.type = "competing-risk",
   label.y      = "Cumulative incidence of relapse"
 )
+```
+:::
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “Competing risk... like an event that ‘steals the chance’ for relapse to happen?”
+:::
 
+::: voice-father
+Dad: “Exactly. If a patient dies before relapse, we’ll never see relapse in that patient’s timeline. Death ‘competes’ with relapse.”
+:::
+
+::: voice-daughter
 Me: “The curve for relapse looks a bit like a survival curve turned upside down.”
+:::
 
-Dad: “Visually, yes.
-But conceptually it’s different.
+::: voice-father
+Dad: “Visually, yes. But conceptually it’s different. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate **cumulative incidence functions** with the Aalen–Johansen method, which respects the fact that death is another type of event. Other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”
+:::
 
-If you used Kaplan–Meier for relapse,
-you’d treat deaths as censored —
-as if they just disappeared from the risk set.
+::: voice-daughter
+Me: “By the way, in journal club people love to say:”
+:::
 
-But death isn’t the same as ‘lost to follow-up’.
-It’s a real, meaningful event.
+- OS is the only real endpoint
+- DFS is just a surrogate
 
-So for competing risks,
-we prefer the Aalen–Johansen estimator for cumulative incidence,
-which respects the fact that death is another type of event.”
+::: voice-daughter
+Me: “Is that fair?”
+:::
 
-Me: “So:
+::: voice-father
+Dad: “It’s...simplified. Regulators and guidelines often treat OS as a *clinical* endpoint — **an outcome that directly reflects patient benefit**. Things like DFS or PFS are often used as *surrogate* endpoints. A surrogate endpoint is **an outcome intended to substitute for a clinical endpoint, and expected to predict clinical benefit or harm**. This is a formal terminology in drug approval contexts (Biomarkers Definitions Working Group 2001).”
+:::
 
-OS and RFS → Kaplan–Meier
+::: voice-daughter
+Me: “The obvious advantage is that you can finish the trial earlier, right? You don’t have to wait for OS to mature.”
+:::
 
-Relapse incidence with death as competing risk → Aalen–Johansen
+::: voice-father
+Dad: “Exactly. Shorter trials, faster answers. But there’s a risk: sometimes surrogates don’t predict OS well. There are famous examples. In advanced colorectal cancer, combination therapy with 5-FU and leucovorin demonstrated tumor shrinkage in clinical trials. However, when evaluating OS, it became clear that this combination had little effect on prolonging life (Fleming and Demets 1996). Surrogates can be very useful, but they’re not automatically ‘good enough’ on their own.”
+:::
 
-That’s the big picture?”
+::: voice-daughter
+Me: “So in practice, we often look at OS when possible, and use DFS / PFS with a bit of skepticism and context.”
+:::
 
-Dad: “Exactly.
-Choosing ‘who is an event’ and ‘who is a competing risk’
-changes how we interpret the outcome.”
-
-Clinical endpoints vs surrogate endpoints
-
-Me: “By the way, in journal club people love to say:
-
-‘OS is the only real endpoint.
-DFS is just a surrogate.’
-
-Is that fair?”
-
-Dad: “It’s… simplified.
-
-Regulators and guidelines often treat OS
-as a clinical endpoint—
-an outcome that directly reflects patient benefit.
-
-Things like DFS or PFS are often used as surrogate endpoints.
-
-A surrogate endpoint is:
-
-an outcome intended to substitute for a clinical endpoint,
-and expected to predict clinical benefit or harm.”
-
-Me: “The obvious advantage is that you can finish the trial earlier, right?
-You don’t have to wait for OS to mature.”
-
-Dad: “Exactly.
-Shorter trials, faster answers.
-
-But there’s a risk:
-sometimes surrogates don’t predict OS well.
-
-There are famous examples where a regimen improved:
-
-tumor response rate, or
-
-PFS,
-
-but had little or no impact on overall survival.
-
-So we have to be careful:
-
-Surrogates can be very useful,
-
-but they’re not automatically ‘good enough’ on their own.”
-
-Me: “So in practice,
-we often look at OS when possible,
-and use DFS / PFS with a bit of skepticism and context.”
-
+::: voice-father
 Dad: “That’s a healthy attitude.”
+:::
+::::::::::::::::::::::::::::::::: 
 
-A quiz related to this episode
 
-Which of the following statements about endpoints in cancer trials is the most appropriate?
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
-OS is always better than any surrogate endpoint and should be the primary endpoint in every trial.
+In oncology, one common outcome is **progression-free survival (PFS)**. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:
 
-DFS and PFS are acceptable primary endpoints only when they perfectly predict OS.
+- the progression date according to the **central review**, and  
+- the progression date according to the **local investigator**.
 
-Surrogate endpoints like DFS and PFS can shorten trial duration,
-but may sometimes lead to misleading conclusions about clinical benefit.
+This issue is called a disagreement between central and local assessment. Which of the following is not appropriate as a way to handle this in a clinical trial?
 
-Once a surrogate endpoint is validated in one setting,
-it can be used in all tumor types without further evaluation.
+1. In the primary analysis, use the results of the central review, which is considered more objective.  
+2. In the primary analysis, define progression as whichever date comes first: central or local.  
+3. Hold a case review meeting and decide how to handle discrepant cases based on medical judgment.  
+4. Perform two analyses: one using central assessment, and one using local assessment.
+:::
 
-Answer
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **2**.
 
-The correct answer is 3.
+If you define the event as “whichever progression date comes first (central or local)”, you are more likely to shorten PFS artificially, because you systematically choose the earlier of the two dates. That introduces bias.
 
-1: In some settings, using OS as the primary endpoint is simply not practical
-(e.g., very long post-relapse survival).
+This doesn’t mean you must always use central review; in some contexts, local assessment may better reflect real clinical decision-making. But “always take the earlier date” is not an appropriate general rule.
+:::
 
-2: “Perfect prediction” is unrealistic;
-we usually look for reasonable evidence that the surrogate tracks clinical benefit.
 
-4: Validation of a surrogate is context-dependent—
-cancer type, treatment, and disease stage all matter.
+### Reference
 
-Surrogate endpoints are tools.
-How we use them — and how cautious we are —
-can change how we judge a treatment’s value.
+- Biomarkers Definitions Working Group. Biomarkers and surrogate endpoints: preferred definitions and conceptual framework. Clin Pharmacol Ther 2001;69(3):89-95
+
+- Fleming TR and DeMets DL. Surrogate end points in clinical trials: are we being misled? Ann Intern Med 1996;125(7):605-13
+

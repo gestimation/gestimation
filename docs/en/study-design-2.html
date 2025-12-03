@@ -102,6 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../coffee.scss">
@@ -325,7 +334,7 @@ a:hover {
 <p>Dad: “If coffee is involved, yes.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “You said something earlier that stuck with me. That <em>which R function we use depends on the outcome</em>. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
+<p>Me: “You said something earlier that stuck with me. That which <em>R function we use depends on the outcome</em>. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
@@ -339,7 +348,7 @@ a:hover {
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Continuous data is things we <strong>measure</strong>, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”</p>
+<p>Me: “<strong>Continuous data</strong> is things we measure, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “Perfect. <strong>Count data</strong> is when you literally count events, like the number of traffic accidents. <strong>Survival data</strong> is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”</p>
@@ -366,7 +375,7 @@ a:hover {
 <p>Me: “Those at least sound familiar.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “For <strong>binary data</strong>, we summarize with <code>table()</code>, and to get p-values we use <code>fisher.test()</code>. For more complex analyses, we move to regression models like <code>glm(family = binomial)</code>. For <strong>survival time data</strong>, we use things like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
+<p>Dad: “For <strong>binary data</strong>, we summarize with <code>table()</code>, and to get p-values we use <code>fisher.test()</code>. For more complex analyses, we move to regression models like <code>glm(family = binomial)</code>. For <strong>survival data</strong>, we use things like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “There’s no way I can memorize all that. I’ll just mix everything up again.”</p>
@@ -390,19 +399,18 @@ a:hover {
 <p>Me: “Ah, here comes the math.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Nothing too heavy.<br>
-You’ve heard of the <strong>normal distribution</strong>, right?”</p>
+<p>Dad: “Nothing too heavy. You’ve heard of the normal distribution, right?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “That one survived from undergrad, yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “For statistics, we imagine that behind the data there’s some <strong>probability distribution</strong>:</p>
+<p>Dad: “For statistics, we imagine that behind the data there’s some probability distribution:</p>
 <ul>
-<li>Continuous data: often normal distribution</li>
-<li>Binary data: binomial distribution</li>
-<li>Count data: Poisson distribution</li>
-<li>Survival data: there’s no single standard, but a simple one is the exponential distribution. Otherwise described as a <strong>nonparametric</strong> distribution.</li>
+<li>Continuous data: often <strong>normal distribution</strong></li>
+<li>Binary data: <strong>binomial distribution</strong></li>
+<li>Count data: <strong>Poisson distribution</strong></li>
+<li>Survival data: there’s no single standard, but a simple one is the <strong>exponential distribution</strong>. Otherwise described as a <strong>nonparametric</strong> distribution.</li>
 </ul>
 <p>You don’t have to remember the formulas, just the general matching. ”</p>
 </div>
@@ -433,7 +441,7 @@ You’ve heard of the <strong>normal distribution</strong>, right?”</p>
 <p>Me: “But in normal conversation, proportion and rate are almost interchangeable.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A <strong>proportion</strong> is something you’d express as a <strong>percentage</strong>, such as”60% of the participants were women.” A <strong>rate</strong> relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
+<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as”60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”</p>
@@ -464,7 +472,7 @@ You’ve heard of the <strong>normal distribution</strong>, right?”</p>
 <p>Me: “So install is a one-time thing, and <code>library()</code> is what I run each time I actually use it.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans <strong>every single morning</strong>.”</p>
+<p>Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans every single morning.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “No, thank you. Okay, show me the simulated data.”</p>
@@ -538,7 +546,7 @@ Summarizing continuous and binary data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>First, let’s describe age and sex in the stoma vs non-stoma groups using a <em>histogram</em> and <em>contingency table</em>. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.</p>
+<p>First, let’s describe age and sex in the stoma vs non-stoma groups using a <strong>histogram</strong> and <strong>contingency table</strong>. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2") # if needed</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -575,10 +583,8 @@ Summarizing survival data with survival curves
 </div>
 <div class="callout-body-container callout-body">
 <p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
-<section id="devtoolsinstall_githubgestimationcifmodeling-if-needed" class="level1">
-<h1>devtools::install_github(“gestimation/cifmodeling”) # if needed</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") # If necessary</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") # if needed</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time, status) <span class="sc">~</span> stoma,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
@@ -592,7 +598,6 @@ Summarizing survival data with survival curves
 </div>
 </div>
 </div>
-</section>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">

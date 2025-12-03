@@ -163,7 +163,7 @@ Dad: “In Japan, yes. One of the many.”
 :::
 
 ::: voice-daughter
-Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into **supporting cancer patients in returning to work** since the Cancer Control Act in Japan was revised. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.” 
+Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs in Japan was revised. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.” 
 :::
 
 ::: voice-father
@@ -175,11 +175,11 @@ Me: “Honestly? Not really. I was sort of hoping I could just collect a lot of 
 :::
 
 ::: voice-father
-Dad: “Not illegal, but not safe. Without at least a **working hypothesis**, it’s hard to design a good study.”
+Dad: “Not illegal, but not safe. Without at least a working hypothesis, it’s hard to design a good study.”
 :::
 
 ::: voice-daughter
-Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work. Not just men vs women, but things like **tumor stage** and **treatment**. I work in GI surgery, so I keep wondering about **patients with a stoma**. Can they really keep doing the same job as before surgery?”
+Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work. Not just men vs women, but things like tumor stage and treatment. I work in GI surgery, so I keep wondering about patients with a stoma. Can they really keep doing the same job as before surgery?”
 :::
 
 ::: voice-father
@@ -207,7 +207,7 @@ Me: “It’s not impossible, but honestly, almost never.”
 :::
 
 ::: voice-father
-Dad: “Right. If your main interest is stomas, it might make sense to **focus on cancers where stomas are common**, like rectal cancer.”
+Dad: “Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”
 :::
 
 ::: voice-daughter
@@ -223,7 +223,7 @@ Me: “Comparability...such a statistics word. But yeah, if the background is al
 :::
 
 ::: voice-father
-Dad: “On the other hand, if you **broaden the population**, you gain **generalizability**. If your goal were to estimate the **return-to-work rate among all cancer survivors in Japan**, you wouldn’t limit the cancer site, and you might want data from **multiple hospitals**, not just ours.”
+Dad: “On the other hand, if you **broaden the population**, you gain **generalizability**. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”
 :::
 
 ::: voice-daughter
@@ -351,54 +351,47 @@ Among rectal cancer patients after curative resection in Japan, is there a diffe
 - C: Stoma absent  
 - O: Returned to work within one year after surgery (yes/no)
 
-Here you’d compare the **return-to-work proportion** between the stoma and non-stoma groups.
+Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.
 
-What to choose for **C (Comparison)** is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.  
-Having a clear comparison group improves **interpretability**. 
+What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.  
+Having a clear comparison group improves interpretability. 
 ---
 
 #### Example: Research hypothesis 2
 
-Among cancer patients after curative surgery, does providing a **guidebook on balancing work and cancer treatment** increase the proportion who return to work within one year?
+Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?
 
 - P: Patients with cancer after curative surgery  
 - E: Received the guidebook  
 - C: Did not receive the guidebook  
 - O: Returned to work within one year after surgery (yes/no)
 
-Here P is broader, so the results could potentially apply to a **wider range of patients**. This is an example of **higher generalizability**.
+Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
 ---
 
 #### Example: Research hypothesis 3 (exploratory)
 
 “Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
 
-In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential **risk factors**.
+In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential risk factors.
 
 So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the **minimal set of elements** needed to design a coherent study for your question. 
 :::
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
-In oncology, one common outcome is **progression-free survival (PFS)**. To measure PFS, we need to determine **tumor progression** based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:
+When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?
 
-- the progression date according to the **central review**, and  
-- the progression date according to the **local investigator**.
-
-This issue is called a **disagreement between central and local assessment**. Which of the following is **not appropriate** as a way to handle this in a clinical trial?
-
-1. In the primary analysis, use the results of the central review, which is considered more objective.  
-2. In the primary analysis, define progression as whichever date comes first: central or local.  
-3. Hold a case review meeting and decide how to handle discrepant cases based on medical judgment.  
-4. Perform two analyses: one using central assessment, and one using local assessment.
+1. If there is a causal relationship, it will inevitably occur
+2. A universally generalizable law
+3. All other conditions being equal
+4. Observing a sufficiently large amount of data
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
--   The correct answer is **2**.
+-   The correct answer is **3**.
 
-If you define the event as “whichever progression date comes first (central or local)”, you are more likely to **shorten PFS artificially**, because you systematically choose the earlier of the two dates. That introduces bias.
-
-This doesn’t mean you must always use central review; in some contexts, local assessment may better reflect real clinical decision-making. But “always take the earlier date” is not an appropriate general rule.
+The concept of “ceteris paribus” is almost equal to the conditions of compatibility. 
 :::
 
 ### Continuation of their story

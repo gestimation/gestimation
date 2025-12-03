@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -67,6 +102,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../coffee.scss">
@@ -124,15 +168,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-iii" id="toc-story-and-quiz-study-design-iii" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-iii">Story and Quiz − Study design III</a>
+  <li><a href="#from-coffee-chat-to-research-study-design-iii" id="toc-from-coffee-chat-to-research-study-design-iii" class="nav-link active" data-scroll-target="#from-coffee-chat-to-research-study-design-iii">From Coffee Chat to Research − Study design III</a>
   <ul class="collapse">
   <li><a href="#what-exactly-is-an-outcome" id="toc-what-exactly-is-an-outcome" class="nav-link" data-scroll-target="#what-exactly-is-an-outcome">What exactly is an “outcome”?</a></li>
-  <li><a href="#major-survival-endpoints-in-oncology-conceptual-map" id="toc-major-survival-endpoints-in-oncology-conceptual-map" class="nav-link" data-scroll-target="#major-survival-endpoints-in-oncology-conceptual-map">Major survival endpoints in oncology (conceptual map)</a></li>
-  <li><a href="#simulating-os-rfs-and-relapse-incidence-cir" id="toc-simulating-os-rfs-and-relapse-incidence-cir" class="nav-link" data-scroll-target="#simulating-os-rfs-and-relapse-incidence-cir">Simulating OS, RFS, and relapse incidence (CIR)</a></li>
-  <li><a href="#r-code-generating-data-with-relapse-and-death" id="toc-r-code-generating-data-with-relapse-and-death" class="nav-link" data-scroll-target="#r-code-generating-data-with-relapse-and-death">R code: generating data with relapse and death</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul></li>
-  <li><a href="#overall-survival-os" id="toc-overall-survival-os" class="nav-link" data-scroll-target="#overall-survival-os">Overall survival (OS)</a></li>
-  <li><a href="#relapse-free-survival-rfs" id="toc-relapse-free-survival-rfs" class="nav-link" data-scroll-target="#relapse-free-survival-rfs">Relapse-free survival (RFS)</a></li>
   </ul>
 </nav>
     </div>
@@ -142,91 +182,218 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="story-and-quiz-study-design-iii" class="level1">
-<h1>Story and Quiz − Study design III</h1>
-<p>Keywords: OS/PFS/DFS/response, survival/competing risks, clinical trial</p>
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="from-coffee-chat-to-research-study-design-iii" class="level1">
+<h1>From Coffee Chat to Research − Study design III</h1>
+<div class="serif-block">
+<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing risks, clinical trial</p>
+</div>
 <hr>
 <section id="what-exactly-is-an-outcome" class="level3">
 <h3 class="anchored" data-anchor-id="what-exactly-is-an-outcome">What exactly is an “outcome”?</h3>
+<div class="dialogue">
+<div class="voice-daughter">
 <p>Me: “Hey Dad, can I pick your brain again?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “That depends. Is there coffee involved?”</p>
-<p>Me: “Already poured.<br>
-So… about <em>outcomes</em>.</p>
-<p>In journal club, all these abbreviations show up: <strong>OS</strong>, <strong>DFS</strong>, <strong>RFS</strong>, <strong>PFS</strong>…<br>
-Everyone talks like they’re obvious, but I’m honestly fuzzy on the details.</p>
-<p>I know they’re supposed to be outcomes,<br>
-but what’s really different between things like <strong>DFS</strong> and <strong>RFS</strong>?<br>
-You deal with these all the time, right?”</p>
-<p>Dad: “I do.<br>
-The one you probably see most is <strong>OS</strong>: overall survival.</p>
-<p>Then there’s:</p>
-<ul>
-<li><strong>DFS</strong>: disease-free survival<br>
-</li>
-<li><strong>RFS</strong>: relapse-free survival.”</li>
-</ul>
+</div>
+<div class="voice-daughter">
+<p>Me: “Already poured. So… about outcomes. In journal club, all these abbreviations show up: <strong>OS</strong>, <strong>DFS</strong>, <strong>RFS</strong>, <strong>PFS</strong>… Everyone talks like they’re obvious, but I’m honestly fuzzy on the details. I know they’re supposed to be outcomes, but what’s really different between things like <strong>DFS</strong> and <strong>RFS</strong>? You deal with these all the time, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “I do. The one you probably see most is <strong>OS</strong>: overall survival. Then there’s <strong>disease-free survival (DFS)</strong> and <strong>relapse-free survival (RFS)</strong>.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “RFS sounds like ‘number of days until relapse’ in my head.”</p>
-<p>Dad: “If we literally meant ‘number of days until relapse’,<br>
-we’d probably call it <strong>relapse-free time</strong>.<br>
-You’ll also see terms like <strong>cumulative incidence of relapse (CIR)</strong>.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “If we literally meant ‘number of days until relapse’, we’d probably call it <strong>relapse-free time</strong>. You’ll also see terms like <strong>cumulative incidence of relapse (CIR)</strong>.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Acronyms are multiplying, not shrinking. Help.”</p>
-<p>Dad: “Let’s slow it down.</p>
-<p>In survival analysis, we’re always looking at <strong>time from some origin to an event</strong>.<br>
-The twist is what we call an <strong>event</strong>.</p>
-<p>For <strong>DFS</strong>, we often count as events:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s slow it down. In survival analysis, we’re always looking at <strong>time from some origin to an event</strong>. The twist is what we call an <strong>event</strong>. For <strong>DFS</strong>, we often count as events:</p>
+</div>
 <ul>
-<li>recurrence,<br>
-</li>
-<li>second primary cancer, and<br>
-</li>
-<li>death.</li>
+<li>recurrence</li>
+<li>second primary cancer</li>
+<li>death</li>
 </ul>
-<p>We’re asking:</p>
-<blockquote class="blockquote">
-<p>‘How long do patients stay alive <strong>without recurrence and without second cancer</strong>?’”</p>
-</blockquote>
-<p>Me: “So if someone gets a second cancer,<br>
-that’s already an event in DFS, even if they’re alive.”</p>
-<p>Dad: “Exactly.</p>
-<p>For <strong>RFS</strong>, it’s usually:</p>
+<div class="voice-father">
+<p>We’re asking:<br>
+&gt; ‘How long do patients stay alive without recurrence and without second cancer?’”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So if someone gets a second cancer, that’s already an event in DFS, even if they’re alive.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. For <strong>RFS</strong>, it’s usually:</p>
+</div>
 <ul>
-<li><strong>recurrence</strong>, and<br>
-</li>
-<li><strong>death</strong>.</li>
+<li>recurrence</li>
+<li>death</li>
 </ul>
-<p>Second cancers generally don’t count as events there.”</p>
-<p>Me: “And OS is just: time to death, period.”</p>
-<p>Dad: “Right.</p>
-<p>So if you look at 3-year OS and 3-year DFS for the same trial:</p>
+<div class="voice-father">
+<p>Dad: “Second cancers generally don’t count as events there.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “And OS is just time to death.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. So if you look at 3-year OS and 3-year DFS for the same trial. Then, 3-year DFS ≤ 3-year OS, because DFS counts <em>more things</em> as events.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Got it. But from a patient’s point of view, ‘no recurrence and no second cancer’ sounds pretty important. So DFS feels meaningful. RFS… I’m less sure. And death is obviously the most serious event of all.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Agreed. But notice:</p>
+</div>
 <ul>
-<li>3-year <strong>DFS</strong> ≤ 3-year <strong>OS</strong>,<br>
-because DFS counts <strong>more things</strong> as events.”</li>
+<li><p>If someone <strong>relapses</strong> and later dies, they’re already an event in RFS at the time of relapse, even before death.</p></li>
+<li><p>If someone dies <strong>before relapse</strong>, the cause might be an infection, accident, or something unrelated to the original cancer.”</p></li>
 </ul>
-<p>Me: “Got it.<br>
-But from a patient’s point of view,<br>
-‘no recurrence and no second cancer’ sounds pretty important.</p>
-<p>So DFS feels meaningful.<br>
-RFS… I’m less sure.<br>
-And death is obviously the most serious event of all.”</p>
-<p>Dad: “Agreed.<br>
-But notice:</p>
-<ul>
-<li><p>If someone <strong>relapses</strong> and later dies,<br>
-they’re already an event in RFS at the time of relapse,<br>
-even before death.</p></li>
-<li><p>If someone dies <strong>before relapse</strong>,<br>
-the cause might be an infection, accident,<br>
-or something unrelated to the original cancer.”</p></li>
-</ul>
+<div class="voice-daughter">
 <p>Me: “So not all deaths are equal in terms of ‘cancer story’.”</p>
-<p>Dad: “Exactly.</p>
-<p>Let me show you a simplified table<br>
-of common <strong>survival endpoints in cancer trials</strong>.<br>
-Think of it as a map, not a legal document.”</p>
-<hr>
-</section>
-<section id="major-survival-endpoints-in-oncology-conceptual-map" class="level3">
-<h3 class="anchored" data-anchor-id="major-survival-endpoints-in-oncology-conceptual-map">Major survival endpoints in oncology (conceptual map)</h3>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Let me show you a simplified table of common <strong>survival endpoints in cancer trials</strong>. Think of it as a map, not a legal document.”</p>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 34%">
@@ -235,7 +402,7 @@ Think of it as a map, not a legal document.”</p>
 <thead>
 <tr class="header">
 <th>Endpoint</th>
-<th>What counts as an event? (conceptually)</th>
+<th>What counts as an event?</th>
 </tr>
 </thead>
 <tbody>
@@ -265,142 +432,324 @@ Think of it as a map, not a legal document.”</p>
 </tr>
 </tbody>
 </table>
-<p>Dad: “The key idea is:</p>
+<div class="voice-father">
+<p>Dad: “The key idea is:”</p>
+</div>
 <ul>
-<li>OS cares only about <strong>death</strong>.<br>
-</li>
-<li>DFS cares about <strong>any recurrence / second cancer / death</strong>.<br>
-</li>
-<li>RFS sits in between.”</li>
+<li>OS cares only about <strong>death</strong></li>
+<li>DFS cares about <strong>any recurrence / second cancer / death</strong></li>
+<li>RFS sits in between</li>
 </ul>
-<p>Me: “Okay, that really helps.<br>
-And the <strong>time origin</strong> is… usually when treatment starts?”</p>
-<p>Dad: “Good question.</p>
-<p>Common choices for the <strong>time origin</strong> are:</p>
+<div class="voice-daughter">
+<p>Me: “Okay, that really helps. And the <strong>time origin</strong> is… usually when treatment starts?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Good question. Common choices for the <strong>time origin</strong> are:”</p>
+</div>
 <ul>
-<li>date of <strong>surgery</strong>,<br>
+<li>date of <strong>surgery</strong><br>
 </li>
-<li>date of <strong>randomization/registration</strong> in a trial,<br>
+<li>date of <strong>randomization/registration</strong> in a trial<br>
 </li>
-<li>or sometimes date of <strong>diagnosis</strong>.</li>
+<li>date of <strong>diagnosis</strong></li>
 </ul>
-<p>For <strong>postoperative adjuvant therapy</strong>,<br>
-using the <strong>date of surgery</strong> is natural.</p>
-<p>If you used date of discharge instead,<br>
-deaths before discharge would be invisible in your analysis,<br>
-which can be a big problem.”</p>
-<p>Me: “So if I’m evaluating adjuvant chemo after surgery,<br>
-time zero = surgery date is the cleanest.<br>
-If I pick a weird origin, I’m basically throwing away part of the story.”</p>
-<p>Dad: “Exactly.<br>
-Time origin is like the zero point on your ruler:<br>
-if you set it wrong, all the distances become hard to interpret.”</p>
-<hr>
-</section>
-<section id="simulating-os-rfs-and-relapse-incidence-cir" class="level3">
-<h3 class="anchored" data-anchor-id="simulating-os-rfs-and-relapse-incidence-cir">Simulating OS, RFS, and relapse incidence (CIR)</h3>
+<div class="voice-father">
+<p>Dad: “For <strong>postoperative adjuvant therapy</strong>, using the <strong>date of surgery</strong> is natural. If you used date of discharge instead, deaths before discharge would be invisible in your analysis, which can be a big problem.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So if I’m evaluating adjuvant chemo after surgery, time zero = surgery date is the cleanest. If I pick a weird origin, I’m basically throwing away part of the story.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Time origin is like the zero point on your ruler: if you set it wrong, all the distances become hard to interpret.”</p>
+</div>
+<section id="survival-analysis-and-competing-risks-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="survival-analysis-and-competing-risks-analysis">Survival analysis and competing risks analysis</h3>
+<div class="voice-father">
 <p>Dad: “Want to see how OS, RFS, and CIR behave in data?”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “That’s a dangerous question, but yes.”</p>
-<p>Dad: “Let’s use R again.<br>
-We’ll simulate two groups:</p>
-<ul>
-<li><strong>With stoma</strong><br>
-</li>
-<li><strong>Without stoma</strong></li>
-</ul>
-<p>We’ll give the stoma group a higher risk of:</p>
-<ul>
-<li><strong>relapse</strong> and<br>
-</li>
-<li><strong>death</strong></li>
-</ul>
-<p>and see how that shows up in:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s use R again. We’ll simulate two groups with and without stoma. We’ll give the stoma group a higher risk of relapse and death. And see how that shows up in:”</p>
+</div>
+</section>
+</div>
 <ul>
 <li>OS curves<br>
 </li>
 <li>RFS curves<br>
 </li>
-<li><strong>cumulative incidence of relapse</strong> (CIR).”</li>
+<li>CIR curves with death as the competing risk</li>
 </ul>
-<hr>
-</section>
-<section id="r-code-generating-data-with-relapse-and-death" class="level3">
-<h3 class="anchored" data-anchor-id="r-code-generating-data-with-relapse-and-death">R code: generating data with relapse and death</h3>
-<p>```r generate_data &lt;- function(n = 200, hr1, hr2) { # Stoma: 1 = with stoma, 0 = without stoma stoma &lt;- rbinom(n, size = 1, prob = 0.4) # Sex: 0 = WOMAN, 1 = MAN sex &lt;- rbinom(n, size = 1, prob = 0.5) # Age: normal distribution (stoma group slightly older) age &lt;- rnorm(n, mean = 65 + 3 * stoma, sd = 8)</p>
-<p># Hazards for relapse and death # (larger hazard = earlier event) hazard_relapse &lt;- ifelse(stoma == 1, hr1 * 0.10, 0.10) hazard_death &lt;- ifelse(stoma == 1, hr2 * 0.10, 0.10) hazard_censoring &lt;- 0.05</p>
-<p># Latent times to relapse, death, and censoring t_relapse &lt;- rexp(n, rate = hazard_relapse) t_death &lt;- rexp(n, rate = hazard_death) t_censoring &lt;- rexp(n, rate = hazard_censoring)</p>
-<p>## — Overall survival (OS) — time_os &lt;- pmin(t_death, t_censoring) status_os &lt;- as.integer(t_death &lt;= t_censoring) # 1 = death, 0 = censored</p>
-<p>## — Relapse-free survival (RFS) — time_rfs &lt;- pmin(t_relapse, t_death, t_censoring) status_rfs &lt;- integer(n) status_rfs[time_rfs == t_relapse &amp; time_rfs &lt; t_censoring] &lt;- 1 # relapse status_rfs[time_rfs == t_death &amp; time_rfs &lt; t_censoring] &lt;- 1 # death</p>
-<p>## — Cumulative incidence of relapse (CIR) — time_cir &lt;- pmin(t_relapse, t_death, t_censoring)</p>
-<p># 1 = relapse (event of interest), 2 = death (competing risk) status_cir &lt;- integer(n) status_cir[time_cir == t_relapse &amp; time_cir &lt; t_censoring] &lt;- 1 status_cir[time_cir == t_death &amp; time_cir &lt; t_censoring] &lt;- 2</p>
-<p>data.frame( id = 1:n, sex = factor(sex, levels = c(0, 1), labels = c(“WOMAN”, “MAN”)), age = age, stoma = factor(stoma, levels = c(0, 1), labels = c(“WITHOUT STOMA”, “WITH STOMA”)), time_os = time_os, status_os = status_os, time_rfs = time_rfs, status_rfs = status_rfs, time_cir = time_cir, status_cir = status_cir ) }</p>
-<p>Kaplan–Meier curves for OS and RFS # devtools::install_github(“gestimation/cifmodeling”) # if needed library(cifmodeling)</p>
-<p>set.seed(46) dat &lt;- generate_data(hr1 = 2, hr2 = 1.5)</p>
-</section>
-</section>
-<section id="overall-survival-os" class="level1">
-<h1>Overall survival (OS)</h1>
-<p>cifplot( Event(time_os, status_os) ~ stoma, data = dat, outcome.type = “survival”, label.y = “Overall survival” )</p>
-</section>
-<section id="relapse-free-survival-rfs" class="level1">
-<h1>Relapse-free survival (RFS)</h1>
-<p>cifplot( Event(time_rfs, status_rfs) ~ stoma, data = dat, outcome.type = “survival”, label.y = “Relapse-free survival” )</p>
-<p>With stoma: higher hazards → lower curves</p>
-<p>OS curve lies above the RFS curve, because RFS counts more kinds of events</p>
-<p>Aalen–Johansen curve for cumulative incidence of relapse</p>
-<p>Now let’s focus on relapse as the event of interest, and treat death without prior relapse as a competing risk.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Generating simulated data with relapse">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Generating simulated data with relapse
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following code defines a “function” generate_data() in R that produces three types of survival outcomes involving not only death but also recurrence. The OS event is “death,” the RFS event is “death and recurrence.” The CIR event is “recurrence,” but death is treated as a competing risk. Note that generate_data() and this simulation data will be reused in future explanations.</p>
+<ul>
+<li><p>Stoma: binary, from a binomial distribution using <code>rbinom()</code></p></li>
+<li><p>Survival time: from an exponential distribution using <code>rexp()</code> (calculated from random numbers for t_relapse, t_death, t_censoring)</p></li>
+</ul>
+<p>In a previous episode, we summarized survival data without competing risks, and we used the Kaplan-Meier curve for that, right? In contrast, for analyzing data with competing risks, it is formally correct to use the Aalen-Johansen curve instead of the Kaplan-Meier curve.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Code of generate_data() used for data generation">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code of generate_data() used for data generation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n=</span><span class="dv">200</span>, hr1, hr2) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># hazard for relapse</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># hazard for death</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># hazard for censoring</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Latent times to relapse, death, and censoring ----------------</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Overall survival (OS) -----------------------------------</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = death, 0 = censored</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Relapse-free survival (RFS) -----------------------------</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># relapse</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># death</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Cumulative incidence of relapse (CIR) -------------------</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># relapse</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># death (competing risk)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan–Meier curves for OS">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Kaplan–Meier curves for OS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since OS and RFS are standard survival data, we will describe them using <strong>Kaplan–Meier curves</strong>, as before, using the <code>cifplot()</code> function from the <code>cifmodeling</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") # if needed </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan–Meier curves for RFS">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Kaplan–Meier curves for RFS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_rfs, status_rfs) <span class="sc">~</span> stoma,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Relapse-free survival"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Aalen-Johansen curves for CIR">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aalen-Johansen curves for CIR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following code inputs the risk of recurrence by coding <code>Event(time_cir, status_cir)</code>.</p>
+<ul>
+<li><code>status_cir=1</code> : Event of interest (recurrence)</li>
+<li><code>status_cir=2</code> : Competing risk (death not experiencing recurrence)</li>
+<li><code>status_cir=0</code> : Censoring</li>
+</ul>
+<p>Furthermore, by specifying <code>outcome.type = “competing-risk”</code>, it plots the <strong>Aalen-Johansen curve</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Cumulative incidence of relapse"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
 <p>Me: “Competing risk… like an event that ‘steals the chance’ for relapse to happen?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Exactly. If a patient dies before relapse, we’ll never see relapse in that patient’s timeline. Death ‘competes’ with relapse.”</p>
-<p>In the code below:</p>
-<p>status_cir = 1 → relapse (event of interest)</p>
-<p>status_cir = 2 → death as competing risk</p>
-<p>status_cir = 0 → censored</p>
-<p>cifplot( Event(time_cir, status_cir) ~ stoma, data = dat, outcome.type = “competing-risk”, label.y = “Cumulative incidence of relapse” )</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “The curve for relapse looks a bit like a survival curve turned upside down.”</p>
-<p>Dad: “Visually, yes. But conceptually it’s different.</p>
-<p>If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set.</p>
-<p>But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event.</p>
-<p>So for competing risks, we prefer the Aalen–Johansen estimator for cumulative incidence, which respects the fact that death is another type of event.”</p>
-<p>Me: “So:</p>
-<p>OS and RFS → Kaplan–Meier</p>
-<p>Relapse incidence with death as competing risk → Aalen–Johansen</p>
-<p>That’s the big picture?”</p>
-<p>Dad: “Exactly. Choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”</p>
-<p>Clinical endpoints vs surrogate endpoints</p>
-<p>Me: “By the way, in journal club people love to say:</p>
-<p>‘OS is the only real endpoint. DFS is just a surrogate.’</p>
-<p>Is that fair?”</p>
-<p>Dad: “It’s… simplified.</p>
-<p>Regulators and guidelines often treat OS as a clinical endpoint— an outcome that directly reflects patient benefit.</p>
-<p>Things like DFS or PFS are often used as surrogate endpoints.</p>
-<p>A surrogate endpoint is:</p>
-<p>an outcome intended to substitute for a clinical endpoint, and expected to predict clinical benefit or harm.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Visually, yes. But conceptually it’s different. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate <strong>cumulative incidence functions</strong> with the Aalen–Johansen method, which respects the fact that death is another type of event. Other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “By the way, in journal club people love to say:”</p>
+</div>
+<ul>
+<li>OS is the only real endpoint</li>
+<li>DFS is just a surrogate</li>
+</ul>
+<div class="voice-daughter">
+<p>Me: “Is that fair?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “It’s…simplified. Regulators and guidelines often treat OS as a <em>clinical</em> endpoint — <strong>an outcome that directly reflects patient benefit</strong>. Things like DFS or PFS are often used as <em>surrogate</em> endpoints. A surrogate endpoint is <strong>an outcome intended to substitute for a clinical endpoint, and expected to predict clinical benefit or harm</strong>. This is a formal terminology in drug approval contexts (Biomarkers Definitions Working Group 2001).”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “The obvious advantage is that you can finish the trial earlier, right? You don’t have to wait for OS to mature.”</p>
-<p>Dad: “Exactly. Shorter trials, faster answers.</p>
-<p>But there’s a risk: sometimes surrogates don’t predict OS well.</p>
-<p>There are famous examples where a regimen improved:</p>
-<p>tumor response rate, or</p>
-<p>PFS,</p>
-<p>but had little or no impact on overall survival.</p>
-<p>So we have to be careful:</p>
-<p>Surrogates can be very useful,</p>
-<p>but they’re not automatically ‘good enough’ on their own.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Shorter trials, faster answers. But there’s a risk: sometimes surrogates don’t predict OS well. There are famous examples. In advanced colorectal cancer, combination therapy with 5-FU and leucovorin demonstrated tumor shrinkage in clinical trials. However, when evaluating OS, it became clear that this combination had little effect on prolonging life (Fleming and Demets 1996). Surrogates can be very useful, but they’re not automatically ‘good enough’ on their own.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “So in practice, we often look at OS when possible, and use DFS / PFS with a bit of skepticism and context.”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “That’s a healthy attitude.”</p>
-<p>A quiz related to this episode</p>
-<p>Which of the following statements about endpoints in cancer trials is the most appropriate?</p>
-<p>OS is always better than any surrogate endpoint and should be the primary endpoint in every trial.</p>
-<p>DFS and PFS are acceptable primary endpoints only when they perfectly predict OS.</p>
-<p>Surrogate endpoints like DFS and PFS can shorten trial duration, but may sometimes lead to misleading conclusions about clinical benefit.</p>
-<p>Once a surrogate endpoint is validated in one setting, it can be used in all tumor types without further evaluation.</p>
-<p>Answer</p>
-<p>The correct answer is 3.</p>
-<p>1: In some settings, using OS as the primary endpoint is simply not practical (e.g., very long post-relapse survival).</p>
-<p>2: “Perfect prediction” is unrealistic; we usually look for reasonable evidence that the surrogate tracks clinical benefit.</p>
-<p>4: Validation of a surrogate is context-dependent— cancer type, treatment, and disease stage all matter.</p>
-<p>Surrogate endpoints are tools. How we use them — and how cautious we are — can change how we judge a treatment’s value.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quiz related to this episode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In oncology, one common outcome is <strong>progression-free survival (PFS)</strong>. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:</p>
+<ul>
+<li>the progression date according to the <strong>central review</strong>, and<br>
+</li>
+<li>the progression date according to the <strong>local investigator</strong>.</li>
+</ul>
+<p>This issue is called a disagreement between central and local assessment. Which of the following is not appropriate as a way to handle this in a clinical trial?</p>
+<ol type="1">
+<li>In the primary analysis, use the results of the central review, which is considered more objective.<br>
+</li>
+<li>In the primary analysis, define progression as whichever date comes first: central or local.<br>
+</li>
+<li>Hold a case review meeting and decide how to handle discrepant cases based on medical judgment.<br>
+</li>
+<li>Perform two analyses: one using central assessment, and one using local assessment.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>2</strong>.</li>
+</ul>
+<p>If you define the event as “whichever progression date comes first (central or local)”, you are more likely to shorten PFS artificially, because you systematically choose the earlier of the two dates. That introduces bias.</p>
+<p>This doesn’t mean you must always use central review; in some contexts, local assessment may better reflect real clinical decision-making. But “always take the earlier date” is not an appropriate general rule.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<ul>
+<li><p>Biomarkers Definitions Working Group. Biomarkers and surrogate endpoints: preferred definitions and conceptual framework. Clin Pharmacol Ther 2001;69(3):89-95</p></li>
+<li><p>Fleming TR and DeMets DL. Surrogate end points in clinical trials: are we being misled? Ann Intern Med 1996;125(7):605-13</p></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

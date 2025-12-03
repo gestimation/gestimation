@@ -163,7 +163,7 @@ Dad: “If coffee is involved, yes.”
 ::: 
 
 ::: voice-daughter
-Me: “You said something earlier that stuck with me. That *which R function we use depends on the outcome*. I didn’t really get that. In the end, aren’t all data just ... numbers?”
+Me: “You said something earlier that stuck with me. That which *R function we use depends on the outcome*. I didn’t really get that. In the end, aren’t all data just ... numbers?”
 ::: 
 
 ::: voice-father
@@ -178,7 +178,7 @@ Dad: “They’re all numbers, yes. But for statistics, the **type of data** mat
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “Continuous data is things we **measure**, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”
+Me: “**Continuous data** is things we measure, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”
 ::: 
 
 ::: voice-father
@@ -214,7 +214,7 @@ Me: “Those at least sound familiar.”
 ::: 
 
 ::: voice-father
-Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival time data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
+Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
 ::: 
 
 ::: voice-daughter
@@ -246,8 +246,7 @@ Me: “Ah, here comes the math.”
 ::: 
 
 ::: voice-father
-Dad: “Nothing too heavy.  
-You’ve heard of the **normal distribution**, right?”
+Dad: “Nothing too heavy. You’ve heard of the normal distribution, right?”
 ::: 
 
 ::: voice-daughter
@@ -255,12 +254,12 @@ Me: “That one survived from undergrad, yes.”
 ::: 
 
 ::: voice-father
-Dad: “For statistics, we imagine that behind the data there’s some **probability distribution**:
+Dad: “For statistics, we imagine that behind the data there’s some probability distribution:
 
-- Continuous data: often normal distribution
-- Binary data: binomial distribution 
-- Count data: Poisson distribution
-- Survival data: there’s no single standard, but a simple one is the exponential distribution. Otherwise described as a **nonparametric** distribution. 
+- Continuous data: often **normal distribution**
+- Binary data: **binomial distribution**
+- Count data: **Poisson distribution**
+- Survival data: there’s no single standard, but a simple one is the **exponential distribution**. Otherwise described as a **nonparametric** distribution. 
 
 You don’t have to remember the formulas, just the general matching. ”
 ::: 
@@ -290,7 +289,7 @@ Me: “But in normal conversation, proportion and rate are almost interchangeabl
 ::: 
 
 ::: voice-father
-Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A **proportion** is something you’d express as a **percentage**, such as "60% of the participants were women." A **rate** relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
+Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as "60% of the participants were women." A rate relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
 ::: 
 
 ::: voice-daughter
@@ -327,7 +326,7 @@ Me: “So install is a one-time thing, and `library()` is what I run each time I
 ::: 
 
 ::: voice-father
-Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans **every single morning**.”
+Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans every single morning.”
 ::: 
 
 ::: voice-daughter
@@ -382,7 +381,7 @@ head(dat)
 
 ::: {.callout-note appearance="simple" title="Summarizing continuous and binary data"}
 
-First, let’s describe age and sex in the stoma vs non-stoma groups using a *histogram* and *contingency table*. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.
+First, let’s describe age and sex in the stoma vs non-stoma groups using a **histogram** and **contingency table**. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.
 
 ```{r warning=FALSE}
 # install.packages("ggplot2") # if needed
@@ -399,13 +398,10 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 
 ::: {.callout-note appearance="simple" title="Summarizing survival data with survival curves"}
 
-
 For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw **the Kaplan–Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
 
-# devtools::install_github("gestimation/cifmodeling") # if needed
-
 ```{r warning=FALSE}
-# devtools::install_github("gestimation/cifmodeling") # If necessary
+# devtools::install_github("gestimation/cifmodeling") # if needed
 library(cifmodeling)
 cifplot(Event(time, status) ~ stoma,
   data         = dat,

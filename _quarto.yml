@@ -9,6 +9,7 @@ project:
     
 website:
   title: "Coffee and Research"
+  google-analytics: "G-FCK3LX51C6"
   navbar:
     left:
       - href: index.qmd

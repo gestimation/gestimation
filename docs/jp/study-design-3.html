@@ -102,6 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../coffee.scss">
@@ -472,8 +481,8 @@ a:hover {
 <p>前回より少しだけがんの臨床研究を意識して、シミュレーションデータにおける、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを競合リスク（competing risk）といいます。</p>
 <p>以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」generate_dataを定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。なお、generate_data()やこのシミュレーションデータは、今後の解説でも再利用する予定です。</p>
 <ul>
-<li><p>ストーマ保有：2項分布（rbinom関数）から生成した2値データ</p></li>
-<li><p>生存時間：指数分布（rexp関数）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）</p></li>
+<li><p>ストーマ保有：2項分布（<code>rbinom</code>）から生成した2値データ</p></li>
+<li><p>生存時間：指数分布（<code>rexp</code>）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）</p></li>
 </ul>
 <p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのはKaplan-Meier曲線でしたよね。それに対して、競合リスクデータの解析では、Kaplan-Meier曲線ではなく、Aalen-Johansen曲線を用いるのが正式です。</p>
 </div>

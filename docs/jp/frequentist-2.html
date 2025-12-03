@@ -102,6 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../coffee.scss">
@@ -434,16 +443,18 @@ coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
   n= 200, number of events= 138 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
-stomaWITH STOMA 0.2249    1.2522   0.1745 1.289    0.198
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3418    1.4075   0.1739 1.966   0.0493 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.252     0.7986    0.8894     1.763
+stomaWITH STOMA     1.407     0.7105     1.001     1.979
 
-Concordance= 0.526  (se = 0.024 )
-Likelihood ratio test= 1.64  on 1 df,   p=0.2
-Wald test            = 1.66  on 1 df,   p=0.2
-Score (logrank) test = 1.67  on 1 df,   p=0.2</code></pre>
+Concordance= 0.54  (se = 0.024 )
+Likelihood ratio test= 3.79  on 1 df,   p=0.05
+Wald test            = 3.86  on 1 df,   p=0.05
+Score (logrank) test = 3.9  on 1 df,   p=0.05</code></pre>
 </div>
 </div>
 </div>
