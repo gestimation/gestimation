@@ -1,9 +1,16 @@
 ---
+title: "Outcomes: The Bridge from Data Collection to Analysis"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -135,15 +142,16 @@ a:hover {
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Story and Quiz − Study design IV
+# Study design IV − The Bridge from Data Collection to Analysis
 
 ::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, generalized linear model, survival/competing-risk, observational study
+　　　　　　　　Keywords: generalized linear model, outcome, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------

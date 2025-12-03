@@ -2,6 +2,15 @@
 format:
   html:
     toc: true
+listing:
+  contents: 
+    - "study-design-1.qmd"
+    - "study-design-2.qmd"
+    
+  sort: "date desc"
+  feed:
+    title: "Coffee and Research – Story and Quiz (EN)"
+    items: 20
 ---
 <style>
 body {

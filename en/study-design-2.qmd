@@ -1,4 +1,5 @@
 ---
+title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
 format:
   html:
     toc: true
@@ -6,6 +7,10 @@ format:
 
 ```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -143,13 +148,17 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Story and Quiz − Study design II
+# Study design II − Data Have Types
 
 ::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
+　　　　　　　　Keywords: outcome, simulation
 :::
 
 ------------------------------------------------------------------------
+
+This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find Study design I here:   
+
+[Study design I](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
 
 ### Data have types
 

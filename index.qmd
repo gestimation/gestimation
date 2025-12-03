@@ -218,7 +218,3 @@ Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyo
 **[More information](./about/)**
 
 </div>
-
-More content will be added gradually.
-
-</div>

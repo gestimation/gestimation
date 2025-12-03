@@ -1,4 +1,5 @@
 ---
+title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
 format:
   html:
     toc: true
@@ -6,6 +7,10 @@ format:
 
 ```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -143,10 +148,10 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Story and Quiz − Study design II
+# Study design II − Data Have Types
 
 ::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival
+　　　　　　　　Keywords: outcome, simulation
 :::
 
 ------------------------------------------------------------------------

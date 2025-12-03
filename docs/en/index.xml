@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Coffee and Research – Story and Quiz (EN)</title>
+<link>https://gestimation.github.io/coffee-and-research/en/</link>
+<atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Wed, 03 Dec 2025 05:28:35 GMT</lastBuildDate>
+<item>
+  <title>A Story of Coffee Chat and Research Hypothesis</title>
+  <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
+<h1>Study design I − A Story of Coffee Chat and Research Hypothesis</h1>
+<div class="serif-block">
+<p>　　　　　　　　Keywords: observational study, outcome, study design</p>
+</div>
+<hr>
+<section id="a-daughter-starting-her-first-research-and-her-statistician-father" class="level3">
+<h3 class="anchored" data-anchor-id="a-daughter-starting-her-first-research-and-her-statistician-father">A daughter starting her first research, and her statistician father</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “So… you really are a professor in statistics, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In Japan, yes. One of the many.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs in Japan was revised. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Half my territory, half yours. You see the patients, I only see the data. So, do you have any <strong>clinical question or hypothesis</strong> in mind?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Honestly? Not really. I was sort of hoping I could just collect a lot of data first and think later. Is that illegal?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Not illegal, but not safe. Without at least a working hypothesis, it’s hard to design a good study.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay, okay. If I have to say something… I’m curious about which patients have a harder time staying in work. Not just men vs women, but things like tumor stage and treatment. I work in GI surgery, so I keep wondering about patients with a stoma. Can they really keep doing the same job as before surgery?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s already a good start. You’re close to a research question.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Really? I was just thinking out loud. Fine, I guess I’ll start drafting a questionnaire. That actually helped. Thanks.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Hold on. Have you decided on your <strong>study population</strong> yet?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Um… patients with cancer who had surgery at our hospital?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Do you see many stomas in gastric cancer patients?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “It’s not impossible, but honestly, almost never.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So you’re saying narrow the population?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. If you <strong>narrow the target population</strong>, you can ask <strong>more detailed questions</strong> and improve <strong>comparability</strong> between groups. If you want to compare patients <em>with</em> and <em>without</em> a stoma, it’s better to keep the cancer site consistent.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Comparability…such a statistics word. But yeah, if the background is all over the place, it’s a mess. I do get that.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “On the other hand, if you <strong>broaden the population</strong>, you gain <strong>generalizability</strong>. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Right now, with only our hospital, calling it a ‘real-world survey’ would be a bit bold. So ‘high generalizability’ basically means ‘other hospitals could actually use the results as a reference’?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s a good way to put it. See, you <em>do</em> think statistically.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Don’t flatter me just to get free clinical consulting.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In class, I tell my students this:</p>
+<blockquote class="blockquote">
+<p>When your clinical question is still vague,<br>
+try to express it using PICO or PECO before you design the study.</p>
+</blockquote>
+<p>It sounds fancy, but it’s just a framework.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I’ve heard the words PICO, PECO…but nobody really explains what to <em>do</em> with them.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s walk through it using your case. In PICO/PECO:</p>
+</div>
+</div>
+<ul>
+<li>What kind of patients? (<strong>Patients/Population</strong>)<br>
+</li>
+<li>What factor are we focusing on? (<strong>Intervention/Exposure</strong>)<br>
+</li>
+<li>What are we comparing it to? (<strong>Comparison</strong>)<br>
+</li>
+<li>What outcomes are we interested in? (<strong>Outcome</strong>)</li>
+</ul>
+<div class="dialogue">
+<div class="voice-father">
+<p>These four pieces are like the minimum ingredients for a study recipe. In a clinical trial, we usually talk about Intervention (I). In observational studies like your survey, we talk about Exposure (E).”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay, P is like, ‘rectal cancer patients after curative surgery in our hospital’. For E and C… maybe ‘with stoma’ vs ‘without stoma’?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And O is your outcome, that is to say, what you want to measure. In your case, something about return to work.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So outcome is the thing we call OS, DFS, response rate, that kind of stuff?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. In statistical analysis, the <strong>outcome variable</strong> is the most important part. So deciding what the outcome is is a key step in planning.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Can I really fix that before collecting any data? Feels like I’m committing too early.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “If you don’t fix it before designing the questionnaire, you’ll regret it later. Once you start collecting data, by the way, what software are you planning to use?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “R. That’s what everyone in my department uses.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “How comfortable are you with R?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “We had it in undergrad, but at this point I’ve forgotten everything except that semicolons stress me out less than parentheses.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “So we’ll need to get you used to R again. Which R functions you use will depend on the <strong>type of outcome</strong> you choose.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So step zero is:</p>
+<ol type="1">
+<li>Turn my vague hunch into a proper question using P, E, C, O</li>
+<li>Decide on the outcome<br>
+</li>
+<li>Then figure out how to survive R and not embarrass myself at journal club</li>
+</ol>
+<p>That’s the plan?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s a very good summary. If you bring me questions like that, I’m happy to be used as a resource.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Deal. I’ll bring the clinical mess, you translate it into statistics. Very efficient division of labor.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Clinical questions and research hypotheses">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Clinical questions and research hypotheses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In everyday clinical work in Japan, you naturally start to notice small curiosities:</p>
+<ul>
+<li>“Do my older patients really have worse outcomes?”<br>
+</li>
+<li>“Is this new support program actually helping?”</li>
+</ul>
+<p>These are <strong>clinical questions</strong>. To turn them into research, we want to re-express them as <strong>research hypotheses</strong>. A research hypothesis is built from the <strong>minimum elements</strong> needed for study design:</p>
+<ul>
+<li>P: Patients/Population</li>
+<li>I/E: Intervention/Exposure</li>
+<li>C: Comparison</li>
+<li>O: Outcome</li>
+</ul>
+<p>That’s exactly what <strong>PICO/PECO</strong> helps you write down.</p>
+<hr>
+<section id="example-research-hypothesis-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-1">Example: Research hypothesis 1</h4>
+<p>Among rectal cancer patients after curative resection in Japan, is there a difference in <strong>return-to-work within one year</strong> between those with and without a stoma?</p>
+<ul>
+<li>P: Rectal cancer patients after curative resection<br>
+</li>
+<li>E: Stoma present<br>
+</li>
+<li>C: Stoma absent<br>
+</li>
+<li>O: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.</p>
+<p>What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.<br>
+Having a clear comparison group improves interpretability.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-2">Example: Research hypothesis 2</h4>
+<p>Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?</p>
+<ul>
+<li>P: Patients with cancer after curative surgery<br>
+</li>
+<li>E: Received the guidebook<br>
+</li>
+<li>C: Did not receive the guidebook<br>
+</li>
+<li>O: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-3-exploratory" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-3-exploratory">Example: Research hypothesis 3 (exploratory)</h4>
+<p>“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”</p>
+<p>In exploratory studies like this, P is clear, but E and C are <strong>not just one thing</strong> — we’re screening multiple potential risk factors.</p>
+<p>So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the <strong>minimal set of elements</strong> needed to design a coherent study for your question.</p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quiz related to this episode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?</p>
+<ol type="1">
+<li>If there is a causal relationship, it will inevitably occur</li>
+<li>A universally generalizable law</li>
+<li>All other conditions being equal</li>
+<li>Observing a sufficiently large amount of data</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>3</strong>.</li>
+</ul>
+<p>The concept of “ceteris paribus” is very close to the idea of <strong>comparability</strong> between groups.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="continuation-of-their-story" class="level3">
+<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<p><a href="../en/study-design-1.html">Study design I</a></p>
+<p><a href="../en/study-design-2.html">Study design II</a></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
+  <pubDate>Wed, 03 Dec 2025 05:28:35 GMT</pubDate>
+</item>
+<item>
+  <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
+  <link>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="study-design-ii-data-have-types" class="level1">
+<h1>Study design II − Data Have Types</h1>
+<div class="serif-block">
+<p>　　　　　　　　Keywords: outcome, simulation</p>
+</div>
+<hr>
+<p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find Study design I here:</p>
+<p><a href="https://gestimation.github.io/coffee-and-research/en/study-design-1.html">Study design I</a></p>
+<section id="data-have-types" class="level3">
+<h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “Okay, coffee is ready. Can I borrow you a bit longer?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “If coffee is involved, yes.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just … numbers?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
+</div>
+</div>
+<ul>
+<li>Continuous data</li>
+<li>Binary / categorical data</li>
+<li>Count data</li>
+<li>Survival time data</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “<strong>Continuous data</strong> is things we measure, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Perfect. <strong>Count data</strong> is when you literally count events, like the number of traffic accidents. <strong>Survival data</strong> is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “When you say it like that, they definitely feel like different beasts. But in the R course I took, we just typed whatever they put on the slides — <code>t.test()</code>, <code>glm()</code>, <code>survfit()</code>… It all felt like a spellbook.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s a common side effect of R lectures. Do you have your laptop?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “That sounds like the beginning of homework.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s just say it’s a practical demonstration. Bring it here — we’ll install RStudio if it’s not there.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I knew this was coming. Look, I know my stats skills are still beginner level, and I <em>do</em> need R for my own research. So fine, I’ll get my laptop. But I expect maximum efficiency from this session.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “I’ll try. In R, for <strong>continuous data</strong>, we often use <code>mean()</code> and <code>t.test()</code>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Those at least sound familiar.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “For <strong>binary data</strong>, we summarize with <code>table()</code>, and to get p-values we use <code>fisher.test()</code>. For more complex analyses, we move to regression models like <code>glm(family = binomial)</code>. For <strong>survival data</strong>, we use things like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “There’s no way I can memorize all that. I’ll just mix everything up again.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “You don’t need to memorize every function name.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I like where this is going.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “What you <em>do</em> want is a rough map in your head. If you can picture the <strong>data type</strong>, the appropriate R functions become much easier to remember.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So instead of memorizing spells, I should recognize the kind of creature I’m dealing with.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And one more layer down, we’re also thinking about <strong>probability distributions</strong>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Ah, here comes the math.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Nothing too heavy. You’ve heard of the normal distribution, right?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “That one survived from undergrad, yes.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “For statistics, we imagine that behind the data there’s some probability distribution:</p>
+<ul>
+<li>Continuous data: often <strong>normal distribution</strong></li>
+<li>Binary data: <strong>binomial distribution</strong></li>
+<li>Count data: <strong>Poisson distribution</strong></li>
+<li>Survival data: there’s no single standard, but a simple one is the <strong>exponential distribution</strong>. Often, though, we just treat it <strong>nonparametrically</strong> without any specific distributions.</li>
+</ul>
+<p>You don’t have to remember the formulas, just the general matching. ”</p>
+</div>
+</div>
+<ul>
+<li>continuous: normal-ish<br>
+</li>
+<li>yes/no: binomial-ish<br>
+</li>
+<li>counts: Poisson-ish</li>
+<li>survival: nonparametric</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “So how does that help with R?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “For example, we often talk about <strong>proportions</strong> and <strong>rates</strong> in medicine. We casually throw around words like prevalence or mortality rate. But in statistics they are clearly different.”</p>
+</div>
+</div>
+<ul>
+<li>Proportion: a parameter of binomial distribution<br>
+</li>
+<li>Rate: a parameter of Poisson distribution</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “But in normal conversation, proportion and rate are almost interchangeable.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And with that in mind, let’s do a small R demo — nothing painful.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “You always say that right before something painful.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “We’ll simulate age (continuous data), sex, stoma (binary data) and survival time. Then we’ll run some basic summaries.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay. I’ll type what you tell me, but I want to understand the big picture, not just more spells.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Deal. First, a quick note about R packages. To <strong>install</strong> a package on your computer, you use <code>install.packages()</code>. To <strong>use</strong> an installed package in your current session, you use <code>library()</code>. R is like a bookshelf.”</p>
+</div>
+</div>
+<ul>
+<li><code>install.packages()</code>: buy the book and put it on the shelf<br>
+</li>
+<li><code>library()</code>: pull the book off the shelf and open it.”</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “So install is a one-time thing, and <code>library()</code> is what I run each time I actually use it.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans every single morning.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “No, thank you. Okay, show me the simulated data.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Generating simulated data">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Generating simulated data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here we’ll use R to create a simple dataset and run basic analyses for <strong>continuous</strong>, <strong>binary</strong>, and <strong>survival</strong> data. The theme is a two-group comparison: patients with and without a stoma.</p>
+<ul>
+<li><p>Age: continuous, from a normal distribution using <code>rnorm()</code></p></li>
+<li><p>Sex, stoma: binary, from a binomial distribution using <code>rbinom()</code></p></li>
+<li><p>Survival time: from an exponential distribution using <code>rexp()</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">46</span>)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Stoma: 1 = with stoma, 0 = without stoma</span></span>
+<span id="cb1-4">stoma <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbinom</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prob =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sex: 0 = WOMAN, 1 = MAN</span></span>
+<span id="cb1-7">sex <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbinom</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prob =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Age: normal distribution (stoma group slightly older)</span></span>
+<span id="cb1-10">age <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">65</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> stoma, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>)</span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Survival time: exponential distribution</span></span>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   expected survival 10 years (with stoma) vs 15 years (without)</span></span>
+<span id="cb1-14">hazard <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(stoma <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)</span>
+<span id="cb1-15">time   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rexp</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rate =</span> hazard)</span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Random censoring: 0 = censored, 1 = event</span></span>
+<span id="cb1-18">status <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbinom</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prob =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>)</span>
+<span id="cb1-19"></span>
+<span id="cb1-20">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb1-21">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age    =</span> age,</span>
+<span id="cb1-22">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sex    =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(sex, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"WOMAN"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MAN"</span>)),</span>
+<span id="cb1-23">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stoma  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(stoma, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb1-24">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"WITHOUT STOMA"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"WITH STOMA"</span>)),</span>
+<span id="cb1-25">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time   =</span> time,</span>
+<span id="cb1-26">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">status =</span> status</span>
+<span id="cb1-27">)</span>
+<span id="cb1-28"></span>
+<span id="cb1-29"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(dat)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       age   sex         stoma      time status
+1 59.19077 WOMAN WITHOUT STOMA 17.939751      1
+2 59.46486   MAN WITHOUT STOMA 18.189251      1
+3 55.34491   MAN WITHOUT STOMA  2.445121      1
+4 60.68207   MAN WITHOUT STOMA 46.737429      1
+5 61.79577   MAN WITHOUT STOMA  0.149128      1
+6 62.84530 WOMAN    WITH STOMA  0.298167      1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Summarizing continuous and binary data">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summarizing continuous and binary data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>First, let’s describe age and sex in the stoma vs non-stoma groups using a <strong>histogram</strong> and <strong>contingency table</strong>. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages("ggplot2") # if needed</span></span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> stoma)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"identity"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bins =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AGE"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FREQUENCY"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"STOMA"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://gestimation.github.io/coffee-and-research/en/study-design-2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">table</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">STOMA =</span> dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stoma, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">SEX =</span> dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sex)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               SEX
+STOMA           WOMAN MAN
+  WITHOUT STOMA    43  76
+  WITH STOMA       44  37</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Summarizing survival data with survival curves">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summarizing survival data with survival curves
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># devtools::install_github("gestimation/cifmodeling") # if needed</span></span>
+<span id="cb6-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(cifmodeling)</span>
+<span id="cb6-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cifplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Event</span>(time, status) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> stoma,</span>
+<span id="cb6-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data         =</span> dat,</span>
+<span id="cb6-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">outcome.type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"survival"</span></span>
+<span id="cb6-6">)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://gestimation.github.io/coffee-and-research/en/study-design-2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quiz related to this episode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.</p>
+<ol type="1">
+<li>0～24%</li>
+<li>25～49%</li>
+<li>50～74%</li>
+<li>75～100%</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>2</strong>.</li>
+</ul>
+<p>According to the review by Kim and Prasad (2016), 31 out of 83 products were reported to have been approved based on response rate results. Furthermore, the breakdown of endpoints differs between standard approval and accelerated approval. For standard approval, 48 out of 55 products were evaluated based on overall survival, progression-free survival, or disease-free survival. In contrast, for accelerated approval, the majority of products were based on Phase II trial results where response rate was the primary endpoint.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<ul>
+<li>Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration’s approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7</li>
+</ul>
+</section>
+<section id="continuation-of-their-story" class="level3">
+<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<p><a href="../en/study-design-1.html">Study design I</a></p>
+<p><a href="../en/study-design-2.html">Study design II</a></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
+  <pubDate>Wed, 03 Dec 2025 05:28:35 GMT</pubDate>
+</item>
+</channel>
+</rss>

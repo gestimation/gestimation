@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>study-design-2 – Coffee and Research</title>
+<title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -179,7 +179,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-study-design-ii" id="toc-story-and-quiz-study-design-ii" class="nav-link active" data-scroll-target="#story-and-quiz-study-design-ii">Story and Quiz − Study design II</a>
+  <li><a href="#study-design-ii-data-have-types" id="toc-study-design-ii-data-have-types" class="nav-link active" data-scroll-target="#study-design-ii-data-have-types">Study design II − Data Have Types</a>
   <ul class="collapse">
   <li><a href="#data-have-types" id="toc-data-have-types" class="nav-link" data-scroll-target="#data-have-types">Data have types</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
@@ -189,12 +189,32 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -329,12 +349,14 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-study-design-ii" class="level1">
-<h1>Story and Quiz − Study design II</h1>
+<section id="study-design-ii-data-have-types" class="level1">
+<h1>Study design II − Data Have Types</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, continuous/binary/count/survival</p>
+<p>　　　　　　　　Keywords: outcome, simulation</p>
 </div>
 <hr>
+<p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find Study design I here:</p>
+<p><a href="https://gestimation.github.io/coffee-and-research/en/study-design-1.html">Study design I</a></p>
 <section id="data-have-types" class="level3">
 <h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
 <div class="dialogue">
@@ -738,7 +760,7 @@ Answer
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

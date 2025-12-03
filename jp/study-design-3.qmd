@@ -1,9 +1,16 @@
 ---
+title: "A First Step into Survival and Competing Risks Analysis with R"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -135,15 +142,17 @@ a:hover {
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 
-# Story and Quiz − Study design III
+# Study design III − A First Step into Survival and Competing Risks Analysis with R
+
 ::: {.serif-block}
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, PICO/PECO, survival/competing-risk, clinical trial
+　　　　　　　　Keywords: clinical trial, outcome, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------

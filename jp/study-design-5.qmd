@@ -1,9 +1,16 @@
 ---
+title: "When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -135,14 +142,15 @@ a:hover {
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Study design V
+# Study design 5 − When Bias Creeps In
 
 ::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, confounding/information-bias/selection-bias, observational study
+　　　　　　　　Keywords: confounding, observational study, simulation, survival/competing-risk, study design
 :::
 
 ------------------------------------------------------------------------
