@@ -1,9 +1,16 @@
 ---
+title: "Distinguishing Time-Point, Time-Constant, and Time-Varying Effects with R Example"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Effects and time V
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, survival/competing-risk, observational study, paper writing
+# Effects and time V − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, effect measure, survival/competing-risk, scientific writing
 :::
 
 ------------------------------------------------------------------------

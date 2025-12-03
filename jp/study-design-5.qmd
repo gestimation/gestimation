@@ -147,10 +147,10 @@ a:hover {
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Study design 5 − When Bias Creeps In
+# Study Design 5 − When Bias Creeps In
 
 ::: {.serif-block .text-right}
-Keywords: confounding, observational study, simulation, survival/competing-risk, study design
+Keywords: observational study, outcome, simulation, survival/competing-risk, study design
 :::
 ------------------------------------------------------------------------
 

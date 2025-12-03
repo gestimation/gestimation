@@ -1,4 +1,5 @@
 ---
+title: "P-Value Explanations That Seem Plausible at First Glance"
 format:
   html:
     toc: true
@@ -6,6 +7,10 @@ format:
 
 ```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -129,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -143,10 +148,10 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Story and Quiz − Frequentist thinking II
+# Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance
 
-::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, p-value, survival/competing-risk, clinical trial
+::: {.serif-block .text-right}
+Keywords: clinical trial, p-value, survival/competing-risk 
 :::
 
 ------------------------------------------------------------------------

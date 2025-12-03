@@ -1,9 +1,16 @@
 ---
+title: "Risk Ratios and Odds Ratios: When Approximation Works"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Effects and time IV
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, paper writing
+# Effects and time IV − Risk Ratios and Odds Ratios: When Approximation Works
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, effect measure, scientific writing
 :::
 
 ------------------------------------------------------------------------

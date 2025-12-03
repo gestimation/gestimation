@@ -1,9 +1,16 @@
 ---
+title: "Silent Targets Behind Risks and Effects"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Effects and time II
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, observational study, paper writing
+# Effects and time II − Silent Targets Behind Risks and Effects
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, effect measure, observational study, scientific writing
 :::
 
 ------------------------------------------------------------------------
@@ -372,7 +381,7 @@ $$
 
 この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除後できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。
 
-この計算は、集団全体をターゲットとする寄与割合を求めていることに他なりません。集団全体における曝露割合を$p$で書くと、population attributable fractionは、以下の式で表されます。
+この計算は、集団全体をターゲットとする寄与割合を求めていることに他なりません。集団全体における曝露割合を$p$で書くと、集団寄与割合は、以下の式で表されます。
 
 $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 

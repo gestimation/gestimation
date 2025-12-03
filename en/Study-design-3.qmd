@@ -149,7 +149,7 @@ a:hover {
 :::
 
 
-# Study design III − A First Step into Survival and Competing Risks Analysis with R
+# Study Design III − A First Step into Survival and Competing Risks Analysis with R
 
 ::: {.serif-block .text-right}
 Keywords: clinical trial, outcome, simulation, survival/competing-risk

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>frequentist-4 – Coffee and Research</title>
+<title>Understanding Confidence Intervals via Hypothetical Replications in R – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -179,7 +179,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-frequentist-thinking-iv" id="toc-story-and-quiz-frequentist-thinking-iv" class="nav-link active" data-scroll-target="#story-and-quiz-frequentist-thinking-iv">Story and Quiz − Frequentist thinking IV</a>
+  <li><a href="#frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r" id="toc-frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r" class="nav-link active" data-scroll-target="#frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r">Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R</a>
   <ul class="collapse">
   <li><a href="#お父さんその95信頼区間って本当に95なの" id="toc-お父さんその95信頼区間って本当に95なの" class="nav-link" data-scroll-target="#お父さんその95信頼区間って本当に95なの">お父さん、その95%信頼区間って本当に95%なの？</a></li>
   <li><a href="#信頼区間アプローチによるサンプルサイズ設計" id="toc-信頼区間アプローチによるサンプルサイズ設計" class="nav-link" data-scroll-target="#信頼区間アプローチによるサンプルサイズ設計">信頼区間アプローチによるサンプルサイズ設計</a></li>
@@ -190,12 +190,32 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Understanding Confidence Intervals via Hypothetical Replications in R</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -319,8 +339,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -330,10 +350,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-frequentist-thinking-iv" class="level1">
-<h1>Story and Quiz − Frequentist thinking IV</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, survival/competing-risk, clinical trial</p>
+<section id="frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r" class="level1">
+<h1>Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R</h1>
+<div class="serif-block text-right">
+<p>Keywords: clinical trial, simulation, study design, survival/competing-risk</p>
 </div>
 <hr>
 <section id="お父さんその95信頼区間って本当に95なの" class="level3">

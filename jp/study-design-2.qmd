@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Study design II − Data Have Types
+# Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
 Keywords: outcome, simulation

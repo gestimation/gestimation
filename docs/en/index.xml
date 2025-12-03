@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 03 Dec 2025 05:40:35 GMT</lastBuildDate>
+<lastBuildDate>Wed, 03 Dec 2025 07:05:10 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -159,7 +159,7 @@ a:hover {
 <p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
 <section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
-<h1>Study design I − A Story of Coffee Chat and Research Hypothesis</h1>
+<h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
 <div class="serif-block text-right">
 <p>Keywords: observational study, outcome, study design</p>
 </div>
@@ -420,7 +420,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Wed, 03 Dec 2025 05:40:35 GMT</pubDate>
+  <pubDate>Wed, 03 Dec 2025 07:05:10 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -570,7 +570,7 @@ a:hover {
 <p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
 <section id="study-design-ii-data-have-types" class="level1">
-<h1>Study design II − Data Have Types</h1>
+<h1>Study Design II − Data Have Types</h1>
 <div class="serif-block text-right">
 <p>Keywords: outcome, simulation</p>
 </div>
@@ -1141,7 +1141,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Wed, 03 Dec 2025 05:40:35 GMT</pubDate>
+  <pubDate>Wed, 03 Dec 2025 07:05:10 GMT</pubDate>
 </item>
 </channel>
 </rss>

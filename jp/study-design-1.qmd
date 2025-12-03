@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Study design I − A Story of Coffee Chat and Research Hypothesis
+# Study Design I − A Story of Coffee Chat and Research Hypothesis
 
 ::: {.serif-block .text-right}
 Keywords: observational study, outcome, study design

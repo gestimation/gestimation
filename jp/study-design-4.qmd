@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Study design IV − The Bridge from Data Collection to Analysis
+# Study Design IV − The Bridge from Data Collection to Analysis
 
 ::: {.serif-block .text-right}
 Keywords: generalized linear model, outcome, simulation, survival/competing-risk
