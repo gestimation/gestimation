@@ -88,6 +88,27 @@ Dad: “Exactly.”
 
 ---
 
+
+
+
+::: voice-daughter
+Me: “So that earlier exchange sparked a discussion at the conference about how to use p-values, huh? But it's all pretty abstract and doesn't really click for me.”
+:::
+
+::: voice-father
+Dad: "Oh? I think it's pretty clearly stated that 'scientific conclusions should not be based solely on whether they exceed the significance level.' Take the JCOG9502 paper—Principles 3 and 5 say we shouldn't just look at the p-value, but carefully observe the survival curves before drawing conclusions. Of course, without specialized knowledge, it's hard to grasp what the principles are aiming for. Principle 4, for example, relates to the issue of multiplicity."
+:::
+
+::: voice-daughter
+Me: “Multiplicity?”
+:::
+
+::: voice-father
+Dad: “In recent clinical trials, a statistical issue called multiplicity often lurks. Let me explain a bit more using the JCOG9502 paper as an example. Go back and read the section on Statistical Analysis. Alpha error, also called the significance level, refers to the threshold level compared to the p-value.”
+:::
+
+
+
 ### Multiplicity and selective inference: the ‘best’ p-value trap
 
 Dad: “Look at **Principle 4** again?about transparency.
