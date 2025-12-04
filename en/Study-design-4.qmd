@@ -286,19 +286,11 @@ In your case, the event is ‘return-to-work’.”
 :::
 
 ::: voice-daughter
-Me: “So if someone is discharged on April 1  
-and returns to work on April 30,  
-time-to-event = 30 days.”
+Me: “So if someone is discharged on April 1 and returns to work on April 30, time-to-event = 30 days.”
 :::
 
 ::: voice-father
-Dad: “Exactly.  
-
-Now think about patients who haven’t returned to work  
-by the time you close the survey.  
-
-For them, **time-to-return** isn’t observed yet.  
-That’s where **censoring** comes in.”
+Dad: “Exactly. Now think about patients who haven’t returned to work by the time you close the survey. For them, **time-to-return** isn’t observed yet. That’s where **censoring** comes in.”
 :::
 
 ::: voice-daughter
@@ -306,33 +298,51 @@ Me: “Right. They’re still in limbo.”
 :::
 
 ::: voice-father
-Dad: “So survival data always comes as a **pair**:
-
-- a time variable, and  
-- an **event indicator**.
-
-For example:
-
-- time = min( time to return-to-work, time to last follow-up )  
-- event = 1 if returned, 0 if not returned by last follow-up.”
+Dad: “So survival data always comes as a **pair**:“
 :::
 
+- a time variable
+- a **censoring indicator**
+
+::: voice-father
+Me: “I can imagine an example like:”
+:::
+:::::::::::::::::::::::::::::::::
+
+- time = min( time to return-to-work, time to last follow-up )  
+- status = 1 if returned, 0 if not returned by last follow-up
+
+::: {.callout-note appearance="simple"  title="Handling survival data in R"}
+
+Since survival data consists of pairs of variables, they must be specified as pairs when inputting into R functions. The `survfit()` and `coxph()` functions in the `survival` package actually provide a dedicated input function, `Surv()`. Input specifications vary across packages; for example, the `mets` package uses `Event()`. The `cifplot()` function in the `cifmodeling` package supports both `Surv()` and `Event()`. 
+
+```{r surv_example, eval=FALSE}
+library(survival)
+library(cifmodeling)
+
+survfit(Surv(time, status) ~ stoma,
+  data         = dat
+)
+cifplot(Surv(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+cifplot(Event(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “And where do **deaths** go in that picture?”
+Me: “But where do **deaths** go in that picture?”
 :::
 
 ::: voice-father
-Dad: “There are two ways to think about it.
-
-1. A simple approach:  
-   treat deaths as ‘did not return to work’,  
-   and let them contribute their time until death.  
-   In the event indicator, death would be coded as **no event**  
-   if you only care about return-to-work.
-
-2. A more refined approach: **competing risks**.  
-   Here, death is not just ‘censored’—  
-   it’s a **competing event** that prevents return-to-work from happening.”
+Dad: “There are two ways to think about it. One is a simple approach that treats deaths as ‘did not return to work’. In the censoring indicator, death would be coded as **no event** if you only care about return-to-work. But there is a more refined approach. In **competing risks analysis**, death is not just censored — it’s a **competing event** that prevents return-to-work from happening.”
 :::
 
 ::: voice-daughter
@@ -340,10 +350,7 @@ Me: “Competing risks again. You really like those.”
 :::
 
 ::: voice-father
-Dad: “They show up a lot in medical data.  
-
-If you treat all deaths as just censored,  
-you’re implicitly saying:
+Dad: “They show up a lot in medical data. If you treat all deaths as just censored, you’re implicitly saying:
 
 > ‘If they hadn’t died, their chance of returning-to-work  
 > would be the same as for people still alive.’
@@ -352,7 +359,7 @@ In reality, that’s often not true.”
 :::
 
 ::: voice-daughter
-Me: “Yeah, that would be… optimistic.”
+Me: “Yeah, that would be...optimistic.”
 :::
 
 ---
@@ -360,10 +367,7 @@ Me: “Yeah, that would be… optimistic.”
 ### A quick map of data types and methods
 
 ::: voice-father
-Dad: “Since we’ve talked about data types a few times now,  
-let’s draw a little map.  
-
-Say we’re thinking about:
+Dad: “Since we’ve talked about data types a few times now, let’s draw a little map. Say we’re thinking about:
 
 - what kind of **outcome** we have,  
 - whether we have **repeated measurements**, and  
@@ -380,36 +384,25 @@ Dad: “Today we get the short version.”
 
 | Data type         | Repeated within person? | Confounding? | Typical methods                        |
 |-------------------|-------------------------|--------------|----------------------------------------|
-| Continuous        | No                      | No           | t-test, Wilcoxon rank-sum              |
+| Continuous        | No                      | No           | $t$ test, Wilcoxon rank-sum            |
 | Continuous        | No                      | Yes          | Linear regression                      |
-| Continuous        | Yes                     | Yes          | Mixed-effects model, GEE               |
-| Binary (yes/no)   | No                      | No           | χ² test                                |
+| Continuous        | Yes                     | Yes          | Random-effects model, GEE              |
+| Binary            | No                      | No           | $\chi^2$ test                          |
 | Binary            | No                      | Yes          | Logistic regression                    |
-| Binary            | Yes                     | Yes          | Mixed-effects logistic, GEE            |
+| Binary            | Yes                     | Yes          | Random-effects logistic, GEE           |
 | Count             | No                      | Yes          | Poisson regression                     |
-| Survival time     | No                      | No           | Kaplan–Meier curve                     |
-| Survival time     | No                      | Yes          | Cox regression                         |
-| Competing risks   | No                      | No           | Aalen–Johansen curve (cumulative incidence) |
+| Survival          | No                      | No           | Kaplan–Meier curve                     |
+| Survival          | No                      | Yes          | Cox regression                         |
+| Competing risks   | No                      | No           | Aalen–Johansen curve                   |
 | Competing risks   | No                      | Yes          | Fine–Gray model                        |
 
 ::: voice-daughter
-Me: “So for my study:
-
-- ‘Returned to work within 1 year (yes/no)’  
-  → binary outcome → logistic regression.
-
-- ‘Time from discharge to return-to-work’  
-  → survival outcome → Cox regression.
-
-And if I treat death as a competing risk for return-to-work,  
-I’d use an Aalen–Johansen curve for descriptive stuff?”
+Me: “So for my study, ‘returned to work within 1 year’ is binary and can be handled with logistic regression. For ‘time from discharge to return-to-work’, are Kaplan–Meier/Cox and Aalen–Johansen/Fine–Gray typical statistical methods? ”
 :::
 
 ::: voice-father
-Dad: “Exactly.  
-That’s already a good grasp of the landscape.”
-
----
+Dad: “Exactly. That’s already a good grasp of the landscape.”
+:::
 
 ### Repeated measurements and confounding
 
@@ -418,16 +411,15 @@ Me: “Where do repeated measures come in?”
 :::
 
 ::: voice-father
-Dad: “Imagine you use the same questionnaire  
-multiple times for each patient:
+Dad: “Imagine you use the same questionnaire multiple times for each patient:”
+:::
 
 - pre-surgery  
 - at 6 months  
 - at 12 months
 
-Then you’d have multiple data points **within each person**.  
-Those are **correlated** — your own responses are more similar to each other  
-than to some random patient’s.”
+::: voice-father
+Dad: “Then you’d have multiple data points **within each person**. Those are **correlated** — your own responses are more similar to each other than to some random patient’s.”
 :::
 
 ::: voice-daughter
@@ -435,42 +427,15 @@ Me: “So I can’t just pretend they’re all independent.”
 :::
 
 ::: voice-father
-Dad: “Right. That’s when you use methods like:
-
-- **random-effects (mixed) models**, or  
-- **GEE (generalized estimating equations)**.
-
-They’re built to handle within-person correlation.”
+Dad: “Right. That’s when you use methods like **random-effects models** or **generalized estimating equations (GEE)**. They’re built to handle within-person correlation.”
 :::
 
 ::: voice-daughter
-Me: “And confounding is the ‘third variable’ that messes with the comparison, right?”
+Me: “And confounding is lack of comparability or ‘ceteris paribus‘, right? So in randomized trials, we use random allocation of treatments to balance those things in advance. But in observational studies like mine, we depend more on modeling and design.”
 :::
 
 ::: voice-father
-Dad: “Exactly. Suppose older patients are both:
-
-- more likely to have a stoma, and  
-- less likely to return to work.
-
-If you simply compare stoma vs no-stoma without adjusting for **age**,  
-your estimated effect of stoma will be **biased**.  
-
-That’s where logistic regression or Cox regression  
-—with age and other factors—  
-helps you **adjust for confounding**.”
-:::
-
-::: voice-daughter
-Me: “So in randomized trials, we use randomization  
-to balance those things in advance.  
-
-But in observational studies like mine,  
-we depend more on modeling and design.”
-:::
-
-::: voice-father
-Dad: “Precisely. That’s the big difference between ‘trial world’ and ‘real-world data’.”
+Dad: “Precisely. That’s the big difference between ‘trial data/experimental data’ and ‘real-world data’.”
 :::
 
 
@@ -479,17 +444,16 @@ In which situation is the **Kaplan–Meier method** appropriate for estimating a
 
 1. When survival times follow a normal distribution.  
 2. When the reasons for censoring are unrelated to prognosis.  
-3. When the censoring proportions of two groups do not differ significantly in a statistical test.  
+3. When the censoring proportions of two groups do not differ significantly in a hypothesis test.  
 4. When the proportional hazards assumption holds between the treatment and control groups.  
 :::
-
 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 - The correct answer is **2**.
 
 The Kaplan–Meier method does **not** require:
 
-- normality of survival times (that’s more for t-tests), nor  
+- normality of survival times (that’s more for $t$-tests), nor  
 - proportional hazards (that’s a key assumption for the Cox model).
 
 What it *does* assume is that **censoring is non-informative**. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.
