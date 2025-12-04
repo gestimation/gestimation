@@ -147,7 +147,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#study-design-i-a-story-of-coffee-chat-and-research-hypothesis" id="toc-study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="nav-link active" data-scroll-target="#study-design-i-a-story-of-coffee-chat-and-research-hypothesis">Study Design I − A Story of Coffee Chat and Research Hypothesis</a>
   <ul class="collapse">
   <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソード" id="toc-エピソード" class="nav-link" data-scroll-target="#エピソード">エピソード</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -368,13 +368,13 @@ a:hover {
 <p>私「そうかなあ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに比較可能性（comparability）も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
+<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに<strong>比較可能性（comparability）</strong>も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「一方で、対象集団は広い方が、一般化可能性（generalizability）が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
+<p>お父さん「比較可能性を高めるための統計手法やRパッケージもある。回帰調整のための<code>glm()</code>やプロペンシティスコア調整のための<code>CBPS()</code>とかね。一方で、対象集団は広い方が、<strong>一般化可能性（generalizability）</strong>が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
@@ -476,6 +476,14 @@ O: 手術後1年以内の復職の有無</code></pre>
 </section>
 </div>
 </div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「なるほどね、オリジナル仮説を立てろっていわれたら困るけど、研究の要素を洗い出して、ひとつひとつ決めていく作業はきらいじゃないわ。いつかは必要なことだし」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうでしょ。それに研究者の思考を、早い段階で専門的な表現に置き換えておくと、コミュニケーションもうまくなる。疾患やアウトカムの定義、治療や曝露内容は、医師や施設によって微妙な違いがあるものだからね。言葉をおろそかにすると混乱の種になる」</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -515,10 +523,15 @@ O: 手術後1年以内の復職の有無</code></pre>
 </div>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<section id="エピソード" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード">エピソード</h3>
+<ul>
+<li><a href="../jp/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../jp/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+</ul>
 
 
 </section>

@@ -147,11 +147,6 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#study-design-iv-the-bridge-from-data-collection-to-analysis" id="toc-study-design-iv-the-bridge-from-data-collection-to-analysis" class="nav-link active" data-scroll-target="#study-design-iv-the-bridge-from-data-collection-to-analysis">Study Design IV − The Bridge from Data Collection to Analysis</a>
   <ul class="collapse">
   <li><a href="#turning-a-questionnaire-into-data" id="toc-turning-a-questionnaire-into-data" class="nav-link" data-scroll-target="#turning-a-questionnaire-into-data">Turning a questionnaire into “data”</a></li>
-  <li><a href="#categorical-data-vs-survival-time-data" id="toc-categorical-data-vs-survival-time-data" class="nav-link" data-scroll-target="#categorical-data-vs-survival-time-data">Categorical data vs survival time data</a></li>
-  <li><a href="#a-quick-map-of-data-types-and-methods" id="toc-a-quick-map-of-data-types-and-methods" class="nav-link" data-scroll-target="#a-quick-map-of-data-types-and-methods">A quick map of data types and methods</a></li>
-  <li><a href="#repeated-measurements-and-confounding" id="toc-repeated-measurements-and-confounding" class="nav-link" data-scroll-target="#repeated-measurements-and-confounding">Repeated measurements and confounding</a></li>
-  <li><a href="#a-quiz-related-to-this-episode" id="toc-a-quiz-related-to-this-episode" class="nav-link" data-scroll-target="#a-quiz-related-to-this-episode">A quiz related to this episode</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -325,92 +320,90 @@ a:hover {
 <hr>
 <section id="turning-a-questionnaire-into-data" class="level3">
 <h3 class="anchored" data-anchor-id="turning-a-questionnaire-into-data">Turning a questionnaire into “data”</h3>
+<div class="dialogue">
+<div class="voice-daughter">
 <p>Me: “Hey Dad, quick question. And yes, there’s coffee.”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Then I’m listening.”</p>
-<p>Me: “You remember that <strong>return-to-work survey</strong> for cancer survivors?<br>
-I finally drafted the questionnaire we’re going to mail from our hospital.<br>
-Can you take a look and tell me if it’s… statistically suicidal?”</p>
-<p>Dad: “Let’s see.”</p>
-<p><em>(He reads quietly for a minute.)</em></p>
-<p>Dad: “How exactly are you going to define the <strong>return-to-work rate</strong>?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “You remember that return-to-work survey for cancer survivors? I finally drafted the questionnaire we’re going to mail from our hospital. Can you take a look and tell me if it’s…statistically suicidal?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s see…How exactly are you going to define the <strong>return-to-work proportion</strong>?”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “That’s already a hard question?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Yup. It always is.”</p>
-<p>Me: “Okay… here’s how I was thinking.<br>
-Among all patients who had curative surgery,<br>
-I want to know who <strong>has returned to work</strong> and who <strong>hasn’t</strong><br>
-within a certain time period.</p>
-<p>I don’t want to restrict the denominator<br>
-to only those who <em>say</em> they want to go back to work,<br>
-because some people might have given up because of workplace issues.”</p>
-<p>Dad: “Good. That’s a thoughtful choice.<br>
-So what time window are you using?”</p>
-<p>Me: “I don’t want to use ‘survey date’ because<br>
-the response timing will vary a lot between patients.<br>
-So I was thinking of defining it as:</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay…here’s how I was thinking. Among all patients who had curative surgery, I want to know who <strong>has returned to work</strong> and who <strong>hasn’t</strong> within a certain time period. I don’t want to restrict the denominator to only those who <em>say</em> they want to go back to work, because some people might have given up because of workplace issues.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Good. That’s a thoughtful choice. So what time window are you using?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I don’t want to use ‘survey date’ because the response timing will vary a lot between patients. So I was thinking of defining it as:</p>
 <blockquote class="blockquote">
 <p>‘Returned to work within 1 year after surgery.’</p>
 </blockquote>
-<p>And then I realized…<br>
-I should probably ask for the <strong>actual date of return-to-work</strong> in the questionnaire.”</p>
-<p>Dad: “Yes, that date is very useful.</p>
-<p>If you have it, you can turn the same answer into:</p>
+<p>And then I realized… I should probably ask for the <strong>actual date of return-to-work</strong> in the questionnaire.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes, that date is very useful. If you have it, you can turn the same answer into:”</p>
+</div>
 <ul>
-<li><strong>Categorical data</strong><br>
-(returned within 1 year: yes/no), and<br>
-</li>
-<li><strong>Survival time data</strong><br>
-(time from discharge to return-to-work).”</li>
+<li>Categorical data (returned within 1 year: yes/no)</li>
+<li>Survival data (time from discharge to return-to-work)</li>
 </ul>
-<p>Me: “Two birds with one question. Efficient.<br>
-What about patients who <strong>die</strong> after surgery, though?”</p>
-<p>Dad: “Important point.<br>
-If someone dies after your <strong>time origin</strong>,<br>
-you shouldn’t quietly drop them from the denominator.</p>
-<p>That would create bias—especially in a cancer survivor study.”</p>
+<div class="voice-daughter">
+<p>Me: “Two birds with one question. Efficient. What about patients who <strong>die</strong> after surgery, though?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Important point. If someone dies after your <strong>time origin</strong>, you shouldn’t quietly drop them from the denominator. That would create bias—especially in a cancer survivor study.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “So what should I do?”</p>
-<p>Dad: “In longitudinal studies for cancer patients, I always tell people:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In follow-up studies of cancer patients, I always tell people:”</p>
+</div>
 <ol type="1">
-<li>Decide a clear <strong>time origin</strong><br>
-– for you, I’d recommend the <strong>discharge date</strong>.<br>
+<li>Decide a clear <strong>time origin</strong> – for you, I’d recommend the <strong>discharge date</strong>.<br>
 </li>
-<li>Decide a <strong>follow-up period</strong><br>
-– here, ‘1 year after discharge’.<br>
+<li>Decide a <strong>follow-up period</strong> – here, ‘1 year after discharge’.<br>
 </li>
-<li>Make a serious effort to collect outcome information<br>
-for <strong>all patients</strong> in P, including deaths.</li>
+<li>Make a serious effort to collect outcome information for <strong>all patients</strong> in the target population, including deaths.</li>
 </ol>
-<p>If P is ‘rectal cancer patients after curative surgery at our hospital’,<br>
-you want to know what happened to <em>all</em> of them,<br>
-not just the ones who kindly mail back questionnaires.”</p>
-<p>Me: “Right. I don’t want to design a study<br>
-where the only people included are those with good energy and good stationery habits.”</p>
-<hr>
-</section>
+<div class="voice-father">
+<p>Dad: “If the target population is ‘rectal cancer patients after curative surgery at our hospital’, you want to know what happened to <em>all</em> of them, not just the ones who kindly mail back questionnaires.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Right. I don’t want to design a study where the only people included are those with good energy and good stationery habits.”</p>
+</div>
 <section id="categorical-data-vs-survival-time-data" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-data-vs-survival-time-data">Categorical data vs survival time data</h3>
-<p>Dad: “Let’s organize this a bit.<br>
-What is your <strong>outcome</strong> in this study?”</p>
+<div class="voice-father">
+<p>Dad: “Let’s organize this a bit. What is your <strong>outcome</strong> in this study?”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “The main one is:</p>
 <blockquote class="blockquote">
 <p>Returned to work within one year after discharge (yes/no).”</p>
 </blockquote>
-<p>Dad: “Perfect.<br>
-That gives you <strong>binary data</strong>:</p>
-<ul>
-<li>1 = returned within 1 year<br>
-</li>
-<li>0 = did not return within 1 year</li>
-</ul>
-<p>You can then compute:</p>
-<ul>
-<li>the <strong>return-to-work proportion</strong> in each group, and<br>
-</li>
-<li>compare them.”</li>
-</ul>
+</div>
+<div class="voice-father">
+<p>Dad: “Perfect. That gives you binary data. You can then compute the <strong>return-to-work proportion</strong> in each group, and compare them.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Including patients who died, as ‘did not return’, right?”</p>
-<p>Dad: “Yes, as long as that’s clearly defined and consistent.</p>
-<p>But if you want a richer picture,<br>
-you could use <strong>three categories</strong> instead of just two:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes, as long as that’s clearly defined and consistent. But if you want a richer picture,<br>
+you could use <strong>three categories</strong> instead of just two:”</p>
 <ol type="1">
 <li>Returned within 1 year<br>
 </li>
@@ -418,29 +411,42 @@ you could use <strong>three categories</strong> instead of just two:</p>
 </li>
 <li>Died within 1 year without returning to work</li>
 </ol>
-<p>That already separates ‘can’t work because I died’<br>
-from ‘still alive but didn’t go back’.”</p>
+<div class="voice-father">
+<p>Dad: “That already separates ‘can’t work because I died’ from ‘still alive but didn’t go back’.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Okay, that does sound more honest.”</p>
-<p>Dad: “Now, if you also collect the <strong>date of return-to-work</strong>,<br>
-you can create <strong>survival time data</strong>.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Now, if you also collect the <strong>date of return-to-work</strong>, you can create <strong>survival data</strong>.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Even though the event is not ‘death’?”</p>
-<p>Dad: “Right.<br>
-‘Survival time’ is a bit misleading as a name.</p>
-<p>Statistically, what matters is:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. ‘Survival time’ is a bit misleading as a name. Statistically, what matters is:</p>
 <blockquote class="blockquote">
 <p>time from the <strong>time origin</strong> to the <strong>event of interest</strong>.</p>
 </blockquote>
 <p>In your case, the event is ‘return-to-work’.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “So if someone is discharged on April 1<br>
 and returns to work on April 30,<br>
 time-to-event = 30 days.”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Exactly.</p>
 <p>Now think about patients who haven’t returned to work<br>
 by the time you close the survey.</p>
 <p>For them, <strong>time-to-return</strong> isn’t observed yet.<br>
 That’s where <strong>censoring</strong> comes in.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Right. They’re still in limbo.”</p>
-<p>Dad: “So survival time data always comes as a <strong>pair</strong>:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “So survival data always comes as a <strong>pair</strong>:</p>
 <ul>
 <li>a time variable, and<br>
 </li>
@@ -452,7 +458,11 @@ That’s where <strong>censoring</strong> comes in.”</p>
 </li>
 <li>event = 1 if returned, 0 if not returned by last follow-up.”</li>
 </ul>
+</div>
+<div class="voice-daughter">
 <p>Me: “And where do <strong>deaths</strong> go in that picture?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “There are two ways to think about it.</p>
 <ol type="1">
 <li><p>A simple approach:<br>
@@ -464,8 +474,11 @@ if you only care about return-to-work.</p></li>
 Here, death is not just ‘censored’—<br>
 it’s a <strong>competing event</strong> that prevents return-to-work from happening.”</p></li>
 </ol>
-<p>Me: “Competing risks again.<br>
-You really like those.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Competing risks again. You really like those.”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “They show up a lot in medical data.</p>
 <p>If you treat all deaths as just censored,<br>
 you’re implicitly saying:</p>
@@ -474,11 +487,14 @@ you’re implicitly saying:</p>
 would be the same as for people still alive.’</p>
 </blockquote>
 <p>In reality, that’s often not true.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “Yeah, that would be… optimistic.”</p>
+</div>
 <hr>
-</section>
 <section id="a-quick-map-of-data-types-and-methods" class="level3">
 <h3 class="anchored" data-anchor-id="a-quick-map-of-data-types-and-methods">A quick map of data types and methods</h3>
+<div class="voice-father">
 <p>Dad: “Since we’ve talked about data types a few times now,<br>
 let’s draw a little map.</p>
 <p>Say we’re thinking about:</p>
@@ -489,8 +505,13 @@ let’s draw a little map.</p>
 </li>
 <li>whether we need to <strong>adjust for confounding</strong>.”</li>
 </ul>
+</div>
+<div class="voice-daughter">
 <p>Me: “This sounds like the part where you normally pull out a slide.”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Today we get the short version.”</p>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
@@ -575,6 +596,7 @@ let’s draw a little map.</p>
 </tr>
 </tbody>
 </table>
+<div class="voice-daughter">
 <p>Me: “So for my study:</p>
 <ul>
 <li><p>‘Returned to work within 1 year (yes/no)’<br>
@@ -584,13 +606,17 @@ let’s draw a little map.</p>
 </ul>
 <p>And if I treat death as a competing risk for return-to-work,<br>
 I’d use an Aalen–Johansen curve for descriptive stuff?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Exactly.<br>
 That’s already a good grasp of the landscape.”</p>
 <hr>
-</section>
 <section id="repeated-measurements-and-confounding" class="level3">
 <h3 class="anchored" data-anchor-id="repeated-measurements-and-confounding">Repeated measurements and confounding</h3>
+<div class="voice-daughter">
 <p>Me: “Where do repeated measures come in?”</p>
+</div>
+<div class="voice-father">
 <p>Dad: “Imagine you use the same questionnaire<br>
 multiple times for each patient:</p>
 <ul>
@@ -603,18 +629,24 @@ multiple times for each patient:</p>
 <p>Then you’d have multiple data points <strong>within each person</strong>.<br>
 Those are <strong>correlated</strong> — your own responses are more similar to each other<br>
 than to some random patient’s.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “So I can’t just pretend they’re all independent.”</p>
-<p>Dad: “Right.<br>
-That’s when you use methods like:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. That’s when you use methods like:</p>
 <ul>
 <li><strong>random-effects (mixed) models</strong>, or<br>
 </li>
 <li><strong>GEE (generalized estimating equations)</strong>.</li>
 </ul>
 <p>They’re built to handle within-person correlation.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “And confounding is the ‘third variable’ that messes with the comparison, right?”</p>
-<p>Dad: “Exactly.<br>
-Suppose older patients are both:</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Suppose older patients are both:</p>
 <ul>
 <li>more likely to have a stoma, and<br>
 </li>
@@ -625,62 +657,82 @@ your estimated effect of stoma will be <strong>biased</strong>.</p>
 <p>That’s where logistic regression or Cox regression<br>
 —with age and other factors—<br>
 helps you <strong>adjust for confounding</strong>.”</p>
+</div>
+<div class="voice-daughter">
 <p>Me: “So in randomized trials, we use randomization<br>
 to balance those things in advance.</p>
 <p>But in observational studies like mine,<br>
 we depend more on modeling and design.”</p>
-<p>Dad: “Precisely.<br>
-That’s the big difference between ‘trial world’ and ‘real-world data’.”</p>
-<hr>
-</section>
-<section id="a-quiz-related-to-this-episode" class="level3">
-<h3 class="anchored" data-anchor-id="a-quiz-related-to-this-episode">A quiz related to this episode</h3>
-<p>In which situation is the <strong>Kaplan–Meier method</strong> appropriate<br>
-for estimating a survival curve?</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Precisely. That’s the big difference between ‘trial world’ and ‘real-world data’.”</p>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quiz related to this episode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In which situation is the <strong>Kaplan–Meier method</strong> appropriate for estimating a survival curve?</p>
 <ol type="1">
 <li>When survival times follow a normal distribution.<br>
 </li>
 <li>When the reasons for censoring are unrelated to prognosis.<br>
 </li>
-<li>When the censoring proportions of two groups<br>
-do not differ significantly in a statistical test.<br>
+<li>When the censoring proportions of two groups do not differ significantly in a statistical test.<br>
 </li>
-<li>When the proportional hazards assumption holds<br>
-between the treatment and control groups.</li>
+<li>When the proportional hazards assumption holds between the treatment and control groups.<br>
+</li>
 </ol>
-<p><strong>Answer</strong></p>
-<p>The correct answer is <strong>2</strong>.</p>
-<p>Kaplan–Meier does <strong>not</strong> require:</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>2</strong>.</li>
+</ul>
+<p>The Kaplan–Meier method does <strong>not</strong> require:</p>
 <ul>
 <li>normality of survival times (that’s more for t-tests), nor<br>
 </li>
 <li>proportional hazards (that’s a key assumption for the Cox model).</li>
 </ul>
-<p>What it <em>does</em> assume is that <strong>censoring is non-informative</strong>:</p>
-<blockquote class="blockquote">
-<p>Being censored is essentially independent<br>
-of the patient’s underlying risk of the event.</p>
-</blockquote>
-<p>If sicker patients are more likely to be lost to follow-up,<br>
-or if follow-up intensity depends strongly on prognosis,<br>
-Kaplan–Meier curves can become biased.</p>
-<hr>
+<p>What it <em>does</em> assume is that <strong>censoring is non-informative</strong>. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<section id="episodes" class="level3">
+<h3 class="anchored" data-anchor-id="episodes">Episodes</h3>
 <ul>
-<li><a href="study-design-1.html">Study design I</a><br>
-</li>
-<li><a href="study-design-2.html">Study design II</a><br>
-</li>
-<li><a href="study-design-3.html">Study design III</a><br>
-</li>
-<li><a href="study-design-4.html">Study design IV</a><br>
-</li>
-<li><a href="study-design-5.html">Study design V</a></li>
+<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li><a href="../en/study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></li>
+<li><a href="../en/study-design-4.html">Outcomes: The Bridge from Data Collection to Analysis</a></li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
 </ul>
 
 
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
 </section>
 </section>
 

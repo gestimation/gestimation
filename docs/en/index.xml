@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 03 Dec 2025 08:55:12 GMT</lastBuildDate>
+<lastBuildDate>Thu, 04 Dec 2025 09:23:15 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -216,10 +216,10 @@ a:hover {
 <p>Dad: “Exactly. If you <strong>narrow the target population</strong>, you can ask <strong>more detailed questions</strong> and improve <strong>comparability</strong> between groups. If you want to compare patients <em>with</em> and <em>without</em> a stoma, it’s better to keep the cancer site consistent.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Comparability…such a statistics word. But yeah, if the background is all over the place, it’s a mess. I do get that.”</p>
+<p>Me: “Comparability…such a statisticky word. But yeah, if the background is all over the place, it’s a mess. I do get that.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “On the other hand, if you <strong>broaden the population</strong>, you gain <strong>generalizability</strong>. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”</p>
+<p>Dad: “On the other hand, if you <strong>broaden the population</strong>, you gain <strong>generalizability</strong>: the results could potentially apply to a wider range of cancer patients. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Right now, with only our hospital, calling it a ‘real-world survey’ would be a bit bold. So ‘high generalizability’ basically means ‘other hospitals could actually use the results as a reference’?”</p>
@@ -246,13 +246,13 @@ try to express it using PICO or PECO before you design the study.</p>
 </div>
 </div>
 <ul>
-<li>What kind of patients? (<strong>Patients/Population</strong>)<br>
+<li>What kind of patients? (Patients/Population)<br>
 </li>
-<li>What factor are we focusing on? (<strong>Intervention/Exposure</strong>)<br>
+<li>What factor are we focusing on? (Intervention/Exposure)<br>
 </li>
-<li>What are we comparing it to? (<strong>Comparison</strong>)<br>
+<li>What are we comparing it to? (Comparison)<br>
 </li>
-<li>What outcomes are we interested in? (<strong>Outcome</strong>)</li>
+<li>What outcomes are we interested in? (Outcome)</li>
 </ul>
 <div class="dialogue">
 <div class="voice-father">
@@ -370,6 +370,14 @@ Having a clear comparison group improves interpretability.</p>
 </section>
 </div>
 </div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “I see. While I’d be stuck if told to come up with an original hypothesis, I don’t mind the process of identifying research elements and deciding on them one by one. It’s something I’ll need to do eventually anyway.”</p>
+</div>
+<div class="voice-father">
+<p>Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can vary slightly between clinicians and facilities. Neglecting precise language just breeds confusion.”</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -404,15 +412,20 @@ Answer
 <ul>
 <li>The correct answer is <strong>3</strong>.</li>
 </ul>
-<p>The concept of “ceteris paribus” is very close to the idea of <strong>comparability</strong> between groups.</p>
+<p>The concept of “ceteris paribus” is very close to the idea of <strong>comparability</strong> between groups — one of the key themes of the story.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../en/study-design-1.html">Study design I</a></p>
-<p><a href="../en/study-design-2.html">Study design II</a></p>
+<section id="episodes" class="level3">
+<h3 class="anchored" data-anchor-id="episodes">Episodes</h3>
+<ul>
+<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+</ul>
 
 
 </section>
@@ -420,7 +433,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Wed, 03 Dec 2025 08:55:12 GMT</pubDate>
+  <pubDate>Thu, 04 Dec 2025 09:23:15 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -581,7 +594,7 @@ a:hover {
 <h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Okay, coffee is ready. Can I borrow you a bit longer?”</p>
+<p>Me: “Okay, coffee is ready. Can I keep you a bit longer?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “If coffee is involved, yes.”</p>
@@ -685,7 +698,7 @@ a:hover {
 </div>
 </div>
 <ul>
-<li>Proportion: a parameter of binomial distribution<br>
+<li>Proportion: a parameter of the binomial distribution<br>
 </li>
 <li>Rate: a parameter of Poisson distribution</li>
 </ul>
@@ -694,7 +707,7 @@ a:hover {
 <p>Me: “But in normal conversation, proportion and rate are almost interchangeable.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
+<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” It is clearly bounded between 0 and 1, and describes ’how many out of this group’. A rate relates to <strong>events over time</strong>, and is expressed per unit of time. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as ’120% per year’. It’s something like ’X accidents per year’.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”</p>
@@ -1051,7 +1064,7 @@ Summarizing survival data with survival curves
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
+<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw the <strong>Kaplan-Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1095,7 +1108,7 @@ A quiz related to this episode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.</p>
+<p>This quiz connects the idea of outcomes to real drug approvals in oncology. From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.</p>
 <ol type="1">
 <li>0～24%</li>
 <li>25～49%</li>
@@ -1130,10 +1143,15 @@ Answer
 <li>Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration’s approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7</li>
 </ul>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../en/study-design-1.html">Study design I</a></p>
-<p><a href="../en/study-design-2.html">Study design II</a></p>
+<section id="episodes" class="level3">
+<h3 class="anchored" data-anchor-id="episodes">Episodes</h3>
+<ul>
+<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+</ul>
 
 
 </section>
@@ -1141,7 +1159,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Wed, 03 Dec 2025 08:55:12 GMT</pubDate>
+  <pubDate>Thu, 04 Dec 2025 09:23:15 GMT</pubDate>
 </item>
 </channel>
 </rss>

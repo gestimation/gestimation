@@ -472,20 +472,20 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 143 
+  n= 200, number of events= 139 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5531    1.7387   0.1719 3.218  0.00129 **
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.4286    1.5352   0.1717 2.497   0.0125 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.739     0.5752     1.241     2.435
+stomaWITH STOMA     1.535     0.6514     1.097     2.149
 
-Concordance= 0.572  (se = 0.023 )
-Likelihood ratio test= 9.98  on 1 df,   p=0.002
-Wald test            = 10.36  on 1 df,   p=0.001
-Score (logrank) test = 10.61  on 1 df,   p=0.001</code></pre>
+Concordance= 0.564  (se = 0.024 )
+Likelihood ratio test= 6.14  on 1 df,   p=0.01
+Wald test            = 6.23  on 1 df,   p=0.01
+Score (logrank) test = 6.33  on 1 df,   p=0.01</code></pre>
 </div>
 </div>
 </div>
@@ -556,6 +556,9 @@ Score (logrank) test = 10.61  on 1 df,   p=0.001</code></pre>
 </div>
 <div class="voice-daughter">
 <p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「日本では、歴史的に薬事承認の根拠として非劣性試験を行っていた時期があってね。この経験を踏まえると研究仮説と統計的な判断基準の関係は、厳密に考えないとまずいと思うんだ」</p>
 </div>
 </section>
 </div>

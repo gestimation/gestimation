@@ -164,7 +164,7 @@ This post is the second episode of my Story and Quiz series. Over a cup of coffe
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “Okay, coffee is ready. Can I borrow you a bit longer?”
+Me: “Okay, coffee is ready. Can I keep you a bit longer?”
 ::: 
 
 ::: voice-father
@@ -289,7 +289,7 @@ Dad: “For example, we often talk about **proportions** and **rates** in medici
 ::: 
 :::::::::::::::::::::::::::::::::
 
-- Proportion: a parameter of binomial distribution  
+- Proportion: a parameter of the binomial distribution  
 - Rate: a parameter of Poisson distribution
 
 ::::::::::::::::::::::::::::::::: dialogue
@@ -298,7 +298,7 @@ Me: “But in normal conversation, proportion and rate are almost interchangeabl
 ::: 
 
 ::: voice-father
-Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as “60% of the participants were women.” A rate relates to **events over time**. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as "120% per year". It’s something like "X accidents per year".”
+Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as “60% of the participants were women.” It is clearly bounded between 0 and 1, and describes ’how many out of this group’. A rate relates to **events over time**, and is expressed per unit of time. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as ’120% per year’. It’s something like ’X accidents per year’.”
 ::: 
 
 ::: voice-daughter
@@ -407,7 +407,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 
 ::: {.callout-note appearance="simple" title="Summarizing survival data with survival curves"}
 
-For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw **the Kaplan–Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
+For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw the **Kaplan-Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
 
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") # if needed
@@ -421,7 +421,7 @@ cifplot(Event(time, status) ~ stoma,
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
-From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.
+This quiz connects the idea of outcomes to real drug approvals in oncology. From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.
 
 1.  0～24%
 2.  25～49%
@@ -439,9 +439,10 @@ According to the review by Kim and Prasad (2016), 31 out of 83 products were rep
 
 - Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration's approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7
 
-### Continuation of their story
+### Episodes
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R]
+- [Outcomes: The Bridge from Data Collection to Analysis]
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]

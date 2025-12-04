@@ -224,11 +224,11 @@ Dad: “Exactly. If you **narrow the target population**, you can ask **more det
 :::
 
 ::: voice-daughter
-Me: “Comparability...such a statistics word. But yeah, if the background is all over the place, it’s a mess. I do get that.”
+Me: “Comparability...such a statisticky word. But yeah, if the background is all over the place, it’s a mess. I do get that.”
 :::
 
 ::: voice-father
-Dad: “On the other hand, if you **broaden the population**, you gain **generalizability**. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”
+Dad: “On the other hand, if you **broaden the population**, you gain **generalizability**: the results could potentially apply to a wider range of cancer patients. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”
 :::
 
 ::: voice-daughter
@@ -262,10 +262,10 @@ Dad: “Let’s walk through it using your case. In PICO/PECO:
 :::
 ::::::::::::::::::::::::::::::::: 
 
-- What kind of patients? (**Patients/Population**)  
-- What factor are we focusing on? (**Intervention/Exposure**)  
-- What are we comparing it to? (**Comparison**)  
-- What outcomes are we interested in? (**Outcome**)
+- What kind of patients? (Patients/Population)  
+- What factor are we focusing on? (Intervention/Exposure)  
+- What are we comparing it to? (Comparison)  
+- What outcomes are we interested in? (Outcome)
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
@@ -387,6 +387,16 @@ In exploratory studies like this, P is clear, but E and C are **not just one thi
 So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the **minimal set of elements** needed to design a coherent study for your question. 
 :::
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: “I see. While I'd be stuck if told to come up with an original hypothesis, I don't mind the process of identifying research elements and deciding on them one by one. It's something I'll need to do eventually anyway.”
+:::
+
+::: voice-father
+Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can vary slightly between clinicians and facilities. Neglecting precise language just breeds confusion.”
+:::
+::::::::::::::::::::::::::::::::: 
+
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 
 When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?
@@ -400,11 +410,13 @@ When formulating study design, the Latin expression “ceteris paribus” often 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 -   The correct answer is **3**.
 
-The concept of “ceteris paribus” is very close to the idea of **comparability** between groups.
+The concept of “ceteris paribus” is very close to the idea of **comparability** between groups — one of the key themes of the story.
 :::
 
-### Continuation of their story
+### Episodes
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A First Step into Survival and Competing Risks Analysis with R]
+- [Outcomes: The Bridge from Data Collection to Analysis]
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]

@@ -183,7 +183,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#data-have-types" id="toc-data-have-types" class="nav-link" data-scroll-target="#data-have-types">Data have types</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -361,7 +361,7 @@ a:hover {
 <h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Okay, coffee is ready. Can I borrow you a bit longer?”</p>
+<p>Me: “Okay, coffee is ready. Can I keep you a bit longer?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “If coffee is involved, yes.”</p>
@@ -465,7 +465,7 @@ a:hover {
 </div>
 </div>
 <ul>
-<li>Proportion: a parameter of binomial distribution<br>
+<li>Proportion: a parameter of the binomial distribution<br>
 </li>
 <li>Rate: a parameter of Poisson distribution</li>
 </ul>
@@ -474,7 +474,7 @@ a:hover {
 <p>Me: “But in normal conversation, proportion and rate are almost interchangeable.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” A rate relates to <strong>events over time</strong>. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as “120% per year”. It’s something like “X accidents per year”.”</p>
+<p>Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a <strong>percentage</strong>, such as “60% of the participants were women.” It is clearly bounded between 0 and 1, and describes ’how many out of this group’. A rate relates to <strong>events over time</strong>, and is expressed per unit of time. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as ’120% per year’. It’s something like ’X accidents per year’.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”</p>
@@ -615,7 +615,7 @@ Summarizing survival data with survival curves
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw <strong>the Kaplan–Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
+<p>For survival data, we want to describe how long patients survive without the event. Here we use <code>cifplot()</code> from the <code>cifmodeling</code> package to draw the <strong>Kaplan-Meier curves</strong>. <code>Event(time, status)</code> tells R which variables represent the time and event indicator. <code>outcome.type = "survival"</code> asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") # if needed</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -643,7 +643,7 @@ A quiz related to this episode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.</p>
+<p>This quiz connects the idea of outcomes to real drug approvals in oncology. From 2009 to 2014, 83 drugs in the oncology field were approved by the FDA. Select the correct percentage of these 83 drugs that were approved based on clinical trials using response rate (tumor shrinkage or complete remission) as the primary endpoint.</p>
 <ol type="1">
 <li>0～24%</li>
 <li>25～49%</li>
@@ -678,10 +678,15 @@ Answer
 <li>Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration’s approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7</li>
 </ul>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../en/study-design-1.html">Study design I</a></p>
-<p><a href="../en/study-design-2.html">Study design II</a></p>
+<section id="episodes" class="level3">
+<h3 class="anchored" data-anchor-id="episodes">Episodes</h3>
+<ul>
+<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+</ul>
 
 
 </section>

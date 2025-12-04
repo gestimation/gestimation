@@ -175,7 +175,8 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-adjusting-for-bias-iv" id="toc-story-and-quiz-adjusting-for-bias-iv" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-iv">Story and Quiz − Adjusting for bias IV</a>
   <ul class="collapse">
-  <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
+  <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -328,152 +329,118 @@ a:hover {
 <p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
 </div>
 <hr>
-<section id="数式を使ってロジスティック回帰を教えてよ" class="level3">
-<h3 class="anchored" data-anchor-id="数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</h3>
+<section id="ロジスティック回帰の計算ができない理由" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</h3>
 <div class="dialogue">
-<div class="voice-father">
-<p>お父さん「ロジスティック回帰はね、医学研究でよく使うから知っておいた方がいいよ。簡単にいうと、2値データのための回帰モデルの一種。ストーマ造設、年齢、性別、年収といった共変量が、復職の有無のような2通りの値をとるアウトカムとどの程度相関するかを、調べることができる」</p>
-</div>
 <div class="voice-daughter">
-<p>私「もうちょっと統計っぽく教えてよ」</p>
+<p>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ん？統計手法には、パラメトリック法とノンパラメトリック法があるけど、ロジスティック回帰はパラメトリックモデルの一種として位置づけられる。最近の教科書では、一般化線型モデルのひとつとして扱われることが多いかな」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういうんじゃなくてさ。最初から順序立てて教えてほしいっていうか」**</p>
-</div>
-<div class="voice-father">
-<p>お父さん「数式使っていいの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいやだから、一度正式な説明を聞いてみたいって思って」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ定義から話すかな」</p>
+<p>お父さん「そうだったね。じゃあ、続けてロジスティック回帰の下で、2人の対象者を比べるとどうなるかって話をするね」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰">
+<div class="callout callout-style-simple callout-note callout-titled" title="回帰係数とオッズ比の関係">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ロジスティック回帰
+回帰係数とオッズ比の関係
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>アウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>が、0または1で表される個人の反応の有無を表す2値変数で、<span class="math inline">\(\Pr (Y_i=1)=\pi_i\)</span>という確率で独立に分布しているとします。このとき<span class="math inline">\(N\)</span>人の対象者の同時分布は</p>
-<p><span class="math inline">\(\Pr (Y_1=y_1,...,Y_N=y_N)=\prod_{i=1}^N {\pi_i}^{y_i} (1-\pi_i)^{1-y_i}\)</span></p>
-<p>という2項分布の積の形で表現できます。</p>
-<p>この分布は、個人レベルの<span class="math inline">\(N\)</span>個のパラメータ<span class="math inline">\(\pi_i\)</span>によって規定されます。しかし、そのすべてを推定したいわけではありません。<span class="math inline">\(\pi_i\)</span>に関連する<span class="math inline">\(p-1\)</span>個の共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が測定されており、両者の関連の強さに関心があるとします。このとき</p>
-<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>という関係が成り立つ確率分布をロジスティック回帰といいます。</p>
-<p>この式の係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>を回帰係数（regression coefficients）、特に<span class="math inline">\(\beta_0\)</span>を切片項（intercept）といいます。正規分布は平均と分散というパラメータで形状が決まりますよね。それと同じように、ロジスティック回帰の確率分布は、回帰係数というパラメータによって規定されます。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ふむふむ。まず、**<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>っていうのは、<span class="math inline">\(N\)</span>人の対象者の復職の有無みたいなものね。その同時分布の式が出てきた。つまり、ロジスティック回帰も、確率分布の一種なんだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。ただし、確率分布の式に、共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が含まれていて、アウトカムと共変量の関連の強さを、回帰係数が決めるんだ。確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、アウトカムと共変量の関係は、ロジット関数で結びつくと仮定していること」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="リンク関数とロジット関数">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-リンク関数とロジット関数
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>個人レベルのパラメータと共変量との関係を結びつける1対1の単調な変換</p>
-<p><span class="math inline">\(g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>のことを、一般にリンク関数（link function）といいます。ロジスティック回帰のリンク関数は、定義で述べた通り</p>
-<p><span class="math inline">\(g(\pi_i)=\log(\frac{\pi_i}{1-\pi_i})\)</span></p>
-<p>です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」**</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数の形状">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ロジット関数の形状
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>仮に共変量が1個で、連続データだったとしましょう。確率<span class="math inline">\(\pi_i\)</span>と共変量<span class="math inline">\(X_i\)</span>の関係は、ロジット関数を通じて</p>
+<p>共変量が1個のとき、ロジスティック回帰は</p>
 <p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
-<p>という式で表されることになります。</p>
-<p>図は、このロジット関数の<span class="math inline">\(\exp(\beta_1)\)</span>の値を5、10、20、200と設定して、<span class="math inline">\(X_i\)</span>を0から1までの範囲で変化させたプロットです。<span class="math inline">\(\exp(\beta_1)\)</span>は、<span class="math inline">\(X_i\)</span>が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。</p>
-<p>このように、ロジット関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数<span class="math inline">\(\beta_1\)</span>によって決まります。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-4.png" class="img-fluid figure-img"></p>
-<figcaption>プレゼンテーション1.png</figcaption>
-</figure>
-</div>
+<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
+<p><span class="math inline">\(\log(\frac{\pi_1}{1-\pi_1})=\beta_0\)</span></p>
+<p><span class="math inline">\(\log(\frac{\pi_2}{1-\pi_2})=\beta_0+\beta_1\)</span></p>
+<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
+<p><span class="math inline">\((\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
+<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</p>
+<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」**</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと」</p>
+<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。リンク関数はそれぞれ別の関数になる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+ロジスティック回帰の推定
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>脳卒中発症の有無をアウトカム、LDLコレステロールを共変量としてロジスティック回帰を当てはめたとします。LDLコレステロールの単位をmg/dLからmmol/Lに変換したとき、オッズ比は何倍になるでしょうか。ただし</p>
-<p>LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586</p>
-<p>という関係が成り立ちます。</p>
-<ol type="1">
-<li>0.02586倍</li>
-<li>1/0.02586倍</li>
-<li>変化しない</li>
-<li>1、2、3すべて誤り</li>
-</ol>
+<p><strong>推定に用いられる関数</strong></p>
+<p>先ほど述べたアウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>の同時確率の式に、データ<span class="math inline">\(y_1,y_2,...,y_N\)</span>を代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。ただし、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、同時確率の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
+<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
+<p><strong>完全分離</strong></p>
+<p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
+<p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
+<p>を計算したとき、その値によって、<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。</p>
+<p><strong>多重共線性</strong></p>
+<p>二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</p>
 </div>
-<div class="callout-title-container flex-fill">
-答えはこちら
+<div class="voice-father">
+<p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div class="voice-daughter">
+<p>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</p>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>正解は4です。</strong></p>
-<p>これは単位を換算にするにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
+<div class="voice-father">
+<p>お父さん「まあね。はやりだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「統計学と機械学習ってどう違うの？同じ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
+</div>
+<div class="voice-daughter">
+<p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は、統計的推測が基礎にあるってことかな。統計的推測っていうのは、標本から母集団を調べるっていう考え方のこと。手法でいうと、p値とか信頼区間とか、ああいうやつね。パラメータの数が多すぎると、これらの手法は性能が下がるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「機械学習に統計的推測って考え方はないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「機械学習やってる人も統計学は学んでいるから、ないとはいわないけど、あんまりこだわってないんじゃない？画像認識するとき、p値なんていらないでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？思ったより芯を食った説明ができてるじゃない。さすがだね」</p>
 </div>
 </div>
-</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>

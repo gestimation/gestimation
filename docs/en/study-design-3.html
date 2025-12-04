@@ -181,8 +181,9 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul>
   <li><a href="#study-design-iii-a-first-step-into-survival-and-competing-risks-analysis-with-r" id="toc-study-design-iii-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="nav-link active" data-scroll-target="#study-design-iii-a-first-step-into-survival-and-competing-risks-analysis-with-r">Study Design III − A First Step into Survival and Competing Risks Analysis with R</a>
   <ul class="collapse">
-  <li><a href="#what-exactly-is-an-outcome" id="toc-what-exactly-is-an-outcome" class="nav-link" data-scroll-target="#what-exactly-is-an-outcome">What exactly is an “outcome”?</a></li>
+  <li><a href="#what-exactly-is-an-outcome" id="toc-what-exactly-is-an-outcome" class="nav-link" data-scroll-target="#what-exactly-is-an-outcome">What exactly is an outcome?</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -355,7 +356,7 @@ a:hover {
 </div>
 <hr>
 <section id="what-exactly-is-an-outcome" class="level3">
-<h3 class="anchored" data-anchor-id="what-exactly-is-an-outcome">What exactly is an “outcome”?</h3>
+<h3 class="anchored" data-anchor-id="what-exactly-is-an-outcome">What exactly is an outcome?</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>Me: “Hey Dad, can I pick your brain again?”</p>
@@ -364,22 +365,22 @@ a:hover {
 <p>Dad: “That depends. Is there coffee involved?”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Already poured. So… about outcomes. In journal club, all these abbreviations show up: <strong>OS</strong>, <strong>DFS</strong>, <strong>RFS</strong>, <strong>PFS</strong>… Everyone talks like they’re obvious, but I’m honestly fuzzy on the details. I know they’re supposed to be outcomes, but what’s really different between things like <strong>DFS</strong> and <strong>RFS</strong>? You deal with these all the time, right?”</p>
+<p>Me: “Already poured. So… about outcomes. In journal club, all these abbreviations show up: OS, DFS, RFS, PFS… Everyone talks like they’re obvious, but I’m honestly fuzzy on the details. I know they’re supposed to be outcomes, but what’s really different between things like DFS and RFS? You deal with these all the time, right?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “I do. The one you probably see most is <strong>OS</strong>: overall survival. Then there’s <strong>disease-free survival (DFS)</strong> and <strong>relapse-free survival (RFS)</strong>.”</p>
+<p>Dad: “I do. The one you probably see most is <strong>overall survival (OS)</strong>. Then there’s <strong>disease-free survival (DFS)</strong> and <strong>relapse-free survival (RFS)</strong>.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “RFS sounds like ‘number of days until relapse’ in my head.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “If we literally meant ‘number of days until relapse’, we’d probably call it <strong>relapse-free time</strong>. You’ll also see terms like <strong>cumulative incidence of relapse (CIR)</strong>.”</p>
+<p>Dad: “If we literally meant ‘number of days until relapse’, we may call it relapse-free time. You’ll also see terms like <strong>cumulative incidence of relapse (CIR)</strong>.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Acronyms are multiplying, not shrinking. Help.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Let’s slow it down. In survival analysis, we’re always looking at <strong>time from some origin to an event</strong>. The twist is what we call an <strong>event</strong>. For <strong>DFS</strong>, we often count as events:</p>
+<p>Dad: “Let’s slow it down. In survival analysis, we’re always looking at <strong>time from some origin to an event</strong>. The twist is what we call an <strong>event</strong>. For DFS, we often count as events:</p>
 </div>
 <ul>
 <li>recurrence</li>
@@ -394,7 +395,7 @@ a:hover {
 <p>Me: “So if someone gets a second cancer, that’s already an event in DFS, even if they’re alive.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Exactly. For <strong>RFS</strong>, it’s usually:</p>
+<p>Dad: “Exactly. For RFS, it’s usually:</p>
 </div>
 <ul>
 <li>recurrence</li>
@@ -427,8 +428,8 @@ a:hover {
 </div>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 34%">
-<col style="width: 65%">
+<col style="width: 36%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -438,27 +439,27 @@ a:hover {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Overall survival (<strong>OS</strong>)</td>
+<td>Overall survival (OS)</td>
 <td>Death from any cause</td>
 </tr>
 <tr class="even">
-<td>Progression-free survival (<strong>PFS</strong>)</td>
-<td>Progression/relapse <strong>or</strong> death</td>
+<td>Progression-free survival (PFS)</td>
+<td>Progression or death</td>
 </tr>
 <tr class="odd">
-<td>Relapse-free survival (<strong>RFS</strong>)</td>
-<td>Relapse <strong>or</strong> death</td>
+<td>Relapse-free survival (RFS)</td>
+<td>Relapse or death</td>
 </tr>
 <tr class="even">
-<td>Relapse-free time (<strong>RFT</strong>)</td>
-<td>Relapse only</td>
+<td>Cumulative incidence of relapse (CIR)</td>
+<td>Relapse only, with death as a competing risk</td>
 </tr>
 <tr class="odd">
-<td>Disease-free survival (<strong>DFS</strong>)</td>
-<td>Relapse, second cancer, <strong>or</strong> death</td>
+<td>Disease-free survival (DFS)</td>
+<td>Relapse, second cancer, or death</td>
 </tr>
 <tr class="even">
-<td>Event-free survival (<strong>EFS</strong>)</td>
+<td>Event-free survival (EFS)</td>
 <td>Death, induction failure, relapse, second cancer (depends on trial)</td>
 </tr>
 </tbody>
@@ -485,7 +486,7 @@ a:hover {
 <li>date of <strong>diagnosis</strong></li>
 </ul>
 <div class="voice-father">
-<p>Dad: “For <strong>postoperative adjuvant therapy</strong>, using the <strong>date of surgery</strong> is natural. If you used date of discharge instead, deaths before discharge would be invisible in your analysis, which can be a big problem.”</p>
+<p>Dad: “For a study on postoperative adjuvant therapy, using the date of surgery is natural. If you used date of discharge instead, deaths before discharge would be invisible in your analysis, which can be a big problem.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “So if I’m evaluating adjuvant chemo after surgery, time zero = surgery date is the cleanest. If I pick a weird origin, I’m basically throwing away part of the story.”</p>
@@ -511,7 +512,7 @@ a:hover {
 </li>
 <li>RFS curves<br>
 </li>
-<li>CIR curves with death as the competing risk</li>
+<li>CIR curves with death as competing risks</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="Generating simulated data with relapse">
 <div class="callout-header d-flex align-content-center">
@@ -528,7 +529,7 @@ Generating simulated data with relapse
 <li><p>Stoma: binary, from a binomial distribution using <code>rbinom()</code></p></li>
 <li><p>Survival time: from an exponential distribution using <code>rexp()</code> (calculated from random numbers for t_relapse, t_death, t_censoring)</p></li>
 </ul>
-<p>In a previous episode, we summarized survival data without competing risks, and we used the Kaplan-Meier curve for that, right? In contrast, for analyzing data with competing risks, it is formally correct to use the Aalen-Johansen curve instead of the Kaplan-Meier curve.</p>
+<p>In a previous episode, we summarized survival data without competing risks, and we used the <strong>Kaplan-Meier curve</strong> for that, right? In contrast, when there are <strong>competing risks</strong>, it is more appropriate to use the <strong>Aalen–Johansen estimator of the cumulative incidence function</strong>, rather than a Kaplan–Meier curve for relapse.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Code of generate_data() used for data generation">
@@ -588,7 +589,8 @@ Code of generate_data() used for data generation
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dat)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -623,6 +625,7 @@ Kaplan–Meier curves for OS
 </div>
 </div>
 </div>
+<p>In this simulated data, patients with a stoma have clearly worse OS: their Kaplan–Meier curve drops faster and stays below the curve for patients without a stoma.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Kaplan–Meier curves for RFS">
@@ -649,6 +652,7 @@ Kaplan–Meier curves for RFS
 </div>
 </div>
 </div>
+<p>For RFS, the Kaplan–Meier curves drop faster and the gap is even larger, because both relapse and death are counted as events.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Aalen-Johansen curves for CIR">
@@ -667,7 +671,7 @@ Aalen-Johansen curves for CIR
 <li><code>status_cir=2</code> : Competing risk (death not experiencing recurrence)</li>
 <li><code>status_cir=0</code> : Censoring</li>
 </ul>
-<p>Furthermore, by specifying <code>outcome.type = “competing-risk”</code>, it plots the <strong>Aalen-Johansen curve</strong>.</p>
+<p>Furthermore, by specifying <code>outcome.type = "competing-risk"</code>, it plots the <strong>Aalen-Johansen curve</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
@@ -695,7 +699,7 @@ Aalen-Johansen curves for CIR
 <p>Me: “The curve for relapse looks a bit like a survival curve turned upside down.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Visually, yes. But conceptually it’s different. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate <strong>cumulative incidence functions</strong> with the Aalen–Johansen method, which respects the fact that death is another type of event. In other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”</p>
+<p>Dad: “Visually, yes. But conceptually it’s different. By the way, I mentioned wanting to use ‘cumulative incidence of relapse‘ instead of ‘relapse-free time‘ because a <strong>cumulative incidence curve</strong> or <strong>cumulative incidence function</strong> is the same as the <strong>Aalen-Johansen curve</strong> in the context of survival analysis. If you used Kaplan–Meier for relapse, you’d treat deaths as censored — as if they just disappeared from the risk set. But death isn’t the same as ‘lost to follow-up’. It’s a real, meaningful event. So for competing risks, we prefer to estimate the Aalen-Johansen curve, which respects the fact that death is another type of event. In other words, choosing ‘who is an event’ and ‘who is a competing risk’ changes how we interpret the outcome.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “By the way, in journal club people love to say:”</p>
@@ -714,7 +718,7 @@ Aalen-Johansen curves for CIR
 <p>Me: “The obvious advantage is that you can finish the trial earlier, right? You don’t have to wait for OS to mature.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Exactly. Shorter trials, faster answers. But there’s a risk: sometimes surrogates don’t predict OS well. There are famous examples. In advanced colorectal cancer, combination therapy with 5-FU and leucovorin demonstrated tumor shrinkage in clinical trials. However, when evaluating OS, it became clear that this combination had little effect on prolonging life (Fleming and Demets 1996). Surrogates can be very useful, but they’re not automatically ‘good enough’ on their own.”</p>
+<p>Dad: “Exactly. Shorter trials, faster answers. But there’s a risk: sometimes surrogates don’t predict OS well. There are famous examples. In advanced colorectal cancer, combination therapy with 5-FU and leucovorin demonstrated tumor shrinkage in clinical trials. However, when evaluating OS, it became clear that this combination had little effect on prolonging life (Fleming and DeMets 1996). Surrogates can be very useful, but they’re not automatically ‘good enough’ on their own.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “So in practice, we often look at OS when possible, and use DFS / PFS with a bit of skepticism and context.”</p>
@@ -733,7 +737,7 @@ A quiz related to this episode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This one is about how we define progression and events in trials using <strong>progression-free survival (PFS)</strong>. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:</p>
+<p>This quiz focuses on how we define progression and events when using <strong>progression-free survival (PFS)</strong> as an endpoint in clinical trials. To measure PFS, we need to determine tumor progression based on imaging. Sometimes a central review committee evaluates images to make this more objective. In that case, there may be discrepancies between:</p>
 <ul>
 <li>the progression date according to the <strong>central review</strong>, and<br>
 </li>
@@ -777,6 +781,16 @@ Answer
 <ul>
 <li><p>Biomarkers Definitions Working Group. Biomarkers and surrogate endpoints: preferred definitions and conceptual framework. Clin Pharmacol Ther 2001;69(3):89-95</p></li>
 <li><p>Fleming TR and DeMets DL. Surrogate end points in clinical trials: are we being misled? Ann Intern Med 1996;125(7):605-13</p></li>
+</ul>
+</section>
+<section id="episodes" class="level3">
+<h3 class="anchored" data-anchor-id="episodes">Episodes</h3>
+<ul>
+<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
 </ul>
 
 

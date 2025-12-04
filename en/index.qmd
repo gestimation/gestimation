@@ -152,7 +152,7 @@ a:hover {
 
 # Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.
 
-This site grew out of small coffee chats between a statistician father and his physician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.
+This site grew out of small coffee chats between a statistician father and his clinician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.
 
 Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.  
 Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.

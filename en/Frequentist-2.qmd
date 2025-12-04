@@ -349,6 +349,17 @@ But in practice,
 people really do say
 ‘no significant difference → treatments are equivalent.’”
 
+
+
+
+
+Dad: “In Japan, there was a period historically when non-inferiority trials were used as the basis for drug approval. Based on that experience, I think we really need to be careful about how we strictly define the relationship between research hypotheses and statistical criteria.”
+
+
+
+
+
+
 Dad: “And that can be dangerous.
 
 In drug development there’s a classic story

@@ -77,35 +77,6 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -175,8 +146,7 @@ window.Quarto = {
   <ul>
   <li><a href="#story-and-quiz-adjusting-for-bias-v" id="toc-story-and-quiz-adjusting-for-bias-v" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-v">Story and Quiz − Adjusting for bias V</a>
   <ul class="collapse">
-  <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
   <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
@@ -326,121 +296,273 @@ a:hover {
 <section id="story-and-quiz-adjusting-for-bias-v" class="level1">
 <h1>Story and Quiz − Adjusting for bias V</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
+<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias</p>
 </div>
 <hr>
-<section id="ロジスティック回帰の計算ができない理由" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</h3>
+<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</p>
+<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。以前、観察研究では交絡因子を調整しないといけない、とかいってたよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだったね。じゃあ、続けてロジスティック回帰の下で、2人の対象者を比べるとどうなるかって話をするね」</p>
+<p>お父さん「ああ、そんな話もあったね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「でもさ、調整しないオッズ比も計算できるでしょ。どっちが正しいのかってどうやればわかるの？統計学の本を読んでも、書いてなくて」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それは統計学だけではわからない問題なんだ。データがどんな確率分布に従っているか、誰も知らないからね。因果推論や医学知識を使って判断すべき問題になる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なにそれ？統計学の話じゃないの？ロジスティック回帰について聞いてるんだけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう思うよねえ。じゃあちょっと時間をかけて説明させてよ。」</p>
+</div>
+<div class="voice-daughter">
+<p>私「いいけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「疫学の分野での話なんだけどね。40年前に、コーヒーが膵がんを増やすんじゃないか、っていう論文がでたことがある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「いかにもありそうな話だね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲んでいる人のような曝露集団と、うまく比較できるようなコントロールを選ぶことは、ほとんどの場合難しい。だから、疫学の教科書では、コントロールと比較するときには、第3の因子が隠れていないかどうかに注意しなければいけないと書いてある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それでは問題です。コーヒーと膵がんの論文で、実際に問題になった第3の因子はなんでしょう？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「え？えーっと」</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="logistic-regression-1.png" class="img-fluid figure-img"></p>
+<figcaption>図2.png</figcaption>
+</figure>
+</div>
+<div class="voice-father">
+<p>お父さん「答えはこちら」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="回帰係数とオッズ比の関係">
+<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+お父さんの答えは？
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="logistic-regression-3.png" class="img-fluid figure-img"></p>
+<figcaption>図1.png</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へえ、そんな話があったんだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあさ、こういう第3の因子を無視して解析してしまうとどうなる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それくらいわかるよ。バイアスが生じるんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。こういう因子は、疫学では交絡因子（confounder）と呼ばれているんだけど、ロジスティック回帰で調整しないといけない。調整したときとしないときで、まったく違った結果が得られるっていう数値例を示そう」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-回帰係数とオッズ比の関係
+Simpsonのパラドックス
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>共変量が1個のとき、ロジスティック回帰は</p>
-<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
-<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
-<p><span class="math inline">\(\log(\frac{\pi_1}{1-\pi_1})=\beta_0\)</span></p>
-<p><span class="math inline">\(\log(\frac{\pi_2}{1-\pi_2})=\beta_0+\beta_1\)</span></p>
-<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
-<p><span class="math inline">\((\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
-<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
+<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのかみてみましょう。ここでは層別解析を用いて説明しますが、ロジスティック回帰でオッズ比を求めたときも、同じ計算結果になります（交互作用をうまく入れる必要がありますが）。</p>
+<p>表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
+<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
+<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
+<p>表1. 層別前の膵がんリスクとオッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>合計</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>15</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>365</td>
+<td>868</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>3.9%</td>
+<td>1.4%</td>
+<td>3倍</td>
+</tr>
+</tbody>
+</table>
+<p>表2. 層別後の膵がんリスクとオッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>喫煙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>14</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>266</td>
+<td>76</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>5.0%</td>
+<td>5.0%</td>
+<td>1倍</td>
+</tr>
+<tr class="odd">
+<td>非喫煙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>1</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>99</td>
+<td>792</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>1.0%</td>
+<td>1.0%</td>
+<td>1倍</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」**</p>
+<p>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
+<p>お父さん「そう、交絡因子を無視して、間違った研究結果を報告してしまうとまずいでしょ。もうひとつ注目してほしいのが、喫煙とコーヒーの関連。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</p>
+<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」**</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。リンク関数はそれぞれ別の関数になる」</p>
+<p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。もし仮に、 コーヒー摂取・非摂取という介入をランダムに割付けるランダム化介入試験を行ったらどうなると思う？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</p>
+<p>私「両群で喫煙割合は、ほぼ同じになるはず」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。そうすると、ランダム化介入試験で得られるオッズ比は、喫煙・非喫煙別の結果を平均することになるから、全体でも1倍に近い結果になると予想される。つまり、層別する前のオッズ比3倍という結果は、コーヒーではなく喫煙が真の原因となって生じた見かけの関連なので、層別した後のオッズ比が正しい。だから、ロジスティック回帰で調整オッズ比を求めるべきなんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ロジスティック回帰の推定
+このエピソードに関係するクイズです
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>推定に用いられる関数</strong></p>
-<p>先ほど述べたアウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>の同時確率の式に、データ<span class="math inline">\(y_1,y_2,...,y_N\)</span>を代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。ただし、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、同時確率の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
-<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
-<p><strong>完全分離</strong></p>
-<p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
-<p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>を計算したとき、その値によって、<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。</p>
-<p><strong>多重共線性</strong></p>
-<p>二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。</p>
+<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます（これを一般化線型モデルといいます）。リンク関数をうまく指定することによって、オッズ比以外の関連の指標を求められることが知られています。</p>
+<p>次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
+<ol type="1">
+<li>リスク差</li>
+<li>リスク比</li>
+<li>ハザード比</li>
+<li>1、2、3すべて求めることができる</li>
+</ol>
 </div>
 </div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</p>
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="voice-father">
-<p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
+<div class="callout-title-container flex-fill">
+答えはこちら
 </div>
-<div class="voice-daughter">
-<p>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div class="voice-father">
-<p>お父さん「まあね。はやりだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「統計学と機械学習ってどう違うの？同じ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
-</div>
-<div class="voice-daughter">
-<p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は、統計的推測が基礎にあるってことかな。統計的推測っていうのは、標本から母集団を調べるっていう考え方のこと。手法でいうと、p値とか信頼区間とか、ああいうやつね。パラメータの数が多すぎると、これらの手法は性能が下がるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「機械学習に統計的推測って考え方はないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「機械学習やってる人も統計学は学んでいるから、ないとはいわないけど、あんまりこだわってないんじゃない？画像認識するとき、p値なんていらないでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ん？思ったより芯を食った説明ができてるじゃない。さすがだね」</p>
-</div>
-</div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+<li><strong>正解は4です</strong></li>
 </ul>
+<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。</p>
+<p>リスク差を求めるには、g(π)=π つまり恒等関数を指定します。</p>
+<p>リスク比を求めるには、g(π)=log⁡(π) つまり対数関数を指定します。</p>
+<p>ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。</p>
+</div>
+</div>
+</div>
 </section>
 <section id="continuation-of-their-story" class="level3">
 <h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
