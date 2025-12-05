@@ -215,17 +215,5 @@ Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyo
 
 **[More information](./about/)**
 
-## Why gestimation?
-
-If you’ve ever wondered why my accounts are called *gestimation*, the name comes from **g-estimation** in causal inference — a class of methods introduced by James Robins. In my own work, I have found this approach very useful in clinical research:
-
-- Tanaka S, Matsuyama Y, Shiraki M, Ohashi Y. Estimating the effects of time-varying osteoporosis treatments on incidence of fractures among Japanese postmenopausal women. Epidemiology 2007;18(5):529–36.
-
-- Tanaka S, Brookhart MA, Fine JP. G-estimation of structural nested mean models for competing risks data using pseudo-observations. Biostatistics 2020;21(4):860–75.
-
-- Tanaka S, Brookhart MA, Fine JP. G-estimation of structural nested mean models for interval-censored data using pseudo-observations. Stat Med 2023;42(21):3877–91.
-
-These are not required reading for the stories here, but if you ever feel like following the path from coffee chats → DAGs → g-estimation, this is one of the places it eventually leads.
-
 </div>
 </div>
