@@ -256,6 +256,7 @@ Me: “Including patients who died, as ‘did not return’, right?”
 ::: voice-father
 Dad: “Yes, as long as that’s clearly defined and consistent. But if you want a richer picture,  
 you could use **three categories** instead of just two:”
+:::
 
 1. Returned within 1 year  
 2. Alive but did not return within 1 year  
@@ -437,7 +438,7 @@ Me: “And confounding is lack of comparability or ‘ceteris paribus‘, right?
 ::: voice-father
 Dad: “Precisely. That’s the big difference between ‘trial data/experimental data’ and ‘real-world data’.”
 :::
-
+::::::::::::::::::::::::::::::::: 
 
 ::: {.callout-note appearance="simple" title="A quiz related to this episode"}
 In which situation is the **Kaplan–Meier method** appropriate for estimating a survival curve?
@@ -459,11 +460,13 @@ The Kaplan–Meier method does **not** require:
 What it *does* assume is that **censoring is non-informative**. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.
 :::
 
-
-### Episodes
+### Episodes and R-script
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
 - [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
 - [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.qmd)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)
+

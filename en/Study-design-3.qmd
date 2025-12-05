@@ -497,10 +497,12 @@ This doesn’t mean you must always use central review; in some contexts, local 
 
 - Fleming TR and DeMets DL. Surrogate end points in clinical trials: are we being misled? Ann Intern Med 1996;125(7):605-13
 
-### Episodes
+### Episodes and R-script
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R]
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
 - [Outcomes: The Bridge from Data Collection to Analysis]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)

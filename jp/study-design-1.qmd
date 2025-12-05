@@ -367,10 +367,12 @@ PECOになりにくい研究仮説もあります。たとえば、疾患発生�
 "ceteris paribus"という概念は、比較可能性（comparability）を保つための条件と考えて問題ありません。
 :::
 
-### エピソード
+### エピソードとRスクリプト
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [Outcomes: The Bridge from Data Collection to Analysis]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)

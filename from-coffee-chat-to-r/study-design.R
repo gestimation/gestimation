@@ -1,9 +1,9 @@
 #--------------------------------------------------------------------------------------------------
-#- Study design II --------------------------------------------------------------------------------
+#- Study design II. Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes--------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/study-design-2.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/study-design-2.html
-#  Required packages: ggplot2, cifmodeling -------------------------------------------------------
+#  Required packages: ggplot2, cifmodeling --------------------------------------------------------
 #--------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
@@ -60,7 +60,7 @@ cifplot(Event(time, status) ~ stoma,
 )
 
 #--------------------------------------------------------------------------------------------------
-#- Study design II --------------------------------------------------------------------------------
+#- Study design III. A First Step into Survival and Competing Risks Analysis with R ---------------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/study-design-3.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/study-design-3.html

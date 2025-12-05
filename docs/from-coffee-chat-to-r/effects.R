@@ -1,9 +1,9 @@
-#--------------------------------------------------------------------------------------------------
-#- Effects and time III ---------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
+#- Effects and time III. Collapsibility of Effect Measures in Marginal and Stratified Tables ------------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/effects-3.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/effects-3.html
-#--------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
 dat <- data.frame(
@@ -44,14 +44,13 @@ fit_logit <- glm(
 odds_ratio <- exp(coef(fit_logit)[["treatchemotherapy"]])
 print(odds_ratio)
 
-
-#--------------------------------------------------------------------------------------------------
-#- Effects and time V -----------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
+#- Effects and time V. Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example -
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/effects-5.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/effects-5.html
-#  Required packages: cifmodeling -----------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------
+#  Required packages: cifmodeling -----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
 set.seed(46)

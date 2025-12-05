@@ -1,10 +1,10 @@
-#--------------------------------------------------------------------------------------------------
-#- Frequentist thinking II ------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
+#- Frequentist thinking II. P-Value Explanations That Seem Plausible at First Glance --------------------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/frequentist-2.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/frequentist-2.html
-#  Required packages: survival --------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------
+#  Required packages: survival --------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
 set.seed(46)
@@ -17,14 +17,13 @@ library(survival)
 fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
 summary(fit)
 
-
-#--------------------------------------------------------------------------------------------------
-#- Frequentist thinking IV ------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
+#- Frequentist thinking IV. Understanding Confidence Intervals via Hypothetical Replications in R -------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/frequentist-4.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/frequentist-4.html
-#  Required packages: survival --------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------
+#  Required packages: survival --------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 #- Definition of function ----------------------------------
 calculate_coverage <- function(model = c("coxph", "finegray"),
@@ -78,14 +77,13 @@ print(coverage_200)
 print(coverage_400)
 print(coverage_800)
 
-
-#--------------------------------------------------------------------------------------------------
-#- Frequentist thinking V -------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
+#- Frequentist thinking V. Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size -----
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/frequentist-5.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/frequentist-5.html
-#  Required packages: powerSurvEpi ----------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------
+#  Required packages: powerSurvEpi ----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 #- Calculation with allocation ratio 1:1 -------------------
 # install.packages("powerSurvEpi") # if needed

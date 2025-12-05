@@ -168,9 +168,9 @@ a:hover {
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
-### 2. Frequentist thinking — 統計学の実践
+### 2. Frequentist thinking — 統計学の思考
 
-がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の思想**を父は語ります。
+がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論の発想**を父は語ります。
 
 
 - [Reading a Paper over a Cup of Coffee]
@@ -181,8 +181,7 @@ a:hover {
 
 ### 3. Effects and time — 効果は時間とともに
 
-リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。
-因果推論に先立って立体的なデータの見方が静かに育ちます。
+リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
