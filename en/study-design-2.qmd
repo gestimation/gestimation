@@ -156,11 +156,11 @@ Keywords: outcome, simulation
 
 ------------------------------------------------------------------------
 
-This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find Study design I here:   
+This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:   
 
 [Study design I](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
 
-### Data have types
+### Four types of data items
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter

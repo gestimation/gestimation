@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 05 Dec 2025 02:54:21 GMT</lastBuildDate>
+<lastBuildDate>Fri, 05 Dec 2025 05:43:34 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -434,7 +434,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Fri, 05 Dec 2025 02:54:21 GMT</pubDate>
+  <pubDate>Fri, 05 Dec 2025 05:43:34 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -589,10 +589,10 @@ a:hover {
 <p>Keywords: outcome, simulation</p>
 </div>
 <hr>
-<p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find Study design I here:</p>
+<p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:</p>
 <p><a href="https://gestimation.github.io/coffee-and-research/en/study-design-1.html">Study design I</a></p>
-<section id="data-have-types" class="level3">
-<h3 class="anchored" data-anchor-id="data-have-types">Data have types</h3>
+<section id="four-types-of-data-items" class="level3">
+<h3 class="anchored" data-anchor-id="four-types-of-data-items">Four types of data items</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>Me: “Okay, coffee is ready. Can I keep you a bit longer?”</p>
@@ -1161,7 +1161,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Fri, 05 Dec 2025 02:54:21 GMT</pubDate>
+  <pubDate>Fri, 05 Dec 2025 05:43:34 GMT</pubDate>
 </item>
 </channel>
 </rss>

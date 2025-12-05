@@ -152,9 +152,9 @@ Ideas — like good coffee — are best enjoyed while they are still warm.
 
 ## R package cifmodeling
 
-A toolkit for survival and competing risks analysis in R — the more technical side of my coffee-fueled research.
+A toolkit for survival and competing risks analysis in R — a more technical side of my work.
 
-- Kaplan-Meier and Aalen-Johansen estimation and visualization  
+- **Kaplan-Meier** and **Aalen-Johansen** estimation and visualization  
 - **Direct polytomous regression** of cumulative incidence functions
 - Integration with **ggsurvfit**, **modelsummary**, and modern R workflows 
 
@@ -166,11 +166,11 @@ A toolkit for survival and competing risks analysis in R — the more technical 
 
 ## Story and Quiz — *How I learned research from my father*
 
-A series of short, warm stories about learning research written in both English and Japanese. Through conversations between a father and daughter, the essentials of research unfold naturally.
+A series of short, warm stories about learning research, written in both English and Japanese. Through conversations between a father and daughter, the essentials of research unfold naturally. All of it is shared freely — like something warm to drink on the hallway track at a conference, there whenever you need a quiet break.
 
 - For readers who want to grasp the *feel* of research before opening a textbook  
 - Light, conversational chapters you can read in a few minutes  
-- From Study Design → Frequentist thinking → Understanding effects and time → Adjusting for bias → Causal Inference → Publication
+- From Study Design → Frequentist Thinking → Understanding Effects and Time → Adjusting for Bias → Causal Inference → Publication
 
 **[Read in English](./en/index.html)**  /  **[Read in Japanese](./jp/index.html)** 
 </div>
@@ -187,7 +187,7 @@ A series of short, warm stories about learning research written in both English 
 
   [Publisher site](https://www.asakura.co.jp/detail.php?book_code=12271)
 
-  [Learning materials for this seris](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)
+  [Learning materials for this series](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)
 
 - **Professor Giant Salamander's Medical Statistics Seminar: Paper Reading Level Up 30** (in Japanese)
 
@@ -211,7 +211,7 @@ A series of short, warm stories about learning research written in both English 
 
 <img src="image/portrait.jpg" width="120" class="author-photo">
 
-Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyoto University. He works at the intersection of causal inference and clinical research. He tends to think best with papers, R, and a cup of coffee within reach.
+Shiro Tanaka is a biostatistician and Professor of Clinical Biostatistics at Kyoto University. His work sits at the intersection of causal inference and clinical research. This site collects some of his research, teaching materials, and essays, shared freely for anyone who finds them useful.
 
 **[More information](./about/)**
 
