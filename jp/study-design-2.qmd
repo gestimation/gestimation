@@ -183,7 +183,7 @@ Keywords: outcome, simulation
 :::
 
 ::: voice-daughter
-私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。`t.test()`とか`glm()`とか`survfit()`とか、なんか呪文みたいなのを」
+私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。`glm()`とか`survfit()`とか、なんか呪文みたいなのを」
 :::
 
 ::: voice-father
@@ -370,7 +370,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 次の生存時間データでは、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
 
 ```{r warning=FALSE}
-# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
+# install.packages("cifmodeling") #インストールが必要なら実行
 library(cifmodeling)
 cifplot(Event(time, status) ~ stoma,
   data         = dat,

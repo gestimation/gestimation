@@ -379,7 +379,7 @@ a:hover {
 <p>お父さん「ご名答。で、計数データは、交通事故の発生件数のような、数をカウントしたデータのこと。生存時間データは、たとえば寿命とかだね。死亡など特定のイベントが起こるまでの時間を扱うデータだよ。今回のがんサバイバー調査でいえば、手術から復職までの時間とか、再発までの時間とかね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。<code>t.test()</code>とか<code>glm()</code>とか<code>survfit()</code>とか、なんか呪文みたいなのを」</p>
+<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。<code>glm()</code>とか<code>survfit()</code>とか、なんか呪文みたいなのを」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。パソコンある？」</p>
@@ -578,7 +578,7 @@ STOMA           WOMAN MAN
 <div class="callout-body-container callout-body">
 <p>次の生存時間データでは、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("cifmodeling") #インストールが必要なら実行</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time, status) <span class="sc">~</span> stoma,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
