@@ -1,9 +1,16 @@
 ---
+title: "Why My Logistic Regression Calculation Went Wrong"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Adjusting for bias IV
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation
+# Adjusting for bias IV − Why My Logistic Regression Calculation Went Wrong
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------
@@ -182,7 +191,7 @@ $(\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \e
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」**
+私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」
 ::: 
 
 ::: voice-father
@@ -216,11 +225,11 @@ $(\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \e
 
 $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}$
 
-を計算したとき、その値によって、$Y_1,Y_2,...,Y_N$を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。
+を計算したとき、その値によって、$Y_1,Y_2,...,Y_N$を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときによく生じる問題です。
 
 **多重共線性**
 
-二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。
+二つ目は、多重共線性（multicollinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため、同時にロジスティック回帰に含めない方がよい場合が多いです。
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
