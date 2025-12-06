@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -341,12 +376,7 @@ a:hover {
 <div class="voice-daughter">
 <p>私「え？えーっと」</p>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-1.png" class="img-fluid figure-img"></p>
-<figcaption>図2.png</figcaption>
-</figure>
-</div>
+<p><img src="logistic-regression-1.png" class="img-fluid"></p>
 <div class="voice-father">
 <p>お父さん「答えはこれ」</p>
 </div>
@@ -364,12 +394,7 @@ a:hover {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-3.png" class="img-fluid figure-img"></p>
-<figcaption>図1.png</figcaption>
-</figure>
-</div>
+<p><img src="logistic-regression-3.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -521,46 +546,61 @@ Simpsonのパラドックス
 <p>お父さん「うん。そうすると、ランダム化介入試験で得られるオッズ比は、喫煙・非喫煙別の結果を平均することになるから、全体でも1倍に近い結果になると予想される。つまり、層別する前のオッズ比3倍という結果は、コーヒーではなく喫煙が真の原因となって生じた見かけの関連なので、層別した後のオッズ比が正しい。だから、ロジスティック回帰で調整オッズ比を求めるべきなんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-default callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+glm()を用いた膵がんデータの解析
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます（これを一般化線型モデルといいます）。リンク関数をうまく指定することによって、オッズ比以外の関連の指標を求められることが知られています。</p>
-<p>次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
-<ol type="1">
-<li>リスク差</li>
-<li>リスク比</li>
-<li>ハザード比</li>
-<li>1、2、3すべて求めることができる</li>
-</ol>
+<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に対応していましたね。以下のコードでは調整前のオッズ比は<code>smoke</code>を入れないモデルで、調整後のオッズ比は<code>smoke</code>を入れたモデルで推定しています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">coffee =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smoke  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,   <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n      =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">266</span>, <span class="dv">4</span>, <span class="dv">76</span>,  <span class="dv">1</span>, <span class="dv">99</span>, <span class="dv">8</span>, <span class="dv">792</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fit_logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>odds_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.972603</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>odds_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-答えはこちら
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「Simpsonのパラドックスが起きる条件を知りたい？」</p>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は4です</strong></li>
-</ul>
-<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。</p>
-<p>リスク差を求めるには、g(π)=π つまり恒等関数を指定します。</p>
-<p>リスク比を求めるには、g(π)=log⁡(π) つまり対数関数を指定します。</p>
-<p>ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。</p>
+<div class="voice-daughter">
+<p>私「そりゃあね。解析方法によってオッズ比が1になるのは不思議だもの」</p>
 </div>
+<div class="voice-father">
+<p>お父さん「ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほどね、喫煙はコーヒー摂取と関連する。さらに喫煙は膵がんリスクも上げる。そうするとオッズ比の値が変わる。ああ、もともとバイアスがあるんだから、調整して値が変わるのは当たり前か」</p>
 </div>
 </div>
 </section>

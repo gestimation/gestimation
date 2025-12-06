@@ -412,24 +412,22 @@ a:hover {
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note title="このエピソードに関係するクイズです"} 
 
+
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 ロジスティック回帰の起源として正しいのは、次の時代のうちどれでしょうか。
 
 1.  1900年以前
 2.  1900～30年
 3.  1931～60年
 4.  1961年以降
-
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解は1です**
 
 少なくとも、ベルギーの数学者Queteletが1838年に出版した書籍に、ロジット関数の式が示されています。ロジスティックという単語は、同じくベルギーの数学者Verhulstが1845年にProceeding of Belgian Royal Academyで、初めて用いられたとされています。
-
 :::
-
 
 ### 文献
 

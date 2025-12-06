@@ -202,7 +202,7 @@ a:hover {
 私「え？えーっと」
 ::: 
 
-![図2.png](logistic-regression-1.png)
+![](logistic-regression-1.png)
 
 ::: voice-father
 お父さん「答えはこれ」
@@ -212,7 +212,7 @@ a:hover {
 ::: {.callout-note appearance="simple" collapse="true" title="お父さんの答えは？"}
 それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。
 
-![図1.png](logistic-regression-3.png)
+![](logistic-regression-3.png)
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
@@ -295,92 +295,56 @@ a:hover {
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+::: {.callout-note title="glm()を用いた膵がんデータの解析"}
 
-ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます（これを一般化線型モデルといいます）。リンク関数をうまく指定することによって、オッズ比以外の関連の指標を求められることが知られています。
+交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、`link="logit"`を用いた`glm()`に対応していましたね。以下のコードでは調整前のオッズ比は`smoke`を入れないモデルで、調整後のオッズ比は`smoke`を入れたモデルで推定しています。
 
-次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。
+```{r warning=FALSE}
+dat <- data.frame(
+  cancer = c(1, 0, 1, 0,   1, 0, 1, 0),
+  coffee = c(1, 1, 0, 0,   1, 1, 0, 0),
+  smoke  = c(1, 1, 1, 1,   0, 0, 0, 0),
+  n      = c(14, 266, 4, 76,  1, 99, 8, 792)
+)
+fit_logit1 <- glm(
+  cancer ~ coffee,
+  family  = binomial(link = "logit"),
+  weights = n,
+  data    = dat
+)
+odds_ratio1 <- exp(coef(fit_logit1)[["coffee"]])
+print(odds_ratio1)
 
-1.  リスク差
-2.  リスク比
-3.  ハザード比
-4.  1、2、3すべて求めることができる
+fit_logit2 <- glm(
+  cancer ~ coffee+smoke,
+  family  = binomial(link = "logit"),
+  weights = n,
+  data    = dat
+)
+odds_ratio2 <- exp(coef(fit_logit2)[["coffee"]])
+print(odds_ratio2)
+```
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解は4です**
 
-一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「Simpsonのパラドックスが起きる条件を知りたい？」
+::: 
 
-リスク差を求めるには、g(π)=π つまり恒等関数を指定します。
+::: voice-daughter
+私「そりゃあね。解析方法によってオッズ比が1になるのは不思議だもの」
+::: 
 
-リスク比を求めるには、g(π)=log⁡(π) つまり対数関数を指定します。
+::: voice-father
+お父さん「ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる」
+::: 
 
-ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。
-:::
+::: voice-daughter
+私「なるほどね、喫煙はコーヒー摂取と関連する。さらに喫煙は膵がんリスクも上げる。そうするとオッズ比の値が変わる。ああ、もともとバイアスがあるんだから、調整して値が変わるのは当たり前か」
+::: 
+:::::::::::::::::::::::::::::::::
 
-### Continuation of their story
+### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [Truth: What Is It That You Want to Know?](truth.qmd)

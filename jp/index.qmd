@@ -199,7 +199,11 @@ a:hover {
 - [Adjusting for bias IV]
 - [Adjusting for bias V]
 
-### 5. Causal inference — 因果を見つけるために
+### 5. Truth — 真値
+
+- [What Is It That You Want to Know?]
+
+### 6. Causal inference — 因果を見つけるために
 
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、できるだけ数式を使わずに扱います。
 
@@ -209,7 +213,7 @@ a:hover {
 - [Causal inference IV]
 - [Causal inference V]
 
-### 6. The Craft of Research — 研究の営み
+### 7. The Craft of Research — 研究の営み
 
 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者のための静かな講義。
 
