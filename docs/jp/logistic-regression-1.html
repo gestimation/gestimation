@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-1 – Coffee and Research</title>
+<title>From 2×2 Tables to Logistic Regression – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -208,22 +208,42 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-i" id="toc-story-and-quiz-adjusting-for-bias-i" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-i">Story and Quiz − Adjusting for bias I</a>
+  <li><a href="#adjusting-for-bias-i-from-22-tables-to-logistic-regression" id="toc-adjusting-for-bias-i-from-22-tables-to-logistic-regression" class="nav-link active" data-scroll-target="#adjusting-for-bias-i-from-22-tables-to-logistic-regression">Adjusting for bias I − From 2×2 Tables to Logistic Regression</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰をしてみたんだけど" id="toc-ロジスティック回帰をしてみたんだけど" class="nav-link" data-scroll-target="#ロジスティック回帰をしてみたんだけど">ロジスティック回帰をしてみたんだけど</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">From 2×2 Tables to Logistic Regression</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -347,8 +367,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -358,10 +378,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-i" class="level1">
-<h1>Story and Quiz − Adjusting for bias I</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing</p>
+<section id="adjusting-for-bias-i-from-22-tables-to-logistic-regression" class="level1">
+<h1>Adjusting for bias I − From 2×2 Tables to Logistic Regression</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="ロジスティック回帰をしてみたんだけど" class="level3">
@@ -426,7 +446,7 @@ a:hover {
 <td>1</td>
 <td>-27.25</td>
 <td>3.03</td>
-<td>-33.20～21.30</td>
+<td>-33.20～-21.30</td>
 <td>80.55</td>
 <td>&lt;0.01</td>
 </tr>
@@ -602,7 +622,7 @@ a:hover {
 <p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。詳しくはのちのエピソードで述べますが、リンク関数は、ロジスティック回帰でいえば、リスク<span class="math inline">\(\pi\)</span>を関数<span class="math inline">\(g(\pi)\)</span>を用いて変換しています。</p>
 <p>リスク差を求めるには、<span class="math inline">\(g(\pi)=\pi\)</span>つまり恒等関数を指定します。</p>
 <p>リスク比を求めるには、<span class="math inline">\(g(\pi)=\log(\pi)\)</span> つまり対数関数を指定します。</p>
-<p>ハザード比を求めるには、<span class="math inline">\(g(\pi)=\log\{-\log⁡(1-\pi)\}\)</span>つまり補2重対数（complementary log-log）関数を指定します。</p>
+<p>ハザード比を求めるには、<span class="math inline">\(g(\pi)=\log\{-\log⁡(1-\pi)\}\)</span>つまり補二重対数（complementary log-log）関数を指定します。</p>
 </div>
 </div>
 </div>
@@ -613,40 +633,16 @@ a:hover {
 <li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
 </ul>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="../jp/logistic-regression-1.html">From 2×2 Tables to Logistic Regression</a></p></li>
+<li><p><a href="../jp/logistic-regression-2.html">How to Read Logistic Regression Coefficients</a></p></li>
+<li><p><a href="../jp/logistic-regression-3.html">Pitfalls of Logistic Regression with Small Samples</a></p></li>
+<li><p><a href="../jp/logistic-regression-4.html">Why My Logistic Regression Calculation Went Wrong</a></p></li>
+<li><p><a href="../jp/logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
 
 
 </section>

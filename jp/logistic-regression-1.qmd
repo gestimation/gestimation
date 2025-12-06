@@ -1,9 +1,17 @@
 ---
+title: "From 2×2 Tables to Logistic Regression"
+
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +135,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Adjusting for bias I
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing
+# Adjusting for bias I − From 2×2 Tables to Logistic Regression
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------
@@ -177,7 +187,7 @@ a:hover {
 
 | パラメータ | 自由度 | 推定値 | 標準誤差 | 95%信頼区間   | $\chi^2$ | p値    |
 |------------|--------|--------|----------|---------------|-------|--------|
-| Intercept  | 1      | -27.25 | 3.03     | -33.20～21.30 | 80.55 | \<0.01 |
+| Intercept  | 1      | -27.25 | 3.03     | -33.20～-21.30 | 80.55 | \<0.01 |
 | STOMA      | 1      | 1.41   | 1.54     | -16.1～4.45   | 0.84  | 0.3588 |
 | AGE        | 1      | 1.47   | 1.48     | -1.42～4.36   | 0.99  | 0.3197 |
 | SEX        | 1      | 25.72  | 0.00     | 25.72～25.72  |       |        |
@@ -323,75 +333,19 @@ glm(y ~ x1 + x2, family = poisson(), data = dat)
 
 リスク比を求めるには、$g(\pi)=\log(\pi)$ つまり対数関数を指定します。
 
-ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補2重対数（complementary log-log）関数を指定します。
+ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補二重対数（complementary log-log）関数を指定します。
 :::
 
 ### 文献
 
 - [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-### Continuation of their story
+### エピソードとRスクリプト
 
-[Study design I](study-design-1.qmd)
+- [From 2×2 Tables to Logistic Regression](logistic-regression-1.qmd)
+- [How to Read Logistic Regression Coefficients](logistic-regression-2.qmd)
+- [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.qmd)
+- [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.qmd)
+- [Simpson's paradox](logistic-regression-5.qmd)
 
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)

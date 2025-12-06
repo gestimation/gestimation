@@ -179,6 +179,10 @@ a:hover {
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
 ### 3. Effects and time — 効果は時間とともに
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
@@ -189,15 +193,23 @@ a:hover {
 - [Risk Ratios and Odds Ratios: When Approximation Works]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
 ### 4. Adjusting for bias — 回帰分析の風景
 
-**ロジスティック回帰による調整**と**交絡**。
+**ロジスティック回帰**の表の作り方、結果の見方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。
 
-- [Adjusting for bias I]
-- [Adjusting for bias II]
-- [Adjusting for bias III]
-- [Adjusting for bias IV]
-- [Adjusting for bias V]
+- [From 2×2 Tables to Logistic Regression]
+- [How to Read Logistic Regression Coefficients]
+- [Pitfalls of Logistic Regression with Small Samples]
+- [Why My Logistic Regression Calculation Went Wrong]
+- [Simpson's paradox]
+
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
 ### 5. Truth — 真値
 

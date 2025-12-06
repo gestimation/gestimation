@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-5 – Coffee and Research</title>
+<title>Simpson’s paradox – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -179,21 +179,41 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-v" id="toc-story-and-quiz-adjusting-for-bias-v" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-v">Story and Quiz − Adjusting for bias V</a>
+  <li><a href="#adjusting-for-bias-v-simpsons-paradox" id="toc-adjusting-for-bias-v-simpsons-paradox" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-simpsons-paradox">Adjusting for bias V − Simpson’s paradox</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" id="toc-this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Simpson’s paradox</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -317,8 +337,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -328,10 +348,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-v" class="level1">
-<h1>Story and Quiz − Adjusting for bias V</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias</p>
+<section id="adjusting-for-bias-v-simpsons-paradox" class="level1">
+<h1>Adjusting for bias V − Simpson’s paradox</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="ロジスティック回帰で調整するってどういうこと" class="level3">
@@ -528,7 +548,7 @@ Simpsonのパラドックス
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</p>
+<p>私「へー。単純な解析ではリスク因子なのに、層別しただけで関連が消えた。こんなことあるんだ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そう、交絡因子を無視して、間違った研究結果を報告してしまうとまずいでしょ。もうひとつ注目してほしいのが、喫煙とコーヒーの関連。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
@@ -594,50 +614,21 @@ glm()を用いた膵がんデータの解析
 <p>お父さん「Simpsonのパラドックスが起きる条件を知りたい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そりゃあね。解析方法によってオッズ比が1になるのは不思議だもの」</p>
+<p>私「そりゃあね。解析方法によってオッズ比が1になるのは不思議だもの。あれ？ちょっと前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたっけ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる」</p>
+<p>お父さん「うん、オッズ比は併合可能ではない、non-collapsibleな指標だね。でも、Simpsonのパラドックスの条件は、オッズ比固有のものじゃない。ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほどね、喫煙はコーヒー摂取と関連する。さらに喫煙は膵がんリスクも上げる。そうするとオッズ比の値が変わる。ああ、もともとバイアスがあるんだから、調整して値が変わるのは当たり前か」</p>
+<p>私「なるほどね、喫煙はコーヒー摂取と関連する。さらに喫煙は膵がんリスクも上げる。そうするとオッズ比の値が変わる。ああ、もともとバイアスが入っちゃってたんだから、調整して値が変わるのは当たり前か」</p>
 </div>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</h3>
+<ul>
+<li><a href="../jp/truth.html">Truth: What Is It That You Want to Know?</a></li>
+</ul>
 
 
 </section>

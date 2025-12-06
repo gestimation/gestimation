@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-2 – Coffee and Research</title>
+<title>How to Read Logistic Regression Coefficients – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,21 +173,41 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-ii" id="toc-story-and-quiz-adjusting-for-bias-ii" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-ii">Story and Quiz − Adjusting for bias II</a>
+  <li><a href="#adjusting-for-bias-ii-how-to-read-logistic-regression-coefficients" id="toc-adjusting-for-bias-ii-how-to-read-logistic-regression-coefficients" class="nav-link active" data-scroll-target="#adjusting-for-bias-ii-how-to-read-logistic-regression-coefficients">Adjusting for bias II − How to Read Logistic Regression Coefficients</a>
   <ul class="collapse">
   <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to Read Logistic Regression Coefficients</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -311,8 +331,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -322,10 +342,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-ii" class="level1">
-<h1>Story and Quiz − Adjusting for bias II</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
+<section id="adjusting-for-bias-ii-how-to-read-logistic-regression-coefficients" class="level1">
+<h1>Adjusting for bias II − How to Read Logistic Regression Coefficients</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="数式を使ってロジスティック回帰を教えてよ" class="level3">
@@ -433,8 +453,8 @@ a:hover {
 <p>仮に共変量が1個で、連続データだったとしましょう。確率<span class="math inline">\(\pi_i\)</span>と共変量<span class="math inline">\(X_i\)</span>の関係は、ロジット関数を通じて</p>
 <p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
 <p>という式で表されることになります。</p>
-<p>図は、このロジット関数の<span class="math inline">\(\exp(\beta_1)\)</span>の値を5、10、20、200と設定して、<span class="math inline">\(X_i\)</span>を0から1までの範囲で変化させたプロットです。<span class="math inline">\(\exp(\beta_1)\)</span>は、<span class="math inline">\(X_i\)</span>が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。</p>
-<p>このように、ロジット関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数<span class="math inline">\(\beta_1\)</span>によって決まります。</p>
+<p>図は、このロジット関数の<span class="math inline">\(\exp(\beta_1)\)</span>の値を5、10、20、200と設定して、<span class="math inline">\(X_i\)</span>を0から1までの範囲で変化させた、ロジット関数の逆関数のプロットです。<span class="math inline">\(\exp(\beta_1)\)</span>は、<span class="math inline">\(X_i\)</span>が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。</p>
+<p>このように、ロジット関数の逆関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数<span class="math inline">\(\beta_1\)</span>によって決まります。</p>
 <p><img src="logistic-regression-4.png" class="img-fluid"></p>
 </div>
 </div>
@@ -498,7 +518,7 @@ a:hover {
 <td></td>
 <td>個人内で2回測定</td>
 <td>なし</td>
-<td>対応のない<em>t</em>検定、Wilcoxon順位和検定</td>
+<td>対応のある<em>t</em>検定、Wilcoxon符号付順位検定</td>
 <td>対応のあるデータ</td>
 </tr>
 <tr class="odd">
@@ -630,45 +650,21 @@ a:hover {
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>正解は4です。</strong></p>
-<p>これは単位を換算にするにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
+<p>これは単位を換算するにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
 </div>
 </div>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="../jp/logistic-regression-1.html">From 2×2 Tables to Logistic Regression</a></p></li>
+<li><p><a href="../jp/logistic-regression-2.html">How to Read Logistic Regression Coefficients</a></p></li>
+<li><p><a href="../jp/logistic-regression-3.html">Pitfalls of Logistic Regression with Small Samples</a></p></li>
+<li><p><a href="../jp/logistic-regression-4.html">Why My Logistic Regression Calculation Went Wrong</a></p></li>
+<li><p><a href="../jp/logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-3 – Coffee and Research</title>
+<title>Pitfalls of Logistic Regression with Small Samples – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,22 +173,42 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-iii" id="toc-story-and-quiz-adjusting-for-bias-iii" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-iii">Story and Quiz − Adjusting for bias III</a>
+  <li><a href="#adjusting-for-bias-iii-pitfalls-of-logistic-regression-with-small-samples" id="toc-adjusting-for-bias-iii-pitfalls-of-logistic-regression-with-small-samples" class="nav-link active" data-scroll-target="#adjusting-for-bias-iii-pitfalls-of-logistic-regression-with-small-samples">Adjusting for bias III − Pitfalls of Logistic Regression with Small Samples</a>
   <ul class="collapse">
   <li><a href="#どうしてオッズ比が無限大になっちゃったの" id="toc-どうしてオッズ比が無限大になっちゃったの" class="nav-link" data-scroll-target="#どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pitfalls of Logistic Regression with Small Samples</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -312,8 +332,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -323,10 +343,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-iii" class="level1">
-<h1>Story and Quiz − Adjusting for bias III</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias, paper writing</p>
+<section id="adjusting-for-bias-iii-pitfalls-of-logistic-regression-with-small-samples" class="level1">
+<h1>Adjusting for bias III − Pitfalls of Logistic Regression with Small Samples</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="どうしてオッズ比が無限大になっちゃったの" class="level3">
@@ -356,7 +376,7 @@ a:hover {
 <th>推定値</th>
 <th>標準誤差</th>
 <th>95%信頼区間</th>
-<th>χ2</th>
+<th><span class="math inline">\(\chi^2\)</span></th>
 <th>p値</th>
 </tr>
 </thead>
@@ -366,7 +386,7 @@ a:hover {
 <td>1</td>
 <td>-27.25</td>
 <td>3.03</td>
-<td>-33.20～21.30</td>
+<td>-33.20～-21.30</td>
 <td>80.55</td>
 <td>&lt;0.01</td>
 </tr>
@@ -565,7 +585,7 @@ a:hover {
 <p>私「表の作り方をご助言いただけるのはありがたいんだけどさ、肝心のロジスティック回帰はどうすればいいんだろ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「擬似完全分離を避けるには、共変量の数を削らすのがわかりやすい。今回はサンプルサイズが不足しているみたいだから、他の共変量はすべて使わないで、単にストーマ造設と復職率だけの関連を調べたらどうかな？その場合も、通常の<span class="math inline">\(\chi^2\)</span>検定は使わない方がいいよ。Fisherの正確検定とClopper-Pearson信頼区間っていう方法が推奨されている」</p>
+<p>お父さん「擬似完全分離を避けるには、共変量の数を削るのがわかりやすい。今回はサンプルサイズが不足しているみたいだから、他の共変量はすべて使わないで、単にストーマ造設と復職率だけの関連を調べたらどうかな？その場合も、通常の<span class="math inline">\(\chi^2\)</span>検定は使わない方がいいよ。Fisherの正確検定とClopper-Pearson信頼区間っていう方法が推奨されている」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="2値データの解析においてサンプルサイズが不足したときの指針">
@@ -808,40 +828,16 @@ a:hover {
 <li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
 </ul>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="../jp/logistic-regression-1.html">From 2×2 Tables to Logistic Regression</a></p></li>
+<li><p><a href="../jp/logistic-regression-2.html">How to Read Logistic Regression Coefficients</a></p></li>
+<li><p><a href="../jp/logistic-regression-3.html">Pitfalls of Logistic Regression with Small Samples</a></p></li>
+<li><p><a href="../jp/logistic-regression-4.html">Why My Logistic Regression Calculation Went Wrong</a></p></li>
+<li><p><a href="../jp/logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
 
 
 </section>

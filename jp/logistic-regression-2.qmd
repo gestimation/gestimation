@@ -1,9 +1,16 @@
 ---
+title: "How to Read Logistic Regression Coefficients"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,22 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Adjusting for bias II
 
-::: serif-block
-　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation
+# Adjusting for bias II − How to Read Logistic Regression Coefficients
+
+::: {.serif-block .text-right}
+Keywords: binary outcome, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------
@@ -258,9 +267,9 @@ $\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}$
 
 という式で表されることになります。
 
-図は、このロジット関数の$\exp(\beta_1)$の値を5、10、20、200と設定して、$X_i$を0から1までの範囲で変化させたプロットです。$\exp(\beta_1)$は、$X_i$が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。
+図は、このロジット関数の$\exp(\beta_1)$の値を5、10、20、200と設定して、$X_i$を0から1までの範囲で変化させた、ロジット関数の逆関数のプロットです。$\exp(\beta_1)$は、$X_i$が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。
 
-このように、ロジット関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数$\beta_1$によって決まります。
+このように、ロジット関数の逆関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数$\beta_1$によって決まります。
 
 ![](logistic-regression-4.png)
 
@@ -301,7 +310,7 @@ $\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}$
 | データの型 | 反復測定 | 交絡調整 | 統計手法 | 備考 |
 |---------------|---------------|---------------|---------------|---------------|
 | 連続データ | なし | なし | 対応のない*t*検定、Wilcoxon順位和検定 | 平均の比較 |
-|  | 個人内で2回測定 | なし | 対応のない*t*検定、Wilcoxon順位和検定 | 対応のあるデータ |
+|  | 個人内で2回測定 | なし | 対応のある*t*検定、Wilcoxon符号付順位検定 | 対応のあるデータ |
 |  | なし | なし | 正規線型モデル | 回帰モデルの一種 |
 |  | あり | あり | 変量効果モデル、一般化推定方程式 | 回帰モデルの一種 |
 | 2値データ | なし | なし | $\chi^2$検定 | 割合の比較 |
@@ -334,72 +343,15 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 ::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
 **正解は4です。**
 
-これは単位を換算にするにはどうすればよいかという問題です。ある共変量*X*の効果は、回帰係数*β*との積（*βX*）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。*X*の単位を定数倍すると、*β*は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。
+これは単位を換算するにはどうすればよいかという問題です。ある共変量*X*の効果は、回帰係数*β*との積（*βX*）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。*X*の単位を定数倍すると、*β*は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。
 :::
 
+### エピソードとRスクリプト
 
-### Continuation of their story
+- [From 2×2 Tables to Logistic Regression](logistic-regression-1.qmd)
+- [How to Read Logistic Regression Coefficients](logistic-regression-2.qmd)
+- [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.qmd)
+- [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.qmd)
+- [Simpson's paradox](logistic-regression-5.qmd)
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)

@@ -215,7 +215,7 @@ $(\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \e
 
 **推定に用いられる関数**
 
-先ほど述べたアウトカム$Y_1,Y_2,...,Y_N$の同時確率の式に、データ$y_1,y_2,...,y_N$を代入すると、$\pi_i$の式が得られます。ただし、$\pi_i$は$\beta_0,\beta_1,...,\beta_{p-1}$の関数です。したがって、同時確率の式は、$L(\beta_0,\beta_1,...,\beta_{p-1})$というように、$\beta_0,\beta_1,...,\beta_{p-1}$の関数とみなすことができます。この関数を尤度関数といいます。
+以前、ロジスティック回帰の$\pi_i$は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと$\pi_i$が含まれていますが、この式にデータを代入すると、$\pi_i$の式が得られます。さらに、$\pi_i$は$\beta_0,\beta_1,...,\beta_{p-1}$の関数です。したがって、確率関数の式は、$L(\beta_0,\beta_1,...,\beta_{p-1})$というように、$\beta_0,\beta_1,...,\beta_{p-1}$の関数とみなすことができます。この関数を尤度関数といいます。
 
 ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。
 
@@ -288,68 +288,12 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 
 - [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-### Continuation of their story
+### エピソードとRスクリプト
 
-[Study design I](study-design-1.qmd)
+- [From 2×2 Tables to Logistic Regression](logistic-regression-1.qmd)
+- [How to Read Logistic Regression Coefficients](logistic-regression-2.qmd)
+- [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.qmd)
+- [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.qmd)
+- [Simpson's paradox](logistic-regression-5.qmd)
 
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)

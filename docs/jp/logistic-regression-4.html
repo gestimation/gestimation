@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-4 – Coffee and Research</title>
+<title>Why My Logistic Regression Calculation Went Wrong – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,22 +173,42 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-iv" id="toc-story-and-quiz-adjusting-for-bias-iv" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-iv">Story and Quiz − Adjusting for bias IV</a>
+  <li><a href="#adjusting-for-bias-iv-why-my-logistic-regression-calculation-went-wrong" id="toc-adjusting-for-bias-iv-why-my-logistic-regression-calculation-went-wrong" class="nav-link active" data-scroll-target="#adjusting-for-bias-iv-why-my-logistic-regression-calculation-went-wrong">Adjusting for bias IV − Why My Logistic Regression Calculation Went Wrong</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why My Logistic Regression Calculation Went Wrong</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -312,8 +332,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -323,10 +343,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-iv" class="level1">
-<h1>Story and Quiz − Adjusting for bias IV</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, estimation</p>
+<section id="adjusting-for-bias-iv-why-my-logistic-regression-calculation-went-wrong" class="level1">
+<h1>Adjusting for bias IV − Why My Logistic Regression Calculation Went Wrong</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="ロジスティック回帰の計算ができない理由" class="level3">
@@ -361,7 +381,7 @@ a:hover {
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」**</p>
+<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
@@ -387,14 +407,14 @@ a:hover {
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>推定に用いられる関数</strong></p>
-<p>先ほど述べたアウトカム<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>の同時確率の式に、データ<span class="math inline">\(y_1,y_2,...,y_N\)</span>を代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。ただし、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、同時確率の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
+<p>以前、ロジスティック回帰の<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと<span class="math inline">\(\pi_i\)</span>が含まれていますが、この式にデータを代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。さらに、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、確率関数の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
 <p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
 <p><strong>完全分離</strong></p>
 <p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
 <p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>を計算したとき、その値によって、<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときに生じます。</p>
+<p>を計算したとき、その値によって、<span class="math inline">\(Y_1,Y_2,...,Y_N\)</span>を100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、完全分離と同様に共変量からアウトカムが判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときによく生じる問題です。</p>
 <p><strong>多重共線性</strong></p>
-<p>二つ目は、多重共線性（multi-colinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため同時にロジスティック回帰に含めるべきではありません。</p>
+<p>二つ目は、多重共線性（multicollinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため、同時にロジスティック回帰に含めない方がよい場合が多いです。</p>
 </div>
 </div>
 <div class="dialogue">
@@ -442,40 +462,16 @@ a:hover {
 <li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
 </ul>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="../jp/logistic-regression-1.html">From 2×2 Tables to Logistic Regression</a></p></li>
+<li><p><a href="../jp/logistic-regression-2.html">How to Read Logistic Regression Coefficients</a></p></li>
+<li><p><a href="../jp/logistic-regression-3.html">Pitfalls of Logistic Regression with Small Samples</a></p></li>
+<li><p><a href="../jp/logistic-regression-4.html">Why My Logistic Regression Calculation Went Wrong</a></p></li>
+<li><p><a href="../jp/logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
 
 
 </section>
