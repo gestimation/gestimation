@@ -466,7 +466,7 @@ a:hover {
 <p>私「ふむふむ。じゃあインストールの方は、一度やったら、それで終わり？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、<code>install.packages("ggplot2")</code>は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。<code>library(ggplot2)</code>は、<code>ggplot2()</code>を取り出して、“これからグラフを描くからこの道具を使います”ってRに宣言する」</p>
+<p>お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、<code>install.packages("ggplot2")</code>は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。<code>library(ggplot2)</code>は、<strong>ggplot2</strong>を取り出して、“これからグラフを描くからこの道具を使います”ってRに宣言する」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど。ちょっとスッキリした。今まで毎回インストールしなきゃいけないのかなって思ってた」</p>
@@ -540,7 +540,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>まず、<code>ggplot2</code>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
+<p>まず、<strong>ggplot2</strong>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2") #インストールが必要なら実行</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -576,7 +576,7 @@ STOMA           WOMAN MAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>次の生存時間データでは、<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。</p>
+<p>次の生存時間データでは、<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("cifmodeling") #インストールが必要なら実行</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>

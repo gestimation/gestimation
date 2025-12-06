@@ -369,7 +369,7 @@ a:hover {
 <p>私「入院中に亡くなった場合は、調査対象に含めない。でも、術後再発による死亡を分母から除外するのは変な気がする」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。除外するとバイアスが生じると思う。がん患者さんを追跡するような臨床研究では、大切なことが3つある。1つ、どのタイミングを時間原点 （time origin）にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。 情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」</p>
+<p>お父さん「そうだね。除外するとバイアスが生じると思う。がん患者さんを追跡するような臨床研究では、大切なことが3つある。1つ、どのタイミングを<strong>時間原点 （time origin）</strong>にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。 情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」</p>
 </div>
 </div>
 <ul>
@@ -449,7 +449,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>生存時間データは2つの変数の組であるため、Rの関数に入力するときもペアで指定する必要があります。<code>survival</code>パッケージの<code>survfit()</code>や<code>coxph()</code>では、実は入力専用の関数<code>Surv()</code>を用意しています。入力の仕様はパッケージによってまちまちで、たとえば<code>mets</code>パッケージでは<code>Event()</code>が用いられています。<code>cifmodeling</code>パッケージの<code>cifplot()</code>は、<code>Surv()</code>と<code>Event()</code>の両方に対応しています。</p>
+<p>生存時間データは2つの変数の組であるため、Rの関数に入力するときもペアで指定する必要があります。<strong>survival</strong>パッケージの<code>survfit()</code>や<code>coxph()</code>では、実は入力専用の関数<code>Surv()</code>を用意しています。入力の仕様はパッケージによってまちまちで、たとえば<strong>mets</strong>パッケージでは<code>Event()</code>を別に定義して用いています。<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>は、<code>Surv()</code>と<code>Event()</code>の両方に対応しています。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -474,7 +474,7 @@ a:hover {
 <p>私「えーっと、イベント変数は2値データってことは、すべての患者さんで復職か、打ち切りかの2択しかないってこと？死亡はどうなるの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、競合リスク （competing risk）という別の扱い方もある。簡単に言うと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」</p>
+<p>お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、競合リスク （competing risk）という別の扱い方もある。簡単にいうと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ああ、死亡が競合リスクってことね」</p>
@@ -501,7 +501,7 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>統計学は誤差を扱う学問ですが、臨床研究ではランダム誤差（random error）とバイアス（bias）を区別することが大切です。ランダム誤差は、基本的にはゼロを中心としたばらつきを想定しています。一方で、得られた推定値が真の値から系統的にずれていることを、バイアスといいます。臨床研究における統計学の目標は、ランダム誤差を制御し、バイアスを可能な限りゼロに近づけることです。</p>
+<p>統計学は誤差を扱う学問ですが、臨床研究では<strong>ランダム誤差（random error）</strong>と<strong>バイアス（bias）</strong>を区別することが大切です。ランダム誤差は、基本的にはゼロを中心としたばらつきを想定しています。一方で、得られた推定値が真の値から系統的にずれていることを、バイアスといいます。臨床研究における統計学の目標は、ランダム誤差を制御し、バイアスを可能な限りゼロに近づけることです。</p>
 <p>たとえるなら、ランダム誤差は的の中心を狙って矢を放つときのばらつき、バイアスは狙いが中心からずれている状態といえます。競合リスクの扱いを間違ったとき生じるKaplan-Meier曲線のバイアスは、ランダム誤差ではありませんよね。ランダム誤差はサンプルサイズを大きくすることで減少させることができますが、バイアスは研究デザインやデータ収集方法を工夫しないと、解消できません。</p>
 <p><img src="study-design-5.png" class="img-fluid"></p>
 </div>

@@ -299,7 +299,7 @@ Keywords: outcome, simulation
 :::
 
 ::: voice-father
-お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、`install.packages("ggplot2")`は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。`library(ggplot2)`は、`ggplot2()`を取り出して、"これからグラフを描くからこの道具を使います"ってRに宣言する」
+お父さん「基本的にはそう。同じパソコンなら、インストールは原則1回でOK。たとえば、`install.packages("ggplot2")`は、CRANっていうパッケージの倉庫から、自分のパソコンにダウンロードする。`library(ggplot2)`は、**ggplot2**を取り出して、"これからグラフを描くからこの道具を使います"ってRに宣言する」
 :::
 
 ::: voice-daughter
@@ -351,7 +351,7 @@ head(dat)
 :::
 
 ::: {.callout-note appearance="simple" title="連続データと2値データの要約"}
-まず、`ggplot2`パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
+まず、**ggplot2**パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
 
 ```{r warning=FALSE}
 # install.packages("ggplot2") #インストールが必要なら実行
@@ -367,7 +367,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 :::
 
 ::: {.callout-note appearance="simple" title="生存曲線による生存時間データの要約"}
-次の生存時間データでは、`cifmodeling`パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
+次の生存時間データでは、**cifmodeling**パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
 
 ```{r warning=FALSE}
 # install.packages("cifmodeling") #インストールが必要なら実行

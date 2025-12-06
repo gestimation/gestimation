@@ -472,20 +472,20 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 130 
+  n= 200, number of events= 136 
 
                   coef exp(coef) se(coef)     z Pr(&gt;|z|)    
-stomaWITH STOMA 0.6549    1.9250   0.1833 3.572 0.000354 ***
+stomaWITH STOMA 0.7053    2.0245   0.1782 3.957 7.59e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.925     0.5195     1.344     2.757
+stomaWITH STOMA     2.025     0.4939     1.428     2.871
 
-Concordance= 0.593  (se = 0.025 )
-Likelihood ratio test= 12.5  on 1 df,   p=4e-04
-Wald test            = 12.76  on 1 df,   p=4e-04
-Score (logrank) test = 13.18  on 1 df,   p=3e-04</code></pre>
+Concordance= 0.586  (se = 0.024 )
+Likelihood ratio test= 15.24  on 1 df,   p=9e-05
+Wald test            = 15.66  on 1 df,   p=8e-05
+Score (logrank) test = 16.23  on 1 df,   p=6e-05</code></pre>
 </div>
 </div>
 </div>
@@ -502,13 +502,7 @@ Score (logrank) test = 13.18  on 1 df,   p=3e-04</code></pre>
 <p>私「うんうん。でもそういうのって統計の教科書に書いてないよね。平均とか回帰係数ばっかり」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「分野によって使われる統計手法が違うからね。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）」</p>
-</div>
-<div class="voice-daughter">
-<p>私「話を戻すとさ。p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。まあ、頻度論（frequentist）の立場で統計学を学ばないと、なかなか難しいんだけどね。p値に関する説明をいくつかしてみようか」</p>
+<p>お父さん「分野によって使われる統計手法が違うからね。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）。話を戻すとさ。大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。まあ、頻度論（frequentist）の立場で統計学を学ばないと、なかなか難しいんだけどね。p値に関する説明をいくつかしてみようか」</p>
 </div>
 <ol type="1">
 <li>p値は帰無仮説が正しい確率である</li>

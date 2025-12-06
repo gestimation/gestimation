@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>logistic-regression-5 – Coffee and Research</title>
+<title>truth – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,10 +144,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-adjusting-for-bias-v" id="toc-story-and-quiz-adjusting-for-bias-v" class="nav-link active" data-scroll-target="#story-and-quiz-adjusting-for-bias-v">Story and Quiz − Adjusting for bias V</a>
+  <li><a href="#story-and-quiz-truth" id="toc-story-and-quiz-truth" class="nav-link active" data-scroll-target="#story-and-quiz-truth">Story and Quiz − Truth</a>
   <ul class="collapse">
-  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#データとロジスティック回帰の限界" id="toc-データとロジスティック回帰の限界" class="nav-link" data-scroll-target="#データとロジスティック回帰の限界">データとロジスティック回帰の限界</a></li>
+  <li><a href="#this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode of Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -293,311 +293,112 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-adjusting-for-bias-v" class="level1">
-<h1>Story and Quiz − Adjusting for bias V</h1>
+<section id="story-and-quiz-truth" class="level1">
+<h1>Story and Quiz − Truth</h1>
 <div class="serif-block">
-<p>　　　　　　　　　　　　Keywords: binary data, risk- and effect-measures, generalized linear model, confounding/information-bias/selection-bias</p>
+<p>　　　　　　　　　　　　Keywords: clinical trial, observational study, Rubin causal model</p>
 </div>
 <hr>
-<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
+<section id="データとロジスティック回帰の限界" class="level3">
+<h3 class="anchored" data-anchor-id="データとロジスティック回帰の限界">データとロジスティック回帰の限界</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。以前、観察研究では<strong>交絡因子</strong>を調整しないといけない、とかいってたよね」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「ああ、そんな話もあったね」</p>
+<p>お父さん「コーヒー淹れてくれる？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「でもさ、調整しないオッズ比も計算できるでしょ。どっちが正しいのかってどうやればわかるの？統計学の本を読んでも、書いてなくて」</p>
+<p>私「いいよ。どうぞ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それは統計学だけではわからない問題なんだ。データがどんな確率分布に従っているか、誰も知らないからね。因果推論や医学知識を使って判断すべき問題になる」</p>
+<p>お父さん「ありがとう。この前ね、層別解析やロジスティック解析による<strong>共変量調整</strong>の話をしたよね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なにそれ？統計学の話じゃないの？ロジスティック回帰について聞いてるんだけど」</p>
+<p>私「その節はどうも」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう思うよねえ。じゃあちょっと時間をかけて説明させてよ。」</p>
+<p>お父さん「調整した結果が正しいと思う？それとも調整しない結果が正しい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いいけど」</p>
+<p>私「ん？調整した方がいいでしょ、そりゃ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「疫学の分野での話なんだけどね。40年前に、コーヒーが膵がんを増やすんじゃないか、っていう論文がでたことがある」</p>
+<p>お父さん「そう思うよね。じゃあ、交絡因子AとBがあったとするね。AとBはともに曝露とアウトカムの関係をゆがめている。AとBを調整したときのオッズ比を、仮に3だとしよう。Aだけ調整したらオッズ比は2、どちらも調整しなかったらオッズ比は3だとする。Aだけ調整した結果と調整しない結果、どちらが正しい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いかにもありそうな話だね」</p>
+<p>私「え？えーっと、調整しないオッズ比は真値の3に一致するんでしょ。調整しない方が正しいよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲んでいる人のような曝露集団と、うまく比較できるようなコントロールを選ぶことは、ほとんどの場合難しい。だから、疫学の教科書では、コントロールと比較するときには、第3の因子が隠れていないかどうかに注意しなければいけないと書いてある」</p>
+<p>お父さん「ところがね、Bのデータは集めてなくて調整できなかったとする。そうしたらAとBを調整したときのオッズ比が3だってわからないよね。この状況でも調整しない方が正しい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふんふん」</p>
+<p>私「なにがいいたいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それでは問題です。コーヒーと膵がんの論文で、実際に問題になった第3の因子はなんでしょう？」</p>
+<p>お父さん「真値がわかってないと、どっちの解析が正しいか判断できないんじゃないかっていいたいんだよ。真値でもいいんだけど、ともかくデータとは別の知識や概念が必要だって思わない？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「え？えーっと」</p>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-1.png" class="img-fluid figure-img"></p>
-<figcaption>図2.png</figcaption>
-</figure>
+<p>私「そんなこといわれてもね。知識を得るために調査してるわけだし。Rに四苦八苦している私にとっては、がんばって調整した結果が正しいって信じるしかないよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「答えはこれ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-お父さんの答えは？
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="logistic-regression-3.png" class="img-fluid figure-img"></p>
-<figcaption>図1.png</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「へえ、そんな話があったんだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあさ、こういう第3の因子を無視して解析してしまうとどうなる？」</p>
+<p>お父さん「わかるよ。でも、データとロジスティック回帰だけじゃ、調整した結果が正しいかどうかわからないっていうのが統計学の結論なんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それくらいわかるよ。バイアスが生じるんでしょ」</p>
+<p>私「いや、専門家にそんなこといわれましても」</p>
 </div>
+<section id="rubin因果モデル" class="level3">
+<h3 class="anchored" data-anchor-id="rubin因果モデル">Rubin因果モデル</h3>
 <div class="voice-father">
-<p>お父さん「そういうこと。前にいったように、こういう因子は、疫学では<strong>交絡因子（confounder）</strong>と呼ばれている。交絡因子はロジスティック回帰で調整しないといけない。調整したときとしないときで、まったく違った結果が得られるっていう数値例を示そう」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Simpsonのパラドックス
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのかみてみましょう。ここでは層別解析を用いて説明しますが、ロジスティック回帰でオッズ比を求めたときも、同じ計算結果になります（交互作用をうまく入れる必要がありますが）。</p>
-<p>表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
-<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
-<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
-<p>表1. 層別前の膵がんリスクとオッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
-<th>オッズ比</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>合計</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>15</td>
-<td>12</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>365</td>
-<td>868</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>3.9%</td>
-<td>1.4%</td>
-<td>3倍</td>
-</tr>
-</tbody>
-</table>
-<p>表2. 層別後の膵がんリスクとオッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
-<th>オッズ比</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>14</td>
-<td>4</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>266</td>
-<td>76</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>5.0%</td>
-<td>5.0%</td>
-<td>1倍</td>
-</tr>
-<tr class="odd">
-<td>非喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>1</td>
-<td>8</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>99</td>
-<td>792</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>1.0%</td>
-<td>1.0%</td>
-<td>1倍</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「へー。単純な解析ではリスク因子なのに、層別解析では関連が消えた。こんなことあるんだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう、交絡因子を無視して、間違った研究結果を報告してしまうとまずいでしょ。もうひとつ注目してほしいのが、喫煙とコーヒーの関連。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
+<p>お父さん「今から、“調整”の意味を知るために必要な概念について話すね。これまで出てきた研究を振り返ってみようか。胃がん手術の術式選択もストーマ造設も、その後の予後との因果関係に興味があるんじゃない？正確にいうと、別の術式を選んだり、ストーマを造設しなかったりしたとき、もっといい治療成績が得られたかが、その研究で知りたい真実でしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</p>
+<p>私「そうだね、それはその通り」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。もし仮に、 コーヒー摂取・非摂取という介入をランダムに割付けるランダム化介入試験を行ったらどうなると思う？」</p>
+<p>お父さん「残念ながら回帰分析のレールに乗っていたら、その真実にはたどり着けない。確率分布からスタートするんじゃなくて、“原因が変化したら結果はどうなっていたか”という疑問を基礎にして、研究方法を再構築するんだ。最近の因果推論ではね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「両群で喫煙割合は、ほぼ同じになるはず」</p>
+<p>私「解析をやり直せって言いたいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。そうすると、ランダム化介入試験で得られるオッズ比は、喫煙・非喫煙別の結果を平均することになるから、全体でも1倍に近い結果になると予想される。つまり、層別する前のオッズ比3倍という結果は、コーヒーではなく喫煙が真の原因となって生じた見かけの関連なので、層別した後のオッズ比が正しい。だから、ロジスティック回帰で調整オッズ比を求めるべきなんだ」</p>
+<p>お父さん「ちがうちがう、今は抽象的な話をしている。たとえば実薬とプラセボを比較するランダム化臨床試験だったらどう？全員に実薬を投与した結果とプラセボを投与した結果の差が知りたいんじゃない？差はなんでもいいんだけど、たとえば生存曲線の差をイメージしてくれたらいい。プラセボから実薬に変えたときに生じるかもしれない生存曲線の差、これが因果関係を表すパラメータなんだ」</p>
 </div>
+<div class="voice-daughter">
+<p>私「うーん。そうか。JCOG9502だったら、胃がん手術で術式THを選ぶか、術式LTAを選ぶかを決めたいんだものね。標準治療が決まったら全員その術式になるはずだもの、その話は納得だわ。JCOG9502の論文に出ていた生存曲線は、確かにお父さんのいうパラメータになってる。それに確率分布も回帰分析も出てきてない」</p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="voice-father">
+<p>お父さん「じゃあがんサバイバー調査の方はどうだろう。ストーマを造設するかどうかをランダム化に割付けた臨床試験があるかどうかは知らないんだけど、やはりJCOG9502と同じように考える。でもこの場合は、ストーマを保有した患者さんが、ストーマ造設しなかった場合のアウトカムは観察できない。仮定の話だからね。だからこの状況では、ストーマ造設しなかった場合のアウトカムを、データから予測することになる。交絡因子のデータやロジスティック回帰を使ってね。この意味でのアウトカムを<strong>潜在結果変数（potential outcome）</strong>っていったりもする」</p>
 </div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+<div class="voice-daughter">
+<p>私「ややこしい話になってきた。JCOG9502と私の調査のどこが違うんだろう」</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます（これを一般化線型モデルといいます）。リンク関数をうまく指定することによって、オッズ比以外の関連の指標を求められることが知られています。</p>
-<p>次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
-<ol type="1">
-<li>リスク差</li>
-<li>リスク比</li>
-<li>ハザード比</li>
-<li>1、2、3すべて求めることができる</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は4です</strong></li>
-</ul>
-<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。</p>
-<p>リスク差を求めるには、g(π)=π つまり恒等関数を指定します。</p>
-<p>リスク比を求めるには、g(π)=log⁡(π) つまり対数関数を指定します。</p>
-<p>ハザード比を求めるには、g(π)=log{-log⁡(1-π)} つまり補2重対数（complementary log log）関数を指定します。</p>
-</div>
-</div>
+<div class="voice-father">
+<p>お父さん「ランダム化臨床試験は、むしろ”介入したら結果はどうなるか”を調べるためにデザインされているからね。ターゲット集団も明確に定義されているし、介入もランダムに割付けられていてバイアスもない。がんサバイバー調査は、いわゆる観察研究でしょ。研究仮説がまだ曖昧じゃないかな、特にPatientsとControlがね。また、ランダム化してないから比較可能性が低いよね。交絡因子のデータがバイアスを調整するためじゅうぶんかどうかわからない。ここで大切なのは、ロジスティック回帰の結果を、因果関係を考えるための材料として正しく読み解くためには、因果推論の考え方が必要だってこと。ここで話したのは<strong>Rubin因果モデル</strong>っていって因果モデルのひとつなんだけどね」</p>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="研究仮説" class="level3">
+<h3 class="anchored" data-anchor-id="研究仮説">研究仮説</h3>
+<div class="voice-daughter">
+<p>お父さん「はい、コーヒーのおかわり。ミルクはいる？」</p>
+</div>
+<div class="voice-father">
+<p>私「いる。お父さんの言いたいことわかってきたよ。データを集めてロジスティック回帰をすると、自動的に結論が出るわけじゃないんだ。それは、うちの診療科だけのデータでRを試してたときにも、そう思ったよ。有意だったら因果関係あり、有意じゃなかったら因果関係なしみたいに、白黒はっきりしてないんだなって。でも、どんな集団が解析対象なのかや、ストーマ保有者をどんな集団と比べているのか、足りない交絡因子はなにかなど、どの部分の詰めが甘いのかが見えてきた」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはよかった。最近は昔よりもデータ駆動型の統計手法を使うことが増えたからね。ロジスティック回帰も使い方によってはそうなる。でも、研究仮説がいい加減だったら、データを集めても何も出てこないよ。それに、ランダム化臨床試験のようにいいデザインを選べば、その分だけ研究結果の質も高くなる。ほら、前にいったかもしれないけど、統計学の目標はランダム誤差とバイアスをコントロールすることだからね」</p>
+</div>
+<div class="voice-daughter">
+<p>お父さん「あーそんな話してたね。バイアスって真値から系統的にずれていることだっけ。そうすると真値を決めないとバイアス調整もできないことになる。逆算していくと、研究仮説の形でどんな真実が知りたいのかを言語化しなきゃ、統計解析が正しいかどうかも決まらないんだ」</p>
+</div>
+</section>
+</div>
+</section>
+<section id="this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode of Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
+<ul>
+<li><p><a href="../jp/causal-inference-1.html">Causal inference I</a></p></li>
+<li><p><a href="../jp/causal-inference-2.html">Causal inference II</a></p></li>
+<li><p><a href="../jp/causal-inference-3.html">Causal inference III</a></p></li>
+<li><p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p></li>
+</ul>
 
 
 </section>

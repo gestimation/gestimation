@@ -1,0 +1,275 @@
+---
+format:
+  html:
+    toc: true
+---
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+# Story and Quiz − Truth
+
+::: serif-block
+　　　　　　　　　　　　Keywords: clinical trial, observational study, Rubin causal model
+:::
+
+------------------------------------------------------------------------
+
+### データとロジスティック回帰の限界
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「コーヒー淹れてくれる？」
+::: 
+
+::: voice-daughter
+私「いいよ。どうぞ」
+::: 
+
+::: voice-father
+お父さん「ありがとう。この前ね、層別解析やロジスティック解析による**共変量調整**の話をしたよね」
+::: 
+
+::: voice-daughter
+私「その節はどうも」
+::: 
+
+::: voice-father
+お父さん「調整した結果が正しいと思う？それとも調整しない結果が正しい？」
+::: 
+
+::: voice-daughter
+私「ん？調整した方がいいでしょ、そりゃ」
+::: 
+
+::: voice-father
+お父さん「そう思うよね。じゃあ、交絡因子AとBがあったとするね。AとBはともに曝露とアウトカムの関係をゆがめている。AとBを調整したときのオッズ比を、仮に3だとしよう。Aだけ調整したらオッズ比は2、どちらも調整しなかったらオッズ比は3だとする。Aだけ調整した結果と調整しない結果、どちらが正しい？」
+::: 
+
+::: voice-daughter
+私「え？えーっと、調整しないオッズ比は真値の3に一致するんでしょ。調整しない方が正しいよね」
+::: 
+
+::: voice-father
+お父さん「ところがね、Bのデータは集めてなくて調整できなかったとする。そうしたらAとBを調整したときのオッズ比が3だってわからないよね。この状況でも調整しない方が正しい？」
+::: 
+
+::: voice-daughter
+私「なにがいいたいの？」
+::: 
+
+::: voice-father
+お父さん「真値がわかってないと、どっちの解析が正しいか判断できないんじゃないかっていいたいんだよ。真値でもいいんだけど、ともかくデータとは別の知識や概念が必要だって思わない？」
+::: 
+
+::: voice-daughter
+私「そんなこといわれてもね。知識を得るために調査してるわけだし。Rに四苦八苦している私にとっては、がんばって調整した結果が正しいって信じるしかないよね」
+::: 
+
+::: voice-father
+お父さん「わかるよ。でも、データとロジスティック回帰だけじゃ、調整した結果が正しいかどうかわからないっていうのが統計学の結論なんだ」
+:::
+
+::: voice-daughter
+私「いや、専門家にそんなこといわれましても」
+::: 
+
+### Rubin因果モデル
+
+::: voice-father
+お父さん「今から、"調整"の意味を知るために必要な概念について話すね。これまで出てきた研究を振り返ってみようか。胃がん手術の術式選択もストーマ造設も、その後の予後との因果関係に興味があるんじゃない？正確にいうと、別の術式を選んだり、ストーマを造設しなかったりしたとき、もっといい治療成績が得られたかが、その研究で知りたい真実でしょ」
+:::
+
+::: voice-daughter
+私「そうだね、それはその通り」
+::: 
+
+::: voice-father
+お父さん「残念ながら回帰分析のレールに乗っていたら、その真実にはたどり着けない。確率分布からスタートするんじゃなくて、"原因が変化したら結果はどうなっていたか"という疑問を基礎にして、研究方法を再構築するんだ。最近の因果推論ではね」
+::: 
+
+::: voice-daughter
+私「解析をやり直せって言いたいの？」
+::: 
+
+::: voice-father
+お父さん「ちがうちがう、今は抽象的な話をしている。たとえば実薬とプラセボを比較するランダム化臨床試験だったらどう？全員に実薬を投与した結果とプラセボを投与した結果の差が知りたいんじゃない？差はなんでもいいんだけど、たとえば生存曲線の差をイメージしてくれたらいい。プラセボから実薬に変えたときに生じるかもしれない生存曲線の差、これが因果関係を表すパラメータなんだ」
+::: 
+
+::: voice-daughter
+私「うーん。そうか。JCOG9502だったら、胃がん手術で術式THを選ぶか、術式LTAを選ぶかを決めたいんだものね。標準治療が決まったら全員その術式になるはずだもの、その話は納得だわ。JCOG9502の論文に出ていた生存曲線は、確かにお父さんのいうパラメータになってる。それに確率分布も回帰分析も出てきてない」
+::: 
+
+::: voice-father
+お父さん「じゃあがんサバイバー調査の方はどうだろう。ストーマを造設するかどうかをランダム化に割付けた臨床試験があるかどうかは知らないんだけど、やはりJCOG9502と同じように考える。でもこの場合は、ストーマを保有した患者さんが、ストーマ造設しなかった場合のアウトカムは観察できない。仮定の話だからね。だからこの状況では、ストーマ造設しなかった場合のアウトカムを、データから予測することになる。交絡因子のデータやロジスティック回帰を使ってね。この意味でのアウトカムを**潜在結果変数（potential outcome）**っていったりもする」
+::: 
+
+::: voice-daughter
+私「ややこしい話になってきた。JCOG9502と私の調査のどこが違うんだろう」
+::: 
+
+::: voice-father
+お父さん「ランダム化臨床試験は、むしろ"介入したら結果はどうなるか"を調べるためにデザインされているからね。ターゲット集団も明確に定義されているし、介入もランダムに割付けられていてバイアスもない。がんサバイバー調査は、いわゆる観察研究でしょ。研究仮説がまだ曖昧じゃないかな、特にPatientsとControlがね。また、ランダム化してないから比較可能性が低いよね。交絡因子のデータがバイアスを調整するためじゅうぶんかどうかわからない。ここで大切なのは、ロジスティック回帰の結果を、因果関係を考えるための材料として正しく読み解くためには、因果推論の考え方が必要だってこと。ここで話したのは**Rubin因果モデル**っていって因果モデルのひとつなんだけどね」
+::: 
+
+### 研究仮説
+
+::: voice-daughter
+お父さん「はい、コーヒーのおかわり。ミルクはいる？」
+::: 
+
+::: voice-father
+私「いる。お父さんの言いたいことわかってきたよ。データを集めてロジスティック回帰をすると、自動的に結論が出るわけじゃないんだ。それは、うちの診療科だけのデータでRを試してたときにも、そう思ったよ。有意だったら因果関係あり、有意じゃなかったら因果関係なしみたいに、白黒はっきりしてないんだなって。でも、どんな集団が解析対象なのかや、ストーマ保有者をどんな集団と比べているのか、足りない交絡因子はなにかなど、どの部分の詰めが甘いのかが見えてきた」
+::: 
+
+::: voice-father
+お父さん「それはよかった。最近は昔よりもデータ駆動型の統計手法を使うことが増えたからね。ロジスティック回帰も使い方によってはそうなる。でも、研究仮説がいい加減だったら、データを集めても何も出てこないよ。それに、ランダム化臨床試験のようにいいデザインを選べば、その分だけ研究結果の質も高くなる。ほら、前にいったかもしれないけど、統計学の目標はランダム誤差とバイアスをコントロールすることだからね」
+::: 
+
+::: voice-daughter
+お父さん「あーそんな話してたね。バイアスって真値から系統的にずれていることだっけ。そうすると真値を決めないとバイアス調整もできないことになる。逆算していくと、研究仮説の形でどんな真実が知りたいのかを言語化しなきゃ、統計解析が正しいかどうかも決まらないんだ」
+::: 
+::::::::::::::::::::::::::::::::: 
+
+
+### This concludes the episode of Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
+
+- [Causal inference I](causal-inference-1.qmd)
+
+- [Causal inference II](causal-inference-2.qmd)
+
+- [Causal inference III](causal-inference-3.qmd)
+
+- [Causal inference IV](causal-inference-4.qmd)
