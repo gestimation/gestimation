@@ -369,7 +369,7 @@ a:hover {
 <p>私「要約しやすい？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。この関係を、Cox回帰とか比例ハザードモデルって呼んでいる」</p>
+<p>お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。この関係を、<strong>Cox回帰（Cox regression）</strong>とか<strong>比例ハザードモデル（proportional hazards model）</strong>って呼んでいる」</p>
 </div>
 <div class="voice-daughter">
 <p>私「比例関係だったら交差したらまずいよね」</p>
@@ -387,7 +387,7 @@ coxph()を用いたハザード比の推定
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数<code>generate_data(hr1, hr2)</code>を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
@@ -472,18 +472,20 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 137 
+  n= 200, number of events= 130 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
-stomaWITH STOMA 0.2581    1.2945   0.1801 1.433    0.152
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)    
+stomaWITH STOMA 0.6549    1.9250   0.1833 3.572 0.000354 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.294     0.7725    0.9095     1.842
+stomaWITH STOMA     1.925     0.5195     1.344     2.757
 
-Concordance= 0.493  (se = 0.024 )
-Likelihood ratio test= 2.04  on 1 df,   p=0.2
-Wald test            = 2.05  on 1 df,   p=0.2
-Score (logrank) test = 2.06  on 1 df,   p=0.2</code></pre>
+Concordance= 0.593  (se = 0.025 )
+Likelihood ratio test= 12.5  on 1 df,   p=4e-04
+Wald test            = 12.76  on 1 df,   p=4e-04
+Score (logrank) test = 13.18  on 1 df,   p=3e-04</code></pre>
 </div>
 </div>
 </div>
@@ -562,7 +564,7 @@ Score (logrank) test = 2.06  on 1 df,   p=0.2</code></pre>
 <p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、同等性 （equivalence）試験や非劣性 （non-inferiority）試験を組む必要がある」</p>
+<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、<strong>同等性 （equivalence）試験</strong>や<strong>非劣性 （non-inferiority）試験</strong>を組む必要がある」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
