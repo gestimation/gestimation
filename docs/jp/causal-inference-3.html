@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>causal-inference-3 – Coffee and Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../coffee.scss">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Coffee and Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gestimation.github.io/cifmodeling/"> 
+<span class="menu-text">cifmodeling</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-story-and-quiz-(en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Story and Quiz (EN)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-story-and-quiz-(en">    
+        <li>
+    <a class="dropdown-item" href="../en/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-story-and-quiz-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Story and Quiz (JP)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-story-and-quiz-(jp">    
+        <li>
+    <a class="dropdown-item" href="../jp/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#story-and-quiz-causal-inference-iii" id="toc-story-and-quiz-causal-inference-iii" class="nav-link active" data-scroll-target="#story-and-quiz-causal-inference-iii">Story and Quiz − Causal inference III</a>
+  <ul class="collapse">
+  <li><a href="#調整すべき因子かどうかってどうやって見分けるの" id="toc-調整すべき因子かどうかってどうやって見分けるの" class="nav-link" data-scroll-target="#調整すべき因子かどうかってどうやって見分けるの">調整すべき因子かどうかってどうやって見分けるの？</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<style>
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.serif-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="story-and-quiz-causal-inference-iii" class="level1">
+<h1>Story and Quiz − Causal inference III</h1>
+<div class="serif-block">
+<p>　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study</p>
+</div>
+<hr>
+<section id="調整すべき因子かどうかってどうやって見分けるの" class="level3">
+<h3 class="anchored" data-anchor-id="調整すべき因子かどうかってどうやって見分けるの">調整すべき因子かどうかってどうやって見分けるの？</h3>
+<p>お父さん「まだ話は続くよ。ここからの話題はDAGと確率変数の関係について。まず、確率の基本について思い出してみよう」</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>確率の復習</strong></p>
+<p><strong>同時確率と条件付確率</strong></p>
+<p>複数の事象を扱うとき、事象が同時に起こる確率（同時確率）と、順番に起こる確率（条件付確率）を区別することが大切です。たとえば2種類の事象AとBがあったとしましょう。「AまたはBが起きる」という事象は、和集合<span class="math inline">\(A\cup{B}\)</span>で表します。「AかつBが起きる」という事象は、積集合<span class="math inline">\(A\cap{B}\)</span>で表します。</p>
+<p><img src="causal-inference-3-1.png" class="img-fluid"></p>
+<p><img src="causal-inference-3-2.png" class="img-fluid"></p>
+<p>同時確率は、AとB両方が同時に起きる確率のことです。集合の記号を用いると、<span class="math inline">\(\mathrm{Pr}(A\cap{B})\)</span>と書くことができます。</p>
+<p>条件付確率は、先にどちらかの事象が起きて、その結果を知った後に、別の事象が起きる確率のことです。事象Bが起きたことを条件付けた下で事象Aの起きる確率は、AとBの積事象の確率を、Bが起きる確率で割ったもので表すことができます。</p>
+<p><span class="math inline">\(\mathrm{Pr}(A|B)=\frac{\mathrm{Pr}(A\cap{B})}{\mathrm{Pr}(B)}\)</span></p>
+<p>ベン図で表すなら、この確率の分母は集合Bに、分子は積集合<span class="math inline">\(A\cap{B}\)</span>に対応します。また、上の式を変形することで、同時確率と条件付確率に、<span class="math inline">\(\mathrm{Pr}(A\cap{B})=\mathrm{Pr}(A|B)\mathrm{Pr}(B)\)</span>という関係があることがわかります。</p>
+<p><img src="causal-inference-3-3.png" class="img-fluid"></p>
+<p><strong>独立性と条件付き独立性</strong></p>
+<p>定義をきちんと思い出してほしいことがもうひとつあります。それは独立性です。事象AとBが独立であるとは、積集合の確率が、それぞれの事象の確率の積と等しいことと定義されます。</p>
+<p><span class="math inline">\(\mathrm{Pr}(A\cap{B})=\mathrm{Pr}(A)\mathrm{Pr}(B)\)</span></p>
+<p>事象AとBに加えて、第3の事象Cがあるとき、Cで条件付けたAとBの同時分布を考えることができますよね。この分布における独立性を、「Cで条件付けた独立性」や「条件付独立性」といいます。条件付独立性もまた、積集合の確率が、それぞれの事象の確率の積と等しいことと定義することができます。</p>
+<p><span class="math inline">\(\mathrm{Pr}(A\cap{B}|C)=\mathrm{Pr}(A|C)\mathrm{Pr}(B|C)\)</span></p>
+</div>
+</div>
+<p>お父さん「準備が整ったので、DAGと確率変数の関係について説明しよう」</p>
+<p><strong>私「ふむふむ」</strong></p>
+<p>お父さん「Aの確率分布がBに依存することを、矢印で表すことにする。つまり、Bで条件付けたAの確率は、B→Aで表される。逆に、AとBが独立なら、矢印はない。このルールを使えば、DAGを条件付確率と対応付けることができそうでしょ。そうすると独立性や相関性について考えることができる」</p>
+<p><strong>私「確率分布って正規分布とかそういうの？」</strong></p>
+<p>お父さん「そうきたか。えっとね、正規分布は条件付確率じゃない。でも、たとえばロジスティック回帰だったら、条件付確率を表すから、それをイメージしてもいい。ここでは具体的な確率分布を意図しているわけじゃなくて、もっと定性的で、一般的な話をしてるんだけどね」</p>
+<p><strong>私「ふーん」</strong></p>
+<p>お父さん「確率変数によって別の確率変数が影響を受けるためには、なんらかの関連が必要だよね」</p>
+<p><strong>私「そりゃそうだ」</strong></p>
+<p>お父さん「統計学では、一般に、それは条件付確率だったり、相関だったりする。一方で、DAGではそれをグラフ上の有向パスで表している。胃がんの例で用いたDAGに、このルールを適用してみてよ。たとえばAからDに入る矢印はないでしょ。このことは、A以外の変数であるB、C、Eで条件付けると、DはAと独立という意味になる」</p>
+<p><strong>私「えーっと、Aは性格、Dは胃がん発生だっけ。年齢も、体質も、ピロリ菌除菌の有無も同じだったら、性格に関係なく、胃がんリスクは等しいと仮定しているって意味なのかな？」</strong></p>
+<p>お父さん「そういうこと。次に、DAG全体について考えてみてよ。さっきのグラフでは、AからB、BからA、AからD、BからEへの矢印はないよね。このことは、AはBに直接影響せず、BはAに直接影響せず、AはDに直接影響せず、BはEに直接影響しないという仮定を表している。もっといえば、これは、さらに、AがBを介して伝わるDへの効果はない、という意味にもなる。このような依存関係を条件付分布で表すと、以下の5つの式のようになる。これがさっきのDAGに対応する確率分布だよ」</p>
+<p><span class="math inline">\(\mathrm{Pr}(A|B,C,D,E)=\mathrm{Pr}(A)\)</span></p>
+<p><span class="math inline">\(\mathrm{Pr}(B|A,C,D,E)=\mathrm{Pr}(B)\)</span></p>
+<p><span class="math inline">\(\mathrm{Pr}(C|A,B,D,E)=\mathrm{Pr}(C|A,B)\)</span></p>
+<p><span class="math inline">\(\mathrm{Pr}(D|A,B,C,E)=\mathrm{Pr}(D|B,C,E)\)</span></p>
+<p><span class="math inline">\(\mathrm{Pr}(E|A,B,C,D)=\mathrm{Pr}(E|A,C)\)</span></p>
+<p><strong>私「ふーん。なんだか具体性がなくて、それでって思っちゃうよ。話の終着点がみえない」</strong></p>
+<p>お父さん「そっか。ここまでの話ではね、DAGと条件付確率を対応付けるルールを説明したかったんだ。簡単にいうと、条件付けの方の変数から、条件を付けられる変数の方に、矢印が入るようなルールで、DAGと条件付確率を結びつけることができる。このルールを踏まえて、合流点の意味を考えてみてよ。この図でEとDに相関はある？相関はない？」</p>
+<p><img src="causal-inference-3-4.png" class="img-fluid"></p>
+<p><strong>私「じゃあもうちょっとだけ話に付き合ってあげる。うーんと。この図にはE→CとD→Cがある。これって、</strong><span class="math inline">\(\mathrm{Pr}(C|D,E)\)</span>って意味だっけ？」</p>
+<p>お父さん「そうだったね」</p>
+<p><strong>私「さらに、EとDに入る矢印はない。つまり、CとDとEの確率分布は、それぞれ</strong><span class="math inline">\(\mathrm{Pr}(C|D,E)\)</span>と<span class="math inline">\(\mathrm{Pr}(D)\)</span>と<span class="math inline">\(\mathrm{Pr}(E)\)</span>ってことになる。でもここからがわかんないな」</p>
+<p>お父さん「確率の復習で述べた同時分布と条件付確率の関係を思い出してみて。同時確率は、<span class="math inline">\(\mathrm{Pr}(C,E,D)=\mathrm{Pr}(C|D,E)\mathrm{Pr}(D)\mathrm{Pr}(E)\)</span>と表されるでしょ。この式がポイントなんだ。これって、EとDは独立という意味でしょ」</p>
+<p><strong>私「うん。確率分布が積で書けてるからね」</strong></p>
+<p>お父さん「さらに、この図は、最初に示した合流点の図とは違って、E→Dはない。つまり、曝露変数とアウトカムに因果関係はない状況を想定したものといえる。っていうことはさ。Cについてなにも操作しなくても、EとDに相関があれば因果関係があるし、相関がなければ因果関係はないってことになるでしょ。相関があるかどうかは、曝露変数EとアウトカムDのデータを集めれば、確認できるよね」</p>
+<p><strong>私「なんとなくいいたいことがわかってきた。この図みたいにCが合流点だったら、調整なんかせずにEとDの相関を調べればいいってことね」</strong></p>
+<p>お父さん「簡単にいうとそういうこと。合流点があると、変数間の相関関係がトリッキーになるんだ」</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>合流点の性質</strong></p>
+<p><strong>合流点を含むパスは相関を生じさせない</strong></p>
+<p>合流点という名前は、有向パスが合流するノードという意味に由来します。パスの上に合流点が1つ以上あるとき、合流点からの影響は別のノードへ伝わりません。このことを、合流点があるとそのパスはブロックされる、という言い方をします。逆に合流点が含まれないとパスはブロックされません。実際、合流点を含むパスが確率変数同士を結びつけても、それだけでは相関は生じません。</p>
+<p><strong>合流点は調整すべきではない</strong></p>
+<p>上で述べた性質を踏まえて、下に示すDAGについて考えてみてください。結論から先に言うと、この場合もEとDは独立ですが、条件付けによって相関が生じます。</p>
+<p>Cで条件付けたとき、つまりCを特定の値に固定すると、なにが起きるでしょうか。Cの値が固定されると、A→Cのパスがあるため、Cの影響でAの分布が変化します。さらに、B→Cのパスがあるため、Bの分布も変化します。</p>
+<p>次に問題になるのは、このDAGにA→CとB→Dというパスがあることです。AとBの確率分布が変化すると、A→CとB→Dのパスによって、EとDに同時に影響します。そうすると、Cを固定することによって、E-A-C-B-Dというパスを通じて、EとDに相関が生じることになります。</p>
+<p>まとめると、以下のように、合流点を含むパスは、共通原因・中間媒介因子しか含まないパスとは逆の性質を持っています。</p>
+<ul>
+<li><p>合流点があるとそのパスはブロックされる。合流点を1つでも含むパスは相関を生じさせない</p></li>
+<li><p>合流点を交絡因子として調整すると、もともと相関がなかったとしても、相関が生じる</p></li>
+</ul>
+<p><img src="causal-inference-3-5.png" class="img-fluid"></p>
+<p><strong>まとめ</strong></p>
+<p>この表は、原因から結果までのパスを、有向か無向か、合流点をいくつ含んでいるかに従って、4分類して、パスの性質を整理したものです。すでに述べたように、調整するかどうか検討の候補になるのは、原因から結果までの無向パスです。もし、無向パスが合流点を含まないなら、パス上のどこかの変数を調整しない限り、そのパスはブロックされません。言い換えると、パス上の変数を調整し、このパスをブロックすることで、バイアスを防ぐことができるかもしれません。無向パスが合流点を1つ含むとき、調整しなくてもこのパスは合流点でブロックされますが、合流点のみを調整すると、ブロックが解けてしまいます。ただし、非合流点を調整すると、合流点を調整したとしても、そのパスはブロックされます。合流点を1つ以上含む場合も、考え方は同じです。調整していない合流点があるか、非合流点を調整すると、このパスはブロックされます。しかし、すべての合流点のみを調整すると、ブロックが解けてしまいます。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>調整しないとき</th>
+<th>パス上の変数を調整したとき</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原因から結果までの有向パス</td>
+<td>ブロックされていない（定義から合流点を含まない）</td>
+<td>調整しなくてよい</td>
+</tr>
+<tr class="even">
+<td>原因から結果までの無向パス（合流点を含まない）</td>
+<td>ブロックされていない</td>
+<td>調整によりブロックされる</td>
+</tr>
+<tr class="odd">
+<td>原因から結果までの無向パス（合流点1つ含む）</td>
+<td>合流点でブロックされる</td>
+<td>(1)合流点のみ調整するとブロックが解けてしまうが、(2)非合流点を調整すると（合流点を調整したとしても）ブロックされる</td>
+</tr>
+<tr class="even">
+<td>原因から結果までの無向パス（合流点1つ以上を含む）</td>
+<td>合流点でブロックされる</td>
+<td>(1)すべての合流点のみを調整するとブロックが解けてしまうが、(2)調整していない合流点があるとブロックされ、(3)非合流点を調整してもブロックされる</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>このDAGの解釈として正しいのはどちらでしょうか。</p>
+<ol type="1">
+<li>EとDに相関がある</li>
+<li>EとDは独立</li>
+</ol>
+<p><img src="causal-inference-3-6.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>正解は1です。</strong></p>
+<p>このDAGは、<span class="math inline">\(\mathrm{Pr}(E|C)\)</span>と<span class="math inline">\(\mathrm{Pr}(D|C)\)</span>を意味しています。そのため、どう変形しても、EとDの同時確率を<span class="math inline">\(\mathrm{Pr}(E)\mathrm{Pr}(D)\)</span>という積の形で表すことができません。つまり、EとDを結ぶ直接の矢印はないにもかかわらず、EとDは相関しています。</p>
+<p>別の回で扱ったコーヒーとすい臓がんの例で、喫煙によって見かけの相関が生じていたことを覚えていますか？喫煙は、上のDAGにおけるC（共通原因）に相当します。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"> <strong>もうひとつクイズです</strong></p>
+<p>ピロリ菌と胃がんの因果関係を表すDAGをもう一度示します。このDAGにおいて、交絡因子として調整すべき変数の集合として正しいのは、次のうちどれでしょうか。</p>
+<ol type="1">
+<li>B</li>
+<li>C</li>
+<li>AとB</li>
+<li>AとC</li>
+</ol>
+<p><img src="causal-inference-3-7.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>正解は4です。</strong></p>
+<p>このDAGは、上のクイズで扱ったDAGにパスE→Dを加えたものなので、調整すべき交絡因子は同じです。そして、先ほど考えたように、Cは合流点でもあり、共通原因でもあります。したがって、Aだけ、Bだけ、AとBだけを調整すると、パスE←C→Dによる疑似相関が残ってしまいます。さらに、Cは合流点なので、調整するとパスE←A→C←B→Dによる相関が生じてしまいます。</p>
+<p>結論をいうと、パスE←A→C←B→Dをブロックするため、Cに加えて、AまたはBを調整する必要があります。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="continuation-of-their-story" class="level3">
+<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<p><a href="../jp/study-design-1.html">Study design I</a></p>
+<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<p><a href="../jp/study-design-3.html">Study design III</a></p>
+<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-5.html">Study design V</a></p>
+<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
+<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
+<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
+<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
+<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
+<p><a href="../jp/effects-1.html">Effects and time I</a></p>
+<p><a href="../jp/effects-2.html">Effects and time II</a></p>
+<p><a href="../jp/effects-3.html">Effects and time III</a></p>
+<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
+<p><a href="../jp/effects-5.html">Effects and time V</a></p>
+<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
+<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
+<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
+<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
+<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
