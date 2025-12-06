@@ -387,9 +387,9 @@ a:hover {
 </div>
 <div class="callout-body-container callout-body">
 <p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために寄与割合（attributable fraction/excess fraction）という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団をターゲットとするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。</p>
-<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、population attributable fractionと呼ばれています。ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
+<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、集団寄与割合（population attributable fraction）と呼ばれています。ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
 <ul>
-<li>Population attributable fraction</li>
+<li>集団寄与割合（population attributable fraction）</li>
 </ul>
 <p><span class="math display">\[
 PAF=\frac{p(RR-1)}{p(RR-1)+1}
@@ -416,13 +416,13 @@ PAF=\frac{p(RR-1)}{p(RR-1)+1}
 <div class="callout-body-container callout-body">
 <p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
 <ul>
-<li>Excess fraction <span class="math display">\[
+<li>過剰寄与割合（excess fraction） <span class="math display">\[
 EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
 \]</span></li>
 </ul>
 <p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
 <ul>
-<li>Preventable fraction <span class="math display">\[
+<li>予防寄与割合（preventable fraction） <span class="math display">\[
 PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 \]</span></li>
 </ul>
@@ -447,7 +447,7 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
 </tr>
 <tr class="even">
-<td>EF（寄与割合）</td>
+<td>EF（過剰寄与割合）</td>
 <td>曝露だけ</td>
 <td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
 </tr>
@@ -546,7 +546,7 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <p>私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でしょ。それにね、疾患リスクで考えるから混乱しがちなのかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「でしょ。それにね、ただの計算式とみちゃうとかえって混乱しがちかもしれない。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふんふん」</p>
@@ -637,7 +637,7 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることもあります（population attributable fraction）。先ほど用いたがん検診の例で考えましょう。仮にがん検診の精度が高くなって、感度を100%にできたとしましょう。先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、4人のうち、どのくらい減ると期待されるでしょうか。</p>
+<p>今回みたように、寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることがあります（population attributable fraction）。先ほど用いたがん検診の例で考えましょう。仮にがん検診の精度が高くなって、感度を100%にできたとしましょう。先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、4人のうち、どのくらい減ると期待されるでしょうか。</p>
 <ol type="1">
 <li>0%</li>
 <li>33%</li>

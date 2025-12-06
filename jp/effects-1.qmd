@@ -180,7 +180,7 @@ Keywords: binary outcome, effect measure, observational study, scientific writin
 :::
 
 ::: voice-father
-お父さん「うん、あれは話題になったよね。ワクチンの有効率って意外と計算が難しいんだよ。まず"率"って用語には要注意だね」
+お父さん「うん、あれは話題になったよね。**ワクチン有効率（vaccine efficacy）**って意外と計算が難しいんだよ。まず"率"って用語には要注意だね」
 :::
 
 ::: voice-daughter
@@ -188,10 +188,10 @@ Keywords: binary outcome, effect measure, observational study, scientific writin
 :::
 
 ::: voice-father
-お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう率（rate）とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが95%って意味だから」
+お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう**率（rate）**とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが95%って意味だから」
 :::
 
-- ワクチン有効率（vaccine efficacy）は、疫学でいう率（rate）ではない
+- ワクチン有効率は、疫学でいう率ではない
 - プラセボ効果との相対比較のための指標
 
 ::: voice-daughter
@@ -245,7 +245,7 @@ $$
 NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}
 $$
 
--   ワクチン有効率（vaccine efficacy、相対リスク減少）
+-   ワクチン有効率（相対リスク減少）
 
 $$
 VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
