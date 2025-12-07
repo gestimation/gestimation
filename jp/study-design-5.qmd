@@ -144,9 +144,10 @@ a:hover {
 </style>
 ```
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
+
 # Study Design 5 − When Bias Creeps In
 
 ::: {.serif-block .text-right}

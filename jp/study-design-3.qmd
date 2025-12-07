@@ -144,10 +144,9 @@ a:hover {
 </style>
 ```
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-
 
 # Study Design III − A First Step into Survival and Competing Risks Analysis with R
 
@@ -422,9 +421,9 @@ OS、DFS、RFSは、特に術後補助化学療法の有効性を評価すると
 
 ### エピソードとRスクリプト
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
-- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
 - [Outcomes: The Bridge from Data Collection to Analysis]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 

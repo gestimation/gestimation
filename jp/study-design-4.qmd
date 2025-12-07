@@ -136,7 +136,7 @@ a:hover {
 }
 </style>
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 

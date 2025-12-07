@@ -136,10 +136,9 @@ a:hover {
 }
 </style>
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-
 
 # コーヒーを淹れて、言葉を交わす。湯気とともに時は流れ、統計の世界が少しずつ広がっていく。
 
@@ -158,13 +157,13 @@ a:hover {
 
 研究は「どんな問いを立てるか」から始まります。PICO/PECO、アウトカムの選び方、バイアスの防ぎ方...。娘は父に研究の出発点について尋ねます。
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
-- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [A First Step into Survival and Competing Risks Analysis with R]　【12/8公開予定】
 - [Outcomes: The Bridge from Data Collection to Analysis]　【12/15公開予定】
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/22公開予定】
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。R パッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
@@ -179,7 +178,7 @@ a:hover {
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+このエピソードのRスクリプト一式はこちらから。
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
@@ -193,7 +192,7 @@ a:hover {
 - [Risk Ratios and Odds Ratios: When Approximation Works]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+このエピソードのRスクリプト一式はこちらから。
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
@@ -207,7 +206,7 @@ a:hover {
 - [Why My Logistic Regression Calculation Went Wrong]
 - [Simpson's paradox]
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや具体的なデータ解析の手順について知りたい方はぜひ。
+このエピソードのRスクリプト一式はこちらから。
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 

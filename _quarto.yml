@@ -18,12 +18,16 @@ website:
       - text: "cifmodeling"
         href: https://gestimation.github.io/cifmodeling/
         
-      - text: Story and Quiz (EN)
+      - text: A Conversation on Causality at Our Table (EN)
         menu:
+          - text: Index
+            href: en/index.qmd
           - text: Study design
             href: en/study-design-1.qmd
-      - text: Story and Quiz (JP)
+      - text: A Conversation on Causality at Our Table (JP)
         menu:
+          - text: Index
+            href: jp/index.qmd
           - text: Study design
             href: jp/study-design-1.qmd
 #          - text: Clinical trial
