@@ -190,7 +190,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#study-design-5-when-bias-creeps-in" id="toc-study-design-5-when-bias-creeps-in" class="nav-link active" data-scroll-target="#study-design-5-when-bias-creeps-in">Study Design 5 − When Bias Creeps In</a>
   <ul class="collapse">
   <li><a href="#調査で気をつけておくべきバイアス" id="toc-調査で気をつけておくべきバイアス" class="nav-link" data-scroll-target="#調査で気をつけておくべきバイアス">調査で気をつけておくべきバイアス</a></li>
-  <li><a href="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
+  <li><a href="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-a-glossary-of-terms-in-the-story-and-further-episodes-are-waiting" id="toc-this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-a-glossary-of-terms-in-the-story-and-further-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-a-glossary-of-terms-in-the-story-and-further-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -606,7 +606,7 @@ a:hover {
 <li><code>status_cir2=1</code> : 再発を経験しない死亡</li>
 <li><code>status_cir2=0</code> : 再発/打ち切り</li>
 </ul>
-<p>新しく作ったイベント変数<code>status_cir1</code>と<code>status_cir2</code>を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。Aalen-Johansen曲線の和とは異なり、Kaplan–Meier曲線の和が1を超えていることが読み取れたでしょうか。</p>
+<p>新しく作ったイベント変数<code>status_cir1</code>と<code>status_cir2</code>を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。先ほどのAalen-Johansen曲線の和とは違い、Kaplan–Meier曲線の和が1を超えてしまって計算が合わないことが読み取れたでしょうか。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>status_cir1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>status_cir<span class="sc">==</span><span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>km_event1 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir1) <span class="sc">~</span> stoma,</span>
@@ -642,9 +642,10 @@ a:hover {
 </div>
 </div>
 </section>
-<section id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
-<h3 class="anchored" data-anchor-id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
+<section id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-a-glossary-of-terms-in-the-story-and-further-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-a-glossary-of-terms-in-the-story-and-further-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:</h3>
 <ul>
+<li>[Statistical Terms in Plain Language]</li>
 <li>[Reading a Paper over a Cup of Coffee]</li>
 <li>[P-Value Explanations That Seem Plausible at First Glance]</li>
 <li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>

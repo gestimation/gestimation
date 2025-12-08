@@ -159,7 +159,7 @@ a:hover {
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
-- [A First Step into Survival and Competing Risks Analysis with R]　【12/8公開予定】
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
 - [Outcomes: The Bridge from Data Collection to Analysis]　【12/15公開予定】
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/22公開予定】
 
@@ -167,10 +167,13 @@ a:hover {
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
-### 2. Frequentist thinking — 統計学の思考
+### 2. Glossary — 統計学のことば
+
+- [Statistical Terms in Plain Language](glossary.html)
+
+### 3. Frequentist thinking — 統計学の思考
 
 がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論的なものの見方**を父は語ります。
-
 
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -182,7 +185,7 @@ a:hover {
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-### 3. Effects and time — 効果は時間とともに
+### 4. Effects and time — 効果は時間とともに
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
@@ -196,7 +199,7 @@ a:hover {
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
-### 4. Adjusting for bias — 回帰分析の風景
+### 5. Adjusting for bias — 回帰分析の風景
 
 **ロジスティック回帰**の表の作り方、結果の見方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。
 
@@ -210,11 +213,12 @@ a:hover {
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-### 5. Truth — 真値
+
+### 6. Truth — 真値
 
 - [What Is It That You Want to Know?]
 
-### 6. Causal inference — 因果を見つけるために
+### 7. Causal inference — 因果を見つけるために
 
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、できるだけ数式を使わずに扱います。
 
@@ -224,14 +228,14 @@ a:hover {
 - [Causal inference IV]
 - [Causal inference V]
 
-### 7. The Craft of Research — 研究の営み
+### 8. Publishing a paper — 研究の営み
 
 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者のための静かな講義。
 
-- [The Craft of Research I]
-- [The Craft of Research II]
-- [The Craft of Research III]
-- [The Craft of Research IV]
+- [Publishing a paper I]
+- [Publishing a paper II]
+- [Publishing a paper III]
+- [Publishing a paper IV]
 
 ------------------------------------------------------------------------
 
@@ -243,7 +247,7 @@ a:hover {
   - **論文の読み方の足場をつくりたい** → Frequentist thinking / Effects and time
   - **解析まわりをもう少しきちんとしたい** → Adjusting for bias
   - **因果の考え方を整理したい** → Causal inference
-  - **最終的に論文として形にしたい** → The Craft of Research
+  - **最終的に論文として形にしたい** → Publishing a paper
 - どのエピソードも、それだけで読めるように書いていますが、  
   通して読むと「研究という営み」の地図が、少しずつ頭の中にできあがっていきます。  
   お好みの飲み物を片手に、気になったところから読んでみてください。

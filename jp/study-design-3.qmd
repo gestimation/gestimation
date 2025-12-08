@@ -234,7 +234,7 @@ Keywords: clinical trial, outcome, simulation, survival/competing-risk
 :::
 
 ::: voice-father
-お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」
+お父さん「OSは、**生存時間の原点（time origin）**から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」
 :::
 
 ::: voice-daughter
@@ -242,7 +242,7 @@ Keywords: clinical trial, outcome, simulation, survival/competing-risk
 :::
 
 ::: voice-father
-お父さん「じゃあ、**生存時間の原点**について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」
+お父さん「じゃあ、どの時点から生存時間をスタートするか、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」
 :::
 
 ::: voice-daughter
@@ -262,7 +262,7 @@ Keywords: clinical trial, outcome, simulation, survival/competing-risk
 
 -   生存時間：指数分布（`rexp`）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）
 
-前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは**Kaplan-Meier曲線**でしたよね。それに対して、**競合リスク解析**では、Kaplan-Meier曲線ではなく、**Aalen-Johansen曲線**を用いるのが正式です。
+前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは**Kaplan-Meier曲線**でしたよね。それに対して、競合リスク解析では、Kaplan-Meier曲線ではなく、**Aalen-Johansen曲線**を用いるのが正式です。
 :::
 
 ::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
@@ -318,7 +318,7 @@ generate_data <- function(n=200, hr1, hr2) {
 
 
 ::: {.callout-note appearance="simple"  title="全生存期間（OS）のKaplan–Meier曲線"}
-OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**で記述します。
+OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、Kaplan–Meier曲線で記述します。
 
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
@@ -352,7 +352,7 @@ cifplot(Event(time_rfs, status_rfs) ~ stoma,
 - `status_cir=2` : 競合リスク（再発を経験しない死亡）
 - `status_cir=0` : 打ち切り
 
-さらに`outcome.type = "competing-risk"`を指定することで、**Aalen-Johansen曲線**を描いています。
+さらに`outcome.type = "competing-risk"`を指定することで、Aalen-Johansen曲線を描いています。
 
 ```{r}
 cifplot(Event(time_cir, status_cir) ~ stoma,

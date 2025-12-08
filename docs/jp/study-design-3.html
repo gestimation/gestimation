@@ -492,13 +492,13 @@ a:hover {
 <p>私「でかした！」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「OSは、時間原点から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」</p>
+<p>お父さん「OSは、<strong>生存時間の原点（time origin）</strong>から死亡するまでの期間のこと。DFSは、時間原点から再発、2次がん、死亡のうち、最初のイベントまでの期間のこと。でも、さっき言ったみたいに、3年OSとか3年DFSという言い方をすることもある。この場合は期間じゃなくて確率の意味になる。OSとDFSの違いは、再発と2次がんが含まれること。そうすると、3年OSより3年DFSの方が、確率は小さくなるよね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「時間原点ってはじめて聞いた。もう少し説明してよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「じゃあ、<strong>生存時間の原点</strong>について、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」</p>
+<p>お父さん「じゃあ、どの時点から生存時間をスタートするか、典型的な決め方をいくつか紹介しようか。まず、DFSは根治手術後の再発状況を調べるため用いられるアウトカムだよね。だから、”手術日”がこの場合の時間原点の候補になる。手術日のように治療の起点がはっきりしている状況だと決めやすいよね。一方で、もし”退院日”を時間原点にすると、手術直後の死亡が評価対象にならなくなっちゃうから、研究によってはそこを批判されるかもしれない。もうひとつ典型的な決め方を挙げると、臨床試験の登録日があるかな。ランダム化臨床試験だと、登録日に治療をランダムに割付けるから、それを原点にして生存曲線を描くのが自然だよね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「観察のスタート時点のことね、たしかに大切。実は今、調査票作ってて、DFSとかOSを正確に知りたかったんだ。聞いてよかった、また相談するね」</p>
@@ -523,7 +523,7 @@ a:hover {
 <li><p>ストーマ保有：2項分布（<code>rbinom</code>）から生成した2値データ</p></li>
 <li><p>生存時間：指数分布（<code>rexp</code>）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）</p></li>
 </ul>
-<p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは<strong>Kaplan-Meier曲線</strong>でしたよね。それに対して、<strong>競合リスク解析</strong>では、Kaplan-Meier曲線ではなく、<strong>Aalen-Johansen曲線</strong>を用いるのが正式です。</p>
+<p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは<strong>Kaplan-Meier曲線</strong>でしたよね。それに対して、競合リスク解析では、Kaplan-Meier曲線ではなく、<strong>Aalen-Johansen曲線</strong>を用いるのが正式です。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
@@ -599,7 +599,7 @@ generate_data()のコードはこちら（データ生成に使用）
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>OSとRFSは通常の生存時間データですから、前回と同様に<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>で記述します。</p>
+<p>OSとRFSは通常の生存時間データですから、前回と同様に<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、Kaplan–Meier曲線で記述します。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -663,7 +663,7 @@ generate_data()のコードはこちら（データ生成に使用）
 <li><code>status_cir=2</code> : 競合リスク（再発を経験しない死亡）</li>
 <li><code>status_cir=0</code> : 打ち切り</li>
 </ul>
-<p>さらに<code>outcome.type = "competing-risk"</code>を指定することで、<strong>Aalen-Johansen曲線</strong>を描いています。</p>
+<p>さらに<code>outcome.type = "competing-risk"</code>を指定することで、Aalen-Johansen曲線を描いています。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>

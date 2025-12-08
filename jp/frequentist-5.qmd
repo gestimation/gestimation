@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking V − Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, simulation, study design, observational study
+Keywords: clinical trial, simulation, study design, observational study, p-value
 :::
 
 

@@ -384,7 +384,7 @@ print(aj_panel)
 - `status_cir2=1` : 再発を経験しない死亡
 - `status_cir2=0` : 再発/打ち切り
 
-新しく作ったイベント変数`status_cir1`と`status_cir2`を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。Aalen-Johansen曲線の和とは異なり、Kaplan–Meier曲線の和が1を超えていることが読み取れたでしょうか。
+新しく作ったイベント変数`status_cir1`と`status_cir2`を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。先ほどのAalen-Johansen曲線の和とは違い、Kaplan–Meier曲線の和が1を超えてしまって計算が合わないことが読み取れたでしょうか。
 
 ```{r}
 dat$status_cir1 <- as.numeric(dat$status_cir==1)
@@ -415,8 +415,9 @@ print(km_panel)
 :::
 ::::::::::::::::::::::::::::::::: 
 
-### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
+### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:
 
+- [Statistical Terms in Plain Language]
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]

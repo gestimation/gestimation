@@ -235,7 +235,7 @@ Keywords: outcome, simulation
 :::
 
 ::: voice-father
-お父さん「学部でやったでしょ。正規分布（normal distribution）は聞いたことある？」
+お父さん「学部でやったでしょ。**正規分布（normal distribution）**は聞いたことある？」
 :::
 
 ::: voice-daughter
@@ -243,7 +243,7 @@ Keywords: outcome, simulation
 :::
 
 ::: voice-father
-お父さん「私たち統計家はね、統計解析の裏で、なんらかの確率分布を考えてる。連続データの正規分布とか、2値データの2項分布（binomial distribution）とか、計数データのPoisson分布とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は指数分布（exponential distribution）っていうんだ」
+お父さん「私たち統計家はね、統計解析の裏で、なんらかの確率分布を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
 :::
 
 ::: voice-daughter
