@@ -388,58 +388,14 @@ summary(fit)
 
 - [Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013](https://www.igaku-shoin.co.jp/book/detail/84805)
 
-### Continuation of their story
+### エピソード、用語集、Rスクリプト
 
-[Study design I](study-design-1.qmd)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance]frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Understanding Confidence Intervals via Hypothetical Replications in R]
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-[Study design II](study-design-2.qmd)
+- [Statistical Terms in Plain Language](glossary.html)
 
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)

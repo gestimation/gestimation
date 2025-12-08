@@ -566,19 +566,21 @@ a:hover {
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>, </span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"surv"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">1</span>, </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">2</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>aj_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>, </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">2</span>, </span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">1</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>aj_list <span class="ot">&lt;-</span> <span class="fu">list</span>(aj_event1<span class="sc">$</span>plot, aj_event2<span class="sc">$</span>plot)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>aj_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>aj_list)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aj_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"1-Aalen-Johansen"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">1</span>, </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">2</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>aj_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>, </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Aalen-Johansen"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">2</span>, </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">1</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>aj_list <span class="ot">&lt;-</span> <span class="fu">list</span>(aj_event1<span class="sc">$</span>plot, aj_event2<span class="sc">$</span>plot)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>aj_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>aj_list)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aj_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -612,17 +614,19 @@ a:hover {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>km_event1 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir1) <span class="sc">~</span> stoma,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"surv"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>status_cir2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>status_cir<span class="sc">==</span><span class="dv">2</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>km_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir2) <span class="sc">~</span> stoma,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>km_list <span class="ot">&lt;-</span> <span class="fu">list</span>(km_event1<span class="sc">$</span>plot, km_event2<span class="sc">$</span>plot)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>km_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>km_list)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(km_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"surv"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Kaplan–Meier"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>status_cir2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>status_cir<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>km_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir2) <span class="sc">~</span> stoma,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"1-Kaplan–Meier"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>km_list <span class="ot">&lt;-</span> <span class="fu">list</span>(km_event1<span class="sc">$</span>plot, km_event2<span class="sc">$</span>plot)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>km_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>km_list)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(km_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

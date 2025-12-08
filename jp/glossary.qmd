@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Statistical Terms in Plain Language
+# Glossary − Statistical Terms in Plain Language
 
 ::: {.serif-block .text-right}
 Keywords: effect-measures, generalized linear model, p-value, scientific writing, study design. survival/competing-risk

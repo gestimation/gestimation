@@ -274,7 +274,7 @@ Keywords: clinical trial, p-value, survival/competing-risk
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
-### エピソードと用語集とRスクリプト
+### エピソード、用語集、Rスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -284,4 +284,4 @@ Keywords: clinical trial, p-value, survival/competing-risk
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-- [study-design.R](../from-coffee-chat-to-r/study-design.R)
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
