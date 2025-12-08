@@ -190,6 +190,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#adjusting-for-bias-v-simpsons-paradox" id="toc-adjusting-for-bias-v-simpsons-paradox" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-simpsons-paradox">Adjusting for bias V − Simpson’s paradox</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
+  <li><a href="#simpsonのパラドックスが起きる条件" id="toc-simpsonのパラドックスが起きる条件" class="nav-link" data-scroll-target="#simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" id="toc-this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</a></li>
   </ul></li>
   </ul>
@@ -549,16 +551,10 @@ Simpsonのパラドックス
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「へー。単純な解析ではコーヒーはリスク因子なのに、層別しただけで関連が消えた。バイアスがあるんでしょとは思ったけど、こんなことあるんだ。あれ？ちょっと前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたっけ？そのせい？」</p>
+<p>私「単純な解析ではコーヒーはリスク因子なのに、層別しただけで関連が消えた。バイアスがあるんでしょとは思ったけど…“計算上のトリック”じゃなくて、何が起きてるの？あれ？ちょっと前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたっけ？そのせい？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん、オッズ比は併合可能ではない、non-collapsibleな指標だね。それもあるんだけど、観察研究のほとんどで、交絡の影響は、効果の指標の違いよりずっと大きいんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふむふむ、ってことは、層別解析じゃなくてロジスティック回帰を使わないとだめって話だっけ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ううん、層別でもロジスティックでもいいんだけど、喫煙を調整しないといけないって話。実際解析してみると、どっちでもほぼ同じ結果になる。確かめてみようか」</p>
+<p>お父さん「うん、オッズ比は層別したら値が変わりやすい、<strong>併合可能ではない（non-collapsible）</strong>指標だね。それもあるんだけど、ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きいんだ。それに、層別オッズ比ではなく、一般化線型モデルでもほぼ同じ結果になる。確かめてみようか」</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
@@ -571,7 +567,7 @@ glm()を用いた膵がんデータの解析
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に対応していましたね。以下のコードでは調整前のオッズ比は<code>smoke</code>を入れないモデルで、調整後のオッズ比は<code>smoke</code>を入れたモデルで推定しています。</p>
+<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に、リスク比は<code>link="log"</code>に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は<code>smoke</code>を入れないモデルで、調整後のオッズ比・リスク比は<code>smoke</code>を入れたモデルで推定しています。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
@@ -601,15 +597,40 @@ glm()を用いた膵がんデータの解析
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit_log1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>risk_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.894737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit_log2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>risk_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="simpsonのパラドックスが起きる条件" class="level3">
+<h3 class="anchored" data-anchor-id="simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「Simpsonのパラドックスが起きる条件を知りたい？」</p>
+<p>お父さん「どういうとき、調整前後で効果の値が変わるか、その条件を知りたい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そりゃあね。解析方法によってオッズ比が1になるのは不思議だもの」</p>
+<p>私「それ聞く？同じデータなのに解析方法によってオッズ比が1になるのは不思議だもの、決まってるでしょ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「じゃあ説明するね。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
@@ -630,19 +651,21 @@ glm()を用いた膵がんデータの解析
 <p>私「時代を感じるね、仕事終わったらくつろぎたい気持ちはめっちゃわかる」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「まとめると、ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる」</p>
+<p>お父さん「まとめると、ポイントは3つの変数の相関関係なんだ。第3の因子と曝露に相関があり、さらに第3の因子とアウトカムにも相関があるとき、Simpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」</p>
 </div>
 <div class="voice-daughter">
-<p>私「Simpsonのパラドックスねえ。交絡ってまあまあややこしいね」</p>
+<p>私「曝露とアウトカムと第3の変数の関係性ねえ。交絡の話ってまあまあややこしいね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「交絡は言葉自体になじみがないからそう思うだろうけど、もっとシンプルに考えることもできる。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない」</p>
+<p>お父さん「交絡って、言葉自体になじみがないこともあって複雑に思うだろうけど、実際の研究ではもっとシンプルに考えることもできる。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふーん。まってね、さっきの条件を確認する。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か」</p>
 </div>
+<section id="simpsonのパラドックスと交絡は同じじゃない" class="level3">
+<h3 class="anchored" data-anchor-id="simpsonのパラドックスと交絡は同じじゃない">Simpsonのパラドックスと交絡は同じじゃない？</h3>
 <div class="voice-father">
-<p>お父さん「表の意味はそういうことだね。でもね、正確にいうとSimpsonのパラドックスと交絡は、同じ現象じゃない。きちんと統計的に定式化して考えると、交絡はそんなに単純な問題じゃないんだ。層別前の解析は集団全体のオッズ比でしょ」</p>
+<p>お父さん「表の意味はそういうことだね。でもね、正確にいうとSimpsonのパラドックスと交絡は、数学的には異なる現象なんだ。きちんと統計的に定式化して考えると、交絡はそんなに単純な問題じゃない。簡単にいうとね。層別前の解析は集団全体のオッズ比でしょ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「そうだね」</p>
@@ -654,12 +677,19 @@ glm()を用いた膵がんデータの解析
 <p>私「ん？えっと、そうだね、コーヒーが健康に悪いかどうかは個人差ないと思う」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。このケースでは喫煙は交絡因子なのは間違いないんだよ。でも、統計学の枠組みで、層別前と層別後のどっちのオッズ比が真値なのか、決めるロジックはないんだ。データがどんな確率分布に従っているか、誰も知らないからね」</p>
+<p>お父さん「うん。この具体例では喫煙は交絡因子なのは間違いないんだよ。でも一般には、層別前と層別後のどっちのオッズ比が真値なのか、統計学の枠組みで決めるロジックはないんだ。データがどんな確率分布に従っているか、誰も知らないからね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「へー」</p>
 </div>
+</section>
 </div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
 </section>
 <section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="level3">
 <h3 class="anchored" data-anchor-id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</h3>
