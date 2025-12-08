@@ -281,7 +281,7 @@ Keywords: observational study, outcome, simulation, survival/competing-risk, stu
 :::
 
 ::: voice-father
-お父さん「イベントと競合リスクの扱いによってバイアスが生じるってことをみせてあげるよ。前に使ったRスクリプトをいじるだけですぐ終わるから。論より証拠で、シミュレーションデータをみれば統計的なバイアスってどんなものか実感できる」
+お父さん「**Kaplan-Meier曲線を**描くとき、**競合リスク**の扱いによってはバイアスが生じるってことをみせてあげるよ。前に使ったRスクリプトをいじるだけですぐ終わるから。論より証拠で、シミュレーションデータをみれば統計的なバイアスってどんなものか実感できる」
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -417,7 +417,7 @@ print(km_panel)
 
 ### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:
 
-- [Statistical Terms in Plain Language]
+- [Statistical Terms in Plain Language](glossary.html)
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]

@@ -197,6 +197,14 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 
 リスクや発生率の数値を変換して、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを割合で表したもの。いくつも定義がある
 
+**効果サイズ　effect size**
+
+治療の効果の大きさや、治療を比較したときの差のこと。サンプルサイズ設計では、効果サイズの値を設定しなければならないが、そもそもそれを知りたいから研究をするのだから悩ましい。このジレンマを皮肉って、「サンプルサイズから逆算して出した集積可能な差のこと」といった人もいる
+
+**交絡　confounding**
+
+集団を比較するとき気をつけるべきバイアス
+
 **Cox回帰　Cox regression**
 
 1972年にCox教授が発明し、大流行した統計手法。回帰モデルの一種だが、一般化線型モデルではない。生存時間をアウトカムとして扱い、生存曲線の差をハザード比として要約したり、様々な因子が生存時間と関連があるかどうか検討するために利用される
@@ -204,6 +212,10 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 **サンプルサイズ設計　sample size calculation**
 
 対象者数などの研究の規模を決めること。たとえば、効果サイズ、αエラー、βエラー（または検出力）を設定することで、研究に必要な対象者数を計算できる
+
+**情報バイアス　information bias**
+
+情報を集めるとき気をつけるべきバイアス
 
 **推定目標（エスティマンド）　estimand**
 
@@ -217,9 +229,9 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 
 横軸に時間を、縦軸にその時点で生存している割合を図示したグラフのこと。がんや循環器疾患など多くの疾患領域で、研究結果が生存曲線として示されることが多い
 
-**効果サイズ　effect size**
+**選択バイアス　selection bias**
 
-治療の効果の大きさや、治療を比較したときの差のこと。サンプルサイズ設計では、効果サイズの値を設定しなければならないが、そもそもそれを知りたいから研究をするのだから悩ましい。このジレンマを皮肉って、「サンプルサイズから逆算して出した集積可能な差のこと」といった人もいる
+研究の対象となる集団を選ぶとき気をつけるべきバイアス
 
 **代替エンドポイント　surrogate endpoint**
 
@@ -306,22 +318,3 @@ Cox回帰から計算される指標で、生存曲線を比較するために�
 サンプルサイズのことをサンプル数と表記している文献がありますが、サンプル数は臨床試験でいえば群の数に相当するので、用法として誤りです。Coxは人名なので、1文字目以外は大文字ではありません。OS曲線は、overall-survival curveの意味ととれなくはないので、誤りとはいえないでしょう。*t*検定のことを*T*検定と表記するケースも目にします。*T*検定は、*t*検定とは別の統計手法として存在するのですが、臨床試験では使われないため誤記でしょう。
 :::
 
-
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
-<img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"/> **もうひとつクイズです**
-
-この人は誰でしょう。
-
-1.  Kaplan
-2.  Meier
-3.  Cox
-4.  Wilcoxon
-:::
-
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
-**3**
-
-この方がCox先生です。
-
-[David Cox (statistician) - Wikipedia](https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FDavid_Cox_(statistician)&psig=AOvVaw03oC1_8ftWce7mfJGOJchO&ust=1664605885062000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCOCwqqXyu_oCFQAAAAAdAAAAABAD)
-:::

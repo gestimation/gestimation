@@ -191,6 +191,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#調査項目とデータの型" id="toc-調査項目とデータの型" class="nav-link" data-scroll-target="#調査項目とデータの型">調査項目とデータの型</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -377,7 +378,7 @@ a:hover {
 <p>私「入院中に亡くなった場合は、調査対象に含めない。でも、術後再発による死亡を分母から除外するのは変な気がする」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。除外するとバイアスが生じると思う。がん患者さんを追跡するような臨床研究では、大切なことが3つある。1つ、どのタイミングを<strong>時間原点 （time origin）</strong>にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。 情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」</p>
+<p>お父さん「そうだね。除外するとバイアスが生じると思う。がん患者さんを追跡するような臨床研究では、大切なことが3つある。1つ、どのタイミングを<strong>時間原点</strong>にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。 情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」</p>
 </div>
 </div>
 <ul>
@@ -430,7 +431,7 @@ a:hover {
 <p>私「復職状況も生存時間データになるの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうすることもできる。この場合は、“退院日から復職日までの期間”を考えればいい。たとえばね、4月1日に退院して、4月30日に復職したとしたら、この患者の生存時間データは30-1+1=30日になる。これだとただの日数だから、連続データとの違いがはっきりしないけど、生存時間データのポイントは、打ち切り （censoring）があることなんだ。調査日までに復職しなかった場合、退院日から復職日までの期間は存在しないでしょ」</p>
+<p>お父さん「そうすることもできる。この場合は、“退院日から復職日までの期間”を考えればいい。たとえばね、4月1日に退院して、4月30日に復職したとしたら、この患者の生存時間データは30-1+1=30日になる。これだとただの日数だから、連続データとの違いがはっきりしないけど、生存時間データの本質は、<strong>打ち切り （censoring）</strong>があることなんだ。調査日までに復職しなかった場合、退院日から復職日までの期間は存在しないでしょ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「まあそうだけど、それでいいんじゃないの？」</p>
@@ -482,7 +483,7 @@ a:hover {
 <p>私「えーっと、イベント変数は2値データってことは、すべての患者さんで復職か、打ち切りかの2択しかないってこと？死亡はどうなるの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、競合リスク （competing risk）という別の扱い方もある。簡単にいうと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」</p>
+<p>お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、<strong>競合リスク （competing risk）</strong>という別の扱い方もある。簡単にいうと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ああ、死亡が競合リスクってことね」</p>
@@ -557,6 +558,17 @@ a:hover {
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
 <li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
+<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
+<li><p><a href="study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></p></li>
+<li><p><a href="study-design-4.html">Outcomes: The Bridge from Data Collection to Analysis</a></p></li>
+<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
+<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
 </ul>
 
 
