@@ -313,8 +313,8 @@ a:hover {
 </div>
 <section id="コーヒーを淹れて言葉を交わす湯気とともに時は流れ統計の世界が少しずつ広がっていく" class="level1">
 <h1>コーヒーを淹れて、言葉を交わす。湯気とともに時は流れ、統計の世界が少しずつ広がっていく。</h1>
-<p>このサイトは、統計家の父と医師の娘が交わす小さなコーヒーチャットから生まれました。 日常の疑問、論文で気になるまま読み進めた箇所、ふと理解が曖昧なままにしていた概念—それらを対話のペースでやわらかく解きほぐしていきます。</p>
-<p>難しい統計手法や数式も、冬のマグカップから感じるぬくもりのように、温度のある言葉でそっと説明します。 物語はRコードで再現可能。 深く学びたい人も、少し立ち止まりたい人も、会話がもたらす数学的世界観への気づきを、どうぞゆっくり味わってください。</p>
+<p>このサイトは、統計家の父と医師の娘が交わす小さなコーヒーチャットから生まれました。研究で生じる疑問、論文でひっかかった数字、そしてときおり見える研究者たちの姿勢—大切なはずのことは、生活・臨床・因果・データ・認識・言語という複数のレイヤーにひっそりと散らばっています。コーヒーを交えた軽いやりとりは、そのいくつかを丁寧に拾っていきます。まるでその全体性（totality）を壊さぬよう、ふたりの研究の歩みをひとつの物語として紡ぐように。</p>
+<p>生存曲線、p値の誤解から、因果と統計の階層的な関係まで。螺旋のように伏線を潜ませつつ、冬のマグカップのように温度のある言葉で語ります。数式や医療の話題も出てきますが、必要なところだけ拾ってくだされば大丈夫です。物語はRコードで再現可能。ふたりの対話とともに変化する世界観を、どうぞゆっくりと味わってください。</p>
 <hr>
 <section id="エピソード一覧" class="level2">
 <h2 class="anchored" data-anchor-id="エピソード一覧">エピソード一覧</h2>
@@ -371,7 +371,7 @@ a:hover {
 </section>
 <section id="adjusting-for-bias-回帰分析の風景" class="level3">
 <h3 class="anchored" data-anchor-id="adjusting-for-bias-回帰分析の風景">5. Adjusting for bias — 回帰分析の風景</h3>
-<p><strong>ロジスティック回帰</strong>の表の作り方、結果の見方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。</p>
+<p><strong>ロジスティック回帰</strong>の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして…。</p>
 <ul>
 <li>[From 2×2 Tables to Logistic Regression]</li>
 <li>[How to Read Logistic Regression Coefficients]</li>
@@ -392,7 +392,7 @@ a:hover {
 </section>
 <section id="causal-inference-因果を見つけるために" class="level3">
 <h3 class="anchored" data-anchor-id="causal-inference-因果を見つけるために">7. Causal inference — 因果を見つけるために</h3>
-<p>有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア条件。「もし〜だったら？」を統計的に考えるための<strong>因果の言葉</strong>を、できるだけ数式を使わずに扱います。</p>
+<p>有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための<strong>因果の言葉</strong>を、確率に関する必要最小限の数式を交えて扱います。</p>
 <ul>
 <li>[Causal inference I]</li>
 <li>[Causal inference II]</li>
@@ -415,20 +415,14 @@ a:hover {
 </section>
 <section id="読み方" class="level2">
 <h2 class="anchored" data-anchor-id="読み方">読み方</h2>
+<p>まずは <strong>Study design I–V</strong>を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。</p>
 <ul>
-<li>まずは <strong>Study design I–V</strong> だけ読めば、<br>
-「どんな問いを立てて、どんなデータを集めるか」というゴールの輪郭が見えてきます。</li>
-<li>興味で選ぶなら：
-<ul>
-<li><strong>論文の読み方の足場をつくりたい</strong> → Frequentist thinking / Effects and time</li>
-<li><strong>解析まわりをもう少しきちんとしたい</strong> → Adjusting for bias</li>
-<li><strong>因果の考え方を整理したい</strong> → Causal inference</li>
-<li><strong>最終的に論文として形にしたい</strong> → Publishing a paper</li>
-</ul></li>
-<li>どのエピソードも、それだけで読めるように書いていますが、<br>
-通して読むと「研究という営み」の地図が、少しずつ頭の中にできあがっていきます。<br>
-お好みの飲み物を片手に、気になったところから読んでみてください。</li>
+<li><strong>論文を読む足場を整えたい</strong>: Frequentist thinking</li>
+<li><strong>数字の意味や統計解析の実際をもう少し深く知りたい</strong>: Effects and time / Adjusting for bias</li>
+<li><strong>因果という見えない構造を整理したい</strong>: Causal inference</li>
+<li><strong>研究を形にして届けるところまで見通したい</strong>: Publishing a paper</li>
 </ul>
+<p>どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。</p>
 
 
 </section>

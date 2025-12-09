@@ -112,6 +112,35 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../coffee.scss">
 </head>
@@ -842,7 +871,7 @@ calculate_coverage()の実行
 <p>私「ああ、”50%（95%CI 40～60%）”みたいな感じで論文に書くことになるわけだ。40〜60%の場合、95%信頼区間幅は20%ってことね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。表では復職率をπという変数で表しているんだけど、”π=0.5”と”信頼区間幅0.2”に対応する数字をみて。93って書いてあるでしょ。これが必要サンプルサイズ」</p>
+<p>お父さん「そういうこと。表では復職率を<span class="math inline">\(\pi\)</span>という変数で表しているんだけど、”<span class="math inline">\(\pi=0.5\)</span>”と”信頼区間幅0.2”に対応する数字をみて。93って書いてあるでしょ。これが必要サンプルサイズ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「どうだろう。復職率ってもっと高くない？手術したときの年齢にもよるけど、たとえば患者さんが50歳前後だったら、80%はいってほしいなあ」</p>

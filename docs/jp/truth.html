@@ -155,7 +155,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#truth-what-is-it-that-you-want-to-know" id="toc-truth-what-is-it-that-you-want-to-know" class="nav-link active" data-scroll-target="#truth-what-is-it-that-you-want-to-know">Truth − What Is It That You Want to Know?</a>
   <ul class="collapse">
   <li><a href="#ロジスティック回帰の限界" id="toc-ロジスティック回帰の限界" class="nav-link" data-scroll-target="#ロジスティック回帰の限界">ロジスティック回帰の限界</a></li>
-  <li><a href="#this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode of Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
+  <li><a href="#this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -390,7 +390,7 @@ a:hover {
 <p>私「うーん。そうか。JCOG9502だったら、胃がん手術で術式THを選ぶか、術式LTAを選ぶかを決めたいんだものね。標準治療が決まったら全員その術式になるはずだもの、その話は納得だわ。論文に出ていた生存曲線の差が因果効果にあたるわけか。確かに、そこに確率分布も回帰モデルも出てこないね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう。でも、がんサバイバー調査は観察研究で、ランダム化されていない。JCOG9502と同じように考えたくても、“仮にストーマを造設しなかった場合のアウトカム”は存在しない。仮定の話だからね。だからこの観察研究では、観測できないアウトカムを、共変量や回帰モデルで予測するしかない。この観測できないけど定義できるアウトカムは<strong>潜在結果変数（potential outcome）</strong>と呼ばれている」</p>
+<p>お父さん「そう。でも、がんサバイバー調査は観察研究で、ランダム化されていない。JCOG9502と同じように考えたくても、“仮にストーマを造設しなかった場合のアウトカム”は存在しない。仮定の話だからね。だからこの観察研究では、観測できないアウトカムを、共変量や回帰モデルで予測するしかない。これはデータ上のアウトカムとは区別して、<strong>潜在結果変数（potential outcome）</strong>と呼ばれている。観測はできないけれど、医学的・論理的に定義できる”もうひとつの結果”というわけだね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ややこしい話になってきた。JCOG9502と私の調査のどこが違うんだろう」</p>
@@ -405,30 +405,42 @@ a:hover {
 <p>お父さん「話を戻そう。Rubin因果モデルは、解析するモデルや交絡調整について考える前に、潜在結果変数を定義し、その差について推測するんだ」</p>
 </div>
 </section>
-<section id="回帰モデルって結局なに" class="level3">
-<h3 class="anchored" data-anchor-id="回帰モデルって結局なに">回帰モデルって結局なに？</h3>
+<section id="回帰モデルと因果モデルの補完関係" class="level3">
+<h3 class="anchored" data-anchor-id="回帰モデルと因果モデルの補完関係">回帰モデルと因果モデルの補完関係</h3>
 <div class="voice-daughter">
-<p>私「やっぱりわからないな。一般化線型モデルやCox回帰の結果って、なにを見てるの？因果効果とは違うの？」</p>
+<p>私「やっぱりわからないな。一般化線型モデルやCox回帰の結果って、なにを見てるの？回帰係数は因果効果とは違うの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「やっとここまで来たね。実はね、回帰モデルと因果モデルは”二階建て”になっている」</p>
+<p>お父さん「ひとつの数字が二重、三重の意味を持っているっていったらいいかな。根っこをたどると、回帰モデルと因果モデルは”二階建て”になっている」</p>
 </div>
 <ul>
-<li>回帰モデル: データがどう生じるかを記述する構造</li>
-<li>因果モデル: 原因を変えたら結果はどうなっていたかを表す構造</li>
+<li>回帰モデル: 観測されたデータがどう生じるかを記述する構造</li>
+<li>因果モデル: 観測された世界と、観測されなかった世界の両方で、原因を変えたら結果はどうなっていたかを表す構造</li>
 </ul>
 <div class="voice-father">
-<p>お父さん「データが発生する背後に因果モデルがあるという階層的な関係になっているといえばいいかな。ほら、さっきいったように潜在結果変数は観測できないでしょ」</p>
+<p>お父さん「これはちょうど、データが発生する背後に因果モデルがあるという創造的な階層関係なんだ。因果的な構造に従って生じた現象を測定したものがデータだといってもいい。ほら、さっきいったように潜在結果変数は観測できないでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうね、そういわれると確かに因果関係の真実は、データの発生する背後にあるわね。そこまでは理解した。でも、それならどうして最初からロジスティック回帰じゃなくてRubin因果モデルを教えなかったの？」</p>
+<p>私「そうね、そういわれると確かに因果関係の真実は、データの発生する前から存在するのかもね。実感はないけど理解はした。でも、それならどうして最初からロジスティック回帰じゃなくて因果モデルを教えなかったの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、もう少し説明が必要だね。ロジスティック回帰や層別解析を使っちゃいけないわけじゃない。ロジスティック回帰の結果を、因果関係を考えるための材料として正しく読み解くためには、因果推論の考え方が必要だってことがいいたいんだ」</p>
+<p>お父さん「ふむ。もう少し説明が必要だね。ロジスティック回帰や層別解析を使っちゃいけないわけじゃない。ここで知ってほしかったのは、回帰係数やオッズ比を、因果関係を考えるための証拠として正しく解釈するためには、因果モデルが必要だってこと」</p>
+</div>
+<div class="voice-daughter">
+<p>私「お父さんは専門だからわかってないけど、私にとってはロジスティック回帰もRubin因果モデルも初めて聞く概念なんだよ。Rubin因果モデルって、ある患者に別の方法で治療したら結果はどうなっていたかを分析すればいいんでしょ？それって解剖・病態生理・薬理に関する基礎知識と臨床経験を組み合わせればできそうなことじゃない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「本質的にはその通り。でも、それはあくまで患者ひとりひとりにとっての原因と結果を分析するアプローチになっている。個々の事象に関する因果を単一因果（token causation）っていうんだけど、それと一般法則としての因果には、まだギャップがあるよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「トークン？ぴんとこない言葉だけど、個々の事象と一般法則どっちも大事なのはわかる」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「臨床試験や調査では、集団として得られたデータを統計的に解析することで法則性があるかどうかを調べている。そのための道具を用意するために、回帰モデルや確率分布という構造を考えているんだ。因果モデルと回帰モデルは役割が違う」</p>
 </div>
 </section>
-<section id="研究仮説が因果効果を決める" class="level3">
-<h3 class="anchored" data-anchor-id="研究仮説が因果効果を決める">研究仮説が因果効果を決める</h3>
+<section id="研究仮説を言葉にするということ" class="level3">
+<h3 class="anchored" data-anchor-id="研究仮説を言葉にするということ">研究仮説を言葉にするということ</h3>
 <div class="voice-father">
 <p>お父さん「はい、コーヒーのおかわり。ミルクはいる？」</p>
 </div>
@@ -447,8 +459,8 @@ a:hover {
 </section>
 </div>
 </section>
-<section id="this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
-<h3 class="anchored" data-anchor-id="this-concludes-the-episode-of-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode of Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
+<section id="this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
 <ul>
 <li><p><a href="../jp/causal-inference-1.html">Causal inference I</a></p></li>
 <li><p><a href="../jp/causal-inference-2.html">Causal inference II</a></p></li>
