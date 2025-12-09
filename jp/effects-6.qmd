@@ -1,0 +1,313 @@
+---
+title: "Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Effects and time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
+
+::: {.serif-block .text-right}
+Keywords: effect measure, survival/competing-risk
+:::
+
+------------------------------------------------------------------------
+
+### ハザード比が意味を持つとき、持たないとき
+
+
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それがこの式なの」
+:::
+::::::::::::::::::::::::::::::::: 
+
+- 指数分布のハザード比
+$$
+HR=\frac{\lambda_1}{\lambda_2}
+$$
+- Cox回帰のハザード比
+$$
+HR=\frac{\lambda_1(x)}{\lambda_2(x)}
+$$
+
+
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「$x$が時間で、$\lambda_1$と$\lambda_2$が2群それぞれのハザードだっていうことはわかるよ。$HR$は**ハザード比（hazard ratio）**だよね。でも、どうみても上も下も同じ式じゃない？」
+:::
+
+::: voice-father
+お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、ハザードが$x$に依存しないでしょ。つまりハザード自体がもともと一定なんだ。この式以前にね。下の***Cox回帰（Cox regression）**をみると、$\lambda_1(x)$と$\lambda_2(x)$は時間$x$の関数なんだけど、この式はハザード比だけが一定っていうある種の制約を表している。つまりこの式が出た時点で、はじめて**比例ハザード性**が仮定されたというか、構造が決まったっていう文脈でとらえてほしいんだ」
+:::
+
+::: voice-daughter
+私「やっぱり違うのか。Cox回帰の式は、ロジスティック回帰に比べてシンプルすぎて不安になるな。でも比例ハザード性は聞いたことがあって安心する」
+:::
+
+::: voice-father
+お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、実用面では$\lambda_1(x)$と$\lambda_2(x)$はどんな関数でもいいってことなんだ。指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」
+:::
+
+::: voice-daughter
+私「Cox回帰は使いやすいってこと？ほぼほぼCox回帰しかみないけど」
+:::
+
+::: voice-father
+お父さん「そう。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
+:::
+
+::: voice-daughter
+私「あ、よかった。数式ばかりで眠くなりかけてた」
+:::
+:::::::::::::::::::::::::::::::::
+
+![](clinical-trial-3.png)
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「これはステージIIIB～IVの肺がん患者の臨床試験で、ゲフィチニブと化学療法を比較している。図Aでは6ヶ月まではゲフィチニブ群の無増悪生存確率が低く、それ以降は高くなっているでしょ。こういうときは比例ハザード性が成り立っていないから、ハザード比に意味はない」
+:::
+
+::: voice-daughter
+私「どうしてこうなっちゃったの？」
+:::
+
+::: voice-father
+お父さん「それはゲフィチニブがEGFR変異陽性の肺がん患者に特に有効だったからだといわれている。図Bは、EGFR変異陽性だった261人を対象にしたKaplan-Meier曲線なんだけど、生存曲線はクロスせず、最初から最後までゲフィチニブ群の方が化学療法群より予後がいいでしょ」
+:::
+
+::: voice-daughter
+私「そうだね。この試験のKaplan-Meier曲線では、治療成績が交差して、どっちが効くのか悩ましいってことはわかるよ、数式はともかくとして」
+:::
+
+::: voice-father
+お父さん「はっきりいうとね、ハザードやハザード比が直感的にわかる人の方が少ないよ。だから安心していい」
+:::
+
+::: voice-daughter
+私「え、そうなの？なんか“知らないといけない基本”みたいに思って焦った」
+:::
+
+::: voice-father
+お父さん「ハザードはね、患者さんの健康状態を表す“見えない時計”だと思うといい」
+:::
+
+::: voice-daughter
+私「見えない時計？」
+:::
+
+::: voice-father
+お父さん「治療Aを受けた患者は、ちょっと速く進む時計を持っている。治療Bの人は、少し遅い時計を持っている。ハザード比は、2つの時計が“どれくらい違う速さで動くか”の比なんだ」
+:::
+
+::: voice-daughter
+私「なるほど、時間が進むスピードの違いなら、イメージしやすいかも」
+:::
+
+::: voice-father
+お父さん「ただし、ここが重要。時計の進み方は、必ずしも一定とは限らない。最初は治療Bが有利でも、途中から追いつかれることだってある」
+:::
+
+::: voice-daughter
+私「それ、実際の患者さんでもあるかも！」
+:::
+
+::: voice-father
+お父さん「まとめると、このたとえ話の主張はこんなこと。
+
+> ハザード比は、2つの時計が“どれくらい違う速さで動くか”の比に例えられる。
+> 比例ハザード性が成り立たないと、最初は一方の治療が有利でも、途中から追いつかれることもある
+
+それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple" title="シミュレーションデータにおける時点ごとのリスク比の推定"}
+
+さっきの「見えない時計」をデータで眺めてみましょう。以前と同じ、ストーマ造設の有無で死亡のハザードが異なる生存時間データをシミュレーションし、**時点ごとのリスク比（RR）** を推定してみます。**ハザード比**は「時計の速さの比」でしたが、「術後10年時点の死亡リスクは、ストーマあり群が何倍か」のようにリスク比の方が、解釈しやすいこともあります。Cox回帰では時点を通じて1つのハザード比を仮定するのに対して、**cifmodeling**パッケージの`polyreg()`では、時点を通じて一定のリスク比だけでなく、任意の時点ごとのリスク比も推定できます。
+
+先ほどのシミュレーションデータを使って、`time.point`を変えた`polyreg()`を当てはめることで、術後5年・10年・20年時点の死亡リスク比を推定します。アウトカム（OS）は`Event(time_os,status_os)`、曝露変数であるストーマの有無は`exposure="stoma"`で指定しています。
+
+```{r warning=FALSE}
+rr_at_5 <- polyreg(nuisance.model=Event(time_os,status_os)~1, exposure="stoma", data=dat, 
+                    effect.measure1="RR", time.point=5, outcome.type="survival")
+summary(rr_at_5)
+rr_at_10 <- polyreg(nuisance.model=Event(time_os,status_os)~1, exposure="stoma", data=dat, 
+                    effect.measure1="RR", time.point=10, outcome.type="survival")
+summary(rr_at_10)
+rr_at_20 <- polyreg(nuisance.model=Event(time_os,status_os)~1, exposure="stoma", data=dat, 
+                    effect.measure1="RR", time.point=20, outcome.type="survival")
+summary(rr_at_20)
+```
+
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「ハザード比は一定のデータを作ったのに、リスク比は1.367、1.126、1.078と徐々に小さく推定されてる。冒頭のKaplan-Meier曲線でも、最初の5年あたりがいちばん差が開いているもんね。時間と効果って、分けて考えられないんだね」
+:::
+
+::: voice-father
+お父さん「だってそうでしょ？効果って時間とともに生じるものだもの。それが因果の定義のひとつでもある。時間とともに効果の大きさが変化するなら、ハザード比に頼ることはできない。もっと丁寧に時点ごとにリスクを比べないと」
+:::
+
+- **Time-constant effect**: 1つのハザード比で全期間を説明する（Cox回帰）
+- **Time-varying effect**: 効果の大きさが時間とともに変わる（Kaplan-Meier曲線で記述）
+- **Time-point effect**: ある時点のリスクや生存確率に注目して比べる（`polyreg`）
+
+::: voice-daughter
+私「そういわれると納得感あるなあ、ハザード比だけ使えばいいって方がシンプルで私好みだったんだけど。生存曲線を見るっていうのは、因果効果に時間の視点を加えるってことなんだね」
+:::
+
+### 文献
+
+- Mok TS, Wu YL, Thongprasert S, Yang CH, Chu DT, Saijo N, Sunpaweravong P, Han B, Margono B, Ichinose Y, Nishiwaki Y, Ohe Y, Yang JJ, Chewaskulyong B, Jiang H, Duffield EL, Watkins CL, Armour AA, Fukuoka M. Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma. N Engl J Med 2009;361(10):947-57
+
+:::::::::::::::::::::::::::::::::
+### End of the episode on Effects and time

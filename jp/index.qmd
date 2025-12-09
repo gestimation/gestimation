@@ -190,6 +190,7 @@ a:hover {
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
 - [Collapsibility of Effect Measures in Marginal and Stratified Tables]
 - [Risk Ratios and Odds Ratios: When Approximation Works]
+- [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
 このエピソードのRスクリプト一式はこちらから。
