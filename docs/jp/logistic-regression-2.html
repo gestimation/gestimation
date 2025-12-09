@@ -184,6 +184,7 @@ window.Quarto = {
   <li><a href="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" id="toc-adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" class="nav-link active" data-scroll-target="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect">Adjusting for Bias II − Logit: How a Transformation Shapes an Effect</a>
   <ul class="collapse">
   <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
+  <li><a href="#ロジット関数の特徴" id="toc-ロジット関数の特徴" class="nav-link" data-scroll-target="#ロジット関数の特徴">ロジット関数の特徴</a></li>
   <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
@@ -387,13 +388,13 @@ a:hover {
 <p>お父さん「じゃあ、個人のリスクと共変量の関係から話せばいいのかな」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="個人のリスクと共変量">
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-個人のリスクと共変量
+ロジスティック回帰
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -414,7 +415,7 @@ a:hover {
 <p>私「この式まではわかったよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「よかった。ちょっと補足するとね、確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、アウトカムと共変量の関係は、ロジット関数で結びつくと仮定していること。<code>glm()</code>について話したの覚えてる？」</p>
+<p>お父さん「よかった。ちょっと補足するとね、確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、ロジスティック回帰では、アウトカムと共変量の関係が<strong>ロジット関数（logit）</strong>で結びつくと仮定していること。<code>glm()</code>について話したの覚えてる？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「うん。リンク関数を<code>link</code>で指定することは理解したよ。それがこの式？」</p>
@@ -433,21 +434,23 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>個人レベルのパラメータと共変量との関係を結びつける1対1の単調な変換</p>
+<p>個人のパラメータと共変量との関係を結びつける1対1の単調な変換</p>
 <p><span class="math inline">\(g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>のことを、一般にリンク関数（link function）といいます。ロジスティック回帰のリンク関数は、定義で述べた通り</p>
+<p>のことを、一般に<strong>リンク関数（link function）</strong>といいます。ロジスティック回帰のリンク関数は</p>
 <p><span class="math inline">\(g(\pi_i)=\log(\frac{\pi_i}{1-\pi_i})\)</span></p>
 <p>です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。</p>
 </div>
 </div>
-<div class="dialogue">
+</section>
+<section id="ロジット関数の特徴" class="level3 dialogue">
+<h3 class="anchored" data-anchor-id="ロジット関数の特徴">ロジット関数の特徴</h3>
 <div class="voice-daughter">
 <p>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」</p>
 </div>
-</div>
+</section>
 <div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数の形状">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -471,9 +474,97 @@ a:hover {
 <p>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。でもね、もっと大事なのは<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>を選ぶことで、データの型にあった回帰モデルを指定できるってこと。yとxにそれぞれ連続変数を指定すると、散布図に回帰直線を掛くことができるし、計数データにPoisson回帰を当てはめたりもできる。一般化線型モデルは、生存時間データや経時データ以外ならほとんど対応できる汎用的な統計手法なんだ」</p>
+<p>お父さん「さらに、ロジスティック回帰は、がんサバイバー調査のように群を比較するときにも使われる。シンプルに2人の対象者を比べるとどうなるかって話をするね」</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数とオッズ比の関係">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ロジット関数とオッズ比の関係
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>共変量が1個のとき、ロジスティック回帰は</p>
+<p><span class="math inline">\(\log \left(\frac{\pi_i}{1-\pi_i}\right)=\beta_0+\beta_1X_{i}\)</span></p>
+<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
+<p><span class="math inline">\(\log\left(\frac{\pi_1}{1-\pi_1}\right)=\beta_0\)</span></p>
+<p><span class="math inline">\(\log\left(\frac{\pi_2}{1-\pi_2}\right)=\beta_0+\beta_1\)</span></p>
+<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
+<p><span class="math inline">\(\left(\frac{\pi_2}{1-\pi_2}\right)\div\left(\frac{\pi_1}{1-\pi_1}\right)=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
+<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。大事なのは<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>を選ぶことで、データの型にあった回帰モデルを指定できるってこと。yとxにそれぞれ連続変数を指定すると、散布図に回帰直線を掛くことができるし、計数データにPoisson回帰を当てはめたりもできる。一般化線型モデルは、生存時間データや経時データ以外ならほとんど対応できる汎用的な統計手法なんだ」</p>
+</div>
+<section id="ロジスティック回帰の可逆性" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰の可逆性">ロジスティック回帰の可逆性</h3>
+<div class="voice-daughter">
+<p>私「でもね、その説明だとみんなロジスティック回帰を使ってる理由にはなってないよね。<code>link="logit"</code>より<code>link="identity"</code>、つまり変換しなくたっていいじゃない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはリスク差のモデルだね。このモデルが悪いわけじゃないんだけど、ロジット関数が選ばれた理由はちゃんとある。データを解析するとき、人工的に変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量<span class="math inline">\(X_i\)</span>のスケール変換のことだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、数学では群作用っていうんだけど、ある変換を加えても意味が変わらない操作のこと。ほら、コインの表裏を入れ替えても、コイン投げの確率の本質に影響しないでしょ。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」</p>
+</div>
+<ul>
+<li><p>確率分布: 2項分布（指数型分布族）</p></li>
+<li><p>回帰係数×共変量（線型結合）</p></li>
+<li><p>リンク関数: ロジット関数</p></li>
+</ul>
+<div class="voice-father">
+<p>お父さん「ここで出てくるロジット関数は、変換しても<strong>可逆性（invertibility）</strong>を保つ唯一の関数なんだ。たとえば死亡確率を<span class="math inline">\(\pi=0.2\)</span>とするよ。このとき生存確率は？<span class="math inline">\(1-\pi=0.8\)</span>だよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。当たり前」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「この”死亡と生存を入れ替える”という操作が群作用のこと。ここで問題にしているのはリンク関数<span class="math inline">\(g\)</span>だったよね。確率<span class="math inline">\(\pi\)</span>を、リンク関数で別のスケール<span class="math inline">\(g(\pi)\)</span>に変換したとする。このとき、死亡と生存を入れ替えても、値が反転するだけで構造が維持されるには<span class="math inline">\(g\)</span>はどんな性質を持つべき？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「値が反転する、って？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「つまりこういうこと」</p>
+</div>
+<p><span class="math display">\[g(1−\pi)=−g(\pi)\]</span></p>
+<div class="voice-daughter">
+<p>私「へ？意味わかんない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクを表す尺度なんだ。死亡と生存を入れ替えたら、その尺度は符号反転するはずだよね？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほど。<span class="math inline">\(g(1−\pi)=−g(\pi)\)</span>という関係が成り立つのはなにか探せばいいのね？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「もう少し条件がある。<span class="math inline">\(g(\pi)\)</span>という尺度に、上限と下限があったら不便だし、ゼロという基準が必要だよね。だから条件を追加する」</p>
+</div>
+<ul>
+<li><span class="math inline">\(g(1−\pi)=−g(\pi)\)</span></li>
+<li><span class="math inline">\(\pi\)</span>が0に近づけば<span class="math inline">\(g(\pi)\)</span>は−∞に向かう</li>
+<li><span class="math inline">\(\pi\)</span>が1に近づけば<span class="math inline">\(g(\pi)\)</span>は∞に向かう</li>
+<li><span class="math inline">\(\pi=1/2\)</span>を基準にとって<span class="math inline">\(g(1/2)=0\)</span></li>
+</ul>
+<div class="voice-father">
+<p>お父さん「この4つの条件を満たす滑らかな関数は、実はほとんどひとつしかない」</p>
+</div>
+<p><span class="math display">\[g(\pi)=\log \left(\frac{\pi_i}{1-\pi_i}\right)\]</span></p>
+</section>
+</div>
+<p>私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」 :::</p>
+<p>::: お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。統計手法はね、大半が人間が勝手に決めたものじゃないんだ。数学的な法則性がそっと姿を現しているんだよ」 ::: :::::::::::::::::::::::::::::::::</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="データの型と統計手法">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -646,7 +737,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -655,14 +746,13 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>正解は4です。</strong></p>
 <p>これは単位を換算するにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
 </div>
 </div>
 </div>
-</section>
 <section id="エピソード用語集rスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
 <ul>
