@@ -391,7 +391,7 @@ summary(fit)
 ### エピソード、用語集、Rスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance]frequentist-2.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]

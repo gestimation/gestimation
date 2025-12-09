@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for bias V − Simpson's paradox
+# Adjusting for Bias V − Simpson's paradox
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model

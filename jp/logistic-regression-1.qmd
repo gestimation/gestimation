@@ -1,5 +1,5 @@
 ---
-title: "From 2×2 Tables to Logistic Regression"
+title: "From Risk to Logistic Regression"
 
 format:
   html:
@@ -149,7 +149,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for bias I − From 2×2 Tables to Logistic Regression
+# Adjusting for Bias I − From Risk to Logistic Regression
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model
@@ -340,12 +340,14 @@ glm(y ~ x1 + x2, family = poisson(), data = dat)
 
 - [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-### エピソードとRスクリプト
+### エピソード、用語集、Rスクリプト
 
-- [From 2×2 Tables to Logistic Regression](logistic-regression-1.qmd)
-- [How to Read Logistic Regression Coefficients](logistic-regression-2.qmd)
+- [From Risk to Logistic Regression](logistic-regression-1.qmd)
+- [The Logit Function](logistic-regression-2.qmd)
 - [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.qmd)
 - [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.qmd)
 - [Simpson's paradox](logistic-regression-5.qmd)
+
+- [Statistical Terms in Plain Language](glossary.html)
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)

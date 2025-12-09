@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Effects and time V − From Risk and Rate to Survival and Hazard
+# Effects and Time V − From Risk and Rate to Survival and Hazard
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, effect measure, survival/competing-risk
@@ -329,4 +329,16 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 :::
 
 :::::::::::::::::::::::::::::::::
-### End of the episode on Effects and time
+
+### エピソード、用語集、Rスクリプト
+
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [Collapsibility of Effect Measures in Marginal and Stratified Tables](effects-3.html)
+- [Risk Ratios and Odds Ratios: When Approximation Works](effects-4.html)
+- [From Risk and Rate to Survival and Hazard](effects-5.html)
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
+
+- [Statistical Terms in Plain Language](glossary.html)
+
+- [frequentist.R](../from-coffee-chat-to-r/effects.R)
