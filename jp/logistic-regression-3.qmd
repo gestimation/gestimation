@@ -1,5 +1,5 @@
 ---
-title: "Pitfalls of Logistic Regression with Small Samples"
+title: "Where My Logistic Regression Went Wrong"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for Bias III − Pitfalls of Logistic Regression with Small Samples
+# Adjusting for Bias III − Where My Logistic Regression Went Wrong
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model
@@ -445,9 +445,9 @@ Keywords: binary outcome, confounding/collapsibility, effect measure, generalize
 ### エピソード、用語集、Rスクリプト
 
 - [From Risk to Logistic Regression](logistic-regression-1.html)
-- [The Logit Function](logistic-regression-2.html)
-- [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.html)
-- [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
 - [Simpson's paradox](logistic-regression-5.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

@@ -252,7 +252,7 @@ a:hover {
 
 お父さん「うんうん。ちなみにね、凝った英語を使う必要はないよ。論文は、"concise"つまり簡潔な表現が好ましいとされる。接続詞や関係代名詞を多用しちゃって、一文が長くなりがちな人もいるけど、最初はそうしない方がいい。短い文章が続いていてもぜんぜん変じゃないからね」
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
 文献を引用するときのスタイルは、ジャーナルの投稿規定で決められています。なかでも、もっとも多く採用されているのは、医学雑誌編集者国際委員会が1978年に定めたバンクーバースタイルです。
 
@@ -266,7 +266,7 @@ Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hira
 4.  “;”と”:”
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 **正解は4です。**
 
 バンクーバースタイルでは、論文を引用するとき、文献リストを以下のように書きます。ただし、著者が多数のときは、”et al.”と省略することがあります。

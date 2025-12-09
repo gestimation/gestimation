@@ -188,8 +188,8 @@ a:hover {
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [Collapsibility of Effect Measures in Marginal and Stratified Tables]
-- [Risk Ratios and Odds Ratios: When Approximation Works]
+- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R]
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
@@ -202,9 +202,9 @@ a:hover {
 **ロジスティック回帰**の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして...。
 
 - [From Risk to Logistic Regression]
-- [The Logit Function]
-- [Pitfalls of Logistic Regression with Small Samples]
-- [Why My Logistic Regression Calculation Went Wrong]
+- [Logit: How a Transformation Shapes an Effect]
+- [Where My Logistic Regression Went Wrong]
+- [Why Logistic Regression Fails in Small Samples]
 - [Simpson's paradox]
 
 このエピソードのRスクリプト一式はこちらから。
@@ -219,11 +219,10 @@ a:hover {
 
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、確率に関する必要最小限の数式を交えて扱います。
 
-- [Causal inference I]
-- [Causal inference II]
-- [Causal inference III]
-- [Causal inference IV]
-- [Causal inference V]
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
+- [Common Causes and Confounders]
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure]
+- [Backdoor Paths and Confounders]
 
 ### 8. Publishing a paper — 研究の営み
 

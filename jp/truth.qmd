@@ -151,7 +151,7 @@ a:hover {
 # Truth − What Is It That You Want to Know?
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, observational study, Rubin causal model, study design
+Keywords: causal model, clinical trial, generalized linear model, observational study, study design
 :::
 
 ------------------------------------------------------------------------
@@ -291,7 +291,16 @@ Keywords: clinical trial, observational study, Rubin causal model, study design
 :::
 
 ::: voice-daughter
-私「トークン？ぴんとこない言葉だけど、個々の事象と一般法則どっちも大事なのはわかる」
+私「トークン？ぴんとこない言葉だけど」
+:::
+
+
+::: voice-father
+お父さん「たとえば"あの患者さんが助かったのはこの薬のおかげか？"というレベルの話がtoken causationに近い」
+:::
+
+::: voice-daughter
+私「ああ、そういうこと。個々の出来事と一般法則どっちも大事なのはわかる」
 :::
 
 ::: voice-father
@@ -321,13 +330,53 @@ Keywords: clinical trial, observational study, Rubin causal model, study design
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
-
 ### This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
-- [Causal inference I](causal-inference-1.qmd)
 
-- [Causal inference II](causal-inference-2.qmd)
 
-- [Causal inference III](causal-inference-3.qmd)
+### エピソード、用語集
 
-- [Causal inference IV](causal-inference-4.qmd)
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [Backdoor Paths and Confounders](causal-inference-4.html)
+
+- [Statistical Terms in Plain Language](glossary.html)
+### To clarify which conceptual layers the issues in this episode belong to, it may help to revisit the previous series:
+
+**1. Study design — 研究の出発点**
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
+
+**2. Glossary — 統計学のことば**
+
+- [Statistical Terms in Plain Language](glossary.html)
+
+**3. Frequentist thinking — 統計学の思考**
+
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-4.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-5.html)
+
+**4. Effects and time — 効果は時間とともに**
+
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R](effects-3.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
+- [From Risk and Rate to Survival and Hazard](effects-5.html)
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
+
+**5. Adjusting for bias — 回帰モデリングの風景**
+
+- [From Risk to Logistic Regression](logistic-regression-1.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
+- [Simpson's paradox](logistic-regression-5.html)

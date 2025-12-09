@@ -1,5 +1,5 @@
 ---
-title: "Why My Logistic Regression Calculation Went Wrong"
+title: "Why Logistic Regression Fails in Small Samples"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for Bias IV − Why My Logistic Regression Calculation Went Wrong
+# Adjusting for Bias IV − Why Logistic Regression Fails in Small Samples
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, effect measure, generalized linear model
@@ -291,9 +291,9 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 ### エピソード、用語集、Rスクリプト
 
 - [From Risk to Logistic Regression](logistic-regression-1.html)
-- [The Logit Function](logistic-regression-2.html)
-- [Pitfalls of Logistic Regression with Small Samples](logistic-regression-3.html)
-- [Why My Logistic Regression Calculation Went Wrong](logistic-regression-4.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
 - [Simpson's paradox](logistic-regression-5.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

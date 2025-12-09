@@ -409,6 +409,6 @@ print(risk_ratio2)
 
 - [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12271)
 
-### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:
+### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
 
-- [Truth: What Is It That You Want to Know?](truth.qmd)
+- [Truth: What Is It That You Want to Know?](truth.html)

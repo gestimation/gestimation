@@ -155,7 +155,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#story-and-quiz-causal-inference-ii" id="toc-story-and-quiz-causal-inference-ii" class="nav-link active" data-scroll-target="#story-and-quiz-causal-inference-ii">Story and Quiz − Causal inference II</a>
   <ul class="collapse">
   <li><a href="#後ろ扉を閉ざすなんて映画みたい" id="toc-後ろ扉を閉ざすなんて映画みたい" class="nav-link" data-scroll-target="#後ろ扉を閉ざすなんて映画みたい">後ろ扉を閉ざすなんて映画みたい</a></li>
-  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
+  <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -395,7 +395,7 @@ Note
 </div>
 <p>お父さん「厳密にいうと、バックドア基準っていう上のようなルールを使うんだけどね。合流点・ブロックについては、後で説明するよ。要は、共通原因を調整して、バックドアパスをブロックすれば、交絡を防ぐことができる。疫学ではDAGは交絡因子を探すために用いられるんだ」</p>
 <p><strong>私「やはり要石で後ろ扉を閉じるみたいな話だったか」</strong></p>
-<div class="callout callout-style-default callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -415,7 +415,7 @@ Note
 <p><img src="causal-inference-2-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="答えはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -427,7 +427,9 @@ Note
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>正解は3です。</strong></p>
+<ul>
+<li><strong>正解は3です。</strong></li>
+</ul>
 <p>ここで注目してほしいのは、Cは共通原因でもあり、合流点でもある、という点です。このようなとき、機械的にCだけを調整すればいいと、判断することはできません。バックドア基準を使うべきです。</p>
 <p>詳しくは次回述べますが、もし理由を説明するなら、以下のようになります。パスE←A→C←B→Dに注目してください。このパスは合流点Cを含むため、なにも調整しなくてもブロックされています。つまり、これだけをみると、Cは調整しなくてもよいのです。</p>
 <p>その一方で、パスE←A→C→Dについて考えると、AもCも合流点ではありません。つまりこのパスは、なにも調整しないとブロックされていないのです。つまり、このDAG全体でみると、EとDには相関が生じています。さらに、E→Dという因果関係はないことから、この相関は疑似相関です。したがって、なにも調整しなくていい、という判断も間違いです。</p>
@@ -435,35 +437,15 @@ Note
 </div>
 </div>
 </section>
-<section id="continuation-of-their-story" class="level3">
-<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
-<p><a href="../jp/study-design-1.html">Study design I</a></p>
-<p><a href="../jp/study-design-2.html">Study design II</a></p>
-<p><a href="../jp/study-design-3.html">Study design III</a></p>
-<p><a href="../jp/study-design-4.html">Study design IV</a></p>
-<p><a href="../jp/study-design-5.html">Study design V</a></p>
-<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
-<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
-<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
-<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
-<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
-<p><a href="../jp/effects-1.html">Effects and time I</a></p>
-<p><a href="../jp/effects-2.html">Effects and time II</a></p>
-<p><a href="../jp/effects-3.html">Effects and time III</a></p>
-<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
-<p><a href="../jp/effects-5.html">Effects and time V</a></p>
-<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
-<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
-<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
-<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
-<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
-<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
-<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
-<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
-<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
-<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
-<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
-<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
+<section id="エピソード用語集" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
+<ul>
+<li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
+<li><p><a href="causal-inference-2.html">Common Causes and Confounders</a></p></li>
+<li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
+<li><p><a href="causal-inference-4.html">Backdoor Paths and Confounders</a></p></li>
+<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
+</ul>
 
 
 </section>

@@ -156,6 +156,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#ロジスティック回帰の限界" id="toc-ロジスティック回帰の限界" class="nav-link" data-scroll-target="#ロジスティック回帰の限界">ロジスティック回帰の限界</a></li>
   <li><a href="#this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
+  <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -324,7 +325,7 @@ a:hover {
 <section id="truth-what-is-it-that-you-want-to-know" class="level1">
 <h1>Truth − What Is It That You Want to Know?</h1>
 <div class="serif-block text-right">
-<p>Keywords: clinical trial, observational study, Rubin causal model, study design</p>
+<p>Keywords: causal model, clinical trial, generalized linear model, observational study, study design</p>
 </div>
 <hr>
 <section id="ロジスティック回帰の限界" class="level3">
@@ -433,7 +434,13 @@ a:hover {
 <p>お父さん「本質的にはその通り。でも、それはあくまで患者ひとりひとりにとっての原因と結果を分析するアプローチになっている。個々の事象に関する因果を単一因果（token causation）っていうんだけど、それと一般法則としての因果には、まだギャップがあるよね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「トークン？ぴんとこない言葉だけど、個々の事象と一般法則どっちも大事なのはわかる」</p>
+<p>私「トークン？ぴんとこない言葉だけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「たとえば”あの患者さんが助かったのはこの薬のおかげか？“というレベルの話がtoken causationに近い」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ああ、そういうこと。個々の出来事と一般法則どっちも大事なのはわかる」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「臨床試験や調査では、集団として得られたデータを統計的に解析することで法則性があるかどうかを調べている。そのための道具を用意するために、回帰モデルや確率分布という構造を考えているんだ。因果モデルと回帰モデルは役割が違う」</p>
@@ -461,11 +468,52 @@ a:hover {
 </section>
 <section id="this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
 <h3 class="anchored" data-anchor-id="this-concludes-the-episode-on-truth.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
+</section>
+<section id="エピソード用語集" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
 <ul>
-<li><p><a href="../jp/causal-inference-1.html">Causal inference I</a></p></li>
-<li><p><a href="../jp/causal-inference-2.html">Causal inference II</a></p></li>
-<li><p><a href="../jp/causal-inference-3.html">Causal inference III</a></p></li>
-<li><p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p></li>
+<li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
+<li><p><a href="causal-inference-2.html">Common Causes and Confounders</a></p></li>
+<li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
+<li><p><a href="causal-inference-4.html">Backdoor Paths and Confounders</a></p></li>
+<li><p><a href="glossary.html">Statistical Terms in Plain Language</a> ### To clarify which conceptual layers the issues in this episode belong to, it may help to revisit the previous series:</p></li>
+</ul>
+<p><strong>1. Study design — 研究の出発点</strong></p>
+<ul>
+<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li><a href="study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></li>
+<li><a href="study-design-4.html">Outcomes: The Bridge from Data Collection to Analysis</a></li>
+<li><a href="study-design-5.html">When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</a></li>
+</ul>
+<p><strong>2. Glossary — 統計学のことば</strong></p>
+<ul>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+</ul>
+<p><strong>3. Frequentist thinking — 統計学の思考</strong></p>
+<ul>
+<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
+<li><a href="frequentist-2.html">P-Value Explanations That Seem Plausible at First Glance</a></li>
+<li><a href="frequentist-3.html">Beyond 0.05: Interpreting P-Values in a Clinical Trial</a></li>
+<li><a href="frequentist-4.html">Understanding Confidence Intervals via Hypothetical Replications in R</a></li>
+<li><a href="frequentist-5.html">Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</a></li>
+</ul>
+<p><strong>4. Effects and time — 効果は時間とともに</strong></p>
+<ul>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="effects-3.html">Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</a></li>
+<li><a href="effects-4.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="effects-5.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="effects-6.html">Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</a></li>
+</ul>
+<p><strong>5. Adjusting for bias — 回帰モデリングの風景</strong></p>
+<ul>
+<li><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-2.html">Logit: How a Transformation Shapes an Effect</a></li>
+<li><a href="logistic-regression-3.html">Where My Logistic Regression Went Wrong</a></li>
+<li><a href="logistic-regression-4.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="logistic-regression-5.html">Simpson’s paradox</a></li>
 </ul>
 
 

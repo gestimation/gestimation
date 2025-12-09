@@ -205,7 +205,7 @@ DAG上に、異なるノードを要素とする3つの集合があるとし、�
 DAGを用いて、CがAとBを有向分離することが確認できたとする。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかる（Pearl 1995）。
 :::
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
 このDAGの解釈として正しいのはどちらでしょうか。
 
@@ -215,7 +215,7 @@ DAGを用いて、CがAとBを有向分離することが確認できたとす�
 ![](causal-inference-4-4.png)
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解と解説**
 
     正解は2です。
@@ -223,9 +223,7 @@ DAGを用いて、CがAとBを有向分離することが確認できたとす�
     パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。
 :::
 
-::: callout-note
-<img src="https://www.notion.so/icons/help-alternate_blue.svg" alt="https://www.notion.so/icons/help-alternate_blue.svg" width="40px"/> **もうひとつクイズです**
-
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 このDAGの解釈として正しいのはどちらでしょうか。
 
 1.  Cで条件付けないとき、EとDは独立である。また、Cを与えた下でも、EとDは条件付独立である
@@ -236,64 +234,17 @@ DAGを用いて、CがAとBを有向分離することが確認できたとす�
 ![](causal-inference-4-5.png)
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
-**正解は4です。**
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
+- **正解は4です。**
 
 この場合、最初のクイズとは違って、EとDを結ぶ直接のパスはありませんが、Cは合流点という問題があります。そのためCで調整すると、E←A→C←B→Dというパスが生じてしまい、やはりCでEとDを有向分離することはできません。
 :::
 
-### Continuation of their story
+### エピソード、用語集
 
-[Study design I](study-design-1.qmd)
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [Backdoor Paths and Confounders](causal-inference-4.html)
 
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [Statistical Terms in Plain Language](glossary.html)

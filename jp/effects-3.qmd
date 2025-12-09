@@ -1,5 +1,5 @@
 ---
-title: "Collapsibility of Effect Measures in Marginal and Stratified Tables"
+title: "Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Effects and time III − Collapsibility of Effect Measures in Marginal and Stratified Tables
+# Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
 
 ::: {.serif-block .text-right}
 Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model
@@ -355,12 +355,12 @@ print(odds_ratio)
 
 ### エピソード、用語集、Rスクリプト
 
-- [Silent Confusions Hidden in Percentages](effects-1.qmd)
-- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.qmd)
-- [Collapsibility of Effect Measures in Marginal and Stratified Tables](effects-3.qmd)
-- [Risk Ratios and Odds Ratios: When Approximation Works](effects-4.qmd)
-- [From Risk and Rate to Survival and Hazard](effects-5.qmd)
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.qmd)
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R](effects-3.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
+- [From Risk and Rate to Survival and Hazard](effects-5.html)
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
 
 - [Statistical Terms in Plain Language](glossary.html)
 

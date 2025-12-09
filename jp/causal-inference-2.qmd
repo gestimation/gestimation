@@ -238,7 +238,9 @@ a:hover {
 
 **私「やはり要石で後ろ扉を閉じるみたいな話だったか」**
 
-::: {.callout-note title="このエピソードに関係するクイズです"}
+
+
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 下のDAGにおいて、破線で示したパスA-C-Bに注目してください。このパスにおいて、Cは次のうちどれでしょうか。
 
 1.  中間媒介因子
@@ -249,8 +251,8 @@ a:hover {
 ![](causal-inference-2-2.png)
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
-**正解は3です。**
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
+- **正解は3です。**
 
 ここで注目してほしいのは、Cは共通原因でもあり、合流点でもある、という点です。このようなとき、機械的にCだけを調整すればいいと、判断することはできません。バックドア基準を使うべきです。
 
@@ -259,58 +261,13 @@ a:hover {
 その一方で、パスE←A→C→Dについて考えると、AもCも合流点ではありません。つまりこのパスは、なにも調整しないとブロックされていないのです。つまり、このDAG全体でみると、EとDには相関が生じています。さらに、E→Dという因果関係はないことから、この相関は疑似相関です。したがって、なにも調整しなくていい、という判断も間違いです。
 :::
 
-### Continuation of their story
 
-[Study design I](study-design-1.qmd)
 
-[Study design II](study-design-2.qmd)
+### エピソード、用語集
 
-[Study design III](study-design-3.qmd)
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [Backdoor Paths and Confounders](causal-inference-4.html)
 
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Frequentist thinking I](frequentist-1.qmd)
-
-[Frequentist thinking II](frequentist-2.qmd)
-
-[Frequentist thinking III](frequentist-3.qmd)
-
-[Frequentist thinking IV](frequentist-4.qmd)
-
-[Frequentist thinking V](frequentist-5.qmd)
-
-[Effects and time I](effects-1.qmd)
-
-[Effects and time II](effects-2.qmd)
-
-[Effects and time III](effects-3.qmd)
-
-[Effects and time IV](effects-4.qmd)
-
-[Effects and time V](effects-5.qmd)
-
-[Adjusting for bias I](logistic-regression-1.qmd)
-
-[Adjusting for bias II](logistic-regression-2.qmd)
-
-[Adjusting for bias III](logistic-regression-3.qmd)
-
-[Adjusting for bias IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[The Craft of research I](publish-a-paper-1.qmd)
-
-[The Craft of research II](publish-a-paper-2.qmd)
-
-[The Craft of research III](publish-a-paper-3.qmd)
-
-[The Craft of research IV](publish-a-paper-4.qmd)
+- [Statistical Terms in Plain Language](glossary.html)
