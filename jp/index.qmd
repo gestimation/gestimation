@@ -197,12 +197,12 @@ a:hover {
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
-### 5. Adjusting for bias — 回帰分析の風景
+### 5. Adjusting for bias — 回帰モデリングの風景
 
 **ロジスティック回帰**の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして...。
 
-- [From 2×2 Tables to Logistic Regression]
-- [How to Read Logistic Regression Coefficients]
+- [From Risk to Logistic Regression]
+- [The Logit Function]
 - [Pitfalls of Logistic Regression with Small Samples]
 - [Why My Logistic Regression Calculation Went Wrong]
 - [Simpson's paradox]
@@ -238,7 +238,7 @@ a:hover {
 
 ## 読み方
 
-まずは **Study design I–V**を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。
+まずは **Study designシリーズ**を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。
 
 - **論文を読む足場を整えたい**: Frequentist thinking
 - **数字の意味や統計解析の実際をもう少し深く知りたい**: Effects and time / Adjusting for bias

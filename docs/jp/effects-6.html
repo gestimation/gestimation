@@ -389,7 +389,7 @@ a:hover {
 <section id="effects-and-time-vi-distinguishing-time-point-time-constant-and-time-varying-effects" class="level1">
 <h1>Effects and Time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</h1>
 <div class="serif-block text-right">
-<p>Keywords: effect measure, survival/competing-risk</p>
+<p>Keywords: effect measure, simulation, survival/competing-risk</p>
 </div>
 <hr>
 <section id="ハザード比が意味を持つとき持たないとき" class="level3">
@@ -412,13 +412,19 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「<span class="math inline">\(x\)</span>が時間で、<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>が2群それぞれのハザードだっていうことはわかるよ。<span class="math inline">\(HR\)</span>は<strong>ハザード比（hazard ratio）</strong>だよね。でも、どうみても上も下も同じ式じゃない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、ハザードが<span class="math inline">\(x\)</span>に依存しないでしょ。つまりハザード自体がもともと一定なんだ。この式以前にね。下の*<strong>Cox回帰（Cox regression）</strong>をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数なんだけど、この式はハザード比だけが一定っていうある種の制約を表している。つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定されたというか、構造が決まったっていう文脈でとらえてほしいんだ」</p>
+<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、ハザードが<span class="math inline">\(x\)</span>に依存しないでしょ、この式以前に。つまりハザード自体がもともと一定なんだ。下の<strong>Cox回帰（Cox regression）</strong>をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数なんだけど、この式はハザード比だけが一定っていうある種の制約を表している」</p>
 </div>
 <div class="voice-daughter">
-<p>私「やっぱり違うのか。Cox回帰の式は、ロジスティック回帰に比べてシンプルすぎて不安になるな。でも比例ハザード性は聞いたことがあって安心する」</p>
+<p>私「つまり？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、実用面では<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいってことなんだ。指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
+<p>お父さん「つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱり違うのか。Cox回帰の式は、ロジスティック回帰に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「Cox回帰は使いやすいってこと？ほぼほぼCox回帰しかみないけど」</p>
