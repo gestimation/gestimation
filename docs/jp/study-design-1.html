@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Coffee and Research</title>
+<title>A Story of Coffee Chat and Research Hypothesis – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -69,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
 
 <script type="text/javascript">
@@ -108,38 +77,9 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
-<link rel="alternate" type="application/rss+xml" title="Coffee and Research – Story and Quiz (EN)" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed quarto-light">
 
@@ -212,29 +152,41 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." id="toc-brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="nav-link active" data-scroll-target="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up.">Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</a>
+  <li><a href="#study-design-i-a-story-of-coffee-chat-and-research-hypothesis" id="toc-study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="nav-link active" data-scroll-target="#study-design-i-a-story-of-coffee-chat-and-research-hypothesis">Study Design I − A Story of Coffee Chat and Research Hypothesis</a>
   <ul class="collapse">
-  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a>
-  <ul class="collapse">
-  <li><a href="#study-design-where-research-begins" id="toc-study-design-where-research-begins" class="nav-link" data-scroll-target="#study-design-where-research-begins">1. Study design — Where research begins</a></li>
-  <li><a href="#frequentist-thinking-practicing-statistics" id="toc-frequentist-thinking-practicing-statistics" class="nav-link" data-scroll-target="#frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</a></li>
-  <li><a href="#effects-and-time-how-effects-evolve" id="toc-effects-and-time-how-effects-evolve" class="nav-link" data-scroll-target="#effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</a></li>
-  <li><a href="#adjusting-for-bias-the-landscape-of-regression" id="toc-adjusting-for-bias-the-landscape-of-regression" class="nav-link" data-scroll-target="#adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</a></li>
-  <li><a href="#causal-inference-thinking-about-what-if" id="toc-causal-inference-thinking-about-what-if" class="nav-link" data-scroll-target="#causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</a></li>
-  <li><a href="#the-craft-of-research-the-work-of-doing-research" id="toc-the-craft-of-research-the-work-of-doing-research" class="nav-link" data-scroll-target="#the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</a></li>
-  </ul></li>
-  <li><a href="#how-to-read-this-site" id="toc-how-to-read-this-site" class="nav-link" data-scroll-target="#how-to-read-this-site">How to read this site</a></li>
+  <li><a href="#はじめて研究に取り組む娘と統計家の父" id="toc-はじめて研究に取り組む娘と統計家の父" class="nav-link" data-scroll-target="#はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Story of Coffee Chat and Research Hypothesis</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -358,8 +310,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -369,153 +321,232 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="level1">
-<h1>Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</h1>
-<p>This site grew out of small coffee chats between a statistician father and his clinician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.</p>
-<p>Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.<br>
-Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.</p>
+<section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
+<h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
+<div class="serif-block text-right">
+<p>Keywords: observational study, outcome, study design</p>
+</div>
 <hr>
-<section id="episodes" class="level2">
-<h2 class="anchored" data-anchor-id="episodes">Episodes</h2>
-<section id="study-design-where-research-begins" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-where-research-begins">1. Study design — Where research begins</h3>
-<p>Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.</p>
+<section id="はじめて研究に取り組む娘と統計家の父" class="level3">
+<h3 class="anchored" data-anchor-id="はじめて研究に取り組む娘と統計家の父">はじめて研究に取り組む娘と統計家の父</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さんってさ、大学で統計学を教えてるんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「診療科の上司に、そろそろ研究して学会発表でもしてみないかって言われてさ。その先生、2016年がん対策基本法が改正されてからずっと、がん患者さんの就労支援に興味があるの。要するに、私にその調査をやらせたいみたい。まあやってみたくなくはないけどね。これって統計じゃない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「まあね。なにか臨床的に知りたいことや仮説はあるの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ないよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「仮説がないと調査がデザインできないよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「まじか。データをとってから考えればいいと思ってた。うーん、やっぱり仕事を続けにくいのはどんな患者さんなのかが知りたいかな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「女性より男性の方が、復職率が高いとか？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「性別にも興味あるけど、やっぱり知りたいのはがんのステージとか合併症とかかな。私が勤めているのは消化管外科なんだけど、ストーマをつけている患者さんは、手術前と同じ仕事を続けられているのだろうか、とか。うん、調査票つくってみる。ありがとう！」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「待ちなさい。調査対象は決まってるの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ん？うちの病院で手術したがん患者さん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「胃がんでストーマを造設することってあるの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ゼロじゃないけど、みたことない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「でしょ。ストーマに興味があるなら、胃がんは外した方がいいんじゃない？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そうかなあ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「デザイン段階で、どのような対象に調査すべきか考えておくことは大切だよ。一般論だけど、対象集団を狭く限定した方が、質問項目を詳細にできるから。それに<strong>比較可能性（comparability）</strong>も高まる。ストーマ保有者と非保有者を比べるなら、がん種は統一したいよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「比較可能性とかお硬い言い方するね。でも、患者さんの背景がばらけるとやりにくいよね。なるべく揃っている方が比較しやすい、ってことはわかるよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「比較可能性を高めるための統計手法やRパッケージもある。回帰調整のための<code>glm()</code>やプロペンシティスコア調整のための<code>CBPS()</code>とかね。一方で、対象集団は広い方が、<strong>一般化可能性（generalizability）</strong>が高い。がんサバイバーの復職率を推定したいんだったら、がん種を限定する必要はないし、できれば複数の施設で調査したいよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確かに、うちの病院だけだと実態調査っていいにくい気もしてきた。一般化可能性が高い研究をしなさいっていうのは、ほかの施設の参考になるデータをとれって意味だよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うんうん。大学の授業だとね、こんな風に教えてるよ。</p>
+<blockquote class="blockquote">
+<p>研究で調べたい疑問がはっきりしないなら、“PICO”と”PECO”という要素を使って 研究をデザインしなさい</p>
+</blockquote>
+<p>研究の要素をひとつひとつ決めていく計画の立て方を、研究の構造化っていったりする」</p>
+</div>
+<div class="voice-daughter">
+<p>私「構造化？実際怪しいな、そこ。いや、聞いたことはある」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、どのような患者が対象かが、研究デザインの大切な1要素だってこと」</p>
+</div>
+</div>
 <ul>
-<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
-<li>[A First Step into Survival and Competing Risks Analysis with R] (coming soon)</li>
-<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
-<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+<li>どのような患者が対象か（Patients/Population）</li>
+<li>どのような要因に注目するか（Intervention/Exposure）</li>
+<li>それを何と比較するのか（Comparison）</li>
+<li>患者にどのようなアウトカムが生じたのか（Outcome）</li>
 </ul>
-<p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ExposureとComparisonははじめて聞いたけど、私の場合はストーマ保有者と非保有者ってことだよね。Outcomeってなに？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「PICO/PECOのOはアウトカムっていって、治療結果や、転帰、予後のこと。統計解析ではアウトカムのデータがいちばん重要。だから、計画でここを固めるのがポイントになる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「データが集まる前に固められなくない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「R。診療科の先輩が使ってるから」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「Rは得意？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「学部の頃、授業あったけどもうわすれたな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあRの使い方も身につけなきゃだね。どの関数を使うかも、アウトカムによって違うんだよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="臨床疑問と研究仮説">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+臨床疑問と研究仮説
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>日常診療をしていると、さまざまな疑問や知りたいことが生じることがあります。診療現場から生まれたありのままの疑問のことを、<strong>臨床疑問（clinical question）</strong>といいます。臨床研究をスタートするとき、意識してほしいのは、臨床疑問を<strong>研究仮説（research hypothesis）</strong>として表現することです。研究仮説は、研究デザインに最低限必要な要素で構成されます。たとえば典型的な臨床研究では、以下のような要素が含まれることが多いでしょう。</p>
 <ul>
-<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
+<li>Patients/Population</li>
+<li>Intervention/Exposure</li>
+<li>Comparison</li>
+<li>Outcome</li>
 </ul>
-</section>
-<section id="frequentist-thinking-practicing-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</h3>
-<p>Using a cancer clinical trial as a running example, the father talks about the <strong>frequentist idea</strong> of “what would happen to these numbers if we could repeat the study many times?”</p>
-<ul>
-<li>[Reading a Paper over a Cup of Coffee]</li>
-<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
-<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
-<li>[Understanding Confidence Intervals via Hypothetical Replications in R]</li>
-<li>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</li>
-</ul>
-</section>
-<section id="effects-and-time-how-effects-evolve" class="level3">
-<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</h3>
-<p>Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and <strong>effects that change over time</strong> are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.</p>
-<ul>
-<li>[Silent Confusions Hidden in Percentages]</li>
-<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Collapsibility of Effect Measures in Marginal and Stratified Tables]</li>
-<li>[Risk Ratios and Odds Ratios: When Approximation Works]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
-</ul>
-</section>
-<section id="adjusting-for-bias-the-landscape-of-regression" class="level3">
-<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</h3>
-<p>Here we meet <strong>logistic regression for adjustment</strong> and <strong>confounding</strong> — what it is, and what it is not.</p>
-<ul>
-<li>[Adjusting for bias I]</li>
-<li>[Adjusting for bias II]</li>
-<li>[Adjusting for bias III]</li>
-<li>[Adjusting for bias IV]</li>
-<li>[Adjusting for bias V]</li>
-</ul>
-</section>
-<section id="causal-inference-thinking-about-what-if" class="level3">
-<h3 class="anchored" data-anchor-id="causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</h3>
-<p>Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor paths. We try to talk about the <strong>language of causality</strong> needed to think about “what would have happened if…?”, using as few formulas as possible.</p>
-<ul>
-<li>[Causal inference I]</li>
-<li>[Causal inference II]</li>
-<li>[Causal inference III]</li>
-<li>[Causal inference IV]</li>
-<li>[Causal inference V]</li>
-</ul>
-</section>
-<section id="the-craft-of-research-the-work-of-doing-research" class="level3">
-<h3 class="anchored" data-anchor-id="the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</h3>
-<p>How do we present results? How do we design figures and tables? How do we revise a manuscript, and how do we live with peer review? This series is a quiet set of lectures on “life after statistics” for people doing research.</p>
-<ul>
-<li>[The Craft of Research I]</li>
-<li>[The Craft of Research II]</li>
-<li>[The Craft of Research III]</li>
-<li>[The Craft of Research IV]</li>
-</ul>
+<p>上の会話で出てきた”PICO”や”PECO”は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。</p>
+<p>がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。</p>
+<hr>
+<section id="研究仮説1" class="level4">
+<h4 class="anchored" data-anchor-id="研究仮説1">研究仮説1</h4>
+<pre><code>P: 根治切除後の直腸がん患者
+
+E: ストーマ造設あり
+
+C: ストーマ造設なし
+
+O: 手術後1年以内の復職の有無</code></pre>
+<p>ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。</p>
 <hr>
 </section>
+<section id="研究仮説2" class="level4">
+<h4 class="anchored" data-anchor-id="研究仮説2">研究仮説2</h4>
+<pre><code>P: 根治切除後のがん患者
+
+E: 「仕事とがん治療の両立お役立ちノート」の配布あり
+
+C: 「仕事とがん治療の両立お役立ちノート」の配布なし
+
+O: 手術後1年以内の復職の有無</code></pre>
+<p>就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。</p>
+<hr>
 </section>
-<section id="how-to-read-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-this-site">How to read this site</h2>
+<section id="研究仮説3" class="level4">
+<h4 class="anchored" data-anchor-id="研究仮説3">研究仮説3</h4>
+<p>「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」</p>
+<p>PECOになりにくい研究仮説もあります。たとえば、疾患発生と関連のあるリスク因子を探す、いわゆる探索的研究では、EとCははっきり決まっていません。構造化といっても、臨床疑問をかならずPECOの形式にしなければならないわけではありません。研究デザインに最低限必要な要素を特定することが大切です。</p>
+</section>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「なるほどね、オリジナル仮説を立てろっていわれたら困るけど、研究の要素を洗い出して、ひとつひとつ決めていく作業はきらいじゃないわ。いつかは必要なことだし」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうでしょ。それに研究者の思考を、早い段階で専門的な表現に置き換えておくと、コミュニケーションもうまくなる。疾患やアウトカムの定義、治療や曝露内容は、医師や施設によって微妙な違いがあるものだからね。言葉をおろそかにすると混乱の種になる」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>研究計画を立てるとき、しばしば”ceteris paribus”というラテン語表現が登場します。この言葉の意味にいちばん近いのはどれでしょう。</p>
+<ol type="1">
+<li>因果関係があるなら必ず起こる</li>
+<li>普遍的に一般化できる法則</li>
+<li>他の条件が同じである</li>
+<li>じゅうぶん多くのデータを観察する</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>If you start with <strong>Study design I–V</strong>,<br>
-you will get a first outline of “what question to ask, and what data to collect to answer it.”</li>
-<li>If you want to choose by interest:
-<ul>
-<li><strong>To build a better footing for reading papers</strong> → Frequentist thinking / Effects and time<br>
-</li>
-<li><strong>To tidy up your analysis practice</strong> → Adjusting for bias<br>
-</li>
-<li><strong>To organize how you think about causality</strong> → Causal inference<br>
-</li>
-<li><strong>To eventually publish your work as a paper</strong> → The Craft of Research</li>
-</ul></li>
-<li>Each episode is written so that you <em>can</em> read it on its own.<br>
-But if you read across the series, a mental map of “what research is as a practice” starts to form in the background.</li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>Pick any place that catches your eye, grab your favourite drink, and read at the pace that feels right for you.</p>
-
+<p>“ceteris paribus”という概念は、比較可能性（comparability）を保つための条件と考えて問題ありません。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<ul>
+<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
+<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
+<li><p><a href="study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></p></li>
+<li><p>[Outcomes: The Bridge from Data Collection to Analysis]</p></li>
+<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
+<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
+</ul>
 
 
 </section>
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1764901729378" data-listing-reading-time-sort="9" data-listing-word-count-sort="1790">
-<div class="thumbnail"><a href="../en/study-design-1.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-1.html" class="no-external">A Story of Coffee Chat and Research Hypothesis</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-1.html" class="no-external">
-Keywords: observational study, outcome, study design
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-1.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1764913846667" data-listing-reading-time-sort="10" data-listing-word-count-sort="1982">
-<div class="thumbnail"><a href="../en/study-design-2.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-2.html" class="no-external">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-2.html" class="no-external">
-Keywords: outcome, simulation
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-2.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

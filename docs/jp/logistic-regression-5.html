@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Simpson’s paradox – Coffee and Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../coffee.scss">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Coffee and Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gestimation.github.io/cifmodeling/"> 
+<span class="menu-text">cifmodeling</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-on-causality-at-our-table-(en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation on Causality at Our Table (EN)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-on-causality-at-our-table-(en">    
+        <li>
+    <a class="dropdown-item" href="../en/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-on-causality-at-our-table-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation on Causality at Our Table (JP)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-on-causality-at-our-table-(jp">    
+        <li>
+    <a class="dropdown-item" href="../jp/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../jp/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adjusting-for-bias-v-simpsons-paradox" id="toc-adjusting-for-bias-v-simpsons-paradox" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-simpsons-paradox">Adjusting for Bias V − Simpson’s paradox</a>
+  <ul class="collapse">
+  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
+  <li><a href="#simpsonのパラドックスが起きる条件" id="toc-simpsonのパラドックスが起きる条件" class="nav-link" data-scroll-target="#simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" id="toc-this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Simpson’s paradox</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="adjusting-for-bias-v-simpsons-paradox" class="level1">
+<h1>Adjusting for Bias V − Simpson’s paradox</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model</p>
+</div>
+<hr>
+<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。観察研究では<strong>交絡因子（confounder）</strong>を調整しないといけないって前にいってたよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、そんな話もあったね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「でも統計学の本を読んでも、なにをどう調整するのか書いてないんだよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「賛成」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「疫学では有名な話なんだけどね。40年前に、“コーヒーを飲むと膵がんリスクが上がる”という論文がでたことがあった」</p>
+</div>
+<div class="voice-daughter">
+<p>私「いかにもありそうな話だね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それでは問題です。このコーヒー論争で、実際に問題になった第3の因子はなんでしょう？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「え？えーっと」</p>
+</div>
+<p><img src="logistic-regression-1.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「答えはこれ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+お父さんの答えは？
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
+<p><img src="logistic-regression-3.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へえ、そんな話があったんだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあさ、こういう第3の因子を無視して解析するとどうなる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それくらいわかるよ。バイアスが入るんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。Simpson のパラドックスを使って説明しよう」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Simpsonのパラドックス
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのか、一番シンプルな層別解析でみてみましょう。表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
+<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
+<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
+<p>表1. 層別前の膵がんリスクとオッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>合計</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>15</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>365</td>
+<td>868</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>3.9%</td>
+<td>1.4%</td>
+<td>3倍</td>
+</tr>
+</tbody>
+</table>
+<p>表2. 層別後の膵がんリスクとオッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>喫煙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>14</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>266</td>
+<td>76</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>5.0%</td>
+<td>5.0%</td>
+<td>1倍</td>
+</tr>
+<tr class="odd">
+<td>非喫煙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>1</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>99</td>
+<td>792</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>1.0%</td>
+<td>1.0%</td>
+<td>1倍</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「単純な解析ではリスク因子だったのに、層別しただけで関連が消えた。でもこれは“計算上のトリック”じゃないよね？以前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたのは関係ある？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「部分的に関係はある。オッズ比は層別したら値が変わりやすい、<strong>併合可能ではない（non-collapsible）</strong>指標だからね。でも、それより重要なことは、ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きいということ。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+glm()を用いた膵がんデータの解析
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に、リスク比は<code>link="log"</code>に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は<code>smoke</code>を入れないモデルで、調整後のオッズ比・リスク比は<code>smoke</code>を入れたモデルで推定しています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">coffee =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smoke  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,   <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n      =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">266</span>, <span class="dv">4</span>, <span class="dv">76</span>,  <span class="dv">1</span>, <span class="dv">99</span>, <span class="dv">8</span>, <span class="dv">792</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fit_logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>odds_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.972603</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>odds_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit_log1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>risk_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.894737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit_log2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>risk_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="simpsonのパラドックスが起きる条件" class="level3">
+<h3 class="anchored" data-anchor-id="simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</h3>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「なにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「次に注目してほしいのが、喫煙とコーヒーの関連なんだ。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「時代を感じるね、仕事終わったらくつろぎたい気持ちはめっちゃわかる」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「Simpsonのパラドックスのポイントは3つの変数の相関関係なんだ」</p>
+</div>
+<ul>
+<li>第3の因子と曝露の間に相関がある</li>
+<li>第3の因子とアウトカムの間に相関がある</li>
+</ul>
+<div class="voice-father">
+<p>お父さん「この2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」</p>
+</div>
+<div class="voice-daughter">
+<p>私「曝露とアウトカムと第3の変数の関係性ねえ。交絡の話ってまあまあややこしいね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「交絡って、言葉自体になじみがないこともあって複雑に思うだろうけど、実際の研究ではもっとシンプルに考えることもできる。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない」</p>
+</div>
+<section id="simpsonのパラドックスと交絡は同じ概念ではない" class="level3">
+<h3 class="anchored" data-anchor-id="simpsonのパラドックスと交絡は同じ概念ではない">Simpsonのパラドックスと交絡は同じ概念ではない？</h3>
+<div class="voice-daughter">
+<p>私「さっきの2つの条件を確認する時間がほしいな。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「表で起きたことはそういうことで、これがSimpsonのパラドックスだね。でもね、正確にいうとSimpsonのパラドックスと交絡は、数学的には異なる現象なんだ。交絡はそんなに単純な問題じゃない。直感的な説明をするとね。層別前の解析は集団全体のオッズ比でしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そうだね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「当たり前だけど、層別後のオッズ比は、喫煙集団のオッズ比と非喫煙集団のオッズ比だよね。どっちが真値なんだろう？ターゲット集団によって真値が変わっていいの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ん？えっと、そうだね、コーヒーが健康に悪いかどうかは個人差ないと思う」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。この事例でいえば喫煙が交絡因子なのは間違いないんだよ。でも一般には、層別前と層別後のどっちのオッズ比が真値なのか、統計学の枠組みで決めるロジックはないんだ。データがどんな確率分布に従っているか、誰も知らないからね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「へー」</p>
+</div>
+</section>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
+<section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-are-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode are waiting:</h3>
+<ul>
+<li><a href="../jp/truth.html">Truth: What Is It That You Want to Know?</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

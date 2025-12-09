@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Coffee and Research</title>
+<title>Beyond 0.05: Interpreting P-Values in a Clinical Trial – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -69,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
 
 <script type="text/javascript">
@@ -108,38 +77,9 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../coffee.scss">
-<link rel="alternate" type="application/rss+xml" title="Coffee and Research – Story and Quiz (EN)" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed quarto-light">
 
@@ -212,29 +152,42 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." id="toc-brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="nav-link active" data-scroll-target="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up.">Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</a>
+  <li><a href="#frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" id="toc-frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" class="nav-link active" data-scroll-target="#frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial">Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial</a>
   <ul class="collapse">
-  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a>
-  <ul class="collapse">
-  <li><a href="#study-design-where-research-begins" id="toc-study-design-where-research-begins" class="nav-link" data-scroll-target="#study-design-where-research-begins">1. Study design — Where research begins</a></li>
-  <li><a href="#frequentist-thinking-practicing-statistics" id="toc-frequentist-thinking-practicing-statistics" class="nav-link" data-scroll-target="#frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</a></li>
-  <li><a href="#effects-and-time-how-effects-evolve" id="toc-effects-and-time-how-effects-evolve" class="nav-link" data-scroll-target="#effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</a></li>
-  <li><a href="#adjusting-for-bias-the-landscape-of-regression" id="toc-adjusting-for-bias-the-landscape-of-regression" class="nav-link" data-scroll-target="#adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</a></li>
-  <li><a href="#causal-inference-thinking-about-what-if" id="toc-causal-inference-thinking-about-what-if" class="nav-link" data-scroll-target="#causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</a></li>
-  <li><a href="#the-craft-of-research-the-work-of-doing-research" id="toc-the-craft-of-research-the-work-of-doing-research" class="nav-link" data-scroll-target="#the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</a></li>
-  </ul></li>
-  <li><a href="#how-to-read-this-site" id="toc-how-to-read-this-site" class="nav-link" data-scroll-target="#how-to-read-this-site">How to read this site</a></li>
+  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#continuation-of-their-story" id="toc-continuation-of-their-story" class="nav-link" data-scroll-target="#continuation-of-their-story">Continuation of their story</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Beyond 0.05: Interpreting P-Values in a Clinical Trial</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -358,8 +311,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -369,153 +322,210 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="level1">
-<h1>Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</h1>
-<p>This site grew out of small coffee chats between a statistician father and his clinician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.</p>
-<p>Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.<br>
-Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.</p>
+<section id="frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" class="level1">
+<h1>Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial</h1>
+<div class="serif-block text-right">
+<p>Keywords: clinical trial, p-value, scientific writing, survival/competing-risk</p>
+</div>
 <hr>
-<section id="episodes" class="level2">
-<h2 class="anchored" data-anchor-id="episodes">Episodes</h2>
-<section id="study-design-where-research-begins" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-where-research-begins">1. Study design — Where research begins</h3>
-<p>Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.</p>
-<ul>
-<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
-<li>[A First Step into Survival and Competing Risks Analysis with R] (coming soon)</li>
-<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
-<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
-</ul>
-<p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
-</ul>
-</section>
-<section id="frequentist-thinking-practicing-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</h3>
-<p>Using a cancer clinical trial as a running example, the father talks about the <strong>frequentist idea</strong> of “what would happen to these numbers if we could repeat the study many times?”</p>
-<ul>
-<li>[Reading a Paper over a Cup of Coffee]</li>
-<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
-<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
-<li>[Understanding Confidence Intervals via Hypothetical Replications in R]</li>
-<li>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</li>
-</ul>
-</section>
-<section id="effects-and-time-how-effects-evolve" class="level3">
-<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</h3>
-<p>Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and <strong>effects that change over time</strong> are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.</p>
-<ul>
-<li>[Silent Confusions Hidden in Percentages]</li>
-<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Collapsibility of Effect Measures in Marginal and Stratified Tables]</li>
-<li>[Risk Ratios and Odds Ratios: When Approximation Works]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
-</ul>
-</section>
-<section id="adjusting-for-bias-the-landscape-of-regression" class="level3">
-<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</h3>
-<p>Here we meet <strong>logistic regression for adjustment</strong> and <strong>confounding</strong> — what it is, and what it is not.</p>
-<ul>
-<li>[Adjusting for bias I]</li>
-<li>[Adjusting for bias II]</li>
-<li>[Adjusting for bias III]</li>
-<li>[Adjusting for bias IV]</li>
-<li>[Adjusting for bias V]</li>
-</ul>
-</section>
-<section id="causal-inference-thinking-about-what-if" class="level3">
-<h3 class="anchored" data-anchor-id="causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</h3>
-<p>Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor paths. We try to talk about the <strong>language of causality</strong> needed to think about “what would have happened if…?”, using as few formulas as possible.</p>
-<ul>
-<li>[Causal inference I]</li>
-<li>[Causal inference II]</li>
-<li>[Causal inference III]</li>
-<li>[Causal inference IV]</li>
-<li>[Causal inference V]</li>
-</ul>
-</section>
-<section id="the-craft-of-research-the-work-of-doing-research" class="level3">
-<h3 class="anchored" data-anchor-id="the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</h3>
-<p>How do we present results? How do we design figures and tables? How do we revise a manuscript, and how do we live with peer review? This series is a quiet set of lectures on “life after statistics” for people doing research.</p>
-<ul>
-<li>[The Craft of Research I]</li>
-<li>[The Craft of Research II]</li>
-<li>[The Craft of Research III]</li>
-<li>[The Craft of Research IV]</li>
-</ul>
+<section id="正しくp値を解釈するための考え方" class="level3">
+<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意っていったの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それがルールなんじゃないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なんだこの禅問答」</p>
+</div>
+</div>
+<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
+<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
+<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
+<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+統計的有意性とp値に関するASA声明
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
+<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<ol type="1">
+<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
+<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
+<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
+<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
+<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
+<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+</ol>
+<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
+<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「さっきのやり取りがきっかけで、p値の使い方について学会の議論があったってわけね。でもまあ抽象的でぴんとこないな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう？“科学的な結論は、有意水準を超えたかどうかにもとづくべきではない”なんてのは、かなり明確に書いてあると思うけど。JCOG9502論文でいえば、原則3や原則5は、p値だけ見るんじゃなくて、生存曲線をじっくり観察してから結論を出そうっていってるんだ。もちろん専門知識がないと、原則がなにを意図しているかはわかりにくい。原則4は、たとえば<strong>多重性の問題（multiplicity）</strong>に関係している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「多重性？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「最近の臨床試験では、多重性っていう統計的な問題が潜んでいることが多い。JCOG9502論文を例にもう少し説明しようか。Statistical Analysis（統計解析）のところを読み返してみて。<strong>alpha error（αエラー）</strong>っていうのは、有意水準ともいうけど、どちらもp値と比べる水準のこと」</p>
+</div>
+<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2016]の”Statistical Analysis”から抜粋）</p>
+<div class="voice-daughter">
+<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「登録が難航したため、苦肉の策でαエラーを0.1に緩めたみたい。本当は試験途中にαエラーは変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「あとさ、ASA声明の原則4とその解説を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
+</div>
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「もともとそれが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+片側p値と両側p値
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
+<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことが分かります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
+<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
 <hr>
-</section>
-</section>
-<section id="how-to-read-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-this-site">How to read this site</h2>
+<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
+<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
+<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<ol type="1">
+<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
+<li>統計学者の間の決まりごと</li>
+<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
+<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>If you start with <strong>Study design I–V</strong>,<br>
-you will get a first outline of “what question to ask, and what data to collect to answer it.”</li>
-<li>If you want to choose by interest:
-<ul>
-<li><strong>To build a better footing for reading papers</strong> → Frequentist thinking / Effects and time<br>
-</li>
-<li><strong>To tidy up your analysis practice</strong> → Adjusting for bias<br>
-</li>
-<li><strong>To organize how you think about causality</strong> → Causal inference<br>
-</li>
-<li><strong>To eventually publish your work as a paper</strong> → The Craft of Research</li>
-</ul></li>
-<li>Each episode is written so that you <em>can</em> read it on its own.<br>
-But if you read across the series, a mental map of “what research is as a practice” starts to form in the background.</li>
+<li><strong>正解は3です</strong></li>
 </ul>
-<p>Pick any place that catches your eye, grab your favourite drink, and read at the pace that feels right for you.</p>
-
+<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
+<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
+<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
+<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
+</ul>
+</section>
+<section id="continuation-of-their-story" class="level3">
+<h3 class="anchored" data-anchor-id="continuation-of-their-story">Continuation of their story</h3>
+<p><a href="../jp/study-design-1.html">Study design I</a></p>
+<p><a href="../jp/study-design-2.html">Study design II</a></p>
+<p><a href="../jp/study-design-3.html">Study design III</a></p>
+<p><a href="../jp/study-design-4.html">Study design IV</a></p>
+<p><a href="../jp/study-design-5.html">Study design V</a></p>
+<p><a href="../jp/frequentist-1.html">Frequentist thinking I</a></p>
+<p><a href="../jp/frequentist-2.html">Frequentist thinking II</a></p>
+<p><a href="../jp/frequentist-3.html">Frequentist thinking III</a></p>
+<p><a href="../jp/frequentist-4.html">Frequentist thinking IV</a></p>
+<p><a href="../jp/frequentist-5.html">Frequentist thinking V</a></p>
+<p><a href="../jp/effects-1.html">Effects and time I</a></p>
+<p><a href="../jp/effects-2.html">Effects and time II</a></p>
+<p><a href="../jp/effects-3.html">Effects and time III</a></p>
+<p><a href="../jp/effects-4.html">Effects and time IV</a></p>
+<p><a href="../jp/effects-5.html">Effects and time V</a></p>
+<p><a href="../jp/logistic-regression-1.html">Adjusting for bias I</a></p>
+<p><a href="../jp/logistic-regression-2.html">Adjusting for bias II</a></p>
+<p><a href="../jp/logistic-regression-3.html">Adjusting for bias III</a></p>
+<p><a href="../jp/logistic-regression-4.html">Adjusting for bias IV</a></p>
+<p><a href="../jp/causal-inference-1.html">Causal inference I</a></p>
+<p><a href="../jp/causal-inference-2.html">Causal inference II</a></p>
+<p><a href="../jp/causal-inference-3.html">Causal inference III</a></p>
+<p><a href="../jp/causal-inference-4.html">Causal inference IV</a></p>
+<p><a href="../jp/publish-a-paper-1.html">The Craft of research I</a></p>
+<p><a href="../jp/publish-a-paper-2.html">The Craft of research II</a></p>
+<p><a href="../jp/publish-a-paper-3.html">The Craft of research III</a></p>
+<p><a href="../jp/publish-a-paper-4.html">The Craft of research IV</a></p>
 
 
 </section>
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1764901729378" data-listing-reading-time-sort="9" data-listing-word-count-sort="1790">
-<div class="thumbnail"><a href="../en/study-design-1.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-1.html" class="no-external">A Story of Coffee Chat and Research Hypothesis</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-1.html" class="no-external">
-Keywords: observational study, outcome, study design
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-1.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1764913846667" data-listing-reading-time-sort="10" data-listing-word-count-sort="1982">
-<div class="thumbnail"><a href="../en/study-design-2.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-2.html" class="no-external">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-2.html" class="no-external">
-Keywords: outcome, simulation
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-2.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

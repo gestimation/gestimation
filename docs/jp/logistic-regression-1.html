@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Coffee and Research</title>
+<title>From Risk to Logistic Regression – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -69,35 +102,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
 
 <script type="text/javascript">
@@ -139,7 +143,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../coffee.scss">
-<link rel="alternate" type="application/rss+xml" title="Coffee and Research – Story and Quiz (EN)" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed quarto-light">
 
@@ -212,29 +216,42 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." id="toc-brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="nav-link active" data-scroll-target="#brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up.">Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</a>
+  <li><a href="#adjusting-for-bias-i-from-risk-to-logistic-regression" id="toc-adjusting-for-bias-i-from-risk-to-logistic-regression" class="nav-link active" data-scroll-target="#adjusting-for-bias-i-from-risk-to-logistic-regression">Adjusting for Bias I − From Risk to Logistic Regression</a>
   <ul class="collapse">
-  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a>
-  <ul class="collapse">
-  <li><a href="#study-design-where-research-begins" id="toc-study-design-where-research-begins" class="nav-link" data-scroll-target="#study-design-where-research-begins">1. Study design — Where research begins</a></li>
-  <li><a href="#frequentist-thinking-practicing-statistics" id="toc-frequentist-thinking-practicing-statistics" class="nav-link" data-scroll-target="#frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</a></li>
-  <li><a href="#effects-and-time-how-effects-evolve" id="toc-effects-and-time-how-effects-evolve" class="nav-link" data-scroll-target="#effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</a></li>
-  <li><a href="#adjusting-for-bias-the-landscape-of-regression" id="toc-adjusting-for-bias-the-landscape-of-regression" class="nav-link" data-scroll-target="#adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</a></li>
-  <li><a href="#causal-inference-thinking-about-what-if" id="toc-causal-inference-thinking-about-what-if" class="nav-link" data-scroll-target="#causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</a></li>
-  <li><a href="#the-craft-of-research-the-work-of-doing-research" id="toc-the-craft-of-research-the-work-of-doing-research" class="nav-link" data-scroll-target="#the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</a></li>
-  </ul></li>
-  <li><a href="#how-to-read-this-site" id="toc-how-to-read-this-site" class="nav-link" data-scroll-target="#how-to-read-this-site">How to read this site</a></li>
+  <li><a href="#ロジスティック回帰をしてみたんだけど" id="toc-ロジスティック回帰をしてみたんだけど" class="nav-link" data-scroll-target="#ロジスティック回帰をしてみたんだけど">ロジスティック回帰をしてみたんだけど</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">From Risk to Logistic Regression</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -358,8 +375,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -369,153 +386,278 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="brew-a-coffee-start-a-conversation.-as-the-steam-rises-and-fades-time-passes-and-the-world-of-statistics-slowly-opens-up." class="level1">
-<h1>Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.</h1>
-<p>This site grew out of small coffee chats between a statistician father and his clinician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.</p>
-<p>Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.<br>
-Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.</p>
+<section id="adjusting-for-bias-i-from-risk-to-logistic-regression" class="level1">
+<h1>Adjusting for Bias I − From Risk to Logistic Regression</h1>
+<div class="serif-block text-right">
+<p>Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model</p>
+</div>
 <hr>
-<section id="episodes" class="level2">
-<h2 class="anchored" data-anchor-id="episodes">Episodes</h2>
-<section id="study-design-where-research-begins" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-where-research-begins">1. Study design — Where research begins</h3>
-<p>Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.</p>
-<ul>
-<li><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
-<li>[A First Step into Survival and Competing Risks Analysis with R] (coming soon)</li>
-<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
-<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
-</ul>
-<p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
-</ul>
-</section>
-<section id="frequentist-thinking-practicing-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">2. Frequentist thinking — Practicing statistics</h3>
-<p>Using a cancer clinical trial as a running example, the father talks about the <strong>frequentist idea</strong> of “what would happen to these numbers if we could repeat the study many times?”</p>
-<ul>
-<li>[Reading a Paper over a Cup of Coffee]</li>
-<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
-<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
-<li>[Understanding Confidence Intervals via Hypothetical Replications in R]</li>
-<li>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</li>
-</ul>
-</section>
-<section id="effects-and-time-how-effects-evolve" class="level3">
-<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">3. Effects and time — How effects evolve</h3>
-<p>Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and <strong>effects that change over time</strong> are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.</p>
-<ul>
-<li>[Silent Confusions Hidden in Percentages]</li>
-<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Collapsibility of Effect Measures in Marginal and Stratified Tables]</li>
-<li>[Risk Ratios and Odds Ratios: When Approximation Works]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
-</ul>
-</section>
-<section id="adjusting-for-bias-the-landscape-of-regression" class="level3">
-<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression">4. Adjusting for bias — The landscape of regression</h3>
-<p>Here we meet <strong>logistic regression for adjustment</strong> and <strong>confounding</strong> — what it is, and what it is not.</p>
-<ul>
-<li>[Adjusting for bias I]</li>
-<li>[Adjusting for bias II]</li>
-<li>[Adjusting for bias III]</li>
-<li>[Adjusting for bias IV]</li>
-<li>[Adjusting for bias V]</li>
-</ul>
-</section>
-<section id="causal-inference-thinking-about-what-if" class="level3">
-<h3 class="anchored" data-anchor-id="causal-inference-thinking-about-what-if">5. Causal inference — Thinking about “what if”</h3>
-<p>Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor paths. We try to talk about the <strong>language of causality</strong> needed to think about “what would have happened if…?”, using as few formulas as possible.</p>
-<ul>
-<li>[Causal inference I]</li>
-<li>[Causal inference II]</li>
-<li>[Causal inference III]</li>
-<li>[Causal inference IV]</li>
-<li>[Causal inference V]</li>
-</ul>
-</section>
-<section id="the-craft-of-research-the-work-of-doing-research" class="level3">
-<h3 class="anchored" data-anchor-id="the-craft-of-research-the-work-of-doing-research">6. The Craft of Research — The work of doing research</h3>
-<p>How do we present results? How do we design figures and tables? How do we revise a manuscript, and how do we live with peer review? This series is a quiet set of lectures on “life after statistics” for people doing research.</p>
-<ul>
-<li>[The Craft of Research I]</li>
-<li>[The Craft of Research II]</li>
-<li>[The Craft of Research III]</li>
-<li>[The Craft of Research IV]</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="how-to-read-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-this-site">How to read this site</h2>
-<ul>
-<li>If you start with <strong>Study design I–V</strong>,<br>
-you will get a first outline of “what question to ask, and what data to collect to answer it.”</li>
-<li>If you want to choose by interest:
-<ul>
-<li><strong>To build a better footing for reading papers</strong> → Frequentist thinking / Effects and time<br>
-</li>
-<li><strong>To tidy up your analysis practice</strong> → Adjusting for bias<br>
-</li>
-<li><strong>To organize how you think about causality</strong> → Causal inference<br>
-</li>
-<li><strong>To eventually publish your work as a paper</strong> → The Craft of Research</li>
-</ul></li>
-<li>Each episode is written so that you <em>can</em> read it on its own.<br>
-But if you read across the series, a mental map of “what research is as a practice” starts to form in the background.</li>
-</ul>
-<p>Pick any place that catches your eye, grab your favourite drink, and read at the pace that feels right for you.</p>
-
-
-
-</section>
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1764901729378" data-listing-reading-time-sort="9" data-listing-word-count-sort="1790">
-<div class="thumbnail"><a href="../en/study-design-1.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-1.html" class="no-external">A Story of Coffee Chat and Research Hypothesis</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-1.html" class="no-external">
-Keywords: observational study, outcome, study design
-</a></div>
+<section id="ロジスティック回帰をしてみたんだけど" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰をしてみたんだけど">ロジスティック回帰をしてみたんだけど</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="metadata">
-<a href="../en/study-design-1.html" class="no-external">
-</a>
+<div class="callout-title-container flex-fill">
+前回までのあらすじ
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1764913846667" data-listing-reading-time-sort="10" data-listing-word-count-sort="1982">
-<div class="thumbnail"><a href="../en/study-design-2.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-2.html" class="no-external">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-2.html" class="no-external">
-Keywords: outcome, simulation
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-2.html" class="no-external">
-</a>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、女医である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。その後いくつか質問するうちに、父のことを「こいつ使える」と思い始めたのだった。</p>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「これみてよ、お父さん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？どうしたの、この資料」</p>
+</div>
+<div class="voice-daughter">
+<p>私「前に相談したがんサバイバーの復職状況を調べる研究についてなんだけどね、うちの診療科だけだけど調査票が集まったから、解析してみたの。その結果をまとめた資料よ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、あれね。ストーマ造設と復職率の関連を調べることにしたんだっけ。資料のどこをみればいいの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「この表なんだけど。ロジスティック回帰をしてみたんだ。その結果をまとめたよ。どうかな」</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>パラメータ</th>
+<th>自由度</th>
+<th>推定値</th>
+<th>標準誤差</th>
+<th>95%信頼区間</th>
+<th><span class="math inline">\(\chi^2\)</span></th>
+<th>p値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>1</td>
+<td>-27.25</td>
+<td>3.03</td>
+<td>-33.20～-21.30</td>
+<td>80.55</td>
+<td>&lt;0.01</td>
+</tr>
+<tr class="even">
+<td>STOMA</td>
+<td>1</td>
+<td>1.41</td>
+<td>1.54</td>
+<td>-16.1～4.45</td>
+<td>0.84</td>
+<td>0.3588</td>
+</tr>
+<tr class="odd">
+<td>AGE</td>
+<td>1</td>
+<td>1.47</td>
+<td>1.48</td>
+<td>-1.42～4.36</td>
+<td>0.99</td>
+<td>0.3197</td>
+</tr>
+<tr class="even">
+<td>SEX</td>
+<td>1</td>
+<td>25.72</td>
+<td>0.00</td>
+<td>25.72～25.72</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>INCOME</td>
+<td>1</td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>-0.00～0.00</td>
+<td>0.58</td>
+<td>0.4481</td>
+</tr>
+</tbody>
+</table>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ふむふむ。よくある一般化線型モデルの結果だね。この表、上司にみせるんでしょ。その前にちょっと手直しした方がいいかもね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱり？そんな気がしてみてもらおうと思ったんだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「まず、Intercept、STOMA、AGE、SEX、INCOMEっていうのがわからないよ。Intercept以外は共変量（covariates）のことだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「共変量って？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「共変量っていうのは、ロジスティック回帰に入れる説明変数のこと。復職率を規定する要因っていえばいいかな。それと、Interceptは回帰式でいう切片項のこと。統計ソフトウェアのアウトプットをそのまま表にしたんでしょ？きっとストーマ、年齢、性別、年収という変数を使ったんだと思うんだけど、データ上の変数名がそのままになっている。それに、出てきた数字をぜんぶ載せると、表がうるさくない？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「めっちゃしゃべるな。そうね、実はRの<code>glm()</code>を使ったんだけど、そこもよくわからなかったんだよね。そこから聞こうかな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「どのあたり？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「<code>glm()</code>の指定の仕方。引数っていうの？」</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「以前、連続データは正規分布、2値データは2項分布ってイメージが大事みたいなこといってたでしょ？<code>glm()</code>もその延長だと思うんだけど、<code>family</code>とか<code>link</code>とか謎で、ロジスティック回帰になってるか自信ない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そこはね、単変量分布を<strong>一般化線型モデル</strong>に広げないと説明できないよ。つまりね、<code>glm()</code>はgeneralized linear modelの略なんだけど、ただの確率分布ってわけじゃなくて、3つのパーツから成り立っているんだ。ざっくりいうとこの3つだよ」</p>
+</div>
+<ul>
+<li><p>確率分布（データの型はなにか）</p></li>
+<li><p>回帰係数×共変量</p></li>
+<li><p>リンク関数（平均をどう変換して線型にするか）</p></li>
+</ul>
+<div class="voice-daughter">
+<p>私「で、それが<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>なの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう。<code>glm()</code>は、確率分布+回帰係数×共変量+リンクを指定してるだけなんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「<code>y ~ x1 + x2</code>は私もわかるよ。調べたい変数をいれるんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね。Rの中では、この式がデザイン行列Xに変換されてる」</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ちょっとマニアックだけど、Rの内部では、<code>model.matrix()</code>っていう関数で、デザイン行列Xを作っている。Xの最初の列はすべて1になる。これは回帰直線でいう切片に対応している。次の列以降はx1とx2に対応する値が計算される。こうしておくと、たとえばx1が文字列でも数値に置き換えて計算できたり、回帰係数との掛け算が行列として計算できたり、なにかと都合がいい。ここまで覚えなくていいけど、仕組みを知っておくと理解が進むでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほどね、じゃあ<code>family</code>ってなに？データの型？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう。<code>family</code>は日本語では分布族の意味だね。正確には<strong>指数型分布族（exponential family）</strong>。前にいったみたいに、データの型にあわせて確率分布を選ぶ」</p>
+</div>
+</div>
+<ul>
+<li>連続データ: gaussian()</li>
+<li>2値データ: binomial()</li>
+<li>計数データ: poisson()</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">gaussian</span>(), <span class="at">data =</span> dat)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">data =</span> dat)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ただしね、一般化線型モデルではデフォルト仕様みたいなものがあって、<code>family</code>を指定すると以下の3つが一度に決まるっていう特徴がある」</p>
+</div>
+<ul>
+<li>yの確率分布</li>
+<li>yの分散</li>
+<li>その確率分布にあったリンク関数</li>
+</ul>
+<div class="voice-daughter">
+<p>私「リンク関数ってなんだ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「リンク関数（link function）は、<strong>平均をどう変換して回帰係数×共変量にあわせるか</strong>だよ。<code>family = binomial()</code>は、デフォルトでロジット関数というリンク関数を使っている。ロジット関数が、2項分布の構造にあった”自然な”リンク関数なんだ。これがロジスティック回帰だよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そっか、よかった。うん、けっこうわかったから今日はもういい」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます。リンク関数をうまく指定してリスク<span class="math inline">\(\pi\)</span>を変換することで、オッズ比以外の関連の指標を求められることが知られています。次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
+<ol type="1">
+<li>リスク差</li>
+<li>リスク比</li>
+<li>ハザード比</li>
+<li>1、2、3すべて求めることができる</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>正解は4です</strong></li>
+</ul>
+<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。詳しくはのちのエピソードで述べますが、リンク関数は、ロジスティック回帰でいえば、リスク<span class="math inline">\(\pi\)</span>を関数<span class="math inline">\(g(\pi)\)</span>を用いて変換しています。</p>
+<p>リスク差を求めるには、<span class="math inline">\(g(\pi)=\pi\)</span>つまり恒等関数を指定します。</p>
+<p>リスク比を求めるには、<span class="math inline">\(g(\pi)=\log(\pi)\)</span> つまり対数関数を指定します。</p>
+<p>ハザード比を求めるには、<span class="math inline">\(g(\pi)=\log\{-\log⁡(1-\pi)\}\)</span>つまり補二重対数（complementary log-log）関数を指定します。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
+<section id="エピソード用語集rスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
+<ul>
+<li><p><a href="../jp/logistic-regression-1.html">From Risk to Logistic Regression</a></p></li>
+<li><p><a href="../jp/logistic-regression-2.html">The Logit Function</a></p></li>
+<li><p><a href="../jp/logistic-regression-3.html">Pitfalls of Logistic Regression with Small Samples</a></p></li>
+<li><p><a href="../jp/logistic-regression-4.html">Why My Logistic Regression Calculation Went Wrong</a></p></li>
+<li><p><a href="../jp/logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
