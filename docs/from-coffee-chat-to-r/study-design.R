@@ -60,10 +60,10 @@ cifplot(Event(time, status) ~ stoma,
 )
 
 #--------------------------------------------------------------------------------------------------
-#- Study design III. A First Step into Survival and Competing Risks Analysis with R ---------------
+#- Study design IV. A First Step into Survival and Competing Risks Analysis with R ----------------
 # 
-#  Original article (En): https://gestimation.github.io/coffee-and-research/en/study-design-3.html
-#  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/study-design-3.html
+#  Original article (En): https://gestimation.github.io/coffee-and-research/en/study-design-4.html
+#  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/study-design-4.html
 #  Required packages: cifmodeling -----------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------
 

@@ -150,7 +150,7 @@ a:hover {
 
 ## エピソード一覧
 
-### 1. Study design — 研究の出発点
+### 1. Study Design — 研究の出発点
 
 研究は「どんな問いを立てるか」から始まります。PICO/PECO、アウトカムの選び方、バイアスの防ぎ方...。娘は父に研究の出発点について尋ねます。
 
@@ -168,21 +168,31 @@ a:hover {
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-### 3. Frequentist thinking — 統計学の思考
+### 3. Frequentist Thinking — 統計学の思考
 
 がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論的なものの見方**を父は語ります。
 
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-このエピソードのRスクリプト一式はこちらから。
+これとこの次のエピソードのRスクリプト一式はこちらから。
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-### 4. Effects and time — 効果は時間とともに
+### 4. Frequentist Experiments — 統計学の実証
+
+頻度論が導く法則は、ただの抽象ではなくシミュレーション実験で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
+
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
+- [Understanding Confidence Intervals via Hypothetical Replications in R]
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+
+これとこの次のエピソードのRスクリプト一式はこちらから。
+
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 4. Effects and Time — 効果は時間とともに
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
@@ -197,7 +207,7 @@ a:hover {
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
-### 5. Adjusting for bias — 回帰モデリングの風景
+### 5. Adjusting for Bias — 回帰モデリングの風景
 
 **ロジスティック回帰**の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして...。
 
@@ -213,11 +223,11 @@ a:hover {
 
 ### 6. Truth — 真実
 
-- [The Little-Known Relationship Between Probability Models and Truth]
-- [Rubin Causal Model]
+- [What Data Cannot Tell Us]
+- [What Could Have Happened]
 - [What Is It That You Want to Know?]
 
-### 7. Causal inference — 因果を見つけるために
+### 7. Causal Inference — 因果を見つけるために
 
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、確率に関する必要最小限の数式を交えて扱います。
 
@@ -226,7 +236,7 @@ a:hover {
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
 - [Backdoor Paths and Confounders]
 
-### 8. Publishing a paper — 研究の営み
+### 8. Publishing a Paper — 研究の営み
 
 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者のための静かな講義。
 
@@ -241,9 +251,9 @@ a:hover {
 
 まずは **Study designシリーズ**を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。
 
-- **論文を読む足場を整えたい**: Frequentist thinking
-- **数字の意味や統計解析の実際をもう少し深く知りたい**: Effects and time / Adjusting for bias
-- **因果という見えない構造を整理したい**: Causal inference
-- **研究を形にして届けるところまで見通したい**: Publishing a paper
+- **論文を読む足場を整えたい**: Frequentist Thinking
+- **数字の意味や統計解析の実際をもう少し深く知りたい**: Effects and Time / Adjusting for bias
+- **因果という見えない構造を整理したい**: Causal Inference
+- **研究を形にして届けるところまで見通したい**: Publishing a Paper
 
 どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。

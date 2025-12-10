@@ -287,6 +287,7 @@ clinical trial, p-value, survival/competing-risk, language/writing
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 

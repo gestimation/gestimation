@@ -1,5 +1,5 @@
 ---
-title: "Rubin Causal Model"
+title: "What Could Have Happened"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Truth II − Rubin Causal Model
+# Truth II − What Could Have Happened
 
 ::: {.serif-block .text-right}
 Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, language/writing, probability model
@@ -202,9 +202,11 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ::: voice-father
 お父さん「話を戻そう。Rubin因果モデルは、解析するモデルや交絡調整について考える前に、潜在結果変数を定義し、その差について推測するんだ」
 ::: 
+::::::::::::::::::::::::::::::::: 
 
 ### 確率モデルと因果モデルの補完関係
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 私「やっぱりわからないな。一般化線型モデルやCox回帰の結果って、なにを見てるの？回帰係数は因果効果とは違うの？」
 :::
@@ -216,6 +218,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - 確率モデル: 観測されたデータがどう生じるかを記述する構造
 - 因果モデル: 観測された世界と、観測されなかった世界の両方で、原因を変えたら結果はどうなっていたかを表す構造
 
+::: voice-father
 お父さん「これはちょうど、データが発生する背後に因果モデルがあるという創造的な階層関係なんだ。因果的な構造に従って生じた現象を測定したものがデータだといってもいい。ほら、さっきいったように潜在結果変数は観測できないでしょ」
 :::
 
@@ -266,6 +269,6 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ### エピソード
 
-- [The Little-Known Relationship Between Probability Models and Truth](truth-1.html)
-- [Rubin Causal Model](truth-2.html)
+- [What Data Cannot Tell Us](truth-1.html)
+- [What Could Have Happened](truth-2.html)
 - [What Is It That You Want to Know?](truth-3.html)

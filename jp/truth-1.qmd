@@ -1,5 +1,5 @@
 ---
-title: "The Little-Known Relationship Between Probability Models and Truth"
+title: "What Data Cannot Tell Us"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Truth I − The Little-Known Relationship Between Probability Models and Truth
+# Truth I − What Data Cannot Tell Us
 
 ::: {.serif-block .text-right}
 Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, language/writing, probability model
@@ -272,6 +272,6 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ### エピソード
 
-- [The Little-Known Relationship Between Probability Models and Truth](truth-1.html)
-- [Rubin Causal Model](truth-2.html)
+- [What Data Cannot Tell Us](truth-1.html)
+- [What Could Have Happened](truth-2.html)
 - [What Is It That You Want to Know?](truth-3.html)
