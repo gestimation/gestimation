@@ -151,7 +151,7 @@ a:hover {
 # Study Design IV − A First Step into Survival and Competing Risks Analysis with R
 
 ::: {.serif-block .text-right}
-Keywords: binary data, observational study, outcome, R, survival/competing-risk
+Keywords: observational study, hypothesis/outcome/population, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -342,8 +342,6 @@ cifplot(Event(time, status) ~ stoma,
 ::::::::::::::::::::::::::::::::: 
 
 
-
-
 ### 生存時間解析と競合リスク解析
 
 ::: {.callout-note appearance="simple" title="シミュレーションデータ（再発あり）の生成"}
@@ -411,8 +409,10 @@ generate_data <- function(n=200, hr1, hr2) {
 
 
 ::: {.callout-note appearance="simple"  title="全生存期間（OS）のKaplan–Meier曲線"}
-OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、Kaplan–Meier曲線で記述します。
+OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、Kaplan–Meier曲線で記述します。まずはOS。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
@@ -428,7 +428,10 @@ cifplot(Event(time_os, status_os) ~ stoma,
 :::
 
 ::: {.callout-note appearance="simple"  title="無再発生存期間（RFS）のKaplan–Meier曲線"}
+次にRFSです。`Event()`で指定する変数以外は変わりません。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r}
 cifplot(Event(time_rfs, status_rfs) ~ stoma,
   data         = dat,
@@ -446,7 +449,9 @@ cifplot(Event(time_rfs, status_rfs) ~ stoma,
 - `status_cir=0` : 打ち切り
 
 さらに`outcome.type = "competing-risk"`を指定することで、Aalen-Johansen曲線を描いています。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r}
 cifplot(Event(time_cir, status_cir) ~ stoma,
   data         = dat,
@@ -478,9 +483,6 @@ cifplot(Event(time_cir, status_cir) ~ stoma,
 お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」
 :::
 ::::::::::::::::::::::::::::::::: 
-
-
-
 
 
 ::: {.callout-note appearance="simple"  title="ランダム誤差とバイアス"}

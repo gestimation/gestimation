@@ -1,9 +1,16 @@
 ---
+title: "DAGs and Conditional Distributions: Two Languages for the Same Structure"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,21 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Causal inference III
-::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study
+
+# Causal inference III − DAGs and Conditional Distributions: Two Languages for the Same Structure
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model
 :::
 
 ------------------------------------------------------------------------

@@ -360,7 +360,7 @@ a:hover {
 <section id="effects-and-time-iii-understanding-collapsibility-of-effect-measures-in-marginal-and-stratified-analyses-with-r" class="level1">
 <h1>Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</h1>
 <div class="serif-block text-right">
-<p>Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model</p>
+<p>Keywords: bias, confounding/collapsibility, effect measure, simulation, generalized linear model</p>
 </div>
 <hr>
 <section id="リスク差リスク比オッズ比どれを使う" class="level3">
@@ -620,6 +620,20 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 <div class="callout-body-container callout-body">
 <p>リスク差、リスク比、オッズ比はいろいろな手段で計算できますが、汎用性が高いのは一般化線型モデル（glm関数）を用いる方法です。リンク関数を選ぶことで、リスク差（link=“identity”）、リスク比（link=“log”）、オッズ比（link=“logit”）を選択することができ、交絡因子の調整もしやすいのが便利なところです。ただし、リスク比とオッズ比では、回帰係数の指数をとるひと手間が必要です。表1のリスク差、リスク比、オッズ比を再現するコードを示しておきますので、参考まで。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">treat =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"palliative"</span>, <span class="st">"palliative"</span>, <span class="st">"chemotherapy"</span>, <span class="st">"chemotherapy"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"palliative"</span>, <span class="st">"chemotherapy"</span>)),</span>
@@ -670,6 +684,7 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -688,7 +703,7 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -697,7 +712,7 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>

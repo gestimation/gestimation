@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time V − From Risk and Rate to Survival and Hazard
 
 ::: {.serif-block .text-right}
-Keywords: binary data, effect measure, R, survival/competing-risk
+Keywords: effect measure, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -259,7 +259,9 @@ generate_data <- function(n=200, hr1, hr2) {
 
 ::: {.callout-note appearance="simple" title="cifplot()によるKaplan-Meier曲線"}
 イメージしやすいように、以前`cifplot()`で描いたKaplan–Meier曲線と`coxph()`の結果を置いておきます。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="cifplot()のRコードと結果はこちら"}
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
@@ -273,7 +275,7 @@ cifplot(Event(time_os, status_os) ~ stoma,
 ```
 :::
 
-::: {.callout-note appearance="simple"  title="coxph()の実行"}
+::: {.callout-note appearance="simple" collapse="true" title="coxph()のRコードと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("survival") #インストールが必要なら実行
 library(survival)
@@ -312,7 +314,7 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
 生存時間中央値を報告してよいのは、どのような場合でしょうか？
 
@@ -322,7 +324,7 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 4.  1、2、3すべて誤り
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解は3です**
 
 生存時間データでは一部の対象者で打ち切りがあること（これ以上生存時間が長いことしかわからない）、中央値（median）の定義を思い出してください。半数以上の対象者がイベントを起こし、生存時間が確定しないと、生存確率は50%以下になりません。

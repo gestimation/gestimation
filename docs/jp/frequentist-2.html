@@ -460,15 +460,17 @@ generate_data()のコードはこちら（データ生成に使用）
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="coxph()の実行">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()のコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-coxph()の実行
+coxph()のコードと結果はこちら
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
@@ -480,20 +482,21 @@ coxph()の実行
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 134 
+  n= 200, number of events= 135 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)    
-stomaWITH STOMA 0.6111    1.8425   0.1773 3.446 0.000568 ***
+                  coef exp(coef) se(coef)    z Pr(&gt;|z|)  
+stomaWITH STOMA 0.4239    1.5279   0.1789 2.37   0.0178 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.843     0.5427     1.302     2.608
+stomaWITH STOMA     1.528     0.6545     1.076     2.169
 
-Concordance= 0.599  (se = 0.024 )
-Likelihood ratio test= 11.7  on 1 df,   p=6e-04
-Wald test            = 11.88  on 1 df,   p=6e-04
-Score (logrank) test = 12.22  on 1 df,   p=5e-04</code></pre>
+Concordance= 0.559  (se = 0.024 )
+Likelihood ratio test= 5.42  on 1 df,   p=0.02
+Wald test            = 5.62  on 1 df,   p=0.02
+Score (logrank) test = 5.7  on 1 df,   p=0.02</code></pre>
+</div>
 </div>
 </div>
 </div>

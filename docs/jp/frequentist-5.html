@@ -390,7 +390,7 @@ a:hover {
 <section id="frequentist-thinking-v-alpha-beta-and-power-the-fundamental-probabilities-behind-sample-size" class="level1">
 <h1>Frequentist Thinking V − Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</h1>
 <div class="serif-block text-right">
-<p>Keywords: clinical trial, simulation, study design, observational study, p-value</p>
+<p>Keywords: p-value, simulation, study design, survival/competing-risk</p>
 </div>
 <hr>
 <section id="あれ何人に調査すればいいんだろう" class="level3">
@@ -980,18 +980,20 @@ a:hover {
 <p>私「でもストーマ保有者って、非保有者より少ないと思うんだけど。半数くらいかな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。 powerSurvEpiパッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:1、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」</p>
+<p>お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al.&nbsp;2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。 <strong>powerSurvEpi</strong>パッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:1、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Rパッケージを用いたサンプルサイズ設計">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled" title="Rパッケージを用いたサンプルサイズ設計のコードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rパッケージを用いたサンプルサイズ設計
+Rパッケージを用いたサンプルサイズ設計のコードはこちら
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("powerSurvEpi") #インストールが必要なら実行</span></span>
@@ -1032,6 +1034,7 @@ Rパッケージを用いたサンプルサイズ設計
 <div class="cell-output cell-output-stdout">
 <pre><code> nE  nC 
  41 161 </code></pre>
+</div>
 </div>
 </div>
 </div>

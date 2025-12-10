@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, simulation, study design, survival/competing-risk
+Keywords: simulation, study design, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -200,7 +200,7 @@ Keywords: clinical trial, simulation, study design, survival/competing-risk
 :::
 
 ::: voice-father
-父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Coxモデルの仮定はすべて正しい。だから理論的にcoverageは95%になるはず」
+父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Cox回帰の仮定はすべて正しい。だから理論的にcoverageは95%になるはず」
 :::
 
 ::: voice-daughter
@@ -212,7 +212,6 @@ Keywords: clinical trial, simulation, study design, survival/competing-risk
 ::: {.callout-note appearance="simple"  title="coxph()を用いた95%信頼区間のシミュレーション"}
 ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
 :::
-
 
 ::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
@@ -264,7 +263,6 @@ generate_data <- function(n=200, hr1, hr2) {
 ```
 :::
 
-
 ::: {.callout-note appearance="simple"  collapse="true" title="calculate_coverage()のコードはこちら（generate_data()とcoxph()を呼んでシミュレーションを実行）"}
 ```{r warning=FALSE}
 calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true) {
@@ -294,8 +292,7 @@ calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true
 ```
 :::
 
-
-::: {.callout-note appearance="simple"  title="calculate_coverage()の実行"}
+::: {.callout-note appearance="simple"  collapse="true" title="calculate_coverage()を実行するRコードと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("survival") #インストールが必要なら実行
 library(survival)
@@ -304,10 +301,9 @@ print(coverage_200)
 ```
 :::
 
-
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」
+私「だいたいcoverageが95%になるっていうのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」
 :::
 
 ::: voice-father
@@ -331,6 +327,7 @@ print(coverage_200)
 :::
 :::::::::::::::::::::::::::::::::
 
+::: {.callout-note appearance="simple"  collapse="true" title="calculate_coverage()を実行するRコードと結果はこちら"}
 ```{r warning=FALSE}
 coverage_100 <- calculate_coverage(model="coxph", n=100, hr1=2, hr2=1.5, hr_true=1.5)
 coverage_400 <- calculate_coverage(model="coxph", n=400, hr1=2, hr2=1.5, hr_true=1.5)
@@ -340,6 +337,8 @@ print(coverage_200)
 print(coverage_400)
 print(coverage_800)
 ```
+:::
+
 
 ### 信頼区間アプローチによるサンプルサイズ設計
 

@@ -361,7 +361,7 @@ a:hover {
 <section id="adjusting-for-bias-v-simpsons-paradox" class="level1">
 <h1>Adjusting for Bias V − Simpson’s paradox</h1>
 <div class="serif-block text-right">
-<p>Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model</p>
+<p>Keywords: confounding/collapsibility, effect measure, generalized linear model</p>
 </div>
 <hr>
 <section id="ロジスティック回帰で調整するってどういうこと" class="level3">
@@ -568,6 +568,20 @@ glm()を用いた膵がんデータの解析
 </div>
 <div class="callout-body-container callout-body">
 <p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に、リスク比は<code>link="log"</code>に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は<code>smoke</code>を入れないモデルで、調整後のオッズ比・リスク比は<code>smoke</code>を入れたモデルで推定しています。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
@@ -618,6 +632,7 @@ glm()を用いた膵がんデータの解析
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
+</div>
 </div>
 </div>
 </div>

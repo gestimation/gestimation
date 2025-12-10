@@ -390,7 +390,7 @@ a:hover {
 <section id="frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r" class="level1">
 <h1>Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R</h1>
 <div class="serif-block text-right">
-<p>Keywords: clinical trial, simulation, study design, survival/competing-risk</p>
+<p>Keywords: simulation, study design, survival/competing-risk</p>
 </div>
 <hr>
 <section id="お父さんその95信頼区間って本当に95なの" class="level3">
@@ -427,7 +427,7 @@ a:hover {
 <p>私「これがcoverageね」</p>
 </div>
 <div class="voice-father">
-<p>父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Coxモデルの仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
+<p>父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Cox回帰の仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
 </div>
 <div class="voice-daughter">
 <p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
@@ -549,15 +549,17 @@ calculate_coverage()のコードはこちら（generate_data()とcoxph()を呼�
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="calculate_coverage()の実行">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled" title="calculate_coverage()を実行するRコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-calculate_coverage()の実行
+calculate_coverage()を実行するRコードと結果はこちら
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
@@ -570,9 +572,10 @@ calculate_coverage()の実行
 </div>
 </div>
 </div>
+</div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「だいたいcoverageが95%になるっていのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
+<p>私「だいたいcoverageが95%になるっていうのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>
@@ -590,6 +593,18 @@ calculate_coverage()の実行
 <p>お父さん「理論的には当たりにくくなったりはしないよ。95%信頼区間の被覆確率はサンプルサイズによらず95%になるはず。n=100、200、400、800のシミュレーション結果をみてみようか」</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="calculate_coverage()を実行するRコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+calculate_coverage()を実行するRコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>coverage_100 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">100</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>coverage_400 <span class="ot">&lt;-</span> <span class="fu">calculate_coverage</span>(<span class="at">model=</span><span class="st">"coxph"</span>, <span class="at">n=</span><span class="dv">400</span>, <span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>, <span class="at">hr_true=</span><span class="fl">1.5</span>)</span>
@@ -609,6 +624,9 @@ calculate_coverage()の実行
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage_800)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.953</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -934,7 +952,7 @@ calculate_coverage()の実行
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -943,7 +961,7 @@ calculate_coverage()の実行
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>

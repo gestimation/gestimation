@@ -151,7 +151,7 @@ a:hover {
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: binary data, continuous data, outcome, R, survival/competing-risk
+Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -243,7 +243,7 @@ Keywords: binary data, continuous data, outcome, R, survival/competing-risk
 :::
 
 ::: voice-father
-お父さん「私たち統計家はね、統計解析の裏で、なんらかの確率分布を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
+お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの確率分布を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
 :::
 
 ::: voice-daughter
@@ -322,7 +322,7 @@ Keywords: binary data, continuous data, outcome, R, survival/competing-risk
 -   生存時間：指数分布`rexp()`から生成した生存時間データ
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 set.seed(46)
 
@@ -357,7 +357,7 @@ head(dat)
 まず、**ggplot2**パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。データを生成したときの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("ggplot2") #インストールが必要なら実行
 library(ggplot2)
@@ -375,7 +375,7 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 次の生存時間データでは、**cifmodeling**パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。生存時間データとその扱いについては、次とその次のエピソードでお話しします。
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("cifmodeling") #インストールが必要なら実行
 library(cifmodeling)

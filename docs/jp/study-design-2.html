@@ -360,7 +360,7 @@ a:hover {
 <section id="study-design-ii-data-have-types" class="level1">
 <h1>Study Design II − Data Have Types</h1>
 <div class="serif-block text-right">
-<p>Keywords: binary data, continuous data, outcome, R, survival/competing-risk</p>
+<p>Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk</p>
 </div>
 <hr>
 <section id="データには型がある" class="level3">
@@ -432,7 +432,7 @@ a:hover {
 <p>私「それくらいはね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「私たち統計家はね、統計解析の裏で、なんらかの確率分布を考えてる。連続データの正規分布とか、2値データの<strong>2項分布（binomial distribution）</strong>とか、計数データの<strong>Poisson分布</strong>とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は<strong>指数分布（exponential distribution）</strong>っていうんだ」</p>
+<p>お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの確率分布を考えてる。連続データの正規分布とか、2値データの<strong>2項分布（binomial distribution）</strong>とか、計数データの<strong>Poisson分布</strong>とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は<strong>指数分布（exponential distribution）</strong>っていうんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「はあ。それとRが関係するわけ？」</p>
@@ -501,13 +501,13 @@ a:hover {
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rスクリプトと結果はこちら
+Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -566,13 +566,13 @@ Rスクリプトと結果はこちら
 <p>まず、<strong>ggplot2</strong>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。データを生成したときの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rスクリプトと結果はこちら
+Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -617,13 +617,13 @@ STOMA           WOMAN MAN
 <p>次の生存時間データでは、<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。生存時間データとその扱いについては、次とその次のエピソードでお話しします。</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rスクリプトと結果はこちら
+Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

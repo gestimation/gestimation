@@ -239,7 +239,7 @@ generate_data <- function(n=200, hr1, hr2) {
 ```
 :::
 
-::: {.callout-note appearance="simple"  title="coxph()の実行"}
+::: {.callout-note appearance="simple" collapse="true" title="coxph()のコードと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("survival") #インストールが必要なら実行
 library(survival)

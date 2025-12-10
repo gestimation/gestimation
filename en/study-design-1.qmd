@@ -151,7 +151,7 @@ a:hover {
 # Study Design I − A Story of Coffee Chat and Research Hypothesis
 
 ::: {.serif-block .text-right}
-Keywords: observational study, outcome, study design
+Keywords: hypothesis/outcome/population, observational study, study design, language/writing
 :::
 
 ------------------------------------------------------------------------

@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking V − Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, simulation, study design, observational study, p-value
+Keywords: p-value, simulation, study design, survival/competing-risk
 :::
 
 
@@ -407,13 +407,12 @@ JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群
 
 ::: voice-father
 お父さん「調査や観察研究だと、群ごとの人数は同じにならないよね。さっきは、書籍（Machin, et al. 2022）の表を利用させてもらったんだけど、設定が複雑になると、付録のソフトウェアやRを利用することになる。
-powerSurvEpiパッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:1、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」
+**powerSurvEpi**パッケージで、あの表とほぼ同じ計算ができるはず。割付け比を、1:1から2:1、4:1に変えて、ストーマ保有者が33%、20%のときの計算をしてみよう」
 :::
-
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple"  title="Rパッケージを用いたサンプルサイズ設計"}
 
+::: {.callout-note appearance="simple"  collapse="true" title="Rパッケージを用いたサンプルサイズ設計のコードはこちら"}
 ```{r warning=FALSE}
 # install.packages("powerSurvEpi") #インストールが必要なら実行
 library(powerSurvEpi)

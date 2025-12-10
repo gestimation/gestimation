@@ -151,7 +151,7 @@ a:hover {
 # Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure
 
 ::: {.serif-block .text-right}
-Keywords: causal model, clinical trial, confounding/collapsibility, study design, observational study
+Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study
 :::
 
 ------------------------------------------------------------------------

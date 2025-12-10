@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>causal-inference-3 – Coffee and Research</title>
+<title>DAGs and Conditional Distributions: Two Languages for the Same Structure – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -181,7 +181,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-causal-inference-iii" id="toc-story-and-quiz-causal-inference-iii" class="nav-link active" data-scroll-target="#story-and-quiz-causal-inference-iii">Story and Quiz − Causal inference III</a>
+  <li><a href="#causal-inference-iii-dags-and-conditional-distributions-two-languages-for-the-same-structure" id="toc-causal-inference-iii-dags-and-conditional-distributions-two-languages-for-the-same-structure" class="nav-link active" data-scroll-target="#causal-inference-iii-dags-and-conditional-distributions-two-languages-for-the-same-structure">Causal inference III − DAGs and Conditional Distributions: Two Languages for the Same Structure</a>
   <ul class="collapse">
   <li><a href="#調整すべき因子かどうかってどうやって見分けるの" id="toc-調整すべき因子かどうかってどうやって見分けるの" class="nav-link" data-scroll-target="#調整すべき因子かどうかってどうやって見分けるの">調整すべき因子かどうかってどうやって見分けるの？</a></li>
   <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
@@ -190,12 +190,32 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DAGs and Conditional Distributions: Two Languages for the Same Structure</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -319,8 +339,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -330,10 +350,10 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-causal-inference-iii" class="level1">
-<h1>Story and Quiz − Causal inference III</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study</p>
+<section id="causal-inference-iii-dags-and-conditional-distributions-two-languages-for-the-same-structure" class="level1">
+<h1>Causal inference III − DAGs and Conditional Distributions: Two Languages for the Same Structure</h1>
+<div class="serif-block text-right">
+<p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model</p>
 </div>
 <hr>
 <section id="調整すべき因子かどうかってどうやって見分けるの" class="level3">

@@ -152,7 +152,7 @@ a:hover {
 # Adjusting for Bias I − From Risk to Logistic Regression
 
 ::: {.serif-block .text-right}
-Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model
+Keywords: confounding/collapsibility, effect measure, generalized linear model, language/writing
 :::
 
 ------------------------------------------------------------------------

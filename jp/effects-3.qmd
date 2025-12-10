@@ -151,7 +151,7 @@ a:hover {
 # Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
 
 ::: {.serif-block .text-right}
-Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model
+Keywords: bias, confounding/collapsibility, effect measure, simulation, generalized linear model
 :::
 
 ------------------------------------------------------------------------
@@ -294,7 +294,9 @@ Keywords: binary data, confounding/collapsibility, effect measure, generalized l
 ::: {.callout-note appearance="simple" title="glm()を用いたリスク差、リスク比、オッズ比の計算"}
 
 リスク差、リスク比、オッズ比はいろいろな手段で計算できますが、汎用性が高いのは一般化線型モデル（glm関数）を用いる方法です。リンク関数を選ぶことで、リスク差（link="identity"）、リスク比（link="log"）、オッズ比（link="logit"）を選択することができ、交絡因子の調整もしやすいのが便利なところです。ただし、リスク比とオッズ比では、回帰係数の指数をとるひと手間が必要です。表1のリスク差、リスク比、オッズ比を再現するコードを示しておきますので、参考まで。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 dat <- data.frame(
   treat = factor(c("palliative", "palliative", "chemotherapy", "chemotherapy"), levels = c("palliative", "chemotherapy")),

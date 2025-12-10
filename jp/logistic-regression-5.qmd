@@ -151,7 +151,7 @@ a:hover {
 # Adjusting for Bias V − Simpson's paradox
 
 ::: {.serif-block .text-right}
-Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model
+Keywords: confounding/collapsibility, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------
@@ -279,9 +279,10 @@ Keywords: binary data, confounding/collapsibility, effect measure, generalized l
 :::::::::::::::::::::::::::::::::
 
 ::: {.callout-note title="glm()を用いた膵がんデータの解析"}
-
 交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、`link="logit"`を用いた`glm()`に、リスク比は`link="log"`に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は`smoke`を入れないモデルで、調整後のオッズ比・リスク比は`smoke`を入れたモデルで推定しています。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
 ```{r warning=FALSE}
 dat <- data.frame(
   cancer = c(1, 0, 1, 0,   1, 0, 1, 0),

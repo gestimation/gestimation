@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 10 Dec 2025 02:35:50 GMT</lastBuildDate>
+<lastBuildDate>Wed, 10 Dec 2025 04:14:06 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -161,7 +161,7 @@ a:hover {
 <section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
 <h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
 <div class="serif-block text-right">
-<p>Keywords: observational study, outcome, study design</p>
+<p>Keywords: hypothesis/outcome/population, observational study, study design, language/writing</p>
 </div>
 <hr>
 <section id="a-daughter-starting-her-first-research-and-her-statistician-father" class="level3">
@@ -434,7 +434,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Wed, 10 Dec 2025 02:35:50 GMT</pubDate>
+  <pubDate>Wed, 10 Dec 2025 04:14:06 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -586,7 +586,7 @@ a:hover {
 <section id="study-design-ii-data-have-types" class="level1">
 <h1>Study Design II − Data Have Types</h1>
 <div class="serif-block text-right">
-<p>Keywords: outcome, simulation</p>
+<p>Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk</p>
 </div>
 <hr>
 <p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:</p>
@@ -1161,7 +1161,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Wed, 10 Dec 2025 02:35:50 GMT</pubDate>
+  <pubDate>Wed, 10 Dec 2025 04:14:06 GMT</pubDate>
 </item>
 </channel>
 </rss>

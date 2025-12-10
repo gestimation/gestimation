@@ -151,7 +151,7 @@ a:hover {
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: outcome, simulation
+Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
