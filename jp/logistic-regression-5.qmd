@@ -412,4 +412,4 @@ print(risk_ratio2)
 
 ### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
 
-- [Truth: What Is It That You Want to Know?](truth.html)
+- [Truth: What Is It That You Want to Know?]

@@ -183,8 +183,7 @@ window.Quarto = {
   <ul>
   <li><a href="#adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples" id="toc-adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples" class="nav-link active" data-scroll-target="#adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples">Adjusting for Bias IV − Why Logistic Regression Fails in Small Samples</a>
   <ul class="collapse">
-  <li><a href="#ロジスティック回帰の計算ができない理由" id="toc-ロジスティック回帰の計算ができない理由" class="nav-link" data-scroll-target="#ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#なぜロジスティック回帰の計算ができなかったのか" id="toc-なぜロジスティック回帰の計算ができなかったのか" class="nav-link" data-scroll-target="#なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</a></li>
   <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
@@ -357,51 +356,17 @@ a:hover {
 <p>Keywords: bias, effect measure, generalized linear model</p>
 </div>
 <hr>
-<section id="ロジスティック回帰の計算ができない理由" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰の計算ができない理由">ロジスティック回帰の計算ができない理由</h3>
+<section id="なぜロジスティック回帰の計算ができなかったのか" class="level3">
+<h3 class="anchored" data-anchor-id="なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「ロジスティック回帰についてなんだけど。ロジット関数のグラフでイメージはわいたんだけどさ。がんサバイバー調査だと、ロジスティック回帰は2群を比較するとき使うんだよね」</p>
+<p>私「お父さん、コーヒー飲んで寛いでいるところわるいんだけど、時間あるかな。ロジスティック回帰についてなんだけど。説明してくれたのはありがたいんだけどね、群作用とか完全分離とか、途中で分かんなくなっちゃってさ。気になって、先に進めないわけよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだったね。じゃあ、続けてロジスティック回帰の下で、2人の対象者を比べるとどうなるかって話をするね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="回帰係数とオッズ比の関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-回帰係数とオッズ比の関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>共変量が1個のとき、ロジスティック回帰は</p>
-<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
-<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
-<p><span class="math inline">\(\log(\frac{\pi_1}{1-\pi_1})=\beta_0\)</span></p>
-<p><span class="math inline">\(\log(\frac{\pi_2}{1-\pi_2})=\beta_0+\beta_1\)</span></p>
-<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
-<p><span class="math inline">\((\frac{\pi_2}{1-\pi_2})\div(\frac{\pi_1}{1-\pi_1})=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
-<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ」</p>
+<p>お父さん「そうだったのか。Rコードを見せてもらったけど、解析自体は間違ってなさそうだよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「前の話だと、Cox回帰はハザード比のモデルなんだっけ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうこと。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。リンク関数はそれぞれ別の関数になる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「じゃあ最後にさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</p>
+<p>私「いや、私自身の問題だよね。納得感というか自信というか。だからさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
@@ -416,7 +381,7 @@ a:hover {
 <div class="callout-body-container callout-body">
 <p><strong>推定に用いられる関数</strong></p>
 <p>以前、ロジスティック回帰の<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと<span class="math inline">\(\pi_i\)</span>が含まれていますが、この式にデータを代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。さらに、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、確率関数の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
-<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に二通り考えられます。</p>
+<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に2通り考えられます。</p>
 <p><strong>完全分離</strong></p>
 <p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
 <p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
@@ -448,27 +413,183 @@ a:hover {
 <p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は、統計的推測が基礎にあるってことかな。統計的推測っていうのは、標本から母集団を調べるっていう考え方のこと。手法でいうと、p値とか信頼区間とか、ああいうやつね。パラメータの数が多すぎると、これらの手法は性能が下がるんだ」</p>
+<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は確率モデルが必ず基礎にあるってことかな。そして、標本から母集団を調べるっていう考え方をする。手法でいうと、p値とか信頼区間とか、ああいうやつね」</p>
 </div>
+<section id="統計手法を選ぶ理由" class="level3">
+<h3 class="anchored" data-anchor-id="統計手法を選ぶ理由">統計手法を選ぶ理由</h3>
 <div class="voice-daughter">
-<p>私「機械学習に統計的推測って考え方はないの？」</p>
+<p>私「はやりだから使っていいのかな。ほら、ニューラルネットワークとかこの前の群作用とか、知らなくてもみんな使ってるよね。問題ないのかな」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「機械学習やってる人も統計学は学んでいるから、ないとはいわないけど、あんまりこだわってないんじゃない？画像認識するとき、p値なんていらないでしょ」</p>
+<p>お父さん「でもね、2項分布とロジット関数のところまでは理解できなかった？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そういうもんかな。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
+<p>私「そこまではできた」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ん？思ったより芯を食った説明ができてるじゃない。さすがだね」</p>
+<p>お父さん「なら合格点だと思う。数理的な手法って奥が深いでしょ。だから、仮に数学的な真実があったとして、究極的には部分的な理解しかできないかもしれない。専門家とユーザーで程度は違うけどね。だから、みんな使ってるっていうのは、使ってもいい理由のひとつにはなる。医療でも、添付文書で有効性が確立していないって書かれた薬が、第一選択だったりするでしょ」</p>
 </div>
+<div class="voice-daughter">
+<p>私「ああ、コミュニティスタンダードのことね。そういうこともあるけど、すっきりはしてないよね、医師はみんな。それに、コミュニティスタンダードの薬は、単にみんな使っているから選ばれたわけじゃない。難病や希少疾患で他に候補がなかったり、エビデンスが足りなくても経験上は効果があるから、その薬を使って治療してるの」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それって、医療上の目的に対してじゅうぶん役に立ってるってことでしょ。ロジスティック回帰も同じじゃない？用途に見合った性能があるって自信を持っていえれば、ところどころ理解が追い付かなくても、使用していいと思う。世の中にはね、いろんな方法が使われてる。でも、すべて3つの理由で正当化されるんだよ。数学と自然科学が支えている、コミュニティが支えている、そして目的が支えている。それぞれが100%じゃなくても、この3つが補いあうことができれば使う意味があるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうもんかな。納得したような、まだ霧が残っているような気もする。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由は分かったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
 </div>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="データの型と統計手法">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+データの型と統計手法
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>アウトカムはデータの型によって4種類に分類されます。</p>
 <ul>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+<li>連続データ （例：血圧やQOL）</li>
+<li>分類データ （例：有害事象の有無）</li>
+<li>計数データ （例：有害事象の発生件数）</li>
+<li>生存時間データ （例：全生存期間）</li>
 </ul>
+<p>さらに、分類データはいくつかの種類があり、カテゴリが2通りのものを2値データ、カテゴリに順序があるものを順序データと呼んでいます。生存時間データの一種には、競合リスクを考慮した競合リスクデータがあります。データの型によって、正規分布や2項分布など確率分布が異なりますよね。そのため、それぞれ異なる統計手法が用いられます。詳しくは表をみてください。</p>
+<p>仮に、ストーマ造設あり・なしと復職状況の関係を調べたいとすると、2つの変数をモデルに当てはめることになるため、回帰モデルを用いて調べたいとします。このときアウトカムを復職の有無（2値データ）とするなら、ロジスティック回帰を選ぶべきです。もし復職までの期間（生存時間データ）とするなら、Cox回帰の方が適切です。</p>
+<p><strong>個人内で反復測定があるか</strong></p>
+<p>同一個人にくり返し臨床検査やアンケートを行うと、似たような検査結果になりますよね。たとえば、朝と晩に血圧を測ると、2つの測定値に相関が生じます。治療前と治療後に、QOL質問票に回答してもらう場合も、その測定値は独立ではありません。このように1人の患者に複数回の測定値があるデータを<strong>反復測定データ</strong>といいます。反復測定データでは、個人内の測定値は独立ではありません。したがって、独立性を仮定している統計手法（たとえば対応のないt検定や<span class="math inline">\(\chi^2\)</span>検定）は不適切です。反復測定データの解析では、<strong>変量効果モデル（random-effects model）</strong>や<strong>一般化推定方程式（generalized estimating equation）</strong>と呼ばれるやや高度な手法が用いられます。この場合の変量効果は、「ひとりひとりの個人の効果」を表しています。これらの方法は、個人内でデータが独立ではないこと（データの相関）を考慮するものです。</p>
+<p><strong>交絡の調整が必要かどうか</strong></p>
+<p><strong>交絡因子（confounder）</strong>とは、治療とアウトカムとの関係を歪める第三の因子のことです。仮に、ストーマ造設あり・なしと復職状況の関係に、年齢が強くかかわっているとしましょう。そして、ストーマ保有者と非保有者で、平均年齢が異なっているとします。このような場合、2群間の年齢の違いを無視するとバイアスが生じます。これを補正するために、ロジスティック回帰がよく用いられます。 ランダム化臨床試験では、比較する群間で実験条件が揃っているため、交絡の調整は不要です。一方、観察研究（コホート研究やケース・コントロール研究）では交絡の調整は必須です。今回題材にした復職率の調査も観察研究の一種ですから、統計解析ではロジスティック回帰やCox回帰が主に用いられるでしょう。最近では交絡を調整して、正しく因果関係を調べるために、因果推論の手法（プロペンシティスコアなど）を用いることが増えてきました（田中2022）。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>データの型</th>
+<th>反復測定</th>
+<th>交絡調整</th>
+<th>統計手法</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>連続データ</td>
+<td>なし</td>
+<td>なし</td>
+<td>対応のない<em>t</em>検定、Wilcoxon順位和検定</td>
+<td>平均の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>個人内で2回測定</td>
+<td>なし</td>
+<td>対応のある<em>t</em>検定、Wilcoxon符号付順位検定</td>
+<td>対応のあるデータ</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>なし</td>
+<td>正規線型モデル</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td>2値データ</td>
+<td>なし</td>
+<td>なし</td>
+<td><span class="math inline">\(\chi^2\)</span>検定</td>
+<td>割合の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>個人内で2回測定</td>
+<td>あり</td>
+<td>McNemar検定</td>
+<td>対応のあるデータ</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>ロジスティック回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td>計数データ</td>
+<td>なし</td>
+<td>なし</td>
+<td><span class="math inline">\(\chi^2\)</span>検定</td>
+<td>発生率の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Poisson回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td>生存時間データ</td>
+<td>なし</td>
+<td>なし</td>
+<td>Kaplan-Meier曲線</td>
+<td>生存曲線の記述</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Cox回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td>競合リスクデータ</td>
+<td>なし</td>
+<td>なし</td>
+<td>Aalen-Johansen曲線</td>
+<td>累積発生率曲線の記述</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Fine-Grayモデル</td>
+<td>回帰モデルの一種</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="エピソード用語集rスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
