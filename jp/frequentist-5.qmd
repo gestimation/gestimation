@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking V − Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
 
 ::: {.serif-block .text-right}
-Keywords: p-value, simulation, study design, survival/competing-risk
+Keywords: probability model, p-value, simulation, study design, survival/competing-risk
 :::
 
 

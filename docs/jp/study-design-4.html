@@ -191,7 +191,6 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#調査項目とデータの型" id="toc-調査項目とデータの型" class="nav-link" data-scroll-target="#調査項目とデータの型">調査項目とデータの型</a></li>
   <li><a href="#生存時間解析と競合リスク解析" id="toc-生存時間解析と競合リスク解析" class="nav-link" data-scroll-target="#生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
@@ -361,7 +360,7 @@ a:hover {
 <section id="study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="level1">
 <h1>Study Design IV − A First Step into Survival and Competing Risks Analysis with R</h1>
 <div class="serif-block text-right">
-<p>Keywords: observational study, hypothesis/outcome/population, simulation, survival/competing-risk</p>
+<p>Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk</p>
 </div>
 <hr>
 <section id="調査項目とデータの型" class="level3">
@@ -761,21 +760,6 @@ Rコードと結果はこちら
 <p>お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ランダム誤差とバイアス">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ランダム誤差とバイアス
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>統計学は誤差を扱う学問ですが、臨床研究では<strong>ランダム誤差（random error）</strong>と<strong>バイアス（bias）</strong>を区別することが大切です。ランダム誤差は、基本的にはゼロを中心としたばらつきを想定しています。一方で、得られた推定値が真の値から系統的にずれていることを、バイアスといいます。臨床研究における統計学の目標は、ランダム誤差を制御し、バイアスを可能な限りゼロに近づけることです。</p>
-<p>たとえるなら、ランダム誤差は的の中心を狙って矢を放つときのばらつき、バイアスは狙いが中心からずれている状態といえます。競合リスクの扱いを間違ったとき生じるKaplan-Meier曲線のバイアスは、ランダム誤差ではありませんよね。ランダム誤差はサンプルサイズを大きくすることで減少させることができますが、バイアスは研究デザインやデータ収集方法を工夫しないと、解消できません。</p>
-<p><img src="study-design-5.png" class="img-fluid"></p>
-</div>
-</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -796,7 +780,7 @@ Rコードと結果はこちら
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -805,7 +789,7 @@ Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>
@@ -814,12 +798,6 @@ Rコードと結果はこちら
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
-</ul>
 </section>
 <section id="エピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>

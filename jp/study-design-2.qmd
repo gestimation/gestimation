@@ -151,7 +151,7 @@ a:hover {
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk
+probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ------------------------------------------------------------------------
@@ -243,7 +243,7 @@ Keywords: clinical trial, hypothesis/outcome/population, probability model, simu
 :::
 
 ::: voice-father
-お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの確率分布を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的な分布ってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
+お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの**確率モデル（probability model）**を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的に使われるモデルってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
 :::
 
 ::: voice-daughter

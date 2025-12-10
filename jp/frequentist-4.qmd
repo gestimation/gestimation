@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R
 
 ::: {.serif-block .text-right}
-Keywords: simulation, study design, survival/competing-risk
+Keywords: probability model, simulation, study design, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -164,7 +164,7 @@ Keywords: simulation, study design, survival/competing-risk
 :::
 
 ::: voice-daughter
-私「ありがとう、ちょうどいいわ。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」
+私「ありがとう、ちょうどいいわ。あのさ、ちょっと気になったんだけど。**95%信頼区間（confidence interval）**です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」
 :::
 
 ::: voice-father
@@ -210,7 +210,7 @@ Keywords: simulation, study design, survival/competing-risk
 
 
 ::: {.callout-note appearance="simple"  title="coxph()を用いた95%信頼区間のシミュレーション"}
-ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは`survival`パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
+ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは**survival**パッケージの`coxph()`です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。
 :::
 
 ::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
@@ -303,7 +303,7 @@ print(coverage_200)
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「だいたいcoverageが95%になるっていうのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」
+私「だいたいcoverageが95%になるっていうのはわかった。でも結局、95%信頼区間ってどう理解すればいいの？」
 :::
 
 ::: voice-father

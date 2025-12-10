@@ -390,7 +390,7 @@ a:hover {
 <section id="frequentist-thinking-iv-understanding-confidence-intervals-via-hypothetical-replications-in-r" class="level1">
 <h1>Frequentist Thinking IV − Understanding Confidence Intervals via Hypothetical Replications in R</h1>
 <div class="serif-block text-right">
-<p>Keywords: simulation, study design, survival/competing-risk</p>
+<p>Keywords: probability model, simulation, study design, survival/competing-risk</p>
 </div>
 <hr>
 <section id="お父さんその95信頼区間って本当に95なの" class="level3">
@@ -400,7 +400,7 @@ a:hover {
 <p>父「熱めのコーヒー淹れたよ。ミルクがすきなのはわかるけど、たっぷり入れると冷めちゃうでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ありがとう、ちょうどいいわ。あのさ、ちょっと気になったんだけど。“95%信頼区間（confidence interval）です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
+<p>私「ありがとう、ちょうどいいわ。あのさ、ちょっと気になったんだけど。<strong>95%信頼区間（confidence interval）</strong>です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
 </div>
 <div class="voice-father">
 <p>父「ん？そりゃ当たってるよ。仮定した確率分布が正しければね。証明もできるよ」</p>
@@ -443,7 +443,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<code>survival</code>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
@@ -575,7 +575,7 @@ calculate_coverage()を実行するRコードと結果はこちら
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「だいたいcoverageが95%になるっていうのはわかった。でも結局、“95%信頼区間”ってどう理解すればいいの？」</p>
+<p>私「だいたいcoverageが95%になるっていうのはわかった。でも結局、95%信頼区間ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>

@@ -185,6 +185,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
   <li><a href="#ロジット関数の特徴" id="toc-ロジット関数の特徴" class="nav-link" data-scroll-target="#ロジット関数の特徴">ロジット関数の特徴</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
@@ -543,7 +544,7 @@ a:hover {
 <p>私「へ？意味わかんない」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクを表す尺度なんだ。死亡と生存を入れ替えたら、その尺度は符号反転するはずだよね？」</p>
+<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？<span class="math inline">\(g(-1\pi)\)</span>は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号反転はするはず」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど。<span class="math inline">\(g(1−\pi)=−g(\pi)\)</span>という関係が成り立つのはなにか探せばいいのね？」</p>
@@ -561,10 +562,16 @@ a:hover {
 <p>お父さん「この4つの条件を満たす滑らかな関数は、実はほとんどひとつしかない」</p>
 </div>
 <p><span class="math display">\[g(\pi)=\log \left(\frac{\pi_i}{1-\pi_i}\right)\]</span></p>
+<div class="voice-daughter">
+
+</div>
+<p>私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」</p>
 </section>
 </div>
-<p>私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」 :::</p>
-<p>::: お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。統計手法はね、大半が人間が勝手に決めたものじゃないんだ。数学的な法則性がそっと姿を現しているんだよ」 ::: :::::::::::::::::::::::::::::::::</p>
+<div class="voice-father">
+
+</div>
+<p>お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。統計手法はね、大半が人間が勝手に決めたものじゃないんだ。数学的な法則性がそっと姿を現しているんだよ」 ::: :::::::::::::::::::::::::::::::::</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="データの型と統計手法">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -753,6 +760,12 @@ a:hover {
 </div>
 </div>
 </div>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
 <section id="エピソード用語集rスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
 <ul>
