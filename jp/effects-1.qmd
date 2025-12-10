@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time I − Silent Confusions Hidden in Percentages
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure, observational study, scientific writing
+Keywords: binary data, effect measure, observational study, scientific writing
 :::
 
 ------------------------------------------------------------------------

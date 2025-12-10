@@ -151,7 +151,7 @@ a:hover {
 # Adjusting for Bias II − Logit: How a Transformation Shapes an Effect
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure, generalized linear model
+Keywords: binary data, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------

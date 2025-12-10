@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time II − Who Is This Percentage About? Target Populations and Attributable Fractions
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure, observational study, scientific writing
+Keywords: binary data, effect measure, observational study, scientific writing
 :::
 
 ------------------------------------------------------------------------

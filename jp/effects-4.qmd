@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time IV − When Odds Ratios Approximate Risk Ratios—and When They Fail
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure
+Keywords: binary data, effect measure
 :::
 
 ------------------------------------------------------------------------

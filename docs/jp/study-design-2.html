@@ -360,7 +360,7 @@ a:hover {
 <section id="study-design-ii-data-have-types" class="level1">
 <h1>Study Design II − Data Have Types</h1>
 <div class="serif-block text-right">
-<p>Keywords: outcome, simulation</p>
+<p>Keywords: binary data, continuous data, outcome, R, survival/competing-risk</p>
 </div>
 <hr>
 <section id="データには型がある" class="level3">
@@ -459,10 +459,10 @@ a:hover {
 <p>お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「また呪文が出てくるんでしょ？」</p>
+<p>私「また呪詛が出てくるんでしょ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。とりあえず<code>library(ggplot2)</code>、<code>library(cifmodeling)</code>って打って。ヒストグラムとKaplan-Meier曲線を教えるよ」</p>
+<p>お父さん「そうだね。とりあえず<code>library(ggplot2)</code>、<code>library(cifmodeling)</code>って打って。<strong>ヒストグラム</strong>と<strong>Kaplan-Meier曲線</strong>を教えるよ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「とりあえず思考停止で打つわ」</p>
@@ -493,12 +493,26 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。</p>
+<p>ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な統計解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。</p>
 <ul>
 <li><p>年齢：正規分布<code>rnorm()</code>から生成した連続データ</p></li>
 <li><p>性別・ストーマ保有：2項分布<code>rbinom()</code>から生成した2値データ</p></li>
 <li><p>生存時間：指数分布<code>rexp()</code>から生成した生存時間データ</p></li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rスクリプトと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -538,6 +552,7 @@ a:hover {
 </div>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="連続データと2値データの要約">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -548,7 +563,21 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>まず、<strong>ggplot2</strong>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
+<p>まず、<strong>ggplot2</strong>パッケージの<code>ggplot()</code>と、<code>table()</code>を使って、ストーマあり群とストーマなし群のデータを<strong>ヒストグラム</strong>と<strong>分割表</strong>で記述しています。データを生成したときの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rスクリプトと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2") #インストールが必要なら実行</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -574,6 +603,7 @@ STOMA           WOMAN MAN
 </div>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="生存曲線による生存時間データの要約">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -584,7 +614,21 @@ STOMA           WOMAN MAN
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>次の生存時間データでは、<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。</p>
+<p>次の生存時間データでは、<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、<strong>Kaplan–Meier曲線</strong>を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。生存時間データとその扱いについては、次とその次のエピソードでお話しします。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rスクリプトと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rスクリプトと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("cifmodeling") #インストールが必要なら実行</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -597,6 +641,7 @@ STOMA           WOMAN MAN
 <figure class="figure">
 <p><img src="study-design-2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -622,7 +667,7 @@ STOMA           WOMAN MAN
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -631,7 +676,7 @@ STOMA           WOMAN MAN
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>
@@ -652,8 +697,8 @@ STOMA           WOMAN MAN
 <ul>
 <li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
 <li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
-<li><p><a href="study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></p></li>
-<li><p>[Outcomes: The Bridge from Data Collection to Analysis]</p></li>
+<li><p><a href="study-design-3.html">Outcomes: The Bridge from Data Collection to Analysis</a></p></li>
+<li><p>[A First Step into Survival and Competing Risks Analysis with R]</p></li>
 <li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
 <li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
 </ul>

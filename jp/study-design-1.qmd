@@ -151,7 +151,7 @@ a:hover {
 # Study Design I − A Story of Coffee Chat and Research Hypothesis
 
 ::: {.serif-block .text-right}
-Keywords: observational study, outcome, study design
+Keywords: observational study, outcome, study design, scientific writing
 :::
 
 ------------------------------------------------------------------------
@@ -249,7 +249,7 @@ Keywords: observational study, outcome, study design
 :::
 
 ::: voice-father
-お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字で、どのような患者が対象かが、研究デザインの大切な1要素だってこと」
+お父さん「じゃあ軽く整理しよう。たとえばPICO/PECOのPは、患者（Patients）または集団（Population）の頭文字をとっている。どのような患者が対象かが、研究デザインの大切な1要素だってこと」
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -272,7 +272,7 @@ Keywords: observational study, outcome, study design
 :::
 
 ::: voice-father
-お父さん「いやいや調査票をつくるときには固めときたいよね。データが集まった後は、どの統計ソフトを使うつもり？」
+お父さん「いや、データが集まっちゃったら変更が効かないでしょ。調査票を確定する前には決めておきたいよね。ああ。そうだね、アウトカムのイメージがまだないんだ。アウトカムはね、どんなデータをどうやって解析するかに関わってくる。解析結果を左右するからきちんと考えておいた方がいいんだ。データが集まった後は、どの統計ソフトを使うつもり？」
 :::
 
 ::: voice-daughter
@@ -371,8 +371,8 @@ PECOになりにくい研究仮説もあります。たとえば、疾患発生�
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
-- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
-- [Outcomes: The Bridge from Data Collection to Analysis]
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

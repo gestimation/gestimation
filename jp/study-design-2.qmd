@@ -151,7 +151,7 @@ a:hover {
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: outcome, simulation
+Keywords: binary data, continuous data, outcome, R, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -279,11 +279,11 @@ Keywords: outcome, simulation
 :::
 
 ::: voice-daughter
-私「また呪文が出てくるんでしょ？」
+私「また呪詛が出てくるんでしょ？」
 :::
 
 ::: voice-father
-お父さん「そうだね。とりあえず`library(ggplot2)`、`library(cifmodeling)`って打って。ヒストグラムとKaplan-Meier曲線を教えるよ」
+お父さん「そうだね。とりあえず`library(ggplot2)`、`library(cifmodeling)`って打って。**ヒストグラム**と**Kaplan-Meier曲線**を教えるよ」
 :::
 
 ::: voice-daughter
@@ -311,15 +311,18 @@ Keywords: outcome, simulation
 :::
 :::::::::::::::::::::::::::::::::::::::
 
+
 ::: {.callout-note appearance="simple" title="シミュレーションデータの生成"}
-ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。
+ここでは、Rを使って簡単なシミュレーションデータを作り、連続データ・2値データ・生存時間データそれぞれについて、代表的な統計解析のデモをします。題材は「ストーマ保有者と非保有者の2群比較」です。
 
 -   年齢：正規分布`rnorm()`から生成した連続データ
 
 -   性別・ストーマ保有：2項分布`rbinom()`から生成した2値データ
 
 -   生存時間：指数分布`rexp()`から生成した生存時間データ
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
 ```{r warning=FALSE}
 set.seed(46)
 
@@ -351,8 +354,10 @@ head(dat)
 :::
 
 ::: {.callout-note appearance="simple" title="連続データと2値データの要約"}
-まず、**ggplot2**パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。シミュレーションの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
+まず、**ggplot2**パッケージの`ggplot()`と、`table()`を使って、ストーマあり群とストーマなし群のデータを**ヒストグラム**と**分割表**で記述しています。データを生成したときの設定を踏まえると、ヒストグラムでは、ストーマありとなしの間で、年齢の分布がずれているはずです。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("ggplot2") #インストールが必要なら実行
 library(ggplot2)
@@ -367,8 +372,10 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 :::
 
 ::: {.callout-note appearance="simple" title="生存曲線による生存時間データの要約"}
-次の生存時間データでは、**cifmodeling**パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。
+次の生存時間データでは、**cifmodeling**パッケージの`cifplot()`を使って、**Kaplan–Meier曲線**を描いてみます。ストーマ保有者より、非保有者の方が、生存曲線が高くなる（生存期間が長くなる）はずです。生存時間データとその扱いについては、次とその次のエピソードでお話しします。
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="Rスクリプトと結果はこちら"}
 ```{r warning=FALSE}
 # install.packages("cifmodeling") #インストールが必要なら実行
 library(cifmodeling)
@@ -379,7 +386,7 @@ cifplot(Event(time, status) ~ stoma,
 ```
 :::
 
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 2009～2014年にFDAによって承認されたがん領域の医薬品は、83品目あったそうです。奏効率（腫瘍縮小や完全寛解）がエンドポイントの臨床試験を根拠として承認されたのは、83品目のうち何割だったか、正しいものを選びなさい。
 
 1.  0～24%
@@ -388,7 +395,7 @@ cifplot(Event(time, status) ~ stoma,
 4.  75～100%
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解は2です**
 
 Kim and Prasad（2016）の総説論文によると、奏効率の結果に基づいて承認されたのは83品目のうち31品目と報告されています。また、エンドポイントの内訳は通常承認と加速承認では異なります。通常承認では、品目55品目のうち48品目が全生存期間、無増悪生存期間、無病生存期間で評価されたのに対し、加速承認では、奏効率を主要エンドポイントとする第II相試験の結果を根拠にした品目が大多数でした。
@@ -402,8 +409,8 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
-- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
-- [Outcomes: The Bridge from Data Collection to Analysis]
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

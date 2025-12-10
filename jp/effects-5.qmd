@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time V − From Risk and Rate to Survival and Hazard
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure, simulation, survival/competing-risk
+Keywords: binary data, effect measure, R, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------

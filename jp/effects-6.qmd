@@ -151,7 +151,7 @@ a:hover {
 # Effects and Time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
 
 ::: {.serif-block .text-right}
-Keywords: effect measure, simulation, survival/competing-risk
+Keywords: effect measure, R, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------

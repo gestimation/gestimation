@@ -1,9 +1,16 @@
 ---
+title: "A First Step into Survival and Competing Risks Analysis with R"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,23 +134,24 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
 ::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Story and Quiz − Study design IV
+# Study Design IV − A First Step into Survival and Competing Risks Analysis with R
 
-::: serif-block
-　　　　　　　　　　　　Keywords: OS/PFS/DFS/response, generalized linear model, survival/competing-risk, observational study
+::: {.serif-block .text-right}
+Keywords: binary data, observational study, outcome, R, survival/competing-risk
 :::
 
 ------------------------------------------------------------------------
@@ -333,6 +341,148 @@ cifplot(Event(time, status) ~ stoma,
 :::
 ::::::::::::::::::::::::::::::::: 
 
+
+
+
+### 生存時間解析と競合リスク解析
+
+::: {.callout-note appearance="simple" title="シミュレーションデータ（再発あり）の生成"}
+前回より少しだけがんの臨床研究を意識して、シミュレーションデータにおける、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを**競合リスク（competing risk）**といいます。
+
+以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」`generate_data()`を定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。なお、`generate_data()`やこのシミュレーションデータは、今後の解説でも再利用する予定です。
+
+-   ストーマ保有：2項分布（`rbinom`）から生成した2値データ
+
+-   生存時間：指数分布（`rexp`）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）
+
+前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは**Kaplan-Meier曲線**でしたよね。それに対して、競合リスク解析では、Kaplan-Meier曲線ではなく、**Aalen-Johansen曲線**を用いるのが正式です。
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発存期間（RFS） -------------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+  return(dat)
+}
+```
+:::
+
+
+::: {.callout-note appearance="simple"  title="全生存期間（OS）のKaplan–Meier曲線"}
+OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、Kaplan–Meier曲線で記述します。
+
+```{r warning=FALSE}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
+library(cifmodeling)
+set.seed(46)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+
+cifplot(Event(time_os, status_os) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple"  title="無再発生存期間（RFS）のKaplan–Meier曲線"}
+
+```{r}
+cifplot(Event(time_rfs, status_rfs) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Relapse-free survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple"  title="累積再発率（CIR）のAalen-Johansen曲線"}
+以下のコードでは、`Event(time_cir, status_cir)`のコーディングによって競合リスクを入力しています。
+
+- `status_cir=1` : 関心のあるイベント（再発）
+- `status_cir=2` : 競合リスク（再発を経験しない死亡）
+- `status_cir=0` : 打ち切り
+
+さらに`outcome.type = "competing-risk"`を指定することで、Aalen-Johansen曲線を描いています。
+
+```{r}
+cifplot(Event(time_cir, status_cir) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk",
+  label.y      = "Cumulative incidence of relapse"
+)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「Aalen-Johansen曲線って、Kaplan–Meier曲線のY軸を逆さにしただけじゃないの」
+:::
+
+::: voice-father
+お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。
+
+> 生存曲線（Kaplan–Meier曲線）と累積発生曲線（Aalen-Johansen曲線）は別の統計手法なので
+> 競合リスクがあるときはAalen-Johansen曲線を用いる。
+
+ちなみに、relapse-free timeじゃなくてcumulative incidence of relapseを使いたいっていったけど、それは**累積発生曲線（cumulative incidence curve）**が、専門的にはAalen-Johansen曲線と同じ意味だからなんだよね。やろうと思えばCIRを解析するとき、Kaplan–Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（`status_cir=2`）ではなく打ち切り（`status_cir=0`）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。
+:::
+
+::: voice-daughter
+私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」
+:::
+
+::: voice-father
+お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」
+:::
+::::::::::::::::::::::::::::::::: 
+
+
+
+
+
 ::: {.callout-note appearance="simple"  title="ランダム誤差とバイアス"}
 
 統計学は誤差を扱う学問ですが、臨床研究では**ランダム誤差（random error）**と**バイアス（bias）**を区別することが大切です。ランダム誤差は、基本的にはゼロを中心としたばらつきを想定しています。一方で、得られた推定値が真の値から系統的にずれていることを、バイアスといいます。臨床研究における統計学の目標は、ランダム誤差を制御し、バイアスを可能な限りゼロに近づけることです。
@@ -367,8 +517,8 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
-- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.html)
-- [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

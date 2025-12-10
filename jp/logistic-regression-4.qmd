@@ -151,7 +151,7 @@ a:hover {
 # Adjusting for Bias IV − Why Logistic Regression Fails in Small Samples
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, effect measure, generalized linear model
+Keywords: binary data, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------

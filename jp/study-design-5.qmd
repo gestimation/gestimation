@@ -151,7 +151,7 @@ a:hover {
 # Study Design 5 − When Bias Creeps In
 
 ::: {.serif-block .text-right}
-Keywords: observational study, outcome, simulation, survival/competing-risk, study design
+Keywords: observational study, outcome, R, survival/competing-risk, study design
 :::
 ------------------------------------------------------------------------
 

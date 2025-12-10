@@ -151,7 +151,7 @@ a:hover {
 # Adjusting for Bias III − Where My Logistic Regression Went Wrong
 
 ::: {.serif-block .text-right}
-Keywords: binary outcome, confounding/collapsibility, effect measure, generalized linear model
+Keywords: binary data, confounding/collapsibility, effect measure, generalized linear model
 :::
 
 
