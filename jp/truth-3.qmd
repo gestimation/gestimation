@@ -1,0 +1,232 @@
+---
+title: "What Is It That You Want to Know?"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Truth III − What Is It That You Want to Know?
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, language/writing, probability model
+:::
+
+------------------------------------------------------------------------
+
+### 研究仮説を言葉にするということ
+
+::: voice-father
+お父さん「はい、コーヒーのおかわり。ミルクはいる？」
+::: 
+
+::: voice-daughter
+私「いる。お父さんのいいたいことがわかってきたよ。データを集めてロジスティック回帰をすると、自動的に結論が出るわけじゃないんだ。それは、うちの診療科だけのデータでRを試してたときから気づいてたよ。有意だったら因果関係あり、有意じゃなかったら因果関係なしみたいに、白黒はっきりしてないんだなって。でも、どんな集団が解析対象なのかや、ストーマ保有者をどんな集団と比べているのか、足りない交絡因子はなにかなど、どの部分の詰めが甘いのかがだんだん見えてきた」
+::: 
+
+::: voice-father
+お父さん「それはよかった。最近は昔よりもデータ駆動型の統計手法を使うことが増えたから、時代のせいもある。AIとかね。でも、どんな真実を知りたいのか言葉にしないと、正しい解析も存在しない。ランダム化臨床試験のように研究仮説を立てて、それにあわせて研究計画書を書けば、比較にならないくらい研究結果の質も高くなる。ランダム誤差とバイアスをコントロールできるように研究をデザインできるからね」
+::: 
+
+::: voice-daughter
+私「確かに、的の中心が決まらないと、矢の狙いが偏っているか調整もできないな。逆算すると、研究仮説の形で真値を固めておかないと、オッズ比が正しいかどうか判断できないんだ」
+::: 
+
+::: voice-father
+お父さん「そう。研究仮説や因果モデルは、調査票やデータよりずっと抽象的に見えるよね。どちらかというと確率モデル寄りに見える。だけどこれは医療者の疑問そのもの。治療効果や予防方法に関する仮説は、自然の摂理ではなく、**よりよい医療技術はどれか**という人間側の問いなんだ」
+::: 
+
+::: voice-daughter
+私「...じゃあ、"真値"ってよく聞く言葉だけど、自然のどこかに転がっている数字じゃないんだね」
+::: 
+::::::::::::::::::::::::::::::::: 
+
+### This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
+
+### エピソード
+
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [Backdoor Paths and Confounders](causal-inference-4.html)
+
+### To clarify which conceptual layers the issues in this episode belong to, it may help to revisit the previous series:
+
+**1. Study design — 研究の出発点**
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
+
+**2. Glossary — 統計学のことば**
+
+- [Statistical Terms in Plain Language](glossary.html)
+
+**3. Frequentist thinking — 統計学の思考**
+
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-4.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-5.html)
+
+**4. Effects and time — 効果は時間とともに**
+
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R](effects-3.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
+- [From Risk and Rate to Survival and Hazard](effects-5.html)
+- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
+
+**5. Adjusting for bias — 回帰モデリングの風景**
+
+- [From Risk to Logistic Regression](logistic-regression-1.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
+- [Simpson's paradox](logistic-regression-5.html)

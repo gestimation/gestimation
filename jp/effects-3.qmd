@@ -151,7 +151,7 @@ a:hover {
 # Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
 
 ::: {.serif-block .text-right}
-Keywords: bias, confounding/collapsibility, effect measure, simulation, generalized linear model
+Keywords: bias, confounding/collapsibility, effect measure, generalized linear model, simulation
 :::
 
 ------------------------------------------------------------------------

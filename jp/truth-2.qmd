@@ -1,0 +1,271 @@
+---
+title: "Rubin Causal Model"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Truth II − Rubin Causal Model
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, language/writing, probability model
+:::
+
+------------------------------------------------------------------------
+
+### 原因を変えたら結果はどうなっていたか
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「今から、"交絡調整"の意味を知るために必要な概念について話すね。これまでの例を思い出してごらん。胃がん手術の術式、ストーマ造設、コーヒー摂取、どれも知りたいのは別の選択をしていたら結果はどうなったかってことじゃない？別の術式だったら助かっていたか、とか」
+:::
+
+::: voice-daughter
+私「そうだね、それはその通り」
+::: 
+
+::: voice-father
+お父さん「残念ながら回帰分析のレールに乗ったままでは、その真実にはたどり着けない。確率モデルではなく**原因を変えたら結果はどうなっていたか**という疑問からスタートすること。因果推論はその問いに答えるための方法論なんだ」
+::: 
+
+::: voice-daughter
+私「げ。別の方法で解析をやり直せっていいたいの？」
+::: 
+
+::: voice-father
+お父さん「ちがうちがう、今は抽象的な話をしている。たとえば実薬とプラセボを比較するランダム化臨床試験だったらどう？全員に実薬を投与した結果とプラセボを投与した結果の差が知りたいんじゃない？それがOSなら生存曲線の差になる。この差こそが**因果効果**なんだ」
+::: 
+
+::: voice-daughter
+私「うーん。そうか。JCOG9502だったら、胃がん手術で術式THを選ぶか、術式LTAを選ぶかを決めたいんだものね。標準治療が決まったら全員その術式になるはずだもの、その話は納得だわ。論文に出ていた生存曲線の差が因果効果にあたるわけか。確かに、そこに確率分布も回帰モデルも出てこないね」
+::: 
+
+::: voice-father
+お父さん「そう。でも、がんサバイバー調査は観察研究で、ランダム化されていない。JCOG9502と同じように考えたくても、"仮にストーマを造設しなかった場合のアウトカム"は存在しない。仮定の話だからね。だからこの観察研究では、観測できないアウトカムを、共変量や回帰モデルで予測するしかない。これはデータ上のアウトカムとは区別して、**潜在結果変数（potential outcome）**と呼ばれている。観測はできないけれど、医学的・論理的に定義できる"もうひとつの結果"というわけだね」
+::: 
+
+::: voice-daughter
+私「ややこしい話になってきた。JCOG9502と私の調査のどこが違うんだろう」
+::: 
+
+::: voice-father
+お父さん「一番の違いははっきりしている。ランダム化しているかどうか。そもそもランダム化臨床試験は、"介入したら結果はどうなるか"を調べるためにデザインされているからね。ターゲット集団も明確に定義されているし、介入もランダムに割付けられていてバイアスもない。がんサバイバー調査のような観察研究では、研究仮説やPECOをどんなに慎重に考えても、曖昧なところは残る。特にPatientsとControlsがね。比較可能性についても、交絡因子のデータがバイアスを調整するためじゅうぶんかどうかわからない」
+::: 
+
+::: voice-daughter
+私「ふむ」
+::: 
+
+::: voice-father
+お父さん「話を戻そう。Rubin因果モデルは、解析するモデルや交絡調整について考える前に、潜在結果変数を定義し、その差について推測するんだ」
+::: 
+
+### 確率モデルと因果モデルの補完関係
+
+::: voice-daughter
+私「やっぱりわからないな。一般化線型モデルやCox回帰の結果って、なにを見てるの？回帰係数は因果効果とは違うの？」
+:::
+
+::: voice-father
+お父さん「ひとつの数字が二重、三重の意味を持っているっていったらいいかな。根っこをたどると、確率モデルと因果モデルは"二階建て"になっている」
+:::
+
+- 確率モデル: 観測されたデータがどう生じるかを記述する構造
+- 因果モデル: 観測された世界と、観測されなかった世界の両方で、原因を変えたら結果はどうなっていたかを表す構造
+
+お父さん「これはちょうど、データが発生する背後に因果モデルがあるという創造的な階層関係なんだ。因果的な構造に従って生じた現象を測定したものがデータだといってもいい。ほら、さっきいったように潜在結果変数は観測できないでしょ」
+:::
+
+::: voice-daughter
+私「うん」
+:::
+
+::: voice-father
+お父さん「だからね、データは影みたいなものなんだ。見たいものは、その少し向こう側にいる」
+:::
+
+::: voice-daughter
+私「そういわれると確かに因果関係の真実は、データの発生する前から存在するのかもね。実感はないけど理解はした。でも、それならどうして最初からロジスティック回帰じゃなくて因果モデルを教えなかったの？」
+:::
+
+::: voice-father
+お父さん「ふむ。もう少し説明が必要だね。ロジスティック回帰や層別解析を使っちゃいけないわけじゃない。ここで知ってほしかったのは、回帰係数やオッズ比を、因果関係を考えるための証拠として正しく解釈するためには、因果モデルが必要だってこと」
+:::
+
+::: voice-daughter
+私「お父さんは専門だからわかってないけど、私にとってはロジスティック回帰もRubin因果モデルも初めて聞く概念なんだよ。Rubin因果モデルって、ある患者に別の方法で治療したら結果はどうなっていたかを分析すればいいんでしょ？それって解剖・病態生理・薬理に関する基礎知識と臨床経験を組み合わせればできそうなことじゃない？」
+:::
+
+::: voice-father
+お父さん「本質的にはその通り。でも、それはあくまで患者ひとりひとりにとっての原因と結果を分析するアプローチになっている。個々の事象に関する因果を単一因果（token causation）っていうんだけど、それと一般法則としての因果には、まだギャップがあるよね」
+:::
+
+::: voice-daughter
+私「トークン？ぴんとこない言葉だけど」
+:::
+
+::: voice-father
+お父さん「たとえば"あの患者さんが助かったのはこの薬のおかげか？"というレベルの話がtoken causationに近い」
+:::
+
+::: voice-daughter
+私「ああ、そういうこと。個々の出来事と一般法則どっちも大事なのはわかる」
+:::
+
+::: voice-father
+お父さん「臨床試験や調査では、集団として得られたデータを統計的に解析することで法則性があるかどうかを調べている。そのための道具を用意するために、確率分布や回帰モデルという構造を考えているんだ。確率モデルと因果モデルは役割が違う」
+:::
+
+::: voice-daughter
+私「また、難しい話に戻ってきたね。コーヒーもう一杯くれる？」
+:::
+::::::::::::::::::::::::::::::::: 
+
+### エピソード
+
+- [The Little-Known Relationship Between Probability Models and Truth](truth-1.html)
+- [Rubin Causal Model](truth-2.html)
+- [What Is It That You Want to Know?](truth-3.html)

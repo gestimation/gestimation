@@ -361,7 +361,7 @@ a:hover {
 <section id="adjusting-for-bias-v-simpsons-paradox" class="level1">
 <h1>Adjusting for Bias V − Simpson’s paradox</h1>
 <div class="serif-block text-right">
-<p>Keywords: confounding/collapsibility, effect measure, generalized linear model</p>
+<p>Keywords: confounding/collapsibility, effect measure, generalized linear model, observational study, simulation</p>
 </div>
 <hr>
 <section id="ロジスティック回帰で調整するってどういうこと" class="level3">
@@ -380,7 +380,7 @@ a:hover {
 <p>お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「賛成」</p>
+<p>私「賛成。いちご大福あるから持ってくる」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「疫学では有名な話なんだけどね。40年前に、“コーヒーを飲むと膵がんリスクが上がる”という論文がでたことがあった」</p>
@@ -389,7 +389,7 @@ a:hover {
 <p>私「いかにもありそうな話だね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうでしょ。でも、疫学研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」</p>
+<p>お父さん「そうでしょ。でも、観察研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふんふん」</p>
@@ -433,7 +433,7 @@ a:hover {
 <p>私「それくらいわかるよ。バイアスが入るんでしょ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。Simpson のパラドックスを使って説明しよう」</p>
+<p>お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。<strong>Simpsonのパラドックス</strong>っていう現象を使って説明しよう」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
@@ -557,7 +557,7 @@ Simpsonのパラドックス
 <p>お父さん「部分的に関係はある。オッズ比は層別したら値が変わりやすい、<strong>併合可能ではない（non-collapsible）</strong>指標だからね。でも、それより重要なことは、ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きいということ。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
+<div class="callout callout-style-simple callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -641,8 +641,17 @@ Rコードと結果はこちら
 <section id="simpsonのパラドックスが起きる条件" class="level3">
 <h3 class="anchored" data-anchor-id="simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</h3>
 <div class="dialogue">
+<div class="voice-daughter">
+<p>私「やっぱりトリックに見えちゃうな、何が起きてるのやら。とりあえず調整しとけっていいたいの？」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「なにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
+<p>お父さん「えっとね、いちばん伝えたいことから話すね。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない。たとえばランダム化臨床試験とかね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん、その説明はわかりやすい」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、その次になにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「うん」</p>
@@ -654,10 +663,10 @@ Rコードと結果はこちら
 <p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん、喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」</p>
+<p>お父さん「喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」</p>
 </div>
 <div class="voice-daughter">
-<p>私「時代を感じるね、仕事終わったらくつろぎたい気持ちはめっちゃわかる」</p>
+<p>私「時代を感じるね、仕事の合間に寛ぎたい気持ちはめっちゃわかる」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「Simpsonのパラドックスのポイントは3つの変数の相関関係なんだ」</p>
@@ -670,41 +679,15 @@ Rコードと結果はこちら
 <p>お父さん「この2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」</p>
 </div>
 <div class="voice-daughter">
-<p>私「曝露とアウトカムと第3の変数の関係性ねえ。交絡の話ってまあまあややこしいね」</p>
+<p>私「曝露とアウトカムと第3の変数の関係性ねえ。2つの条件を確認する時間がほしいな。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か。確かにそうなる。交絡の話ってまあまあややこしいね」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「交絡って、言葉自体になじみがないこともあって複雑に思うだろうけど、実際の研究ではもっとシンプルに考えることもできる。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない」</p>
-</div>
-<section id="simpsonのパラドックスと交絡は同じ概念ではない" class="level3">
-<h3 class="anchored" data-anchor-id="simpsonのパラドックスと交絡は同じ概念ではない">Simpsonのパラドックスと交絡は同じ概念ではない？</h3>
-<div class="voice-daughter">
-<p>私「さっきの2つの条件を確認する時間がほしいな。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「表で起きたことはそういうことで、これがSimpsonのパラドックスだね。でもね、正確にいうとSimpsonのパラドックスと交絡は、数学的には異なる現象なんだ。交絡はそんなに単純な問題じゃない。直感的な説明をするとね。層別前の解析は集団全体のオッズ比でしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうだね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「当たり前だけど、層別後のオッズ比は、喫煙集団のオッズ比と非喫煙集団のオッズ比だよね。どっちが真値なんだろう？ターゲット集団によって真値が変わっていいの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？えっと、そうだね、コーヒーが健康に悪いかどうかは個人差ないと思う」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん。この事例でいえば喫煙が交絡因子なのは間違いないんだよ。でも一般には、層別前と層別後のどっちのオッズ比が真値なのか、統計学の枠組みで決めるロジックはないんだ。データがどんな確率分布に従っているか、誰も知らないからね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「へー」</p>
-</div>
-</section>
 </div>
 </section>
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+<li><p>Simpson EH. The interpretation of interaction in contingency tables. J Royal Stat Soc B 1951;13:238-41</p></li>
+<li><p><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></p></li>
 </ul>
 </section>
 <section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="level3">

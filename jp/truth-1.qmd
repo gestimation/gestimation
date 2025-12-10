@@ -1,0 +1,277 @@
+---
+title: "The Little-Known Relationship Between Probability Models and Truth"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: hero-header
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Truth I − The Little-Known Relationship Between Probability Models and Truth
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, language/writing, probability model
+:::
+
+------------------------------------------------------------------------
+
+### ロジスティック回帰の限界
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「熱いコーヒー淹れてくれる？」
+::: 
+
+::: voice-daughter
+私「いいよ。いっしょに大福もどうぞ」
+::: 
+
+::: voice-father
+お父さん「ありがとう。この前の"コーヒーと膵がん"の話、覚えてる？層別解析やロジスティック回帰で交絡を調整したときのこと」
+::: 
+
+::: voice-daughter
+私「その節はどうも」
+::: 
+:::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple" collapse="true" title="Simpsonのパラドックス"}
+
+前回のテーマであるSimpsonのパラドックスは、調整前後で関連の程度が変わる現象のことです。詳しい中身は覚えていなくてもかまいません。ここでは「調整前と調整後で話が変わりうる」という点だけ思い出してください。
+
+表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。
+
+表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。
+
+表1. 層別前の膵がんリスクとオッズ比
+
+|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
+|--------------|--------------|----------------|----------|
+| 合計         |              |                |          |
+| 　膵がんあり | 15           | 12             |          |
+| 　膵がんなし | 365          | 868            |          |
+| 　リスク     | 3.9%         | 1.4%           | 3倍      |
+
+表2. 層別後の膵がんリスクとオッズ比
+
+|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
+|--------------|--------------|----------------|----------|
+| 喫煙         |              |                |          |
+| 　膵がんあり | 14           | 4              |          |
+| 　膵がんなし | 266          | 76             |          |
+| 　リスク     | 5.0%         | 5.0%           | 1倍      |
+| 非喫煙       |              |                |          |
+| 　膵がんあり | 1            | 8              |          |
+| 　膵がんなし | 99           | 792            |          |
+| 　リスク     | 1.0%         | 1.0%           | 1倍      |
+
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「じゃあ、振り返って考えてみようか。喫煙が交絡因子だったよね。喫煙を調整した結果と調整しない結果がある。どっちを報告する？」
+::: 
+
+::: voice-daughter
+私「ん？そりゃ調整した方でしょ」
+::: 
+
+::: voice-father
+お父さん「だよね。でも交絡因子がAとBの2つあって、ともに曝露とアウトカムの関係をゆがめているとする。AとBの両方を調整したときのオッズ比を、仮に3だとしよう。Aだけ調整したらオッズ比は2、どちらも調整しなかったらオッズ比は3。さあ、Aだけ調整した結果とどちらも調整しない結果、どちらが正しいと思う？」
+::: 
+
+::: voice-daughter
+私「え？えーっと、真値が3なんだから、調整しないほう？」
+::: 
+
+::: voice-father
+お父さん「ところがね、Bのデータはそもそも集めていなかったら？"AとBを調整したときオッズ比は3"なんてわからないよね。これでも"調整しない方が正しい"？」
+::: 
+
+::: voice-daughter
+私「なにがいいたいの？」
+::: 
+
+::: voice-father
+お父さん「真値が見えない状況では、**ただのオッズ比とロジスティック回帰で調整したオッズ比のどちらが真実に近いかなんていえない**ってことだよ。データとは別に、手がかりになるような知識や概念が必要だって思わない？」
+::: 
+
+::: voice-daughter
+私「そんなこといわれてもね。知識を得るために調査してるわけだし。Rに四苦八苦している私にとっては、がんばって調整した結果が正しいって信じるしかないよね」
+::: 
+
+::: voice-father
+お父さん「気持ちはわかるけど、もうちょっとつきあって。この**Simpsonのパラドックスは、交絡という現象と同じもの**だと思ってない？」
+::: 
+
+::: voice-daughter
+私「え？調整したらバイアスが消えるんだよね？そうじゃないの？」
+::: 
+
+::: voice-father
+お父さん「いや、数学的には異なる現象なんだ。交絡はそんなに単純な問題じゃない。直感的な説明をするとね。層別前の解析は集団全体のオッズ比でしょ」
+::: 
+
+::: voice-daughter
+私「そうだね」
+::: 
+
+::: voice-father
+お父さん「当たり前だけど、層別後のオッズ比は、喫煙集団のオッズ比と非喫煙集団のオッズ比だよね。どっちが真値なんだろう？ターゲット集団によって真値が変わっていいの？」
+::: 
+
+::: voice-daughter
+私「ん？えっと、そうだね、コーヒーが健康に悪いかどうかは個人差ないと思う」
+::: 
+
+::: voice-father
+お父さん「うん。この事例でいえば喫煙が交絡因子なのは間違いないんだよ。でも一般には、層別前と層別後のどっちのオッズ比が真値なのか、統計学の枠組みで決めるロジックはないんだ。もちろん、Simpsonのパラドックスは数字のパズルではないし、どっちの解析が正しいかという命題も言葉遊びじゃない。データと真値の関係をどう認識するかに関わる問題なんだ。専門家以外のほとんどが、両者の関係性を真逆にとらえている。そろそろ本当のことを話そう」
+:::
+::::::::::::::::::::::::::::::::: 
+
+### エピソード
+
+- [The Little-Known Relationship Between Probability Models and Truth](truth-1.html)
+- [Rubin Causal Model](truth-2.html)
+- [What Is It That You Want to Know?](truth-3.html)

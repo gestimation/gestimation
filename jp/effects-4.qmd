@@ -240,7 +240,7 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「この表、いっぱい数字があって見方がよくわからないな。対角のところがRR=OR=SOR=1になるのは、$\pi_1$と$\pi_2$が同じ値だからだよね」
+私「この表、いっぱい数字があって見方が分からないな。対角のところがRR=OR=SOR=1になるのは、$\pi_1$と$\pi_2$が同じ値だからだよね」
 :::
 
 ::: voice-father
@@ -287,7 +287,6 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 ### 文献
 
 - VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017;28(6):e58–e60
-
 
 ### エピソード、用語集、Rスクリプト
 

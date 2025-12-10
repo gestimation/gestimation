@@ -211,8 +211,10 @@ a:hover {
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-### 6. Truth — 真値
+### 6. Truth — 真実
 
+- [The Little-Known Relationship Between Probability Models and Truth]
+- [Rubin Causal Model]
 - [What Is It That You Want to Know?]
 
 ### 7. Causal inference — 因果を見つけるために

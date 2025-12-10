@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gestimation.github.io/coffee-and-research/jp/truth.html</loc>
-    <lastmod>2025-12-10T06:59:14.566Z</lastmod>
+    <loc>https://gestimation.github.io/coffee-and-research/jp/truth-3.html</loc>
+    <lastmod>2025-12-10T10:20:12.941Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gestimation.github.io/coffee-and-research/jp/truth-1.html</loc>
+    <lastmod>2025-12-10T10:16:01.434Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/study-design-4.html</loc>
@@ -22,7 +26,7 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/logistic-regression-5.html</loc>
-    <lastmod>2025-12-10T08:17:09.591Z</lastmod>
+    <lastmod>2025-12-10T09:52:56.467Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/logistic-regression-3.html</loc>
@@ -50,7 +54,7 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/effects-4.html</loc>
-    <lastmod>2025-12-10T04:06:17.914Z</lastmod>
+    <lastmod>2025-12-10T08:37:38.466Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/effects-2.html</loc>
@@ -126,11 +130,11 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/effects-1.html</loc>
-    <lastmod>2025-12-10T07:19:58.777Z</lastmod>
+    <lastmod>2025-12-10T10:05:09.801Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/effects-3.html</loc>
-    <lastmod>2025-12-10T07:22:20.935Z</lastmod>
+    <lastmod>2025-12-10T08:35:56.843Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/effects-5.html</loc>
@@ -142,7 +146,7 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/frequentist-3.html</loc>
-    <lastmod>2025-12-10T05:58:38.599Z</lastmod>
+    <lastmod>2025-12-10T10:05:12.479Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/frequentist-5.html</loc>
@@ -150,7 +154,7 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/index.html</loc>
-    <lastmod>2025-12-10T02:34:10.538Z</lastmod>
+    <lastmod>2025-12-10T10:06:58.681Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/logistic-regression-2.html</loc>
@@ -158,7 +162,7 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/logistic-regression-4.html</loc>
-    <lastmod>2025-12-10T08:22:07.595Z</lastmod>
+    <lastmod>2025-12-10T09:57:09.560Z</lastmod>
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/publish-a-paper-1.html</loc>
@@ -178,6 +182,10 @@
   </url>
   <url>
     <loc>https://gestimation.github.io/coffee-and-research/jp/study-design-5.html</loc>
-    <lastmod>2025-12-10T05:42:55.408Z</lastmod>
+    <lastmod>2025-12-10T08:51:04.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gestimation.github.io/coffee-and-research/jp/truth-2.html</loc>
+    <lastmod>2025-12-10T10:18:55.494Z</lastmod>
   </url>
 </urlset>

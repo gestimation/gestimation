@@ -151,7 +151,7 @@ a:hover {
 # Study Design 5 − When Bias Creeps In
 
 ::: {.serif-block .text-right}
-Keywords: bias, confounding/collapsibility, observational study, simulation, survival/competing-risk, study design
+Keywords: bias, confounding/collapsibility, observational study, probability model, simulation, study design, survival/competing-risk
 :::
 ------------------------------------------------------------------------
 
