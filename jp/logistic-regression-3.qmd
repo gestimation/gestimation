@@ -165,7 +165,7 @@ Keywords: confounding/collapsibility, effect measure, hypothesis/outcome/populat
 :::
 
 ::: voice-daughter
-私「えーお手やらわかに。コーヒーももらうわ。この表の話だよね」
+私「えーお手やらわかに。コーヒーもありがとう。この表の話だよね」
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -301,6 +301,9 @@ Keywords: confounding/collapsibility, effect measure, hypothesis/outcome/populat
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
+
+### 足りなかったたくさんの情報
+
 ::: voice-daughter
 私「でも、ロジスティック回帰で交絡因子を調整しなさいっていったのはお父さんなんだよ」
 :::

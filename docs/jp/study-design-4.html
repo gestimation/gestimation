@@ -113,7 +113,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../coffee.scss">
+<link rel="stylesheet" href="coffee.scss">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -367,7 +367,7 @@ a:hover {
 <h3 class="anchored" data-anchor-id="調査項目とデータの型">調査項目とデータの型</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「今、話しかけていいかな、お父さん。がんサバイバーの復職率を調査する話があったでしょ。患者さんに送る調査票をつくってみたんだけど、見てくれる？あ、この前のRも参考になったよ、調査結果が想像できた」</p>
+<p>私「あれ、懐かしい。私が小学生の頃に買ったルービックキューブじゃない、そんなのやってるの。時間があるならちょっといい？がんサバイバーの復職率を調査する話があったでしょ。患者さんに送る調査票をつくってみたんだけど、見てくれる？あ、この前のRも参考になったよ、調査結果が想像できた」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「どれどれ」</p>
@@ -462,7 +462,7 @@ a:hover {
 </div>
 <ul>
 <li>時間変数</li>
-<li>イベント変数</li>
+<li>イベント変数とと</li>
 </ul>
 <div class="dialogue">
 <div class="voice-father">
@@ -770,12 +770,10 @@ Rコードと結果はこちら
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Kaplan-Meier法による生存曲線の推定が妥当な状況として正しいのは、次のうちどれでしょうか。</p>
+<p>CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングのは、次のうちどちらでしょう。</p>
 <ol type="1">
-<li>生存時間が正規分布するとき</li>
-<li>打ち切りの理由が疾患の悪化によらないとき</li>
-<li>2群の打ち切り確率に統計学的な有意差がなかったとき</li>
-<li>試験治療群とコントロール群の間で比例ハザード性が成り立つとき</li>
+<li>CNSR=0</li>
+<li>CNSR=1</li>
 </ol>
 </div>
 </div>
@@ -794,7 +792,7 @@ Rコードと結果はこちら
 <ul>
 <li><strong>正解は2です</strong></li>
 </ul>
-<p>Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これはそれぞれ<em>t</em>検定とCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法の基本的な前提条件です。</p>
+<p>CDISC ADaM ADTTEでは、1がTRUEを表しています。<code>Event()</code>や<code>Surv()</code>など多くの統計パッケージのデフォルトでは、イベント=1、打ち切り=0というコーディングを想定しています。CNSRをそのまま用いることはできません。</p>
 </div>
 </div>
 </div>

@@ -158,6 +158,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ### 研究仮説を言葉にするということ
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
 お父さん「はい、コーヒーのおかわり。ミルクはいる？」
 ::: 
@@ -183,16 +184,14 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
-### This concludes the episode on Truth. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
-
-### エピソード
+### This concludes the Truth series. If you’d like to keep reading over your next cup of coffee, further episodes are waiting:
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
 - [Backdoor Paths and Confounders](causal-inference-4.html)
 
-### To clarify which conceptual layers the issues in this episode belong to, it may help to revisit the previous series:
+### To clarify which conceptual layers the issues in the series belong to, it may help to revisit the previous series:
 
 **1. Study design — 研究の出発点**
 
@@ -211,10 +210,14 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
-- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-4.html)
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-5.html)
 
-**4. Effects and time — 効果は時間とともに**
+**4. Frequentist Experiments — 統計学の実証**
+
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
+
+**5. Effects and time — 効果は時間とともに**
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -223,10 +226,16 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - [From Risk and Rate to Survival and Hazard](effects-5.html)
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
 
-**5. Adjusting for bias — 回帰モデリングの風景**
+**6. Adjusting for bias — 回帰モデリングの風景**
 
 - [From Risk to Logistic Regression](logistic-regression-1.html)
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
 - [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
 - [Simpson's paradox](logistic-regression-5.html)
+
+**7. Truth — 真実**
+
+- [What Data Cannot Tell Us](truth-1.html)
+- [What Could Have Happened](truth-2.html)
+- [What Is It That You Want to Know?](truth-3.html)
