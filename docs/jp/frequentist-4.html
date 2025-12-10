@@ -403,7 +403,7 @@ a:hover {
 <p>私「ありがとう、ちょうどいいわ。あのさ、ちょっと気になったんだけど。<strong>95%信頼区間（confidence interval）</strong>です”って、みんな当たり前のようにいうけど、ほんとに95%も当たってるの？」</p>
 </div>
 <div class="voice-father">
-<p>父「ん？そりゃ当たってるよ。仮定した確率分布が正しければね。証明もできるよ」</p>
+<p>父「ん？そりゃ当たってるよ。仮定した確率モデルが正しければね。証明もできるよ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふーん。じゃあ正しいんだ。ほとんど間違わないってすごいね」</p>
@@ -424,13 +424,19 @@ a:hover {
 <p>父「そうだね、ストーマあり群とストーマなし群のOSを比べよう。真のハザード比は1.5、つまりストーマあり群の方が寿命が1.5倍短い。ハザード比の95%信頼区間は、1000回シミュレーションしたら、1.5を約950回は含んでいるはず」</p>
 </div>
 <div class="voice-daughter">
-<p>私「これがcoverageね」</p>
+<p>私「ん？私、調査は1回しかしないつもりだけど」</p>
 </div>
 <div class="voice-father">
-<p>父「生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Cox回帰の仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
+<p>父「そこにギャップがある。確率モデルって言葉をよく使って話してるでしょ。統計家が話しているモデルは、具体的な研究とは別世界の抽象概念だと思った方がいい。データとRとシミュレーションでつながっているだけ。別世界の誰かが1000回の研究をしたと考えるんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね。」</p>
+<p>私「ふーん。そこで当たりがでた割合がcoverageね」</p>
+</div>
+<div class="voice-father">
+<p>父「そう。生存曲線の形は指数分布で決める。途中で追跡できなかった患者は打ち切り扱いになるけど、それも指数分布で発生させる。この設定だと、Cox回帰の仮定はすべて正しい。だから理論的にcoverageは95%になるはず」</p>
+</div>
+<div class="voice-daughter">
+<p>私「じゃあ、その通りになるかどうか、Rで確かめればいいんだね」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="coxph()を用いた95%信頼区間のシミュレーション">
@@ -443,7 +449,7 @@ coxph()を用いた95%信頼区間のシミュレーション
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のデモで、関数generate_data(hr1, hr2)を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のデモで、<code>generate_data(hr1, hr2)</code>を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
@@ -575,13 +581,13 @@ calculate_coverage()を実行するRコードと結果はこちら
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「だいたいcoverageが95%になるっていうのはわかった。でも結局、95%信頼区間ってどう理解すればいいの？」</p>
+<p>私「だいたいcoverageが95%になるっていうのは確認した。でも結局、95%信頼区間ってどう理解すればいいの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「教科書的にいうとね。同じようなデータを何度も集めて、毎回95%信頼区間を作ったとき、“真の値を含む区間”の割合が0.95になるように設計された指標なんだ。これを”in the long run”の性能って言ったりする。でも、概念的に理解するよりも、シミュレーションを行った方がわかりやすいと思って」</p>
 </div>
 <div class="voice-daughter">
-<p>私「1回の研究で“この区間が当たっている確率が95%”って意味じゃないんだね」</p>
+<p>私「いやわかりにくいだろ。1回の研究で”この区間が当たっている確率が95%“って意味じゃないんだね」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね」</p>
@@ -671,7 +677,7 @@ calculate_coverage()を実行するRコードと結果はこちら
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>割合 π</th>
+<th>割合 <span class="math inline">\(\pi\)</span></th>
 <th style="text-align: right;">0.05</th>
 <th style="text-align: right;">0.10</th>
 <th style="text-align: right;">0.15</th>
@@ -792,7 +798,7 @@ calculate_coverage()を実行するRコードと結果はこちら
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>割合 π</th>
+<th>割合 <span class="math inline">\(\pi\)</span></th>
 <th style="text-align: right;">0.05</th>
 <th style="text-align: right;">0.10</th>
 <th style="text-align: right;">0.15</th>
@@ -895,7 +901,7 @@ calculate_coverage()を実行するRコードと結果はこちら
 <p>私「どうだろう。復職率ってもっと高くない？手術したときの年齢にもよるけど、たとえば患者さんが50歳前後だったら、80%はいってほしいなあ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうなんだ。そうすると復職率80%は非復職率20%と同じことだから、”π=0.2”と”信頼区間幅0.2”のところをみればいい。サンプルサイズは60人」</p>
+<p>お父さん「そうなんだ。そうすると復職率80%は非復職率20%と同じことだから、”<span class="math inline">\(\pi=0.2\)</span>”と”信頼区間幅0.2”のところをみればいい。サンプルサイズは60人」</p>
 </div>
 <div class="voice-daughter">
 <p>私「100人で足りてるじゃん」</p>

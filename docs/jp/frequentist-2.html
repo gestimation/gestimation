@@ -360,7 +360,7 @@ a:hover {
 <section id="frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="level1">
 <h1>Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</h1>
 <div class="serif-block text-right">
-<p>Keywords: clinical trial, p-value, survival/competing-risk</p>
+<p>clinical trial, hypothesis/outcome/population, p-value, survival/competing-risk, language/writing</p>
 </div>
 <hr>
 <section id="生存曲線とハザード比" class="level3">
@@ -482,20 +482,20 @@ coxph()のコードと結果はこちら
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 145 
+  n= 200, number of events= 140 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)    
-stomaWITH STOMA 0.7029    2.0196   0.1737 4.046 5.21e-05 ***
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3490    1.4176   0.1812 1.926    0.054 .
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA      2.02     0.4952     1.437     2.839
+stomaWITH STOMA     1.418     0.7054    0.9939     2.022
 
-Concordance= 0.584  (se = 0.022 )
-Likelihood ratio test= 15.71  on 1 df,   p=7e-05
-Wald test            = 16.37  on 1 df,   p=5e-05
-Score (logrank) test = 16.99  on 1 df,   p=4e-05</code></pre>
+Concordance= 0.543  (se = 0.024 )
+Likelihood ratio test= 3.59  on 1 df,   p=0.06
+Wald test            = 3.71  on 1 df,   p=0.05
+Score (logrank) test = 3.75  on 1 df,   p=0.05</code></pre>
 </div>
 </div>
 </div>

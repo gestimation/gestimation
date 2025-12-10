@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, p-value, scientific writing, survival/competing-risk
+Keywords: clinical trial, hypothesis/outcome/population, p-value, language/writing
 :::
 
 ------------------------------------------------------------------------

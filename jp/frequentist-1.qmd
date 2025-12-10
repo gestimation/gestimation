@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking I − Reading a Paper over a Cup of Coffee
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, p-value, survival/competing-risk
+clinical trial, p-value, survival/competing-risk, language/writing
 :::
 
 

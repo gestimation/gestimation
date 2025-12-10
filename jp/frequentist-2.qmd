@@ -151,7 +151,7 @@ a:hover {
 # Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, p-value, survival/competing-risk 
+clinical trial, hypothesis/outcome/population, p-value, survival/competing-risk, language/writing
 :::
 
 ------------------------------------------------------------------------
