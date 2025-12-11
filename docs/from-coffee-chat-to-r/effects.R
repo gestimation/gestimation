@@ -53,7 +53,6 @@ print(odds_ratio)
 #--------------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
-set.seed(46)
 dat <- generate_data(hr1 = 2, hr2 = 1.5)
 
 #- Analysis of OS using cifplot() --------------------------

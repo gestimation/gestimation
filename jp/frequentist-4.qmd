@@ -223,6 +223,7 @@ Keywords: probability model, simulation, survival/competing-risk
 ::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
+  set.seed(46)
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
@@ -284,7 +285,6 @@ Kaplan-Meier曲線とAalen-Johansen曲線は、どちらも`cifmodeling`パッ�
 ```{r}
 # devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
 library(cifmodeling)
-set.seed(46)
 dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
 
 aj_event1 <- cifplot(Event(time_cir, status_cir) ~ stoma,

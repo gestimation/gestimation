@@ -69,6 +69,7 @@ cifplot(Event(time, status) ~ stoma,
 
 #- Definition of function ----------------------------------
 generate_data <- function(n = 200, hr1, hr2) {
+  set.seed(46)
   # Stoma: 1 = with stoma, 0 = without stoma
   stoma <- rbinom(n, size = 1, prob = 0.4)
   # Sex: 0 = WOMAN, 1 = MAN

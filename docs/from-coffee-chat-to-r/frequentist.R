@@ -7,7 +7,6 @@
 #---------------------------------------------------------------------------------------------------------
 
 #- Generation of data frame "dat" --------------------------
-set.seed(46)
 dat <- generate_data(hr1 = 2, hr2 = 1.5)  # true HR for death = 1.5
 
 #- Analysis using coxph() ----------------------------------
@@ -28,6 +27,7 @@ summary(fit)
 
 #- Definition of function ----------------------------------
 generate_data <- function(n = 200, hr1, hr2) {
+  set.seed(46)
   # Stoma: 1 = with stoma, 0 = without stoma
   stoma <- rbinom(n, size = 1, prob = 0.4)
   # Sex: 0 = WOMAN, 1 = MAN
@@ -85,7 +85,6 @@ generate_data <- function(n = 200, hr1, hr2) {
 }
 
 #- Generation of data frame "dat" --------------------------
-set.seed(46)
 dat <- generate_data(hr1 = 2, hr2 = 1.5)
 
 #- Aalen-Johansen curves of CIR using cifplot() ------------
