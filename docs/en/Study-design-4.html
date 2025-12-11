@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Outcomes: The Bridge from Data Collection to Analysis – Coffee and Research</title>
+<title>A First Step into Survival and Competing Risks Analysis with R – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,35 +112,6 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="coffee.scss">
 </head>
@@ -216,10 +187,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#study-design-iv-the-bridge-from-data-collection-to-analysis" id="toc-study-design-iv-the-bridge-from-data-collection-to-analysis" class="nav-link active" data-scroll-target="#study-design-iv-the-bridge-from-data-collection-to-analysis">Study Design IV − The Bridge from Data Collection to Analysis</a>
+  <li><a href="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" id="toc-study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="nav-link active" data-scroll-target="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r">Study Design IV − A First Step into Survival and Competing Risks Analysis with R</a>
   <ul class="collapse">
-  <li><a href="#turning-a-questionnaire-into-data" id="toc-turning-a-questionnaire-into-data" class="nav-link" data-scroll-target="#turning-a-questionnaire-into-data">Turning a questionnaire into “data”</a></li>
-  <li><a href="#episodes-and-r-script" id="toc-episodes-and-r-script" class="nav-link" data-scroll-target="#episodes-and-r-script">Episodes and R-script</a></li>
+  <li><a href="#調査項目とデータの型" id="toc-調査項目とデータの型" class="nav-link" data-scroll-target="#調査項目とデータの型">調査項目とデータの型</a></li>
+  <li><a href="#生存時間解析と競合リスク解析" id="toc-生存時間解析と競合リスク解析" class="nav-link" data-scroll-target="#生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</a></li>
+  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -229,7 +201,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Outcomes: The Bridge from Data Collection to Analysis</h1>
+<h1 class="title">A First Step into Survival and Competing Risks Analysis with R</h1>
 </div>
 
 
@@ -385,162 +357,128 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="study-design-iv-the-bridge-from-data-collection-to-analysis" class="level1">
-<h1>Study Design IV − The Bridge from Data Collection to Analysis</h1>
+<section id="study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="level1">
+<h1>Study Design IV − A First Step into Survival and Competing Risks Analysis with R</h1>
 <div class="serif-block text-right">
-<p>Keywords: generalized linear model, outcome, simulation, survival/competing-risk</p>
+<p>Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk</p>
 </div>
 <hr>
-<section id="turning-a-questionnaire-into-data" class="level3">
-<h3 class="anchored" data-anchor-id="turning-a-questionnaire-into-data">Turning a questionnaire into “data”</h3>
+<section id="調査項目とデータの型" class="level3">
+<h3 class="anchored" data-anchor-id="調査項目とデータの型">調査項目とデータの型</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Hey Dad, quick question. And yes, there’s coffee.”</p>
+<p>私「あれ、懐かしい。私が小学生の頃に買ったルービックキューブじゃない、そんなのやってるの。時間があるならちょっといい？がんサバイバーの復職率を調査する話があったでしょ。患者さんに送る調査票をつくってみたんだけど、見てくれる？あ、この前のRも参考になったよ、調査結果が想像できた」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Then I’m listening.”</p>
+<p>お父さん「どれどれ」</p>
+</div>
+<p><img src="study-design-4-1.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「復職率の定義はなに？」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “You remember that return-to-work survey for cancer survivors? I finally drafted the questionnaire we’re going to mail from our hospital. Can you take a look and tell me if it’s…statistically suicidal?”</p>
+<p>私「どういうこと？」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Let’s see…How exactly are you going to define the <strong>return-to-work proportion</strong>?”</p>
+<p>お父さん「調査票を見ただけじゃ、この質問項目で十分かどうかわからないってこと。手術日から調査日の間に、復職を希望した患者さんが、希望どおり復職できたかどうかを調べたいのかな？」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “That’s already a hard question?”</p>
+<p>私「それもいいんだけど、復職を希望してないって回答した患者さんのなかに、会社の方針などの理由で復職をあきらめた患者さんも含まれるかもしれない。だから、復職率を計算するとき、分母は、復職を希望した患者さんじゃなくて、手術を受けた患者さん全員にしたいわ。そうした方が、就労実態がわかりやすそうだもの」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yup. It always is.”</p>
+<p>お父さん「手術日から調査日の間の復職を調べたいかどうかについては？」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Okay…here’s how I was thinking. Among all patients who had curative surgery, I want to know who <strong>has returned to work</strong> and who <strong>hasn’t</strong> within a certain time period. I don’t want to restrict the denominator to only those who <em>say</em> they want to go back to work, because some people might have given up because of workplace issues.”</p>
+<p>私「えーっと。調査票に回答してもらうタイミングは患者さんによってまちまちになりそうだから、調査日は使いたくない。1年以内に復職できるかを定義にするのはどうかな？あ！ 復職日を答えてもらえばいいのかも！」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Good. That’s a thoughtful choice. So what time window are you using?”</p>
+<p>お父さん「復職日はあった方がいいよね。そうすると、復職状況から解析用の“変数”をつくるには、分類データと生存時間データの2通りが考えられる。それはさておき、手術後に亡くなった場合はどうするの？」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “I don’t want to use ‘survey date’ because the response timing will vary a lot between patients. So I was thinking of defining it as:</p>
-<blockquote class="blockquote">
-<p>‘Returned to work within 1 year after surgery.’</p>
-</blockquote>
-<p>And then I realized… I should probably ask for the <strong>actual date of return-to-work</strong> in the questionnaire.”</p>
+<p>私「入院中に亡くなった場合は、調査対象に含めない。でも、術後再発による死亡を分母から除外するのは変な気がする」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yes, that date is very useful. If you have it, you can turn the same answer into:”</p>
+<p>お父さん「そうだね。除外するとバイアスが生じると思う。ターゲットにしている集団からずれちゃうからね。がん患者を追跡するような研究をするとき、大切なことが3つある。1つ、どのタイミングを<strong>時間原点</strong>にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」</p>
+</div>
 </div>
 <ul>
-<li>Categorical data (returned within 1 year: yes/no)</li>
-<li>Survival data (time from discharge to return-to-work)</li>
+<li>時間原点を定義する</li>
+<li>追跡期間の目標を設定し、その時点までは可能な限り情報を収集する</li>
+<li>時間原点後に生じたイベントは除外したり、層別に用いたりしない</li>
 </ul>
+<div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Two birds with one question. Efficient. What about patients who <strong>die</strong> after surgery, though?”</p>
+<p>私「後からバイアスがあるとか言われたくないもんね。ふむふむ」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Important point. If someone dies after your <strong>time origin</strong>, you shouldn’t quietly drop them from the denominator. That would create bias—especially in a cancer survivor study.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “So what should I do?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “In follow-up studies of cancer patients, I always tell people:”</p>
-</div>
-<ol type="1">
-<li>Decide a clear <strong>time origin</strong> – for you, I’d recommend the <strong>discharge date</strong>.<br>
-</li>
-<li>Decide a <strong>follow-up period</strong> – here, ‘1 year after discharge’.<br>
-</li>
-<li>Make a serious effort to collect outcome information for <strong>all patients</strong> in the target population, including deaths.</li>
-</ol>
-<div class="voice-father">
-<p>Dad: “If the target population is ‘rectal cancer patients after curative surgery at our hospital’, you want to know what happened to <em>all</em> of them, not just the ones who kindly mail back questionnaires.”</p>
+<p>お父さん「以前、“PECO”という要素を使って臨床疑問を構造化したらってアドバイスしたよね。Pが根治切除後の直腸がん患者さんだったら、その集団をもれなく調査しないといけない」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Right. I don’t want to design a study where the only people included are those with good energy and good stationery habits.”</p>
+<p>私「分類データと生存時間データってなに？」</p>
 </div>
-<section id="categorical-data-vs-survival-time-data" class="level3">
-<h3 class="anchored" data-anchor-id="categorical-data-vs-survival-time-data">Categorical data vs survival time data</h3>
 <div class="voice-father">
-<p>Dad: “Let’s organize this a bit. What is your <strong>outcome</strong> in this study?”</p>
+<p>お父さん「これもこの前話したでしょ。統計解析を行ううえで基本になるのが“データの型”で、分類データと生存時間データはその種類だよ」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “The main one is:</p>
-<blockquote class="blockquote">
-<p>Returned to work within one year after discharge (yes/no).”</p>
-</blockquote>
+<p>私「いや、先週の話だし、私忙しいし」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Perfect. That gives you binary data. You can then compute the <strong>return-to-work proportion</strong> in each group, and compare them.”</p>
+<p>お父さん「調査票を少し手直ししたから、これを使ってもう一度話すよ」</p>
+</div>
+<p><img src="study-design-4-2.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「分類データは、この場合、患者のアウトカムを分類したものだよ。1年以内に復職したかどうかをアウトカムにしたらどうかなっていってたよね」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Including patients who died, as ‘did not return’, right?”</p>
+<p>私「うん」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yes, as long as that’s clearly defined and consistent. But if you want a richer picture,<br>
-you could use <strong>three categories</strong> instead of just two:”</p>
-</div>
-<ol type="1">
-<li>Returned within 1 year<br>
-</li>
-<li>Alive but did not return within 1 year<br>
-</li>
-<li>Died within 1 year without returning to work</li>
-</ol>
-<div class="voice-father">
-<p>Dad: “That already separates ‘can’t work because I died’ from ‘still alive but didn’t go back’.”</p>
+<p>お父さん「たとえば、“1年以内に復職あり”を分類1、“1年以内に復職なし”を分類2にしたら、2値データと呼ばれる分類データの一種になる。これは調査票から調べられるし、復職率も計算できるよね」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Okay, that does sound more honest.”</p>
+<p>私「うん。1年以内の死亡を復職なしって扱えばね」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Now, if you also collect the <strong>date of return-to-work</strong>, you can create <strong>survival data</strong>.”</p>
+<p>お父さん「でも就労状況を集計するときは2値データではなく、3カテゴリの分類データの方がいい。“1年以内に復職あり”を分類1、“1年以内に復職なし（死亡以外の理由のため）”を分類2、“1年以内に復職なし（死亡のため）”を分類3にしたらどう？もっと詳細にアウトカムが把握できるでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Even though the event is not ‘death’?”</p>
+<p>私「うんうん。じゃあ生存時間データはなんだっけ？OSってこと？」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Right. ‘Survival time’ is a bit misleading as a name. Statistically, what matters is:</p>
-<blockquote class="blockquote">
-<p>time from the <strong>time origin</strong> to the <strong>event of interest</strong>.</p>
-</blockquote>
-<p>In your case, the event is ‘return-to-work’.”</p>
+<p>お父さん「たしかに全生存期間（OS）は生存時間データの一種だよ。名前から誤解されがちだけど、それ以外にもあるんだ。生存時間データがどういうものかっていうと、時間原点から“イベント”までにかかった時間を表す変数のこと」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “So if someone is discharged on April 1 and returns to work on April 30, time-to-event = 30 days.”</p>
+<p>私「復職状況も生存時間データになるの？」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Exactly. Now think about patients who haven’t returned to work by the time you close the survey. For them, <strong>time-to-return</strong> isn’t observed yet. That’s where <strong>censoring</strong> comes in.”</p>
+<p>お父さん「そうすることもできる。この場合は、“退院日から復職日までの期間”を考えればいい。たとえばね、4月1日に退院して、4月30日に復職したとしたら、この患者の生存時間データは30-1+1=30日になる。これだとただの日数だから、連続データとの違いがはっきりしないけど、生存時間データの本質は、<strong>打ち切り （censoring）</strong>があることなんだ。調査日までに復職しなかった場合、退院日から復職日までの期間は存在しないでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Right. They’re still in limbo.”</p>
+<p>私「まあそうだけど、それでいいんじゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “So survival data always comes as a <strong>pair</strong>:“</p>
+<p>お父さん「統計解析のソフトウェアを使うとき一工夫が必要で、調査日の時点で復職しなかった、つまり復職の追跡が打ち切られたという情報を、入力してあげなければならない。だから生存時間データは、2つの変数が組になっているんだ。</p>
+</div>
 </div>
 <ul>
-<li>a time variable</li>
-<li>a <strong>censoring indicator</strong></li>
+<li>時間変数</li>
+<li>イベント変数とと</li>
 </ul>
+<div class="dialogue">
 <div class="voice-father">
-<p>Me: “I can imagine an example like:”</p>
+<p>お父さん「イベント変数は、いわゆる生存時間データの場合は、イベントが観察されたか、打ち切りになったかを表す2値データ。時間変数は、この場合は“退院日から復職日までの期間”か“退院日から調査日までの期間”のどちらかになる」</p>
 </div>
-</section>
-</div>
-<ul>
-<li>time = min( time to return-to-work, time to last follow-up )<br>
-</li>
-<li>status = 1 if returned, 0 if not returned by last follow-up</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="Handling survival data in R">
+<div class="callout callout-style-simple callout-note callout-titled" title="生存時間データの入力">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Handling survival data in R
+生存時間データの入力
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Since survival data consists of pairs of variables, they must be specified as pairs when inputting into R functions. The <code>survfit()</code> and <code>coxph()</code> functions in the <code>survival</code> package actually provide a dedicated input function, <code>Surv()</code>. Input specifications vary across packages; for example, the <code>mets</code> package uses <code>Event()</code>. The <code>cifplot()</code> function in the <code>cifmodeling</code> package supports both <code>Surv()</code> and <code>Event()</code>.</p>
+<p>生存時間データは2つの変数の組であるため、Rの関数に入力するときもペアで指定する必要があります。<strong>survival</strong>パッケージの<code>survfit()</code>や<code>coxph()</code>では、実は入力専用の関数<code>Surv()</code>を用意しています。入力の仕様はパッケージによってまちまちで、たとえば<strong>mets</strong>パッケージでは<code>Event()</code>を別に定義して用いています。<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>は、<code>Surv()</code>と<code>Event()</code>の両方に対応しています。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
@@ -561,225 +499,311 @@ Handling survival data in R
 </div>
 </div>
 </div>
-<div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “But where do <strong>deaths</strong> go in that picture?”</p>
+<p>私「えーっと、イベント変数は2値データってことは、すべての患者さんで復職か、打ち切りかの2択しかないってこと？死亡はどうなるの？」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “There are two ways to think about it. One is a simple approach that treats deaths as ‘did not return to work’. In the censoring indicator, death would be coded as <strong>no event</strong> if you only care about return-to-work. But there is a more refined approach. In <strong>competing risks analysis</strong>, death is not just censored — it’s a <strong>competing event</strong> that prevents return-to-work from happening.”</p>
+<p>お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、<strong>競合リスク （competing risk）</strong>という別の扱い方もある。簡単にいうと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Competing risks again. You really like those.”</p>
+<p>私「ああ、死亡が競合リスクってことね」</p>
 </div>
 <div class="voice-father">
-<p>Dad: “They show up a lot in medical data. If you treat all deaths as just censored, you’re implicitly saying:</p>
-<blockquote class="blockquote">
-<p>‘If they hadn’t died, their chance of returning-to-work<br>
-would be the same as for people still alive.’</p>
-</blockquote>
-<p>In reality, that’s often not true.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Yeah, that would be…optimistic.”</p>
-</div>
-<hr>
-<section id="a-quick-map-of-data-types-and-methods" class="level3">
-<h3 class="anchored" data-anchor-id="a-quick-map-of-data-types-and-methods">A quick map of data types and methods</h3>
-<div class="voice-father">
-<p>Dad: “Since we’ve talked about data types a few times now, let’s draw a little map. Say we’re thinking about:</p>
-<ul>
-<li>what kind of <strong>outcome</strong> we have,<br>
-</li>
-<li>whether we have <strong>repeated measurements</strong>, and<br>
-</li>
-<li>whether we need to <strong>adjust for confounding</strong>.”</li>
-</ul>
-</div>
-<div class="voice-daughter">
-<p>Me: “This sounds like the part where you normally pull out a slide.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Today we get the short version.”</p>
-</div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 25%">
-<col style="width: 14%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Data type</th>
-<th>Repeated within person?</th>
-<th>Confounding?</th>
-<th>Typical methods</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Continuous</td>
-<td>No</td>
-<td>No</td>
-<td><span class="math inline">\(t\)</span> test, Wilcoxon rank-sum</td>
-</tr>
-<tr class="even">
-<td>Continuous</td>
-<td>No</td>
-<td>Yes</td>
-<td>Linear regression</td>
-</tr>
-<tr class="odd">
-<td>Continuous</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Random-effects model, GEE</td>
-</tr>
-<tr class="even">
-<td>Binary</td>
-<td>No</td>
-<td>No</td>
-<td><span class="math inline">\(\chi^2\)</span> test</td>
-</tr>
-<tr class="odd">
-<td>Binary</td>
-<td>No</td>
-<td>Yes</td>
-<td>Logistic regression</td>
-</tr>
-<tr class="even">
-<td>Binary</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Random-effects logistic, GEE</td>
-</tr>
-<tr class="odd">
-<td>Count</td>
-<td>No</td>
-<td>Yes</td>
-<td>Poisson regression</td>
-</tr>
-<tr class="even">
-<td>Survival</td>
-<td>No</td>
-<td>No</td>
-<td>Kaplan–Meier curve</td>
-</tr>
-<tr class="odd">
-<td>Survival</td>
-<td>No</td>
-<td>Yes</td>
-<td>Cox regression</td>
-</tr>
-<tr class="even">
-<td>Competing risks</td>
-<td>No</td>
-<td>No</td>
-<td>Aalen–Johansen curve</td>
-</tr>
-<tr class="odd">
-<td>Competing risks</td>
-<td>No</td>
-<td>Yes</td>
-<td>Fine–Gray model</td>
-</tr>
-</tbody>
-</table>
-<div class="voice-daughter">
-<p>Me: “So for my study, ‘returned to work within 1 year’ is binary and can be handled with logistic regression. For ‘time from discharge to return-to-work’, are Kaplan–Meier/Cox and Aalen–Johansen/Fine–Gray typical statistical methods?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Exactly. That’s already a good grasp of the landscape.”</p>
-</div>
-</section>
-<section id="repeated-measurements-and-confounding" class="level3">
-<h3 class="anchored" data-anchor-id="repeated-measurements-and-confounding">Repeated measurements and confounding</h3>
-<div class="voice-daughter">
-<p>Me: “Where do repeated measures come in?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Imagine you use the same questionnaire multiple times for each patient:”</p>
+<p>お父さん「生存時間データは、英語ではsurvival data以外にtime-to-event dataっていったりもするんだけどね。時間とともに起きるイベントって、生存か死亡かだけじゃないでしょ。競合リスクを解析できるようにしたのが競合リスクモデルなんだ。この場合、さっきのイベント変数は、イベント、競合リスク、打ち切りという3カテゴリを表す変数になる。イベント変数はこんな感じでコーディングされる」</p>
 </div>
 <ul>
-<li>pre-surgery<br>
-</li>
-<li>at 6 months<br>
-</li>
-<li>at 12 months</li>
+<li>イベント変数=0: イベントが観察される前に打ち切りになった</li>
+<li>イベント変数=1: イベントが観察された</li>
+<li>イベント変数=2: イベントが観察される前に競合リスクが生じた</li>
 </ul>
-<div class="voice-father">
-<p>Dad: “Then you’d have multiple data points <strong>within each person</strong>. Those are <strong>correlated</strong> — your own responses are more similar to each other than to some random patient’s.”</p>
-</div>
 <div class="voice-daughter">
-<p>Me: “So I can’t just pretend they’re all independent.”</p>
+<p>私「だいたいわかった。この調査票、使わせてもらうね」</p>
 </div>
-<div class="voice-father">
-<p>Dad: “Right. That’s when you use methods like <strong>random-effects models</strong> or <strong>generalized estimating equations (GEE)</strong>. They’re built to handle within-person correlation.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “And confounding is lack of comparability or ’ceteris paribus‘, right? So in randomized trials, we use random allocation of treatments to balance those things in advance. But in observational studies like mine, we depend more on modeling and design.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Precisely. That’s the big difference between ‘trial data/experimental data’ and ‘real-world data’.”</p>
 </div>
 </section>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<section id="生存時間解析と競合リスク解析" class="level3">
+<h3 class="anchored" data-anchor-id="生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A quiz related to this episode
+シミュレーションデータ（再発あり）の生成
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In which situation is the <strong>Kaplan–Meier method</strong> appropriate for estimating a survival curve?</p>
-<ol type="1">
-<li>When survival times follow a normal distribution.<br>
-</li>
-<li>When the reasons for censoring are unrelated to prognosis.<br>
-</li>
-<li>When the censoring proportions of two groups do not differ significantly in a hypothesis test.<br>
-</li>
-<li>When the proportional hazards assumption holds between the treatment and control groups.<br>
-</li>
-</ol>
+<p>前回より少しだけがんの臨床研究を意識して、シミュレーションデータにおける、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを<strong>競合リスク（competing risk）</strong>といいます。</p>
+<p>以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」<code>generate_data()</code>を定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。なお、<code>generate_data()</code>やこのシミュレーションデータは、今後の解説でも再利用する予定です。</p>
+<ul>
+<li><p>ストーマ保有：2項分布（<code>rbinom</code>）から生成した2値データ</p></li>
+<li><p>生存時間：指数分布（<code>rexp</code>）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）</p></li>
+</ul>
+<p>前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは<strong>Kaplan-Meier曲線</strong>でしたよね。それに対して、競合リスク解析では、Kaplan-Meier曲線ではなく、<strong>Aalen-Johansen曲線</strong>を用いるのが正式です。</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+generate_data()のコードはこちら（データ生成に使用）
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n=</span><span class="dv">200</span>, hr1, hr2) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 再発のハザード（大きいほど早く起こる）</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 死亡のハザード（大きいほど早く起こる）</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># 打ち切りハザード（群に依存しない）</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)   <span class="co"># 再発までの潜在時間</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)     <span class="co"># 死亡までの潜在時間</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring) <span class="co"># 打ち切りまでの潜在時間</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 全生存期間（OS） ----------------------------------------</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = 死亡, 0 = 打ち切り</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発存期間（RFS） -------------------------------------</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># 再発</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># 死亡</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 累積再発率（CIR） + 競合リスク --------------------------</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># イベント1: 再発</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># イベント2: 競合リスクとしての死亡</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- データフレームにまとめる --------------------------------</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dat)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="全生存期間（OS）のKaplan–Meier曲線">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+全生存期間（OS）のKaplan–Meier曲線
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>OSとRFSは通常の生存時間データですから、前回と同様に<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、Kaplan–Meier曲線で記述します。まずはOS。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="無再発生存期間（RFS）のKaplan–Meier曲線">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+無再発生存期間（RFS）のKaplan–Meier曲線
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>次にRFSです。<code>Event()</code>で指定する変数以外は変わりません。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_rfs, status_rfs) <span class="sc">~</span> stoma,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Relapse-free survival"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="累積再発率（CIR）のAalen-Johansen曲線">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+累積再発率（CIR）のAalen-Johansen曲線
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>以下のコードでは、<code>Event(time_cir, status_cir)</code>のコーディングによって競合リスクを入力しています。</p>
 <ul>
-<li>The correct answer is <strong>2</strong>.</li>
+<li><code>status_cir=1</code> : 関心のあるイベント（再発）</li>
+<li><code>status_cir=2</code> : 競合リスク（再発を経験しない死亡）</li>
+<li><code>status_cir=0</code> : 打ち切り</li>
 </ul>
-<p>The Kaplan–Meier method does <strong>not</strong> require:</p>
+<p>さらに<code>outcome.type = "competing-risk"</code>を指定することで、Aalen-Johansen曲線を描いています。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Cumulative incidence of relapse"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「Aalen-Johansen曲線って、Kaplan–Meier曲線のY軸を逆さにしただけじゃないの」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。</p>
+<blockquote class="blockquote">
+<p>生存曲線（Kaplan–Meier曲線）と累積発生曲線（Aalen-Johansen曲線）は別の統計手法なので 競合リスクがあるときはAalen-Johansen曲線を用いる。</p>
+</blockquote>
+<p>ちなみに、relapse-free timeじゃなくてcumulative incidence of relapseを使いたいっていったけど、それは<strong>累積発生曲線（cumulative incidence curve）</strong>が、専門的にはAalen-Johansen曲線と同じ意味だからなんだよね。やろうと思えばCIRを解析するとき、Kaplan–Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（<code>status_cir=2</code>）ではなく打ち切り（<code>status_cir=0</code>）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。</p>
+</div>
+<div class="voice-daughter">
+<p>私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングのは、次のうちどちらでしょう。</p>
+<ol type="1">
+<li>CNSR=0</li>
+<li>CNSR=1</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>normality of survival times (that’s more for <span class="math inline">\(t\)</span>-tests), nor<br>
-</li>
-<li>proportional hazards (that’s a key assumption for the Cox model).</li>
+<li><strong>正解は2です</strong></li>
 </ul>
-<p>What it <em>does</em> assume is that <strong>censoring is non-informative</strong>. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.</p>
+<p>CDISC ADaM ADTTEでは、1がTRUEを表しています。<code>Event()</code>や<code>Surv()</code>など多くの統計パッケージのデフォルトでは、イベント=1、打ち切り=0というコーディングを想定しています。CNSRをそのまま用いることはできません。</p>
 </div>
 </div>
 </div>
 </section>
-<section id="episodes-and-r-script" class="level3">
-<h3 class="anchored" data-anchor-id="episodes-and-r-script">Episodes and R-script</h3>
+<section id="エピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="../en/study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
-<li><p><a href="../en/study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
-<li><p><a href="../en/study-design-3.html">A First Step into Survival and Competing Risks Analysis with R</a></p></li>
-<li><p><a href="../en/study-design-4.html">Outcomes: The Bridge from Data Collection to Analysis</a></p></li>
+<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
+<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
+<li><p><a href="study-design-3.html">Outcomes: The Bridge from Data Collection to Analysis</a></p></li>
+<li><p><a href="study-design-4.html">A First Step into Survival and Competing Risks Analysis with R</a></p></li>
 <li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
 <li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
 </ul>

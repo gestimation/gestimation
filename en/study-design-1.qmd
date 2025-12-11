@@ -144,7 +144,7 @@ a:hover {
 </style>
 ```
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
@@ -156,11 +156,11 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
 
 ------------------------------------------------------------------------
 
-### A daughter starting her first research, and her statistician father
+### A daughter beginning her first study and her father, a statistician
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “So… you really are a professor in statistics, right?”
+Me: “Dad, you really are a professor in statistics, right?”
 :::
 
 ::: voice-father
@@ -168,31 +168,33 @@ Dad: “In Japan, yes. One of the many.”
 :::
 
 ::: voice-daughter
-Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs in Japan was revised. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.” 
+Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.” 
 :::
 
 ::: voice-father
-Dad: “Half my territory, half yours. You see the patients, I only see the data. So, do you have any **clinical question or hypothesis** in mind?” 
+Dad: “Half my territory, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?” 
 :::
 
 ::: voice-daughter
-Me: “Honestly? Not really. I was sort of hoping I could just collect a lot of data first and think later. Is that illegal?”
+Me: “Nope.”
 :::
 
 ::: voice-father
-Dad: “Not illegal, but not safe. Without at least a working hypothesis, it’s hard to design a good study.”
+Dad: “Without at least a working hypothesis, it’s hard to design a good study.”
 :::
 
+
 ::: voice-daughter
-Me: “Okay, okay. If I have to say something... I’m curious about which patients have a harder time staying in work. Not just men vs women, but things like tumor stage and treatment. I work in GI surgery, so I keep wondering about patients with a stoma. Can they really keep doing the same job as before surgery?”
+Me: “Seriously? I thought I could collect the data first and figure it out later.
+Hmm… if I had to say, I’d want to know what kind of patients have difficulty returning to work.”
 :::
 
 ::: voice-father
-Dad: “That’s already a good start. You’re close to a research question.”
+Dad: “For example, that men might have higher return-to-work rates than women?”
 :::
 
 ::: voice-daughter
-Me: “Really? I was just thinking out loud. Fine, I guess I’ll start drafting a questionnaire. That actually helped. Thanks.”
+Me: “I’m interested in sex differences too, but I’m more curious about cancer stage or complications. I work in gastrointestinal surgery, and I wonder whether patients with stomas can return to the same job they had before surgery. Yeah...I’ll start drafting a questionnaire. Thanks!”
 :::
 
 ::: voice-father
@@ -200,11 +202,11 @@ Dad: “Hold on. Have you decided on your **study population** yet?”
 :::
 
 ::: voice-daughter
-Me: “Um... patients with cancer who had surgery at our hospital?”
+Me: “Hm? Patients who had cancer surgery at our hospital.”
 :::
 
 ::: voice-father
-Dad: “Do you see many stomas in gastric cancer patients?”
+Dad: “Do gastric cancer patients ever receive a stoma?”
 :::
 
 ::: voice-daughter
@@ -216,136 +218,101 @@ Dad: “Right. If your main interest is stomas, it might make sense to focus on 
 :::
 
 ::: voice-daughter
-Me: “So you’re saying narrow the population?”
+Me: “...maybe you’re right.”
 :::
 
 ::: voice-father
-Dad: “Exactly. If you **narrow the target population**, you can ask **more detailed questions** and improve **comparability** between groups. If you want to compare patients *with* and *without* a stoma, it’s better to keep the cancer site consistent.”
+Dad: “It’s important to think about who should be surveyed at the design stage. In general, narrowing the target population allows you to ask more detailed questions. And it improves **comparability**. If you want to compare patients with and without stomas, you’d want the cancer type to be consistent.”
 :::
 
 ::: voice-daughter
-Me: “Comparability...such a statisticky word. But yeah, if the background is all over the place, it’s a mess. I do get that.”
+Me: “You really love using difficult words. But I get it. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”
 :::
 
 ::: voice-father
-Dad: “On the other hand, if you **broaden the population**, you gain **generalizability**: the results could potentially apply to a wider range of cancer patients. If your goal were to estimate the return-to-work rate among all cancer survivors in Japan, you wouldn’t limit the cancer site, and you might want data from multiple hospitals, not just ours.”
+Dad: “There are statistical methods and R packages to improve comparability too, like `glm()` for regression adjustment, or`CBPS()` for propensity score weighting. But on the other hand, a broader study population increases **generalizability**. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”
 :::
 
 ::: voice-daughter
-Me: “Right now, with only our hospital, calling it a ‘real-world survey’ would be a bit bold. So ‘high generalizability’ basically means ‘other hospitals could actually use the results as a reference’?”
+Me: “True...it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital.
+Generalizability means gathering data that are useful for other hospitals too, right?”
 :::
+
 
 ::: voice-father
-Dad: “That’s a good way to put it. See, you *do* think statistically.”
+Dad: “In class, I tell my students this:“
 :::
-
-::: voice-daughter
-Me: “Don’t flatter me just to get free clinical consulting.”
-:::
-
-::: voice-father
-Dad: “In class, I tell my students this:  
 
 > When your clinical question is still vague,  
 > try to express it using PICO or PECO
 > before you design the study.
 
-It sounds fancy, but it’s just a framework.”
+::: voice-father
+Dad: It sounds fancy, but we call that ‘structuring’ a study.”
 :::
 
 ::: voice-daughter
-Me: “I’ve heard the words PICO, PECO...but nobody really explains what to *do* with them.”
+Me: “Structuring...? That sounds suspiciously formal. Okay, I’ve heard the word before.”
 :::
 
 ::: voice-father
-Dad: “Let’s walk through it using your case. In PICO/PECO:
+Dad: “Then let’s go through it lightly. In PICO/PECO, P stands for Patients or Population. Deciding who your patients are is a key element in study design.”
 :::
 ::::::::::::::::::::::::::::::::: 
 
-- What kind of patients? (Patients/Population)  
-- What factor are we focusing on? (Intervention/Exposure)  
-- What are we comparing it to? (Comparison)  
-- What outcomes are we interested in? (Outcome)
+- Which patients or population are being studied (P)
+- What exposure or intervention is of interest (E/I)
+- What they are compared against (C)
+- What outcomes will be evaluated (O)
 
 ::::::::::::::::::::::::::::::::: dialogue
-::: voice-father
-These four pieces are like the minimum ingredients for a study recipe. In a clinical trial, we usually talk about Intervention (I). In observational studies like your survey, we talk about Exposure (E).”
-:::
-
 ::: voice-daughter
-Me: “Okay, P is like, ‘rectal cancer patients after curative surgery in our hospital’. For E and C... maybe ‘with stoma’ vs ‘without stoma’?”
+Me: “I’ve never heard of Exposure or Comparison before...But in my case, it would be patients with versus without a stoma, right? And what’s Outcome?”
 :::
 
 ::: voice-father
-Dad: “Exactly. And O is your outcome, that is to say, what you want to measure. In your case, something about return to work.”
+Dad: “Exactly. And O is treatment results, prognosis, and endpoints of patients. In statistical analysis, the outcome variable is the most important part. So it’s crucial to define it before you begin.”
 :::
 
 ::: voice-daughter
-Me: “So outcome is the thing we call OS, DFS, response rate, that kind of stuff?”
+Me: “Can you even define it before the data come in?”
 :::
 
 ::: voice-father
-Dad: “Right. In statistical analysis, the **outcome variable** is the most important part. So deciding what the outcome is is a key step in planning.”
+Dad: “You should, because once the data are collected, you can’t revise it any more.It needs to be set before finalizing the questionnaire. Right...you probably don’t have a concrete image of an outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data are ready?”
 :::
 
 ::: voice-daughter
-Me: “Can I really fix that before collecting any data? Feels like I’m committing too early.”
+Me: “R. My seniors in the department use it.”
 :::
 
 ::: voice-father
-Dad: “If you don’t fix it before designing the questionnaire, you’ll regret it later. Once you start collecting data, by the way, what software are you planning to use?”
+Dad: “Are you comfortable with R?”
 :::
 
 ::: voice-daughter
-Me: “R. That’s what everyone in my department uses.”
+Me: “I took a class in college, but I’ve forgotten most of it.”
 :::
 
 ::: voice-father
-Dad: “How comfortable are you with R?”
-:::
-
-::: voice-daughter
-Me: “We had it in undergrad, but at this point I’ve forgotten everything except that semicolons stress me out less than parentheses.”
-:::
-
-::: voice-father
-Dad: “So we’ll need to get you used to R again. Which R functions you use will depend on the **type of outcome** you choose.”
-:::
-
-::: voice-daughter
-Me: “So step zero is:  
-
-1. Turn my vague hunch into a proper question using P, E, C, O
-2. Decide on the outcome  
-3. Then figure out how to survive R and not embarrass myself at journal club
-
-That’s the plan?”
-:::
-
-::: voice-father
-Dad: “That’s a very good summary. If you bring me questions like that, I’m happy to be used as a resource.”
-:::
-
-::: voice-daughter
-Me: “Deal. I’ll bring the clinical mess, you translate it into statistics. Very efficient division of labor.”
+Dad: “Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”
 :::
 :::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" title="Clinical questions and research hypotheses"}
 
-In everyday clinical work in Japan, you naturally start to notice small curiosities:
+In daily clinical practice, many questions naturally arise. A question emerging directly from clinical experience is called a clinical question.
 
-- “Do my older patients really have worse outcomes?”  
-- “Is this new support program actually helping?”
-
-These are **clinical questions**. To turn them into research, we want to re-express them as **research hypotheses**. A research hypothesis is built from the **minimum elements** needed for study design:
+When starting a clinical research, what matters is expressing that **clinical question** as a **research hypothesis**. A research hypothesis consists of minimal essential elements, often summarized using PICO/PECO:
 
 - P: Patients/Population
 - I/E: Intervention/Exposure
 - C: Comparison
 - O: Outcome
 
-That’s exactly what **PICO/PECO** helps you write down.
+The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case?control, or cross-sectional study. All can be structured using PECO. 
+
+Here are three examples of research hypotheses using the cancer survivor survey as a theme.
 
 ---
 
@@ -389,15 +356,16 @@ So “structuring the question” doesn’t mean you have to force every study i
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “I see. While I'd be stuck if told to come up with an original hypothesis, I don't mind the process of identifying research elements and deciding on them one by one. It's something I'll need to do eventually anyway.”
+Me: ”I see...it would be tough to propose an original hypothesis from scratch, but breaking the study down into components and deciding one by one isn’t so bad. I suppose it’s something I’ll need to learn eventually.”
 :::
 
 ::: voice-father
-Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can vary slightly between clinicians and facilities. Neglecting precise language just breeds confusion.”
+Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+
+::: {.callout-note appearance="simple" title="Quiz related to this episode"}
 
 When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?
 
@@ -410,15 +378,15 @@ When formulating study design, the Latin expression “ceteris paribus” often 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 -   The correct answer is **3**.
 
-The concept of “ceteris paribus” is very close to the idea of **comparability** between groups — one of the key themes of the story.
+The concept of “ceteris paribus” is very close to the idea of **comparability** between groups.
 :::
 
 ### Episodes and R-script
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
-- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R]
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis]
+- [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

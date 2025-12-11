@@ -150,93 +150,117 @@ a:hover {
 :::
 
 
-# Brew a coffee, start a conversation. As the steam rises and fades, time passes — and the world of statistics slowly opens up.
+# Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.
 
-This site grew out of small coffee chats between a statistician father and his clinician daughter. Over coffee, they move back and forth between clinic and code, papers and everyday life — turning “I sort of get this” moments into questions they can actually work through.
 
-Even when the topic is a difficult statistical method or a messy formula, we try to explain it in words with warmth, like the heat from a mug on a winter evening.  
-Each story can be reproduced with R code. Whether you want to learn deeply or just pause for a moment, you can read these as short essays for quiet nights — at your own pace.
+This site began with small coffee chats between a statistician father and his clinician daughter. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to be scattered quietly across multiple layers: everyday life, clinical practice, causality, data, cognition, and language. 
+
+Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story without disturbing their totality.
+
+From survival curves and misread p-values to the layered relationship between causality and statistical inference—
+the episodes hide small clues like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.
+
+Mathematics and medicine make their appearances, but feel free to take only what you need. Every discussion can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears.
+
+Enjoy following that changing view, at the quiet pace of a cup of coffee.
 
 ------------------------------------------------------------------------
 
 ## Episodes
 
-### 1. Study design — Where research begins
+### 1. Study Design — Where research begins
 
 Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R] (coming soon)
-- [Outcomes: The Bridge from Data Collection to Analysis]
+- [Outcomes: The Bridge from Data Collection to Analysis] (coming soon)
+- [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
-### 2. Frequentist thinking — Practicing statistics
+### 2. Glossary — The words of statistics
 
-Using a cancer clinical trial as a running example, the father talks about the **frequentist idea** of “what would happen to these numbers if we could repeat the study many times?”
+- [Statistical Terms in Plain Language]
+
+### 3. Frequentist Thinking — Practicing statistics
+
+Using cancer clinical trials as an example, my father explains the **frequentist perspective** of “How do numbers behave when you virtually repeat a study in a long run?”
 
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+
+You can download the full R script for this and the next episodes here. 
+
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 4. Frequentist Experiments — Validation of statistics
+
+The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.
+
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-### 3. Effects and time — How effects evolve
+You can download the full R script for this and the previous episode here. 
 
-Risk difference, risk ratio, hazard ratio, vaccine efficacy, attributable fractions, and **effects that change over time** are explored through survival curves and cumulative incidence functions. Before stepping fully into causal inference, you quietly develop a three-dimensional way of looking at data.
+- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 5. Effects and Time — How effects evolve
+
+We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness rates, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [Collapsibility of Effect Measures in Marginal and Stratified Tables]
-- [Risk Ratios and Odds Ratios: When Approximation Works]
+- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R]
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail]
+- [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
+You can download the full R script for this and the previous episode here. 
 
-### 4. Adjusting for bias — The landscape of regression
+- [effects.R](../from-coffee-chat-to-r/effects.R)
 
-Here we meet **logistic regression for adjustment** and **confounding** — what it is, and what it is not.
+### 6. Adjusting for Bias — The landscape of regression modeling
 
-- [Adjusting for bias I]
-- [Adjusting for bias II]
-- [Adjusting for bias III]
-- [Adjusting for bias IV]
-- [Adjusting for bias V]
+An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoiding pitfalls in its use. And then...
 
-### 5. Causal inference — Thinking about “what if”
+- [From Risk to Logistic Regression]
+- [Logit: How a Transformation Shapes an Effect]
+- [Where My Logistic Regression Went Wrong]
+- [Why Logistic Regression Fails in Small Samples]
+- [Simpson’s paradox]
 
-Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor paths. We try to talk about the **language of causality** needed to think about “what would have happened if...?”, using as few formulas as possible.
+### 7. Causal Inference — To find causality
 
-- [Causal inference I]
-- [Causal inference II]
-- [Causal inference III]
-- [Causal inference IV]
-- [Causal inference V]
+Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the **language of causality** needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.
 
-### 6. The Craft of Research — The work of doing research
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
+- [Common Causes and Confounders]
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure]
+- [Backdoor Paths and Confounders]
 
-How do we present results? How do we design figures and tables? How do we revise a manuscript, and how do we live with peer review? This series is a quiet set of lectures on “life after statistics” for people doing research.
+### 8. Publish a Paper — The craft of research
 
-- [The Craft of Research I]
-- [The Craft of Research II]
-- [The Craft of Research III]
-- [The Craft of Research IV]
+How to communicate research findings, creating charts and graphs, tips for revising, navigating peer review. A quiet lecture for researchers, exploring what lies beyond statistics.
+
+- [Publish a paper I]
+- [Publish a paper II]
+- [Publish a paper III]
 
 ------------------------------------------------------------------------
 
 ## How to read this site
 
-- If you start with **Study design I–V**,  
-  you will get a first outline of “what question to ask, and what data to collect to answer it.”
-- If you want to choose by interest:
-  - **To build a better footing for reading papers** → Frequentist thinking / Effects and time  
-  - **To tidy up your analysis practice** → Adjusting for bias  
-  - **To organize how you think about causality** → Causal inference  
-  - **To eventually publish your work as a paper** → The Craft of Research
-- Each episode is written so that you *can* read it on its own.  
-  But if you read across the series, a mental map of “what research is as a practice” starts to form in the background.
+First, reading the **Study Design** series will give you an overview of the clinical research landscape and outline the process of “what questions to ask and what data to collect.” From there, you can either follow the narrative or choose the layer that interests you most.
 
-Pick any place that catches your eye, grab your favourite drink, and read at the pace that feels right for you.
+- Want to build a foundation for reading papers: Frequentist Thinking
+- Want to understand the meaning of numbers and the practice of statistical analysis more deeply: Effects and Time / Adjusting for bias
+- Want to organize the invisible structure of causality: Causal Inference
+- Want to see the process through to shaping and delivering your research: Publish a Paper
+
+While each episode stands independently, reading the whole reveals how everyday life, clinical practice, causality, data, cognition, and language connect as one flow. Gradually, a map of the research endeavor sketches itself in your mind. Grab your favorite drink and enjoy the journey of conversation between the two.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>P-Value Explanations That Seem Plausible at First Glance – Coffee and Research</title>
+<title>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -187,11 +187,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" id="toc-frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="nav-link active" data-scroll-target="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance">Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</a>
+  <li><a href="#study-design-5-when-bias-creeps-in" id="toc-study-design-5-when-bias-creeps-in" class="nav-link active" data-scroll-target="#study-design-5-when-bias-creeps-in">Study Design 5 − When Bias Creeps In</a>
   <ul class="collapse">
-  <li><a href="#生存曲線とハザード比" id="toc-生存曲線とハザード比" class="nav-link" data-scroll-target="#生存曲線とハザード比">生存曲線とハザード比</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
+  <li><a href="#hard-endpoints-and-soft-feelings" id="toc-hard-endpoints-and-soft-feelings" class="nav-link" data-scroll-target="#hard-endpoints-and-soft-feelings">“Hard endpoints” and soft feelings</a></li>
+  <li><a href="#three-familiar-troublemakers-selection-information-confounding" id="toc-three-familiar-troublemakers-selection-information-confounding" class="nav-link" data-scroll-target="#three-familiar-troublemakers-selection-information-confounding">Three familiar troublemakers: selection, information, confounding</a></li>
+  <li><a href="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -201,7 +201,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">P-Value Explanations That Seem Plausible at First Glance</h1>
+<h1 class="title">When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</h1>
 </div>
 
 
@@ -357,54 +357,126 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="level1">
-<h1>Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</h1>
+<section id="study-design-5-when-bias-creeps-in" class="level1">
+<h1>Study Design 5 − When Bias Creeps In</h1>
 <div class="serif-block text-right">
-<p>clinical trial, hypothesis/outcome/population, p-value, survival/competing-risk, language/writing</p>
+<p>Keywords: observational study, outcome, simulation, survival/competing-risk, study design</p>
 </div>
 <hr>
-<section id="生存曲線とハザード比" class="level3">
-<h3 class="anchored" data-anchor-id="生存曲線とハザード比">生存曲線とハザード比</h3>
+<section id="hard-endpoints-and-soft-feelings" class="level3">
+<h3 class="anchored" data-anchor-id="hard-endpoints-and-soft-feelings">“Hard endpoints” and soft feelings</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さん、コーヒーもう一杯、淹れ直したよ。続けてJCOG9502のハザード比について教えてよ」</p>
+<p>Me: “I’m home…completely drained. Is there anything sweet?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、TH群よりLTA群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「要約しやすい？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。この関係を、<strong>Cox回帰（Cox regression）</strong>とか<strong>比例ハザードモデル（proportional hazards model）</strong>って呼んでいる」</p>
+<p>Dad: “There’s a strawberry daifuku. And I just brewed coffee.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「比例関係だったら交差したらまずいよね」</p>
+<p>Me: “You are objectively improving my quality of life. Today was rough. Clinic was packed, and the train home was rush-hour level insane.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。この話題は後で話すとして、まずはCox回帰をRでやってみよう。パソコンはある？」</p>
+<p>Dad: “That sounds like classic Japanese hospital plus Tokyo commute. Here, coffee.”</p>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="coxph()を用いたハザード比の推定">
+<div class="voice-daughter">
+<p>Me: “Thanks. So, there’s something I wanted to ask. You know how people in oncology love to say <strong>‘hard endpoint’</strong> and <strong>‘soft endpoint’</strong>?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes, people say that a lot.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “One of my senior colleagues is really into clinical trials. She keeps saying things like:</p>
+<blockquote class="blockquote">
+<p>‘Return-to-work is such a <strong>soft endpoint</strong>.<br>
+OS is a <strong>hard endpoint</strong>.<br>
+Soft is bad, hard is good.’</p>
+</blockquote>
+<p>And every time she says that, I feel like my return-to-work study is being gently dissed. I sort of get what she means, but not really.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “I can imagine the tone. The way people use those words is a bit loose. If we want to be clearer, it might help to think in terms of <strong>objective measure</strong> vs <strong>subjective measure</strong>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So OS is ‘hard’ because it’s objective?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Pretty much. For <strong>overall survival (OS)</strong>, you only need date of death or the last date of confirmation of being alive. That’s relatively straightforward. For something like <strong>progression-free survival (PFS)</strong>, you need to decide <strong>when progression happened</strong>. That depends on factors unrelated to disease status:”</p>
+</div>
+<ul>
+<li>imaging timing</li>
+<li>how you interpret the scans</li>
+<li>sometimes even symptoms unrelated to cancer</li>
+</ul>
+<div class="voice-father">
+<p>Dad: “There’s more <strong>judgment</strong> involved. That’s why people call it a <strong>soft endpoint</strong>.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “And return-to-work is even more ‘soft’, right? We’re asking about patients’ own perceptions, jobs, feelings…”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right, but that doesn’t make it meaningless. I think what your colleague <em>meant</em> was something like:</p>
+<blockquote class="blockquote">
+<p>‘When you work with soft endpoints,<br>
+try to measure them as <strong>consistently</strong> and <strong>objectively</strong> as possible.’”</p>
+</blockquote>
+</div>
+<div class="voice-daughter">
+<p>Me: “So not ‘soft = trash’, but ‘soft = more room for bias, so be careful’.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Even ‘hard’ endpoints like death can be biased if follow-up is sloppy. If, for example, you only track deaths in patients who keep coming to the hospital, you might systematically <strong>miss deaths</strong> in those who stop showing up. So hard endpoints are not automatically free of bias.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Okay, that makes me feel better about my study. I’ll phrase it as: <em>‘a soft endpoint, measured with hard discipline.’</em>”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s actually a great line for the methods section. To be precise, you don’t need perfect information on every death. What matters is that the process of collecting death information is not related to patients’ health status. If whether we obtain death information depends on how sick someone was, that creates bias.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “It means censoring is no longer independent of prognosis, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes. Remember the <strong>Kaplan–Meier</strong> and <strong>Aalen–Johansen</strong> curves I showed you? Those estimators can handle censoring, but they only remain unbiased if censoring occurs randomly, unrelated to the outcome. For example, when all patients are censored at 1 year because the study ends, or when an external reason stops follow-up for some patients.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I get the idea. But there are situations where we just can’t track deaths perfectly. We can only do our best.”</p>
+</div>
+<section id="bias-in-kaplanmeier-curves" class="level3">
+<h3 class="anchored" data-anchor-id="bias-in-kaplanmeier-curves">Bias in Kaplan–Meier curves</h3>
+<div class="voice-daughter">
+<p>Me: “Okay…besides that, what other types of bias should I be careful about in my survey?”</p>
+</div>
+<div class="voice-father">
+<p>Father: “As I said before—competing risks. In time-to-event data, ignoring competing risks can lead to bias. Can you take out your laptop?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “What? I literally just came back from work…”</p>
+</div>
+<div class="voice-father">
+<p>Father: “It’ll be quick. I’ll tweak the R script we used last time and show you what statistical bias looks like with a simple simulation.”</p>
+</div>
+</section>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Bias of the Kaplan–Meier curve in a simulated dataset with recurrence and competing risks">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-coxph()を用いたハザード比の推定
+Bias of the Kaplan–Meier curve in a simulated dataset with recurrence and competing risks
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数<code>generate_data(hr1, hr2)</code>を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+<p>In our previous simulations of cumulative incidence of recurrence (CIR), we generated patients who could die before experiencing recurrence (a competing risk). With a simple experiment, you can confirm that the Kaplan–Meier estimator becomes biased in the presence of competing risks.</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
+<div class="callout callout-style-simple callout-note callout-titled" title="Code of generate_data() used for data generation">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-generate_data()のコードはこちら（データ生成に使用）
+Code of generate_data() used for data generation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -415,33 +487,33 @@ generate_data()のコードはこちら（データ生成に使用）
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 再発のハザード（大きいほど早く起こる）</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 死亡のハザード（大きいほど早く起こる）</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># 打ち切りハザード（群に依存しない）</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># hazard for relapse</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># hazard for death</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># hazard for censoring</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)   <span class="co"># 再発までの潜在時間</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)     <span class="co"># 死亡までの潜在時間</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring) <span class="co"># 打ち切りまでの潜在時間</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 全生存期間（OS） ----------------------------------------</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = 死亡, 0 = 打ち切り</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発存期間（RFS） -------------------------------------</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># 再発</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># 死亡</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 累積再発率（CIR） + 競合リスク --------------------------</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># イベント1: 再発</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># イベント2: 競合リスクとしての死亡</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- データフレームにまとめる --------------------------------</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Latent times to relapse, death, and censoring ----------------</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Overall survival (OS) -----------------------------------</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = death, 0 = censored</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Relapse-free survival (RFS) -----------------------------</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># relapse</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># death</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- Cumulative incidence of relapse (CIR) -------------------</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># relapse</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># death (competing risk)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
@@ -455,208 +527,186 @@ generate_data()のコードはこちら（データ生成に使用）
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dat)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="coxph()のコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="Aalen-Johansen curves for cumulative incidence of relapse (CIR)">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-coxph()のコードと結果はこちら
+Aalen-Johansen curves for cumulative incidence of relapse (CIR)
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Kaplan–Meier曲線とAalen-Johansen曲線は、どちらも<code>cifmodeling</code>パッケージの<code>cifplot()</code>を使って生成できますが、イベントのコーディングを入力する<code>code.event1</code>、<code>code.event2</code>とデータの型を表す<code>outcome.type</code>を、指定する必要があります。<code>generate_data()</code>で生成したシミュレーションデータでは、CIRのイベントは以下のようにコーディングされていました。</p>
+<ul>
+<li><code>status_cir=1</code> : 再発</li>
+<li><code>status_cir=2</code> : 再発を経験しない死亡</li>
+<li><code>status_cir=0</code> : 打ち切り</li>
+</ul>
+<p>以下のRスクリプトでは、最初の<code>cifplot()</code>により、再発（<code>code.event1=1</code>）に関するAalen-Johansen曲線（<code>aj_event1</code>）を出力しています。縦軸は累積発生確率ではなく、1-累積発生確率を選んでいる点にも注意してください（<code>type.y="surv"</code>）。そして次の<code>cifplot()</code>ではイベントを入れ替えて、再発を経験しない死亡（<code>code.event1=1</code>）に関するAalen-Johansen曲線（<code>aj_event2</code>）を出力し、<code>cifpanel()</code>に用いて2つの図を左右に配置したひとつの図を表示しています。左右の累積発生確率の和に注目してください。この図からは、再発の累積発生確率と（再発を経験しない）死亡の累積発生確率の和は、時間が経つにつれ1に近づくが、1を超えることはないことがわかります。仮に打ち切りがなかったとしたら、再発と（再発を経験しない）死亡のどちらか一方しか生じないため、Aalen-Johansen曲線の和が1を超えないのは自然なことです。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
-
-  n= 200, number of events= 149 
-
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-stomaWITH STOMA 0.5234    1.6877   0.1697 3.085  0.00204 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-                exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.688     0.5925      1.21     2.353
-
-Concordance= 0.561  (se = 0.023 )
-Likelihood ratio test= 9.29  on 1 df,   p=0.002
-Wald test            = 9.52  on 1 df,   p=0.002
-Score (logrank) test = 9.72  on 1 df,   p=0.002</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>aj_event1 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"surv"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">1</span>, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">2</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>aj_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>, </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event1  =</span> <span class="dv">2</span>, </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">code.event2  =</span> <span class="dv">1</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>aj_list <span class="ot">&lt;-</span> <span class="fu">list</span>(aj_event1<span class="sc">$</span>plot, aj_event2<span class="sc">$</span>plot)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>aj_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>aj_list)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aj_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-5_old_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<section id="p値に関する一見正しそうな説明" class="level3">
-<h3 class="anchored" data-anchor-id="p値に関する一見正しそうな説明">p値に関する一見正しそうな説明</h3>
-<div class="voice-daughter">
-<p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうことだね。ハザードはイベント/観察人年で求める“率”で、ハザード比はその2群間の“比”だから。生存時間解析で使う指標だね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うんうん。でもそういうのって統計の教科書に書いてないよね。平均とか回帰係数ばっかり」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「分野によって使われる統計手法が違うからね。がんの臨床試験データの解析を勉強するなら、米国で有名な臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al.&nbsp;2013）。話を戻すとさ。大まかな理解はあってるけど、p値の正確な意味は誤解されてることが多いんだよ。まあ、頻度論（frequentist）の立場で統計学をきっちりやらないと、なかなか難しいんだけどね。まず、試験によってはp値と比べる基準（有意水準）が5%でないこともある。たとえば<strong>中間解析（interim analysis）</strong>があるかな。論文の抄録を読んでごらん。実はJCOG9502では最終解析の前に、中間解析をする計画になっていて、この論文はそのとき早期中止になった結果を報告しているみたいだよ。中間解析では、5%より低い有意水準で検定するのが一般的なんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「じゃあ有意差がついたから早期中止したってこと？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや、JCOG9502が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためだけどね。他にも典型的な誤解はある。p値に関する説明をいくつかしてみようか」</p>
-</div>
-<ol type="1">
-<li>p値は<strong>帰無仮説（null hypothesis）</strong>が正しい確率である</li>
-<li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
-<li>統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する</li>
-</ol>
-<div class="voice-father">
-<p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それでいいんじゃない？p値が0.05だったら100回に5回は正しい」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「さっきの生存曲線を見ると、差がある確率より、差がない確率の方が高そうだもの。ここではね、言葉を正確に選んで考えてみてほしいんだ。“LTA群とTH群に生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はーん。そういう理屈っぽいことがいいたかったわけね。じゃあそういう言い回しはやめます」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん。じゃあ100回に5回ってどういう意味でいった？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「へ。言葉通りだけど？JCOG9502を100回やったらどうなるかって意味」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「その通り。同じ試験を100回繰り返したらp値が100個出てくるでしょ。これがこの場合の確率の定義なんだ。頻度論的確率っていって。じゃあ次。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「普通そう考えるんじゃない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ科学的に重要じゃないってこと？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういう意味でいったわけじゃないけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」</p>
-</div>
-<div class="voice-daughter">
-<p>私「はいはい。お父さん、話長くない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「もう最後にするよ。それにコーヒーも残ってるじゃない。三つ目の説明“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、<strong>同等性 （equivalence）試験</strong>や<strong>非劣性 （non-inferiority）試験</strong>を組む必要がある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだね、仮説にはうるさいね。これは日本の話なんだけど。昔、薬事承認の根拠として非劣性試験を行っていた時代があってね。その時代の経験を踏まえると、研究仮説と統計的な判断基準の関係は、厳密に考えとかないとちょっとまずいと思うんだ」</p>
-</div>
-</section>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ホパテの悲劇">
+<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan–Meier curves for cumulative incidence of relapse (CIR)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ホパテの悲劇
+Kaplan–Meier curves for cumulative incidence of relapse (CIR)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
+<p>実際の研究では、死亡を打ち切りとして扱った生存時間解析の結果をしばしば目にします。この解析に対応するKaplan–Meier曲線は、以下のようにイベントのコーディングを変更し、<code>outcome.type="survival"</code>を指定することで出力できます。</p>
+<ul>
+<li><code>status_cir1=1</code> : 再発</li>
+<li><code>status_cir1=0</code> : 再発を経験しない死亡/打ち切り</li>
+<li><code>status_cir2=1</code> : 再発を経験しない死亡</li>
+<li><code>status_cir2=0</code> : 再発/打ち切り</li>
+</ul>
+<p>新しく作ったイベント変数<code>status_cir1</code>と<code>status_cir2</code>を用いると、再発のKaplan–Meier曲線と（再発を経験しない）死亡のKaplan–Meier曲線を描くことができます。これらのKaplan–Meier曲線を左右に配置した図を、先ほどのAalen-Johansen曲線の図と比べてみてください。Aalen-Johansen曲線の和とは異なり、Kaplan–Meier曲線の和が1を超えていることが読み取れたでしょうか。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>status_cir1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>status_cir<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>km_event1 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir1) <span class="sc">~</span> stoma,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"surv"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>status_cir2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>status_cir<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>km_event2 <span class="ot">&lt;-</span> <span class="fu">cifplot</span>(<span class="fu">Event</span>(time_cir, status_cir2) <span class="sc">~</span> stoma,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">type.y       =</span> <span class="st">"risk"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>km_list <span class="ot">&lt;-</span> <span class="fu">list</span>(km_event1<span class="sc">$</span>plot, km_event2<span class="sc">$</span>plot)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>km_panel <span class="ot">&lt;-</span> <span class="fu">cifpanel</span>(<span class="at">rows.columns.panel =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">plots=</span>km_list)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(km_panel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="study-design-5_old_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+</div>
+</div>
+</div>
+</section>
+<section id="three-familiar-troublemakers-selection-information-confounding" class="level3">
+<h3 class="anchored" data-anchor-id="three-familiar-troublemakers-selection-information-confounding">Three familiar troublemakers: selection, information, confounding</h3>
+<div class="dialogue">
+<div class="voice-father">
+<p>Dad: “Sure. You’re mailing out questionnaires, right? When a lot of patients don’t respond, that introduces bias. For example, are you asking about annual income?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Maybe.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Then be careful. Sensitive questions can lower the response rate. If non-response is systematic, your sample no longer represents the target population. For example:”</p>
+</div>
+<ul>
+<li>Patients who are doing well may be more likely to answer.<br>
+</li>
+<li>Patients who are very sick, depressed, or busy may be less likely to answer.</li>
+</ul>
+<div class="voice-father">
+<p>Dad: “Then your estimated <strong>return-to-work proportion</strong> can be <strong>too optimistic</strong>. Also, suppose patients with a stoma are more likely to return the questionnaire than those without a stoma. Then comparing those two groups could be criticized because of differential response rates.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Is that… confounding?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “You know the term? Nice. Confounding is a type of bias, but this is different. When the selection of participants itself depends on certain characteristics, we call it selection bias. And if the information collected is inaccurate—like when people overreport income — that’s information bias. In classes on study design and observational studies, we divide bias into three main categories:</p>
+</div>
+<ul>
+<li>Selection bias</li>
+<li>Information bias</li>
+<li>Confounding</li>
+</ul>
+<div class="voice-father">
+<p>Dad: “Most biases fall into one of these three. So when designing a study, we teach students:”</p>
+</div>
+<ul>
+<li><p>Make sure you’re not selecting only certain types of people.</p></li>
+<li><p>Collect information in a way that avoids systematic errors.</p></li>
+<li><p>When comparing groups, adjust for characteristics other than the variable of interest.</p></li>
+</ul>
+<div class="voice-father">
+<p>Dad: “Keeping these three in mind makes countermeasures much easier.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Hmm… selection bias, information bias… Clinical research terminology is so confusing. But I definitely don’t want my survey to fail. I’ll write this down.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Random error and bias">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+Random error and bias
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="frequentist-2.jpg" class="img-fluid"></p>
-<p>この人は誰でしょう。</p>
-<ol type="1">
-<li>Kaplan</li>
-<li>Meier</li>
-<li>Cox</li>
-<li>Wilcoxon</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>Statistics is a discipline of uncertainty, but in clinical research it’s important to distinguish random error from bias.</p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><p>Random error: variability centered around the truth. Decreases with larger sample size.</p></li>
+<li><p>Bias: a systematic deviation from the truth. Does not disappear unless the study design and data collection are improved.</p></li>
 </ul>
-<p>この方がCox先生です。</p>
-<p><a href="https://en.wikipedia.org/wiki/David_Cox_(statistician)">David Cox (statistician)</a></p>
-</div>
+<p>A helpful analogy: Random error is like the spread of arrows around the bull’s-eye. Bias is when you’re consistently aiming off-center.</p>
+<p>The bias you observed in the Kaplan–Meier curve under competing risks is not random error.</p>
+<ul>
+<li>Reducing random error = increase sample size.</li>
+<li>Reducing bias = improve study design.</li>
+</ul>
+<p>That is one of the central themes of this Story.</p>
 </div>
 </div>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-study-design-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
 <ul>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="https://www.igaku-shoin.co.jp/book/detail/84805">Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013</a></p></li>
-</ul>
-</section>
-<section id="エピソード用語集rスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
-<ul>
-<li><p><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></p></li>
-<li><p>[P-Value Explanations That Seem Plausible at First Glance]</p></li>
-<li><p>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</p></li>
-<li><p>[R Demonstration of Bias in Kaplan-Meier Under Competing Risks]</p></li>
-<li><p>[Understanding Confidence Intervals via Hypothetical Replications in R]</p></li>
-<li><p>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</p></li>
-<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></p></li>
+<li>[Reading a Paper over a Cup of Coffee]</li>
+<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
+<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
+<li>[Understanding Confidence Intervals via Hypothetical Replications in R]</li>
+<li>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</li>
 </ul>
 
 

@@ -1,0 +1,187 @@
+---
+title: "A Morning Just Before Submission"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Publish a Paper − A Morning Just Before Submission
+
+------------------------------------------------------------------------
+
+### A Quiet Morning Before Submission
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+The sound of early-summer rain softened what remained of the night. After clinic hours, we often spent time together in front of the computer. Tonight again, I sat still, looking at the manuscript glowing on the monitor. Papers, questionnaires, and notes scribbled on paper napkins lay scattered across the desk. I reached for a cup of coffee that had gone cold without my noticing.
+
+Write, pause, return. Again and again.
+:::
+
+"The aim of this study was―"
+
+::: voice-daughter
+Such a short sentence, and yet now I know how much it must hold. A study aim is never a private intention. It must be opened to others, shaped into a research hypothesis― something that quietly hands over where I stand in the world and the direction in which I intend to walk.
+
+My eyes moved downward.
+:::
+
+"The major results of the study were―"
+
+::: voice-daughter
+The numbers placed there look different to me than before. Numbers are records of what happened to patients, but they are also responses to the questions we ask of the world. Did we provide good care? Change the question, and the numbers answer differently. They appear merely arranged on the page, yet each one speaks more than I once imagined.
+
+Because this study involves patients, its hypothesis inevitably carries the values of medicine. It is less about knowing what is “correct,” and more about gaining knowledge that brings us a little closer to better practice. 
+
+The coffee had cooled at the corner of the desk. On the monitor, the freshly written Conclusion glowed softly. I checked each line, making sure it answered the questions we held when we designed the study. I nodded to myself and began typing again, slowly.
+:::
+:::::::::::::::::::::::::::::::::
+
+Acknowledgements
+
+We appreciate the advice from an anonymous statistician.
+
+### This concludes the story. 

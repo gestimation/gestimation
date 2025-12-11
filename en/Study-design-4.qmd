@@ -1,5 +1,5 @@
 ---
-title: "Outcomes: The Bridge from Data Collection to Analysis"
+title: "A First Step into Survival and Competing Risks Analysis with R"
 format:
   html:
     toc: true
@@ -144,178 +144,157 @@ a:hover {
 </style>
 ```
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Study Design IV − The Bridge from Data Collection to Analysis
+# Study Design IV − A First Step into Survival and Competing Risks Analysis with R
 
 ::: {.serif-block .text-right}
-Keywords: generalized linear model, outcome, simulation, survival/competing-risk
+Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk
 :::
+
 ------------------------------------------------------------------------
 
-### Turning a questionnaire into “data”
+### 調査項目とデータの型
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “Hey Dad, quick question. And yes, there’s coffee.”
+私「あれ、懐かしい。私が小学生の頃に買ったルービックキューブじゃない、そんなのやってるの。時間があるならちょっといい？がんサバイバーの復職率を調査する話があったでしょ。患者さんに送る調査票をつくってみたんだけど、見てくれる？あ、この前のRも参考になったよ、調査結果が想像できた」
 :::
 
 ::: voice-father
-Dad: “Then I’m listening.”
+お父さん「どれどれ」
+:::
+
+
+![](study-design-4-1.png)
+
+
+::: voice-father
+お父さん「復職率の定義はなに？」
 :::
 
 ::: voice-daughter
-Me: “You remember that return-to-work survey for cancer survivors? I finally drafted the questionnaire we’re going to mail from our hospital. Can you take a look and tell me if it’s...statistically suicidal?”
+私「どういうこと？」
 :::
 
 ::: voice-father
-Dad: “Let’s see...How exactly are you going to define the **return-to-work proportion**?”
+お父さん「調査票を見ただけじゃ、この質問項目で十分かどうかわからないってこと。手術日から調査日の間に、復職を希望した患者さんが、希望どおり復職できたかどうかを調べたいのかな？」
 :::
 
 ::: voice-daughter
-Me: “That’s already a hard question?”
+私「それもいいんだけど、復職を希望してないって回答した患者さんのなかに、会社の方針などの理由で復職をあきらめた患者さんも含まれるかもしれない。だから、復職率を計算するとき、分母は、復職を希望した患者さんじゃなくて、手術を受けた患者さん全員にしたいわ。そうした方が、就労実態がわかりやすそうだもの」
 :::
 
 ::: voice-father
-Dad: “Yup. It always is.”
+お父さん「手術日から調査日の間の復職を調べたいかどうかについては？」
 :::
 
 ::: voice-daughter
-Me: “Okay...here’s how I was thinking. Among all patients who had curative surgery, I want to know who **has returned to work** and who **hasn’t** within a certain time period. I don’t want to restrict the denominator to only those who *say* they want to go back to work, because some people might have given up because of workplace issues.”
+私「えーっと。調査票に回答してもらうタイミングは患者さんによってまちまちになりそうだから、調査日は使いたくない。1年以内に復職できるかを定義にするのはどうかな？あ！ 復職日を答えてもらえばいいのかも！」
 :::
 
 ::: voice-father
-Dad: “Good. That’s a thoughtful choice. So what time window are you using?”
+お父さん「復職日はあった方がいいよね。そうすると、復職状況から解析用の“変数”をつくるには、分類データと生存時間データの2通りが考えられる。それはさておき、手術後に亡くなった場合はどうするの？」
 :::
 
 ::: voice-daughter
-Me: “I don’t want to use ‘survey date’ because the response timing will vary a lot between patients. So I was thinking of defining it as:
-
-> ‘Returned to work within 1 year after surgery.’
-
-And then I realized... I should probably ask for the **actual date of return-to-work** in the questionnaire.”
+私「入院中に亡くなった場合は、調査対象に含めない。でも、術後再発による死亡を分母から除外するのは変な気がする」
 :::
 
 ::: voice-father
-Dad: “Yes, that date is very useful. If you have it, you can turn the same answer into:"
-:::
-
-- Categorical data (returned within 1 year: yes/no)
-- Survival data (time from discharge to return-to-work)
-
-::: voice-daughter
-Me: “Two birds with one question. Efficient. What about patients who **die** after surgery, though?”
-:::
-
-::: voice-father
-Dad: “Important point. If someone dies after your **time origin**, you shouldn’t quietly drop them from the denominator. That would create bias—especially in a cancer survivor study.”
-:::
-
-::: voice-daughter
-Me: “So what should I do?”
-:::
-
-::: voice-father
-Dad: “In follow-up studies of cancer patients, I always tell people:"
-:::
-
-1. Decide a clear **time origin** – for you, I’d recommend the **discharge date**.  
-2. Decide a **follow-up period** – here, ‘1 year after discharge’.  
-3. Make a serious effort to collect outcome information for **all patients** in the target population, including deaths.
-
-::: voice-father
-Dad: “If the target population is ‘rectal cancer patients after curative surgery at our hospital’, you want to know what happened to *all* of them, not just the ones who kindly mail back questionnaires.”
-:::
-
-::: voice-daughter
-Me: “Right. I don’t want to design a study where the only people included are those with good energy and good stationery habits.”
-:::
-
-### Categorical data vs survival time data
-
-::: voice-father
-Dad: “Let’s organize this a bit. What is your **outcome** in this study?”
-:::
-
-::: voice-daughter
-Me: “The main one is:
-
-> Returned to work within one year after discharge (yes/no).”
-:::
-
-::: voice-father
-Dad: “Perfect. That gives you binary data. You can then compute the **return-to-work proportion** in each group, and compare them.”
-:::
-
-::: voice-daughter
-Me: “Including patients who died, as ‘did not return’, right?”
-:::
-
-::: voice-father
-Dad: “Yes, as long as that’s clearly defined and consistent. But if you want a richer picture,  
-you could use **three categories** instead of just two:”
-:::
-
-1. Returned within 1 year  
-2. Alive but did not return within 1 year  
-3. Died within 1 year without returning to work
-
-::: voice-father
-Dad: "That already separates ‘can’t work because I died’ from ‘still alive but didn’t go back’.”
-:::
-
-::: voice-daughter
-Me: “Okay, that does sound more honest.”
-:::
-
-::: voice-father
-Dad: “Now, if you also collect the **date of return-to-work**, you can create **survival data**.”
-:::
-
-::: voice-daughter
-Me: “Even though the event is not ‘death’?”
-:::
-
-::: voice-father
-Dad: “Right. ‘Survival time’ is a bit misleading as a name. Statistically, what matters is:
-
-> time from the **time origin** to the **event of interest**.
-
-In your case, the event is ‘return-to-work’.”
-:::
-
-::: voice-daughter
-Me: “So if someone is discharged on April 1 and returns to work on April 30, time-to-event = 30 days.”
-:::
-
-::: voice-father
-Dad: “Exactly. Now think about patients who haven’t returned to work by the time you close the survey. For them, **time-to-return** isn’t observed yet. That’s where **censoring** comes in.”
-:::
-
-::: voice-daughter
-Me: “Right. They’re still in limbo.”
-:::
-
-::: voice-father
-Dad: “So survival data always comes as a **pair**:“
-:::
-
-- a time variable
-- a **censoring indicator**
-
-::: voice-father
-Me: “I can imagine an example like:”
+お父さん「そうだね。除外するとバイアスが生じると思う。ターゲットにしている集団からずれちゃうからね。がん患者を追跡するような研究をするとき、大切なことが3つある。1つ、どのタイミングを**時間原点**にするかを決める必要があるよね。この場合、時間原点は退院日にするといい。2つ、追跡期間の目標を設定して、その時点までは、可能な限り情報を収集すること。情報が取れないとバイアスが生じる原因になる。3つ、時間原点後に生じたイベントは除外してはならない」
 :::
 :::::::::::::::::::::::::::::::::
 
-- time = min( time to return-to-work, time to last follow-up )  
-- status = 1 if returned, 0 if not returned by last follow-up
+- 時間原点を定義する
+- 追跡期間の目標を設定し、その時点までは可能な限り情報を収集する
+- 時間原点後に生じたイベントは除外したり、層別に用いたりしない
 
-::: {.callout-note appearance="simple"  title="Handling survival data in R"}
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「後からバイアスがあるとか言われたくないもんね。ふむふむ」
+:::
 
-Since survival data consists of pairs of variables, they must be specified as pairs when inputting into R functions. The `survfit()` and `coxph()` functions in the `survival` package actually provide a dedicated input function, `Surv()`. Input specifications vary across packages; for example, the `mets` package uses `Event()`. The `cifplot()` function in the `cifmodeling` package supports both `Surv()` and `Event()`. 
+::: voice-father
+お父さん「以前、“PECO”という要素を使って臨床疑問を構造化したらってアドバイスしたよね。Pが根治切除後の直腸がん患者さんだったら、その集団をもれなく調査しないといけない」
+:::
+
+::: voice-daughter
+私「分類データと生存時間データってなに？」
+:::
+
+::: voice-father
+お父さん「これもこの前話したでしょ。統計解析を行ううえで基本になるのが“データの型”で、分類データと生存時間データはその種類だよ」
+:::
+
+::: voice-daughter
+私「いや、先週の話だし、私忙しいし」
+:::
+
+::: voice-father
+お父さん「調査票を少し手直ししたから、これを使ってもう一度話すよ」
+:::
+
+![](study-design-4-2.png)
+
+::: voice-father
+お父さん「分類データは、この場合、患者のアウトカムを分類したものだよ。1年以内に復職したかどうかをアウトカムにしたらどうかなっていってたよね」
+:::
+
+::: voice-daughter
+私「うん」
+:::
+
+::: voice-father
+お父さん「たとえば、“1年以内に復職あり”を分類1、“1年以内に復職なし”を分類2にしたら、2値データと呼ばれる分類データの一種になる。これは調査票から調べられるし、復職率も計算できるよね」
+:::
+
+::: voice-daughter
+私「うん。1年以内の死亡を復職なしって扱えばね」
+:::
+
+::: voice-father
+お父さん「でも就労状況を集計するときは2値データではなく、3カテゴリの分類データの方がいい。“1年以内に復職あり”を分類1、“1年以内に復職なし（死亡以外の理由のため）”を分類2、“1年以内に復職なし（死亡のため）”を分類3にしたらどう？もっと詳細にアウトカムが把握できるでしょ」
+:::
+
+::: voice-daughter
+私「うんうん。じゃあ生存時間データはなんだっけ？OSってこと？」
+:::
+
+::: voice-father
+お父さん「たしかに全生存期間（OS）は生存時間データの一種だよ。名前から誤解されがちだけど、それ以外にもあるんだ。生存時間データがどういうものかっていうと、時間原点から“イベント”までにかかった時間を表す変数のこと」
+:::
+
+::: voice-daughter
+私「復職状況も生存時間データになるの？」
+:::
+
+::: voice-father
+お父さん「そうすることもできる。この場合は、“退院日から復職日までの期間”を考えればいい。たとえばね、4月1日に退院して、4月30日に復職したとしたら、この患者の生存時間データは30-1+1=30日になる。これだとただの日数だから、連続データとの違いがはっきりしないけど、生存時間データの本質は、**打ち切り （censoring）**があることなんだ。調査日までに復職しなかった場合、退院日から復職日までの期間は存在しないでしょ」
+:::
+
+::: voice-daughter
+私「まあそうだけど、それでいいんじゃないの？」
+:::
+
+::: voice-father
+お父さん「統計解析のソフトウェアを使うとき一工夫が必要で、調査日の時点で復職しなかった、つまり復職の追跡が打ち切られたという情報を、入力してあげなければならない。だから生存時間データは、2つの変数が組になっているんだ。
+:::
+:::::::::::::::::::::::::::::::::
+
+- 時間変数
+- イベント変数とと
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「イベント変数は、いわゆる生存時間データの場合は、イベントが観察されたか、打ち切りになったかを表す2値データ。時間変数は、この場合は“退院日から復職日までの期間”か“退院日から調査日までの期間”のどちらかになる」
+:::
+
+::: {.callout-note appearance="simple"  title="生存時間データの入力"}
+
+生存時間データは2つの変数の組であるため、Rの関数に入力するときもペアで指定する必要があります。**survival**パッケージの`survfit()`や`coxph()`では、実は入力専用の関数`Surv()`を用意しています。入力の仕様はパッケージによってまちまちで、たとえば**mets**パッケージでは`Event()`を別に定義して用いています。**cifmodeling**パッケージの`cifplot()`は、`Surv()`と`Event()`の両方に対応しています。
 
 ```{r surv_example, eval=FALSE}
 library(survival)
@@ -337,136 +316,193 @@ cifplot(Event(time, status) ~ stoma,
 ```
 :::
 
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “But where do **deaths** go in that picture?”
+私「えーっと、イベント変数は2値データってことは、すべての患者さんで復職か、打ち切りかの2択しかないってこと？死亡はどうなるの？」
 :::
 
 ::: voice-father
-Dad: “There are two ways to think about it. One is a simple approach that treats deaths as ‘did not return to work’. In the censoring indicator, death would be coded as **no event** if you only care about return-to-work. But there is a more refined approach. In **competing risks analysis**, death is not just censored — it’s a **competing event** that prevents return-to-work from happening.”
-:::
-
-::: voice-daughter
-Me: “Competing risks again. You really like those.”
-:::
-
-::: voice-father
-Dad: “They show up a lot in medical data. If you treat all deaths as just censored, you’re implicitly saying:
-
-> ‘If they hadn’t died, their chance of returning-to-work  
-> would be the same as for people still alive.’
-
-In reality, that’s often not true.”
+お父さん「いま話したような扱いをするなら、死亡した患者さんは、打ち切りという分類に含まれることになる。ただし、**競合リスク （competing risk）**という別の扱い方もある。簡単にいうと、それが起こると研究で調べたいイベント（たとえば死亡や復職）が観察されなくなる、競合するイベントのことだよ」
 :::
 
 ::: voice-daughter
-Me: “Yeah, that would be...optimistic.”
+私「ああ、死亡が競合リスクってことね」
 :::
-
----
-
-### A quick map of data types and methods
 
 ::: voice-father
-Dad: “Since we’ve talked about data types a few times now, let’s draw a little map. Say we’re thinking about:
-
-- what kind of **outcome** we have,  
-- whether we have **repeated measurements**, and  
-- whether we need to **adjust for confounding**.”
+お父さん「生存時間データは、英語ではsurvival data以外にtime-to-event dataっていったりもするんだけどね。時間とともに起きるイベントって、生存か死亡かだけじゃないでしょ。競合リスクを解析できるようにしたのが競合リスクモデルなんだ。この場合、さっきのイベント変数は、イベント、競合リスク、打ち切りという3カテゴリを表す変数になる。イベント変数はこんな感じでコーディングされる」
 :::
+
+- イベント変数=0: イベントが観察される前に打ち切りになった
+- イベント変数=1: イベントが観察された
+- イベント変数=2: イベントが観察される前に競合リスクが生じた
 
 ::: voice-daughter
-Me: “This sounds like the part where you normally pull out a slide.”
-:::
-
-::: voice-father
-Dad: “Today we get the short version.”
-:::
-
-| Data type         | Repeated within person? | Confounding? | Typical methods                        |
-|-------------------|-------------------------|--------------|----------------------------------------|
-| Continuous        | No                      | No           | $t$ test, Wilcoxon rank-sum            |
-| Continuous        | No                      | Yes          | Linear regression                      |
-| Continuous        | Yes                     | Yes          | Random-effects model, GEE              |
-| Binary            | No                      | No           | $\chi^2$ test                          |
-| Binary            | No                      | Yes          | Logistic regression                    |
-| Binary            | Yes                     | Yes          | Random-effects logistic, GEE           |
-| Count             | No                      | Yes          | Poisson regression                     |
-| Survival          | No                      | No           | Kaplan–Meier curve                     |
-| Survival          | No                      | Yes          | Cox regression                         |
-| Competing risks   | No                      | No           | Aalen–Johansen curve                   |
-| Competing risks   | No                      | Yes          | Fine–Gray model                        |
-
-::: voice-daughter
-Me: “So for my study, ‘returned to work within 1 year’ is binary and can be handled with logistic regression. For ‘time from discharge to return-to-work’, are Kaplan–Meier/Cox and Aalen–Johansen/Fine–Gray typical statistical methods? ”
-:::
-
-::: voice-father
-Dad: “Exactly. That’s already a good grasp of the landscape.”
-:::
-
-### Repeated measurements and confounding
-
-::: voice-daughter
-Me: “Where do repeated measures come in?”
-:::
-
-::: voice-father
-Dad: “Imagine you use the same questionnaire multiple times for each patient:”
-:::
-
-- pre-surgery  
-- at 6 months  
-- at 12 months
-
-::: voice-father
-Dad: “Then you’d have multiple data points **within each person**. Those are **correlated** — your own responses are more similar to each other than to some random patient’s.”
-:::
-
-::: voice-daughter
-Me: “So I can’t just pretend they’re all independent.”
-:::
-
-::: voice-father
-Dad: “Right. That’s when you use methods like **random-effects models** or **generalized estimating equations (GEE)**. They’re built to handle within-person correlation.”
-:::
-
-::: voice-daughter
-Me: “And confounding is lack of comparability or ‘ceteris paribus‘, right? So in randomized trials, we use random allocation of treatments to balance those things in advance. But in observational studies like mine, we depend more on modeling and design.”
-:::
-
-::: voice-father
-Dad: “Precisely. That’s the big difference between ‘trial data/experimental data’ and ‘real-world data’.”
+私「だいたいわかった。この調査票、使わせてもらうね」
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple" title="A quiz related to this episode"}
-In which situation is the **Kaplan–Meier method** appropriate for estimating a survival curve?
 
-1. When survival times follow a normal distribution.  
-2. When the reasons for censoring are unrelated to prognosis.  
-3. When the censoring proportions of two groups do not differ significantly in a hypothesis test.  
-4. When the proportional hazards assumption holds between the treatment and control groups.  
+### 生存時間解析と競合リスク解析
+
+::: {.callout-note appearance="simple" title="シミュレーションデータ（再発あり）の生成"}
+前回より少しだけがんの臨床研究を意識して、シミュレーションデータにおける、全生存期間（OS）・無再発生存期間（RFS）・累積再発率（CIR）の違いをみてみましょう。CIRの解析では、再発の前に死亡した患者が存在するため、その扱いを決める必要があります。これを**競合リスク（competing risk）**といいます。
+
+以下のコードでは、死亡だけではなく再発を伴った生存時間アウトカム3種類をRで生成する「関数」`generate_data()`を定義しています。OSのイベントは「死亡」、RFSのイベントは「死亡と再発」です。CIRのイベントは「再発」ですが、死亡を競合リスクとして扱います。なお、`generate_data()`やこのシミュレーションデータは、今後の解説でも再利用する予定です。
+
+-   ストーマ保有：2項分布（`rbinom`）から生成した2値データ
+
+-   生存時間：指数分布（`rexp`）から生成した生存時間データ（t_relapse, t_death, t_censoringの乱数から計算）
+
+前回、競合リスクのない生存時間データを要約しましたが、そこで用いたのは**Kaplan-Meier曲線**でしたよね。それに対して、競合リスク解析では、Kaplan-Meier曲線ではなく、**Aalen-Johansen曲線**を用いるのが正式です。
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Answer"}
-- The correct answer is **2**.
-
-The Kaplan–Meier method does **not** require:
-
-- normality of survival times (that’s more for $t$-tests), nor  
-- proportional hazards (that’s a key assumption for the Cox model).
-
-What it *does* assume is that **censoring is non-informative**. If sicker patients are more likely to be lost to follow-up, or if follow-up intensity depends strongly on prognosis, Kaplan–Meier curves can become biased.
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発存期間（RFS） -------------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+  return(dat)
+}
+```
 :::
 
-### Episodes and R-script
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
-- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R](study-design-3.qmd)
-- [Outcomes: The Bridge from Data Collection to Analysis](study-design-4.qmd)
+::: {.callout-note appearance="simple"  title="全生存期間（OS）のKaplan–Meier曲線"}
+OSとRFSは通常の生存時間データですから、前回と同様に**cifmodeling**パッケージの`cifplot()`を使って、Kaplan–Meier曲線で記述します。まずはOS。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
+```{r warning=FALSE}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
+library(cifmodeling)
+set.seed(46)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+
+cifplot(Event(time_os, status_os) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple"  title="無再発生存期間（RFS）のKaplan–Meier曲線"}
+次にRFSです。`Event()`で指定する変数以外は変わりません。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
+```{r}
+cifplot(Event(time_rfs, status_rfs) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Relapse-free survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple"  title="累積再発率（CIR）のAalen-Johansen曲線"}
+以下のコードでは、`Event(time_cir, status_cir)`のコーディングによって競合リスクを入力しています。
+
+- `status_cir=1` : 関心のあるイベント（再発）
+- `status_cir=2` : 競合リスク（再発を経験しない死亡）
+- `status_cir=0` : 打ち切り
+
+さらに`outcome.type = "competing-risk"`を指定することで、Aalen-Johansen曲線を描いています。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
+```{r}
+cifplot(Event(time_cir, status_cir) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk",
+  label.y      = "Cumulative incidence of relapse"
+)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「Aalen-Johansen曲線って、Kaplan–Meier曲線のY軸を逆さにしただけじゃないの」
+:::
+
+::: voice-father
+お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。
+
+> 生存曲線（Kaplan–Meier曲線）と累積発生曲線（Aalen-Johansen曲線）は別の統計手法なので
+> 競合リスクがあるときはAalen-Johansen曲線を用いる。
+
+ちなみに、relapse-free timeじゃなくてcumulative incidence of relapseを使いたいっていったけど、それは**累積発生曲線（cumulative incidence curve）**が、専門的にはAalen-Johansen曲線と同じ意味だからなんだよね。やろうと思えばCIRを解析するとき、Kaplan–Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（`status_cir=2`）ではなく打ち切り（`status_cir=0`）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。
+:::
+
+::: voice-daughter
+私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」
+:::
+
+::: voice-father
+お父さん「もちろん間違いじゃないよ。でも、RFS曲線の差は、再発だけでなく他因死の影響も反映しているよね。だから、さっきいったみたいに、OS、RFS、CIRは使い分けが必要になる」
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
+CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングのは、次のうちどちらでしょう。
+
+1. CNSR=0
+2. CNSR=1
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
+- **正解は2です**
+
+CDISC ADaM ADTTEでは、1がTRUEを表しています。`Event()`や`Surv()`など多くの統計パッケージのデフォルトでは、イベント=1、打ち切り=0というコーディングを想定しています。CNSRをそのまま用いることはできません。
+:::
+
+### エピソードとRスクリプト
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
-
