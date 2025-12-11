@@ -180,7 +180,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ::: 
 
 ::: voice-daughter
-私「...じゃあ、"真値"ってよく聞く言葉だけど、自然のどこかに転がっている数字じゃないんだね」
+私「...じゃあ、真値ってよく聞く言葉だけど、自然のどこかに転がっている数字じゃないんだね」
 ::: 
 ::::::::::::::::::::::::::::::::: 
 

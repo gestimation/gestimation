@@ -222,7 +222,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ::: 
 
 ::: voice-daughter
-私「え？えーっと、真値が3なんだから、調整しないほう？」
+私「えーっと、真値が3なんだから調整しない方かな」
 ::: 
 
 ::: voice-father
@@ -230,7 +230,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ::: 
 
 ::: voice-daughter
-私「なにがいいたいの？」
+私「なにがいいたいの？私、ロジスティック回帰は苦手なんだよ」
 ::: 
 
 ::: voice-father
