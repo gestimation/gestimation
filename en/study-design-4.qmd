@@ -166,9 +166,20 @@ Me: "Oh wow, that takes me back. Is that the Rubik's Cube I bought when I was in
 ::: voice-father
 Dad: "Let's see."
 :::
+:::::::::::::::::::::::::::::::::
 
-![](study-design-4-1.png)
+### Table 1. My Original Questionnaire
 
+| Item | Response |
+|------|----------|
+| Survey date | ____ Year ____ Month ____ Day |
+| Surgery date | ____ Year ____ Month ____ Day |
+| Were you employed before surgery? | Yes ____ / No ____ |
+| For those who were employed: Did you resign because of the surgery? | Yes ____ / No ____ |
+| For those who resigned: Did you wish to return to work? | Yes ____ / No ____ |
+| For those who wished to return: Were you able to return to work? | Yes ____ / No ____ |
+
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
 Dad: "How are you defining the return-to-work rate?"
 :::
@@ -235,9 +246,36 @@ Me: "That was last week, and I've been busy, you know."
 ::: voice-father
 Dad: "I made a few tweaks to your questionnaire, so I'll use this version to explain it again."
 :::
+::::::::::::::::::::::::::::::::: 
 
-![](study-design-4-2.png)
 
+### Table 2-A. Questionnaire for Survivors
+
+| Item | Response |
+|------|----------|
+| Survey date | ____ Year ____ Month ____ Day |
+| Surgery date | ____ Year ____ Month ____ Day |
+| Discharge date | ____ Year ____ Month ____ Day |
+| Post-discharge employment date (only for those who worked before surgery) | ____ Year ____ Month ____ Day |
+| Were you employed before surgery? | Yes ____ / No ____ |
+| For those who were employed: Did you resign because of the surgery? | Yes ____ / No ____ |
+| For those who resigned: Did you wish to return to work? | Yes ____ / No ____ |
+| For those who wished to return: Were you able to return to work? | Yes ____ / No ____ |
+
+
+### Table 2-B. Questionnaire for Deceased Patients
+
+| Item | Response |
+|------|----------|
+| Survey date | ____ Year ____ Month ____ Day |
+| Surgery date | ____ Year ____ Month ____ Day |
+| Date of death | ____ Year ____ Month ____ Day |
+| Were they employed before surgery? | Yes ____ / No ____ |
+| Did they work after surgery? | Yes ____ / No ____ |
+
+*Enter data from medical records
+
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
 Dad: "In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using 'returning to work within one year' as the outcome, right?"
 :::

@@ -218,15 +218,28 @@ Different trials have different research hypotheses, and endpoints are chosen ac
 :::::::::::::::::::::::::::::::::
 
 
+| エンドポイント | イベント1 | イベント2 | イベント3 | イベント4 | 打ち切り日 |
+|------------|------------|------------|------------|------------|------------|
+| 全生存期間 | 死亡 |  |  |  | 最終生存確認日 |
+| 無増悪生存期間 | 死亡 | 増悪/再発 |  |  | 最終無増悪確認日 |
+| 無再発生存期間 | 死亡 | 再発 |  |  | 最終生存確認日 |
+| 無再発期間 | 再発 |  |  | | 最終生存確認日 |
+| 無病生存期間 | 死亡 | 再発 | 2次がん |  | 最終生存確認日 |
+| 無イベント生存期間 | 死亡 | 寛解導入失敗 | 再発 | 2次がん | 最終生存確認日 |
+| 治療成功期間 | 死亡 | 治療中止（治療中の増悪/再発を含む） | プロトコール治療完了後の増悪/再発 |  | 最終治療継続確認日または最終無増悪確認日 |
 
-| Endpoint                              | What counts as an event?                                            |
-|---------------------------------------|---------------------------------------------------------------------|
-| Overall survival (OS)                 | Death from any cause                                                |
-| Progression-free survival (PFS)       | Progression or death                                                |
-| Relapse-free survival (RFS)           | Relapse or death                                                    |
-| Cumulative incidence of relapse (CIR) | Relapse only, with death as a competing risk                        |
-| Disease-free survival (DFS)           | Relapse, second cancer, or death                                    |
-| Event-free survival (EFS)             | Death, induction failure, relapse, second cancer (depends on trial) |
+
+
+| Endpoint                              | What counts as an event?                                            | censoring date                          |
+|---------------------------------------|---------------------------------------------------------------------|-----------------------------------------|
+| Overall survival (OS)                 | Death from any cause                                                | Last survival confirmation date         |
+| Progression-free survival (PFS)       | Progression or death                                                | Last progression-free confirmation date |
+| Relapse-free survival (RFS)           | Relapse or death                                                    | Last survival confirmation date         |
+| Relapse-free time                     | Relapse                                                             | Last survival confirmation date         |       
+| Cumulative incidence of relapse (CIR) | Relapse only, with death as a competing risk                        | Last survival confirmation date         |
+| Disease-free survival (DFS)           | Relapse, second cancer, or death                                    | Last survival confirmation date         |
+| Event-free survival (EFS)             | Death, induction failure, relapse, second cancer (depends on trial) | Last survival confirmation date         |
+| Treatment success time                | Death, treatment failure, progression/relapse (depends on trial)    | Last treatment-continuation/progression-free confirmation date|
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
