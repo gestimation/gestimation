@@ -151,127 +151,112 @@ a:hover {
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, hypothesis/outcome/population, probability model, simulation, survival/competing-risk
+probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ------------------------------------------------------------------------
 
 This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:   
 
-[Study Design I − A Story of Coffee Chat and Research Hypothesis](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
+[Study Design I − A Story of Coffee Chat and Research Hypothesis Hypothesis](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
 
 ### Four types of data items
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “Okay, coffee is ready. Can I keep you a bit longer?”
+Me: "Okay, coffee is ready. Can I keep you a bit longer?”
 ::: 
 
 ::: voice-father
-Dad: “If coffee is involved, yes.”
+Dad: "If coffee is involved, yes. It's starting to feel like autumn lately.”
 ::: 
 
 ::: voice-daughter
-Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just ... numbers?”
+Me: "You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just ... numbers?”
 ::: 
 
 ::: voice-father
-Dad: “They’re all numbers, yes. But for statistics, the **type of data** matters a lot. Very roughly, we use four big categories."
+Dad: "They’re all numbers, yes. But for statistics, the **type of data** matters a lot. Very roughly, we use four big categories."
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
 - Continuous data
 - Binary / categorical data
 - Count data
-- Survival time data
+- Survival data
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “**Continuous data** is things we measure, right? Like age or blood pressure. Binary data I get — like ‘with stoma’ vs ‘without stoma’ in the study I want to do.”
+Me: "**Continuous data** are things we measure, right? Like age or blood pressure. Binary data I get — like 'with stoma’ vs 'without stoma’ in my survey.”
 ::: 
 
 ::: voice-father
-Dad: “Perfect. **Count data** is when you literally count events, like the number of traffic accidents. **Survival data** is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”
+Dad: "Perfect. **Count data** is when you literally count events, like the number of traffic accidents. **Survival data** is things like lifespan — time from some starting point until an event, such as death. In your case, that could be time from surgery to returning to work, or time to relapse.”
 ::: 
 
 ::: voice-daughter
-Me: “When you say it like that, they definitely feel like different beasts. But in the R course I took, we just typed whatever they put on the slides — `t.test()`, `glm()`, `survfit()`... It all felt like a spellbook.”
+Me: "When you say it like that, they definitely feel like different beasts. But in the R course I took, we just typed whatever they put on the slides — `t.test()`, `glm()`, `survfit()`, all those things felt like magic spells.”
 ::: 
 
 ::: voice-father
-Dad: “That’s a common side effect of R lectures. Do you have your laptop?”
+Dad: "That’s a common side effect of R lectures. Do you have your laptop?”
 ::: 
 
 ::: voice-daughter
-Me: “That sounds like the beginning of homework.”
+Me: "...Eh?”
 ::: 
 
 ::: voice-father
-Dad: “Let’s just say it’s a practical demonstration. Bring it here — we’ll install RStudio if it’s not there.”
-::: 
+Dad: "Your laptop. You brought it, didn't you? Let’s install RStudio.”
+:::
 
 ::: voice-daughter
-Me: “I knew this was coming. Look, I know my stats skills are still beginner level, and I *do* need R for my own research. So fine, I’ll get my laptop. But I expect maximum efficiency from this session.”
-::: 
+Me: "...Well, I did ask for help, so fine.”
+:::
 
 ::: voice-father
-Dad: “I’ll try. In R, for **continuous data**, we often use `mean()` and `t.test()`.”
-::: 
+Dad: "In R, for continuous data you often use functions like `mean()` or `t.test()`.”
+:::
 
 ::: voice-daughter
-Me: “Those at least sound familiar.”
-::: 
+Me: "Okay...”
+:::
 
 ::: voice-father
-Dad: “For **binary data**, we summarize with `table()`, and to get p-values we use `fisher.test()`. For more complex analyses, we move to regression models like `glm(family = binomial)`. For **survival data**, we use things like `survfit()`, `coxph()`, and `cifplot()`.”
-::: 
+Dad: "To summarize binary data you can use `table()`. For p-values, `fisher.test()`. For more complex analyses, regression models like `glm(family = binomial)`. For survival data, you’ll see functions like `survfit()`, `coxph()`, and `cifplot()`.”
+:::
 
 ::: voice-daughter
-Me: “There’s no way I can memorize all that. I’ll just mix everything up again.”
-::: 
+Me: "There is no way I can memorize all that. This is exactly what I thought in class. Those functions are basically incantations”
+:::
 
 ::: voice-father
-Dad: “You don’t need to memorize every function name.”
-::: 
+Dad: "You don’t need to memorize them.”
+:::
 
 ::: voice-daughter
-Me: “I like where this is going.”
-::: 
+Me: "Wait, I don’t?”
+:::
 
 ::: voice-father
-Dad: “What you *do* want is a rough map in your head. If you can picture the **data type**, the appropriate R functions become much easier to remember.”
-::: 
+Dad: "What matters is being able to picture which functions belong to which type of data. Or even better, imagining which probability distribution is being assumed.”
+:::
 
 ::: voice-daughter
-Me: “So instead of memorizing spells, I should recognize the kind of creature I’m dealing with.”
-::: 
+Me: "Probability distribution?”
+:::
 
 ::: voice-father
-Dad: “Exactly. And one more layer down, we’re also thinking about **probability distributions**.”
-::: 
+Dad: "You learned this as an undergrad, didn't you? You've heard of the **normal distribution**?”
+:::
 
 ::: voice-daughter
-Me: “Ah, here comes the math.”
-::: 
+Me: "At least that one, yes.”
+:::
 
 ::: voice-father
-Dad: “Nothing too heavy. You’ve heard of the normal distribution, right?”
-::: 
-
-::: voice-daughter
-Me: “That one survived from undergrad, yes.”
-::: 
-
-::: voice-father
-Dad: “For statistics, we imagine that behind the data there’s some probability distribution:
-
-- Continuous data: often **normal distribution**
-- Binary data: **binomial distribution**
-- Count data: **Poisson distribution**
-- Survival data: there’s no single standard, but a simple one is the **exponential distribution**. Often, though, we just treat it **nonparametrically** without any specific distributions. 
-
-You don’t have to remember the formulas, just the general matching. ”
-::: 
+Dad: "Any statistical method beyond simple description is built on some **probability model**. Normal distributions for continuous data, **binomial distributions** for binary data, **Poisson distributions** for count data. For survival data, there isn't a single standard model, but the simplest is the **exponential distribution**. You don’t have to remember the formulas, just the general matching.”
+:::
 :::::::::::::::::::::::::::::::::
 
 - continuous: normal-ish  
@@ -281,70 +266,65 @@ You don’t have to remember the formulas, just the general matching. ”
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “So how does that help with R?”
-::: 
+Me: "Uh-huh. And what does that have to do with R?"
+:::
 
 ::: voice-father
-Dad: “For example, we often talk about **proportions** and **rates** in medicine. We casually throw around words like prevalence or mortality rate. But in statistics they are clearly different. "
-::: 
-:::::::::::::::::::::::::::::::::
+Dad: "Quite a lot. I really want you to remember this, there are two common measures: **proportions** and **rates**. We use them all the time, like 'traffic accident rates'.
+But in everyday language we don't distinguish them clearly. In statistics, though, a proportion is the parameter of a binomial distribution, and a rate is the parameter of a Poisson distribution." 
+:::
 
-- Proportion: a parameter of the binomial distribution  
-- Rate: a parameter of Poisson distribution
-
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “But in normal conversation, proportion and rate are almost interchangeable.”
-::: 
+Me: "Proportions and rates...aren't they basically the same?"
+:::
 
 ::: voice-father
-Dad: “Right, in everyday language they get blurred. In a scientific context, they’re different. A proportion is something you’d express as a **percentage**, such as “60% of the participants were women.” It is clearly bounded between 0 and 1, and describes ’how many out of this group’. A rate relates to **events over time**, and is expressed per unit of time. For example, think of annual rate of traffic accidents in Tokyo. You wouldn’t express that as ’120% per year’. It’s something like ’X accidents per year’.”
-::: 
+Dad: "No, they're not. A proportion is usually a percentage, say, '60% of patients are women'. But consider 'the annual traffic accident rate in Tokyo'. You wouldn't naturally express that as a percentage. You're counting events and dividing by person-time or by years."
+:::
 
 ::: voice-daughter
-Me: “Okay, that’s finally clicking. So proportion is like ‘out of this group, how many have the characteristic’, and rate is like ‘how fast things are happening over time’.”
-::: 
+Me: "Hm. Go on."
+:::
 
 ::: voice-father
-Dad: “Exactly. And with that in mind, let’s do a small R demo — nothing painful.”
-::: 
+Dad: "You don't need rigid textbook definitions. It's enough if your brain can think: 'This looks like continuous data, probably close to a normal distribution, then you'll use functions in this area,' or 'This is 0/1 data, so you'll look for binomial-type functions.' If you can connect data types and distributions, R functions become much easier to recall."
+:::
 
 ::: voice-daughter
-Me: “You always say that right before something painful.”
-::: 
+Me: "I see. So if I imagine the data type and its distribution, I don't have to memorize R functions by brute force. That does sound efficient."
+:::
 
 ::: voice-father
-Dad: “We’ll simulate age (continuous data), sex, stoma (binary data) and survival time. Then we’ll run some basic summaries.”
-::: 
+Dad: "Exactly. Once you have that mental image, when you later read manuals or books, you'll think, 'Oh, this is that thing I was imagining,' and everything clicks together. Okay, let me show you a quick demo in R. We'll simulate age (continuous), sex and stoma status (binary), and survival time, and run simple analyses."
+:::
 
 ::: voice-daughter
-Me: “Okay. I’ll type what you tell me, but I want to understand the big picture, not just more spells.”
-::: 
+Me: "There it is again, the spell-casting."
+:::
 
 ::: voice-father
-Dad: “Deal. First, a quick note about R packages. To **install** a package on your computer, you use `install.packages()`. To **use** an installed package in your current session, you use `library()`. R is like a bookshelf."
-::: 
-:::::::::::::::::::::::::::::::::
+Dad: "Pretty much. For now, type `library(ggplot2)` and `library(cifmodeling)`. I'll show you a **histogram** and **Kaplan-Meier curves**."
+:::
 
-- `install.packages()`: buy the book and put it on the shelf  
-- `library()`: pull the book off the shelf and open it.”
-
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “So install is a one-time thing, and `library()` is what I run each time I actually use it.”
-::: 
+Me: "Fine. I'll type them with my brain temporarily turned off."
+:::
 
 ::: voice-father
-Dad: “Exactly. Reinstalling every time would be like going out to buy coffee beans every single morning.”
-::: 
+Dad: "Don't turn your brain off while I'm teaching you. When you add features to R, you use `install.packages()` and `library()`. `install.packages()` installs a package onto your computer, and `library()` loads that installed package so you can use it."
+:::
 
 ::: voice-daughter
-Me: “No, thank you. Okay, show me the simulated data.”
-::: 
+Me: "Got it. Much clearer. I used to think I had to install the package every single time."
+:::
+
+::: voice-father
+Dad: "If you install it every time, it's like buying coffee beans every time you make a cup.
+You buy the beans in bulk and grind them when you drink. Packages are the same."
+:::
 :::::::::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" title="Generating simulated data"}
-
 Here we’ll use R to create a simple dataset and run basic analyses for **continuous**, **binary**, and **survival** data. The theme is a two-group comparison: patients with and without a stoma.
 
 - Age: continuous, from a normal distribution using `rnorm()`  
@@ -352,8 +332,9 @@ Here we’ll use R to create a simple dataset and run basic analyses for **conti
 - Sex, stoma: binary, from a binomial distribution using `rbinom()`  
 
 - Survival time: from an exponential distribution using `rexp()`
+:::
 
-
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r warning=FALSE}
 set.seed(46)
 
@@ -389,9 +370,10 @@ head(dat)
 
 
 ::: {.callout-note appearance="simple" title="Summarizing continuous and binary data"}
-
 First, let’s describe age and sex in the stoma vs non-stoma groups using a **histogram** and **contingency table**. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r warning=FALSE}
 # install.packages("ggplot2") # if needed
 library(ggplot2)
@@ -407,8 +389,10 @@ table(STOMA = dat$stoma, SEX = dat$sex)
 
 ::: {.callout-note appearance="simple" title="Summarizing survival data with survival curves"}
 
-For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the `cifmodeling` package to draw the **Kaplan-Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
+For survival data, we want to describe how long patients survive without the event. Here we use `cifplot()` from the **cifmodeling** package to draw the **Kaplan-Meier curves**. `Event(time, status)` tells R which variables represent the time and event indicator. `outcome.type = "survival"` asks for a survival curve. Under our simulation, the non-stoma group should have better survival, so its curve will lie above the stoma group. 
+:::
 
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r warning=FALSE}
 # devtools::install_github("gestimation/cifmodeling") # if needed
 library(cifmodeling)
@@ -441,10 +425,12 @@ According to the review by Kim and Prasad (2016), 31 out of 83 products were rep
 
 ### Episodes and R-script
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.qmd)
-- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.qmd)
-- [A First Step into Survival and Competing Risks Analysis with R]
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis]
+- [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
+
+

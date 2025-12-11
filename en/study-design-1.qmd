@@ -160,87 +160,87 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “Dad, you really are a professor in statistics, right?”
+Me: "Dad, you really are a professor of statistics, right?”
 :::
 
 ::: voice-father
-Dad: “In Japan, yes. One of the many.”
+Dad: "In Japan, yes. One of many, nothing special.”
 :::
 
 ::: voice-daughter
-Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your territory, isn’t it? Statistics and all that.” 
+Me: "My boss keeps telling me it’s time I do 'some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your domain, isn’t it? Statistics and all that.” 
 :::
 
 ::: voice-father
-Dad: “Half my territory, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?” 
+Dad: "Half my domain, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?” 
 :::
 
 ::: voice-daughter
-Me: “Nope.”
+Me: "Nope.”
 :::
 
 ::: voice-father
-Dad: “Without at least a working hypothesis, it’s hard to design a good study.”
+Dad: "Without at least a working hypothesis, it’s hard to design a good study.”
 :::
 
 
 ::: voice-daughter
-Me: “Seriously? I thought I could collect the data first and figure it out later.
+Me: "Seriously? I thought I could collect the data first and figure it out later.
 Hmm… if I had to say, I’d want to know what kind of patients have difficulty returning to work.”
 :::
 
 ::: voice-father
-Dad: “For example, that men might have higher return-to-work rates than women?”
+Dad: "For example, that men might have higher return-to-work rates than women?”
 :::
 
 ::: voice-daughter
-Me: “I’m interested in sex differences too, but I’m more curious about cancer stage or complications. I work in gastrointestinal surgery, and I wonder whether patients with stomas can return to the same job they had before surgery. Yeah...I’ll start drafting a questionnaire. Thanks!”
+Me: "I’m interested in sex differences too, but I’m more curious about cancer stage or complications. I work in gastrointestinal surgery, and I wonder whether patients with stomas can return to the same job they had before surgery. Yeah...I’ll start drafting a questionnaire. Thanks!”
 :::
 
 ::: voice-father
-Dad: “Hold on. Have you decided on your **study population** yet?”
+Dad: "Hold on. Have you decided on your **study population** yet?”
 :::
 
 ::: voice-daughter
-Me: “Hm? Patients who had cancer surgery at our hospital.”
+Me: "Hm? Patients who had cancer surgery at our hospital.”
 :::
 
 ::: voice-father
-Dad: “Do gastric cancer patients ever receive a stoma?”
+Dad: "Do gastric cancer patients ever receive a stoma?”
 :::
 
 ::: voice-daughter
-Me: “It’s not impossible, but honestly, almost never.”
+Me: "It’s extremely rare in gastric cancer, practically negligible.”
 :::
 
 ::: voice-father
-Dad: “Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”
+Dad: "Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”
 :::
 
 ::: voice-daughter
-Me: “...maybe you’re right.”
+Me: "...maybe you’re right.”
 :::
 
 ::: voice-father
-Dad: “It’s important to think about who should be surveyed at the design stage. In general, narrowing the target population allows you to ask more detailed questions. And it improves **comparability**. If you want to compare patients with and without stomas, you’d want the cancer type to be consistent.”
+Dad: "It’s important to think about who should be surveyed at the design stage. In general, narrowing the target population allows you to ask more detailed questions. And it also improves **comparability** between groups. If you want to compare patients with and without stomas, you’d want the cancer type to be consistent.”
 :::
 
 ::: voice-daughter
-Me: “You really love using difficult words. But I get it. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”
+Me: "You really love using difficult words. But I get it. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”
 :::
 
 ::: voice-father
-Dad: “There are statistical methods and R packages to improve comparability too, like `glm()` for regression adjustment, or`CBPS()` for propensity score weighting. But on the other hand, a broader study population increases **generalizability**. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”
+Dad: "There are statistical methods and R packages to improve comparability too, like `glm()` for regression adjustment, or`CBPS()` for propensity score weighting. But on the other hand, a broader study population increases **generalizability**. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”
 :::
 
 ::: voice-daughter
-Me: “True...it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital.
+Me: "True...it feels strange to call it 'a survey of cancer survivors’ if it’s only our hospital.
 Generalizability means gathering data that are useful for other hospitals too, right?”
 :::
 
 
 ::: voice-father
-Dad: “In class, I tell my students this:“
+Dad: "In class, I tell my students this:"
 :::
 
 > When your clinical question is still vague,  
@@ -248,15 +248,15 @@ Dad: “In class, I tell my students this:“
 > before you design the study.
 
 ::: voice-father
-Dad: It sounds fancy, but we call that ‘structuring’ a study.”
+Dad: It sounds fancy, but we simply call that 'structuring’ a study.”
 :::
 
 ::: voice-daughter
-Me: “Structuring...? That sounds suspiciously formal. Okay, I’ve heard the word before.”
+Me: "Structuring...? That sounds suspiciously formal. Okay, I’ve heard the word before.”
 :::
 
 ::: voice-father
-Dad: “Then let’s go through it lightly. In PICO/PECO, P stands for Patients or Population. Deciding who your patients are is a key element in study design.”
+Dad: "Then let’s go through it lightly. In PICO/PECO, P stands for Patients or Population. Deciding who your patients are is a key element in study design.”
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -267,35 +267,35 @@ Dad: “Then let’s go through it lightly. In PICO/PECO, P stands for Patients 
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: “I’ve never heard of Exposure or Comparison before...But in my case, it would be patients with versus without a stoma, right? And what’s Outcome?”
+Me: "I’ve never heard of Exposure or Comparison before...But in my case, it would be patients with versus without a stoma, right? And what’s Outcome?”
 :::
 
 ::: voice-father
-Dad: “Exactly. And O is treatment results, prognosis, and endpoints of patients. In statistical analysis, the outcome variable is the most important part. So it’s crucial to define it before you begin.”
+Dad: "Exactly. And O is treatment results, prognosis, and endpoints of patients. In statistical analysis, the outcome variable is the most important part. So it’s crucial to define it before you begin.”
 :::
 
 ::: voice-daughter
-Me: “Can you even define it before the data come in?”
+Me: "Can you even define it before the data come in?”
 :::
 
 ::: voice-father
-Dad: “You should, because once the data are collected, you can’t revise it any more.It needs to be set before finalizing the questionnaire. Right...you probably don’t have a concrete image of an outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data are ready?”
+Dad: "You should, because once the data are collected, you can’t revise them any more.It needs to be set before finalizing the questionnaire. Right...you probably don’t have a concrete image of an outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data are ready?”
 :::
 
 ::: voice-daughter
-Me: “R. My seniors in the department use it.”
+Me: "R. My seniors in the department use it.”
 :::
 
 ::: voice-father
-Dad: “Are you comfortable with R?”
+Dad: "Are you comfortable with R?”
 :::
 
 ::: voice-daughter
-Me: “I took a class in college, but I’ve forgotten most of it.”
+Me: "I took a class in college, but I’ve forgotten most of it.”
 :::
 
 ::: voice-father
-Dad: “Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”
+Dad: "Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -327,7 +327,7 @@ Among rectal cancer patients after curative resection in Japan, is there a diffe
 
 Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.
 
-What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.  
+What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is "high” or "low”.  
 Having a clear comparison group improves interpretability. 
 
 ---
@@ -347,11 +347,11 @@ Here P is broader, so the results could potentially apply to a wider range of pa
 
 #### Example: Research hypothesis 3 (exploratory)
 
-“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
+"Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
 
 In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential risk factors.
 
-So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the **minimal set of elements** needed to design a coherent study for your question. 
+So "structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the **minimal set of elements** needed to design a coherent study for your question. 
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
@@ -360,14 +360,14 @@ Me: ”I see...it would be tough to propose an original hypothesis from scratch,
 :::
 
 ::: voice-father
-Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”
+Father: "Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”
 :::
 ::::::::::::::::::::::::::::::::: 
 
 
 ::: {.callout-note appearance="simple" title="Quiz related to this episode"}
 
-When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?
+When formulating study design, the Latin expression "ceteris paribus” often appears. Which of the following best describes its meaning?
 
 1. If there is a causal relationship, it will inevitably occur
 2. A universally generalizable law
@@ -378,7 +378,7 @@ When formulating study design, the Latin expression “ceteris paribus” often 
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 -   The correct answer is **3**.
 
-The concept of “ceteris paribus” is very close to the idea of **comparability** between groups.
+The concept of "ceteris paribus” is very close to the idea of **comparability** between groups.
 :::
 
 ### Episodes and R-script
