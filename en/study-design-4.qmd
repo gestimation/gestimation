@@ -216,18 +216,15 @@ Me: "If they die during the hospital stay, I won't include them in the study pop
 Dad: "I agree. Excluding them would introduce bias, because you'd be drifting away from your target population. When you follow cancer patients over time, there are three important points. First, you have to decide what the **time origin** is. In this case, it would be natural to set the time origin at the date of discharge. Second, you set a target follow-up period and try to collect information as completely as possible up to that point. Missing information becomes a source of bias. Third, you must not exclude events that occur after the time origin."
 :::
 
-:::
-
 - Define the time origin.
 - Set a target follow-up period and, up to that point, collect information as completely as possible.
 - Do not exclude events that occur after the time origin or use them as strata.
 
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 Me: "Right, I don't want people telling me later that my study is biased. Got it."
 :::
 
-:::
+::: voice-father
 Dad: "Earlier I suggested using the 'PECO' elements to structure your clinical question. If P is 'patients with rectal cancer after curative resection', then you have to survey that population comprehensively."
 :::
 
@@ -468,7 +465,7 @@ generate_data <- function(n = 200, hr1, hr2) {
 ```
 :::
 
-::: {.callout-note appearance="simple" title="Kaplan-Meier curve for overall survival (OS)"}
+::: {.callout-note appearance="simple" title="Kaplan-Meier curve for OS"}
 OS and RFS are ordinary survival data, so as before we can use the `cifplot()` function from the **cifmodeling** package to draw Kaplan-Meier curves. Let us start with OS.
 :::
 
@@ -488,7 +485,7 @@ cifplot(
 ```
 :::
 
-::: {.callout-note appearance="simple" title="Kaplan-Meier curve for relapse-free survival (RFS)"}
+::: {.callout-note appearance="simple" title="Kaplan-Meier curve for RFS"}
 Next is RFS. Apart from the variables specified inside `Event()`, the code is unchanged.
 :::
 
@@ -504,7 +501,7 @@ cifplot(
 :::
 
 
-::: {.callout-note appearance="simple" title="Aalen-Johansen curve for cumulative incidence of relapse (CIR)"}
+::: {.callout-note appearance="simple" title="Aalen-Johansen curve for CIR"}
 In the code below, the competing risk is encoded via `Event(time_cir, status_cir)`:
 
 - `status_cir = 1`: event of interest (relapse)
@@ -526,11 +523,10 @@ cifplot(Event(time_os, status_os) ~ stoma,
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-:::
 Me: "Isn't the Aalen-Johansen curve just the Kaplan-Meier curve flipped upside down on the y-axis?"
 :::
 
-:::
+::: voice-father
 Dad: "On the graph they can look almost identical, so it's natural to think that. But I'd still like you to keep them distinct in your mind. 
 
 > A survival curve (Kaplan-Meier) and a cumulative incidence curve (Aalen-Johansen) are different statistical procedures. 
@@ -540,12 +536,10 @@ By the way, earlier you said you wanted to use 'cumulative incidence of relapse'
 :::
 
 ::: voice-daughter
-:::
 Me: "Then is it wrong to analyze RFS where both death and recurrence are treated as events?"
 :::
 
 ::: voice-father
-:::
 Dad: "No, of course not. But remember that the difference between RFS curves reflects not only recurrence but also deaths from other causes. So, as we've just discussed, you need to use OS, RFS, and CIR in different ways, depending on what you want to learn."
 :::
 ::::::::::::::::::::::::::::::::: 
@@ -563,10 +557,7 @@ CDISC ADaM ADTTE (Analysis Data Model for Time-to-Event Endpoints) is a standard
 In CDISC ADaM ADTTE, the value 1 represents TRUE. In many statistical packages, including `Event()` and `Surv()`, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.
 :::
 
-
-
-
-### エピソードとRスクリプト
+### Episodes and R-script
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)

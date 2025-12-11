@@ -194,7 +194,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#table-2-a.-questionnaire-for-survivors" id="toc-table-2-a.-questionnaire-for-survivors" class="nav-link" data-scroll-target="#table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for Survivors</a></li>
   <li><a href="#table-2-b.-questionnaire-for-deceased-patients" id="toc-table-2-b.-questionnaire-for-deceased-patients" class="nav-link" data-scroll-target="#table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for Deceased Patients</a></li>
   <li><a href="#survival-analysis-and-competing-risk-analysis" id="toc-survival-analysis-and-competing-risk-analysis" class="nav-link" data-scroll-target="#survival-analysis-and-competing-risk-analysis">Survival Analysis and Competing Risk Analysis</a></li>
-  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
+  <li><a href="#episodes-and-r-script" id="toc-episodes-and-r-script" class="nav-link" data-scroll-target="#episodes-and-r-script">Episodes and R-script</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -445,18 +445,17 @@ a:hover {
 <div class="voice-father">
 <p>Dad: “I agree. Excluding them would introduce bias, because you’d be drifting away from your target population. When you follow cancer patients over time, there are three important points. First, you have to decide what the <strong>time origin</strong> is. In this case, it would be natural to set the time origin at the date of discharge. Second, you set a target follow-up period and try to collect information as completely as possible up to that point. Missing information becomes a source of bias. Third, you must not exclude events that occur after the time origin.”</p>
 </div>
-</div>
 <ul>
 <li>Define the time origin.</li>
 <li>Set a target follow-up period and, up to that point, collect information as completely as possible.</li>
 <li>Do not exclude events that occur after the time origin or use them as strata.</li>
 </ul>
-<div class="dialogue">
 <div class="voice-daughter">
 <p>Me: “Right, I don’t want people telling me later that my study is biased. Got it.”</p>
 </div>
+<div class="voice-father">
+<p>Dad: “Earlier I suggested using the ‘PECO’ elements to structure your clinical question. If P is ‘patients with rectal cancer after curative resection’, then you have to survey that population comprehensively.”</p>
 </div>
-<p>Dad: “Earlier I suggested using the ‘PECO’ elements to structure your clinical question. If P is ‘patients with rectal cancer after curative resection’, then you have to survey that population comprehensively.” :::</p>
 <div class="voice-daughter">
 <p>Me: “So what exactly are categorical data and survival data?”</p>
 </div>
@@ -469,7 +468,7 @@ a:hover {
 <div class="voice-father">
 <p>Dad: “I made a few tweaks to your questionnaire, so I’ll use this version to explain it again.”</p>
 </div>
-<p>:::::::::::::::::::::::::::::::::</p>
+</div>
 </section>
 <section id="table-2-a.-questionnaire-for-survivors" class="level3">
 <h3 class="anchored" data-anchor-id="table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for Survivors</h3>
@@ -552,6 +551,7 @@ a:hover {
 </tr>
 </tbody>
 </table>
+<p>*Enter data from medical records</p>
 <div class="dialogue">
 <div class="voice-father">
 <p>Dad: “In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using ‘returning to work within one year’ as the outcome, right?”</p>
@@ -751,13 +751,13 @@ R code for generate_data()
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan-Meier curve for overall survival (OS)">
+<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan-Meier curve for OS">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Kaplan-Meier curve for overall survival (OS)
+Kaplan-Meier curve for OS
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -799,13 +799,13 @@ R code and output
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan-Meier curve for relapse-free survival (RFS)">
+<div class="callout callout-style-simple callout-note callout-titled" title="Kaplan-Meier curve for RFS">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Kaplan-Meier curve for relapse-free survival (RFS)
+Kaplan-Meier curve for RFS
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -842,13 +842,13 @@ R code and output
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Aalen-Johansen curve for cumulative incidence of relapse (CIR)">
+<div class="callout callout-style-simple callout-note callout-titled" title="Aalen-Johansen curve for CIR">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aalen-Johansen curve for cumulative incidence of relapse (CIR)
+Aalen-Johansen curve for CIR
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -892,23 +892,22 @@ R code and output
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-
-</div>
 <p>Me: “Isn’t the Aalen-Johansen curve just the Kaplan-Meier curve flipped upside down on the y-axis?”</p>
 </div>
-<p>::: Dad: “On the graph they can look almost identical, so it’s natural to think that. But I’d still like you to keep them distinct in your mind.</p>
+<div class="voice-father">
+<p>Dad: “On the graph they can look almost identical, so it’s natural to think that. But I’d still like you to keep them distinct in your mind.</p>
 <blockquote class="blockquote">
 <p>A survival curve (Kaplan-Meier) and a cumulative incidence curve (Aalen-Johansen) are different statistical procedures. When there are competing risks, you should use the Aalen-Johansen curve.</p>
 </blockquote>
-<p>By the way, earlier you said you wanted to use ‘cumulative incidence of relapse’ rather than ‘relapse-free time’. That’s because, in technical terms, the <strong>cumulative incidence curve</strong> is synonymous with the Aalen-Johansen curve. In principle, you could analyze CIR with a Kaplan-Meier curve. In that case, deaths without relapse would be coded not as a competing risk (<code>status_cir = 2</code>) but as censoring (<code>status_cir = 0</code>). But in reality, death is a different outcome from end of follow-up or loss to follow-up. That’s why treating it as a competing risk is the appropriate approach.” :::</p>
+<p>By the way, earlier you said you wanted to use ‘cumulative incidence of relapse’ rather than ‘relapse-free time’. That’s because, in technical terms, the <strong>cumulative incidence curve</strong> is synonymous with the Aalen-Johansen curve. In principle, you could analyze CIR with a Kaplan-Meier curve. In that case, deaths without relapse would be coded not as a competing risk (<code>status_cir = 2</code>) but as censoring (<code>status_cir = 0</code>). But in reality, death is a different outcome from end of follow-up or loss to follow-up. That’s why treating it as a competing risk is the appropriate approach.”</p>
+</div>
 <div class="voice-daughter">
-
+<p>Me: “Then is it wrong to analyze RFS where both death and recurrence are treated as events?”</p>
 </div>
-<p>Me: “Then is it wrong to analyze RFS where both death and recurrence are treated as events?” :::</p>
 <div class="voice-father">
-
+<p>Dad: “No, of course not. But remember that the difference between RFS curves reflects not only recurrence but also deaths from other causes. So, as we’ve just discussed, you need to use OS, RFS, and CIR in different ways, depending on what you want to learn.”</p>
 </div>
-<p>Dad: “No, of course not. But remember that the difference between RFS curves reflects not only recurrence but also deaths from other causes. So, as we’ve just discussed, you need to use OS, RFS, and CIR in different ways, depending on what you want to learn.” ::: :::::::::::::::::::::::::::::::::</p>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -946,8 +945,8 @@ Answer
 </div>
 </div>
 </section>
-<section id="エピソードとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<section id="episodes-and-r-script" class="level3">
+<h3 class="anchored" data-anchor-id="episodes-and-r-script">Episodes and R-script</h3>
 <ul>
 <li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
 <li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>

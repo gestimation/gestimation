@@ -303,10 +303,9 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
 上の会話で出てきた"PICO"や"PECO"は、この頭文字をとったものです。I（Intervention＝介入）かE（Exposure＝曝露）かは、その研究が薬の臨床試験のような介入研究か、今回のがんサバイバー調査のような観察研究かによって変わります。観察研究には患者さん一人ひとりを追跡するコホート研究、ある時点からさかのぼって調査するケースコントロール研究、ある1時点における要因とアウトカムを調査する横断研究がありますが、いずれもPECOで構造化が可能です。
 
 がんサバイバー調査を題材にして、研究仮説の例を3つ考えてみました。
+:::
 
----
-
-####  研究仮説1
+::: {.callout-note appearance="simple" collapse="true" title="研究仮説1"}
 
     P: 根治切除後の直腸がん患者
 
@@ -317,10 +316,9 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
     O: 手術後1年以内の復職の有無
 
 ストーマ保有者と非保有者の復職率を比較する研究を想定してみました。この場合Cをどうするかは悩ましい問題ですが、復職率の数字が得られただけでは、それが高いかどうか判断が難しいので、なんらかの比較対照を設定した方がよいでしょう。なお、比較可能性とは、この場合EとCを正しく比べられるということを意味します。
+:::
 
----
-
-####  研究仮説2
+::: {.callout-note appearance="simple" collapse="true" title="研究仮説2"}
 
     P: 根治切除後のがん患者
 
@@ -332,9 +330,9 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
 
 就労支援の一環として作成された「仕事とがん治療の両立お役立ちノート」の効果を調べようという研究です。患者Pは、直腸がんに限定せず、アウトカムOは、手術後の復職の有無としました。こうした方が、幅広い患者に当てはまる調査結果が得られますよね。これが一般化可能性の一例です。アウトカムについては、別の例として、患者満足度や患者の経済状態なども考えられるでしょう。
 
----
+:::
 
-####  研究仮説3
+::: {.callout-note appearance="simple" collapse="true" title="研究仮説3"}
 
 「性・年齢、ステージ、術後補助化学療法、パフォーマンスステータス、合併症、ストーマ、手術前の就労状況、家計収入額、がん保険、就労支援サービスの利用などの因子は、1年以内の復職率と関連するか」
 

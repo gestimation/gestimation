@@ -158,24 +158,6 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ### ロジスティック回帰の限界
 
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-father
-お父さん「熱いコーヒー淹れてくれる？」
-::: 
-
-::: voice-daughter
-私「いいよ。いっしょに大福もどうぞ」
-::: 
-
-::: voice-father
-お父さん「ありがとう。この前の"コーヒーと膵がん"の話、覚えてる？層別解析やロジスティック回帰で交絡を調整したときのこと」
-::: 
-
-::: voice-daughter
-私「その節はどうも」
-::: 
-:::::::::::::::::::::::::::::::::
-
 ::: {.callout-note appearance="simple" collapse="true" title="Simpsonのパラドックス"}
 
 前回のテーマであるSimpsonのパラドックスは、調整前後で関連の程度が変わる現象のことです。詳しい中身は覚えていなくてもかまいません。ここでは「調整前と調整後で話が変わりうる」という点だけ思い出してください。
@@ -209,6 +191,22 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「熱いコーヒー淹れてくれる？」
+::: 
+
+::: voice-daughter
+私「いいよ。いっしょに大福もどうぞ」
+::: 
+
+::: voice-father
+お父さん「ありがとう。この前の"コーヒーと膵がん"の話、覚えてる？層別解析やロジスティック回帰で交絡を調整したときのこと」
+::: 
+
+::: voice-daughter
+私「その節はどうも」
+::: 
+
 ::: voice-father
 お父さん「じゃあ、振り返って考えてみようか。喫煙が交絡因子だったよね。喫煙を調整した結果と調整しない結果がある。どっちを報告する？」
 ::: 
