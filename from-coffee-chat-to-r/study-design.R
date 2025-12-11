@@ -51,7 +51,7 @@ ggplot(dat, aes(x = age, fill = stoma)) +
 table(STOMA = dat$stoma, SEX = dat$sex)
 
 #- Analysis of time and status using cifplot() -------------
-# devtools::install_github("gestimation/cifmodeling") # if needed
+# install.packages("cifmodeling") # if needed
 library(cifmodeling)
 
 cifplot(Event(time, status) ~ stoma,
@@ -131,7 +131,7 @@ set.seed(46)
 dat <- generate_data(hr1 = 2, hr2 = 1.5)
 
 #- Analysis of OS using cifplot() --------------------------
-# devtools::install_github("gestimation/cifmodeling") # if needed
+# install.packages("cifmodeling") # if needed
 library(cifmodeling)
 
 cifplot(

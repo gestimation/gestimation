@@ -353,9 +353,7 @@ Me: "I think I get it. I'm going to use this revised questionnaire, then."
 :::
 ::::::::::::::::::::::::::::::::: 
 
-
 ### Survival Analysis and Competing Risk Analysis
-
 
 ::: {.callout-note appearance="simple" title="Generating simulation data (with relapse)"}
 

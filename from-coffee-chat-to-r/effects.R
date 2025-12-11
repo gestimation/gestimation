@@ -56,7 +56,7 @@ print(odds_ratio)
 dat <- generate_data(hr1 = 2, hr2 = 1.5)
 
 #- Analysis of OS using cifplot() --------------------------
-# devtools::install_github("gestimation/cifmodeling") # if needed
+# install.packages("cifmodeling") # if needed
 library(cifmodeling)
 cifplot(
   Event(time_os, status_os) ~ stoma,

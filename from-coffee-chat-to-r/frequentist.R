@@ -88,6 +88,7 @@ generate_data <- function(n = 200, hr1, hr2) {
 dat <- generate_data(hr1 = 2, hr2 = 1.5)
 
 #- Aalen-Johansen curves of CIR using cifplot() ------------
+# install.packages("cifmodeling") # if needed
 library(cifmodeling)
 aj_event1 <- cifplot(Event(time_cir, status_cir) ~ stoma,
                      data         = dat,

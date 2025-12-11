@@ -393,7 +393,7 @@ For survival data, we want to describe how long patients survive without the eve
 
 ::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r warning=FALSE}
-# devtools::install_github("gestimation/cifmodeling") # if needed
+# install.packages("cifmodeling") # if needed
 library(cifmodeling)
 cifplot(Event(time, status) ~ stoma,
   data         = dat,

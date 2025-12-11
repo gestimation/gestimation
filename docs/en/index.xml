@@ -5,12 +5,12 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Coffee and Research – Story and Quiz (EN)</title>
+<title>A Conversation on Causality at Our Table</title>
 <link>https://gestimation.github.io/coffee-and-research/en/</link>
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Thu, 11 Dec 2025 15:15:07 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Dec 2025 15:30:53 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -398,7 +398,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Thu, 11 Dec 2025 15:15:07 GMT</pubDate>
+  <pubDate>Thu, 11 Dec 2025 15:30:53 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -1053,7 +1053,7 @@ R code and output
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># devtools::install_github("gestimation/cifmodeling") # if needed</span></span>
+font-style: inherit;"># install.packages("cifmodeling") # if needed</span></span>
 <span id="cb6-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(cifmodeling)</span>
@@ -1146,7 +1146,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Thu, 11 Dec 2025 15:15:07 GMT</pubDate>
+  <pubDate>Thu, 11 Dec 2025 15:30:53 GMT</pubDate>
 </item>
 </channel>
 </rss>
