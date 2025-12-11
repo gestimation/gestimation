@@ -1,0 +1,541 @@
+---
+title: "A First Step into Survival and Competing Risks Analysis with R"
+format:
+  html:
+    toc: true
+---
+
+```{=html}
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+```
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Study Design IV − A First Step into Survival and Competing Risks Analysis with R
+
+::: {.serif-block .text-right}
+Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk
+:::
+
+------------------------------------------------------------------------
+
+### Survey Items and Types of Data
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "Oh wow, that takes me back. Is that the Rubik's Cube I bought when I was in elementary school? You're still playing with it? If you've got a minute, can I ask you something? Remember the study we talked about on return to work among cancer survivors? I've drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like."
+:::
+
+::: voice-father
+Dad: "Let's see."
+:::
+
+![](study-design-4-1.png)
+
+::: voice-father
+Dad: "How are you defining the return-to-work rate?"
+:::
+
+::: voice-daughter
+Me: "What do you mean?"
+:::
+
+::: voice-father
+Dad: "Just from the questionnaire, I can't tell whether these questions are enough. Are you trying to find out, between the date of surgery and the date of the survey, whether patients who wanted to return to work actually managed to do so?"
+:::
+
+::: voice-daughter
+Me: "That would be good to know, but among the patients who answer that they don't want to return, there might be some who gave up because of company policy or other reasons. So when I calculate the return-to-work rate, I don't want the denominator to be 'patients who wished to return to work.' I'd rather use all patients who had surgery. That feels closer to the real employment situation."
+:::
+
+::: voice-father
+Dad: "And do you want to look at whether they returned to work between surgery and the survey date?"
+:::
+
+::: voice-daughter
+Me: "Hmm. The timing of the responses will vary from patient to patient, so I'd rather not use the survey date. How about defining it as 'returning to work within one year'? Oh—maybe we should also ask them to write down the actual date they returned to work."
+:::
+
+::: voice-father
+Dad: "Having the date of return to work is a good idea. Then, when you turn return-to-work status into analytic 'variables', you can think in terms of two options: categorical data and survival data. Setting that aside for a moment—what will you do if a patient dies after surgery?"
+:::
+
+::: voice-daughter
+Me: "If they die during the hospital stay, I won't include them in the study population. But it feels strange to exclude deaths from postoperative recurrence from the denominator."
+:::
+
+::: voice-father
+Dad: "I agree. Excluding them would introduce bias, because you'd be drifting away from your target population. When you follow cancer patients over time, there are three important points. First, you have to decide what the **time origin** is. In this case, it would be natural to set the time origin at the date of discharge. Second, you set a target follow-up period and try to collect information as completely as possible up to that point. Missing information becomes a source of bias. Third, you must not exclude events that occur after the time origin."
+:::
+
+:::
+
+- Define the time origin.
+- Set a target follow-up period and, up to that point, collect information as completely as possible.
+- Do not exclude events that occur after the time origin or use them as strata.
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "Right, I don't want people telling me later that my study is biased. Got it."
+:::
+
+:::
+Dad: "Earlier I suggested using the 'PECO' elements to structure your clinical question. If P is 'patients with rectal cancer after curative resection', then you have to survey that population comprehensively."
+:::
+
+::: voice-daughter
+Me: "So what exactly are categorical data and survival data?"
+:::
+
+::: voice-father
+Dad: "We talked about this the other day too. For statistical analysis, the starting point is always the 'type of data.' Categorical data and survival data are two examples of data types."
+:::
+
+::: voice-daughter
+Me: "That was last week, and I've been busy, you know."
+:::
+
+::: voice-father
+Dad: "I made a few tweaks to your questionnaire, so I'll use this version to explain it again."
+:::
+
+![](study-design-4-2.png)
+
+::: voice-father
+Dad: "In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using 'returning to work within one year' as the outcome, right?"
+:::
+
+::: voice-daughter
+Me: "Yes."
+:::
+
+::: voice-father
+Dad: "For example, if you label 'returned within one year' as category 1 and 'did not return within one year' as category 2, that gives you a type of categorical data called binary data. You can derive it from the questionnaire, and you can calculate the return-to-work rate."
+:::
+
+::: voice-daughter
+Me: "Right. As long as we treat deaths within one year as 'no return to work'."
+:::
+
+::: voice-father
+Dad: "But when you summarize work status, it's better not to stick with just two categories. A three-category variable would be more informative. For example:"
+:::
+
+- category 1: returned within one year
+- category 2: did not return within one year (for reasons other than death)
+- category 3: did not return within one year (because of death)
+
+::: voice-father
+Dad: "That gives you a more detailed picture of the outcomes."
+:::
+
+::: voice-daughter
+Me: "Yes, that makes sense. And survival data was...OS, right?"
+:::
+
+::: voice-father
+Dad: "Overall survival (OS) is indeed one kind of survival data. The name is a bit misleading, though—there are many other types. In general, survival data are variables that represent the time from the time origin until an 'event'."
+:::
+
+::: voice-daughter
+Me: "So return-to-work status can also be treated as survival data?"
+:::
+
+::: voice-father
+Dad: "It can. In this case, you'd look at the 'time from discharge to the date of return to work'. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn't look any different from ordinary continuous data, but the essence of survival data is the presence of **censoring**. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work."
+:::
+
+::: voice-daughter
+Me: "True, but isn't that fine as it is?"
+:::
+
+::: voice-father
+Dad: "When you use statistical software, you need to add one more piece of information: at the time of the survey, the patient had not yet returned to work—that is, follow-up for return to work was censored. That is why survival data always come as a pair of variables."
+:::
+
+- A time variable
+
+- An event variable
+
+::: voice-father
+Dad: "For a typical survival data, the event variable is binary and indicates whether the event was observed or censored. The time variable, in this case, would be either 'time from discharge to return to work' or 'time from discharge to the survey date'."
+:::
+::::::::::::::::::::::::::::::::: 
+
+
+::: {.callout-note appearance="simple"  title="Entering survival data"}
+
+Because survival data consist of a pair of variables, you also need to specify them as a pair when you pass them to R functions. The **survival** package provides a dedicated input function `Surv()` for this purpose, which is used by functions such as `survfit()` and `coxph()`. The exact input format depends on the package. For example, the **mets** package defines a separate `Event()` function. The `cifplot()` function in the **cifmodeling** package accepts both `Surv()` and `Event()`.
+
+```{r surv_example, eval=FALSE}
+library(survival)
+library(cifmodeling)
+
+survfit(Surv(time, status) ~ stoma,
+  data         = dat
+)
+cifplot(Surv(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+cifplot(Event(time, status) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "So if the event variable is binary, that means every patient is in exactly one of two states: either they returned to work or they were censored. Where do deaths go?"
+:::
+
+::: voice-father
+Dad: "If you treat it the way I just described, patients who die are grouped under 'censored'. But there is another way to handle it, called **competing risks**. Put simply, a competing risk is an event that prevents the event of interest (such as return to work) from being observed."
+:::
+
+::: voice-daughter
+Me: "Ah, so in that sense death is a competing risk."
+:::
+
+::: voice-father
+Dad: "Exactly. Survival data are also called 'time-to-event data' in English. Events that occur over time aren't limited to survival and death. Competing risk models were developed to analyze situations like this. In that case, the event variable becomes a three-category variable: event, competing risk, or censoring. The coding looks like this:"
+:::
+
+- Event variable = 0: censored before the event is observed
+
+- Event variable = 1: event observed
+
+- Event variable = 2: competing risk occurs before the event is observed
+
+::: voice-daughter
+Me: "I think I get it. I'm going to use this revised questionnaire, then."
+:::
+::::::::::::::::::::::::::::::::: 
+
+
+### Survival Analysis and Competing Risk Analysis
+
+
+::: {.callout-note appearance="simple" title="Generating simulation data (with relapse)"}
+
+Let us now move a little closer to a real clinical research in cancer and compare three outcomes in simulated data: overall survival (OS), relapse-free survival (RFS), and cumulative incidence of relapse (CIR). For CIR, some patients die before recurrence, and we have to decide how to treat those deaths. This is what we call a **competing risk**.
+
+The code below defines a function, `generate_data()`, that generates three different survival outcomes in R, including both death and relapse. The event for OS is "death", and the event for RFS is "death or relapse". For CIR, the event is "relapse", and death is treated as a competing risk. We will reuse `generate_data()` and the resulting simulated data in later explanations.
+
+- Stoma: binary data generated from a binomial distribution (`rbinom`)
+
+- Survival time: data generated from an exponential distribution (`rexp`) (computed from the random variables t_relapse, t_death, and t_censoring)
+
+In the previous episode, we summarized survival data without competing risks using the **Kaplan-Meier curves**. In contrast, for competing risks analysis, the appropriate method is not the Kaplan-Meier curves but the **Aalen-Johansen curves**.
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="R code for generate_data()"}
+```{r warning=FALSE}
+generate_data <- function(n = 200, hr1, hr2) {
+  set.seed(46)
+  # Stoma: 1 = with stoma, 0 = without stoma
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  # Sex: 0 = WOMAN, 1 = MAN
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  # Age: normal distribution (stoma group slightly older)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  
+  # Hazards for relapse and death (larger hazard implies earlier event)
+  hazard_relapse   <- ifelse(stoma == 1, hr1 * 0.10, 0.10)
+  hazard_death     <- ifelse(stoma == 1, hr2 * 0.10, 0.10)
+  hazard_censoring <- 0.05
+  
+  # Latent times to relapse, death, and censoring
+  t_relapse   <- rexp(n, rate = hazard_relapse)
+  t_death     <- rexp(n, rate = hazard_death)
+  t_censoring <- rexp(n, rate = hazard_censoring)
+  
+  # Overall survival (OS)
+  # status_os = 1 → death (event of interest)
+  # status_os = 0 → censored
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = death, 0 = censored
+  
+  # Relapse-free survival (RFS)
+  # status_rfs = 1 → relapse or death whichever comes first (event of interest)
+  # status_rfs = 0 → censored
+  time_rfs   <- pmin(t_relapse, t_death, t_censoring)
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1  # relapse
+  status_rfs[time_rfs == t_death   & time_rfs < t_censoring] <- 1  # death
+  
+  # Cumulative incidence of relapse (CIR)
+  # status_cir = 1 → relapse (event of interest)
+  # status_cir = 2 → death as competing risk
+  # status_cir = 0 → censored
+  
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1
+  status_cir[time_cir == t_death   & time_cir < t_censoring] <- 2
+  
+  data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+```
+:::
+
+::: {.callout-note appearance="simple" title="Kaplan-Meier curve for overall survival (OS)"}
+OS and RFS are ordinary survival data, so as before we can use the `cifplot()` function from the **cifmodeling** package to draw Kaplan-Meier curves. Let us start with OS.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
+```{r warning=FALSE}
+set.seed(46)
+dat <- generate_data(hr1 = 2, hr2 = 1.5)
+
+# devtools::install_github("gestimation/cifmodeling") # if needed
+library(cifmodeling)
+cifplot(
+  Event(time_os, status_os) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple" title="Kaplan-Meier curve for relapse-free survival (RFS)"}
+Next is RFS. Apart from the variables specified inside `Event()`, the code is unchanged.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
+```{r}
+cifplot(
+  Event(time_cir, status_cir) ~ stoma,
+  data         = dat,
+  outcome.type = "competing-risk",
+  label.y      = "Cumulative incidence of relapse"
+)
+```
+:::
+
+
+::: {.callout-note appearance="simple" title="Aalen-Johansen curve for cumulative incidence of relapse (CIR)"}
+In the code below, the competing risk is encoded via `Event(time_cir, status_cir)`:
+
+- `status_cir = 1`: event of interest (relapse)
+- `status_cir = 2`: competing risk (death without prior relapse)
+- `status_cir = 0`: censoring
+
+By additionally specifying `outcome.type = "competing-risk"`, we draw the Aalen-Johansen curves.
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
+```{r}
+cifplot(Event(time_os, status_os) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+:::
+Me: "Isn't the Aalen-Johansen curve just the Kaplan-Meier curve flipped upside down on the y-axis?"
+:::
+
+:::
+Dad: "On the graph they can look almost identical, so it's natural to think that. But I'd still like you to keep them distinct in your mind. 
+
+> A survival curve (Kaplan-Meier) and a cumulative incidence curve (Aalen-Johansen) are different statistical procedures. 
+> When there are competing risks, you should use the Aalen-Johansen curve. 
+
+By the way, earlier you said you wanted to use 'cumulative incidence of relapse' rather than 'relapse-free time'. That's because, in technical terms, the **cumulative incidence curve** is synonymous with the Aalen-Johansen curve. In principle, you could analyze CIR with a Kaplan-Meier curve. In that case, deaths without relapse would be coded not as a competing risk (`status_cir = 2`) but as censoring (`status_cir = 0`). But in reality, death is a different outcome from end of follow-up or loss to follow-up. That's why treating it as a competing risk is the appropriate approach."
+:::
+
+::: voice-daughter
+:::
+Me: "Then is it wrong to analyze RFS where both death and recurrence are treated as events?"
+:::
+
+::: voice-father
+:::
+Dad: "No, of course not. But remember that the difference between RFS curves reflects not only recurrence but also deaths from other causes. So, as we've just discussed, you need to use OS, RFS, and CIR in different ways, depending on what you want to learn."
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+CDISC ADaM ADTTE (Analysis Data Model for Time-to-Event Endpoints) is a standard format for clinical trial data used by pharmaceutical companies. In this standard, the variable that indicates censoring is called CNSR. Which of the following codings represents censoring?
+
+1. CNSR = 0
+2. CNSR = 1
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **2**.
+
+In CDISC ADaM ADTTE, the value 1 represents TRUE. In many statistical packages, including `Event()` and `Surv()`, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.
+:::
+
+
+
+
+### エピソードとRスクリプト
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)
