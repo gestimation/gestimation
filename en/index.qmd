@@ -153,7 +153,7 @@ a:hover {
 # Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.
 
 
-This site began with small coffee chats between a statistician father and his clinician daughter. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to be scattered quietly across multiple layers: everyday life, clinical practice, causality, data, cognition, and language. 
+These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to be scattered quietly across multiple layers: everyday life, clinical practice, causality, data, cognition, and language. 
 
 Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story without disturbing their totality.
 

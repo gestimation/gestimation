@@ -185,8 +185,7 @@ Dad: "Without at least a working hypothesis, it’s hard to design a good study.
 
 
 ::: voice-daughter
-Me: "Seriously? I thought I could collect the data first and figure it out later.
-Hmm… if I had to say, I’d want to know what kind of patients have difficulty returning to work.”
+Me: "Seriously? I thought I could just collect the data first and improvise the rest. Guess not. Hmm...if I had to say, I’d want to know what kind of patients have difficulty returning to work.”
 :::
 
 ::: voice-father
@@ -198,7 +197,7 @@ Me: "I’m interested in sex differences too, but I’m more curious about cance
 :::
 
 ::: voice-father
-Dad: "Hold on. Have you decided on your **study population** yet?”
+Dad: "Hold on a moment. Before you get too excited—have you decided on your **study population** yet?”
 :::
 
 ::: voice-daughter
@@ -218,7 +217,7 @@ Dad: "Right. If your main interest is stomas, it might make sense to focus on ca
 :::
 
 ::: voice-daughter
-Me: "...maybe you’re right.”
+Me: "...yeah, okay. I guess that’s true when you put it that way.”
 :::
 
 ::: voice-father
@@ -226,7 +225,7 @@ Dad: "It’s important to think about who should be surveyed at the design stage
 :::
 
 ::: voice-daughter
-Me: "You really love using difficult words. But I get it. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”
+Me: "There you go again with the technical terms. But fine—I do get the point. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”
 :::
 
 ::: voice-father
@@ -356,7 +355,7 @@ So "structuring the question” doesn’t mean you have to force every study int
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: ”I see...it would be tough to propose an original hypothesis from scratch, but breaking the study down into components and deciding one by one isn’t so bad. I suppose it’s something I’ll need to learn eventually.”
+Me: ”I see...Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”
 :::
 
 ::: voice-father

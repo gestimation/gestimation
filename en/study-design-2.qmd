@@ -168,11 +168,11 @@ Me: "Okay, coffee is ready. Can I keep you a bit longer?”
 ::: 
 
 ::: voice-father
-Dad: "If coffee is involved, yes. It's starting to feel like autumn lately.”
+Dad: "If coffee is involved, yes. A warm cup is perfect now that the air’s turning autumn-like.”
 ::: 
 
 ::: voice-daughter
-Me: "You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that. In the end, aren’t all data just ... numbers?”
+Me: "You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that part. In my head, data are just...numbers? What’s there to distinguish?”
 ::: 
 
 ::: voice-father
@@ -203,7 +203,7 @@ Dad: "That’s a common side effect of R lectures. Do you have your laptop?”
 ::: 
 
 ::: voice-daughter
-Me: "...Eh?”
+Me: "...Wait, what?”
 ::: 
 
 ::: voice-father
@@ -227,7 +227,7 @@ Dad: "To summarize binary data you can use `table()`. For p-values, `fisher.test
 :::
 
 ::: voice-daughter
-Me: "There is no way I can memorize all that. This is exactly what I thought in class. Those functions are basically incantations”
+Me: "There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations”
 :::
 
 ::: voice-father
@@ -275,7 +275,7 @@ But in everyday language we don't distinguish them clearly. In statistics, thoug
 :::
 
 ::: voice-daughter
-Me: "Proportions and rates...aren't they basically the same?"
+Me: "Proportions and rates... aren’t they basically the same thing? I’ve never really distinguished them."
 :::
 
 ::: voice-father
@@ -283,7 +283,7 @@ Dad: "No, they're not. A proportion is usually a percentage, say, '60% of patien
 :::
 
 ::: voice-daughter
-Me: "Hm. Go on."
+Me: "Hmm...go on, professor."
 :::
 
 ::: voice-father
@@ -307,7 +307,7 @@ Dad: "Pretty much. For now, type `library(ggplot2)` and `library(cifmodeling)`. 
 :::
 
 ::: voice-daughter
-Me: "Fine. I'll type them with my brain temporarily turned off."
+Me: "Fine. I’ll type them with my brain temporarily switched off. That’s how I survived my R class anyway."
 :::
 
 ::: voice-father
@@ -315,12 +315,11 @@ Dad: "Don't turn your brain off while I'm teaching you. When you add features to
 :::
 
 ::: voice-daughter
-Me: "Got it. Much clearer. I used to think I had to install the package every single time."
+Me: "Got it. That actually clears things up a lot. I really did think I had to install it every single time."
 :::
 
 ::: voice-father
-Dad: "If you install it every time, it's like buying coffee beans every time you make a cup.
-You buy the beans in bulk and grind them when you drink. Packages are the same."
+Dad: "Installing every time is like buying coffee beans every time you brew. No one does that. You buy the beans once and just grind when you drink."
 :::
 :::::::::::::::::::::::::::::::::::::::
 
