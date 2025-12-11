@@ -164,7 +164,7 @@ Me: "Dad, you really are a professor of statistics, right?”
 :::
 
 ::: voice-father
-Dad: "In Japan, yes. One of many, nothing special.”
+Dad: "In Japan, yes. One of many.”
 :::
 
 ::: voice-daughter
@@ -234,7 +234,7 @@ Dad: "There are statistical methods and R packages to improve comparability too,
 
 ::: voice-daughter
 Me: "True...it feels strange to call it 'a survey of cancer survivors’ if it’s only our hospital.
-Generalizability means gathering data that are useful for other hospitals too, right?”
+Generalizability means gathering data that is useful for other hospitals too, right?”
 :::
 
 
@@ -274,11 +274,11 @@ Dad: "Exactly. And O is treatment results, prognosis, and endpoints of patients.
 :::
 
 ::: voice-daughter
-Me: "Can you even define it before the data come in?”
+Me: "Can you even define it before the data comes in?”
 :::
 
 ::: voice-father
-Dad: "You should, because once the data are collected, you can’t revise them any more.It needs to be set before finalizing the questionnaire. Right...you probably don’t have a concrete image of an outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data are ready?”
+Dad: "You should, because once the data is collected, you can’t revise them any more.It needs to be decided before finalizing the questionnaire. Right...you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”
 :::
 
 ::: voice-daughter
