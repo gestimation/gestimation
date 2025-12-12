@@ -351,7 +351,7 @@ Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hira
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
-**正解は4です。**
+- **正解は4です。**
 
 バンクーバースタイルでは、論文を引用するとき、文献リストを以下のように書きます。ただし、著者が多数のときは、”et al.”と省略することがあります。
 
