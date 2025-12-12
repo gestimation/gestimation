@@ -160,7 +160,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」
+私「この前の続きをやろうよ、お父さん。DAGを説明してくれたときにさ、**ブロック**って用語が出てきたでしょ。**合流点**がパスをブロックするとか」
 :::
 
 ::: voice-father
@@ -209,12 +209,10 @@ DAG上に、異なるノードを要素とする3つの集合があるとし、�
 :::
 
 ::: voice-father
-お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」
+お父さん「その通り。**共通原因や中間媒介因子で調整するとパスがブロックされる**とか**合流点で調整すると、パスがブロックされなくなる**っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」
 :::
 
 ![](causal-inference-4-2.png)
-
-
 
 ::: voice-daughter
 私「合流点はないよね。だから有向分離するのはAとC？」
@@ -301,4 +299,5 @@ DAGを用いて、CがAとBを有向分離することが確認できたとし�
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [A Morning Just Before Submission](publish-a-paper-3.html)
+- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [A Morning Just Before Submission](publish-a-paper-4.html)

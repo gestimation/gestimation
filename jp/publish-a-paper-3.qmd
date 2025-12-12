@@ -1,5 +1,5 @@
 ---
-title: "Examples of Editing a Paper"
+title: "Communicating with Care"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Publish a Paper III − Examples of Editing a Paper
+# Publish a Paper III − Communicating with Care
 
 ::: serif-block
 Keywords: language/writing
@@ -156,255 +156,181 @@ Keywords: language/writing
 
 ------------------------------------------------------------------------
 
-### 推敲のコツ
+### 言葉を整える時間
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
 お父さん「論文は書けた？」
-
-**私「Resultsの途中まではね。まとまった時間がとれなくて」**
-
-お父さん「診療しながら時間を確保するのは大変だよね。論文ってそれだけに集中しないと書けないものだから」
-
-**私「このあたりの英語表現なんだけどさ、みてくれる？」**
-
-お父さん「文章を見直してるところだったんだね。あれ？画面上で？」
-
-**私「だめかな」**
-
-お父さん「画面と紙じゃ読んだときの印象が違うよ。落ち着いて文章を見直したいときは、手間を惜しまずプリントアウトしよう」
-
--   画面と紙の両方を使って推敲する
-
-お父さん「一通り読んだよ。まず気になったのはこの一文かな」
-
-（例1）Overall survival curves and disease-free survival curves were estimated by the kaplan-meier method and tested with p-value less than 0.05 as significant.
-
-お父さん「論文を書くとき気を使ってほしいことはいくつかある。そのひとつが専門用語を正しく扱うっていうことで、これは医学用語でも統計用語でも同じだけどね。ここで使っているkaplan-meier methodとp-valueは、専門用語でしょ。だから正確に。人名に由来する統計手法は、大文字からはじめてKaplan-Meier methodと書かなきゃいけない。それに、専門的にみると、用語のレベル感が違う」
-
-**私「レベル感ってどういうこと？どっちも統計の言葉って感覚しかないよ」**
-
-お父さん「そうだとは思うけど気になっちゃう。Kaplan-Meier methodは統計手法のひとつだよね。でも、p-valueは特定の手法ではなくて、指標の種類を表している。並列するならレベル感を合わせて、ログランク検定とかFisher正確検定とか、どの検定を使ったのかを書いてほしくなる。文章の意味でいっても、”tested with p-value less than 0.05 as significant”には、有意水準をいくつに設定したかっていう情報しかないからね」
-
-**私「じゃあ直してみる。これでどう？層別ログランク検定を使ったんだ」**
-
-（改善案1-1）Overall survival curves and disease-free survival curves were estimated by the Kaplan-Meier method and compared by the log-rank test, stratified by factors shown in Table 1. The significance level was set at 0.05. （レベル感をそろえた）
-
-お父さん「いいね、違和感はなくなった。でも、ちょっと気になるのは、意味があいまいなところかな。生存曲線もTable 1の因子で層別したの？」
-
-**私「してない。でもそこは読んでもよくわかんないね、この英文。”stratified by”がどこまでかかってるかはっきりしないもの」**
-
-お父さん「接続詞や関係代名詞を使って、長い文をつくるとそうなりがちだよね。対策のひとつとしては、コンマの位置を変えると、意味をとりやすくなる」
-
-（改善案1-2）Overall survival curves and disease-free survival curves were estimated by the Kaplan-Meier method, and were compared by the log-rank test stratified by factors shown in Table 1. The significance level was set at 0.05.（コンマの位置を変えた）
-
-お父さん「これでもいいけど、長い文は短い文に分けるのが一番いい。以下の英文が、”concise”でいちばん読みやすいんじゃないかな」
-
-（改善案1-3）Overall survival curves and disease-free survival curves were estimated by the Kaplan-Meier method and compared by the stratified log-rank test.
-
-The factors shown in Table 1 were used for stratification. The significance level was set at 0.05. （短い文に分けた）
-
-お父さん「専門用語で気をつけてほしいのは、正確性だけじゃない。単語と意味を1対1に対応させないといけない。統計用語って、別表現があるのがやっかいなんだよね。たとえば生存曲線だけでも、同じ意味で用いられる表現は無数にある。だから、文章を書いているうちに別表現が混在してしまって、それぞれ別の意味と思った読者は混乱しちゃうかもしれない。特定の意味を示す単語はひとつだけにするように気をつけてほしい」
-
-**私「改善案1-3でも混在してるじゃない」**
-
-お父さん「この文章の場合、全生存期間・無病生存期間の生存曲線を表すグラフを、Kaplan-Meier法で推定した、という意味だから、混在ではないよ。用語を使い分けているんだ。じゃあ一旦ここでまとめようか。文章を推敲するときのコツを3つ話したよ」
-
--   専門用語の表現は正確か
--   長すぎて意味をとりにくい文はないか
--   専門用語とその意味は1対1に対応しているか
-
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **統計用語の意味**
-
-生存曲線は英語ではsurvival curveですが、同じまたは似た意味で用いられる用語は、survival function、survival rate、overall survival curve、Kaplan-Meier curveなど無数にあります。実はそれぞれ細かい意味が違うのです。
-
--   生存曲線（survival curve）とほぼ同義
-
-    Survival function
-
--   ほぼ同義だが、曲線というよりある時点の値を意図した用語
-
-    Survival rate, survival probability, survival proportion
-
--   生存曲線をどの統計手法で推定したのかを特定する用語
-
-    Kaplan-Meier curve, Kaplan-Meier estimator, Kaplan-Meier estimate, Kaplan-Meier method
-
--   エンドポイントの種類を特定する用語
-
-    Overall survival curve, disease-free survival curve, 5-year OS, 3-year DFS
-
-統計学では、推定方法を推定量（estimator）、推定した結果を推定値（estimate）、推定しようとしている対象を推定目標（estimand）といいます。ここは論文を書くとき注意が必要なところで、MethodsではKaplan-Meier estimatorと書くのが自然ですし、ResultsではKaplan-Meier estimateを用いることが多いでしょう。「人名+estimator」の代わりに「人名+method」という表記もできて、Kaplan-Meier methodの方がより広い意味で用いることができます。
-
-最後に注意してほしいのが、累積発生率曲線（cumulative incidence curve）や累積発生率関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生率曲線と区別しないと誤解が生じます。
 :::
 
-お父さん「次はこの一文について考えてみてよ。なにか足りない情報はない？」
-
-（例2）The return-to-work rate was defined as the proportion of return-to-work divided by the number of patients.
-
-**私「えーっと。そうか、いつまでに仕事に就けたかが書いてないんだ。術後12ヶ月とか書いた方がよかった」**
-
-お父さん「そう。さらに気になるのは、”return-to-work rate”が割合ってことは文脈から明らかってこと。追加の情報があまりないんだ。たとえば割合を計算するときの分母は、調査した患者全員なの？」
-
-**私「ううん、もともと仕事をしていた人だけ」**
-
-お父さん「じゃあその情報があった方がいいよね。それに、”return-to-work”が2回使われていて冗長だよね。こういう風に直そう」
-
-（改善案2-1）The return-to-work proportion was defined as the number of patients employed 12 months after surgery divided by the number of patients who were employed at diagnosis.
-
-**私「分子と分母を具体的に書いたわけだ」**
-
-お父さん「そう。無回答や欠測データがあって、分母の数があわないことが意外と多い。この場合も、もともと就職してない人はどうなったのか気になる読者もいるでしょ。だから、スマートじゃないけど丁寧に書いた方が親切。別の文章でも似たようなことは起きる。意外と難しいのが、増減を表す英語表現なんだ。この文章を読んでみて」
-
-（例3）The return-to-work proportion increased from 2010 to 2020 with a rate of AA%.
-
-お父さん「増加率がAA%だったっていいたいんだろうけど、この情報だけじゃどれくらい増えたのかわからなくない？もしかしたら1年あたりの変化率かもしれないし。これも情報不足の例で、数値を補う必要がある」
-
-（改善案3-1）The return-to-work proportion increased from BB% in 2010 to CC% in 2020, with an annual increase of DD%.
-
-**私「いいじゃん。ほかによくあるパターンってないの？」**
-
-お父さん「ほかに足りない情報が目につくのは、サンプルサイズについての説明かな。ちょっと専門的になるけどね。たとえばこの箇所」
-
-（例4）We planned to recruit 160 patients, with a significance level of 5% and statistical power of 80% to detect a difference of 10% between patients with and without stroma.
-
-**私「ここか。この前教えられた通り書いたんだが」**
-
-お父さん「えっと、よく思い出してよ。p値には両側と片側があるっていったじゃない。その情報がこの文章にないよね。こんな感じで書かなきゃ、サンプルサイズの計算が再現できない」
-
-（改善案4-1）We planned to recruit 160 patients, with a significance level of 5% and statistical power of 80% to detect a difference of 10% between patients with and without stroma.
-
-お父さん「ただし、まだ気になるところが残っている。それはこの文章に引用文献がついていなくて、10%の差の根拠がわからないこと。人によっては、不足している情報があると感じる読者もいると思う。それと、細かいけど、例1では有意水準を0.05っていってたのに、例4でパーセントを使うのは統一性がない。この手の問題は、専門用語のチェックに加えて、以下の3点に注意すると、見つけられるはず」
-
--   不足している情報はないか
--   冗長な情報はないか
--   どの時点のことを指しているか読み取れるか
-
-お父さん「あと気になったのは、文章のトーンや論調で、たとえばここの表現なんだけど。強調したいから"strongly"っていってるんだよね。でも、これじゃ強すぎない？」
-
-（例5）Stoma creation was strongly associated with a difficulty in return-to-work.
-
-**私「そうかな。いちばん重要な結果だからこう書いたんだけど。どういう英文がいいと思うの？」**
-
-お父さん「一般論なんだけど、論文の結果のうち、強調したいものとそうじゃないものがあるよね。適切に強調した方が、メリハリがついて読みやすくなるけど、どのくらい強い表現にするかは考えなくちゃ。改善案を7つ考えてみたんだ。いちばん簡単なのは、強調表現をやめたり、別の表現にしたりするだけでも、調整はできる」
-
-（改善案5-1）Stoma creation was associated with a difficulty in return-to-work（強調表現を削除した）
-
-（改善案5-2）Stoma creation was highly associated with a difficulty in return-to-work（強調表現を弱めた）
-
-（改善案5-3）Stoma creation was substantially associated with a difficulty in return-to-work（やや遠回しな強調表現にした）
-
-**私「これくらいなら私も思いつくんだけど」**
-
-お父さん「うん。でも、文章の推敲って結局表現を選ぶことだから、ぴったりした形容詞や副詞はなにかもチェックポイントだよ。注意してほしいのはsignificantを使うとき。これは論文でよく目にするけど、統計学的に有意という意味になってしまう。この表現を選ぶときは、p値を示さないといけない」
-
-（改善案5-4）Stoma creation was significantly associated with a difficulty in return-to-work (p=AAA)（統計学的に有意という意味を加えた）
-
-お父さん「単に副詞や形容詞を加える以外の表現方法もある。いくつか例を挙げるけど、次第に客観的なニュアンスが強くなるよね」
-
-**私「いわれてみるとそうね。論文書いてると、関連があったかどうか説明する文の繰り返しになっちゃうから、いろんなパターンがあると助かる」**
-
-（改善案5-5）The return-to-work proportion of patients with stoma was lower than that of patients without stoma（比較対照を示した）
-
-（改善案5-6）The return-to-work proportion in patients with stoma was BB%, being much lower than that in patients without stoma（定量的に表現した）
-
-（改善案5-7）The odds ratio for delayed return-to-work was CCC (95% confidence interval DDD to EEE, p=FFF)（直接的に結果を述べた）
-
-お父さん「重要な結果や論文の結論は、強調したくなるのが人情だけど、エディターやレビュワーが読むと、強すぎる表現は不適切と感じちゃう。特にConclusionには気を遣う」
-
-**私「不適切って思われるのはわかるわ。実際、論文読んでるとき著者の偏った意見って気になるもの。単に表現の問題じゃなくて、内容が偏ってることもあるんじゃない？」**
-
-お父さん「それもある。論文を推敲するときは、主張が偏っているところも直したいよね。まずは、パラグラフ全体で強調しすぎていないかをみて、次に、それぞれの文で強すぎる表現になっていないかチェックするといい。それに、以前話したように、賛成・反対の両方の視点で読むっていうのもよくやる。どちらかに肩入れしていると感じたら、トーンを落としたり、両論併記したりすると、バランスがとれる。次のこの文は、逆に主張を弱めたかったんでしょ」
-
-（例6）It is considered that the unexpectedly high rate of return-to-work is attributable to the Guideline for Support for Therapy and Work Life published by MHLW.
-
-**私「うん、厚労省のガイドラインが効いたかどうか自信がなくて」**
-
-お父さん「この文の主語は誰？」
-
-**私「え？私かな」**
-
-お父さん「でも英文には主語がないでしょ。”It is considered that”や”It is thought that”は一般的にこう考えられているっていう意味になる」
-
-**私「なるほど、日本語だと、主張を和らげるために、”と思う”や”と考えられる”っていいがちだけど、英語では使えないんだ」**
-
-お父さん「そう。英語論文で確信の度合いを表すときは、probablyやpresumablyなどの副詞や、mustやmayなどの助動詞を使うといい。いくつか文案をみせるね。順に主張が弱くなる」
-
-（改善案6-1）The unexpectedly high rate of return-to-work is presumably attributable to the Guideline for Support for Therapy and Work Life published by MHLW.（かなり確信がある）
-
-（改善案6-2）It is likely that the unexpectedly high rate of return-to-work is attributable to the Guideline for Support for Therapy and Work Life published by MHLW.（可能性が高い）
-
-（改善案6-3）The unexpectedly high rate of return-to-work is possibly attributable to the Guideline for Support for Therapy and Work Life published by MHLW.（可能性がある）
-
-（改善案6-4）It seems that the unexpectedly high rate of return-to-work is attributable to the Guideline for Support for Therapy and Work Life published by MHLW.（そのようにみえる）
-
-（改善案6-5）The unexpectedly high rate of return-to-work may be attributable to the Guideline for Support for Therapy and Work Life published by MHLW.（可能性のひとつ）
-
-お父さん「付け加えるとね、あまり強調したり弱めたりしないことも大切だよ。たとえば、possiblyやmayばかり使って論文を書くと、読者は根拠が弱いんじゃないか、論理があいまいなんじゃないかって不安になる。事実を淡々と述べるだけでふつうは問題ない。まとめるとポイントはこの3つかな」
-
--   個々のパラグラフをみて、強調の程度は適切か
--   個々の文をみて、適切な強調表現を選んでいるか
--   賛成・反対の両方の視点で読んだとき、偏った主張はないか
-
-お父さん「さて、専門用語の扱い、情報の過不足、表現の強弱を中心に話してきたけど、文章の推敲って奥が深いし、一度にすべてをチェックすることは難しい。だから、何度も原稿を読み返すといい」
-
--   推敲は、すればするほど、いい文章になる
-
-**私「そろそろ覚えきれなくなってきたよ」**
-
-お父さん「うん、それじゃあ最後に復習を兼ねてひとつ課題をやってみてよ。以下の文章は、JCOG9502（Sasako, et al. 2006）のDiscussionの冒頭部分を改変したもの。Discussionの第一パラグラフでは、結果を簡潔にまとめることが多い。これをもっといい英文にしてみて」
-
-（例7）It was shown that LTA does not provide a survival advantage compared with TH in the treatment of curable gastric cancers, although the study was stopped after the interim analysis, because patients assigned LTA were unlikely to have an improved overall survival compared with those assigned TH for Siewert type 2 or 3 tumours.
-
-**私「わかった。長い」**
-
-お父さん「そう、長すぎて、文章の意味がすぐ頭に入ってこないよね。特に”because”以降がどこにかかっているのかはっきりしない。どうしたらいいかな」
-
-**私「えーっと。短く分けるんだっけ。これでどう？」**
-
-（改善案7-1）It was shown that LTA does not provide a survival advantage compared with TH in the treatment of curable gastric cancers.
-
-The study was stopped after the interim analysis, because patients assigned LTA were unlikely to have an improved overall survival compared with those assigned TH for Siewert type 2 or 3 tumours.
-
-お父さん「うん、ずっと読みやすくなったよね。”It was shown”を使うより、主語をはっきりさせると、より英語らしくなる。また、別のやり方として、後半を簡潔にすることもできる。たとえば、これ以上試験を続けても有効性を示せないことを意味する無益性（futility）という専門用語を使うとこうなる。こっちの方がスマートだけど、専門性が高すぎる文章かもしれない」
-
-（改善案7-2）This study showed that LTA does not provide a survival advantage compared with TH in the treatment of curable gastric cancers, although the study was stopped after the interim analysis because of futility.
-
-お父さん「もうひとつポイントがあるんだ。改善案7-1をみて。一つ目の文に書かれていることが、Discussionで読者が最初に受け取る情報になるよね。そこで考えてほしいのは、二つ目の文でどんな情報が加わるかっていうこと。答えをいっちゃうと、それは"for Siewert type 2 or 3 tumours"なんだけど」
-
-**私「確かに。その説明はDiscussionの最初に欲しいね。対象疾患がわからないと、その先が読めないもの」**
-
-お父さん「つまり、疾患の定義のような論文のキーになる情報は、リマインドしてもいいってこと。JCOG9502の論文でも、Discussionの冒頭でそうしている。採用されたのは以下の英文だよ。この臨床試験がどんな疾患を対象にしていて、どんな結果だったか、改めて整理したいっていう意図が感じられる。こういうパラグラフが最初にあると、読者と共通の材料をもって、Discussionを始められるよね」
-
-（論文で採用された表現）This study shows that LTA does not provide a survival advantage compared with TH in the treatment of curable gastric cancers with an oesophageal invasion of 3 cm or less, which corresponds mainly to tumours classified as Siewert type 2 or 3.
-
-The study was stopped after the interim analysis, because patients assigned LTA were unlikely to have an improved overall survival compared with those assigned TH for Siewert type 2 or 3 tumours.
-
-::: {.callout-note title="このエピソードに関係するクイズです"}
-
-“Statistics”は、日本でも中国でも韓国でも「統計」という漢字を当てます。それでは「統計」という言葉が生まれた国はどれでしょう。
-
-1.  日本
-2.  中国
-3.  韓国
-4.  それ以外の国
+::: voice-daughter
+私「Resultsの途中まではね。診療しながらだと、まとまった時間がなかなか取れなくて」
 :::
 
-::: {.callout-note collapse="true" title="答えはこちら"}
--   **正解は1の日本です**
-
-明治時代、伊藤博文がアメリカに視察に行ったとき、同じ大蔵省にいて語学が堪能だった福地源一郎を同行して、英語の翻訳をさせたそうです。統計という言葉もこのとき生まれたといわれています。
-
-[福地源一郎 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%A6%8F%E5%9C%B0%E6%BA%90%E4%B8%80%E9%83%8E)
+::: voice-father
+お父さん「そうだよね。論文って、書くときはそれだけに集中しないと進まないものだから」
 :::
 
-### 文献
+::: voice-daughter
+私「わかるー。このあたりの英語表現なんだけど、少し見てくれる？」
+:::
 
-1.  Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
+::: voice-father
+お父さん「文章を見直してるところなんだね。あれ、画面のまま？」
+:::
+
+::: voice-daughter
+私「だめかな」
+:::
+
+::: voice-father
+お父さん「だめじゃないけど。落ち着いて推敲するときは、紙に出して読むのも悪くないよ。画面と紙じゃ、同じ文章でも印象が変わるから」
+:::
+
+::: voice-daughter
+私「はい、プリントアウトしましたー」
+:::
+
+::: voice-father
+お父さん「まず気になったのは、この一文かな」
+:::
+
+>> Overall survival curves and disease-free survival curves were estimated by the kaplan-meier method and 
+>> tested with p-value less than 0.05 as significant.
+
+::: voice-daughter
+私「どこが変？」
+:::
+
+::: voice-father
+お父さん「意味は伝わる。でも、専門用語の並び方が少しちぐはぐに見える」
+:::
+
+::: voice-daughter
+私「kaplan-meierもp-valueも、統計のことばでしょ？」
+:::
+
+::: voice-father
+お父さん「そうなんだけど、役割が違う。Kaplan–Meierは“方法”で、p値は“指標”だよね。同じ列に並べるなら、レベルをそろえた方がいい」
+:::
+
+> Overall survival curves and disease-free survival curves were estimated using the Kaplan–Meier method and 
+> compared by the stratified log-rank test. The significance level was set at 0.05.
+
+::: voice-daughter
+私「細かいけど、たしかに」
+::: 
+
+::: voice-father
+お父さん「推敲ってそういうものだよ。論文の文章を見直すとき、いつも気にしてほしいことがある」
+:::
+
+::: voice-daughter
+私「なに？」
+:::
+
+::: voice-father
+お父さん「この3つを頭に置いておくといいよ」
+:::
+
+- 専門用語は、正確に使われているか
+
+- 情報は、第三者が読み返して再現できるだけ書かれているか
+
+- 主張の強さは、結果に見合っているか
+
+::: voice-father
+お父さん「どれも特別なことじゃない。でも、これが崩れると、文章全体の信頼感が落ちる」
+:::
+
+::: voice-daughter
+私「たとえば、この文章はどう？」
+:::
+
+> The return-to-work rate was defined as the proportion of return-to-work divided by the number of patients.
+
+::: voice-father
+お父さん「悪くはないけど、少し情報が足りないかな。いつ時点の話？分母は誰？」
+:::
+
+::: voice-daughter
+私「あ、たしかに。もともと働いていた人だけだ」
+:::
+
+::: voice-father
+お父さん「じゃあ、そこは書いた方がいい。結果が正しいかどうか以前に、“何を数えたのか”が伝わらないと、読者は判断できないから」
+:::
+
+>The return-to-work proportion was defined as the number of patients employed 12 months after surgery 
+> divided by the number of patients who were employed at diagnosis.
+
+::: voice-daughter
+私「ちょっと冗長じゃない？」
+:::
+
+::: voice-father
+お父さん「うん。でも、親切ではある。論文では、親切さが勝つことも多いよ」
+:::
+
+::: voice-daughter
+私「ここは強調したかったんだけど」
+:::
+
+> Stoma creation was strongly associated with a difficulty in return-to-work.
+
+::: voice-father
+お父さん「気持ちはわかる。でも、少し強いかもしれないね」
+:::
+
+::: voice-daughter
+私「結論なんだから、強くいってもいいかなと思って」
+:::
+
+::: voice-father
+お父さん「強調したい結果ほど、淡々と書いた方が伝わることもある。特にConclusionではね。それに、“strongly”とか“significantly”って言葉は、読み手によって受け取り方が変わる」
+:::
+:::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple" collapse="true" title="別の表現の例"}
+
+- 統計学的に有意という意味を加えた案: Stoma creation was significantly associated with a difficulty in return-to-work (p=AAA)
+
+- きちんと効果指標と信頼区間を加えた案: The odds ratio for delayed return-to-work was BBB (95% confidence interval CCC to DDD, p=EEE)
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「significantって書くと、自動的に統計学的に有意って意味になっちゃうんだっけ」
+:::
+
+::: voice-father
+お父さん「そう。使うならp値を示すし、Methodsに解釈も書く。効果指標と信頼区間も忘れない。推敲は、言葉を整える作業に見えるけど、実際は"読者がどの世界を読むか"を整える作業なんだ」
+:::
+
+::: voice-daughter
+私「全部一気に直そうとすると、頭が追いつかないよ」
+:::
+
+::: voice-father
+お父さん「それでいい。一度に全部整えようとしなくていい。今日は専門用語、次は情報量、その次はトーン。そうやって何度も読み返す」
+:::
+
+::: voice-daughter
+私「地味だね」
+:::
+
+::: voice-father
+お父さん「うん。でも、そうやって時間を掛けて整えていくものだよ。推敲は、すればするほどいい文章になる」
+:::
+
+::: voice-daughter
+私「うん。だから、急がない」
+:::
+:::::::::::::::::::::::::::::::::
 
 ### エピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [Communicating with Care](publish-a-paper-3.html)
 - [A Morning Just Before Submission](publish-a-paper-4.html)

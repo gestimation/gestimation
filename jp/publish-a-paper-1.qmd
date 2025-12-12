@@ -336,35 +336,9 @@ Keywords: bias, hypothesis/outcome/population, language/writing
 お父さん「うんうん。ちなみにね、凝った英語を使う必要はないよ。論文は、"concise"つまり簡潔な表現が好ましいとされる。接続詞や関係代名詞を多用しちゃって、一文が長くなりがちな人もいるけど、最初はそうしない方がいい。短い文章が続いていてもぜんぜん変じゃないからね」
 ::: 
 
-::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-
-文献を引用するときのスタイルは、ジャーナルの投稿規定で決められています。なかでも、もっとも多く採用されているのは、医学雑誌編集者国際委員会が1978年に定めたバンクーバースタイルです。
-
-JCOG9502論文を、バンクーバースタイルで表記すると、以下のようになります。さて、2つの□に入る記号として正しい組み合わせは、次のうちどれでしょうか。
-
-Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006 □ 7(8) □ 644-51
-
-1.  “:”と”:”
-2.  “;”と”;”
-3.  “:”と”;”
-4.  “;”と”:”
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
-- **正解は4です。**
-
-バンクーバースタイルでは、論文を引用するとき、文献リストを以下のように書きます。ただし、著者が多数のときは、”et al.”と省略することがあります。
-
-\[著者名（苗字+名前のイニシャル）\]. \[記事名\]. \[ジャーナル名\]. \[発行年\]; \[巻\]: \[ページの範囲\]
-
-ちなみに、書籍を引用するときは、以下のように書きます。
-
-\[著者名（苗字+名前のイニシャル）\]. \[書籍名\]. \[版\]. \[出版社の所在地\]: \[出版社\]; \[出版年\]
-:::
-
 ### エピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [Communicating with Care](publish-a-paper-3.html)
 - [A Morning Just Before Submission](publish-a-paper-4.html)

@@ -406,6 +406,31 @@ a:hover {
 <p>お父さん「そうそう。用語がわかると、あとは臨床やデータ自体の話に集中できるからね」</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="統計用語の違い">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+統計用語の違い
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>生存曲線は英語ではsurvival curveですが、同じまたは似た意味で用いられる用語は、survival function、survival rate、overall survival curve、Kaplan-Meier curveなど無数にあります。実はそれぞれ細かい意味が違うのです。</p>
+<ul>
+<li><p>生存曲線（survival curve）とほぼ同義</p>
+<p>Survival function</p></li>
+<li><p>ほぼ同義だが、曲線というよりある時点の値を意図した用語</p>
+<p>Survival rate, survival probability, survival proportion</p></li>
+<li><p>生存曲線をどの統計手法で推定したのかを特定する用語</p>
+<p>Kaplan-Meier curve, Kaplan-Meier estimator, Kaplan-Meier estimate, Kaplan-Meier method</p></li>
+<li><p>エンドポイントの種類を特定する用語</p>
+<p>Overall survival curve, disease-free survival curve, 5-year OS, 3-year DFS</p></li>
+</ul>
+<p>統計学では、推定方法を推定量（estimator）、推定した結果を推定値（estimate）、推定しようとしている対象を推定目標（estimand）といいます。ここは論文を書くとき注意が必要なところで、MethodsではKaplan-Meier estimatorと書くのが自然ですし、ResultsではKaplan-Meier estimateを用いることが多いでしょう。「人名+estimator」の代わりに「人名+method」という表記もできて、Kaplan-Meier methodの方がより広い意味で用いることができます。</p>
+<p>最後に注意してほしいのが、累積発生率曲線（cumulative incidence curve）や累積発生率関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生率曲線と区別しないと誤解が生じます。</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -426,7 +451,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -435,7 +460,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は3です。</strong></li>

@@ -425,33 +425,9 @@ STROBE声明の「変数」というセクションでは、いくつか基本�
 -   効果修飾因子（effect modifier）: 因果効果の大きさや方向の違いをもたらす共変量のこと。または、曝露との交互作用がある共変量のこと
 :::
 
-::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-
-バンクーバースタイルには、インターネット上の記事を引用するための形式もあります。
-
-「人を対象とする生命科学 医学系研究に関する倫理指針」を、バンクーバースタイルで表すと、以下のようになります。さて、□に入るテキストとして正しいものは、次のうちどれでしょうか。
-
-Ministry of Education, Ministry of Health, Labour and Welfare, Ministry of Economy, Trade and Industry. Ethical Guidelines for Life Science and Medical Research Involving Human Subjects. \[□\]. 2022 \[Accessed October 1, 2022\] Available from: <https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hokabunya/kenkyujigyou/i-kenkyu/index.html>
-
-1.  Internet
-2.  PDF file
-3.  Copyright preserved
-4.  In Japanese
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
-- **正解は1です。**
-
-バンクーバースタイルでは、インターネットなど論文以外のメディアに公表された記事を引用するとき、文献リストを以下のように書きます。
-
-\[著者名（苗字+名前のイニシャル）\]. \[記事名\]. \[メディアの種類\]. \[発行年\] \[アクセスした日\] Available from: \[URL\]
-:::
-
-- [STROBE Checklist version 1.1 [Internet]. Oxford: EQUATOR Network; 2007](https://resources.equator-network.org/reporting-guidelines/strobe/) 
-
 ### エピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [Communicating with Care](publish-a-paper-3.html)
 - [A Morning Just Before Submission](publish-a-paper-4.html)

@@ -303,6 +303,31 @@ Cox回帰から計算される指標で、生存曲線を比較するために�
 :::
 :::::::::::::::::::::::::::::::::
 
+::: {.callout-note appearance="simple"  title="統計用語の違い"}
+
+生存曲線は英語ではsurvival curveですが、同じまたは似た意味で用いられる用語は、survival function、survival rate、overall survival curve、Kaplan-Meier curveなど無数にあります。実はそれぞれ細かい意味が違うのです。
+
+-   生存曲線（survival curve）とほぼ同義
+
+    Survival function
+
+-   ほぼ同義だが、曲線というよりある時点の値を意図した用語
+
+    Survival rate, survival probability, survival proportion
+
+-   生存曲線をどの統計手法で推定したのかを特定する用語
+
+    Kaplan-Meier curve, Kaplan-Meier estimator, Kaplan-Meier estimate, Kaplan-Meier method
+
+-   エンドポイントの種類を特定する用語
+
+    Overall survival curve, disease-free survival curve, 5-year OS, 3-year DFS
+
+統計学では、推定方法を推定量（estimator）、推定した結果を推定値（estimate）、推定しようとしている対象を推定目標（estimand）といいます。ここは論文を書くとき注意が必要なところで、MethodsではKaplan-Meier estimatorと書くのが自然ですし、ResultsではKaplan-Meier estimateを用いることが多いでしょう。「人名+estimator」の代わりに「人名+method」という表記もできて、Kaplan-Meier methodの方がより広い意味で用いることができます。
+
+最後に注意してほしいのが、累積発生率曲線（cumulative incidence curve）や累積発生率関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生率曲線と区別しないと誤解が生じます。
+:::
+
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
 以下の4つの単語は、正式な統計用語ではありませんが、しばしば臨床試験の文献で目にするものです。このうち、誤りとはいえないものはどれでしょう。
 
