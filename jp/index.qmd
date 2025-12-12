@@ -158,7 +158,7 @@ a:hover {
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
 - [A First Step into Survival and Competing Risks Analysis with R]　【12/15公開予定】
-- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/22公開予定】
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/15公開予定】
 
 このエピソードのRスクリプト一式は、こちらからダウンロードできます。R パッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
 
@@ -237,9 +237,9 @@ a:hover {
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
-### 8. Publish a Paper — 研究の営み
+### 8. Publish a Paper — 研究のその先
 
-研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者のための静かな営み。
+研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者の営み。
 
 - [A Subtle Distinction Between Editors and Reviewers]
 - [Three Tips for Writing a Paper]

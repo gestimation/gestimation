@@ -190,7 +190,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ### To clarify which conceptual layers the issues in the series belong to, it may help to revisit the previous series:
 
-**1. Study design — 研究の出発点**
+**1. Study Design — 研究の出発点**
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
@@ -202,7 +202,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-**3. Frequentist thinking — 統計学の思考**
+**3. Frequentist Thinking — 統計学の思考**
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
@@ -214,7 +214,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 
-**5. Effects and time — 効果は時間とともに**
+**5. Effects and Time — 効果は時間とともに**
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -223,7 +223,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - [From Risk and Rate to Survival and Hazard](effects-5.html)
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
 
-**6. Adjusting for bias — 回帰モデリングの風景**
+**6. Adjusting for Bias — 回帰モデリングの風景**
 
 - [From Risk to Logistic Regression](logistic-regression-1.html)
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
