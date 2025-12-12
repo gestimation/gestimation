@@ -187,9 +187,6 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 ### This concludes the Truth series. If you’d like to keep reading over your next cup of coffee, further episodes are waiting:
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
-- [Common Causes and Confounders](causal-inference-2.html)
-- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths and Confounders](causal-inference-4.html)
 
 ### To clarify which conceptual layers the issues in the series belong to, it may help to revisit the previous series:
 

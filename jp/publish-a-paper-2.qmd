@@ -381,6 +381,7 @@ Keywords: language/writing
 ::: voice-daughter
 私「へー。論文に書くことリストだね。項目をひとつひとつパラグラフにしていけばいいって考えると、気が楽になった。論文書いてみるね」
 :::
+:::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" collapse="true" title="STROBEチェックリスト"}
 | セクション | 項目 | 内容 |

@@ -195,8 +195,8 @@ Keywords: language/writing
 お父さん「まず気になったのは、この一文かな」
 :::
 
->> Overall survival curves and disease-free survival curves were estimated by the kaplan-meier method and 
->> tested with p-value less than 0.05 as significant.
+> Overall survival curves and disease-free survival curves were estimated by the kaplan-meier method and 
+> tested with p-value less than 0.05 as significant.
 
 ::: voice-daughter
 私「どこが変？」
@@ -261,7 +261,7 @@ Keywords: language/writing
 お父さん「じゃあ、そこは書いた方がいい。結果が正しいかどうか以前に、“何を数えたのか”が伝わらないと、読者は判断できないから」
 :::
 
->The return-to-work proportion was defined as the number of patients employed 12 months after surgery 
+> The return-to-work proportion was defined as the number of patients employed 12 months after surgery 
 > divided by the number of patients who were employed at diagnosis.
 
 ::: voice-daughter
@@ -287,18 +287,13 @@ Keywords: language/writing
 :::
 
 ::: voice-father
-お父さん「強調したい結果ほど、淡々と書いた方が伝わることもある。特にConclusionではね。それに、“strongly”とか“significantly”って言葉は、読み手によって受け取り方が変わる」
-:::
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple" collapse="true" title="別の表現の例"}
-
-- 統計学的に有意という意味を加えた案: Stoma creation was significantly associated with a difficulty in return-to-work (p=AAA)
-
-- きちんと効果指標と信頼区間を加えた案: The odds ratio for delayed return-to-work was BBB (95% confidence interval CCC to DDD, p=EEE)
+お父さん「強調したい結果ほど、淡々と書いた方が伝わることもある。特にConclusionではね。それに、“strongly”とか“significantly”って言葉は、読み手によって受け取り方が変わる。表現を変えた方がいい。2つ例を挙げる」
 :::
 
-::::::::::::::::::::::::::::::::: dialogue
+> Stoma creation was significantly associated with a difficulty in return-to-work (p=AAA)
+
+> The odds ratio for delayed return-to-work was BBB (95% confidence interval CCC to DDD, p=EEE)
+
 ::: voice-daughter
 私「significantって書くと、自動的に統計学的に有意って意味になっちゃうんだっけ」
 :::

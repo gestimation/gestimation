@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Logit: How a Transformation Shapes an Effect – Coffee and Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="coffee.scss">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Coffee and Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gestimation.github.io/cifmodeling/"> 
+<span class="menu-text">cifmodeling</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-on-causality-at-our-table-(en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation on Causality at Our Table (EN)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-on-causality-at-our-table-(en">    
+        <li>
+    <a class="dropdown-item" href="../en/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-on-causality-at-our-table-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation on Causality at Our Table (JP)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-on-causality-at-our-table-(jp">    
+        <li>
+    <a class="dropdown-item" href="../jp/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../jp/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" id="toc-adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" class="nav-link active" data-scroll-target="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect">Adjusting for Bias II − Logit: How a Transformation Shapes an Effect</a>
+  <ul class="collapse">
+  <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
+  <li><a href="#ロジット関数の特徴" id="toc-ロジット関数の特徴" class="nav-link" data-scroll-target="#ロジット関数の特徴">ロジット関数の特徴</a></li>
+  <li><a href="#ロジスティック回帰の可逆性" id="toc-ロジスティック回帰の可逆性" class="nav-link" data-scroll-target="#ロジスティック回帰の可逆性">ロジスティック回帰の可逆性</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Logit: How a Transformation Shapes an Effect</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2b1f1a;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #3a2a22;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: #8b4a24;
+  text-decoration: none;
+}
+a:hover {
+  color: #6f3718;
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e0da;
+  margin-bottom: 0 !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #3a2a22 !important;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.navbar .navbar-nav > li > a:hover {
+  border-bottom-color: #8b4a24;
+}
+
+.hero-text {
+  padding: 1.5rem 0;
+  color: #3a2a22;
+}
+
+.project-card {
+  border: 1px solid #e6e0da;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  border: 1px solid #e6e0da;
+  padding: 1.5rem;
+  border-radius: 0;
+  background: #ffffff;
+  margin-top: 2.5rem;
+}
+
+.about-section::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.author-photo {
+  float: left;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #8b4a24;
+  color: #8b4a24;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+.btn-link:hover {
+  background: #8b4a24;
+  color: #ffffff;
+}
+
+.content-narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 2.5rem;
+}
+
+.hero-header {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-header-img {
+  width: 100vw;
+  height: min(400px, 45vh);
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+
+.dialogue p {
+  line-height: 1.7;
+}
+.dialogue .voice-father p {
+  color: #7a3e1a !important;
+}
+.dialogue .voice-daughter p {
+  color: #234f7c !important;
+}
+.dialogue .voice-daughter,
+.dialogue .voice-father {
+  margin-bottom: 0.4rem;
+}
+
+.text-right {
+  text-align: right;
+}
+.serif-block p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 0.9em;  line-height: 1.6;
+}
+</style>
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" class="level1">
+<h1>Adjusting for Bias II − Logit: How a Transformation Shapes an Effect</h1>
+<div class="serif-block text-right">
+<p>Keywords: effect measure, generalized linear model</p>
+</div>
+<hr>
+<section id="数式を使ってロジスティック回帰を教えてよ" class="level3">
+<h3 class="anchored" data-anchor-id="数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</h3>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ああ、ここにいたんだ。コーヒーと大福？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うんうまいよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「食べながらでいいから聞いてよ。ロジスティック回帰はね、医学研究でよく使うから知っておいた方がいいと思って。簡単にいうと、2値データのための回帰モデルの一種。ストーマ造設、年齢、性別、年収といった共変量が、復職の有無のような2通りの値をとるアウトカムとどの程度相関するかを、調べることができる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「もうちょっと統計っぽく教えてよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？統計手法には、パラメトリック法とノンパラメトリック法があるけど、ロジスティック回帰はパラメトリックモデルの一種として位置づけられる。最近の教科書では、一般化線型モデルのひとつとして扱われることが多いかな」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうんじゃなくてさ。ほら、リンク関数とか出てきたでしょ。ああいうのがでてくると消化不良でさ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「数式使っていいの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいや。ほら、このペン使っていいよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、個人のリスクと共変量の関係から話せばいいのかな」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ロジスティック回帰
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(N\)</span>人の対象者に番号をつけて<span class="math inline">\(i=1,...,N\)</span>で表すことにします。個人<span class="math inline">\(i\)</span>のリスクを<span class="math inline">\(\pi_i\)</span>で表します。<span class="math inline">\(\pi_i\)</span>は、個人レベルの<span class="math inline">\(N\)</span>個のパラメータですが、そのすべてを別々に推定したいわけではありません。<span class="math inline">\(\pi_i\)</span>に関連する<span class="math inline">\(p-1\)</span>個の共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が測定されており、両者の関連の強さに関心があるとします。このとき</p>
+<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
+<p>という関係が成り立つ確率分布をロジスティック回帰といいます。</p>
+<p>この式の係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>を回帰係数（regression coefficients）、特に<span class="math inline">\(\beta_0\)</span>を切片項（intercept）といいます。正規分布は平均と分散というパラメータで形状が決まりますよね。それと同じように、ロジスティック回帰の確率分布は、回帰係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>で規定されます。<span class="math inline">\(\pi_i\)</span>は、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>が与えられれば計算できますが、直接推定するわけではありません。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ふむふむ。ひとりひとりに<span class="math inline">\(\pi_i\)</span>と<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>がある。そしてロジスティック回帰の式で結びついているわけね。そして、その式の係数が回帰係数」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そう。ロジスティック回帰の裏には2項分布があって、実は<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応している。2項確率の式に、共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が含まれていて、アウトカムと共変量の関連の強さを、回帰係数が決めるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「この式まではわかったよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「よかった。ちょっと補足するとね、確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、ロジスティック回帰では、アウトカムと共変量の関係が<strong>ロジット関数（logit function）</strong>で結びつくと仮定していること。<code>glm()</code>について話したの覚えてる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。リンク関数を<code>link</code>で指定することは理解したよ。それがこの式？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだよ。<code>glm()</code>の引数は、<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>なんだけど<code>family=binomial()</code>のように 2項分布を選ぶと自動的にロジット関数が使われる。ロジスティック回帰の左辺をみてよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="リンク関数とロジット関数">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+リンク関数とロジット関数
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>個人のパラメータと共変量との関係を結びつける1対1の単調な変換</p>
+<p><span class="math inline">\(g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
+<p>のことを、一般に<strong>リンク関数（link function）</strong>といいます。ロジスティック回帰のリンク関数は</p>
+<p><span class="math inline">\(g(\pi_i)=\log(\frac{\pi_i}{1-\pi_i})\)</span></p>
+<p>です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。</p>
+</div>
+</div>
+</section>
+<section id="ロジット関数の特徴" class="level3">
+<h3 class="anchored" data-anchor-id="ロジット関数の特徴">ロジット関数の特徴</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数の形状">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ロジット関数の形状
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>仮に共変量が1個で、連続データだったとしましょう。確率<span class="math inline">\(\pi_i\)</span>と共変量<span class="math inline">\(X_i\)</span>の関係は、ロジット関数を通じて</p>
+<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
+<p>という式で表されることになります。</p>
+<p>図は、このロジット関数の<span class="math inline">\(\exp(\beta_1)\)</span>の値を5、10、20、200と設定して、<span class="math inline">\(X_i\)</span>を0から1までの範囲で変化させた、ロジット関数の逆関数のプロットです。<span class="math inline">\(\exp(\beta_1)\)</span>は、<span class="math inline">\(X_i\)</span>が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。</p>
+<p>このように、ロジット関数の逆関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数<span class="math inline">\(\beta_1\)</span>によって決まります。</p>
+<p><img src="logistic-regression-4.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「さらに、ロジスティック回帰は、がんサバイバー調査のように群を比較するときにも使われる。シンプルに2人の対象者を比べるとどうなるかって話をするね」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数とオッズ比の関係">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ロジット関数とオッズ比の関係
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>共変量が1個のとき、ロジスティック回帰は</p>
+<p><span class="math inline">\(\log \left(\frac{\pi_i}{1-\pi_i}\right)=\beta_0+\beta_1X_{i}\)</span></p>
+<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
+<p><span class="math inline">\(\log\left(\frac{\pi_1}{1-\pi_1}\right)=\beta_0\)</span></p>
+<p><span class="math inline">\(\log\left(\frac{\pi_2}{1-\pi_2}\right)=\beta_0+\beta_1\)</span></p>
+<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
+<p><span class="math inline">\(\left(\frac{\pi_2}{1-\pi_2}\right)\div\left(\frac{\pi_1}{1-\pi_1}\right)=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
+<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。大事なのは<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>を選ぶことで、データの型にあった回帰モデルを指定できるってこと。yとxにそれぞれ連続変数を指定すると、散布図に回帰直線を掛くことができるし、計数データにPoisson回帰を当てはめたりもできる。一般化線型モデルは、生存時間データや経時データ以外ならほとんど対応できる汎用的な統計手法なんだ」</p>
+</div>
+</div>
+</section>
+<section id="ロジスティック回帰の可逆性" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰の可逆性">ロジスティック回帰の可逆性</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「でもね、その説明だとみんなロジスティック回帰を使ってる理由にはなってないよね。<code>link="logit"</code>より<code>link="identity"</code>、つまり変換しなくたっていいじゃない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはリスク差のモデルだね。無変換のモデルが悪いわけじゃないんだけど、ロジット関数が選ばれた理由はちゃんとある。この話はちょっと難しいかもしれない。たとえるならね、ロジスティック回帰はルービックキューブのように構造が安定しているんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「どういう意味？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「操作を加えても構造が維持されるっていうこと。どんな方向で、どんな順序で面を回しても、ルービックキューブは元に戻せる。解けば絵の向きもきちんと揃う。統計解析に話を戻すと、人工的にデータに変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量<span class="math inline">\(X_i\)</span>のスケール変換のことだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それはよくやることだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、<strong>数学では群作用（group action）</strong>っていうんだけど、ある変換を加えても意味が変わらない操作のこと。ほら、コインの表裏を入れ替えても、コイン投げの確率の本質に影響しないでしょ。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」</p>
+</div>
+<ul>
+<li><p>確率分布: 2項分布（指数型分布族）</p></li>
+<li><p>回帰係数×共変量（線型結合）</p></li>
+<li><p>リンク関数: ロジット関数</p></li>
+</ul>
+<div class="voice-father">
+<p>お父さん「ここで出てくるロジット関数は、変換しても<strong>可逆性（invertibility）</strong>を保つ唯一の関数なんだ。たとえば死亡確率を<span class="math inline">\(\pi=0.2\)</span>とするよ。このとき生存確率は？<span class="math inline">\(1-\pi=0.8\)</span>だよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。当たり前」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「この”死亡と生存を入れ替える”という操作が群作用に相当する。ここで問題にしているのはリンク関数<span class="math inline">\(g\)</span>だったよね。確率<span class="math inline">\(\pi\)</span>を、リンク関数で別のスケール<span class="math inline">\(g(\pi)\)</span>に変換したとする。このとき、死亡と生存を入れ替えても、値が反転するだけで構造が維持されるには<span class="math inline">\(g\)</span>はどんな性質を持つべき？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「値が反転する、って？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「つまりこういうこと」</p>
+</div>
+<p><span class="math display">\[g(1−\pi)=−g(\pi)\]</span></p>
+<div class="voice-daughter">
+<p>私「へ？意味わかんない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？<span class="math inline">\(g(-1\pi)\)</span>は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号反転はするはず」</p>
+</div>
+<div class="voice-daughter">
+<p>私「なるほど。<span class="math inline">\(g(1−\pi)=−g(\pi)\)</span>という関係が成り立つのはなにか探せばいいのね？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「もう少し条件がある。<span class="math inline">\(g(\pi)\)</span>という尺度に、上限と下限があったら不便だし、ゼロという基準が必要だよね。だから条件を追加する」</p>
+</div>
+<ul>
+<li><span class="math inline">\(g(1−\pi)=−g(\pi)\)</span></li>
+<li><span class="math inline">\(\pi\)</span>が0に近づけば<span class="math inline">\(g(\pi)\)</span>は−∞に向かう</li>
+<li><span class="math inline">\(\pi\)</span>が1に近づけば<span class="math inline">\(g(\pi)\)</span>は∞に向かう</li>
+<li><span class="math inline">\(\pi=1/2\)</span>を基準にとって<span class="math inline">\(g(1/2)=0\)</span></li>
+</ul>
+<div class="voice-father">
+<p>お父さん「この4つの条件を満たす滑らかな関数は、実はほとんどひとつしかない」</p>
+</div>
+<p><span class="math display">\[g(\pi)=\log \left(\frac{\pi_i}{1-\pi_i}\right)\]</span></p>
+<div class="voice-daughter">
+<p>私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。みんなが使っている統計手法はね、大半が人間が選んだだけじゃないんだ。数学的な法則がそっと姿を現しているんだよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>脳卒中発症の有無をアウトカム、LDLコレステロールを共変量としてロジスティック回帰を当てはめたとします。LDLコレステロールの単位をmg/dLからmmol/Lに変換したとき、オッズ比は何倍になるでしょうか。ただし</p>
+<p>LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586</p>
+<p>という関係が成り立ちます。</p>
+<ol type="1">
+<li>0.02586倍</li>
+<li>1/0.02586倍</li>
+<li>変化しない</li>
+<li>1、2、3すべて誤り</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>正解は4です。</strong></p>
+<p>これは単位を換算するにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
+<section id="エピソード用語集rスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
+<ul>
+<li><p><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></p></li>
+<li><p><a href="logistic-regression-2.html">Logit: How a Transformation Shapes an Effect</a></p></li>
+<li><p><a href="logistic-regression-3.html">Where My Logistic Regression Went Wrong</a></p></li>
+<li><p><a href="logistic-regression-4.html">Why Logistic Regression Fails in Small Samples</a></p></li>
+<li><p><a href="logistic-regression-5.html">Simpson’s paradox</a></p></li>
+<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
+<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -174,7 +174,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ::: voice-father
 お父さん「じゃあ変数を5つに増やした例を使って、もう少し正式に解説してみようか。ちょっとコーヒーがほしいな」
 :::
-::::::::::::::::::::::::::::::::: dialogue
+::::::::::::::::::::::::::::::::: 
 
 ::: {.callout-note appearance="simple"  title="DAGの例"}
 
@@ -285,7 +285,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ::: voice-daughter
 私「やはり要石で後ろ扉を閉じるみたいな話だったか」
 :::
-
+:::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 下のDAGにおいて、破線で示したパスA-C-Bに注目してください。このパスにおいて、Cは次のうちどれでしょうか。
