@@ -156,15 +156,15 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ------------------------------------------------------------------------
 
-### 第3の因子なんて無数にあるよね？
-
 ::: {.callout-note appearance="simple"  collapse="true" title="前回までのあらすじ"}
-はじめて研究に取り組む娘と統計家の父。父に研究仮説は"PICO"を"PECO"で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。統計的に調整や層別を行ったときと、行わないときで、オッズ比の値が異なることがあると父に教わるが、娘はいまひとつ腑に落ちないのだった。
+はじめて研究に取り組む娘と統計家の父。父に研究仮説は"PICO"を"PECO"で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。父に教わるが、娘はいまひとつ腑に落ちないのだった。
 :::
+
+### 第3の因子なんて無数にあるよね？
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で"調整する"っていう操作がどういうことかはわかったよ。**回帰モデル**と**因果モデル**の違いも納得した。でもさ、問題は"喫煙"を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルでその説明はなかった」
+私「この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で"調整する"っていう操作がどういうことかはわかったよ。**確率モデル**と**因果モデル**の違いも納得した。でもさ、問題は"喫煙"を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルでその説明はなかった」
 :::
 
 ::: voice-father
@@ -243,7 +243,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 私「ああ、あのときはそういう思考回路だったのね。お父さんがなにを考えていたか理解できた気がする」
 :::
 
-## ランダム化臨床試験の第3の因子はどうする？
+## ランダム化の下で第3の因子はどうする？
 
 ::: voice-father
 お父さん「この考え方はランダム化臨床試験でも応用できる。JCOG9912っていう臨床試験の論文を読んだことがあったよね（Sasako, et al. 2006）。あれは、手術方法（TH群またはLTA群）を比較して全生存期間に差があるかを調べた研究だった」
@@ -308,11 +308,15 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 どちらも中間媒介因子ですが、上の図では、E→Dという直接の因果関係がありますよね。下の図でも、EはCに作用し、CはDに作用する関係があります。つまり因果関係はないというのは言い過ぎで、間接的な因果関係があるという解釈が正解になります。
 :::
 
+### 文献
+
+- Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
+
 ### エピソード、用語集
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths and Confounders](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

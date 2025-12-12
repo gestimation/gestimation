@@ -1,4 +1,5 @@
 ---
+title: "Common Causes and Confounders"
 format:
   html:
     toc: true
@@ -6,6 +7,10 @@ format:
 
 ```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -129,8 +134,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -142,25 +147,36 @@ a:hover {
 ::: hero-header
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Causal inference II
-::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study
+
+# Causal inference II − Common Causes and Confounders
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study
 :::
 
 ------------------------------------------------------------------------
 
 ### 後ろ扉を閉ざすなんて映画みたい
 
-**私「お父さん、この前の続きなんだけど。DAGっていう矢印を使った図があったじゃない。あれ、3変数しかないのは単純すぎない？現実はもっと複雑な気がするんだけど」**
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「お父さん、この前の続きなんだけど。DAGっていう矢印を使った図があったじゃない。あれ、3変数しかないのは単純すぎない？現実はもっと複雑な気がするんだけど」
+:::
 
+::: voice-father
 お父さん「もちろんDAGの変数を増やすこともできるよ。そうすると、もっと統計学っぽい理屈になっちゃうけど」
+:::
 
-**私「そうなんだ。でもごまかさず説明くらいしてよ」**
+::: voice-daughter
+私「そうなんだ。でもごまかさず説明くらいしてよ」
+:::
 
-お父さん「じゃあ変数を5つに増やした例を使って、正式な解説をしてみようか」
+::: voice-father
+お父さん「じゃあ変数を5つに増やした例を使って、もう少し正式に解説してみようか」
+:::
+::::::::::::::::::::::::::::::::: dialogue
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **DAGの例**
+::: {.callout-note appearance="simple"  title="DAGの例"}
 
 因果関係の例として、ピロリ菌と胃がんを取り上げます。このふたつの変数には、抗生物質を飲んでピロリ菌を除菌することで、胃がん発生を予防できることが知られていますよね。言い換えると、ピロリ菌除菌は「原因」、胃がん発生は「結果」に対応します。
 
@@ -181,16 +197,23 @@ a:hover {
 -   E: ピロリ菌除菌
 :::
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
 お父さん「前回の話を思い出しながら、このDAGを考えてみてよ。交絡因子として調整しないといけない変数はどれだろう」
+::: 
 
-**私「ん？共通原因、中間媒介因子、合流点っていう3パターンがあったんだっけ。共通原因を見つければいいから、Cかな。いや、真に近いモデルを当てはめる、なんてことも言ってたよね。だからBとC。どうかな、あってる？」**
+::: voice-daughter
+私「ん？**共通原因**、**中間媒介因子**、**合流点**っていう3パターンがあったんだっけ。共通原因を見つければいいから、Cかな。いや、真に近いモデルを当てはめる、なんてことも言ってたよね。だからBとC。どうかな、あってる？」
+:::
 
+::: voice-father
 お父さん「結果論だけどあってる。実はね、このDAGはトリッキーで、Cを調整するだけじゃ、バイアスが残る例なんだ。そのあたりも説明するから、話の続きを聞いててね」
+:::
+::::::::::::::::::::::::::::::::: 
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **DAGの用語**
+::: {.callout-note appearance="simple"  title="DAGの用語"}
 
-次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、バックドアパス、祖先と子孫です。
+次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、**バックドアパス**、祖先と子孫です。
 
 グラフ上の変数を表す点を、ノードといいます。上のグラフには5つのノードがありますよね。2つのノードは、線や矢印で結ばれます。A→Bという矢印で結ぶと、それはAからBへの方向性があることを意味します。因果推論の文脈では、原因から結果への直接的な結びつきを表しています。このグラフでは、AとCは隣接しているが、AはBやDとは結ばれていません。これは、AのCへの直接的影響があるという意味です。直接的影響があるとは、もっというと、グラフ上の他の変数に媒介されない影響がある、ということです。
 
@@ -205,39 +228,63 @@ a:hover {
 そして、あるノードを出て別のノードに入っていく有向パスがあるとき、前者を祖先、後者を子孫といいます。文献によっては、祖先を原因、子孫を結果と呼んでいることもあります。このグラフでいえば、A、B、Cは、すべてEとDの祖先です。逆に、EとDは、A、B、Cの子孫です。そしてEはDの祖先であり、DはEの子孫です。
 :::
 
-**私「ややこしいね。覚えきれない」**
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「ややこしいね。覚えきれない」
+:::
 
+::: voice-father
 お父さん「どこかポイントか説明しておこうか。まず、DAGとは、directedつまり有向パスだけで構成された、acyclicな循環していないグラフっていう意味。つまりDAGって言ったときは、ノード間の結びつきがすべて矢印で表されており、しかも矢印がループ状にぐるぐるまわったりしないってことを前提にしている。有向パスっていうのは、A→B→C→Dのような矢印で連鎖しているノードの集合のことで、この場合はAからDの順に因果関係が伝わることを意味している。ここでひとつ確認してほしいことがあるんだ」
+:::
 
-**私「どんなこと？」**
+::: voice-daughter
+私「どんなこと？」
+:::
 
-お父さん「それは、DAGにおいて、ブロックされていないパスは、有向パスと共有原因を経由するバックドアパスの2種類しかありえないってこと」
+::: voice-father
+お父さん「それは、DAGにおいて、ブロックされていないパスは、**有向パス**と共有原因を経由する**バックドアパス**の2種類しかありえないってこと」
+:::
 
-**私「バックドアパスってなに？」**
+::: voice-daughter
+私「バックドアパスってなに？」
+:::
 
+::: voice-father
 お父さん「ノードに入る矢印を通じたパスのこと。矢印は出るか入るかしかないでしょ」
+:::
 
-**私「ああ、バックドアっていうから後ろ扉かと思った。後ろ扉を閉じて地震を防ぐっていう映画があってね」**
+::: voice-daughter
+私「ああ、バックドアっていうから後ろ扉かと思った。後ろ扉を閉じて地震を防ぐっていう映画があってね」
+:::
 
+::: voice-father
 お父さん「ふーん」
+:::
 
-**私「えっと、とりあえず胃がんの例で確認してみるね。このDAGには、EとDを結ぶパスは、両者を直接結び付ける有向パスが1つ、バックドアパスが4つある（E←A→C←B→D、E←A→C→D、E←C←B→D、E←C→D）。でも、確かにバックドアパスは、必ず共通原因Cを経由してるね」**
+::: voice-daughter
+私「えっと、とりあえず胃がんの例で確認してみるね。このDAGには、EとDを結ぶパスは、両者を直接結び付ける有向パスが1つ、バックドアパスが4つある（E←A→C←B→D、E←A→C→D、E←C←B→D、E←C→D）。でも、確かにバックドアパスは、必ず共通原因Cを経由してるね」
+:::
 
+::: voice-father
 お父さん「そうでしょ。ここがDAGの特徴のひとつ。前回の説明を思い出してみて。共通原因は交絡因子として調整すべきっていったよね。DAGが複雑になると、バックドアパスが増えるけど、基本は同じ。すべてのバックドアパスをブロックできるような共通原因を探して、調整すればいいんだ」
+:::
+:::::::::::::::::::::::::::::::::
 
-::: callout-note
-<img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"/> **バックドア基準**
-
+::: {.callout-note appearance="simple"  title="バックドア基準"}
 あるDAGが与えられたとき、どのノードを交絡因子として調整すればじゅうぶんなのかを判断するための基準のひとつがバックドア基準です。原因と考えているノードをE、結果と考えているノードをDとします。DAG上のノードの集合Sが以下の条件を満たすなら、Sを交絡因子として調整すればじゅうぶんです
 
 -   EからDへの合流点を含まないバックドアパスは、Sによりブロックできる
 -   EからDへのバックドアパス内に合流点あり、それがSに含まれるか、Sの子孫だとする。このときSは、そのバックドアパス内の非合流点を含まなければならない
 :::
 
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
 お父さん「厳密にいうと、バックドア基準っていう上のようなルールを使うんだけどね。合流点・ブロックについては、後で説明するよ。要は、共通原因を調整して、バックドアパスをブロックすれば、交絡を防ぐことができる。疫学ではDAGは交絡因子を探すために用いられるんだ」
+:::
 
-**私「やはり要石で後ろ扉を閉じるみたいな話だったか」**
-
+::: voice-daughter
+私「やはり要石で後ろ扉を閉じるみたいな話だったか」
+:::
 
 
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
@@ -261,13 +308,15 @@ a:hover {
 その一方で、パスE←A→C→Dについて考えると、AもCも合流点ではありません。つまりこのパスは、なにも調整しないとブロックされていないのです。つまり、このDAG全体でみると、EとDには相関が生じています。さらに、E→Dという因果関係はないことから、この相関は疑似相関です。したがって、なにも調整しなくていい、という判断も間違いです。
 :::
 
+### 文献
 
+- Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48
 
 ### エピソード、用語集
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths and Confounders](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

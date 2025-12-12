@@ -156,8 +156,6 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 ------------------------------------------------------------------------
 
-### ロジスティック回帰の限界
-
 ::: {.callout-note appearance="simple" collapse="true" title="Simpsonのパラドックス"}
 
 前回のテーマであるSimpsonのパラドックスは、調整前後で関連の程度が変わる現象のことです。詳しい中身は覚えていなくてもかまいません。ここでは「調整前と調整後で話が変わりうる」という点だけ思い出してください。
@@ -189,6 +187,8 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 | 　リスク     | 1.0%         | 1.0%           | 1倍      |
 
 :::
+
+### ロジスティック回帰の限界
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father

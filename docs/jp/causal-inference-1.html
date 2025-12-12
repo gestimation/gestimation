@@ -155,6 +155,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" id="toc-causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="nav-link active" data-scroll-target="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure">Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a>
   <ul class="collapse">
   <li><a href="#第3の因子なんて無数にあるよね" id="toc-第3の因子なんて無数にあるよね" class="nav-link" data-scroll-target="#第3の因子なんて無数にあるよね">第3の因子なんて無数にあるよね？</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
   </ul></li>
   </ul>
@@ -327,8 +328,6 @@ a:hover {
 <p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study</p>
 </div>
 <hr>
-<section id="第3の因子なんて無数にあるよね" class="level3">
-<h3 class="anchored">第3の因子なんて無数にあるよね？</h3>
 <div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -341,13 +340,15 @@ a:hover {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。統計的に調整や層別を行ったときと、行わないときで、オッズ比の値が異なることがあると父に教わるが、娘はいまひとつ腑に落ちないのだった。</p>
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。父に教わるが、娘はいまひとつ腑に落ちないのだった。</p>
 </div>
 </div>
 </div>
+<section id="第3の因子なんて無数にあるよね" class="level3">
+<h3 class="anchored">第3の因子なんて無数にあるよね？</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で”調整する”っていう操作がどういうことかはわかったよ。<strong>回帰モデル</strong>と<strong>因果モデル</strong>の違いも納得した。でもさ、問題は”喫煙”を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルでその説明はなかった」</p>
+<p>私「この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で”調整する”っていう操作がどういうことかはわかったよ。<strong>確率モデル</strong>と<strong>因果モデル</strong>の違いも納得した。でもさ、問題は”喫煙”を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルでその説明はなかった」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「その通り。前にいったようにデータだけからは、調整前と調整後のどちらが”正しい”かは決められない。でも膵がんの例だと、喫煙は癌のリスク因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたい、という発想だね」</p>
@@ -409,8 +410,8 @@ a:hover {
 <p>私「ああ、あのときはそういう思考回路だったのね。お父さんがなにを考えていたか理解できた気がする」</p>
 </div>
 </section>
-<section id="ランダム化臨床試験の第3の因子はどうする" class="level2">
-<h2 class="anchored" data-anchor-id="ランダム化臨床試験の第3の因子はどうする">ランダム化臨床試験の第3の因子はどうする？</h2>
+<section id="ランダム化の下で第3の因子はどうする" class="level2">
+<h2 class="anchored" data-anchor-id="ランダム化の下で第3の因子はどうする">ランダム化の下で第3の因子はどうする？</h2>
 <div class="voice-father">
 <p>お父さん「この考え方はランダム化臨床試験でも応用できる。JCOG9912っていう臨床試験の論文を読んだことがあったよね（Sasako, et al.&nbsp;2006）。あれは、手術方法（TH群またはLTA群）を比較して全生存期間に差があるかを調べた研究だった」</p>
 </div>
@@ -482,13 +483,19 @@ a:hover {
 </div>
 </div>
 </section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</li>
+</ul>
+</section>
 <section id="エピソード用語集" class="level3">
 <h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
 <ul>
 <li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
 <li><p><a href="causal-inference-2.html">Common Causes and Confounders</a></p></li>
 <li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
-<li><p><a href="causal-inference-4.html">Backdoor Paths and Confounders</a></p></li>
+<li><p><a href="causal-inference-4.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
 <li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
 </ul>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>causal-inference-4 – Coffee and Research</title>
+<title>Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,21 +152,42 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#story-and-quiz-causal-inference-iv" id="toc-story-and-quiz-causal-inference-iv" class="nav-link active" data-scroll-target="#story-and-quiz-causal-inference-iv">Story and Quiz − Causal inference IV</a>
+  <li><a href="#causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" id="toc-causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="nav-link active" data-scroll-target="#causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias">Causal inference IV − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a>
   <ul class="collapse">
   <li><a href="#ブロックの意味" id="toc-ブロックの意味" class="nav-link" data-scroll-target="#ブロックの意味">ブロックの意味</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -290,8 +311,8 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
@@ -301,65 +322,103 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="story-and-quiz-causal-inference-iv" class="level1">
-<h1>Story and Quiz − Causal inference IV</h1>
-<div class="serif-block">
-<p>　　　　　　　　　　　　　　　　　　　　Keywords: DAG, intermediate factor, confounding/information-bias/selection-bias, covariate selection, observational study</p>
+<section id="causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="level1">
+<h1>Causal inference IV − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
+<div class="serif-block text-right">
+<p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model</p>
 </div>
 <hr>
 <section id="ブロックの意味" class="level3">
 <h3 class="anchored" data-anchor-id="ブロックの意味">ブロックの意味</h3>
-<p><strong>私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「出てきたね」</p>
-<p><strong>私「あれって、因果の流れが止まるって意味だよね」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「あれって、因果の流れが止まるって意味だよね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「うーん、その言い回しは厳密じゃない気がするなあ。ブロックは、DAG上のパスの性質について述べたもので、因果関係とは直接関係ない。パスが合流点を含んでいたり、非合流点を交絡因子として調整したりすることを指すんだけど」</p>
-<p><strong>私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「うん。専門的には、パスをブロックすると、ノードとノードを”有向分離”できるっていうのがポイントなんだけどなあ。有向分離の定義にも触れておいた方が誤解がなさそうだね」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="有向分離">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+有向分離
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>有向分離（d-separation）</strong></p>
-<p>DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表す。以下の2条件を満たすとき、CはAとBを有向分離する（Greenland 1999）。</p>
+<p>DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表します。以下の2条件を満たすとき、CはAとBを分離できる構造になっています（Greenland 1999）。これを<strong>有向分離（d-separation）</strong>といいます。</p>
 <ul>
 <li>AとBを結ぶ合流点を含まないすべてのパスは、Cの要素を含んでいる</li>
 <li>Cに、AとBを結ぶパス上の合流点が含まれているとする。このとき、合流点を調整することでAとBを結ぶパスが生じたとしても、そのパスはCの別の要素を調整することでブロックできる</li>
 </ul>
 </div>
 </div>
-<p><strong>私「話がややこしくなってきた」</strong></p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「話がややこしくなってきた」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そうでしょ。ノードの数が増えると、ノードの集合を考えないといけなくなって、定義が複雑になっちゃう。だから単純なケースで意味を確かめよう。この3つのDAGで、CはEとDを有向分離すると思う？」</p>
+</div>
 <p><img src="causal-inference-4-1.png" class="img-fluid"></p>
-<p><strong>私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」</strong></p>
+<div class="voice-daughter">
+<p>私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」</p>
+</div>
 <p><img src="causal-inference-4-2.png" class="img-fluid"></p>
-<p><strong>私「合流点はないよね。だから有向分離するのはAとC？」</strong></p>
+<div class="voice-daughter">
+<p>私「合流点はないよね。だから有向分離するのはAとC？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「それだけじゃないよね。Aだけ、またはCだけでも、有向分離の条件を満たすでしょ」</p>
-<p><strong>私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」</strong></p>
+</div>
+<div class="voice-daughter">
+<p>私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そういうこと。じゃあ次のDAGについて考えようか」</p>
+</div>
 <p><img src="causal-inference-4-3.png" class="img-fluid"></p>
-<p><strong>私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」</strong></p>
+<div class="voice-daughter">
+<p>私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」</p>
+</div>
+<div class="voice-father">
 <p>お父さん「そこまでは正しい。だけど有向分離できるのはそれだけじゃない。AとC、またはBとCはどうだろう。Cは合流点だけど、AまたはBによってパスE←A→C←B→Dは遮断できるでしょ」</p>
-<p><strong>私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」</strong></p>
-<p>お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ（バックドア基準とフロントドア基準）（Pearl 1995）」</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div>
+<div class="voice-daughter">
+<p>私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ。これがバックドア基準のほんとうの意味だよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="有向分離と条件付独立性">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+有向分離と条件付独立性
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://www.notion.so/icons/alert_blue.svg" alt="https://www.notion.so/icons/alert_blue.svg" width="40px"> <strong>有向分離と条件付独立性</strong></p>
-<p>DAGを用いて、CがAとBを有向分離することが確認できたとする。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかる（Pearl 1995）。</p>
+<p>DAGを用いて、CがAとBを有向分離することが確認できたとします。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかります（Pearl 1995）。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -393,10 +452,9 @@ Note
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p><strong>正解と解説</strong></p>
-<p>正解は2です。</p>
-<p>パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。</p></li>
+<li><strong>正解は2です。</strong></li>
 </ul>
+<p>パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。</p>
 </div>
 </div>
 </div>
@@ -440,13 +498,20 @@ Note
 </div>
 </div>
 </section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><p>Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48</p></li>
+<li><p>Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88</p></li>
+</ul>
+</section>
 <section id="エピソード用語集" class="level3">
 <h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
 <ul>
 <li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
 <li><p><a href="causal-inference-2.html">Common Causes and Confounders</a></p></li>
 <li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
-<li><p><a href="causal-inference-4.html">Backdoor Paths and Confounders</a></p></li>
+<li><p><a href="causal-inference-4.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
 <li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
 </ul>
 
