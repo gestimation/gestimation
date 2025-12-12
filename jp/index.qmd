@@ -232,9 +232,10 @@ a:hover {
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、確率に関する必要最小限の数式を交えて扱います。
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
-- [Common Causes and Confounders]
+- [A Subtle Distinction between Common Causes and Confounders]
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
-- [Backdoor Paths and Confounders]
+- [A Circle, an Equation, and a Cylinder]
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
 ### 8. Publishing a Paper — 研究の営み
 

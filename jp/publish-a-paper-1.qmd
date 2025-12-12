@@ -366,4 +366,5 @@ Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hira
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [A Morning Just Before Submission](publish-a-paper-3.html)
+- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [A Morning Just Before Submission](publish-a-paper-4.html)

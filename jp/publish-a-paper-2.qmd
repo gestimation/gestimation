@@ -375,14 +375,14 @@ Keywords: language/writing
 :::
 
 ::: voice-father
-お父さん「そうだね。書き忘れ対策としては、医学雑誌編集者国際委員会（ICMJE）という団体が、なにを書かなきゃいけないかリストを用意してくれている（EQUATOR Network 2007）。調査や観察研究の論文を書くときは、観察研究用のSTROBEチェックリストを参考にするといい」
+お父さん「そうだね。書き忘れ対策としては、医学雑誌編集者国際委員会（ICMJE）という団体が、なにを書かなきゃいけないかリストを用意してくれている（EQUATOR Network 2007）。調査や観察研究の論文を書くときは、観察研究の報告のため用意されたSTROBEチェックリストを参考にするといい」
 :::
 
 ::: voice-daughter
 私「へー。論文に書くことリストだね。項目をひとつひとつパラグラフにしていけばいいって考えると、気が楽になった。論文書いてみるね」
 :::
 
-::: {.callout-note appearance="simple"  title="観察研究用のSTROBEチェックリスト"}
+::: {.callout-note appearance="simple" collapse="true" title="STROBEチェックリスト"}
 | セクション | 項目 | 内容 |
 |-----------|------|------|
 | Title and abstract | タイトルと抄録 | （a）タイトルまたは抄録のなかで、試験デザインを一般に用いられる用語で明示する。<br>（b）抄録では、研究で行われたことと明らかにされたことについて、十分な情報を含み、かつバランスのよい要約を記載する。 |
@@ -447,8 +447,11 @@ Ministry of Education, Ministry of Health, Labour and Welfare, Ministry of Econo
 \[著者名（苗字+名前のイニシャル）\]. \[記事名\]. \[メディアの種類\]. \[発行年\] \[アクセスした日\] Available from: \[URL\]
 :::
 
+- [STROBE Checklist version 1.1 [Internet]. Oxford: EQUATOR Network; 2007](https://resources.equator-network.org/reporting-guidelines/strobe/) 
+
 ### エピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [A Morning Just Before Submission](publish-a-paper-3.html)
+- [Examples of Editing a Paper](publish-a-paper-3.html)
+- [A Morning Just Before Submission](publish-a-paper-4.html)

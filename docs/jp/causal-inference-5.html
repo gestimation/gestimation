@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure – Coffee and Research</title>
+<title>Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,11 +152,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" id="toc-causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="nav-link active" data-scroll-target="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure">Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a>
+  <li><a href="#causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" id="toc-causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="nav-link active" data-scroll-target="#causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias">Causal inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a>
   <ul class="collapse">
-  <li><a href="#第3の因子なんて無数にあるよね" id="toc-第3の因子なんて無数にあるよね" class="nav-link" data-scroll-target="#第3の因子なんて無数にあるよね">第3の因子なんて無数にあるよね？</a></li>
+  <li><a href="#ブロックの意味" id="toc-ブロックの意味" class="nav-link" data-scroll-target="#ブロックの意味">ブロックの意味</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
+  <li><a href="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -166,7 +166,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<h1 class="title">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
 </div>
 
 
@@ -322,128 +322,104 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="level1">
-<h1>Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<section id="causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="level1">
+<h1>Causal inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study</p>
+<p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model</p>
 </div>
 <hr>
-<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<section id="ブロックの意味" class="level3">
+<h3 class="anchored" data-anchor-id="ブロックの意味">ブロックの意味</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「出てきたね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「あれって、因果の流れが止まるって意味だよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うーん、その言い回しは厳密じゃない気がするなあ。ブロックは、DAG上のパスの性質について述べたもので、因果関係とは直接関係ない。パスが合流点を含んでいたり、非合流点を交絡因子として調整したりすることを指すんだけど」</p>
+</div>
+<div class="voice-daughter">
+<p>私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。専門的には、パスをブロックすると、ノードとノードを”有向分離”できるっていうのがポイントなんだけどなあ。有向分離の定義にも触れておいた方が誤解がなさそうだね」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="有向分離">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-前回までのあらすじ
+有向分離
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。父に教わるが、娘はいまひとつ腑に落ちないのだった。</p>
-</div>
-</div>
-</div>
-<section id="第3の因子なんて無数にあるよね" class="level3">
-<h3 class="anchored">第3の因子なんて無数にあるよね？</h3>
-<div class="dialogue">
-<div class="voice-father">
-<p>お父さん「おはよう。だいぶ寒さが和らいできたね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「あ、やっと起きたの。聞きたいことがあったんだ。この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で”調整する”っていう操作がどういうことかはわかったよ。<strong>確率モデル</strong>と<strong>因果モデル</strong>の違いも納得した。でもさ、問題は”喫煙”を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルの話をしてくれたときもそこには触れなかった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだね。前にいったようにデータだけからは、調整前と調整後のどちらが”正しい”かは決められない。でも膵がんの例だと、喫煙は発がん因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたいってのは自然だよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほど。その説明なら、まずまず納得できるかも」</p>
-</div>
-<section id="グラフで考える" class="level3">
-<h3 class="anchored" data-anchor-id="グラフで考える">グラフで考える</h3>
-<div class="voice-father">
-<p>お父さん「本当はね、Rubin因果モデルではなくって図で描いて整理するんだ。ちょっとペンをとってくれる？今、こんなふうに変数が3つあるでしょ。その場合の変数間の因果関係を矢印で表すとき、3パターンあると思わない？この図のように。Eは曝露変数（exposure）、Dはアウトカム（disease）を表していて、E→Dは両者が原因と結果の関係にあるって意味だよ。Cは第3の因子のこと」</p>
-</div>
-<p><img src="causal-inference-1-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「この3つは、Cの周りの矢印の向きが違うわけね。確かに、E←C→DとE→C→DとE→C←Dの3パターンで一通りカバーできてるのかな。E←C←Dみたいに、結果から原因に矢印がさかのぼるのは変だし」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「その通り。その場合、Eが原因、Dが結果だとすると、矢印がぐるっと循環する図は、ふつうは除外する。こういう図は、<strong>非循環有向グラフ（DAG）</strong>と呼ばれていて、図のCには、それぞれ別の名前と役割を持っているんだ」</p>
-</div>
+<p>DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表します。以下の2条件を満たすとき、CはAとBを分離できる構造になっています（Greenland 1999）。これを<strong>有向分離（d-separation）</strong>といいます。</p>
 <ul>
-<li>共通原因 （common cause）: E←C→DにおけるCのように、曝露変数とアウトカムの両方に向けた矢印を持つ因子</li>
-<li>中間媒介因子 （intermediator）: E→C→DにおけるCのように、曝露変数からアウトカムに入る矢印の途中にある因子</li>
-<li>合流点 （collider）: E→C←DにおけるCのように、曝露変数とアウトカムからの矢印が合流する因子</li>
+<li>AとBを結ぶ合流点を含まないすべてのパスは、Cの要素を含んでいる</li>
+<li>Cに、AとBを結ぶパス上の合流点が含まれているとする。このとき、合流点を調整することでAとBを結ぶパスが生じたとしても、そのパスはCの別の要素を調整することでブロックできる</li>
 </ul>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「話がややこしくなってきた」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「なにか”がんのリスク因子”をひとつ思い浮かべてみて。それは3パターンのうちどれに当てはまりそう？」</p>
+<p>お父さん「そうでしょ。ノードの数が増えると、ノードの集合を考えないといけなくなって、定義が複雑になっちゃう。だから単純なケースで意味を確かめよう。この3つのDAGで、CはEとDを有向分離すると思う？」</p>
+</div>
+<p><img src="causal-inference-4-1.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」</p>
+</div>
+<p><img src="causal-inference-4-2.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「合流点はないよね。だから有向分離するのはAとC？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それだけじゃないよね。Aだけ、またはCだけでも、有向分離の条件を満たすでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、ピロリ菌とか、お酒とか？どっちも発がんリスクを上げるんだから、共通原因か、中間媒介因子のどっちかかな。リスク因子ってことは、D（がん）の向きの矢印を持っているよね」</p>
+<p>私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。さらに中間媒介因子について考えてみてよ。中間媒介因子って、<strong>曝露がアウトカムに影響する効果の一部</strong>を担っているよね。たとえば喫煙によってニコチンに曝露されるけど、ニコチンは”たばこを吸った結果”生じる因子であると同時に、がんの直接のリスク因子でもある。だから、“喫煙の総合的な効果”を推定したいときに、ロジスティック回帰でニコチンを調整するのはおかしいってことになる。ニコチンは効果の一部そのものだから。この理屈でいくと、3パターンのうち、<strong>調整すべきなのは共通原因だけ</strong>という理屈になる」</p>
+<p>お父さん「そういうこと。じゃあ次のDAGについて考えようか」</p>
+</div>
+<p><img src="causal-inference-4-3.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そこまでは正しい。だけど有向分離できるのはそれだけじゃない。AとC、またはBとCはどうだろう。Cは合流点だけど、AまたはBによってパスE←A→C←B→Dは遮断できるでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「へー。まあパターン分けできそうなのはわかるけど、第3の因子なんて無数にあるよね。思考停止で、全部調整したらいいじゃんって気もするけど」</p>
+<p>私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「実際にデータを解析するときにはそうはいかない。データに限りがあるし、推定も不安定になるからね。じゃあ次に、ストーマ造設と復職率の調査を考えてみようよ。Eはストーマ造設、Dは復職だよね。たとえば、結腸がんと直腸がんで復職率は違うと思う？」</p>
+<p>お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ。これがバックドア基準のほんとうの意味だよ」</p>
 </div>
-<div class="voice-daughter">
-<p>私「わかんないな。あんまり違わないのかもしれない」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「仮にがん種の違いは、復職率に直接効いてこないとするでしょ。そして、結腸がんだとあまりストーマを増設しないとしたらどうだろう。C→Eの関係はあるけど、C→Dの関係はないってことになる。このDAGによるとがん種は共通原因じゃないから、調整しなくてもいいってことになる」</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="有向分離と条件付独立性">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="voice-daughter">
-<p>私「なるほど、その仮定が正しいならそうね」</p>
+<div class="callout-title-container flex-fill">
+有向分離と条件付独立性
 </div>
-<div class="voice-father">
-<p>お父さん「以前みせてもらった集計では、ストーマ保有者は、非保有者に比べて、平均年齢が低くて、女性が多かった」</p>
 </div>
-<div class="voice-daughter">
-<p>私「そうだよ」</p>
+<div class="callout-body-container callout-body">
+<p>DAGを用いて、CがAとBを有向分離することが確認できたとします。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかります（Pearl 1995）。</p>
 </div>
-<div class="voice-father">
-<p>お父さん「きっと、60歳を超えると定年の方が多くなるだろうし、男性の方が復職を希望しているんじゃない？こう考えると、年齢・性別は、ストーマ造設と復職率の両方に関連していて、共通原因と考えてよさそうだよね。だから年齢・性別はロジスティック回帰で調整すべきなんだけど、あのときはデータが足りず、モデルが不安だった。つまり、実際の解析では、調整する変数を絞っていかないとうまくいかない」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ああ、あのときはそういう思考回路だったのね。お父さんがなにを考えていたか理解できた気がする」</p>
-</div>
-</section>
-<section id="ランダム化の下で第3の因子はどうする" class="level2">
-<h2 class="anchored" data-anchor-id="ランダム化の下で第3の因子はどうする">ランダム化の下で第3の因子はどうする？</h2>
-<div class="voice-father">
-<p>お父さん「この考え方はランダム化臨床試験でも応用できる。JCOG9912っていう臨床試験の論文を読んだことがあったよね（Sasako, et al.&nbsp;2006）。あれは、手術方法（TH群またはLTA群）を比較して全生存期間に差があるかを調べた研究だった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。だけど、ランダム化しているから第3の因子ってないんじゃない？だってTH群とLTA群をランダムに割付けてるもの」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「正解。でも、この試験ではハザード比を求めるとき、腫瘍径やBorrman分類などがんの進行度を表す変数で調整している。使ったのはロジスティック回帰じゃなくてCox回帰だけどね。」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうなのか。じゃあ調整した方がいいのかな、さっきの”共通原因だけ調整”の話と矛盾するけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ここでもDAGを使って考えられる。Eを手術方法、Dを全生存期間、Cを腫瘍径とすると、図はこうなる。試験結果では有意な関連はなかったけど、わかりやすいようにE→Dの矢印は残したよ」</p>
-</div>
-<p><img src="causal-inference-1-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「やっぱり共通原因ではないね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。JCOG9912では、腫瘍径は交絡因子ではないから、調整する必要はなかった。でも、Cox回帰によって全生存期間をモデル化するとしたらどうかな。腫瘍径のような癌の進行度をモデルに入れたくならない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それは入れたくなる。腫瘍径だけじゃなくてリンパ節転移とか、残存腫瘍の有無とかもモデル化したくなる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「この図の場合、Cは交絡因子じゃないから、調整しなくてもバイアスは生じない。でも、真に近いモデルを当てはめて、ハザード比の推定精度を高めるという観点からは、Cを調整してもいいんだ」</p>
-</div>
-</section>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
@@ -455,19 +431,16 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>この2つのDAGの解釈として正しいのはどれでしょうか。</p>
+<p>このDAGの解釈として正しいのはどちらでしょうか。</p>
 <ol type="1">
-<li>どちらの図にもEとDに因果関係がある</li>
-<li>上図はEとDに因果関係があるが、下図にはない</li>
-<li>下図はEとDに因果関係があるが、上図にはない</li>
-<li>どちらの図にもEとDに因果関係はない</li>
+<li>Cを与えた下で、EとDは条件付独立である</li>
+<li>Cを与えても、EとDの間には相関がある</li>
 </ol>
-<p><img src="causal-inference-1-3.png" class="img-fluid"></p>
-<p><img src="causal-inference-1-4.png" class="img-fluid"></p>
+<p><img src="causal-inference-4-4.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -476,12 +449,51 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は1です</strong></li>
+<li><strong>正解は2です。</strong></li>
 </ul>
-<p>どちらも中間媒介因子ですが、上の図では、E→Dという直接の因果関係がありますよね。下の図でも、EはCに作用し、CはDに作用する関係があります。つまり因果関係はないというのは言い過ぎで、間接的な因果関係があるという解釈が正解になります。</p>
+<p>パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>このDAGの解釈として正しいのはどちらでしょうか。</p>
+<ol type="1">
+<li>Cで条件付けないとき、EとDは独立である。また、Cを与えた下でも、EとDは条件付独立である</li>
+<li>Cで条件付けないとき、EとDには相関がある。一方で、Cを与えた下で、EとDは条件付独立である</li>
+<li>Cで条件付けないとき、EとDは独立である。一方で、Cを与えると、EとDの間には相関がある</li>
+<li>Cで条件付けないとき、EとDには相関がある。また、Cを与えても、EとDの間には相関がある</li>
+</ol>
+<p><img src="causal-inference-4-5.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>正解は4です。</strong></li>
+</ul>
+<p>この場合、最初のクイズとは違って、EとDを結ぶ直接のパスはありませんが、Cは合流点という問題があります。そのためCで調整すると、E←A→C←B→Dというパスが生じてしまい、やはりCでEとDを有向分離することはできません。</p>
 </div>
 </div>
 </div>
@@ -489,18 +501,16 @@ a:hover {
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</li>
+<li><p>Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48</p></li>
+<li><p>Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88</p></li>
 </ul>
 </section>
-<section id="エピソード用語集" class="level3">
-<h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
+<section id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
 <ul>
-<li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
-<li><p><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></p></li>
-<li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
-<li><p><a href="causal-inference-4.html">A Circle, an Equation, and a Cylinder</a></p></li>
-<li><p><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
-<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
+<li><a href="publish-a-paper-1.html">A Subtle Distinction Between Editors and Reviewers</a></li>
+<li><a href="publish-a-paper-2.html">Three Tips for Writing a Paper</a></li>
+<li><a href="publish-a-paper-3.html">A Morning Just Before Submission</a></li>
 </ul>
 
 

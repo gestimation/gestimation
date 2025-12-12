@@ -163,12 +163,16 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ### 第3の因子なんて無数にあるよね？
 
 ::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「おはよう。だいぶ寒さが和らいできたね」
+:::
+
 ::: voice-daughter
-私「この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で"調整する"っていう操作がどういうことかはわかったよ。**確率モデル**と**因果モデル**の違いも納得した。でもさ、問題は"喫煙"を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルでその説明はなかった」
+私「あ、やっと起きたの。聞きたいことがあったんだ。この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で"調整する"っていう操作がどういうことかはわかったよ。**確率モデル**と**因果モデル**の違いも納得した。でもさ、問題は"喫煙"を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルの話をしてくれたときもそこには触れなかった」
 :::
 
 ::: voice-father
-お父さん「その通り。前にいったようにデータだけからは、調整前と調整後のどちらが"正しい"かは決められない。でも膵がんの例だと、喫煙は癌のリスク因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたい、という発想だね」
+お父さん「そうだね。前にいったようにデータだけからは、調整前と調整後のどちらが"正しい"かは決められない。でも膵がんの例だと、喫煙は発がん因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたいってのは自然だよね」
 :::
 
 ::: voice-daughter
@@ -178,17 +182,17 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ### グラフで考える
 
 ::: voice-father
-お父さん「因果推論の分野では、Rubin因果モデルとは別の枠組みでこう整理する。今、変数が3つあるでしょ。その場合の変数間の因果関係を矢印で表すとき、3パターンあると思わない？この図のように。Eは曝露変数（exposure）、Dはアウトカム（disease）を表していて、E→Dは両者が原因と結果の関係にあるって意味だよ。Cは第3の因子のこと」
+お父さん「本当はね、Rubin因果モデルではなくって図で描いて整理するんだ。ちょっとペンをとってくれる？今、こんなふうに変数が3つあるでしょ。その場合の変数間の因果関係を矢印で表すとき、3パターンあると思わない？この図のように。Eは曝露変数（exposure）、Dはアウトカム（disease）を表していて、E→Dは両者が原因と結果の関係にあるって意味だよ。Cは第3の因子のこと」
 :::
 
 ![](causal-inference-1-1.png)
 
 ::: voice-daughter
-私「この3つは、Cの周りの矢印の向きが違うわけね。確かに、E←C→DとE→C→DとE→C←Dの3パターンで一通りカバーできてるのかな。E←C←Dみたいに、結果から原因に矢印がさかのぼるのは変だし」**
+私「この3つは、Cの周りの矢印の向きが違うわけね。確かに、E←C→DとE→C→DとE→C←Dの3パターンで一通りカバーできてるのかな。E←C←Dみたいに、結果から原因に矢印がさかのぼるのは変だし」
 :::
 
 ::: voice-father
-お父さん「そうだね。その場合、Eが原因、Dが結果だとすると、矢印がぐるっと循環する図は、ふつうは除外する。こういう図は、**非循環有向グラフ（DAG）**と呼ばれていて、図のCには、それぞれ別の名前と役割を持っているんだ」
+お父さん「その通り。その場合、Eが原因、Dが結果だとすると、矢印がぐるっと循環する図は、ふつうは除外する。こういう図は、**非循環有向グラフ（DAG）**と呼ばれていて、図のCには、それぞれ別の名前と役割を持っているんだ」
 :::
 
 -   共通原因 （common cause）: E←C→DにおけるCのように、曝露変数とアウトカムの両方に向けた矢印を持つ因子
@@ -200,7 +204,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 :::
 
 ::: voice-daughter
-私「えっと、ピロリ菌とか、喫煙とか？どっちも発がんリスクを上げるんだから、共通原因か、中間媒介因子のどっちかかな。リスク因子ってことは、D（がん）の向きの矢印を持っているよね」
+私「えっと、ピロリ菌とか、お酒とか？どっちも発がんリスクを上げるんだから、共通原因か、中間媒介因子のどっちかかな。リスク因子ってことは、D（がん）の向きの矢印を持っているよね」
 :::
 
 ::: voice-father
@@ -285,9 +289,6 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 :::
 :::::::::::::::::::::::::::::::::
 
-
-
-
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
 この2つのDAGの解釈として正しいのはどれでしょうか。
@@ -317,6 +318,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias – Coffee and Research</title>
+<title>A Circle, an Equation, and a Cylinder – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,6 +77,35 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="coffee.scss">
 </head>
@@ -152,11 +181,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" id="toc-causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="nav-link active" data-scroll-target="#causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias">Causal inference IV − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a>
+  <li><a href="#causal-inference-iv-a-circle-an-equation-and-a-cylinder" id="toc-causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="nav-link active" data-scroll-target="#causal-inference-iv-a-circle-an-equation-and-a-cylinder">Causal inference IV − A Circle, an Equation, and a Cylinder</a>
   <ul class="collapse">
-  <li><a href="#ブロックの意味" id="toc-ブロックの意味" class="nav-link" data-scroll-target="#ブロックの意味">ブロックの意味</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
+  <li><a href="#問いの答えはどの抽象表現で世界を見るかで変わる" id="toc-問いの答えはどの抽象表現で世界を見るかで変わる" class="nav-link" data-scroll-target="#問いの答えはどの抽象表現で世界を見るかで変わる">問いの答えは、どの抽象表現で世界を見るかで変わる</a></li>
+  <li><a href="#エピソード用語集" id="toc-エピソード用語集" class="nav-link" data-scroll-target="#エピソード用語集">エピソード、用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -166,7 +194,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
+<h1 class="title">A Circle, an Equation, and a Cylinder</h1>
 </div>
 
 
@@ -322,195 +350,81 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-iv-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="level1">
-<h1>Causal inference IV − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
+<section id="causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="level1">
+<h1>Causal inference IV − A Circle, an Equation, and a Cylinder</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model</p>
+<p>Keywords: causal model, probability model</p>
 </div>
 <hr>
-<section id="ブロックの意味" class="level3">
-<h3 class="anchored" data-anchor-id="ブロックの意味">ブロックの意味</h3>
+<section id="問いの答えはどの抽象表現で世界を見るかで変わる" class="level3">
+<h3 class="anchored" data-anchor-id="問いの答えはどの抽象表現で世界を見るかで変わる">問いの答えは、どの抽象表現で世界を見るかで変わる</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」</p>
+<p>私「お父さんさ、丁寧なのはいいんだけど。合流点の説明ってもっと簡単にできないの？この条件付確率分布の式がきっついわ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「出てきたね」</p>
+<p>お父さん「その気持ちはわかるよ、でも式を出さないと正確じゃないと思って」</p>
 </div>
 <div class="voice-daughter">
-<p>私「あれって、因果の流れが止まるって意味だよね」</p>
+<p>私「それ自体はありがたいんだけどね。たとえ話とかでも十分そうだけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うーん、その言い回しは厳密じゃない気がするなあ。ブロックは、DAG上のパスの性質について述べたもので、因果関係とは直接関係ない。パスが合流点を含んでいたり、非合流点を交絡因子として調整したりすることを指すんだけど」</p>
+<p>お父さん「でもさ、最初の質問覚えてる？“確率モデルでもRubin因果モデルでも、交絡の説明が不足しているんじゃないか”、そこが出発点だったよね。だから、合流点を何か別のものに置き換えるだけでは足りないんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」</p>
+<p>私「まあそうだけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。専門的には、パスをブロックすると、ノードとノードを”有向分離”できるっていうのがポイントなんだけどなあ。有向分離の定義にも触れておいた方が誤解がなさそうだね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="有向分離">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-有向分離
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表します。以下の2条件を満たすとき、CはAとBを分離できる構造になっています（Greenland 1999）。これを<strong>有向分離（d-separation）</strong>といいます。</p>
-<ul>
-<li>AとBを結ぶ合流点を含まないすべてのパスは、Cの要素を含んでいる</li>
-<li>Cに、AとBを結ぶパス上の合流点が含まれているとする。このとき、合流点を調整することでAとBを結ぶパスが生じたとしても、そのパスはCの別の要素を調整することでブロックできる</li>
-</ul>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「話がややこしくなってきた」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうでしょ。ノードの数が増えると、ノードの集合を考えないといけなくなって、定義が複雑になっちゃう。だから単純なケースで意味を確かめよう。この3つのDAGで、CはEとDを有向分離すると思う？」</p>
-</div>
-<p><img src="causal-inference-4-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」</p>
-</div>
-<p><img src="causal-inference-4-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「合流点はないよね。だから有向分離するのはAとC？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それだけじゃないよね。Aだけ、またはCだけでも、有向分離の条件を満たすでしょ」</p>
+<p>お父さん「実際にナプキンに式を書いたのは理由がある。同じものをDAGと数式の2通りで表現していることを知ってほしかったんだ。いくつかの抽象的な表現を使うことは意外に多い。このマグカップを上から見てごらん」</p>
 </div>
 <div class="voice-daughter">
-<p>私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」</p>
+<p>私「ん？こう？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。じゃあ次のDAGについて考えようか」</p>
-</div>
-<p><img src="causal-inference-4-3.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこまでは正しい。だけど有向分離できるのはそれだけじゃない。AとC、またはBとCはどうだろう。Cは合流点だけど、AまたはBによってパスE←A→C←B→Dは遮断できるでしょ」</p>
+<p>お父さん「そう。円が見えるでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」</p>
+<p>私「そうだね。それがどうしたの」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ。これがバックドア基準のほんとうの意味だよ」</p>
+<p>お父さん「数学の授業で、x軸とy軸をとると円はこの方程式で表せるって習ったでしょ。DAGと条件付確率の式の関係はこれに似ている」</p>
 </div>
+<p><span class="math display">\[x^2+y^2=r\]</span></p>
+<div class="voice-daughter">
+<p>私「円は見た目、円の式は数式って意味？」</p>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="有向分離と条件付独立性">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="voice-father">
+<p>お父さん「そう。共通の分析対象を、別の表現で扱ってるでしょ。円の話をするとき、数式が要らなかったら、円の絵を描いた方がはやいよね。DAGもそう。条件付確率の式から、つながり方だけを抜き出した射影なんだ。分布の形やデータの型は捨て、複雑な式をいったん横に置いて必要な構造だけを見るためにね。DAGは、つながり方だけを見るためのトポロジカルな道具なんだ」</p>
 </div>
-<div class="callout-title-container flex-fill">
-有向分離と条件付独立性
+<div class="voice-daughter">
+<p>私「そりゃあDAGの方が私にはわかりやすいよ」</p>
 </div>
+<div class="voice-father">
+<p>お父さん「じゃあ今度はマグカップを斜めから見てごらん」</p>
 </div>
-<div class="callout-body-container callout-body">
-<p>DAGを用いて、CがAとBを有向分離することが確認できたとします。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかります（Pearl 1995）。</p>
+<div class="voice-daughter">
+<p>私「ん。円が立体になるっていいたいんだよね」</p>
 </div>
+<div class="voice-father">
+<p>お父さん「その通り、マグカップが円柱として見える。この円柱はRubin因果モデルの潜在結果変数みたいなものじゃない？上から見たデータだけじゃ、全体はわからないよね。それが観測できない潜在結果変数なんだ」</p>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="voice-daughter">
+<p>私「ほえー詩人だね」</p>
 </div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>このDAGの解釈として正しいのはどちらでしょうか。</p>
-<ol type="1">
-<li>Cを与えた下で、EとDは条件付独立である</li>
-<li>Cを与えても、EとDの間には相関がある</li>
-</ol>
-<p><img src="causal-inference-4-4.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は2です。</strong></li>
-</ul>
-<p>パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>このDAGの解釈として正しいのはどちらでしょうか。</p>
-<ol type="1">
-<li>Cで条件付けないとき、EとDは独立である。また、Cを与えた下でも、EとDは条件付独立である</li>
-<li>Cで条件付けないとき、EとDには相関がある。一方で、Cを与えた下で、EとDは条件付独立である</li>
-<li>Cで条件付けないとき、EとDは独立である。一方で、Cを与えると、EとDの間には相関がある</li>
-<li>Cで条件付けないとき、EとDには相関がある。また、Cを与えても、EとDの間には相関がある</li>
-</ol>
-<p><img src="causal-inference-4-5.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は4です。</strong></li>
-</ul>
-<p>この場合、最初のクイズとは違って、EとDを結ぶ直接のパスはありませんが、Cは合流点という問題があります。そのためCで調整すると、E←A→C←B→Dというパスが生じてしまい、やはりCでEとDを有向分離することはできません。</p>
-</div>
+<div class="voice-father">
+<p>お父さん「1つのマグカップの中に、確率モデル、DAG、Rubin因果モデルという3つの構造が隠れている。抽象的な構造に基づいてデータから知識を引き出す。単なる情報処理や圧縮じゃなく、人間が知りたかった情報を得るためにね。統計解析は人間のためのもの。だからこそ、どの抽象表現で世界を見るかが大事になる」</p>
 </div>
 </div>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="エピソード用語集" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
 <ul>
-<li><p>Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48</p></li>
-<li><p>Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88</p></li>
-</ul>
-</section>
-<section id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
-<h3 class="anchored" data-anchor-id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
-<ul>
-<li><a href="publish-a-paper-1.html">A Subtle Distinction Between Editors and Reviewers</a></li>
-<li><a href="publish-a-paper-2.html">Three Tips for Writing a Paper</a></li>
-<li><a href="publish-a-paper-3.html">A Morning Just Before Submission</a></li>
+<li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
+<li><p><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></p></li>
+<li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
+<li><p><a href="causal-inference-4.html">A Circle, an Equation, and a Cylinder</a></p></li>
+<li><p><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
+<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
 </ul>
 
 

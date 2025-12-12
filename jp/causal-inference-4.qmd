@@ -1,5 +1,5 @@
 ---
-title: "Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias"
+title: "A Circle, an Equation, and a Cylinder"
 format:
   html:
     toc: true
@@ -148,157 +148,98 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Causal inference IV − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias
+# Causal inference IV − A Circle, an Equation, and a Cylinder
 
 ::: {.serif-block .text-right}
-Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study, probability model
+Keywords: causal model, probability model
 :::
 
 ------------------------------------------------------------------------
 
-### ブロックの意味
+### 問いの答えは、どの抽象表現で世界を見るかで変わる
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さんがDAGを説明してくれたときにさ、ブロックって用語が出てきたでしょ。合流点がパスをブロックするとか」
+私「お父さんさ、丁寧なのはいいんだけど。合流点の説明ってもっと簡単にできないの？この条件付確率分布の式がきっついわ」
 :::
 
 ::: voice-father
-お父さん「出てきたね」
+お父さん「その気持ちはわかるよ、でも式を出さないと正確じゃないと思って」
 :::
 
 ::: voice-daughter
-私「あれって、因果の流れが止まるって意味だよね」
+私「それ自体はありがたいんだけどね。たとえ話とかでも十分そうだけど」
 :::
 
 ::: voice-father
-お父さん「うーん、その言い回しは厳密じゃない気がするなあ。ブロックは、DAG上のパスの性質について述べたもので、因果関係とは直接関係ない。パスが合流点を含んでいたり、非合流点を交絡因子として調整したりすることを指すんだけど」
+お父さん「でもさ、最初の質問覚えてる？"確率モデルでもRubin因果モデルでも、交絡の説明が不足しているんじゃないか"、そこが出発点だったよね。だから、合流点を何か別のものに置き換えるだけでは足りないんだ」
 :::
 
 ::: voice-daughter
-私「合流点があると、そのパスはなにもしなくてもブロックされる。非合流点については、調整するとパスがブロックされるってことね」
+私「まあそうだけど」
 :::
 
 ::: voice-father
-お父さん「うん。専門的には、パスをブロックすると、ノードとノードを”有向分離”できるっていうのがポイントなんだけどなあ。有向分離の定義にも触れておいた方が誤解がなさそうだね」
-:::
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple"  title="有向分離"}
-
-DAG上に、異なるノードを要素とする3つの集合があるとし、それぞれをA、B、Cと表します。以下の2条件を満たすとき、CはAとBを分離できる構造になっています（Greenland 1999）。これを**有向分離（d-separation）**といいます。
-
--   AとBを結ぶ合流点を含まないすべてのパスは、Cの要素を含んでいる
--   Cに、AとBを結ぶパス上の合流点が含まれているとする。このとき、合流点を調整することでAとBを結ぶパスが生じたとしても、そのパスはCの別の要素を調整することでブロックできる
-:::
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「話がややこしくなってきた」
-:::
-
-::: voice-father
-お父さん「そうでしょ。ノードの数が増えると、ノードの集合を考えないといけなくなって、定義が複雑になっちゃう。だから単純なケースで意味を確かめよう。この3つのDAGで、CはEとDを有向分離すると思う？」
-:::
-
-![](causal-inference-4-1.png)
-
-
-::: voice-daughter
-私「まず、EとDを結ぶパスはどのDAGもひとつ。上の2つのDAGは合流点を含んでいないし、パス上にCがある。だから有向分離してるはず。一番下はどうだろう。Cは合流点だし、パスE-C-Dは、別の要素で遮断できないよね。だから有向分離の条件に当てはまらない」
-:::
-
-::: voice-father
-お父さん「その通り。”共通原因や中間媒介因子で調整するとパスがブロックされる”とか”合流点で調整すると、パスがブロックされなくなる”っていうことを正確に表現すると、上の定義になるってことがわかったでしょ。もう少しDAGが複雑になると、この定義のよさがわかると思う。このDAGで、EとDを有向分離するのは、どのノードの集合だろう」
-:::
-
-![](causal-inference-4-2.png)
-
-
-
-::: voice-daughter
-私「合流点はないよね。だから有向分離するのはAとC？」
-:::
-
-::: voice-father
-お父さん「それだけじゃないよね。Aだけ、またはCだけでも、有向分離の条件を満たすでしょ」
+お父さん「実際にナプキンに式を書いたのは理由がある。同じものをDAGと数式の2通りで表現していることを知ってほしかったんだ。いくつかの抽象的な表現を使うことは意外に多い。このマグカップを上から見てごらん」
 :::
 
 ::: voice-daughter
-私「確かにそうね。ということは、AとCのどちらかのデータを取っておけば、交絡を調整できるってこと？」
+私「ん？こう？」
 :::
 
 ::: voice-father
-お父さん「そういうこと。じゃあ次のDAGについて考えようか」
-:::
-
-
-![](causal-inference-4-3.png)
-
-
-::: voice-daughter
-私「まだやるの？こっちから話しかけといてわるいけど、これで最後ね、お父さん。えっと、この図を考えればいいのね。AとBはそれぞれ有向分離するんじゃない？Cは合流点だから、有向分離できない」
-:::
-
-::: voice-father
-お父さん「そこまでは正しい。だけど有向分離できるのはそれだけじゃない。AとC、またはBとCはどうだろう。Cは合流点だけど、AまたはBによってパスE←A→C←B→Dは遮断できるでしょ」
+お父さん「そう。円が見えるでしょ」
 :::
 
 ::: voice-daughter
-私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」
+私「そうだね。それがどうしたの」
 :::
 
 ::: voice-father
-お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ。これがバックドア基準のほんとうの意味だよ」
+お父さん「数学の授業で、x軸とy軸をとると円はこの方程式で表せるって習ったでしょ。DAGと条件付確率の式の関係はこれに似ている」
+:::
+
+$$x^2+y^2=r$$
+
+::: voice-daughter
+私「円は見た目、円の式は数式って意味？」
+:::
+
+::: voice-father
+お父さん「そう。共通の分析対象を、別の表現で扱ってるでしょ。円の話をするとき、数式が要らなかったら、円の絵を描いた方がはやいよね。DAGもそう。条件付確率の式から、つながり方だけを抜き出した射影なんだ。分布の形やデータの型は捨て、複雑な式をいったん横に置いて必要な構造だけを見るためにね。DAGは、つながり方だけを見るためのトポロジカルな道具なんだ」
+:::
+
+::: voice-daughter
+私「そりゃあDAGの方が私にはわかりやすいよ」
+:::
+
+::: voice-father
+お父さん「じゃあ今度はマグカップを斜めから見てごらん」
+:::
+
+::: voice-daughter
+私「ん。円が立体になるっていいたいんだよね」
+:::
+
+::: voice-father
+お父さん「その通り、マグカップが円柱として見える。この円柱はRubin因果モデルの潜在結果変数みたいなものじゃない？上から見たデータだけじゃ、全体はわからないよね。それが観測できない潜在結果変数なんだ」
+:::
+
+::: voice-daughter
+私「ほえー詩人だね」
+:::
+
+::: voice-father
+お父さん「1つのマグカップの中に、確率モデル、DAG、Rubin因果モデルという3つの構造が隠れている。抽象的な構造に基づいてデータから知識を引き出す。単なる情報処理や圧縮じゃなく、人間が知りたかった情報を得るためにね。統計解析は人間のためのもの。だからこそ、どの抽象表現で世界を見るかが大事になる」
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="有向分離と条件付独立性"}
+### エピソード、用語集
 
-DAGを用いて、CがAとBを有向分離することが確認できたとします。そのとき、確率変数Cを与えた下で、AとBが条件付独立ということもわかります（Pearl 1995）。
-:::
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
-::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-
-このDAGの解釈として正しいのはどちらでしょうか。
-
-1.  Cを与えた下で、EとDは条件付独立である
-2.  Cを与えても、EとDの間には相関がある
-
-![](causal-inference-4-4.png)
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
--   **正解は2です。**
-
-パスE←C→DはCで遮断できますが、パスE→Dは遮断できません。したがって、CではEとDを有向分離できません。ただし、この場合には、有向分離できない理由は、EとDを結ぶ直接の因果関係が残ってしまうことであるという点に注意してください。EのDへの効果を推定するときには、（パスE→Dがあるかどうかにかかわらず）Cを調整すべきです。
-:::
-
-::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-このDAGの解釈として正しいのはどちらでしょうか。
-
-1.  Cで条件付けないとき、EとDは独立である。また、Cを与えた下でも、EとDは条件付独立である
-2.  Cで条件付けないとき、EとDには相関がある。一方で、Cを与えた下で、EとDは条件付独立である
-3.  Cで条件付けないとき、EとDは独立である。一方で、Cを与えると、EとDの間には相関がある
-4.  Cで条件付けないとき、EとDには相関がある。また、Cを与えても、EとDの間には相関がある
-
-![](causal-inference-4-5.png)
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
-- **正解は4です。**
-
-この場合、最初のクイズとは違って、EとDを結ぶ直接のパスはありませんが、Cは合流点という問題があります。そのためCで調整すると、E←A→C←B→Dというパスが生じてしまい、やはりCでEとDを有向分離することはできません。
-:::
-
-### 文献
-
-- Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48
-
-- Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
-
-### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
-
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
-- [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [A Morning Just Before Submission](publish-a-paper-3.html)
+- [Statistical Terms in Plain Language](glossary.html)

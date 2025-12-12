@@ -160,7 +160,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さん、この前の続きなんだけど。DAGっていう矢印を使った図があったじゃない。あれ、3変数しかないのは単純すぎない？現実はもっと複雑な気がするんだけど」
+私「お父さん、共通原因がバイアスってのはわかるんだけど、コーヒーと膵がんの話からあんまり進歩した気がしないよ。このDAGっていう矢印を使った図、3変数しかないのは単純すぎない？現実はもっと複雑な気がするんだけど」
 :::
 
 ::: voice-father
@@ -172,7 +172,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 :::
 
 ::: voice-father
-お父さん「じゃあ変数を5つに増やした例を使って、もう少し正式に解説してみようか」
+お父さん「じゃあ変数を5つに増やした例を使って、もう少し正式に解説してみようか。ちょっとコーヒーがほしいな」
 :::
 ::::::::::::::::::::::::::::::::: dialogue
 
@@ -279,7 +279,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-お父さん「厳密にいうと、バックドア基準っていう上のようなルールを使うんだけどね。合流点・ブロックについては、後で説明するよ。要は、共通原因を調整して、バックドアパスをブロックすれば、交絡を防ぐことができる。疫学ではDAGは交絡因子を探すために用いられるんだ」
+お父さん「厳密にいうと、バックドア基準っていう上のようなルールを使うんだけどね。合流点・ブロックについては、後で説明するよ。要は、共通原因を調整して、バックドアパスをブロックすれば、バイアスを防ぐことができる。疫学ではDAGは交絡因子を探すために用いられるんだ」
 :::
 
 ::: voice-daughter
@@ -317,6 +317,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
 - [Statistical Terms in Plain Language](glossary.html)

@@ -361,7 +361,7 @@ a:hover {
 <h3 class="anchored" data-anchor-id="調整すべき因子かどうかってどうやって見分けるの">調整すべき因子かどうかってどうやって見分けるの？</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「まだ話は続くよ。ここからの話題はDAGと確率変数の関係について。まず、確率の基本について思い出してみよう」</p>
+<p>お父さん「まだ話は続くから、コーヒー淹れなおそうか。ここからの話題はDAGと確率変数の関係について。まず、確率の基本について思い出してみよう」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="確率の復習">
@@ -404,7 +404,7 @@ a:hover {
 <p>私「確率分布って正規分布とかそういうの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうきたか。えっとね、正規分布は条件付確率じゃない。でも、たとえばロジスティック回帰だったら、条件付確率を表すから、それをイメージしてもいい。ここでは具体的な確率分布を意図しているわけじゃなくて、もっと定性的で、一般的な話をしてるんだけどね」</p>
+<p>お父さん「そうきたか。えっとね、正規分布は条件付確率じゃない。でも、たとえばロジスティック回帰だったら、条件付確率を表すから、それをイメージしてもいい。ここでは具体的な確率分布を意図しているわけじゃなくて、一般的な話をしてるんだけどね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふーん」</p>
@@ -430,7 +430,7 @@ a:hover {
 <p><span class="math inline">\(\mathrm{Pr}(D|A,B,C,E)=\mathrm{Pr}(D|B,C,E)\)</span></p>
 <p><span class="math inline">\(\mathrm{Pr}(E|A,B,C,D)=\mathrm{Pr}(E|A,C)\)</span></p>
 <div class="voice-daughter">
-<p>私「ふーん。なんだか具体性がなくて、それでって思っちゃうよ。話の終着点がみえない」</p>
+<p>私「…。すまん、気を失ってた。なんだか具体性がなくて、それでって思っちゃうよ。話の終着点がみえない」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そっか。ここまでの話ではね、DAGと条件付確率を対応付けるルールを説明したかったんだ。簡単にいうと、条件付けの方の変数から、条件を付けられる変数の方に、矢印が入るようなルールで、DAGと条件付確率を結びつけることができる。このルールを踏まえて、合流点の意味を考えてみてよ。この図でEとDに相関はある？相関はない？」</p>
@@ -483,7 +483,20 @@ a:hover {
 <li><p>合流点を交絡因子として調整すると、もともと相関がなかったとしても、相関が生じる</p></li>
 </ul>
 <p><img src="causal-inference-3-5.png" class="img-fluid"></p>
-<p><strong>まとめ</strong></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="合流点とブロックの関係">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+合流点とブロックの関係
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>この表は、原因から結果までのパスを、有向か無向か、合流点をいくつ含んでいるかに従って、4分類して、パスの性質を整理したものです。すでに述べたように、調整するかどうか検討の候補になるのは、原因から結果までの無向パスです。もし、無向パスが<strong>合流点を含まないなら、パス上のどこかの変数を調整しない限り、そのパスはブロックされません</strong>。言い換えると、パス上の変数を調整し、このパスをブロックすることで、バイアスを防ぐことができるかもしれません。無向パスが<strong>合流点を1つ含むとき、調整しなくてもこのパスは合流点でブロックされます</strong>が、<strong>合流点のみを調整すると、ブロックが解けてしまいます</strong>。ただし、非合流点を調整すると、合流点を調整したとしても、そのパスはブロックされます。合流点を1つ以上含む場合も、考え方は同じです。調整していない合流点があるか、非合流点を調整すると、このパスはブロックされます。しかし、すべての合流点のみを調整すると、ブロックが解けてしまいます。</p>
 <table class="caption-top table">
 <colgroup>
@@ -523,6 +536,7 @@ a:hover {
 </table>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -542,7 +556,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -551,7 +565,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です。</strong></li>
@@ -582,7 +596,7 @@ a:hover {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -591,7 +605,7 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は4です。</strong></li>
@@ -614,7 +628,8 @@ a:hover {
 <li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
 <li><p><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></p></li>
 <li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
-<li><p><a href="causal-inference-4.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
+<li><p><a href="causal-inference-4.html">A Circle, an Equation, and a Cylinder</a></p></li>
+<li><p><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
 <li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
 </ul>
 

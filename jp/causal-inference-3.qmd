@@ -160,7 +160,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-お父さん「まだ話は続くよ。ここからの話題はDAGと確率変数の関係について。まず、確率の基本について思い出してみよう」
+お父さん「まだ話は続くから、コーヒー淹れなおそうか。ここからの話題はDAGと確率変数の関係について。まず、確率の基本について思い出してみよう」
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -214,7 +214,7 @@ $\mathrm{Pr}(A\cap{B}|C)=\mathrm{Pr}(A|C)\mathrm{Pr}(B|C)$
 :::
 
 ::: voice-father
-お父さん「そうきたか。えっとね、正規分布は条件付確率じゃない。でも、たとえばロジスティック回帰だったら、条件付確率を表すから、それをイメージしてもいい。ここでは具体的な確率分布を意図しているわけじゃなくて、もっと定性的で、一般的な話をしてるんだけどね」
+お父さん「そうきたか。えっとね、正規分布は条件付確率じゃない。でも、たとえばロジスティック回帰だったら、条件付確率を表すから、それをイメージしてもいい。ここでは具体的な確率分布を意図しているわけじゃなくて、一般的な話をしてるんだけどね」
 :::
 
 ::: voice-daughter
@@ -252,7 +252,7 @@ $\mathrm{Pr}(D|A,B,C,E)=\mathrm{Pr}(D|B,C,E)$
 $\mathrm{Pr}(E|A,B,C,D)=\mathrm{Pr}(E|A,C)$
 
 ::: voice-daughter
-私「ふーん。なんだか具体性がなくて、それでって思っちゃうよ。話の終着点がみえない」
+私「...。すまん、気を失ってた。なんだか具体性がなくて、それでって思っちゃうよ。話の終着点がみえない」
 :::
 
 ::: voice-father
@@ -378,6 +378,7 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
 - [Statistical Terms in Plain Language](glossary.html)
