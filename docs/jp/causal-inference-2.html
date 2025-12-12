@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Common Causes and Confounders – Coffee and Research</title>
+<title>A Subtle Distinction between Common Causes and Confounders – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,7 +152,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-ii-common-causes-and-confounders" id="toc-causal-inference-ii-common-causes-and-confounders" class="nav-link active" data-scroll-target="#causal-inference-ii-common-causes-and-confounders">Causal inference II − Common Causes and Confounders</a>
+  <li><a href="#causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders" id="toc-causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders" class="nav-link active" data-scroll-target="#causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders">Causal inference II − A Subtle Distinction between Common Causes and Confounders</a>
   <ul class="collapse">
   <li><a href="#後ろ扉を閉ざすなんて映画みたい" id="toc-後ろ扉を閉ざすなんて映画みたい" class="nav-link" data-scroll-target="#後ろ扉を閉ざすなんて映画みたい">後ろ扉を閉ざすなんて映画みたい</a></li>
   </ul></li>
@@ -164,7 +164,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Common Causes and Confounders</h1>
+<h1 class="title">A Subtle Distinction between Common Causes and Confounders</h1>
 </div>
 
 
@@ -320,8 +320,8 @@ a:hover {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-ii-common-causes-and-confounders" class="level1">
-<h1>Causal inference II − Common Causes and Confounders</h1>
+<section id="causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders" class="level1">
+<h1>Causal inference II − A Subtle Distinction between Common Causes and Confounders</h1>
 <div class="serif-block text-right">
 <p>Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study</p>
 </div>
@@ -391,7 +391,7 @@ DAGの用語
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、<strong>バックドアパス</strong>、祖先と子孫です。</p>
+<p>次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、<strong>バックドアパス（backdoor path）</strong>、祖先と子孫です。</p>
 <p>グラフ上の変数を表す点を、ノードといいます。上のグラフには5つのノードがありますよね。2つのノードは、線や矢印で結ばれます。A→Bという矢印で結ぶと、それはAからBへの方向性があることを意味します。因果推論の文脈では、原因から結果への直接的な結びつきを表しています。このグラフでは、AとCは隣接しているが、AはBやDとは結ばれていません。これは、AのCへの直接的影響があるという意味です。直接的影響があるとは、もっというと、グラフ上の他の変数に媒介されない影響がある、ということです。</p>
 <p>胃がんの例では、性格は、ピロリ菌除菌と体質を通じて胃がん発生をもたらすと仮定しました。この仮定は、AからBやDへの矢印がないことに対応しています。</p>
 <p>矢印で結びついたグラフは、必ず、矢印の頭から入り、頭から出るような一続きの矢印で辿ることができます。直接的または間接的にノードを結びつける矢印の組み合わせのことを、パスといいます。特に、矢印の方向に従って辿ることのできるパスを、方向性のあるパスという意味で有向パスと呼んでいます。上のグラフでは、A→C→Dのパスは有向パスです。</p>
@@ -507,7 +507,7 @@ DAGの用語
 <h3 class="anchored" data-anchor-id="エピソード用語集">エピソード、用語集</h3>
 <ul>
 <li><p><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></p></li>
-<li><p><a href="causal-inference-2.html">Common Causes and Confounders</a></p></li>
+<li><p><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></p></li>
 <li><p><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></p></li>
 <li><p><a href="causal-inference-4.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></p></li>
 <li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>

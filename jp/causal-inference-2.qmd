@@ -1,5 +1,5 @@
 ---
-title: "Common Causes and Confounders"
+title: "A Subtle Distinction between Common Causes and Confounders"
 format:
   html:
     toc: true
@@ -148,7 +148,7 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Causal inference II − Common Causes and Confounders
+# Causal inference II − A Subtle Distinction between Common Causes and Confounders
 
 ::: {.serif-block .text-right}
 Keywords: bias, causal model, clinical trial, confounding/collapsibility, observational study
@@ -213,7 +213,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 
 ::: {.callout-note appearance="simple"  title="DAGの用語"}
 
-次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、**バックドアパス**、祖先と子孫です。
+次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、**バックドアパス（backdoor path）**、祖先と子孫です。
 
 グラフ上の変数を表す点を、ノードといいます。上のグラフには5つのノードがありますよね。2つのノードは、線や矢印で結ばれます。A→Bという矢印で結ぶと、それはAからBへの方向性があることを意味します。因果推論の文脈では、原因から結果への直接的な結びつきを表しています。このグラフでは、AとCは隣接しているが、AはBやDとは結ばれていません。これは、AのCへの直接的影響があるという意味です。直接的影響があるとは、もっというと、グラフ上の他の変数に媒介されない影響がある、ということです。
 
@@ -315,7 +315,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ### エピソード、用語集
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
-- [Common Causes and Confounders](causal-inference-2.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
 

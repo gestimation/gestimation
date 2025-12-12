@@ -315,7 +315,7 @@ Keywords: bias, causal model, clinical trial, confounding/collapsibility, observ
 ### エピソード、用語集
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
-- [Common Causes and Confounders](causal-inference-2.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
 

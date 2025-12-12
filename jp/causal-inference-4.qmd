@@ -297,11 +297,8 @@ DAGを用いて、CがAとBを有向分離することが確認できたとし�
 
 - Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
 
-### エピソード、用語集
+### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
-- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
-- [Common Causes and Confounders](causal-inference-2.html)
-- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
-- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-4.html)
-
-- [Statistical Terms in Plain Language](glossary.html)
+- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
+- [Three Tips for Writing a Paper](publish-a-paper-2.html)
+- [A Morning Just Before Submission](publish-a-paper-3.html)

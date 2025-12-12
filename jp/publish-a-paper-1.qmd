@@ -1,9 +1,16 @@
 ---
+title: "A Subtle Distinction Between Editors and Reviewers"
 format:
   html:
     toc: true
 ---
+
+```{=html}
 <style>
+header#title-block-header.quarto-title-block {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: #ffffff;
@@ -127,80 +134,123 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
+.text-right {
+  text-align: right;
 }
 .serif-block p {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 0.9em;  line-height: 1.6;
 }
 </style>
+```
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
-# Story and Quiz − Publishing a paper I
+
+# Publish a Paper I − A Subtle Distinction Between Editors and Reviewers
+
 ::: serif-block
-　　　　　　　　　　　　　　　　　　　　Keywords: paper writing
+Keywords: bias, hypothesis/outcome/population, language/writing
 :::
 
 ------------------------------------------------------------------------
 
+::: {.callout-note appearance="simple"  collapse="true" title="前回までのあらすじ"}
+はじめて研究に取り組む娘と統計家の父。父に研究仮説は"PICO"を"PECO"で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。調査は終ったが、いざ論文を書くとなると腰が重くなり、パソコンを閉じて父に話しかけるのだった。
+:::
+
 ### EditorとReviewerってちがう人なんだ
 
--   前回までのあらすじ
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「がんサバイバー調査についてなんだけどね。調査結果がまとまったから、論文を書かなきゃって思ってるんだけど...。お父さんって、どこかのジャーナルで統計エディターしてたよね？論文って、どんな感じで書くと採択されやすいのかな」**
+:::
 
-    はじめて研究に取り組む娘と統計家の父。父に研究仮説は"PICO"を"PECO"で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。調査は終ったが、いざ論文を書くとなると腰が重くなり、パソコンを閉じて父に話しかけるのだった。
-
-**私「がんサバイバー調査についてなんだけどね。調査結果がまとまったから、論文を書かなきゃって思ってるんだけど...。お父さんって、どこかのジャーナルで統計エディターしてたよね？論文って、どんな感じで書くと採択されやすいのかな」**
-
+::: voice-father
 お父さん「どんな感じねえ。医学が専門ってわけじゃないから話しにくいな。自分ではどう思ってる？」
+::: 
 
-**私「はやってる研究テーマは通りやすそう。免疫チェックポイント阻害薬みたいな新薬とか、新しい診断基準とか。あ、ランダム化臨床試験は、調査より注目されるし、きっと有利ね」**
+::: voice-daughter
+私「はやってる研究テーマは通りやすそう。免疫チェックポイント阻害薬みたいな新薬とか、新しい診断基準とか。あ、ランダム化臨床試験は、調査より注目されるし、きっと有利ね」
+:::
 
+::: voice-father
 お父さん「そのイメージはまずまずあってると思うよ。エディターをやってて感じるのはね、採択するときの基準は、突き詰めると2つしかない」
+:::
 
 - その研究から得られた**結論の価値（value）**は高いか
 - 結論は**妥当な方法論（methodology）**で導かれているか
 
+::: voice-father
 お父さん「ランダム化臨床試験が絶対に正しい方法っていってるわけじゃないよ。臨床試験でも、観察研究でも、それぞれの分野で認められている方法論に従って行われているかを、*エディター*や*レビュワー*はチェックしてるんだ」
+::: 
 
-**私「あれ？エディターとレビュワーって違う人？」**
+::: voice-daughter
+私「あれ？エディターとレビュワーって違う人？」
+:::
 
+::: voice-father
 お父さん「もちろん。採択されるかどうかは、ピアレビュー（査読）の結果で決まるでしょ。レビュワーの役割は、論文や学会抄録を読んで、採点したり、修正（revise）を求めるときはどこを直してほしいかコメントしたりすること。エディターの役割は、一言でいうとジャーナルを編集すること。編集事務局を運営したり、編集方針を決めたり、レビュワーを割り当てたりする。採択するかどうかはエディターが判断するし、査読コメントを著者に送ることもある。たとえばね、カバーレターってあるでしょ。論文につける手紙」
+::: 
 
-**私「聞いたことないよ。そんなのあるんだ」**
+::: voice-daughter
+私「聞いたことないよ。そんなのあるんだ」
+:::
 
+::: voice-father
 お父さん「そっか。カバーレターの宛先は、レビュワーじゃなくてエディターだよっていおうとしたんだけど。カバーレターは、たいてい編集委員長（Editor-In-Chief）宛に書くんだ」
+::: 
 
-**私「ふーん。カバーレターって大切？」**
+::: voice-daughter
+私「ふーん。カバーレターって大切？」
+:::
 
+::: voice-father
 お父さん「どうだろうね。お父さんは、カバーレターで研究の価値をアピールする方だけど、定型文で十分っていう人もいる。周りの研究者に聞いても、どれくらい重視するかはまちまち。ろくに読まないエディターもいるのは事実」
+::: 
 
-**私「そういうもんか。ピアレビューが何かはどこかで聞いたことあるよ。ジャーナルからコメントがきて、著者がそれに回答するんだよね。でも、裏側では、エディターじゃなくてレビュワーが採点してるんだ」**
+::: voice-daughter
+私「そういうもんか。ピアレビューが何かはどこかで聞いたことあるよ。ジャーナルからコメントがきて、著者がそれに回答するんだよね。でも、裏側では、エディターじゃなくてレビュワーが採点してるんだ」
+:::
 
-お父さん「ジャーナルによって、多段階評価だったり数字をつけたりするけどね。エディターがレビュワーから集めた採点結果とコメントをとりまとめて、著者にどういう意思決定になったかを伝える」
+::: voice-father
+お父さん「ジャーナルによって、多段階評価だったり数字をつけたりするけどね。エディターがレビュワーから集めた採点結果とコメントをとりまとめて、著者にどういう判断になったかを伝える」
+:::
 
 - 採択（accept）
 - 大修正（major revision）
 - 小修正（minor revision）
 - 不採択（reject）
 
+::: voice-father
 お父さん「ピアレビューを経ないと、論文が粗製乱造されてしまう。だから、研究者はみんなピアレビューという仕組みを大切にしている」
+::: 
 
-**私「ちなみにお父さんお金もらってる？」**
+::: voice-daughter
+私「ちなみにお父さんお金もらってる？」
+:::
 
+::: voice-father
 お父さん「いや？ボランティア。利益相反とかいわれるとややこしいから、むしろどこからもお金を受け取りたくない。2019年にレビュワーの利益相反が問題になったことがあってね。それ以来、そのジャーナル（BMJ）は、査読コメントや著者の回答をサイトで公開するようになった。ピアレビューのプロセスが知りたければ、そのサイトをみてみたらいいよ。論文投稿するときは、論文を書くだけじゃなくて、英語でやり取りしなきゃいけないことが案外多いから、参考になるかもしれない」
+:::
 
 ### 価値と方法論
+::: voice-daughter
+私「ふむふむ。話を戻すとさ。採択される基準は、価値と方法論っていってたよね。具体的にはどうすればいいの？」
+:::
 
-**私「ふむふむ。話を戻すとさ。採択される基準は、価値と方法論っていってたよね。具体的にはどうすればいいの？」**
-
+::: voice-father
 お父さん「エディターはたくさんの論文をさばかなきゃいけないから、ざっとタイトルと抄録だけ目を通すことが多い」
+::: 
 
-**私「ふむふむ」**
+::: voice-daughter
+私「ふむふむ」
+:::
 
+::: voice-father
 お父さん「たいていの臨床医学系のジャーナルでは、構造化抄録を採用しているから、なにをどこに書けばいいかはわかりやすい。JAMAの抄録がどんな要素から構成されてるかみてみようか」
+:::
 
 -   **Importance**（研究の重要性）
 -   **Objective**（目的）
@@ -210,13 +260,21 @@ a:hover {
 -   **Results**（結果）
 -   **Conclusions and relevance**（結論と意義）
 
-**私「JAMAの抄録はこうなのね。研究の価値は、”Importance”と”Conclusions and relevance”に書けばいい。研究方法も、どんな要素が求められるか、デザインから測定方法まで指定されてる。確かにわかりやすい。参加者、曝露、主要アウトカムは、PECOの通りに書けばいいよね」**
+::: voice-daughter
+私「JAMAの抄録はこうなのね。研究の価値は、”Importance”と”Conclusions and relevance”に書けばいい。研究方法も、どんな要素が求められるか、デザインから測定方法まで指定されてる。確かにわかりやすい。参加者、曝露、主要アウトカムは、PECOの通りに書けばいいよね」
+:::
 
+::: voice-father
 お父さん「それでいいと思う。がんサバイバーの調査の"価値"はなにって聞かれたらなんて答える？」
+::: 
 
-**私「まず、がん手術後に仕事に就けるかどうかは、生活に関わる大きな問題だっていうのが前提かな。その上で、どんな患者が苦労していて、就労支援を求めているのかを調べて、ストーマ造設が関連することがわかった。それが研究をやった意義だと思う」**
+::: voice-daughter
+私「まず、がん手術後に仕事に就けるかどうかは、生活に関わる大きな問題だっていうのが前提かな。その上で、どんな患者が苦労していて、就労支援を求めているのかを調べて、ストーマ造設が関連することがわかった。それが研究をやった意義だと思う」
+:::
 
+::: voice-father
 お父さん「うんうん。それが抄録を読んだ人に伝わるように書こう。たとえばこんな感じでどうだろう」
+:::
 
 -   **Importance**: Although prognosis of early rectal cancer has been improved, little is known about employment problems after surgery.
 -   **Objective**: To compare employment status between patients with and without stoma
@@ -226,31 +284,57 @@ a:hover {
 -   **Results**: Responses were obtained from AAA patients and the response rate was BB%. The median time to return-to-work was CC months and the proportion of working patients at 12 months after surgery was DD%. The odds ratio for delayed return-to-work was EEE (95% confidence interval FFF to GGG, p = HHH) after adjustment for age, sex and income.  
 -   **Conclusions and relevance**: Stoma creation in rectal cancer is associated with difficulty in returning to work. Further employment support may be necessary.
 
+::: voice-father
 お父さん「この文章で工夫した点は4つある。まず、今回みたいに日本で調査を行う場合、海外の研究者は日本の事情を知らないでしょ。だから**どんな方法で参加者が選ばれた**をきちんと書く。単に直腸がん患者って書くんじゃなくて”patients with clinical stage I–III rectal cancer who were employed at the time of diagnosis and received curative surgery from 20XX to 20YY”とかね」
+::: 
 
-**私「ふんふん」**
+::: voice-daughter
+私「ふんふん」
+:::
 
+::: voice-father
 お父さん「2つ目の工夫は、**回答率（response rate）**を示すこと。回答率が低いと、**選択バイアス**があるかもしれないからね」
+::: 
 
-**私「その次はなに？」**
+::: voice-daughter
+私「その次はなに？」
+:::
 
+::: voice-father
 お父さん「3つ目はさっき話した**交絡調整**だね。観察研究の査読では必ず確認されるポイントになってる。本文に書いてあれば十分だけど、抄録でも、オッズ比を示すときに”after adjustment for age, sex and income”のような説明があると、ちゃんとしてるなって思ってもらえるかもしれない」
+::: 
 
-**私「なるほどね。2つ目と3つ目は、バイアスがどれくらいあるかについて書いたんだね。最後のひとつは？」**
+::: voice-daughter
+私「なるほどね。2つ目と3つ目は、バイアスがどれくらいあるかについて書いたんだね。最後のひとつは？」
+:::
 
+::: voice-father
 お父さん「つまらないテクニックなんだけど。“Return-to-work”や “20-to-80-year-old patients”のように、単語をハイフンでつなぐと、文字数を節約できる。普通に”patients aged 20 to 80 years”って書くと6文字も使っちゃうでしょ。抄録には文字数の制限があるからね」
+::: 
 
-**私「じゃあさ、少し話がそれるんだけど、主語と時制について聞いていい？”A mail survey was conducted at 3 hospitals in Japan.”っていう一文があるけど、受動態にするのが普通なの？それに、調査はすでに行われたから、時制は過去形なんだよね。IntroductionとConclusionsは現在形だけど」**
+::: voice-daughter
+私「じゃあさ、少し話がそれるんだけど、主語と時制について聞いていい？”A mail survey was conducted at 3 hospitals in Japan.”っていう一文があるけど、受動態にするのが普通なの？それに、調査はすでに行われたから、時制は過去形なんだよね。IntroductionとConclusionsは現在形だけど」
+:::
 
+::: voice-father
 お父さん「論文を書くときは、Weを主語にしない方が、客観的だからいいっていう考え方がある。でも最近は、主語をはっきりさせたほうが、かえって正確だという意見もある。たとえば別の表現をとって”Study design was a mail survey at 3 hospitals in Japan”というように、研究方法を説明する文体にしてもいい。情報が増えたぶん、より正確で、かしこまったニュアンスになる。この場合は、受動態でも能動態でも、不自然ってことはないよ」
+::: 
 
-**私「時制については？」**
+::: voice-daughter
+私「時制については？」
+:::
 
+::: voice-father
 お父さん「普遍的な現象や法則性を表すときは現在形を使う。結論を現在形で書くと、「ストーマ造設は職場復帰の難しさに関わることが明らかになった」っていうニュアンスになる。過去形を使って、“Stoma creation in rectal cancer was associated with a difficulty in return-to-work.”と書くと、「今回の調査では」関連があったという限定的な意味になる」
+::: 
 
-**私「じゃあ主語と時制はいま教えられた通りで書いてみる」**
+::: voice-daughter
+私「じゃあ主語と時制はいま教えられた通りで書いてみる」
+:::
 
+::: voice-father
 お父さん「うんうん。ちなみにね、凝った英語を使う必要はないよ。論文は、"concise"つまり簡潔な表現が好ましいとされる。接続詞や関係代名詞を多用しちゃって、一文が長くなりがちな人もいるけど、最初はそうしない方がいい。短い文章が続いていてもぜんぜん変じゃないからね」
+::: 
 
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
@@ -278,52 +362,8 @@ Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hira
 \[著者名（苗字+名前のイニシャル）\]. \[書籍名\]. \[版\]. \[出版社の所在地\]: \[出版社\]; \[出版年\]
 :::
 
-### Continuation of their story
+### エピソード
 
-[Study design I](study-design-1.qmd)
-
-[Study design II](study-design-2.qmd)
-
-[Study design III](study-design-3.qmd)
-
-[Study design IV](study-design-4.qmd)
-
-[Study design V](study-design-5.qmd)
-
-[Clinical trial I](clinical-trial-1.qmd)
-
-[Clinical trial II](clinical-trial-2.qmd)
-
-[Clinical trial III](clinical-trial-3.qmd)
-
-[Epidemiology I](epidemiology-1.qmd)
-
-[Epidemiology II](epidemiology-2.qmd)
-
-[Epidemiology III](epidemiology-3.qmd)
-
-[Epidemiology IV](epidemiology-4.qmd)
-
-[Regression I](logistic-regression-1.qmd)
-
-[Regression II](logistic-regression-2.qmd)
-
-[Regression III](logistic-regression-3.qmd)
-
-[Regression IV](logistic-regression-4.qmd)
-
-[Causal inference I](causal-inference-1.qmd)
-
-[Causal inference II](causal-inference-2.qmd)
-
-[Causal inference III](causal-inference-3.qmd)
-
-[Causal inference IV](causal-inference-4.qmd)
-
-[Publish a paper I](publish-a-paper-1.qmd)
-
-[Publish a paper II](publish-a-paper-2.qmd)
-
-[Publish a paper III](publish-a-paper-3.qmd)
-
-[Publish a paper IV](publish-a-paper-4.qmd)
+- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
+- [Three Tips for Writing a Paper](publish-a-paper-2.html)
+- [A Morning Just Before Submission](publish-a-paper-3.html)
