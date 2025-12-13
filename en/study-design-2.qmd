@@ -1,6 +1,6 @@
 ---
 title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
-description: "A coffee-chat guide from outcome types (continuous, binary, count, survival) to common R functions. The daughter learns how endpoints shape analysis choices."
+description: "This post is part of a long-form series on how clinicians learn research and statistics, told through conversations over coffee. In this episode, a clinician daughter and her statistician father build a practical mental map from outcome types (continuous, binary, count, survival) to probability models and common R functions such as ggplot() and cifplot(). This article can be read on its own and serves as a gentle entry point to the series."
 tags:
   - Language & writing
   - Probability model
@@ -9,7 +9,7 @@ tags:
 format:
   html:
     toc: true
-date: 2025-12-01
+date: 2025-12-14
 ---
 
 ::: {.hero-header}
@@ -32,7 +32,7 @@ This post is the second episode of my Story and Quiz series. Over a cup of coffe
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "Okay, coffee is ready. Can I keep you a bit longer?”
+Me: "Okay, coffee’s ready. Can I keep you a bit longer—just a bit?"
 ::: 
 
 ::: voice-father
@@ -44,7 +44,7 @@ Me: "You said something earlier that stuck with me: the R function we use depend
 ::: 
 
 ::: voice-father
-Dad: "They’re all numbers, yes. But for statistics, the **type of data** matters a lot. Very roughly, we use four big categories."
+Dad: "They’re all numbers, yes. But for statistics, the *type* of data matters more than people expect."
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
@@ -95,11 +95,11 @@ Dad: "To summarize binary data you can use `table()`. For p-values, `fisher.test
 :::
 
 ::: voice-daughter
-Me: "There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations”
+Me: "There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations to me.”
 :::
 
 ::: voice-father
-Dad: "You don’t need to memorize them.”
+Dad: "You don’t need to memorize them—not all at once, at least."
 :::
 
 ::: voice-daughter
@@ -115,7 +115,7 @@ Me: "Probability distribution?”
 :::
 
 ::: voice-father
-Dad: "You learned this as an undergrad, didn't you? You've heard of the **normal distribution**—and **binomial distribution**?”
+Dad: "You learned this as an undergrad, didn't you? You've heard of the **normal distribution** — and **binomial distribution**?”
 :::
 
 ::: voice-daughter
@@ -123,8 +123,11 @@ Me: "At least that one, yes.”
 :::
 
 ::: voice-father
-Dad: "Any statistical method beyond simple description rests on some kind of **probability model**. Normal distributions for continuous data, **binomial distributions** for binary data, **Poisson distributions** for count data. For survival data, there isn't a single standard model, but the simplest is the **exponential distribution**. You don’t have to remember the formulas, just the general matching.”
+Dad: "Almost any statistical method beyond simple description rests on some kind **of probability model**. Normal distributions for continuous data, **binomial distributions** for binary data, **Poisson distributions** for count data. For survival data, there isn't a single standard model, but the simplest is the **exponential distribution**. You don’t have to remember the formulas, just the general matching.”
+:::
 
+::: voice-father
+Me: "So it’s more about rough matching than exact formulas."
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -139,7 +142,7 @@ Dad: "Any statistical method beyond simple description rests on some kind of **p
 Me: "I don't know Poisson and exponential. Aren’t those basically curse words?"
 :::
 
-::: voice-daughter
+::: voice-father
 Dad: "Yeah, I agree it doesn't sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, [**feel free to come back to it anytime**](glossary.html). Anyway, the key is to learn the patterns—which probability model to use for which data type."
 :::
 
@@ -197,7 +200,7 @@ Me: "Got it. That actually clears things up a lot. I really did think I had to i
 :::
 
 ::: voice-father
-Dad: "Installing every time is like buying coffee beans every time you brew. No one does that. You buy the beans once and just grind when you drink."
+Dad: "Installing every time is like buying coffee beans every time you brew coffee. No one does that. You buy the beans once and just grind when you drink."
 :::
 :::::::::::::::::::::::::::::::::::::::
 
@@ -244,7 +247,6 @@ dat <- data.frame(
 head(dat)
 ```
 :::
-
 
 ::: {.callout-note appearance="simple" title="Summarizing continuous and binary data"}
 First, let’s describe age and sex in the stoma vs non-stoma groups using a **histogram** and **contingency table**. You should see that the age distribution for the stoma group is slightly shifted to the right (older on average), because that’s how we simulated it.

@@ -9,6 +9,7 @@ tags:
 format:
   html:
     toc: true
+date: 2025-12-13
 ---
 
 ::: {.hero-header}
@@ -18,7 +19,7 @@ format:
 # Study Design IV − A First Step into Survival and Competing Risks Analysis with R
 
 ::: {.serif-block .text-right}
-Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk
+Keywords: bias, R simulation, study design, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

@@ -10,260 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sun, 30 Nov 2025 15:00:00 GMT</lastBuildDate>
-<item>
-  <title>A Story of Coffee Chat and Research Hypothesis</title>
-  <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="hero-header">
-<p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
-</div>
-<section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
-<h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
-<div class="serif-block text-right">
-<p>Keywords: hypothesis/outcome/population, observational study, study design, language/writing</p>
-</div>
-<hr>
-<section id="a-daughter-beginning-her-first-study-and-her-father-a-statistician" class="level3">
-<h3 class="anchored" data-anchor-id="a-daughter-beginning-her-first-study-and-her-father-a-statistician">A daughter beginning her first study and her father, a statistician</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>Me: “Dad, you really are a professor of statistics, right?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “In Japan, yes. One of many.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your domain, isn’t it? Statistics and all that.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Half my domain, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Nope.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Without at least a working hypothesis, it’s hard to design a good study.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Seriously? I thought I could just collect the data first and improvise the rest. Guess not. Hmm…if I had to say, I’d want to know what kind of patients have difficulty returning to work.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “For example, that men might have higher return-to-work rates than women?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “I’m interested in sex differences too, but I’m more curious about cancer stage or complications. I work in gastrointestinal surgery, and I wonder whether patients with stomas can return to the same job they had before surgery. Yeah…I’ll start drafting a questionnaire. Thanks!”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Hold on a moment. Before you get too excited—have you decided on your <strong>study population</strong> yet?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Hm? Patients who had cancer surgery at our hospital.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Do gastric cancer patients ever receive a stoma?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “It’s extremely rare in gastric cancer, practically negligible.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “…yeah, okay. I guess that’s true when you put it that way.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “It’s important to think about who should be surveyed at the design stage. In general, narrowing the target population allows you to ask more detailed questions. And it also improves <strong>comparability</strong> between groups. If you want to compare patients with and without stomas, you’d want the cancer type to be consistent.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “There you go again with the technical terms. But fine—I do get the point. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “There are statistical methods and R packages to improve comparability too, like <code>glm()</code> for regression adjustment, or<code>CBPS()</code> for propensity score weighting. But on the other hand, a broader study population increases <strong>generalizability</strong>. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “True…it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital. Generalizability means gathering data that is useful for other hospitals too, right?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “In class, I tell my students this:”</p>
-</div>
-<blockquote class="blockquote">
-<p>When your clinical question is still vague,<br>
-try to express it using PICO or PECO before you design the study.</p>
-</blockquote>
-<div class="voice-father">
-<p>Dad: It sounds fancy, but we simply call that ‘structuring’ a study.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Structuring…? That sounds suspiciously formal. Okay, I’ve heard the word before.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Then let’s go through it lightly. In PICO/PECO, P stands for Patients or Population. Deciding who your patients are is a key element in study design.”</p>
-</div>
-</div>
-<ul>
-<li>Which patients or population are being studied (P)</li>
-<li>What exposure or intervention is of interest (E/I)</li>
-<li>What they are compared against (C)</li>
-<li>What outcomes will be evaluated (O)</li>
-</ul>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>Me: “I’ve never heard of Exposure or Comparison before…But in my case, it would be patients with versus without a stoma, right? And what’s Outcome?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Exactly. And O is treatment results, prognosis, and endpoints of patients. In statistical analysis, the outcome variable is the most important part. So it’s crucial to define it before you begin.”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “Can you even define it before the data comes in?”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “You should, because once the data is collected, you can’t revise them any more.It needs to be decided before finalizing the questionnaire. Right…you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “R. My seniors in the department use it.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Are you comfortable with R?”</p>
-</div>
-<div class="voice-daughter">
-<p>Me: “I took a class in college, but I’ve forgotten most of it.”</p>
-</div>
-<div class="voice-father">
-<p>Dad: “Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Clinical questions and research hypotheses">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Clinical questions and research hypotheses
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In daily clinical practice, many questions naturally arise. A question emerging directly from clinical experience is called a clinical question.</p>
-<p>When starting a clinical research, what matters is expressing that <strong>clinical question</strong> as a <strong>research hypothesis</strong>. A research hypothesis consists of minimal essential elements, often summarized using PICO/PECO:</p>
-<ul>
-<li>P: Patients/Population</li>
-<li>I/E: Intervention/Exposure</li>
-<li>C: Comparison</li>
-<li>O: Outcome</li>
-</ul>
-<p>The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case?control, or cross-sectional study. All can be structured using PECO.</p>
-<p>Here are three examples of research hypotheses using the cancer survivor survey as a theme.</p>
-<hr>
-<section id="example-research-hypothesis-1" class="level4">
-<h4 class="anchored" data-anchor-id="example-research-hypothesis-1">Example: Research hypothesis 1</h4>
-<p>Among rectal cancer patients after curative resection in Japan, is there a difference in <strong>return-to-work within one year</strong> between those with and without a stoma?</p>
-<ul>
-<li>P: Rectal cancer patients after curative resection<br>
-</li>
-<li>E: Stoma present<br>
-</li>
-<li>C: Stoma absent<br>
-</li>
-<li>O: Returned to work within one year after surgery (yes/no)</li>
-</ul>
-<p>Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.</p>
-<p>What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.<br>
-Having a clear comparison group improves interpretability.</p>
-<hr>
-</section>
-<section id="example-research-hypothesis-2" class="level4">
-<h4 class="anchored" data-anchor-id="example-research-hypothesis-2">Example: Research hypothesis 2</h4>
-<p>Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?</p>
-<ul>
-<li>P: Patients with cancer after curative surgery<br>
-</li>
-<li>E: Received the guidebook<br>
-</li>
-<li>C: Did not receive the guidebook<br>
-</li>
-<li>O: Returned to work within one year after surgery (yes/no)</li>
-</ul>
-<p>Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.</p>
-<hr>
-</section>
-<section id="example-research-hypothesis-3-exploratory" class="level4">
-<h4 class="anchored" data-anchor-id="example-research-hypothesis-3-exploratory">Example: Research hypothesis 3 (exploratory)</h4>
-<p>“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”</p>
-<p>In exploratory studies like this, P is clear, but E and C are <strong>not just one thing</strong> — we’re screening multiple potential risk factors.</p>
-<p>So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the <strong>minimal set of elements</strong> needed to design a coherent study for your question.</p>
-</section>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>Me: ”I see…Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”</p>
-</div>
-<div class="voice-father">
-<p>Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Quiz related to this episode">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Quiz related to this episode
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?</p>
-<ol type="1">
-<li>If there is a causal relationship, it will inevitably occur</li>
-<li>A universally generalizable law</li>
-<li>All other conditions being equal</li>
-<li>Observing a sufficiently large amount of data</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>The correct answer is <strong>3</strong>.</li>
-</ul>
-<p>The concept of “ceteris paribus” is very close to the idea of <strong>comparability</strong> between groups.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="episodes-and-r-script" class="level3">
-<h3 class="anchored" data-anchor-id="episodes-and-r-script">Episodes and R-script</h3>
-<ul>
-<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
-<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
-<li><p>[Outcomes: The Bridge from Data Collection to Analysis]</p></li>
-<li><p>[A First Step into Survival and Competing Risks Analysis with R]</p></li>
-<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
-<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Sun, 30 Nov 2025 15:00:00 GMT</pubDate>
-</item>
+<lastBuildDate>Sat, 13 Dec 2025 15:00:00 GMT</lastBuildDate>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</link>
@@ -287,7 +34,7 @@ Answer
 <h3 class="anchored" data-anchor-id="four-types-of-data-items">Four types of data items</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Okay, coffee is ready. Can I keep you a bit longer?”</p>
+<p>Me: “Okay, coffee’s ready. Can I keep you a bit longer—just a bit?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “If coffee is involved, yes. A warm cup is perfect now that the air’s turning autumn-like.”</p>
@@ -296,7 +43,7 @@ Answer
 <p>Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that part. In my head, data are just…numbers? What’s there to distinguish?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
+<p>Dad: “They’re all numbers, yes. But for statistics, the <em>type</em> of data matters more than people expect.”</p>
 </div>
 </div>
 <ul>
@@ -337,10 +84,10 @@ Answer
 <p>Dad: “To summarize binary data you can use <code>table()</code>. For p-values, <code>fisher.test()</code>. For more complex analyses, regression models like <code>glm(family = binomial)</code>. For survival data, you’ll see functions like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations”</p>
+<p>Me: “There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations to me.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You don’t need to memorize them.”</p>
+<p>Dad: “You don’t need to memorize them—not all at once, at least.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Wait, I don’t?”</p>
@@ -352,13 +99,16 @@ Answer
 <p>Me: “Probability distribution?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong>—and <strong>binomial distribution</strong>?”</p>
+<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong> — and <strong>binomial distribution</strong>?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “At least that one, yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Any statistical method beyond simple description rests on some kind of <strong>probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
+<p>Dad: “Almost any statistical method beyond simple description rests on some kind <strong>of probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
+</div>
+<div class="voice-father">
+<p>Me: “So it’s more about rough matching than exact formulas.”</p>
 </div>
 </div>
 <ul>
@@ -373,7 +123,7 @@ Answer
 <div class="voice-daughter">
 <p>Me: “I don’t know Poisson and exponential. Aren’t those basically curse words?”</p>
 </div>
-<div class="voice-daughter">
+<div class="voice-father">
 <p>Dad: “Yeah, I agree it doesn’t sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, <a href="glossary.html"><strong>feel free to come back to it anytime</strong></a>. Anyway, the key is to learn the patterns—which probability model to use for which data type.”</p>
 </div>
 <div class="voice-daughter">
@@ -416,7 +166,7 @@ Answer
 <p>Me: “Got it. That actually clears things up a lot. I really did think I had to install it every single time.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Installing every time is like buying coffee beans every time you brew. No one does that. You buy the beans once and just grind when you drink.”</p>
+<p>Dad: “Installing every time is like buying coffee beans every time you brew coffee. No one does that. You buy the beans once and just grind when you drink.”</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Generating simulated data">
@@ -881,6 +631,259 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
+  <pubDate>Sat, 13 Dec 2025 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>A Story of Coffee Chat and Research Hypothesis</title>
+  <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="hero-header">
+<p><img src="https://gestimation.github.io/coffee-and-research/image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
+<h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
+<div class="serif-block text-right">
+<p>Keywords: hypothesis/outcome/population, observational study, study design, language/writing</p>
+</div>
+<hr>
+<section id="a-daughter-beginning-her-first-study-and-her-father-a-statistician" class="level3">
+<h3 class="anchored" data-anchor-id="a-daughter-beginning-her-first-study-and-her-father-a-statistician">A daughter beginning her first study and her father, a statistician</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “Dad…you really are a professor of statistics, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In Japan, yes. One of many.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your domain, isn’t it? Statistics and all that.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Half my domain, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Nope. Not really.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Without at least a working hypothesis, it becomes hard to design a good study.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Seriously? I thought I could just collect the data first and improvise the rest. Guess not. Hmm…if I had to say, I’d want to know what kind of patients have difficulty returning to work.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “For example, that men might have higher return-to-work rates than women?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I’m interested in sex differences too, but I’m more curious about cancer stage or complications. I work in gastrointestinal surgery, and I wonder whether patients with stomas can return to the same job they had before surgery. Yeah…I’ll start drafting a questionnaire. Thanks!”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Hold on a moment. Before you get too excited—have you decided on your <strong>study population</strong> yet?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Hm? Patients who had cancer surgery at our hospital.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Do gastric cancer patients ever receive a stoma…?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “It’s extremely rare in gastric cancer, practically negligible.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. If your main interest is stomas, it might make sense to focus on cancers where stomas are common, like rectal cancer.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “…yeah, okay. I guess that’s true when you put it that way.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “It’s important to think about who should be surveyed at the design stage. In general, narrowing the target population allows you to ask more detailed questions. And it also improves <strong>comparability</strong> between groups. If you want to compare patients with and without stomas, you’d want the cancer type to be consistent.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “There you go again with the technical terms. But fine—I do get the point. If patients’ backgrounds vary too much, it becomes hard to compare them. Keeping them similar makes things easier.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “There are statistical methods and R packages to improve comparability too, like <code>glm()</code> for regression adjustment, or<code>CBPS()</code> for propensity score weighting. But on the other hand, a broader study population increases <strong>generalizability</strong>. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “True…it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital. Generalizability means gathering data that is useful for other hospitals too, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “In class, I usually tell my students something like this:”</p>
+</div>
+<blockquote class="blockquote">
+<p>When your clinical question is still vague,<br>
+try to express it using PICO or PECO before you design the study.</p>
+</blockquote>
+<div class="voice-father">
+<p>Dad: It sounds fancy, but we simply call that ‘structuring’ a study.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Structuring…? That sounds like something from a meeting. Okay, I’ve heard the word before.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Then let’s go through it lightly. In PICO/PECO, P stands for Patients or Population. Deciding who your patients are is a key element in study design.”</p>
+</div>
+</div>
+<ul>
+<li>Which patients or population are being studied (P)</li>
+<li>What exposure or intervention is of interest (E/I)</li>
+<li>What they are compared against (C)</li>
+<li>What outcomes will be evaluated (O)</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “I’ve never heard of Exposure or Comparison before…But in my case, it would be patients with versus without a stoma, right? And what’s Outcome?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And O is treatment results, prognosis, and endpoints of patients. In statistical analysis, the outcome variable is the most important part. So it’s crucial to define it before you begin.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “Can you even define it before the data comes in?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “You should, because once the data is collected, you can’t revise them any more.It needs to be decided before finalizing the questionnaire. Right…you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “R. My seniors in the department use it.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Are you comfortable with R?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I took a class in college, but I’ve forgotten most of it.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Clinical questions and research hypotheses">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Clinical questions and research hypotheses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In daily clinical practice, many questions naturally arise. A question emerging directly from clinical experience is called a clinical question.</p>
+<p>When starting a clinical research, what matters is expressing that <strong>clinical question</strong> as a <strong>research hypothesis</strong>. A research hypothesis consists of minimal essential elements, often summarized using PICO/PECO:</p>
+<ul>
+<li>P: Patients/Population</li>
+<li>I/E: Intervention/Exposure</li>
+<li>C: Comparison</li>
+<li>O: Outcome</li>
+</ul>
+<p>The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case?control, or cross-sectional study. All can be structured using PECO.</p>
+<p>Here are three examples of research hypotheses using the cancer survivor survey as a theme.</p>
+<hr>
+<section id="example-research-hypothesis-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-1">Example: Research hypothesis 1</h4>
+<p>Among rectal cancer patients after curative resection in Japan, is there a difference in <strong>return-to-work within one year</strong> between those with and without a stoma?</p>
+<ul>
+<li>P: Rectal cancer patients after curative resection<br>
+</li>
+<li>E: Stoma present<br>
+</li>
+<li>C: Stoma absent<br>
+</li>
+<li>O: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.</p>
+<p>What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is “high” or “low”.<br>
+Having a clear comparison group improves interpretability.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-2">Example: Research hypothesis 2</h4>
+<p>Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?</p>
+<ul>
+<li>P: Patients with cancer after curative surgery<br>
+</li>
+<li>E: Received the guidebook<br>
+</li>
+<li>C: Did not receive the guidebook<br>
+</li>
+<li>O: Returned to work within one year after surgery (yes/no)</li>
+</ul>
+<p>Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.</p>
+<hr>
+</section>
+<section id="example-research-hypothesis-3-exploratory" class="level4">
+<h4 class="anchored" data-anchor-id="example-research-hypothesis-3-exploratory">Example: Research hypothesis 3 (exploratory)</h4>
+<p>“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”</p>
+<p>In exploratory studies like this, P is clear, but E and C are <strong>not just one thing</strong> — we’re screening multiple potential risk factors.</p>
+<p>So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the <strong>minimal set of elements</strong> needed to design a coherent study for your question.</p>
+</section>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: ”I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”</p>
+</div>
+<div class="voice-father">
+<p>Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Quiz related to this episode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When formulating study design, the Latin expression “ceteris paribus” often appears. Which of the following best describes its meaning?</p>
+<ol type="1">
+<li>If there is a causal relationship, it will inevitably occur</li>
+<li>A universally generalizable law</li>
+<li>All other conditions being equal</li>
+<li>Observing a sufficiently large amount of data</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>3</strong>.</li>
+</ul>
+<p>The concept of “ceteris paribus” is very close to the idea of <strong>comparability</strong> between groups.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="episodes-and-r-script" class="level3">
+<h3 class="anchored" data-anchor-id="episodes-and-r-script">Episodes and R-script</h3>
+<ul>
+<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
+<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
+<li><p>[Outcomes: The Bridge from Data Collection to Analysis]</p></li>
+<li><p>[A First Step into Survival and Competing Risks Analysis with R]</p></li>
+<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
+<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
   <pubDate>Sun, 30 Nov 2025 15:00:00 GMT</pubDate>
 </item>
 </channel>

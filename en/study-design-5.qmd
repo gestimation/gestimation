@@ -9,6 +9,7 @@ tags:
 format:
   html:
     toc: true
+date: 2025-12-13
 ---
 
 ::: {.hero-header}
@@ -25,7 +26,7 @@ Keywords: bias, language & writing, observational study, study design
 ### Biases to watch for in surveys
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "I'm back—so tired. Dad, do we have anything sweet?"
+Me: "I'm back—so tired. Dad, do we have anything sweet left?"
 :::
 
 ::: voice-father
@@ -53,8 +54,7 @@ Me: "There's a senior doctor who's very keen on doing clinical trials. They say 
 :::
 
 ::: voice-father
-Dad: "It's true that cancer trials often use overall survival as an endpoint, but judging everything by that standard alone is a bit simplistic.
-Also, people often use ‘hard' and ‘soft' casually, but if we're being precise, it's closer to objective versus subjective."
+Dad: "It's true that cancer trials often use overall survival as an endpoint, but judging everything by that standard alone is a bit simple. Also, people often use ‘hard' and ‘soft' casually, but if we're being precise, it's closer to objective versus subjective."
 :::
 
 ::: voice-daughter
@@ -62,11 +62,13 @@ Me: "Objective? Subjective?"
 :::
 
 ::: voice-father
-Dad: "A common example is this: OS is hard, PFS is soft. OS depends only on the date of death and the last confirmation of survival—that's relatively objective. PFS, on the other hand, includes disease progression as an event, so you need information about when progression occurred. Clinically, that judgment can sometimes be subjective—based on symptoms, tumor markers, or imaging interpretation. Because those judgments can vary, some people call PFS a ‘soft' endpoint."
+
+
+Dad: "A common example is this: OS is hard, PFS is soft. OS depends only on the date of death and the last confirmation of survival—that’s why people call it relatively objective. PFS, on the other hand, includes disease progression as an event, so you need information about when progression occurred. Clinically, that judgment can sometimes be subjective—based on symptoms, tumor markers, or imaging interpretation. Because those judgments can vary, some people call PFS a ‘soft' endpoint."
 :::
 
 ::: voice-daughter
-Me: "I see. So hard equals objective, soft equals subjective. Then my questionnaire really is a soft endpoint—it's asking about patients' own experiences."
+Me: "I see. So when people say hard and soft, they really mean objective and subjective. Then my questionnaire really is a soft endpoint—it's asking about patients' own experiences."
 :::
 
 ::: voice-father
@@ -74,7 +76,7 @@ Dad: "Maybe. But what your senior probably meant is that, when studying return t
 :::
 
 ::: voice-daughter
-Me: "So can I think of it like this? Hard endpoints have no bias, soft endpoints do?"
+Me: "So can I think of it like this? Hard endpoints have no bias, and soft endpoints do?"
 :::
 
 ::: voice-father
@@ -141,7 +143,7 @@ Dad: "Where did you hear that word? Good question—but this is a bit different.
 - Confounding
 
 ::: voice-father
-Dad: "Thinking in these three categories at the design stage helps you plan countermeasures: avoid selective inclusion, collect information carefully, and make groups comparable except for the factor of interest."
+Dad: "Thinking in these three categories at the design stage helps you plan countermeasures early: avoid selective inclusion, collect information carefully, and make groups comparable except for the factor of interest."
 :::
 
 ::: voice-daughter

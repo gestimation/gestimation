@@ -345,7 +345,7 @@ Cox回帰から計算される指標で、生存曲線を比較するために�
 
 統計学では、推定方法を推定量（estimator）、推定した結果を推定値（estimate）、推定しようとしている対象を推定目標（estimand）といいます。ここは論文を書くとき注意が必要なところで、MethodsではKaplan-Meier estimatorと書くのが自然ですし、ResultsではKaplan-Meier estimateを用いることが多いでしょう。「人名+estimator」の代わりに「人名+method」という表記もできて、Kaplan-Meier methodの方がより広い意味で用いることができます。
 
-最後に注意してほしいのが、累積発生率線（cumulative incidence curve）や累積発生関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。専門的には、統計家の名前を用いてAalen-Johansen曲線とも呼びます。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生曲線と区別しないと誤解が生じます。
+最後に注意してほしいのが、累積発生曲線（cumulative incidence curve）や累積発生関数（cumulative incidence function）です。論文の図の縦軸のラベルに用いられることが多い表現ですが、生存曲線と本質的に違いはないと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。専門的には、統計家の名前を用いてAalen-Johansen曲線とも呼びます。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生曲線と区別しないと誤解が生じます。
 :::
 
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}

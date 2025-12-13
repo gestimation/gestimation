@@ -28,7 +28,7 @@ Keywords: hypothesis/outcome/population, observational study, study design, lang
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "Dad, you really are a professor of statistics, right?”
+Me: "Dad...you really are a professor of statistics, right?”
 :::
 
 ::: voice-father
@@ -44,11 +44,11 @@ Dad: "Half my domain, half yours. You see the patients, I only see the data. Do 
 :::
 
 ::: voice-daughter
-Me: "Nope.”
+Me: "Nope. Not really.”
 :::
 
 ::: voice-father
-Dad: "Without at least a working hypothesis, it’s hard to design a good study.”
+Dad: "Without at least a working hypothesis, it becomes hard to design a good study."
 :::
 
 
@@ -73,7 +73,7 @@ Me: "Hm? Patients who had cancer surgery at our hospital.”
 :::
 
 ::: voice-father
-Dad: "Do gastric cancer patients ever receive a stoma?”
+Dad: "Do gastric cancer patients ever receive a stoma...?”
 :::
 
 ::: voice-daughter
@@ -107,7 +107,7 @@ Generalizability means gathering data that is useful for other hospitals too, ri
 
 
 ::: voice-father
-Dad: "In class, I tell my students this:"
+Dad: "In class, I usually tell my students something like this:"
 :::
 
 > When your clinical question is still vague,  
@@ -119,7 +119,7 @@ Dad: It sounds fancy, but we simply call that 'structuring’ a study.”
 :::
 
 ::: voice-daughter
-Me: "Structuring...? That sounds suspiciously formal. Okay, I’ve heard the word before.”
+Me: "Structuring…? That sounds like something from a meeting. Okay, I’ve heard the word before.”
 :::
 
 ::: voice-father
@@ -223,7 +223,7 @@ So "structuring the question” doesn’t mean you have to force every study int
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: ”I see...Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”
+Me: ”I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”
 :::
 
 ::: voice-father

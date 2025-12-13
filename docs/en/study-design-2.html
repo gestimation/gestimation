@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-01">
-<meta name="description" content="A coffee-chat guide from outcome types (continuous, binary, count, survival) to common R functions. The daughter learns how endpoints shape analysis choices.">
+<meta name="dcterms.date" content="2025-12-14">
+<meta name="description" content="This post is part of a long-form series on how clinicians learn research and statistics, told through conversations over coffee. In this episode, a clinician daughter and her statistician father build a practical mental map from outcome types (continuous, binary, count, survival) to probability models and common R functions such as ggplot() and cifplot(). This article can be read on its own and serves as a gentle entry point to the series.">
 
 <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes – Coffee and Research</title>
 <style>
@@ -208,7 +208,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <div>
   <div class="description">
-    A coffee-chat guide from outcome types (continuous, binary, count, survival) to common R functions. The daughter learns how endpoints shape analysis choices.
+    This post is part of a long-form series on how clinicians learn research and statistics, told through conversations over coffee. In this episode, a clinician daughter and her statistician father build a practical mental map from outcome types (continuous, binary, count, survival) to probability models and common R functions such as ggplot() and cifplot(). This article can be read on its own and serves as a gentle entry point to the series.
   </div>
 </div>
 
@@ -219,7 +219,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2025</p>
+      <p class="date">December 14, 2025</p>
     </div>
   </div>
   
@@ -246,7 +246,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="four-types-of-data-items">Four types of data items</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Okay, coffee is ready. Can I keep you a bit longer?”</p>
+<p>Me: “Okay, coffee’s ready. Can I keep you a bit longer—just a bit?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “If coffee is involved, yes. A warm cup is perfect now that the air’s turning autumn-like.”</p>
@@ -255,7 +255,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Me: “You said something earlier that stuck with me: the R function we use depends on the outcome. I didn’t really get that part. In my head, data are just…numbers? What’s there to distinguish?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “They’re all numbers, yes. But for statistics, the <strong>type of data</strong> matters a lot. Very roughly, we use four big categories.”</p>
+<p>Dad: “They’re all numbers, yes. But for statistics, the <em>type</em> of data matters more than people expect.”</p>
 </div>
 </div>
 <ul>
@@ -296,10 +296,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Dad: “To summarize binary data you can use <code>table()</code>. For p-values, <code>fisher.test()</code>. For more complex analyses, regression models like <code>glm(family = binomial)</code>. For survival data, you’ll see functions like <code>survfit()</code>, <code>coxph()</code>, and <code>cifplot()</code>.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations”</p>
+<p>Me: “There is no way I can memorize all that. In class I just typed whatever they put on the slides. Those functions are basically incantations to me.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You don’t need to memorize them.”</p>
+<p>Dad: “You don’t need to memorize them—not all at once, at least.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Wait, I don’t?”</p>
@@ -311,13 +311,16 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Me: “Probability distribution?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong>—and <strong>binomial distribution</strong>?”</p>
+<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong> — and <strong>binomial distribution</strong>?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “At least that one, yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Any statistical method beyond simple description rests on some kind of <strong>probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
+<p>Dad: “Almost any statistical method beyond simple description rests on some kind <strong>of probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
+</div>
+<div class="voice-father">
+<p>Me: “So it’s more about rough matching than exact formulas.”</p>
 </div>
 </div>
 <ul>
@@ -332,7 +335,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="voice-daughter">
 <p>Me: “I don’t know Poisson and exponential. Aren’t those basically curse words?”</p>
 </div>
-<div class="voice-daughter">
+<div class="voice-father">
 <p>Dad: “Yeah, I agree it doesn’t sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, <a href="glossary.html"><strong>feel free to come back to it anytime</strong></a>. Anyway, the key is to learn the patterns—which probability model to use for which data type.”</p>
 </div>
 <div class="voice-daughter">
@@ -375,7 +378,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Me: “Got it. That actually clears things up a lot. I really did think I had to install it every single time.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Installing every time is like buying coffee beans every time you brew. No one does that. You buy the beans once and just grind when you drink.”</p>
+<p>Dad: “Installing every time is like buying coffee beans every time you brew coffee. No one does that. You buy the beans once and just grind when you drink.”</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Generating simulated data">
