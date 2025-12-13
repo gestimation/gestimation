@@ -101,24 +101,32 @@ An episode where she learns from her father — from interpreting logistic regre
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
 - [Why Logistic Regression Fails in Small Samples]
-- [Simpson’s paradox]
+- [Simpson's paradox]
 
-### 7. Causal Inference — To find causality
+### 7. Truth — What defines it?
+
+- [What Data Cannot Tell Us]
+- [What Could Have Happened]
+- [What Is It That You Want to Know?]
+
+### 8. Causal Inference — To find causality
 
 Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the **language of causality** needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
-- [Common Causes and Confounders]
+- [A Subtle Distinction between Common Causes and Confounders]
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
-- [Backdoor Paths and Confounders]
+- [A Circle, an Equation, and a Cylinder]
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
-### 8. Publish a Paper — The craft of research
+### 9. Publish a Paper — Beyond the research
 
 How to communicate research findings, creating charts and graphs, tips for revising, navigating peer review. A quiet lecture for researchers, exploring what lies beyond statistics.
 
-- [Publish a paper I]
-- [Publish a paper II]
-- [Publish a paper III]
+- [A Subtle Distinction Between Editors and Reviewers]
+- [Three Tips for Writing a Paper]
+- [Communicating with Care]
+- [A Morning Just Before Submission]
 
 ------------------------------------------------------------------------
 

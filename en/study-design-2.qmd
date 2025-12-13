@@ -1,6 +1,6 @@
 ---
 title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
-description: "A Conversation on Causality at Our Table. Study Design II − Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
+description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn R functions for common outcomes from her father."
 format:
   html:
     toc: true

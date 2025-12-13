@@ -1,6 +1,6 @@
 ---
-title: "Outcomes: The Bridge from Data Collection to Analysis"
-description: "A Conversation on Causality at Our Table. Study Design III − Outcomes: The Bridge from Data Collection to Analysis"
+title: "A First Step into Survival and Competing Risks Analysis with R"
+description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn what do researchers mean by outcome from her father."
 format:
   html:
     toc: true

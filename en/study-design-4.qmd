@@ -1,6 +1,6 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
-description: "A Conversation on Causality at Our Table. Study Design IV − A First Step into Survival and Competing Risks Analysis with R"
+description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn survival and competing risks analysis from her father."
 format:
   html:
     toc: true

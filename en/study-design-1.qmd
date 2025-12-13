@@ -1,6 +1,6 @@
 ---
 title: "A Story of Coffee Chat and Research Hypothesis"
-description: "A Conversation on Causality at Our Table. Study Design I − A Story of Coffee Chat and Research Hypothesis"
+description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research."
 format:
   html:
     toc: true

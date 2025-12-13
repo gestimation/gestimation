@@ -45,5 +45,5 @@ format:
   html:
     theme: cosmo
     toc: true
-    css: styles.scs
+    css: styles.css
     page-layout: full
