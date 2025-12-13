@@ -268,8 +268,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 :::
 ::::::::::::::::::::::::::::::::: 
 
-### エピソード
+### 次のエピソード
 
 - [What Data Cannot Tell Us](truth-1.html)
 - [What Could Have Happened](truth-2.html)
-- [What Is It That You Want to Know?](truth-3.html)

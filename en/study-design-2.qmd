@@ -272,7 +272,7 @@ Me: "I don't know Poisson and exponential. Aren’t those basically curse words?
 :::
 
 ::: voice-daughter
-Dad: "Yeah, I agree it doesn't sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, [feel free to come back to it anytime](glossary.html). Anyway, the key is to learn the patterns—which probability model to use for which data type."
+Dad: "Yeah, I agree it doesn't sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, [**feel free to come back to it anytime**](glossary.html). Anyway, the key is to learn the patterns—which probability model to use for which data type."
 :::
 
 ::: voice-daughter

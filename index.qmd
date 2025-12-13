@@ -189,7 +189,7 @@ A series of short, warm stories about learning research, written in both English
 
   [Learning materials for this series](https://righteous-manager-7af.notion.site/d2920bb2ebb9474bb96702d29febcb53)
 
-- **Professor Giant Salamander's Biotatistics Seminar: Paper Reading Level Up 30** (in Japanese)
+- **Professor Giant Salamander's Biostatistics Seminar: Paper Reading Level Up 30** (in Japanese)
 
   [Publisher site](https://www.yodosha.co.jp/yodobook/book/9784758117975/)
 
@@ -206,7 +206,7 @@ A series of short, warm stories about learning research, written in both English
 
 <div class="about-section">
 
-## About the author
+## About the author—gestimation
 
 <img src="image/portrait.jpg" width="120" class="author-photo">
 

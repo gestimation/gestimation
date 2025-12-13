@@ -340,19 +340,7 @@ Keywords: bias, hypothesis/outcome/population, language/writing
 ::: 
 :::::::::::::::::::::::::::::::::
 
-### このシリーズ
+### 次のエピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Communicating with Care](publish-a-paper-3.html)
-- [A Morning Just Before Submission](publish-a-paper-4.html)
-
-### 過去のシリーズと用語集
-
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
-- [From Risk to Logistic Regression](logistic-regression-1.html)
-- [What Data Cannot Tell Us](truth-1.html)
-- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
-- [Statistical Terms in Plain Language](glossary.html)

@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sat, 13 Dec 2025 07:46:11 GMT</lastBuildDate>
+<lastBuildDate>Sat, 13 Dec 2025 08:37:33 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -398,7 +398,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Sat, 13 Dec 2025 07:46:11 GMT</pubDate>
+  <pubDate>Sat, 13 Dec 2025 08:37:33 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -646,7 +646,7 @@ a:hover {
 <p>Me: “I don’t know Poisson and exponential. Aren’t those basically curse words?”</p>
 </div>
 <div class="voice-daughter">
-<p>Dad: “Yeah, I agree it doesn’t sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, <a href="glossary.html">feel free to come back to it anytime</a>. Anyway, the key is to learn the patterns—which probability model to use for which data type.”</p>
+<p>Dad: “Yeah, I agree it doesn’t sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, <a href="glossary.html"><strong>feel free to come back to it anytime</strong></a>. Anyway, the key is to learn the patterns—which probability model to use for which data type.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Uh-huh. And what does that have to do with R?”</p>
@@ -1153,7 +1153,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Sat, 13 Dec 2025 07:46:11 GMT</pubDate>
+  <pubDate>Sat, 13 Dec 2025 08:37:33 GMT</pubDate>
 </item>
 </channel>
 </rss>
