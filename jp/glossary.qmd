@@ -151,7 +151,7 @@ a:hover {
 # Glossary − Statistical Terms in Plain Language
 
 ::: {.serif-block .text-right}
-Keywords: effect-measures, generalized linear model, p-value, scientific writing, study design. survival/competing-risk
+Keywords: causal model, effect-measures, generalized linear model, probability model, p-value, scientific writing, study design. survival/competing-risk
 :::
 
 
@@ -169,6 +169,10 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 :::
 :::::::::::::::::::::::::::::::::
 
+**Aalen-Johansen法　Aalen-Johansen method**
+
+競合リスク解析において、累積発生曲線を推定する方法
+
 **αエラー　alpha error**
 
 治療が本当は効かないのに有効と考えたり、関連がないのにあると判断してしまったりする類の誤り。偽陽性といってもよい。p値などを用いて5%以下に抑えることが、医学研究の慣習になっている
@@ -185,9 +189,17 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 
 ある変数が他の変数とどのような関連にあるのかを調べるための統計手法。回帰分析と同義だが、「分析」は統計手法を指すニュアンスがあるのに対して、「モデル」というとなんらかの数式や確率分布を意味することが多い。
 
+**確率モデル　probability model**
+
+抽象的なデータの見方を「モデル」とこの作品では呼んでいる。確率モデルは、データがどのような確率分布から発生するかを仮定したモデルのこと。
+
 **片側p値　one-sided p-value**
 
 相関には、正の相関と負の相関があるが、そのうちのどちらかにしか関心がないとき用いられるp値のこと。片側ではなく両側p値を用いることが一般的
+
+**Kaplan-Meier法　Kaplan-Meier method**
+
+生存時間解析において、生存曲線を推定する方法
 
 **競合リスク　competing risk**
 
@@ -237,6 +249,10 @@ Keywords: effect-measures, generalized linear model, p-value, scientific writing
 
 治療が患者の予後に与える効果を調べるとき、臨床的に意味のある指標が得られないことがある。そのような状況で代わりに用いられるエンドポイントやアウトカムのこと。たとえばがん臨床試験では、奏効率が全生存期間の代替エンドポイントとして用いられてきたが、延命効果があるかどうかを必ずしも反映しないという批判も多い
 
+**DAG（有効非循環グラフ）　directed acyclic graph**
+
+抽象的なデータの見方を「モデル」とこの作品では呼んでいる。DAGは、変数間の因果関係を矢印で表した構造的な因果モデルの一種。
+
 **デザイン　design**
 
 統計学では昔から実験計画のことを”design”と呼んできたが、それが転じて、研究立案やその際に決めるべき要素を意味するようになった。ランダム化臨床試験、調査、コホート研究などは、デザインの一種
@@ -285,6 +301,10 @@ Cox回帰から計算される指標で、生存曲線を比較するために�
 
 相関には、正の相関と負の相関があるが、両方に関心があるとき用いられるp値のこと。片側ではなく両側p値を用いることが一般的
 
+**Rubin因果モデル　Rubin causal model**
+
+抽象的なデータの見方を「モデル」とこの作品では呼んでいる。Rubin因果モデルは、同じ解析単位において原因が別の値をとっていたとき、アウトカムがどうなっていたか（潜在結果変数）を用いて、因果効果を定義したモデルのこと。割付アルゴリズムや確率分布を含めた枠組みを指すこともあるが、因果効果の定義に関わる部分に焦点を当てるため、それらは明示的には扱わない。
+
 **ロジスティック回帰　logistic regression**
 
 ある事象が生じる確率と、他の変数との関連を調べるための統計手法。2値データがアウトカムのときの回帰モデルの一種。回帰係数の指数（exponential）をとることでオッズ比を計算できる
@@ -325,7 +345,7 @@ Cox回帰から計算される指標で、生存曲線を比較するために�
 
 統計学では、推定方法を推定量（estimator）、推定した結果を推定値（estimate）、推定しようとしている対象を推定目標（estimand）といいます。ここは論文を書くとき注意が必要なところで、MethodsではKaplan-Meier estimatorと書くのが自然ですし、ResultsではKaplan-Meier estimateを用いることが多いでしょう。「人名+estimator」の代わりに「人名+method」という表記もできて、Kaplan-Meier methodの方がより広い意味で用いることができます。
 
-最後に注意してほしいのが、累積発生率線（cumulative incidence curve）や累積発生関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生曲線と区別しないと誤解が生じます。
+最後に注意してほしいのが、累積発生率線（cumulative incidence curve）や累積発生関数（cumulative incidence function）です。生存曲線と同じだと思いがちですよね。しかしこれらは、競合リスクがあるときにだけ用いられる、統計家が意識して区別している用語です。専門的には、統計家の名前を用いてAalen-Johansen曲線とも呼びます。生存曲線の上下を反転したグラフを”cumulative”と呼ぶことがありますが、これは統計用語ではなく慣習的な表現です。累積発生曲線と区別しないと誤解が生じます。
 :::
 
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
