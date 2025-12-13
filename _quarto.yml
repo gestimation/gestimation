@@ -45,5 +45,5 @@ format:
   html:
     theme: cosmo
     toc: true
-    css: coffee.scss
+    css: styles.scs
     page-layout: full
