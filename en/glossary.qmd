@@ -1,5 +1,6 @@
 ---
 title: "Statistical Terms in Plain Language"
+description: "A Conversation on Causality at Our Table. Glossary − Statistical Terms in Plain Language"
 format:
   html:
     toc: true

@@ -1,5 +1,6 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
+description: "A Conversation on Causality at Our Table. Study Design IV − A First Step into Survival and Competing Risks Analysis with R"
 format:
   html:
     toc: true

@@ -1,5 +1,6 @@
 ---
 title: "Outcomes: The Bridge from Data Collection to Analysis"
+description: "A Conversation on Causality at Our Table. Study Design III − Outcomes: The Bridge from Data Collection to Analysis"
 format:
   html:
     toc: true

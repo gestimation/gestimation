@@ -1,18 +1,19 @@
 ---
 title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
+description: "A Conversation on Causality at Our Table. Study Design II − Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-probability model, simulation, survival/competing-risk, language/writing
+Keywords: probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ------------------------------------------------------------------------

@@ -10,7 +10,7 @@ listing:
   feed:
     title: "A Conversation on Causality at Our Table"
     items: 20
-    type: partial
+    type: metadata
 ---
 
 ::: hero-header

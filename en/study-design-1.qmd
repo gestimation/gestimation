@@ -1,5 +1,6 @@
 ---
 title: "A Story of Coffee Chat and Research Hypothesis"
+description: "A Conversation on Causality at Our Table. Study Design I − A Story of Coffee Chat and Research Hypothesis"
 format:
   html:
     toc: true
