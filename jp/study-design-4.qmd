@@ -1,6 +1,11 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn survival and competing risks analysis from her father."
+description: "A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias."
+tags:
+  - Bias
+  - R simulation
+  - Study design
+  - Survival & competing risks
 format:
   html:
     toc: true

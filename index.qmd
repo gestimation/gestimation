@@ -166,7 +166,8 @@ A toolkit for survival and competing risks analysis in R — a more technical si
 
 ## A Conversation on Causality at Our Table — *How I Learned Research from My Father*
 
-A series of short, warm stories about learning research, written in both English and Japanese. Through conversations between a father and daughter, the *way researchers think* — from questions and assumptions to numbers and conclusion — unfold naturally. All of it is shared freely, like something warm to drink during a hallway conversation at a conference, there whenever you need a quiet break.
+A series of short, warm stories about learning research, written in both English and Japanese. 
+Through conversations between a father and daughter, the *way researchers think* unfolds naturally — from questions and assumptions to numbers and conclusions. All of it is shared freely, like something warm to drink in a hallway conversation at a conference, there whenever you need a quiet break.
 
 - For readers who want to grasp the *feel* of research before opening a textbook
 - Light, conversational chapters — each readable on its own, yet forming a larger story when read together
@@ -210,7 +211,7 @@ A series of short, warm stories about learning research, written in both English
 
 <img src="image/portrait.jpg" width="120" class="author-photo">
 
-Alongside developing methods and tools, he is interested in how statistical ideas are understood, interpreted, and used in practice—especially where methods, assumptions, and human judgment meet. This site collects some of his research, teaching materials, and essays, shared freely for anyone who finds them useful.
+Alongside developing methods and tools, he is interested in how statistical ideas are understood, interpreted, and used in practice — especially where methods, assumptions, and human judgment meet. This site collects some of his research, teaching materials, and essays, shared freely for anyone who finds them useful.
 
 **[More information](./about/)**
 

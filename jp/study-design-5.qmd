@@ -1,6 +1,11 @@
 ---
 title: "When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn points to consider in study design, selection bias, information bias, and confounding, from her father."
+description: "How bias enters clinical surveys. Through a coffee chat, the daughter learns how selection bias, information bias, and confounding arise at the study design stage."
+tags:
+  - Bias
+  - Language & writing
+  - Observational study
+  - Study design
 format:
   html:
     toc: true
@@ -13,7 +18,7 @@ format:
 # Study Design 5 − When Bias Creeps In
 
 ::: {.serif-block .text-right}
-Keywords: bias, confounding/collapsibility, observational study, probability model, simulation, study design, survival/competing-risk
+Keywords: bias, language & writing, observational study, study design
 :::
 ------------------------------------------------------------------------
 

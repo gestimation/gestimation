@@ -1,9 +1,15 @@
 ---
 title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn R functions for common outcomes from her father."
+description: "A coffee-chat guide from outcome types (continuous, binary, count, survival) to common R functions. The daughter learns how endpoints shape analysis choices."
+tags:
+  - Language & writing
+  - Probability model
+  - R simulation
+  - Survival & competing risks
 format:
   html:
     toc: true
+date: 2025-12-01
 ---
 
 ::: {.hero-header}
@@ -13,7 +19,7 @@ format:
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: probability model, simulation, survival/competing-risk, language/writing
+Keywords: probability model, R simulation, survival & competing risks, language & writing
 :::
 
 ------------------------------------------------------------------------

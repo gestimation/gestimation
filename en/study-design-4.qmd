@@ -1,6 +1,11 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn survival and competing risks analysis from her father."
+description: "A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias."
+tags:
+  - Bias
+  - R simulation
+  - Study design
+  - Survival & competing risks
 format:
   html:
     toc: true
@@ -13,12 +18,12 @@ format:
 # Study Design IV − A First Step into Survival and Competing Risks Analysis with R
 
 ::: {.serif-block .text-right}
-Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk
+Keywords: bias, R simulation, study design, survival & competing risks
 :::
 
 ------------------------------------------------------------------------
 
-### Survey Items and Types of Data
+### Survey items and types of data
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
@@ -30,7 +35,7 @@ Dad: "Let's see."
 :::
 :::::::::::::::::::::::::::::::::
 
-### Table 1. My Original Questionnaire
+### Table 1. My original questionnaire
 
 | Item | Response |
 |------|----------|
@@ -108,7 +113,7 @@ Dad: "I made a few tweaks to your questionnaire, so I'll use this version to exp
 ::::::::::::::::::::::::::::::::: 
 
 
-### Table 2-A. Questionnaire for Survivors
+### Table 2-A. Questionnaire for survivors
 
 | Item | Response |
 |------|----------|
@@ -122,7 +127,7 @@ Dad: "I made a few tweaks to your questionnaire, so I'll use this version to exp
 | For those who wished to return: Were you able to return to work? | Yes ____ / No ____ |
 
 
-### Table 2-B. Questionnaire for Deceased Patients
+### Table 2-B. Questionnaire for deceased patients
 
 | Item | Response |
 |------|----------|
@@ -176,7 +181,7 @@ Me: "So return-to-work status can also be treated as survival data?"
 :::
 
 ::: voice-father
-Dad: "It can. In this case, you'd look at the 'time from discharge to the date of return to work'. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn't look any different from ordinary continuous data, but the essence of survival data is the presence of **censoring**. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work."
+Dad: "It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn't look any different from ordinary continuous data, but the essence of survival data is the presence of **censoring**. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work."
 :::
 
 ::: voice-daughter
@@ -354,10 +359,10 @@ Next is RFS. Apart from the variables specified inside `Event()`, the code is un
 ::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r}
 cifplot(
-  Event(time_cir, status_cir) ~ stoma,
+  Event(time_rfs, status_rfs) ~ stoma,
   data         = dat,
-  outcome.type = "competing-risk",
-  label.y      = "Cumulative incidence of relapse"
+  outcome.type = "survival",
+  label.y      = "Relapse-free survival"
 )
 ```
 :::
@@ -375,10 +380,11 @@ By additionally specifying `outcome.type = "competing-risk"`, we draw the Aalen-
 
 ::: {.callout-note appearance="simple" collapse="true" title="R code and output"}
 ```{r}
-cifplot(Event(time_os, status_os) ~ stoma,
+cifplot(
+  Event(time_cir, status_cir) ~ stoma,
   data         = dat,
-  outcome.type = "survival",
-  label.y      = "Overall survival"
+  outcome.type = "competing-risk",
+  label.y      = "Cumulative incidence of relapse"
 )
 ```
 :::

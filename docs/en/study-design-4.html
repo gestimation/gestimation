@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn survival and competing risks analysis from her father.">
+<meta name="description" content="A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias.">
 
 <title>A First Step into Survival and Competing Risks Analysis with R – Coffee and Research</title>
 <style>
@@ -190,10 +190,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul>
   <li><a href="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" id="toc-study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="nav-link active" data-scroll-target="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r">Study Design IV − A First Step into Survival and Competing Risks Analysis with R</a>
   <ul class="collapse">
-  <li><a href="#survey-items-and-types-of-data" id="toc-survey-items-and-types-of-data" class="nav-link" data-scroll-target="#survey-items-and-types-of-data">Survey Items and Types of Data</a></li>
-  <li><a href="#table-1.-my-original-questionnaire" id="toc-table-1.-my-original-questionnaire" class="nav-link" data-scroll-target="#table-1.-my-original-questionnaire">Table 1. My Original Questionnaire</a></li>
-  <li><a href="#table-2-a.-questionnaire-for-survivors" id="toc-table-2-a.-questionnaire-for-survivors" class="nav-link" data-scroll-target="#table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for Survivors</a></li>
-  <li><a href="#table-2-b.-questionnaire-for-deceased-patients" id="toc-table-2-b.-questionnaire-for-deceased-patients" class="nav-link" data-scroll-target="#table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for Deceased Patients</a></li>
+  <li><a href="#survey-items-and-types-of-data" id="toc-survey-items-and-types-of-data" class="nav-link" data-scroll-target="#survey-items-and-types-of-data">Survey items and types of data</a></li>
+  <li><a href="#table-1.-my-original-questionnaire" id="toc-table-1.-my-original-questionnaire" class="nav-link" data-scroll-target="#table-1.-my-original-questionnaire">Table 1. My original questionnaire</a></li>
+  <li><a href="#table-2-a.-questionnaire-for-survivors" id="toc-table-2-a.-questionnaire-for-survivors" class="nav-link" data-scroll-target="#table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for survivors</a></li>
+  <li><a href="#table-2-b.-questionnaire-for-deceased-patients" id="toc-table-2-b.-questionnaire-for-deceased-patients" class="nav-link" data-scroll-target="#table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for deceased patients</a></li>
   <li><a href="#survival-analysis-and-competing-risk-analysis" id="toc-survival-analysis-and-competing-risk-analysis" class="nav-link" data-scroll-target="#survival-analysis-and-competing-risk-analysis">Survival Analysis and Competing Risk Analysis</a></li>
   <li><a href="#episodes-glossary-and-r-script" id="toc-episodes-glossary-and-r-script" class="nav-link" data-scroll-target="#episodes-glossary-and-r-script">Episodes, glossary, and R-script</a></li>
   </ul></li>
@@ -210,7 +210,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <div>
   <div class="description">
-    Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn survival and competing risks analysis from her father.
+    A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias.
   </div>
 </div>
 
@@ -233,11 +233,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <section id="study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="level1">
 <h1>Study Design IV − A First Step into Survival and Competing Risks Analysis with R</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, observational study, hypothesis/outcome/population, simulation, survival/competing-risk</p>
+<p>Keywords: bias, R simulation, study design, survival &amp; competing risks</p>
 </div>
 <hr>
 <section id="survey-items-and-types-of-data" class="level3">
-<h3 class="anchored" data-anchor-id="survey-items-and-types-of-data">Survey Items and Types of Data</h3>
+<h3 class="anchored" data-anchor-id="survey-items-and-types-of-data">Survey items and types of data</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>Me: “Oh wow, that takes me back. Is that the Rubik’s Cube I bought when I was in elementary school? You’re still playing with it? If you’ve got a minute, can I ask you something? Remember the study we talked about on return to work among cancer survivors? I’ve drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like.”</p>
@@ -248,7 +248,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="table-1.-my-original-questionnaire" class="level3">
-<h3 class="anchored" data-anchor-id="table-1.-my-original-questionnaire">Table 1. My Original Questionnaire</h3>
+<h3 class="anchored" data-anchor-id="table-1.-my-original-questionnaire">Table 1. My original questionnaire</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
@@ -341,7 +341,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="table-2-a.-questionnaire-for-survivors" class="level3">
-<h3 class="anchored" data-anchor-id="table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for Survivors</h3>
+<h3 class="anchored" data-anchor-id="table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for survivors</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
@@ -390,7 +390,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </table>
 </section>
 <section id="table-2-b.-questionnaire-for-deceased-patients" class="level3">
-<h3 class="anchored" data-anchor-id="table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for Deceased Patients</h3>
+<h3 class="anchored" data-anchor-id="table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for deceased patients</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -456,7 +456,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Me: “So return-to-work status can also be treated as survival data?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “It can. In this case, you’d look at the ‘time from discharge to the date of return to work’. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn’t look any different from ordinary continuous data, but the essence of survival data is the presence of <strong>censoring</strong>. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work.”</p>
+<p>Dad: “It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn’t look any different from ordinary continuous data, but the essence of survival data is the presence of <strong>censoring</strong>. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “True, but isn’t that fine as it is?”</p>
@@ -696,10 +696,10 @@ R code and output
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Event</span>(time_rfs, status_rfs) <span class="sc">~</span> stoma,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Cumulative incidence of relapse"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Relapse-free survival"</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -744,11 +744,12 @@ R code and output
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Event</span>(time_cir, status_cir) <span class="sc">~</span> stoma,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"competing-risk"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Cumulative incidence of relapse"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

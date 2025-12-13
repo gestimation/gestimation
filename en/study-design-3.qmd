@@ -1,9 +1,15 @@
 ---
 title: "Outcomes: The Bridge from Data Collection to Analysis"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter learn what do researchers mean by outcome from her father."
+description: "A coffee-chat introduction to what researchers mean by an outcome: survival endpoints (OS, DFS, RFS, CIR), time origin, and why definitions shape analysis."
+tags:
+  - Clinical trial
+  - Language & writing
+  - Research hypothesis
+  - Survival & competing risks
 format:
   html:
     toc: true
+date: 2025-12-08
 ---
 
 ::: {.hero-header}
@@ -13,12 +19,12 @@ format:
 # Study Design III − Outcomes: The Bridge from Data Collection to Analysis
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, hypothesis/outcome/population, survival/competing-risk, language/writing
+Keywords: clinical trial, research hypothesis, survival & competing risks, language & writing
 :::
 
 ------------------------------------------------------------------------
 
-### What Do We Mean by "Outcome"?
+### What do we mean by "outcome"?
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter

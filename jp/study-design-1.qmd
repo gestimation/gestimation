@@ -1,9 +1,15 @@
 ---
 title: "A Story of Coffee Chat and Research Hypothesis"
-description: "Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research."
+description: "A coffee-chat introduction to research hypotheses and PECO/PICO for clinicians starting their first study. The daughter asks her father about the very starting point of clinical research."
+tags:
+  - Language & writing
+  - Observational study
+  - Research hypothesis
+  - Study design
 format:
   html:
     toc: true
+date: 2025-12-01
 ---
 
 ::: {.hero-header}
@@ -13,7 +19,7 @@ format:
 # Study Design I − A Story of Coffee Chat and Research Hypothesis
 
 ::: {.serif-block .text-right}
-Keywords: hypothesis/outcome/population, observational study, study design, language/writing
+Keywords: research hypothesis, observational study, study design, language & writing
 :::
 
 ------------------------------------------------------------------------
