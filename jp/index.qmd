@@ -3,138 +3,6 @@ format:
   html:
     toc: true
 ---
-<style>
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.serif-text p {
-  font-family: "Georgia", "Times New Roman", serif;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
 
 ::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
@@ -192,7 +60,7 @@ a:hover {
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-### 4. Effects and Time — 効果は時間とともに
+### 5. Effects and Time — 効果は時間とともに
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
@@ -207,7 +75,7 @@ a:hover {
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
-### 5. Adjusting for Bias — 回帰モデリングの風景
+### 6. Adjusting for Bias — 回帰モデリングの風景
 
 **ロジスティック回帰**の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして...。
 
@@ -221,13 +89,13 @@ a:hover {
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-### 6. Truth — 真実
+### 7. Truth — 真実
 
 - [What Data Cannot Tell Us]
 - [What Could Have Happened]
 - [What Is It That You Want to Know?]
 
-### 7. Causal Inference — 因果を見つけるために
+### 8. Causal Inference — 因果を見つけるために
 
 有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための**因果の言葉**を、確率に関する必要最小限の数式を交えて扱います。
 
@@ -237,7 +105,7 @@ a:hover {
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
-### 8. Publish a Paper — 研究のその先
+### 9. Publish a Paper — 研究のその先
 
 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者の営み。
 
