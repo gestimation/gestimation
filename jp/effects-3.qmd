@@ -354,8 +354,7 @@ print(odds_ratio)
 
 - [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -366,4 +365,11 @@ print(odds_ratio)
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-- [frequentist.R](../from-coffee-chat-to-r/effects.R)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Statistical Terms in Plain Language](glossary.html)
+

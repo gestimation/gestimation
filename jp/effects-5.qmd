@@ -338,7 +338,7 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 生存時間データでは一部の対象者で打ち切りがあること（これ以上生存時間が長いことしかわからない）、中央値（median）の定義を思い出してください。半数以上の対象者がイベントを起こし、生存時間が確定しないと、生存確率は50%以下になりません。
 :::
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -349,4 +349,11 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-- [frequentist.R](../from-coffee-chat-to-r/effects.R)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Statistical Terms in Plain Language](glossary.html)
+

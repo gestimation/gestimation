@@ -10,7 +10,7 @@
 <atom:link href="https://gestimation.github.io/coffee-and-research/en/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sat, 13 Dec 2025 06:10:35 GMT</lastBuildDate>
+<lastBuildDate>Sat, 13 Dec 2025 07:46:11 GMT</lastBuildDate>
 <item>
   <title>A Story of Coffee Chat and Research Hypothesis</title>
   <link>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</link>
@@ -398,7 +398,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-1.html</guid>
-  <pubDate>Sat, 13 Dec 2025 06:10:35 GMT</pubDate>
+  <pubDate>Sat, 13 Dec 2025 07:46:11 GMT</pubDate>
 </item>
 <item>
   <title>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</title>
@@ -624,13 +624,13 @@ a:hover {
 <p>Me: “Probability distribution?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong>?”</p>
+<p>Dad: “You learned this as an undergrad, didn’t you? You’ve heard of the <strong>normal distribution</strong>—and <strong>binomial distribution</strong>?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “At least that one, yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Any statistical method beyond simple description is built on some <strong>probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
+<p>Dad: “Any statistical method beyond simple description rests on some kind of <strong>probability model</strong>. Normal distributions for continuous data, <strong>binomial distributions</strong> for binary data, <strong>Poisson distributions</strong> for count data. For survival data, there isn’t a single standard model, but the simplest is the <strong>exponential distribution</strong>. You don’t have to remember the formulas, just the general matching.”</p>
 </div>
 </div>
 <ul>
@@ -642,6 +642,12 @@ a:hover {
 <li>survival: nonparametric</li>
 </ul>
 <div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “I don’t know Poisson and exponential. Aren’t those basically curse words?”</p>
+</div>
+<div class="voice-daughter">
+<p>Dad: “Yeah, I agree it doesn’t sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, <a href="glossary.html">feel free to come back to it anytime</a>. Anyway, the key is to learn the patterns—which probability model to use for which data type.”</p>
+</div>
 <div class="voice-daughter">
 <p>Me: “Uh-huh. And what does that have to do with R?”</p>
 </div>
@@ -664,7 +670,7 @@ a:hover {
 <p>Me: “I see. So if I imagine the data type and its distribution, I don’t have to memorize R functions by brute force. That does sound efficient.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Exactly. Once you have that mental image, when you later read manuals or books, you’ll think, ‘Oh, this is that thing I was imagining,’ and everything clicks together. Okay, let me show you a quick demo in R. We’ll simulate age (continuous), sex and stoma status (binary), and survival time, and run simple analyses.”</p>
+<p>Dad: “Exactly. Once you have that mental image, when you later read manuals or books, you’ll think, ‘Oh, this is that thing I was imagining,’ and everything clicks together. Okay, let me show you a quick demo in R. We’ll simulate age (continuous), sex and stoma status (binary), and survival time, and run simple analyses. We will use the normal distribution, binomial distribution, and exponential distribution.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “There it is again, the spell-casting.”</p>
@@ -1129,15 +1135,16 @@ Answer
 <li>Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration’s approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7</li>
 </ul>
 </section>
-<section id="episodes-and-r-script" class="level3">
-<h3 class="anchored" data-anchor-id="episodes-and-r-script">Episodes and R-script</h3>
+<section id="episodes-glossary-and-r-script" class="level3">
+<h3 class="anchored" data-anchor-id="episodes-glossary-and-r-script">Episodes, glossary, and R-script</h3>
 <ul>
-<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
-<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
-<li><p>[Outcomes: The Bridge from Data Collection to Analysis]</p></li>
-<li><p>[A First Step into Survival and Competing Risks Analysis with R]</p></li>
-<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
-<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
+<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li>[Outcomes: The Bridge from Data Collection to Analysis]</li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
 </ul>
 
 
@@ -1146,7 +1153,7 @@ Answer
 
  ]]></description>
   <guid>https://gestimation.github.io/coffee-and-research/en/study-design-2.html</guid>
-  <pubDate>Sat, 13 Dec 2025 06:10:35 GMT</pubDate>
+  <pubDate>Sat, 13 Dec 2025 07:46:11 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -372,3 +372,8 @@ summary(rr_at_20)
 
 ### This concludes the Effects and Time series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
+- [From Risk to Logistic Regression](logistic-regression-1.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
+- [Simpson's paradox](logistic-regression-5.html)

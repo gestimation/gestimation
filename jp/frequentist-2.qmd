@@ -389,7 +389,7 @@ summary(fit)
 
 - [Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013](https://www.igaku-shoin.co.jp/book/detail/84805)
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -398,6 +398,9 @@ summary(fit)
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-- [Statistical Terms in Plain Language](glossary.html)
-
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Statistical Terms in Plain Language](glossary.html)

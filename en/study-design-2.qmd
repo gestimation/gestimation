@@ -247,7 +247,7 @@ Me: "Probability distribution?”
 :::
 
 ::: voice-father
-Dad: "You learned this as an undergrad, didn't you? You've heard of the **normal distribution**?”
+Dad: "You learned this as an undergrad, didn't you? You've heard of the **normal distribution**—and **binomial distribution**?”
 :::
 
 ::: voice-daughter
@@ -255,7 +255,8 @@ Me: "At least that one, yes.”
 :::
 
 ::: voice-father
-Dad: "Any statistical method beyond simple description is built on some **probability model**. Normal distributions for continuous data, **binomial distributions** for binary data, **Poisson distributions** for count data. For survival data, there isn't a single standard model, but the simplest is the **exponential distribution**. You don’t have to remember the formulas, just the general matching.”
+Dad: "Any statistical method beyond simple description rests on some kind of **probability model**. Normal distributions for continuous data, **binomial distributions** for binary data, **Poisson distributions** for count data. For survival data, there isn't a single standard model, but the simplest is the **exponential distribution**. You don’t have to remember the formulas, just the general matching.”
+
 :::
 :::::::::::::::::::::::::::::::::
 
@@ -265,6 +266,15 @@ Dad: "Any statistical method beyond simple description is built on some **probab
 - survival: nonparametric
 
 ::::::::::::::::::::::::::::::::: dialogue
+
+::: voice-daughter
+Me: "I don't know Poisson and exponential. Aren’t those basically curse words?"
+:::
+
+::: voice-daughter
+Dad: "Yeah, I agree it doesn't sound like something humans would use. Statistical terms are often the hardest part. If a word ever feels unclear, [feel free to come back to it anytime](glossary.html). Anyway, the key is to learn the patterns—which probability model to use for which data type."
+:::
+
 ::: voice-daughter
 Me: "Uh-huh. And what does that have to do with R?"
 :::
@@ -295,7 +305,7 @@ Me: "I see. So if I imagine the data type and its distribution, I don't have to 
 :::
 
 ::: voice-father
-Dad: "Exactly. Once you have that mental image, when you later read manuals or books, you'll think, 'Oh, this is that thing I was imagining,' and everything clicks together. Okay, let me show you a quick demo in R. We'll simulate age (continuous), sex and stoma status (binary), and survival time, and run simple analyses."
+Dad: "Exactly. Once you have that mental image, when you later read manuals or books, you'll think, 'Oh, this is that thing I was imagining,' and everything clicks together. Okay, let me show you a quick demo in R. We'll simulate age (continuous), sex and stoma status (binary), and survival time, and run simple analyses. We will use the normal distribution, binomial distribution, and exponential distribution."
 :::
 
 ::: voice-daughter
@@ -422,14 +432,13 @@ According to the review by Kim and Prasad (2016), 31 out of 83 products were rep
 
 - Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration's approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7
 
-### Episodes and R-script
+### Episodes, glossary, and R-script
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis]
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
-
+- [Statistical Terms in Plain Language](glossary.html)
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
-
 

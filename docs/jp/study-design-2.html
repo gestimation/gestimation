@@ -191,7 +191,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#データには型がある" id="toc-データには型がある" class="nav-link" data-scroll-target="#データには型がある">データには型がある</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#エピソードとrスクリプト" id="toc-エピソードとrスクリプト" class="nav-link" data-scroll-target="#エピソードとrスクリプト">エピソードとRスクリプト</a></li>
+  <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -387,7 +387,7 @@ a:hover {
 <p>お父さん「ご名答。で、計数データは、交通事故の発生件数のような、数をカウントしたデータのこと。生存時間データは、たとえば寿命とかだね。死亡など特定のイベントが起こるまでの時間を扱うデータだよ。今回のがんサバイバー調査でいえば、手術から復職までの時間とか、再発までの時間とかね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。<code>glm()</code>とか<code>survfit()</code>とか、なんか呪文みたいなのを」</p>
+<p>私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。<code>glm()</code>とか<code>survfit()</code>とか、なんかよくわからないことばを」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。パソコンある？」</p>
@@ -411,7 +411,7 @@ a:hover {
 <p>お父さん「2値データを集計するときは<code>table()</code>。p値を計算するときは<code>fisher.test()</code>。複雑な解析は<code>glm(family = binomial)</code> みたいな回帰モデル。生存時間データだと、<code>survfit()</code>、<code>coxph()</code>、それから<code>cifplot()</code>みたいな関数が出てくる」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪文なんだって」</p>
+<p>そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪詛なんだって」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「覚えなくていいよ」</p>
@@ -420,25 +420,31 @@ a:hover {
 <p>私「え、いいの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「大事なのは、どの型のデータに、どんな関数をあてるのかをイメージできること。もっといえば、どんな確率分布を仮定しているかを、なんとなくでいいから思い浮かべてほしいんだ」</p>
+<p>お父さん「大事なのは、どの型のデータに、どんなR関数をあてるのかをイメージできること。もっといえば、どんな確率分布を仮定しているかを、なんとなくでいいから思い浮かべてほしいんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「確率分布？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「学部でやったでしょ。<strong>正規分布（normal distribution）</strong>は聞いたことある？」</p>
+<p>お父さん「学部でやったでしょ。<strong>正規分布（normal distribution）</strong>は聞いたことある？2値データの<strong>2項分布（binomial distribution）</strong>は？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「それくらいはね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの<strong>確率モデル（probability model）</strong>を考えてる。連続データの正規分布とか、2値データの<strong>2項分布（binomial distribution）</strong>とか、計数データの<strong>Poisson分布</strong>とかね。生存時間データだと、標準的に使われるモデルってわけじゃないんだけど、一番シンプルな分布は<strong>指数分布（exponential distribution）</strong>っていうんだ」</p>
+<p>お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの<strong>確率モデル（probability model）</strong>を考えてる。生存時間データだと、標準的に使われるモデルってわけじゃないんだけど、一番シンプルな分布は<strong>指数分布（exponential distribution）</strong>っていうんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「知らんな。呪詛」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、人間が使う言葉とは思えないとはこっちも思うよ。でも、本題に入る前につまづいたらもったいない。<a href="glossary.html">もしわからない言葉が出てきたらいつでもおいで</a>。まあ、とにかく、どのデータの型にどんな確率モデルを使うのか、パターンを知ることだね」</p>
 </div>
 <div class="voice-daughter">
 <p>私「はあ。それとRが関係するわけ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。たとえばさ、これは覚えてほしいんだけど、<strong>割合（proportion）</strong>と<strong>率（rate）</strong>っていう指標のがある。日常生活でもよく使うでしょ？交通事故の発生率とか。でも、日常では、割合と率の違いを意識しないよね。でも、統計の世界では、割合は2項分布のパラメータ、率はPoisson分布のパラメータなんだ」</p>
+<p>お父さん「うん。たとえばさ、これは覚えてほしいんだけど、<strong>割合（proportion）</strong>と<strong>率（rate）</strong>っていう指標のがある。日常生活でもよく使うでしょ？交通事故の発生率とか。でも、日常では、割合と率の違いを意識しないよね。でも、統計の世界では、割合は2項分布のパラメータ、率はPoisson分布っていう別の確率分布のパラメータなんだ。Poisson分布は少しマニアックだけど」</p>
 </div>
 <div class="voice-daughter">
 <p>私「割合と率なんて同じ意味でしょ？」</p>
@@ -456,10 +462,10 @@ a:hover {
 <p>私「なるほどね。データの型と分布をイメージできれば、R関数丸暗記不要ってことね。そいつははかどるわ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ」</p>
+<p>お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ。使うのは正規分布、2項分布、指数分布」</p>
 </div>
 <div class="voice-daughter">
-<p>私「また呪詛が出てくるんでしょ？」</p>
+<p>私「また呪文が出てくるんでしょ？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。とりあえず<code>library(ggplot2)</code>、<code>library(cifmodeling)</code>って打って。<strong>ヒストグラム</strong>と<strong>Kaplan-Meier曲線</strong>を教えるよ」</p>
@@ -692,15 +698,16 @@ Rコードと結果はこちら
 <li>Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration’s approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7</li>
 </ul>
 </section>
-<section id="エピソードとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="エピソードとrスクリプト">エピソードとRスクリプト</h3>
+<section id="エピソード用語集rスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</h3>
 <ul>
-<li><p><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></p></li>
-<li><p><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></p></li>
-<li><p><a href="study-design-3.html">Outcomes: The Bridge from Data Collection to Analysis</a></p></li>
-<li><p>[A First Step into Survival and Competing Risks Analysis with R]</p></li>
-<li><p>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</p></li>
-<li><p><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></p></li>
+<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
+<li><a href="study-design-3.html">Outcomes: The Bridge from Data Collection to Analysis</a></li>
+<li>[A First Step into Survival and Competing Risks Analysis with R]</li>
+<li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
 </ul>
 
 

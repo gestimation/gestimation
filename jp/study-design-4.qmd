@@ -497,12 +497,12 @@ CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製�
 CDISC ADaM ADTTEでは、1がTRUEを表しています。`Event()`や`Surv()`など多くの統計パッケージのデフォルトでは、イベント=1、打ち切り=0というコーディングを想定しています。CNSRをそのまま用いることはできません。
 :::
 
-### エピソードとRスクリプト
+### エピソード、用語集、Rスクリプト
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
 - [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
-
+- [Statistical Terms in Plain Language](glossary.html)
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

@@ -283,9 +283,10 @@ Keywords: bias, confounding/collapsibility, observational study, probability mod
 
 ### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:
 
-- [Statistical Terms in Plain Language](glossary.html)
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+- [Statistical Terms in Plain Language](glossary.html)
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)

@@ -397,8 +397,7 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 がん検診の例では、$p=0.5$、15年死亡リスク比は$RR=2$なので、これを代入すると、$PAF=0.5(2-1)/{0.5(2-1)+1}=0.33$となり、上の正解と一致します。
 :::
 
-
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -409,4 +408,11 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-- [frequentist.R](../from-coffee-chat-to-r/effects.R)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Statistical Terms in Plain Language](glossary.html)
+

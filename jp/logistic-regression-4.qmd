@@ -309,7 +309,7 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 |  | なし | あり | Fine-Grayモデル | 回帰モデルの一種 |
 :::
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [From Risk to Logistic Regression](logistic-regression-1.html)
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
@@ -317,6 +317,11 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
 - [Simpson's paradox](logistic-regression-5.html)
 
-- [Statistical Terms in Plain Language](glossary.html)
-
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Statistical Terms in Plain Language](glossary.html)

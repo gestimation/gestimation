@@ -183,7 +183,7 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-daughter
-私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。`glm()`とか`survfit()`とか、なんか呪文みたいなのを」
+私「いわれてみれば、たしかに種類が違うね。でも、昔受けたRの授業では、言われた通りにコード打ってただけだったなあ。`glm()`とか`survfit()`とか、なんかよくわからないことばを」
 :::
 
 ::: voice-father
@@ -215,7 +215,7 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-daughter
-私「そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪文なんだって」
+そんなにいっぱい覚えられるわけないでしょ。Rの授業でも思ってたけど、そんなのあたかも呪詛なんだって」
 :::
 
 ::: voice-father
@@ -227,7 +227,7 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-father
-お父さん「大事なのは、どの型のデータに、どんな関数をあてるのかをイメージできること。もっといえば、どんな確率分布を仮定しているかを、なんとなくでいいから思い浮かべてほしいんだ」
+お父さん「大事なのは、どの型のデータに、どんなR関数をあてるのかをイメージできること。もっといえば、どんな確率分布を仮定しているかを、なんとなくでいいから思い浮かべてほしいんだ」
 :::
 
 ::: voice-daughter
@@ -235,7 +235,7 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-father
-お父さん「学部でやったでしょ。**正規分布（normal distribution）**は聞いたことある？」
+お父さん「学部でやったでしょ。**正規分布（normal distribution）**は聞いたことある？2値データの**2項分布（binomial distribution）**は？」
 :::
 
 ::: voice-daughter
@@ -243,7 +243,15 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-father
-お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの**確率モデル（probability model）**を考えてる。連続データの正規分布とか、2値データの**2項分布（binomial distribution）**とか、計数データの**Poisson分布**とかね。生存時間データだと、標準的に使われるモデルってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
+お父さん「単なるデータの記述より高度な統計手法では、裏でなんらかの**確率モデル（probability model）**を考えてる。生存時間データだと、標準的に使われるモデルってわけじゃないんだけど、一番シンプルな分布は**指数分布（exponential distribution）**っていうんだ」
+:::
+
+::: voice-daughter
+私「知らんな。呪詛」
+:::
+
+::: voice-father
+お父さん「そうだね、人間が使う言葉とは思えないとはこっちも思うよ。でも、本題に入る前につまづいたらもったいない。[もしわからない言葉が出てきたらいつでもおいで](glossary.html)。まあ、とにかく、どのデータの型にどんな確率モデルを使うのか、パターンを知ることだね」
 :::
 
 ::: voice-daughter
@@ -251,7 +259,7 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-father
-お父さん「うん。たとえばさ、これは覚えてほしいんだけど、**割合（proportion）**と**率（rate）**っていう指標のがある。日常生活でもよく使うでしょ？交通事故の発生率とか。でも、日常では、割合と率の違いを意識しないよね。でも、統計の世界では、割合は2項分布のパラメータ、率はPoisson分布のパラメータなんだ」
+お父さん「うん。たとえばさ、これは覚えてほしいんだけど、**割合（proportion）**と**率（rate）**っていう指標のがある。日常生活でもよく使うでしょ？交通事故の発生率とか。でも、日常では、割合と率の違いを意識しないよね。でも、統計の世界では、割合は2項分布のパラメータ、率はPoisson分布っていう別の確率分布のパラメータなんだ。Poisson分布は少しマニアックだけど」
 :::
 
 ::: voice-daughter
@@ -275,11 +283,11 @@ probability model, simulation, survival/competing-risk, language/writing
 :::
 
 ::: voice-father
-お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ」
+お父さん「そうそう。イメージがあれば、あとでマニュアルや本を見たときに、ああ、これのことかってつながるからね。じゃあ、Rでちょっとだけデモを見せてみようか。年齢（連続）、性別とストーマ（2値）、生存時間（生存時間データ）をシミュレーションして、簡単な解析をやってみるよ。使うのは正規分布、2項分布、指数分布」
 :::
 
 ::: voice-daughter
-私「また呪詛が出てくるんでしょ？」
+私「また呪文が出てくるんでしょ？」
 :::
 
 ::: voice-father
@@ -405,12 +413,12 @@ Kim and Prasad（2016）の総説論文によると、奏効率の結果に基�
 
 - Kim C and Prasad V. Strength of validation for surrogate end points used in the US Food and Drug Administration's approval of oncology drugs. Mayo Clin Proc 2016; S0025-6196(16)00125-7
 
-### エピソードとRスクリプト
+### エピソード、用語集、Rスクリプト
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
-
+- [Statistical Terms in Plain Language](glossary.html)
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)

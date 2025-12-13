@@ -323,9 +323,6 @@ Keywords: language/writing
 :::
 :::::::::::::::::::::::::::::::::
 
-### エピソード
+### 最後のエピソード
 
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
-- [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Communicating with Care](publish-a-paper-3.html)
 - [A Morning Just Before Submission](publish-a-paper-4.html)

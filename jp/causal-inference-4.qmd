@@ -242,7 +242,7 @@ $$x^2+y^2=r$$
 :::
 ::::::::::::::::::::::::::::::::: 
 
-### エピソード、用語集
+### このシリーズとRスクリプト
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
@@ -250,4 +250,11 @@ $$x^2+y^2=r$$
 - [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [From Risk to Logistic Regression](logistic-regression-1.html)
+- [What Data Cannot Tell Us](truth-1.html)
 - [Statistical Terms in Plain Language](glossary.html)

@@ -324,7 +324,7 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 - [JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -335,4 +335,11 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-- [frequentist.R](../from-coffee-chat-to-r/effects.R)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Statistical Terms in Plain Language](glossary.html)
+

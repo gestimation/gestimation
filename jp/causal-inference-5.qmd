@@ -295,9 +295,6 @@ DAGを用いて、CがAとBを有向分離することが確認できたとし�
 
 - Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
 
-### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
+### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
-- [Three Tips for Writing a Paper](publish-a-paper-2.html)
-- [Examples of Editing a Paper](publish-a-paper-3.html)
-- [A Morning Just Before Submission](publish-a-paper-4.html)

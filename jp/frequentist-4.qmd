@@ -368,7 +368,7 @@ Kaplan-Meier法による生存曲線の推定が妥当な状況として正し�
 Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これはそれぞれ*t*検定とCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法の基本的な前提条件です。
 :::
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -377,6 +377,9 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-- [Statistical Terms in Plain Language](glossary.html)
-
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Statistical Terms in Plain Language](glossary.html)

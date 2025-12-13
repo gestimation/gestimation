@@ -319,7 +319,7 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 - 吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9
 
-### エピソード、用語集、Rスクリプト
+### このシリーズとRスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -328,6 +328,9 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-- [Statistical Terms in Plain Language](glossary.html)
-
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Statistical Terms in Plain Language](glossary.html)
