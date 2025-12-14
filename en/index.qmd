@@ -46,27 +46,17 @@ Every study starts with a question. How do we frame PICO/PECO? How do we choose 
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
-::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
-- A Story of Coffee Chat and Research Hypothesis
-
-Research begins with the question itself. A coffee-chat guide where a clinician daughter and her statistician father explore research questions, PICO/PECO, and outcome choice. A gentle first step for clinicians starting their very first study.
-
-
-- Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes
-
-Before memorizing R functions, it helps to ask how the data were generated. A coffee-chat guide linking data types, probability models, and common R functions through conversation. An entry point for clinicians beginning data analysis.
-
-- Outcomes: The Bridge from Data Collection to Analysis
-
-OS or PFS? Outcome choice shapes the meaning of a study long before analysis begins. A coffee-chat guide on outcome definition in oncology research, told through a quiet dialogue. 
-
-- A First Step into Survival and Competing Risks Analysis with R
-
-In survival analysis, pitfalls often begin with event definitions and coding. A coffee-chat guide covering data collection and a first demonstration of competing risks analysis in R. Designed for readers new to time-to-event data.
-
+::: {.callout-note appearance=“simple” collapse=“true” title=“A Glimpse Ahead”}
+- A Story of Coffee Chat and Research Hypothesis 
+Research often begins not with data, but with a question that has not yet found its shape. 
+- Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes 
+Numbers may look the same, yet describe different worlds—this pause starts from the idea of data types.
+- Outcomes: The Bridge from Data Collection to Analysis 
+The moment an outcome is defined, much of the study is already decided—quietly revisiting that choice.
+- A First Step into Survival and Competing Risks Analysis with R 
+Before analysis begins, we stop to ask whether an event is truly singular—thinking in terms of time and events.
 - When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys
-
-Bias often enters a study long before analysis begins. A coffee-chat guide on selection, information, and confounding bias in clinical surveys. What to think about before sending out the questionnaire.
+Distortion rarely comes from formulas alone—this is where bias quietly enters. 
 :::
 
 You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
@@ -85,19 +75,13 @@ Using cancer clinical trials as an example, my father explains the **frequentist
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
-
-::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
 - Reading a Paper over a Cup of Coffee
-
-Have you ever felt lost in statistical terms when reading your first paper? A coffee-chat guide that begins with a daughter’s questions at the kitchen table. Learning how to read statistical language in clinical papers.
-
+The unease felt while reading a paper often comes from language — pausing over statistical terms.
 - P-Value Explanations That Seem Plausible at First Glance
-
-What does a p-value really repeat, hypothetically? A coffee-chat guide exploring frequentist thinking through imagined repetitions. Building intuition for p-values beyond surface explanations.
-
+What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.
 - Beyond 0.05: Interpreting P-Values in a Clinical Trial
-
-To interpret a p-value, you have to read the Methods section. A coffee-chat guide reflecting on p-values through the ASA statement. Looking beyond the 0.05 threshold.
+A p-value is less a number than a shadow of design — watching where interpretation drifts.
 :::
 
 You can download the full R script for this and the next episodes here. 
@@ -108,18 +92,13 @@ You can download the full R script for this and the next episodes here.
 
 The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.
 
-::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
 - R Demonstration of Bias in Kaplan-Meier Under Competing Risks
-
-Bias discussed in theory can be demonstrated in simulation. A coffee-chat guide showing how Kaplan?Meier behaves under competing risks using R. Connecting abstract ideas with concrete experiments.
-
+A curve that looks convincing may still describe another world — checked through simulation.
 - Understanding Confidence Intervals via Hypothetical Replications in R
-
-What does the “95%” in a confidence interval really mean? A coffee-chat guide using hypothetical replications in R. Developing an intuitive feel for confidence intervals.
-
+Where does "95%" come from, and where does it go — lingering over confidence intervals.
 - Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
-
-Sample size planning is also the planning of error probabilities. A coffee-chat guide to alpha, beta, and statistical power. Revisiting the foundations of frequentist design.
+Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.
 :::
 
 You can download the full R script for this and the next episode here. 
@@ -137,31 +116,20 @@ We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness r
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
-
-::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
 - Silent Confusions Hidden in Percentages
-
-Percentages feel intuitive, yet they often mislead. A coffee-chat guide on vaccine effectiveness and how numbers take on lives of their own. Rethinking how effects are communicated.
-
-- Who Is This Percentage About? Target Populations and Attributable Fractions
-
-The meaning of a number depends on who it is about. A coffee-chat guide on target populations and attributable fractions. Asking whose story a percentage is telling.
-
+Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.
+- Who Is This Percentage About—Target Populations and Attributable Fractions
+Every number speaks about someone — reconsidering the assumed population.
 - Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
-
-How are adjusted analyses related to Simpson’s paradox? A coffee-chat guide to collapsibility of effect measures, explored with R. Understanding why interpretations sometimes shift.
-
+When adjustment changes results, the reason is structural — revisiting stratification.
 - When Odds Ratios Approximate Risk Ratios—and When They Fail
-
-Odds ratios are not always intuitive. A coffee-chat guide on when odds ratios approximate risk ratios?and when they do not. Sharpening interpretation rather than calculation.
-
+Measures that look similar may behave differently — pausing over the odds ratio.
 - From Risk and Rate to Survival and Hazard
+Once time enters the picture, effects change shape. An entry point to thinking about effects over time.
 
-Risk, rate, survival, and hazard form a continuum of ideas. A coffee-chat guide introducing the basics of survival analysis. An entry point to thinking about effects over time.
-
-- Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example
-
-Effects may change over time. A coffee-chat guide using R to explore time-point, time-constant, and time-varying effects. Preparing the ground for causal thinking.
+- Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
+Are effects ever constant — considering time-varying perspectives.
 :::
 
 You can download the full R script for this and the previous episode here. 
@@ -178,6 +146,20 @@ An episode where she learns from her father — from interpreting logistic regre
 - [Why Logistic Regression Fails in Small Samples]
 - [Simpson's paradox]
 
+::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
+
+- From Risk to Logistic Regression
+Translating risk into equations inevitably hides something — an entry into regression.
+- Logit: How a Transformation Shapes an Effect
+Why this transformation and not another? A secret behind the choice of logit.
+- Where My Logistic Regression Went Wrong
+When calculations are correct but conclusions feel wrong — pausing at interpretation.
+- Why Logistic Regression Fails in Small Samples
+A model that breaks may still be teaching something — about small samples.
+- Simpson's Paradox
+When overall and subgroup results disagree — revealing a structure of confounding.
+:::
+
 ### 7. Truth — What defines it?
 
 - [What Data Cannot Tell Us]
@@ -193,6 +175,19 @@ Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor cr
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
+
+::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
+- Three-Variable DAGs: The Smallest Building Blocks of Causal Structure
+The smallest diagrams that let us speak about causality.
+- A Subtle Distinction between Common Causes and Confounders
+Similar words, different roles—tracing the boundary between common causes and confounding.
+- DAGs and Conditional Distributions: Two Languages for the Same Structure
+Diagrams and equations tell the same story in different languages.
+- A Circle, an Equation, and a Cylinder
+Where causal frameworks overlap and where they diverge — placing causal models side by side.
+- Backdoor Paths, Block, and d-Separation
+What it really means to "adjust" — Understanding blocking as an operation.
+:::
 
 ### 9. Publish a Paper — Beyond the research
 

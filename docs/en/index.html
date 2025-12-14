@@ -276,41 +276,7 @@ window.Quarto = {
 <li>[A First Step into Survival and Competing Risks Analysis with R]</li>
 <li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]</li>
 </ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="Contents of each episode">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Contents of each episode
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>A Story of Coffee Chat and Research Hypothesis</li>
-</ul>
-<p>Research begins with the question itself. A coffee-chat guide where a clinician daughter and her statistician father explore research questions, PICO/PECO, and outcome choice. A gentle first step for clinicians starting their very first study.</p>
-<ul>
-<li>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</li>
-</ul>
-<p>Before memorizing R functions, it helps to ask how the data were generated. A coffee-chat guide linking data types, probability models, and common R functions through conversation. An entry point for clinicians beginning data analysis.</p>
-<ul>
-<li>Outcomes: The Bridge from Data Collection to Analysis</li>
-</ul>
-<p>OS or PFS? Outcome choice shapes the meaning of a study long before analysis begins. A coffee-chat guide on outcome definition in oncology research, told through a quiet dialogue.</p>
-<ul>
-<li>A First Step into Survival and Competing Risks Analysis with R</li>
-</ul>
-<p>In survival analysis, pitfalls often begin with event definitions and coding. A coffee-chat guide covering data collection and a first demonstration of competing risks analysis in R. Designed for readers new to time-to-event data.</p>
-<ul>
-<li>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</li>
-</ul>
-<p>Bias often enters a study long before analysis begins. A coffee-chat guide on selection, information, and confounding bias in clinical surveys. What to think about before sending out the questionnaire.</p>
-</div>
-</div>
-</div>
+<p>::: {.callout-note appearance=“simple” collapse=“true” title=“A Glimpse Ahead”} - A Story of Coffee Chat and Research Hypothesis Research often begins not with data, but with a question that has not yet found its shape. - Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes Numbers may look the same, yet describe different worlds—this pause starts from the idea of data types. - Outcomes: The Bridge from Data Collection to Analysis The moment an outcome is defined, much of the study is already decided—quietly revisiting that choice. - A First Step into Survival and Competing Risks Analysis with R Before analysis begins, we stop to ask whether an event is truly singular—thinking in terms of time and events. - When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys Distortion rarely comes from formulas alone—this is where bias quietly enters. :::</p>
 <p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
 <ul>
 <li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
@@ -330,30 +296,23 @@ Contents of each episode
 <li>[P-Value Explanations That Seem Plausible at First Glance]</li>
 <li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
 </ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="Contents of each episode">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="A Glimpse Ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Contents of each episode
+A Glimpse Ahead
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Reading a Paper over a Cup of Coffee</li>
+<li>Reading a Paper over a Cup of Coffee The unease felt while reading a paper often comes from language — pausing over statistical terms.</li>
+<li>P-Value Explanations That Seem Plausible at First Glance What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.</li>
+<li>Beyond 0.05: Interpreting P-Values in a Clinical Trial A p-value is less a number than a shadow of design — watching where interpretation drifts.</li>
 </ul>
-<p>Have you ever felt lost in statistical terms when reading your first paper? A coffee-chat guide that begins with a daughter’s questions at the kitchen table. Learning how to read statistical language in clinical papers.</p>
-<ul>
-<li>P-Value Explanations That Seem Plausible at First Glance</li>
-</ul>
-<p>What does a p-value really repeat, hypothetically? A coffee-chat guide exploring frequentist thinking through imagined repetitions. Building intuition for p-values beyond surface explanations.</p>
-<ul>
-<li>Beyond 0.05: Interpreting P-Values in a Clinical Trial</li>
-</ul>
-<p>To interpret a p-value, you have to read the Methods section. A coffee-chat guide reflecting on p-values through the ASA statement. Looking beyond the 0.05 threshold.</p>
 </div>
 </div>
 </div>
@@ -365,30 +324,23 @@ Contents of each episode
 <section id="frequentist-experiments-validation-of-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="frequentist-experiments-validation-of-statistics">4. Frequentist Experiments — Validation of statistics</h3>
 <p>The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Contents of each episode">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="A Glimpse Ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Contents of each episode
+A Glimpse Ahead
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>R Demonstration of Bias in Kaplan-Meier Under Competing Risks</li>
+<li>R Demonstration of Bias in Kaplan-Meier Under Competing Risks A curve that looks convincing may still describe another world — checked through simulation.</li>
+<li>Understanding Confidence Intervals via Hypothetical Replications in R Where does “95%” come from, and where does it go — lingering over confidence intervals.</li>
+<li>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.</li>
 </ul>
-<p>Bias discussed in theory can be demonstrated in simulation. A coffee-chat guide showing how Kaplan?Meier behaves under competing risks using R. Connecting abstract ideas with concrete experiments.</p>
-<ul>
-<li>Understanding Confidence Intervals via Hypothetical Replications in R</li>
-</ul>
-<p>What does the “95%” in a confidence interval really mean? A coffee-chat guide using hypothetical replications in R. Developing an intuitive feel for confidence intervals.</p>
-<ul>
-<li>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</li>
-</ul>
-<p>Sample size planning is also the planning of error probabilities. A coffee-chat guide to alpha, beta, and statistical power. Revisiting the foundations of frequentist design.</p>
 </div>
 </div>
 </div>
@@ -408,42 +360,26 @@ Contents of each episode
 <li>[From Risk and Rate to Survival and Hazard]</li>
 <li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
 </ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="Contents of each episode">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="A Glimpse Ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Contents of each episode
+A Glimpse Ahead
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Silent Confusions Hidden in Percentages</li>
+<li><p>Silent Confusions Hidden in Percentages Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.</p></li>
+<li><p>Who Is This Percentage About—Target Populations and Attributable Fractions Every number speaks about someone — reconsidering the assumed population.</p></li>
+<li><p>Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R When adjustment changes results, the reason is structural — revisiting stratification.</p></li>
+<li><p>When Odds Ratios Approximate Risk Ratios—and When They Fail Measures that look similar may behave differently — pausing over the odds ratio.</p></li>
+<li><p>From Risk and Rate to Survival and Hazard Once time enters the picture, effects change shape. An entry point to thinking about effects over time.</p></li>
+<li><p>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects Are effects ever constant — considering time-varying perspectives.</p></li>
 </ul>
-<p>Percentages feel intuitive, yet they often mislead. A coffee-chat guide on vaccine effectiveness and how numbers take on lives of their own. Rethinking how effects are communicated.</p>
-<ul>
-<li>Who Is This Percentage About? Target Populations and Attributable Fractions</li>
-</ul>
-<p>The meaning of a number depends on who it is about. A coffee-chat guide on target populations and attributable fractions. Asking whose story a percentage is telling.</p>
-<ul>
-<li>Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</li>
-</ul>
-<p>How are adjusted analyses related to Simpson’s paradox? A coffee-chat guide to collapsibility of effect measures, explored with R. Understanding why interpretations sometimes shift.</p>
-<ul>
-<li>When Odds Ratios Approximate Risk Ratios—and When They Fail</li>
-</ul>
-<p>Odds ratios are not always intuitive. A coffee-chat guide on when odds ratios approximate risk ratios?and when they do not. Sharpening interpretation rather than calculation.</p>
-<ul>
-<li>From Risk and Rate to Survival and Hazard</li>
-</ul>
-<p>Risk, rate, survival, and hazard form a continuum of ideas. A coffee-chat guide introducing the basics of survival analysis. An entry point to thinking about effects over time.</p>
-<ul>
-<li>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</li>
-</ul>
-<p>Effects may change over time. A coffee-chat guide using R to explore time-point, time-constant, and time-varying effects. Preparing the ground for causal thinking.</p>
 </div>
 </div>
 </div>
@@ -462,6 +398,28 @@ Contents of each episode
 <li>[Why Logistic Regression Fails in Small Samples]</li>
 <li>[Simpson’s paradox]</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="A Glimpse Ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A Glimpse Ahead
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>From Risk to Logistic Regression Translating risk into equations inevitably hides something — an entry into regression.</li>
+<li>Logit: How a Transformation Shapes an Effect Why this transformation and not another? A secret behind the choice of logit.</li>
+<li>Where My Logistic Regression Went Wrong When calculations are correct but conclusions feel wrong — pausing at interpretation.</li>
+<li>Why Logistic Regression Fails in Small Samples A model that breaks may still be teaching something — about small samples.</li>
+<li>Simpson’s Paradox When overall and subgroup results disagree — revealing a structure of confounding.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="truth-what-defines-it" class="level3">
 <h3 class="anchored" data-anchor-id="truth-what-defines-it">7. Truth — What defines it?</h3>
@@ -481,6 +439,28 @@ Contents of each episode
 <li>[A Circle, an Equation, and a Cylinder]</li>
 <li>[Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="A Glimpse Ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A Glimpse Ahead
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure The smallest diagrams that let us speak about causality.</li>
+<li>A Subtle Distinction between Common Causes and Confounders Similar words, different roles—tracing the boundary between common causes and confounding.</li>
+<li>DAGs and Conditional Distributions: Two Languages for the Same Structure Diagrams and equations tell the same story in different languages.</li>
+<li>A Circle, an Equation, and a Cylinder Where causal frameworks overlap and where they diverge — placing causal models side by side.</li>
+<li>Backdoor Paths, Block, and d-Separation What it really means to “adjust” — Understanding blocking as an operation.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="publish-a-paper-beyond-the-research" class="level3">
 <h3 class="anchored" data-anchor-id="publish-a-paper-beyond-the-research">9. Publish a Paper — Beyond the research</h3>

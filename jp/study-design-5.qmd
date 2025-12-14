@@ -16,7 +16,7 @@ date: 2025-12-13
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Study Design 5 − When Bias Creeps In
+# Study Design V − When Bias Creeps In
 
 ::: {.serif-block .text-right}
 Keywords: bias, language & writing, observational study, study design
@@ -149,7 +149,7 @@ Keywords: bias, language & writing, observational study, study design
 :::
 ::::::::::::::::::::::::::::::::: 
 
-### This concludes the Study Design series. If you’d like to keep reading over your next cup of coffee, a glossary of terms in the story and further episodes are waiting:
+### Up to this point, we have been talking about the essence of research — how we frame research questions and plan to obtain unbiased answers. Following episodes step away from study design and begin to reflect on observed effects and their uncertainty, how we reason about causes, and what ultimately becomes publishable.
 
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
