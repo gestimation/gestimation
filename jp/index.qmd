@@ -41,15 +41,15 @@ listing:
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/15公開予定】
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-- A Story of Coffee Chat and Research Hypothesis
+- **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
-- Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes
+- **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
 　呪文に見えるR関数を、「アウトカムの型」と「それにあった確率モデル」から整理します。何を使うかより、なぜそう見えるか。
-- Outcomes: The Bridge from Data Collection to Analysis
+- **Outcomes: The Bridge from Data Collection to Analysis**
 　OSかPFSか―オンコロジーで繰り返される論点を手がかりに、アウトカム定義によって研究がどう変わるかを眺めます。
-- A First Step into Survival and Competing Risks Analysis with R
+- **A First Step into Survival and Competing Risks Analysis with R**
 　生存時間解析は“式”より先に、イベント定義とコーディングで事故が起きます。データ収集の注意点から、競合リスクの入口まで。
-- When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys
+- **When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys**
 　バイアスは解析で帳尻合わせできないことが多い。選択バイアス・情報バイアス・交絡を「どこで混入するか」という視点で点検します。
 :::
 
@@ -70,12 +70,11 @@ listing:
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-
-- Reading a Paper over a Cup of Coffee
+- **Reading a Paper over a Cup of Coffee**
 　はじめて論文を読んだとき、統計の用語が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。
-- P-Value Explanations That Seem Plausible at First Glance
+- **P-Value Explanations That Seem Plausible at First Glance**
 　「繰り返したら数字はどう振る舞う？」という頻度論の視点を、臨床試験の状況で体に落とします。
-- Beyond 0.05: Interpreting P-Values in a Clinical Trial
+- **Beyond 0.05: Interpreting P-Values in a Clinical Trial**
 　p値は「数字」ではなく、Methodsの読み方に接続される。p値について統計家たちがだした声明を扱ったエピソード。
 :::
 
@@ -92,12 +91,12 @@ listing:
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-- R Demonstration of Bias in Kaplan-Meier Under Competing Risks
-　頻度論が導く法則は、ただの抽象ではなく**シミュレーション実験**で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
-- Understanding Confidence Intervals via Hypothetical Replications in R
-　95%信頼区間はどういう意味で**95%**なのでしょうか？娘はRを用いたシミュレーション実験で確かめます。
-- Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
-　頻度論の統計学では、**p値**と**サンプルサイズ設計**が対になってエラーをコントロールします。サンプルサイズ設計に関する入門編。
+- **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
+　頻度論が導く法則は、ただの抽象ではなくシミュレーションで確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
+- **Understanding Confidence Intervals via Hypothetical Replications in R**
+　95%信頼区間はどういう意味で95%なのでしょうか？娘はRを用いたシミュレーション実験で確かめます。
+- **Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size**
+　統計学では、p値とサンプルサイズ設計が対になってエラーをコントロールします。サンプルサイズ設計入門。
 :::
 
 この回と前のエピソードのRスクリプト一式はこちらから。
@@ -116,17 +115,17 @@ listing:
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-- Silent Confusions Hidden in Percentages
+- **Silent Confusions Hidden in Percentages**
 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。言葉の意味を知ることの大切さを父は語ります。
-- Who Is This Percentage About Target Populations and Attributable Fractions
+- **Who Is This Percentage About Target Populations and Attributable Fractions**
 　数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。言葉の裏に潜む集団の違いについて。
-- Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
+- **Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R**
 　バイアス調整解析とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
-- When Odds Ratios Approximate Risk Ratios and When They Fail
+- **When Odds Ratios Approximate Risk Ratios and When They Fail**
 　「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。
-- From Risk and Rate to Survival and Hazard
+- **From Risk and Rate to Survival and Hazard**
 　「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を娘は父に学びます。
-- Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example
+- **Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example**
 　リスク比、ハザード比、そして時間とともに変化する効果。因果推論に先立って立体的なデータの見方が静かに育ちます。
 :::
 
@@ -136,6 +135,8 @@ listing:
 
 ### 6. Adjusting for Bias — 回帰モデリングの風景
 
+結果の見方、表の作り方から、使用上の落とし穴まで、父からロジスティック回帰と交絡調整の手ほどきを受けるエピソード。
+
 - [From Risk to Logistic Regression]
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
@@ -143,16 +144,15 @@ listing:
 - [Simpson's paradox]
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-
-- [From Risk to Logistic Regression]
+- **From Risk to Logistic Regression**
 　「教えられた通り、Rのglm関数でロジスティック回帰をしてみたんだけど、なんだかブラックボックスみたい」父は娘の疑問に答えます。
-- [Logit: How a Transformation Shapes an Effect]
+- **Logit: How a Transformation Shapes an Effect**
 　ロジスティック回帰を特徴づけるのはロジット関数です。娘は、なぜロジット関数が用いられるのか統計学の秘密を知らされます。
-- [Where My Logistic Regression Went Wrong]
+- **Where My Logistic Regression Went Wrong**
 　結果の見方、表の作り方から、使用上の落とし穴まで、父から統計解析の手ほどきを受けるエピソード。
-- [Why Logistic Regression Fails in Small Samples]
+- **Why Logistic Regression Fails in Small Samples**
 　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。
-- [Simpson's paradox]
+- **Simpson's paradox**
 　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整という操作に足りない構造とは？
 :::
 
@@ -175,15 +175,15 @@ listing:
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
 ::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
-- Three-Variable DAGs: The Smallest Building Blocks of Causal Structure
+- **Three-Variable DAGs: The Smallest Building Blocks of Causal Structure**
 　DAG、共通原因、合流点、中間因子―因果の語彙を、いちばん小さな図から覚えます。「もし...だったら？」を描くために。
-- A Subtle Distinction between Common Causes and Confounders
+- **A Subtle Distinction between Common Causes and Confounders**
 　「交絡因子」は言葉として便利すぎる。共通原因と交絡のズレを、図で丁寧に区別します。
-- DAGs and Conditional Distributions: Two Languages for the Same Structure
+- **DAGs and Conditional Distributions: Two Languages for the Same Structure**
 　図は直感、式は精密。DAGと条件付き確率が、同じものを別の言語で言っている感覚をつかみます。
-- A Circle, an Equation, and a Cylinder
+- **A Circle, an Equation, and a Cylinder**
 　確率モデルとDAGとRubin因果モデルっていったいなに？娘の疑問への答え。
-- Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias
+- **Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias**
 　「ブロックする」とは、どのような操作をDAGに加えることなのか。バイアスの源を探す手触りを、最小限の形式で確かめます。
 :::
 

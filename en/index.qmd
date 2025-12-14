@@ -46,16 +46,17 @@ Every study starts with a question. How do we frame PICO/PECO? How do we choose 
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
-::: {.callout-note appearance=“simple” collapse=“true” title=“A Glimpse Ahead”}
-- A Story of Coffee Chat and Research Hypothesis 
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+
+- **A Story of Coffee Chat and Research Hypothesis**
 Research often begins not with data, but with a question that has not yet found its shape. 
-- Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes 
+- **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
 Numbers may look the same, yet describe different worlds—this pause starts from the idea of data types.
-- Outcomes: The Bridge from Data Collection to Analysis 
+- **Outcomes: The Bridge from Data Collection to Analysis**
 The moment an outcome is defined, much of the study is already decided—quietly revisiting that choice.
-- A First Step into Survival and Competing Risks Analysis with R 
+- **A First Step into Survival and Competing Risks Analysis with R**
 Before analysis begins, we stop to ask whether an event is truly singular—thinking in terms of time and events.
-- When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys
+- **When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys**
 Distortion rarely comes from formulas alone—this is where bias quietly enters. 
 :::
 
@@ -75,12 +76,12 @@ Using cancer clinical trials as an example, my father explains the **frequentist
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
-::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
-- Reading a Paper over a Cup of Coffee
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+- **Reading a Paper over a Cup of Coffee**
 The unease felt while reading a paper often comes from language — pausing over statistical terms.
-- P-Value Explanations That Seem Plausible at First Glance
+- **P-Value Explanations That Seem Plausible at First Glance**
 What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.
-- Beyond 0.05: Interpreting P-Values in a Clinical Trial
+- **Beyond 0.05: Interpreting P-Values in a Clinical Trial**
 A p-value is less a number than a shadow of design — watching where interpretation drifts.
 :::
 
@@ -92,12 +93,12 @@ You can download the full R script for this and the next episodes here.
 
 The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.
 
-::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
-- R Demonstration of Bias in Kaplan-Meier Under Competing Risks
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+- **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
 A curve that looks convincing may still describe another world — checked through simulation.
-- Understanding Confidence Intervals via Hypothetical Replications in R
+- **Understanding Confidence Intervals via Hypothetical Replications in R**
 Where does "95%" come from, and where does it go — lingering over confidence intervals.
-- Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
+- **Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size**
 Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.
 :::
 
@@ -116,19 +117,18 @@ We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness r
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
-::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
-- Silent Confusions Hidden in Percentages
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+- **Silent Confusions Hidden in Percentages**
 Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.
-- Who Is This Percentage About—Target Populations and Attributable Fractions
+- **Who Is This Percentage About—Target Populations and Attributable Fractions**
 Every number speaks about someone — reconsidering the assumed population.
-- Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
+- **Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R**
 When adjustment changes results, the reason is structural — revisiting stratification.
-- When Odds Ratios Approximate Risk Ratios—and When They Fail
+- **When Odds Ratios Approximate Risk Ratios—and When They Fail**
 Measures that look similar may behave differently — pausing over the odds ratio.
-- From Risk and Rate to Survival and Hazard
+- **From Risk and Rate to Survival and Hazard**
 Once time enters the picture, effects change shape. An entry point to thinking about effects over time.
-
-- Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
+- **Distinguishing Time-Point, Time-Constant, and Time-Varying Effects**
 Are effects ever constant — considering time-varying perspectives.
 :::
 
@@ -146,17 +146,16 @@ An episode where she learns from her father — from interpreting logistic regre
 - [Why Logistic Regression Fails in Small Samples]
 - [Simpson's paradox]
 
-::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
-
-- From Risk to Logistic Regression
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+- **From Risk to Logistic Regression**
 Translating risk into equations inevitably hides something — an entry into regression.
-- Logit: How a Transformation Shapes an Effect
+- **Logit: How a Transformation Shapes an Effect**
 Why this transformation and not another? A secret behind the choice of logit.
-- Where My Logistic Regression Went Wrong
+- **Where My Logistic Regression Went Wrong**
 When calculations are correct but conclusions feel wrong — pausing at interpretation.
-- Why Logistic Regression Fails in Small Samples
+- **Why Logistic Regression Fails in Small Samples**
 A model that breaks may still be teaching something — about small samples.
-- Simpson's Paradox
+- **Simpson's Paradox**
 When overall and subgroup results disagree — revealing a structure of confounding.
 :::
 
@@ -176,16 +175,16 @@ Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor cr
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
-::: {.callout-note appearance="simple" collapse="true" title="A Glimpse Ahead"}
-- Three-Variable DAGs: The Smallest Building Blocks of Causal Structure
+::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
+- **Three-Variable DAGs: The Smallest Building Blocks of Causal Structure**
 The smallest diagrams that let us speak about causality.
-- A Subtle Distinction between Common Causes and Confounders
+- **A Subtle Distinction between Common Causes and Confounders**
 Similar words, different roles—tracing the boundary between common causes and confounding.
-- DAGs and Conditional Distributions: Two Languages for the Same Structure
+- **DAGs and Conditional Distributions: Two Languages for the Same Structure**
 Diagrams and equations tell the same story in different languages.
-- A Circle, an Equation, and a Cylinder
+- **A Circle, an Equation, and a Cylinder**
 Where causal frameworks overlap and where they diverge — placing causal models side by side.
-- Backdoor Paths, Block, and d-Separation
+- **Backdoor Paths, Block, and d-Separation**
 What it really means to "adjust" — Understanding blocking as an operation.
 :::
 
@@ -210,7 +209,6 @@ First, reading the **Study Design** series will give you an overview of the clin
 - Want to see the process through to shaping and delivering your research: Publish a Paper
 
 While each episode stands independently, reading the whole reveals how everyday life, clinical practice, causality, data, cognition, and language connect as one flow. Gradually, a map of the research endeavor sketches itself in your mind. Grab your favorite drink and enjoy the journey of conversation between the two.
-
 
 ------------------------------------------------------------------------
 This site shares selected R-related posts via <a href="https://www.r-bloggers.com">R-bloggers</a>
