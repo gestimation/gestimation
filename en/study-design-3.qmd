@@ -1,6 +1,6 @@
 ---
 title: "Outcomes: The Bridge from Data Collection to Analysis"
-description: "A coffee-chat introduction to what researchers mean by an outcome: survival endpoints (OS, DFS, RFS, CIR), time origin, and why definitions shape analysis."
+description: "OS or PFS? Outcome choice shapes the meaning of a study long before analysis begins. A coffee-chat guide on outcome definition in oncology research, told through a quiet dialogue. "
 tags:
   - Clinical trial
   - Language & writing

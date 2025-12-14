@@ -1,0 +1,150 @@
+---
+title: "What Could Have Happened"
+description: ""
+tags:
+  - Causal model
+  - Language & writing
+  - Probability model
+  - Research hypothesis
+format:
+  html:
+    toc: true
+date: 2025-12-13
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Truth II − What Could Have Happened
+
+::: {.serif-block .text-right}
+Keywords: causal model, language & writing, probability model, research hypothesis
+:::
+
+------------------------------------------------------------------------
+
+### What would have happened if we had chosen differently?
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+Dad: "Let me talk about a concept you need in order to understand what adjusting for confounding really means. Think back to the examples we've used so far—surgical procedures for gastric cancer, whether or not to create a stoma, even coffee consumption. What we actually want to know in all of these cases is the same, right? What would have happened if we had made a different choice? For example, would the patient have survived if a different surgical procedure had been chosen?"
+::: 
+
+::: voice-daughter
+Me:"Yes, that's true."
+:::
+
+::: voice-father
+Dad: "Unfortunately, you can't get to that truth by staying on the rails of regression analysis alone. You have to start not from a probability model, but from the question: **What would have happened if we had changed the cause**? Causal inference is a framework designed to answer exactly that question."
+::: 
+
+::: voice-daughter
+Me:"Huh? Are you saying I need to redo the analysis using a completely different method?"
+:::
+
+::: voice-father
+Dad: "No, no. I'm talking at an abstract level for now. Think about a randomized clinical trial comparing an active treatment with a placebo. What you want to know is the difference between the outcome if everyone received the active treatment and the outcome if everyone received the placebo, right? If the endpoint is overall survival, that difference shows up as a difference between survival curves. That difference is the **causal effect**."
+::: 
+
+::: voice-daughter
+Me: "Hmm...I see. In JCOG9502, for example, the question was whether to choose procedure TH or LTA for gastric cancer surgery. Once the standard treatment is decided, everyone would receive that procedure. So the difference between the survival curves shown in the paper corresponds to the causal effect. And now that you mention it, there's no probability distribution or regression model explicitly appearing there."
+:::
+
+::: voice-father
+Dad: "Exactly. But your cancer survivor survey is an observational study—it's not randomized. Even if you want to think about it the same way as JCOG9502, the outcome ‘what would have happened if a stoma had not been created' doesn't actually exist. It's a hypothetical scenario. That's why, in observational studies, the only option is to predict these unobserved outcomes using covariates and regression models. We distinguish these from observed outcomes and call them **potential outcomes**. They can't be observed, but they can be defined medically and logically—as ‘another possible outcome.'"
+::: 
+
+::: voice-daughter
+Me: "But what's the point of defining something that doesn't even exist?"
+:::
+
+::: voice-father
+Dad: "That's not the right way to think about it. First you define what causal effect you want to know, and then you collect data to estimate it. What you can see is just one face of a six-sided Rubik's Cube. Even if a potential outcome is drawn on another face, you can't observe it. But imagine preparing many Rubik's Cubes with the same structure and placing them on a table in random orientations. You only see one face of each cube, but you can still infer what pictures might be on the other faces. That's essentially what a randomized clinical trial does."
+::: 
+
+::: voice-daughter
+Me: "This is getting complicated. What exactly is different between JCOG9502 and my survey?"
+:::
+
+::: voice-father
+Dad: "The biggest difference is obvious: randomization. Randomized clinical trials are designed from the start to answer the question, ‘What happens if we intervene?' The target population is clearly defined, interventions are randomly assigned, and bias is minimized. In observational studies like your cancer survivor survey, no matter how carefully you think through the research hypothesis or the PECO, some ambiguity remains—especially about who exactly counts as Patients and Controls. You also can't be sure whether you've measured enough confounders to adequately adjust for bias and ensure comparability."
+::: 
+
+::: voice-daughter
+Me: "I see."
+:::
+
+::: voice-father
+Dad: "Let's get back to the main point. In the Rubin causal model, before thinking about analytic models or confounding adjustment, you first define the potential outcomes and then reason about the differences between them."
+::: 
+
+### The complementary roles of probability models and causal models
+
+::: voice-daughter
+Me: "I still don't quite get it. What are we actually looking at when we interpret results from generalized linear models or Cox regression? Aren't regression coefficients different from causal effects?"
+:::
+
+::: voice-father
+Dad: "You could say that a single number carries two or even three layers of meaning. At the root of it, probability models and causal models form a kind of two-story structure."
+:::
+
+- Probability model: a structure that describes how the observed data are generated
+
+- Causal model: a structure that represents what would have happened if the cause had been changed, both in the observed world and in unobserved worlds
+
+::: voice-father
+Dad: "This is a creative hierarchical relationship: behind the generation of data lies a causal model. You could even say that data are measurements of phenomena that arise according to a causal structure. And as we said earlier, potential outcomes themselves can't be observed."
+::: 
+
+::: voice-daughter
+Me: "Right."
+:::
+
+::: voice-father
+Dad: "So data are like shadows. What you really want to see is just a little beyond them."
+::: 
+
+::: voice-daughter
+Me: "When you put it that way, it does feel like the truth of causal relationships exists before the data are generated. I don't quite feel it, but I think I understand. Still, if that's the case, why didn't you teach causal models from the beginning instead of logistic regression?"
+:::
+
+::: voice-father
+Dad: "Hm. That needs a bit more explanation. It's not that logistic regression or stratified analysis should never be used. They're methods—like ways of solving a Rubik's Cube. They're not the same thing as the structure of the cube itself. What I wanted you to understand here is that, to interpret regression coefficients or odds ratios correctly as evidence about causal relationships, you need a causal model."
+::: 
+
+::: voice-daughter
+Me: "You're a specialist, so you don't notice this, but for me, both logistic regression and the Rubin causal model are completely new ideas. The Rubin causal model sounds like analyzing what would have happened to a given patient if we had treated them differently, right? That seems like something you could do by combining anatomy, pathophysiology, pharmacology, and clinical experience."
+:::
+
+::: voice-father
+Dad: "Essentially, yes. But that approach focuses on cause and effect for individual patients. Causation at the level of individual events is called token causation, and there's still a gap between that and causation as a general law."
+::: 
+
+::: voice-daughter
+Me: "Token? That word doesn't really click for me."
+:::
+
+::: voice-father
+Dad: "For example, asking ‘Did this drug save that particular patient?' is close to token causation."
+::: 
+
+::: voice-daughter
+Me: "Ah, I see. I get that both individual events and general laws matter."
+:::
+
+::: voice-father
+Dad: "Clinical trials and surveys deal with populations, not individuals. By analyzing populations statistically, we try to uncover general regularities. Probability distributions and regression models provide the tools to do that—that's what we talked about before. Probability models and causal models serve different roles."
+::: 
+
+::: voice-daughter
+Me: "And we're back to the hard stuff again. Could I get another cup of coffee?"
+:::
+::::::::::::::::::::::::::::::::: 
+
+### Next episodes
+
+- [What Data Cannot Tell Us](truth-1.html)
+- [What Could Have Happened](truth-2.html)
+- [What Is It That You Want to Know?](truth-3.html)
+

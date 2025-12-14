@@ -1,25 +1,31 @@
 ---
 title: "Statistical Terms in Plain Language"
-description: "A Conversation on Causality at Our Table. Glossary − Statistical Terms in Plain Language"
+description: "Statistical terms can quietly become barriers to understanding. A small glossary written by a father for his daughter, in plain and careful language. A place to pause and look up words during your coffee break."
+tags:
+  - Causal model
+  - Language & writing
+  - Probability model
+  - Research hypothesis
 format:
   html:
     toc: true
+date: 2025-12-14
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Glossary − Statistical Terms in Plain Language
 
 ::: {.serif-block .text-right}
-Keywords: causal model, effect-measures, generalized linear model, probability model, p-value, scientific writing, study design. survival/competing-risk
+Keywords: causal model, language & writing, probability model, survival & competing risks
 :::
 
 
 ------------------------------------------------------------------------
 
-### Words in Statistics
+### Her father explains words in statistics and research
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
@@ -30,8 +36,6 @@ Me: "Dad, there’s a paper we’re doing a journal club on in my department rig
 Dad: "I’ve got some time today, so sure. Let’s try a few. I’ll go through them in alphabetical order."
 :::
 :::::::::::::::::::::::::::::::::
-
-
 
 **Aalen-Johansen method**
 
@@ -87,8 +91,9 @@ The magnitude of a treatment effect or the difference between treatments. In sam
 **Estimand**
 
 In clinical trials, adverse events or treatment discontinuation after treatment initiation can make it unclear what treatment effect is actually being evaluated. An estimand is a statistical term that clarifies exactly what quantity the study aims to estimate. The ICH E9 guideline requires that estimands be specified at the planning stage of a clinical trial.
+They are the true values in statistical inference. 
 
-**Fine–Gray model**
+**Fine-Gray model**
 
 A statistical method developed by Professor Fine in 1999 as an extension of Cox regression. It is a regression model for survival data with competing risks.
 
@@ -151,7 +156,7 @@ A statistical method used to examine how one variable is related to others. Alth
 
 The probability that a disease will occur. Because risk depends on the population being studied, using risk values without context should be avoided.
 
-**Rubin Causal Model**
+**Rubin causal model**
 
 In this work, a model refers to an abstract way of viewing data. The Rubin causal model defines causal effects using potential outcome variables, which represent what the outcome would have been for the same unit had the cause taken a different value. The term is sometimes used to denote a broader framework that includes assignment mechanisms and probability distributions; however, in this work, these components are not made explicit, as the focus is on the definition of causal effects.
 

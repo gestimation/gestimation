@@ -1,6 +1,6 @@
 ---
 title: "A Story of Coffee Chat and Research Hypothesis"
-description: "A coffee-chat introduction to research hypotheses and PECO/PICO for clinicians starting their first study. The daughter asks her father about the very starting point of clinical research."
+description: "研究は「どんな問いを立てるか」から始まります。PICO/PECO やアウトカムの考え方を、父と娘の静かな会話を通して確認するcoffee-chat guideです。はじめて研究を任された臨床家のための、最初の一歩。"
 tags:
   - Language & writing
   - Observational study

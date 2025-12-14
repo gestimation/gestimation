@@ -1,19 +1,24 @@
 ---
 title: "Reading a Paper over a Cup of Coffee"
-description: "Using cancer clinical trials as an example, her father explains the frequentist perspective of replications of a study in a long run."
+description: "はじめて論文を読んだとき、統計用語に戸惑った経験はありませんか。論文を前にした娘の疑問から始まる父の入門講義。論文の正しい読み方を静かにほどいていきます。"
+tags:
+  - Clinical trial
+  - Language & writing
+  - P-value 
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Frequentist Thinking I − Reading a Paper over a Cup of Coffee
 
 ::: {.serif-block .text-right}
-clinical trial, p-value, survival/competing-risk, language/writing
+Keywords: clinical trial, language & writing, p-value, survival & competing risks
 :::
 
 

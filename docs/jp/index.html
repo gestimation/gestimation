@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Coffee and Research</title>
+<title>A Conversation on Causality at Our Table (JP) – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -67,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
 
 <script type="text/javascript">
@@ -77,9 +108,38 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
-</head>
+<link rel="alternate" type="application/rss+xml" title="A Conversation on Causality at Our Table (JP)" href="index.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light">
 
@@ -172,9 +232,25 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Conversation on Causality at Our Table (JP)</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <div class="hero-header">
@@ -197,6 +273,25 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>[A First Step into Survival and Competing Risks Analysis with R]　【12/15公開予定】</li>
 <li>[When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/15公開予定】</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="内容が知りたい方はこちら">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+内容が知りたい方はこちら
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>A Story of Coffee Chat and Research Hypothesis 　研究は「<strong>どんな問いを立てるか</strong>」から始まります。PICO/PECO、比較しやすい集団・一般化しやすい集団、アウトカムの選び方…。娘は父に研究の出発点について尋ねます。</li>
+<li>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes 　父は娘に語ります。「呪文のような<strong>R関数</strong>も、データがどの<strong>確率モデル</strong>から生じそうかをイメージできれば整理しやすくなる」これからデータを解析するという方もぜひ。</li>
+<li>Outcomes: The Bridge from Data Collection to Analysis 　オンコロジー領域の研究において、全生存期間（OS）か無増悪生存期間（PFS）かが、常に論争になることをご存知でしょうか。娘は<strong>アウトカムの定義</strong>を確認します。</li>
+<li>A First Step into Survival and Competing Risks Analysis with R 　生存時間解析の落とし穴は、イベント定義やコーディングにあります。<strong>データ収集の注意点</strong>から<strong>Rを用いた競合リスク解析</strong>のデモまで。</li>
+<li>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys 　<strong>バイアス</strong>は研究デザインやデータ収集方法を工夫しないと解消できません。娘は調査で気を付けておくべき点について父に尋ねます。</li>
+</ul>
+</div>
+</div>
 <p>このエピソードのRスクリプト一式は、こちらからダウンロードできます。R パッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。</p>
 <ul>
 <li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
@@ -216,7 +311,24 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>[P-Value Explanations That Seem Plausible at First Glance]</li>
 <li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
 </ul>
-<p>これとこの次のエピソードのRスクリプト一式はこちらから。</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="内容が知りたい方はこちら">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+内容が知りたい方はこちら
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Reading a Paper over a Cup of Coffee 　はじめて論文を読んだとき、<strong>統計の用語</strong>が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。</li>
+<li>P-Value Explanations That Seem Plausible at First Glance 　がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という<strong>頻度論的なものの見方</strong>を父は語ります。</li>
+<li>Beyond 0.05: Interpreting P-Values in a Clinical Trial 　父は娘に語ります。「p値を正しく解釈するにはMethodsを読まなければならない」p値に関するアメリカ統計協会の声明に関するエピソード。</li>
+</ul>
+</div>
+</div>
+<p>この回と次のエピソードのRスクリプト一式はこちらから。</p>
 <ul>
 <li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
 </ul>
@@ -229,7 +341,24 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>[Understanding Confidence Intervals via Hypothetical Replications in R]</li>
 <li>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</li>
 </ul>
-<p>これとこの次のエピソードのRスクリプト一式はこちらから。</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="内容が知りたい方はこちら">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+内容が知りたい方はこちら
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>R Demonstration of Bias in Kaplan-Meier Under Competing Risks 　頻度論が導く法則は、ただの抽象ではなく<strong>シミュレーション実験</strong>で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。</li>
+<li>Understanding Confidence Intervals via Hypothetical Replications in R 　95%信頼区間はどういう意味で<strong>95%</strong>なのでしょうか？娘はRを用いたシミュレーション実験で確かめます。</li>
+<li>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size 　頻度論の統計学では、<strong>p値</strong>と<strong>サンプルサイズ設計</strong>が対になってエラーをコントロールします。サンプルサイズ設計に関する入門編。</li>
+</ul>
+</div>
+</div>
+<p>この回と前のエピソードのRスクリプト一式はこちらから。</p>
 <ul>
 <li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
 </ul>
@@ -245,6 +374,26 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>[From Risk and Rate to Survival and Hazard]</li>
 <li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="内容が知りたい方はこちら">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+内容が知りたい方はこちら
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Silent Confusions Hidden in Percentages 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。<strong>ワクチン有効率</strong>の注意点を父は語ります。</li>
+<li>Who Is This Percentage About Target Populations and Attributable Fractions 　数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。言葉の裏にある<strong>ターゲット集団</strong>の違いについて。</li>
+<li>Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R 　いわゆる調整解析と<strong>Simpsonのパラドックス</strong>の関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。</li>
+<li>When Odds Ratios Approximate Risk Ratios and When They Fail 　「オッズ比より<strong>オッズ比の平方根</strong>の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。</li>
+<li>From Risk and Rate to Survival and Hazard 　「生存曲線やハザード比について納得感が足りないの」<strong>生存時間解析の基礎</strong>を娘は父に学びます。</li>
+<li>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example 　リスク比、ハザード比、そして<strong>時間とともに変化する効果</strong>。Rデモを通じて、因果推論に先立って立体的なデータの見方が静かに育ちます。</li>
+</ul>
+</div>
+</div>
 <p>このエピソードのRスクリプト一式はこちらから。</p>
 <ul>
 <li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
@@ -275,7 +424,6 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </section>
 <section id="causal-inference-因果を見つけるために" class="level3">
 <h3 class="anchored" data-anchor-id="causal-inference-因果を見つけるために">8. Causal Inference — 因果を見つけるために</h3>
-<p>有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子、バックドア基準。「もし〜だったら？」を統計的に考えるための<strong>因果の言葉</strong>を、確率に関する必要最小限の数式を交えて扱います。</p>
 <ul>
 <li>[Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]</li>
 <li>[A Subtle Distinction between Common Causes and Confounders]</li>
@@ -283,6 +431,25 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>[A Circle, an Equation, and a Cylinder]</li>
 <li>[Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]</li>
 </ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="内容が知りたい方はこちら">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+内容が知りたい方はこちら
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>[Three-Variable DAGs: The Smallest Building Blocks of Causal Structure] 　有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子。「もし…だったら？」を統計的に考えるための<strong>因果の言葉</strong>へ父はいざないます。</li>
+<li>[A Subtle Distinction between Common Causes and Confounders] 　交絡因子と共通原因は異なる概念だった。現在でも論争の続く交絡因子の正確な定義について、DAGを使って一歩近づきます。</li>
+<li>[DAGs and Conditional Distributions: Two Languages for the Same Structure] 　DAGと確率モデルの関係は？因果モデルの意味を確率に関する必要最小限の数式を交えて扱います。</li>
+<li>[A Circle, an Equation, and a Cylinder] 　それではDAGと確率モデルとRubin因果モデルはどういう関係にあるの？娘の疑問への答え。</li>
+<li>[Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias] 　わかるようでわからない<strong>ブロック</strong>という操作の正式な解説。</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="publish-a-paper-研究のその先" class="level3">
 <h3 class="anchored" data-anchor-id="publish-a-paper-研究のその先">9. Publish a Paper — 研究のその先</h3>
@@ -308,10 +475,103 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。</p>
 
 
+
 </section>
 </section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1765638000000" data-listing-file-modified-sort="1765699231285" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="142">
+<div class="thumbnail"><a href="../jp/glossary.html" class="no-external">
+
+<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../jp/glossary.html" class="no-external">Statistical Terms in Plain Language</a>
+</h3>
+<div class="delink listing-description"><a href="../jp/glossary.html" class="no-external">
+<p>統計の言葉が、いつの間にか壁になることがあります。父が娘のために用意した、平易な言葉による小さな用語集。会話の合間に立ち返れる辞書です。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../jp/glossary.html" class="no-external">
+<div class="listing-date">
+Dec 14, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1765119600000" data-listing-file-modified-sort="1765696988443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
+<div class="thumbnail"><a href="../jp/study-design-3.html" class="no-external">
+
+<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../jp/study-design-3.html" class="no-external">Outcomes: The Bridge from Data Collection to Analysis</a>
+</h3>
+<div class="delink listing-description"><a href="../jp/study-design-3.html" class="no-external">
+<p>OSかPFS か——アウトカムの選択は、解析以前に研究の意味を決めます。オンコロジー研究を題材に、アウトカム定義の重要性を確かめる coffee-chat guide。データ収集と解析をつなぐ視点を育てます。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../jp/study-design-3.html" class="no-external">
+<div class="listing-date">
+Dec 8, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1764514800000" data-listing-file-modified-sort="1765696942755" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
+<div class="thumbnail"><a href="../jp/study-design-1.html" class="no-external">
+
+<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../jp/study-design-1.html" class="no-external">A Story of Coffee Chat and Research Hypothesis</a>
+</h3>
+<div class="delink listing-description"><a href="../jp/study-design-1.html" class="no-external">
+<p>研究は「どんな問いを立てるか」から始まります。PICO/PECO やアウトカムの考え方を、父と娘の静かな会話を通して確認するcoffee-chat guideです。はじめて研究を任された臨床家のための、最初の一歩。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../jp/study-design-1.html" class="no-external">
+<div class="listing-date">
+Dec 1, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1764514800000" data-listing-file-modified-sort="1765698903618" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="379">
+<div class="thumbnail"><a href="../jp/study-design-2.html" class="no-external">
+
+<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../jp/study-design-2.html" class="no-external">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a>
+</h3>
+<div class="delink listing-description"><a href="../jp/study-design-2.html" class="no-external">
+<p>R関数を暗記する前に、「データはどう生まれたか」を考えてみませんか。データの型と確率モデルの対応を、父と娘の対話で整理するcoffee-chat guide。これから解析を始める方に向けた導入編です。</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../jp/study-design-2.html" class="no-external">
+<div class="listing-date">
+Dec 1, 2025
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

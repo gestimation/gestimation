@@ -1,19 +1,24 @@
 ---
-title: "Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size"
-description: "The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. This episode is illustrates the concept of coverage probability of a confidence interval."
+title: "Understanding Confidence Intervals via Hypothetical Replications in R"
+description: "95%信頼区間の「95%」は、何を意味しているのでしょうか。仮想的反復をRで体験するcoffee-chat guide。娘が感じた信頼区間の感覚を再現してみてください。"
+tags:
+  - Probability model
+  - R simulation
+  - Study design
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Frequentist Experiments II − Understanding Confidence Intervals via Hypothetical Replications in R
 
 ::: {.serif-block .text-right}
-Keywords: probability model, simulation, study design, survival/competing-risk
+Keywords: probability model, simulation, study design, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

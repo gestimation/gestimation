@@ -180,10 +180,9 @@ When starting a clinical research, what matters is expressing that **clinical qu
 The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case?control, or cross-sectional study. All can be structured using PECO. 
 
 Here are three examples of research hypotheses using the cancer survivor survey as a theme.
+::: 
 
----
-
-#### Example: Research hypothesis 1
+::: {.callout-note appearance="simple" title="Research hypothesis 1"}
 
 Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within one year** between those with and without a stoma?
 
@@ -196,10 +195,9 @@ Here you’d compare the return-to-work proportion between the stoma and non-sto
 
 What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is "high” or "low”.  
 Having a clear comparison group improves interpretability. 
+:::
 
----
-
-#### Example: Research hypothesis 2
+::: {.callout-note appearance="simple" title="Research hypothesis 2"}
 
 Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?
 
@@ -209,10 +207,9 @@ Among cancer patients after curative surgery, does providing a guidebook on bala
 - O: Returned to work within one year after surgery (yes/no)
 
 Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
+:::
 
----
-
-#### Example: Research hypothesis 3 (exploratory)
+::: {.callout-note appearance="simple" title="Research hypothesis 3 (exploratory)"}
 
 "Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
 

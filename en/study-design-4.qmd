@@ -1,6 +1,6 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
-description: "A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias."
+description: "In survival analysis, pitfalls often begin with event definitions and coding. A coffee-chat guide covering data collection and a gentle demonstration of competing risks analysis in R. Designed for readers new to time-to-event data. "
 tags:
   - Bias
   - R simulation

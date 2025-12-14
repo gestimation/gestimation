@@ -1,6 +1,6 @@
 ---
 title: "A First Step into Survival and Competing Risks Analysis with R"
-description: "A coffee-chat introduction to survival and competing risks analysis in R: time origin, censoring, Kaplan-Meier vs Aalen-Johansen, and how endpoint definitions affect bias."
+description: "生存時間解析の落とし穴は、イベント定義とコーディングにあります。データ収集の考え方から競合リスク解析のRデモまでを扱うcoffee-chat guide。生存時間データに初めて向き合う方向けです。"
 tags:
   - Bias
   - R simulation
@@ -153,7 +153,7 @@ Keywords: bias, R simulation, study design, survival & competing risks
 :::::::::::::::::::::::::::::::::
 
 - 時間変数
-- イベント変数とと
+- イベント変数
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father

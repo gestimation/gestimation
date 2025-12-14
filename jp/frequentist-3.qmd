@@ -1,19 +1,24 @@
 ---
 title: "P-Value Explanations That Seem Plausible at First Glance"
-description: "Using cancer clinical trials as an example, her father taught me interpretion of p-Values. "
+description: "p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。"
+tags:
+  - Clinical trial
+  - P-value 
+  - Research hypothesis
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, hypothesis/outcome/population, p-value, language/writing
+Keywords: clinical trial, p-value, research hypothesis, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

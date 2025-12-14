@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-12-13">
 
-<title>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure – Coffee and Research</title>
+<title>What Could Have Happened – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,12 +153,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" id="toc-causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="nav-link active" data-scroll-target="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure">Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a>
+  <li><a href="#truth-ii-what-could-have-happened" id="toc-truth-ii-what-could-have-happened" class="nav-link active" data-scroll-target="#truth-ii-what-could-have-happened">Truth II − What Could Have Happened</a>
   <ul class="collapse">
-  <li><a href="#第3の因子なんて無数にあるよね" id="toc-第3の因子なんて無数にあるよね" class="nav-link" data-scroll-target="#第3の因子なんて無数にあるよね">第3の因子なんて無数にあるよね？</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#what-would-have-happened-if-we-had-chosen-differently" id="toc-what-would-have-happened-if-we-had-chosen-differently" class="nav-link" data-scroll-target="#what-would-have-happened-if-we-had-chosen-differently">What would have happened if we had chosen differently?</a></li>
+  <li><a href="#next-episodes" id="toc-next-episodes" class="nav-link" data-scroll-target="#next-episodes">Next episodes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,7 +166,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<h1 class="title">What Could Have Happened</h1>
 </div>
 
 
@@ -194,195 +192,111 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="level1">
-<h1>Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<section id="truth-ii-what-could-have-happened" class="level1">
+<h1>Truth II − What Could Have Happened</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, causal model, clinical trial, confounding &amp; collapsibility</p>
+<p>Keywords: causal model, language &amp; writing, probability model, research hypothesis</p>
 </div>
 <hr>
-<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-前回までのあらすじ
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。父に交絡調整について教わるが、娘はいまひとつ腑に落ちないのだった。</p>
-</div>
-</div>
-</div>
-<section id="第3の因子なんて無数にあるよね" class="level3">
-<h3 class="anchored">第3の因子なんて無数にあるよね？</h3>
+<section id="what-would-have-happened-if-we-had-chosen-differently" class="level3">
+<h3 class="anchored" data-anchor-id="what-would-have-happened-if-we-had-chosen-differently">What would have happened if we had chosen differently?</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「おはよう。だいぶ寒さが和らいできたね」</p>
+<p>Dad: “Let me talk about a concept you need in order to understand what adjusting for confounding really means. Think back to the examples we’ve used so far—surgical procedures for gastric cancer, whether or not to create a stoma, even coffee consumption. What we actually want to know in all of these cases is the same, right? What would have happened if we had made a different choice? For example, would the patient have survived if a different surgical procedure had been chosen?”</p>
 </div>
 <div class="voice-daughter">
-<p>私「あ、やっと起きたの。聞きたいことがあったんだ。この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で”調整する”っていう操作がどういうことかはわかったよ。<strong>確率モデル</strong>と<strong>因果モデル</strong>の違いも納得した。でもさ、問題は”喫煙”を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルの話をしてくれたときもそこには触れなかった」</p>
+<p>Me:“Yes, that’s true.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。前にいったようにデータだけからは、調整前と調整後のどちらが”正しい”かは決められない。でも膵がんの例だと、喫煙は発がん因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたいってのは自然だよね」</p>
+<p>Dad: “Unfortunately, you can’t get to that truth by staying on the rails of regression analysis alone. You have to start not from a probability model, but from the question: <strong>What would have happened if we had changed the cause</strong>? Causal inference is a framework designed to answer exactly that question.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほど。その説明なら、まずまず納得できるかも」</p>
+<p>Me:“Huh? Are you saying I need to redo the analysis using a completely different method?”</p>
 </div>
-<section id="グラフで考える" class="level3">
-<h3 class="anchored" data-anchor-id="グラフで考える">グラフで考える</h3>
 <div class="voice-father">
-<p>お父さん「本当はね、Rubin因果モデルではなくって図で描いて整理するんだ。ちょっとペンをとってくれる？今、こんなふうに変数が3つあるでしょ。その場合の変数間の因果関係を矢印で表すとき、3パターンあると思わない？この図のように。Eは曝露変数（exposure）、Dはアウトカム（disease）を表していて、E→Dは両者が原因と結果の関係にあるって意味だよ。Cは第3の因子のこと」</p>
+<p>Dad: “No, no. I’m talking at an abstract level for now. Think about a randomized clinical trial comparing an active treatment with a placebo. What you want to know is the difference between the outcome if everyone received the active treatment and the outcome if everyone received the placebo, right? If the endpoint is overall survival, that difference shows up as a difference between survival curves. That difference is the <strong>causal effect</strong>.”</p>
 </div>
-<p><img src="causal-inference-1-1.png" class="img-fluid"></p>
 <div class="voice-daughter">
-<p>私「この3つは、Cの周りの矢印の向きが違うわけね。確かに、E←C→DとE→C→DとE→C←Dの3パターンで一通りカバーできてるのかな。E←C←Dみたいに、結果から原因に矢印がさかのぼるのは変だし」</p>
+<p>Me: “Hmm…I see. In JCOG9502, for example, the question was whether to choose procedure TH or LTA for gastric cancer surgery. Once the standard treatment is decided, everyone would receive that procedure. So the difference between the survival curves shown in the paper corresponds to the causal effect. And now that you mention it, there’s no probability distribution or regression model explicitly appearing there.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。その場合、Eが原因、Dが結果だとすると、矢印がぐるっと循環する図は、ふつうは除外する。こういう図は、<strong>非循環有向グラフ（DAG）</strong>と呼ばれていて、図のCには、それぞれ別の名前と役割を持っているんだ」</p>
+<p>Dad: “Exactly. But your cancer survivor survey is an observational study—it’s not randomized. Even if you want to think about it the same way as JCOG9502, the outcome ‘what would have happened if a stoma had not been created’ doesn’t actually exist. It’s a hypothetical scenario. That’s why, in observational studies, the only option is to predict these unobserved outcomes using covariates and regression models. We distinguish these from observed outcomes and call them <strong>potential outcomes</strong>. They can’t be observed, but they can be defined medically and logically—as ‘another possible outcome.’”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “But what’s the point of defining something that doesn’t even exist?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s not the right way to think about it. First you define what causal effect you want to know, and then you collect data to estimate it. What you can see is just one face of a six-sided Rubik’s Cube. Even if a potential outcome is drawn on another face, you can’t observe it. But imagine preparing many Rubik’s Cubes with the same structure and placing them on a table in random orientations. You only see one face of each cube, but you can still infer what pictures might be on the other faces. That’s essentially what a randomized clinical trial does.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “This is getting complicated. What exactly is different between JCOG9502 and my survey?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “The biggest difference is obvious: randomization. Randomized clinical trials are designed from the start to answer the question, ‘What happens if we intervene?’ The target population is clearly defined, interventions are randomly assigned, and bias is minimized. In observational studies like your cancer survivor survey, no matter how carefully you think through the research hypothesis or the PECO, some ambiguity remains—especially about who exactly counts as Patients and Controls. You also can’t be sure whether you’ve measured enough confounders to adequately adjust for bias and ensure comparability.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I see.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s get back to the main point. In the Rubin causal model, before thinking about analytic models or confounding adjustment, you first define the potential outcomes and then reason about the differences between them.”</p>
+</div>
+<section id="the-complementary-roles-of-probability-models-and-causal-models" class="level3">
+<h3 class="anchored" data-anchor-id="the-complementary-roles-of-probability-models-and-causal-models">The complementary roles of probability models and causal models</h3>
+<div class="voice-daughter">
+<p>Me: “I still don’t quite get it. What are we actually looking at when we interpret results from generalized linear models or Cox regression? Aren’t regression coefficients different from causal effects?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “You could say that a single number carries two or even three layers of meaning. At the root of it, probability models and causal models form a kind of two-story structure.”</p>
 </div>
 <ul>
-<li>共通原因 （common cause）: E←C→DにおけるCのように、曝露変数とアウトカムの両方に向けた矢印を持つ因子</li>
-<li>中間媒介因子 （intermediator）: E→C→DにおけるCのように、曝露変数からアウトカムに入る矢印の途中にある因子</li>
-<li>合流点 （collider）: E→C←DにおけるCのように、曝露変数とアウトカムからの矢印が合流する因子</li>
+<li><p>Probability model: a structure that describes how the observed data are generated</p></li>
+<li><p>Causal model: a structure that represents what would have happened if the cause had been changed, both in the observed world and in unobserved worlds</p></li>
 </ul>
 <div class="voice-father">
-<p>お父さん「なにか”がんのリスク因子”をひとつ思い浮かべてみて。それは3パターンのうちどれに当てはまりそう？」</p>
+<p>Dad: “This is a creative hierarchical relationship: behind the generation of data lies a causal model. You could even say that data are measurements of phenomena that arise according to a causal structure. And as we said earlier, potential outcomes themselves can’t be observed.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、ピロリ菌とか、お酒とか？どっちも発がんリスクを上げるんだから、共通原因か、中間媒介因子のどっちかかな。リスク因子ってことは、D（がん）の向きの矢印を持っているよね」</p>
+<p>Me: “Right.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。さらに中間媒介因子について考えてみてよ。中間媒介因子って、<strong>曝露がアウトカムに影響する効果の一部</strong>を担っているよね。たとえば喫煙によってニコチンに曝露されるけど、ニコチンは”たばこを吸った結果”生じる因子であると同時に、がんの直接のリスク因子でもある。だから、“喫煙の総合的な効果”を推定したいときに、ロジスティック回帰でニコチンを調整するのはおかしいってことになる。ニコチンは効果の一部そのものだから。この理屈でいくと、3パターンのうち、<strong>調整すべきなのは共通原因だけ</strong>という理屈になる」</p>
+<p>Dad: “So data are like shadows. What you really want to see is just a little beyond them.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「へー。まあパターン分けできそうなのはわかるけど、第3の因子なんて無数にあるよね。思考停止で、全部調整したらいいじゃんって気もするけど」</p>
+<p>Me: “When you put it that way, it does feel like the truth of causal relationships exists before the data are generated. I don’t quite feel it, but I think I understand. Still, if that’s the case, why didn’t you teach causal models from the beginning instead of logistic regression?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「実際にデータを解析するときにはそうはいかない。データに限りがあるし、推定も不安定になるからね。じゃあ次に、ストーマ造設と復職率の調査を考えてみようよ。Eはストーマ造設、Dは復職だよね。たとえば、結腸がんと直腸がんで復職率は違うと思う？」</p>
+<p>Dad: “Hm. That needs a bit more explanation. It’s not that logistic regression or stratified analysis should never be used. They’re methods—like ways of solving a Rubik’s Cube. They’re not the same thing as the structure of the cube itself. What I wanted you to understand here is that, to interpret regression coefficients or odds ratios correctly as evidence about causal relationships, you need a causal model.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「わかんないな。あんまり違わないのかもしれない」</p>
+<p>Me: “You’re a specialist, so you don’t notice this, but for me, both logistic regression and the Rubin causal model are completely new ideas. The Rubin causal model sounds like analyzing what would have happened to a given patient if we had treated them differently, right? That seems like something you could do by combining anatomy, pathophysiology, pharmacology, and clinical experience.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「仮にがん種の違いは、復職率に直接効いてこないとするでしょ。そして、結腸がんだとあまりストーマを増設しないとしたらどうだろう。C→Eの関係はあるけど、C→Dの関係はないってことになる。このDAGによるとがん種は共通原因じゃないから、調整しなくてもいいってことになる」</p>
+<p>Dad: “Essentially, yes. But that approach focuses on cause and effect for individual patients. Causation at the level of individual events is called token causation, and there’s still a gap between that and causation as a general law.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほど、その仮定が正しいならそうね」</p>
+<p>Me: “Token? That word doesn’t really click for me.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「以前みせてもらった集計では、ストーマ保有者は、非保有者に比べて、平均年齢が低くて、女性が多かった」</p>
+<p>Dad: “For example, asking ‘Did this drug save that particular patient?’ is close to token causation.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうだよ」</p>
+<p>Me: “Ah, I see. I get that both individual events and general laws matter.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「きっと、60歳を超えると定年の方が多くなるだろうし、男性の方が復職を希望しているんじゃない？こう考えると、年齢・性別は、ストーマ造設と復職率の両方に関連していて、共通原因と考えてよさそうだよね。だから年齢・性別はロジスティック回帰で調整すべきなんだけど、あのときはデータが足りず、モデルが不安だった。つまり、実際の解析では、調整する変数を絞っていかないとうまくいかない」</p>
+<p>Dad: “Clinical trials and surveys deal with populations, not individuals. By analyzing populations statistically, we try to uncover general regularities. Probability distributions and regression models provide the tools to do that—that’s what we talked about before. Probability models and causal models serve different roles.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「ああ、あのときはそういう思考回路だったのね。お父さんがなにを考えていたか理解できた気がする」</p>
-</div>
-</section>
-<section id="ランダム化の下で第3の因子はどうする" class="level2">
-<h2 class="anchored" data-anchor-id="ランダム化の下で第3の因子はどうする">ランダム化の下で第3の因子はどうする？</h2>
-<div class="voice-father">
-<p>お父さん「この考え方はランダム化臨床試験でも応用できる。JCOG9912っていう臨床試験の論文を読んだことがあったよね（Sasako, et al.&nbsp;2006）。あれは、手術方法（TH群またはLTA群）を比較して全生存期間に差があるかを調べた研究だった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。だけど、ランダム化しているから第3の因子ってないんじゃない？だってTH群とLTA群をランダムに割付けてるもの」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「正解。でも、この試験ではハザード比を求めるとき、腫瘍径やBorrman分類などがんの進行度を表す変数で調整している。使ったのはロジスティック回帰じゃなくてCox回帰だけどね。」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうなのか。じゃあ調整した方がいいのかな、さっきの”共通原因だけ調整”の話と矛盾するけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ここでもDAGを使って考えられる。Eを手術方法、Dを全生存期間、Cを腫瘍径とすると、図はこうなる。試験結果では有意な関連はなかったけど、わかりやすいようにE→Dの矢印は残したよ」</p>
-</div>
-<p><img src="causal-inference-1-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「やっぱり共通原因ではないね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。JCOG9912では、腫瘍径は交絡因子ではないから、調整する必要はなかった。でも、Cox回帰によって全生存期間をモデル化するとしたらどうかな。腫瘍径のような癌の進行度をモデルに入れたくならない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それは入れたくなる。腫瘍径だけじゃなくてリンパ節転移とか、残存腫瘍の有無とかもモデル化したくなる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「この図の場合、Cは交絡因子じゃないから、調整しなくてもバイアスは生じない。でも、真に近いモデルを当てはめて、ハザード比の推定精度を高めるという観点からは、Cを調整してもいいんだ」</p>
+<p>Me: “And we’re back to the hard stuff again. Could I get another cup of coffee?”</p>
 </div>
 </section>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>この2つのDAGの解釈として正しいのはどれでしょうか。</p>
-<ol type="1">
-<li>どちらの図にもEとDに因果関係がある</li>
-<li>上図はEとDに因果関係があるが、下図にはない</li>
-<li>下図はEとDに因果関係があるが、上図にはない</li>
-<li>どちらの図にもEとDに因果関係はない</li>
-</ol>
-<p><img src="causal-inference-1-3.png" class="img-fluid"></p>
-<p><img src="causal-inference-1-4.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+</section>
+<section id="next-episodes" class="level3">
+<h3 class="anchored" data-anchor-id="next-episodes">Next episodes</h3>
 <ul>
-<li><strong>正解は1です</strong></li>
-</ul>
-<p>どちらも中間媒介因子ですが、上の図では、E→Dという直接の因果関係がありますよね。下の図でも、EはCに作用し、CはDに作用する関係があります。つまり因果関係はないというのは言い過ぎで、間接的な因果関係があるという解釈が正解になります。</p>
-</div>
-</div>
-</div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</li>
-</ul>
-</section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
-<ul>
-<li><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></li>
-<li><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></li>
-<li><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></li>
-<li><a href="causal-inference-4.html">A Circle, an Equation, and a Cylinder</a></li>
-<li><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></li>
-</ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
-<ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
-<li><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></li>
 <li><a href="truth-1.html">What Data Cannot Tell Us</a></li>
-<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+<li><a href="truth-2.html">What Could Have Happened</a></li>
+<li><a href="truth-3.html">What Is It That You Want to Know?</a></li>
 </ul>
 
 

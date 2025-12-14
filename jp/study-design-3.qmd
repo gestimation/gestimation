@@ -1,6 +1,6 @@
 ---
 title: "Outcomes: The Bridge from Data Collection to Analysis"
-description: "A coffee-chat introduction to what researchers mean by an outcome: survival endpoints (OS, DFS, RFS, CIR), time origin, and why definitions shape analysis."
+description: "OSかPFS か——アウトカムの選択は、解析以前に研究の意味を決めます。オンコロジー研究を題材に、アウトカム定義の重要性を確かめる coffee-chat guide。データ収集と解析をつなぐ視点を育てます。"
 tags:
   - Clinical trial
   - Language & writing

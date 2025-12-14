@@ -1,6 +1,6 @@
 ---
 title: "Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes"
-description: "A coffee-chat guide from outcome types (continuous, binary, count, survival) to common R functions. The daughter learns how endpoints shape analysis choices."
+description: "R関数を暗記する前に、「データはどう生まれたか」を考えてみませんか。データの型と確率モデルの対応を、父と娘の対話で整理するcoffee-chat guide。これから解析を始める方に向けた導入編です。"
 tags:
   - Language & writing
   - Probability model
@@ -119,7 +119,7 @@ Keywords: probability model, R simulation, survival & competing risks, language 
 :::
 
 ::: voice-father
-お父さん「そうだね、人間が使う言葉とは思えないとはこっちも思うよ。でも、本題に入る前につまづいたらもったいない。もし、統計でわからない言葉が出てきたら、[**いつでもおいで**](glossary.html)。まあ、とにかく、どのデータの型にどんな確率モデルを使うのか、パターンを知ることだね」
+お父さん「そうだね、人間が使う言葉とは思えないとはこっちも思うよ。でも、本題に入る前につまづいたらもったいない。もし、統計でわからない言葉が出てきたら、[**いつでも質問においで**](glossary.html)。まあ、とにかく、どのデータの型にどんな確率モデルを使うのか、パターンを知ることだね」
 :::
 
 ::: voice-daughter

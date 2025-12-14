@@ -1,19 +1,24 @@
 ---
 title: "P-Value Explanations That Seem Plausible at First Glance"
-description: "Using cancer clinical trials as an example, her father taught me misleading p-Value explanations that seem plausible at first glance."
+description: "臨床試験ででてきるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。"
+tags:
+  - Clinical trial
+  - Language & writing
+  - P-value 
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance
 
 ::: {.serif-block .text-right}
-clinical trial, hypothesis/outcome/population, p-value, survival/competing-risk, language/writing
+Keywords: clinical trial, language & writing, p-value, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

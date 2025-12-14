@@ -1,19 +1,24 @@
 ---
 title: "R Demonstration of Bias in Kaplan-Meier Under Competing Risks"
-description: "The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. This episode is illustrates bias in Kaplan-Meier curves Under competing risks using R."
+description: "理論で語られるバイアスは、Rのシミュレーションで確かめられます。Kaplan-Meierの挙動を確認するcoffee-chat guide。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。"
+tags:
+  - Bias
+  - Probability model
+  - R simulation
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Frequentist Experiments I − R Demonstration of Bias in Kaplan-Meier Under Competing Risks
 
 ::: {.serif-block .text-right}
-Keywords: probability model, simulation, survival/competing-risk
+Keywords: bias, probability model, simulation, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

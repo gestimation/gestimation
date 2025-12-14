@@ -1,157 +1,24 @@
 ---
 title: "A Circle, an Equation, and a Cylinder"
+description: ""
+tags:
+  - Causal model
+  - Language & writing
+  - Probability model
 format:
   html:
     toc: true
+date: 2025-12-13
 ---
 
-```{=html}
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-```
-
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
 # Causal inference IV − A Circle, an Equation, and a Cylinder
 
 ::: {.serif-block .text-right}
-Keywords: causal model, probability model
+Keywords: causal model, language & writing, probability model
 :::
 
 ------------------------------------------------------------------------
@@ -207,7 +74,7 @@ Keywords: causal model, probability model
 お父さん「数学の授業で、x軸とy軸をとると円はこんな方程式で表せるって習ったでしょ。DAGと条件付確率の式の関係は、これに似ている」
 :::
 
-$$x^2+y^2=r$$
+$$x^2+y^2=r^2$$
 
 ::: voice-daughter
 私「円は見た目、円の式は数式って意味？」
@@ -240,9 +107,43 @@ $$x^2+y^2=r$$
 ::: voice-father
 お父さん「1つのマグカップの中に、確率モデル、DAG、Rubin因果モデルという3つの構造が隠れている。抽象的な構造に基づいてデータから情報を引き出す。それも、単なる情報処理や圧縮じゃなく、患者さんのための知識を得るためにね。統計解析は人間のためのもの。だからこそ、どの抽象表現で世界を見るかが大事になる」
 :::
+
+### 変数をどう選ぶ
+
+::: voice-daughter
+私「でもね、私にとっては、モデルよりも変数の選び方の方が切実な問題なんだ。ピロリ菌除菌のDAGでいえば、ピロリ菌除菌の有無の他に、胃がん発生、性格、年齢、体質という変数をDAGに入れたでしょ。実際の研究でどうやって選ぶの？」
+:::
+
+::: voice-father
+お父さん「そこが難しいんだけど、**医学知識**や**研究デザイン**を根拠にもっともらしいDAGを描くしかないね。胃がんリスク因子だとか、ランダム化臨床試験なら治療割付と共変量は独立なはず、だとか」
+:::
+
+::: voice-daughter
+私「そうするとDAGの変数が無限に増えちゃうと思うんだ。だって胃がんが発生するためには、消化管が発生しないといけないでしょ。そうすると、その前にはミクロレベルでは細胞があり、マクロレベルでは生物がないとおかしいよね。ピロリ菌除菌を受ける原因だって、社会的要因かもしれないし」
+:::
+
+::: voice-father
+お父さん「ああ、そういう発想もあるね。因果観のなかには、単にある原因と結果を結びつけるだけじゃないものもある。あらゆる物質がNewton力学に従っているようにね」
+:::
+
+::: voice-daughter
+私「いま物質の話をしてないんだけど」
+:::
+
+::: voice-father
+お父さん「うん。じゃあ枠組みをもう少し広くしよう。日本語には"因果"と並んで"縁起"という言葉がある。因果は原因と結果を意味するよね。一方の縁起は、あらゆる出来事や認識が重なって、結果が生じるという文脈で使われる。でも、ランダム化臨床試験や観察研究の分析対象は、縁起の文脈より、もっと部分的じゃない？」
+:::
+
+::: voice-daughter
+私「そうだね。知りたいのは医薬品の有効性やピロリ菌除菌の効果だけだね」
+:::
+
+::: voice-father
+お父さん「うん。どの枠組みが正しいかっていう話じゃないよ。臨床研究の場合は、DAGに入れる変数は研究仮説や目的に関わると思われるものにフォーカスしてもいいんじゃないかって言いたいわけ。使用目的は、たとえば交絡因子を特定して、推測の妥当性を吟味することだからね」
+:::
 ::::::::::::::::::::::::::::::::: 
 
-### このシリーズとRスクリプト
+### このシリーズ
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)

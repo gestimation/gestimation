@@ -1,0 +1,161 @@
+---
+title: "A Circle, an Equation, and a Cylinder"
+description: ""
+tags:
+  - Causal model
+  - Language & writing
+  - Probability model
+format:
+  html:
+    toc: true
+date: 2025-12-13
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Causal inference IV − A Circle, an Equation, and a Cylinder
+
+::: {.serif-block .text-right}
+Keywords: causal model, language & writing, probability model
+:::
+
+------------------------------------------------------------------------
+
+### The answer to a question depends on how we choose to view the world abstractly
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "Dad, I appreciate how careful you are, but isn't there a simpler way to explain collider bias? That conditional probability formula is pretty brutal."
+:::
+
+::: voice-father
+Dad: "I get that. But I thought it wouldn't be precise enough without writing down the equation."
+:::
+
+::: voice-daughter
+Me: "I do appreciate the precision. Still, a metaphor might have worked just as well."
+:::
+
+::: voice-father
+Dad: "Do you remember your original question? You said that explanations of confounding felt incomplete, whether in probability models or in the Rubin causal model. That was our starting point. Simply replacing colliders with another metaphor wouldn't really solve that."
+:::
+
+::: voice-daughter
+Me: "Fair enough."
+:::
+
+::: voice-father
+Dad: "There was a reason I wrote the equations on a napkin. I wanted you to see that the same thing can be expressed in two ways: as a DAG and as a set of equations. We often use multiple abstract representations side by side. Look—there's a coffee mug right here."
+:::
+
+::: voice-daughter
+Me: "The one you're always drinking from."
+:::
+
+::: voice-father
+Dad: "Try looking at it from directly above."
+:::
+
+::: voice-daughter
+Me: "Like this?"
+:::
+
+::: voice-father
+Dad: "Exactly. You see a circle, right?"
+:::
+
+::: voice-daughter
+Me: "Yes. And?"
+:::
+
+::: voice-father
+Dad: "In math class, you learned that a circle can be described by an equation once you set an x-axis and a y-axis. The relationship between DAGs and conditional probability formulas is similar."
+:::
+
+$$x^2+y^2=r^2$$
+
+::: voice-daughter
+Me: "So the circle is the picture, and the equation is the mathematical expression?"
+:::
+
+::: voice-father
+Dad: "Right. It's the same object, expressed differently. If you're just talking about circles, it's faster to draw one than to write down the equation. DAGs work the same way. They project only the pattern of connections from a set of conditional probability formulas. They deliberately set aside distributional forms and data types, and temporarily bracket complicated equations, so that we can focus on structure alone. A DAG is a topological tool for looking only at how things are connected."
+:::
+
+::: voice-daughter
+Me: "That makes sense. Arrows are easier to grasp at first glance."
+:::
+
+::: voice-father
+Dad: "Now try looking at the mug from an angle."
+:::
+
+::: voice-daughter
+Me: "So now the circle becomes three-dimensional?"
+:::
+
+::: voice-father
+Dad: "Exactly. You see a cylinder. That cylinder is like the potential outcomes in the Rubin causal model. From the data we can observe—from the top, so to speak—we can't see the whole object. The unseen part corresponds to the unobserved potential outcomes."
+:::
+
+::: voice-daughter
+Me:"That's...surprisingly poetic."
+:::
+
+::: voice-father
+Dad: "In a single coffee mug, you can find three structures: a probability model, a DAG, and the Rubin causal model. We extract information from data by choosing an abstract structure. And this isn't just about processing or compressing information—it's about producing knowledge for patients. Statistics is for people. That's why the way we choose to view the world abstractly really matters."
+:::
+
+### How do we choose variables?
+
+::: voice-daughter
+Me: "But for me, choosing variables feels more urgent than choosing models. In the DAG for H. pylori eradication, we included not just treatment status, but gastric cancer, personality, age, and constitution. How do you actually decide what to include in a real study?"
+:::
+
+::: voice-father
+Dad: "That's the hard part. In practice, you have to rely on **medical knowledge** and **study design** to draw a plausible DAG. Known risk factors for gastric cancer, for example. Or the assumption that, in a randomized clinical trial, treatment assignment should be independent of baseline covariates."
+:::
+
+::: voice-daughter
+Me: "But if you think that way, the number of variables could grow without bound. For gastric cancer to occur, you first need a digestive tract. Before that, at the micro level there are cells, and at the macro level there's a living organism. Even receiving H. pylori treatment might depend on social factors."
+:::
+
+::: voice-father
+Dad: "That's a reasonable way to think about it. Some views of causation aren't limited to linking one cause to one result. At a very fundamental level, everything follows physical laws, like Newtonian mechanics."
+:::
+
+::: voice-daughter
+Me: "That's physics, not what we're talking about right now."
+:::
+
+::: voice-father
+Dad: "Right. Let's widen the frame just a little. In Japanese, alongside the word *in-ga* — which means cause and result—we also use the word *en-gi*. We often use *en-gi* to express the idea that outcomes arise from many overlapping conditions and events. But the objects of analysis in randomized trials or observational studies are much more limited than that, don't you think?"
+:::
+
+::: voice-daughter
+Me: "Yes. What we really want to know is the effectiveness of a drug, or the effect of H. pylori eradication."
+:::
+
+::: voice-father
+Dad: "Exactly. This isn't about which framework is 'correct.' In clinical research, it's reasonable to focus on variables that are relevant to the research question and the study's purpose. One role of DAGs, for example, is **to help identify potential confounders and assess the validity of our inferences**."
+:::
+::::::::::::::::::::::::::::::::: 
+
+### Next episodes
+
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+
+### Past series and glossary
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [From Risk to Logistic Regression](logistic-regression-1.html)
+- [What Data Cannot Tell Us](truth-1.html)
+- [Statistical Terms in Plain Language](glossary.html)

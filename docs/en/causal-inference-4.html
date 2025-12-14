@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-12-13">
 
-<title>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure – Coffee and Research</title>
+<title>A Circle, an Equation, and a Cylinder – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,6 +78,35 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -153,12 +182,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" id="toc-causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="nav-link active" data-scroll-target="#causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure">Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a>
+  <li><a href="#causal-inference-iv-a-circle-an-equation-and-a-cylinder" id="toc-causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="nav-link active" data-scroll-target="#causal-inference-iv-a-circle-an-equation-and-a-cylinder">Causal inference IV − A Circle, an Equation, and a Cylinder</a>
   <ul class="collapse">
-  <li><a href="#第3の因子なんて無数にあるよね" id="toc-第3の因子なんて無数にあるよね" class="nav-link" data-scroll-target="#第3の因子なんて無数にあるよね">第3の因子なんて無数にあるよね？</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#the-answer-to-a-question-depends-on-how-we-choose-to-view-the-world-abstractly" id="toc-the-answer-to-a-question-depends-on-how-we-choose-to-view-the-world-abstractly" class="nav-link" data-scroll-target="#the-answer-to-a-question-depends-on-how-we-choose-to-view-the-world-abstractly">The answer to a question depends on how we choose to view the world abstractly</a></li>
+  <li><a href="#next-episodes" id="toc-next-episodes" class="nav-link" data-scroll-target="#next-episodes">Next episodes</a></li>
+  <li><a href="#past-series-and-glossary" id="toc-past-series-and-glossary" class="nav-link" data-scroll-target="#past-series-and-glossary">Past series and glossary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,7 +196,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<h1 class="title">A Circle, an Equation, and a Cylinder</h1>
 </div>
 
 
@@ -194,178 +222,107 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-i-three-variable-dags-the-smallest-building-blocks-of-causal-structure" class="level1">
-<h1>Causal inference I − Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</h1>
+<section id="causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="level1">
+<h1>Causal inference IV − A Circle, an Equation, and a Cylinder</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, causal model, clinical trial, confounding &amp; collapsibility</p>
+<p>Keywords: causal model, language &amp; writing, probability model</p>
 </div>
 <hr>
-<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-前回までのあらすじ
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、医師である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。父に交絡調整について教わるが、娘はいまひとつ腑に落ちないのだった。</p>
-</div>
-</div>
-</div>
-<section id="第3の因子なんて無数にあるよね" class="level3">
-<h3 class="anchored">第3の因子なんて無数にあるよね？</h3>
+<section id="the-answer-to-a-question-depends-on-how-we-choose-to-view-the-world-abstractly" class="level3">
+<h3 class="anchored" data-anchor-id="the-answer-to-a-question-depends-on-how-we-choose-to-view-the-world-abstractly">The answer to a question depends on how we choose to view the world abstractly</h3>
 <div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “Dad, I appreciate how careful you are, but isn’t there a simpler way to explain collider bias? That conditional probability formula is pretty brutal.”</p>
+</div>
 <div class="voice-father">
-<p>お父さん「おはよう。だいぶ寒さが和らいできたね」</p>
+<p>Dad: “I get that. But I thought it wouldn’t be precise enough without writing down the equation.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「あ、やっと起きたの。聞きたいことがあったんだ。この前、コーヒーと膵がんの話をしてくれて、ロジスティック回帰で”調整する”っていう操作がどういうことかはわかったよ。<strong>確率モデル</strong>と<strong>因果モデル</strong>の違いも納得した。でもさ、問題は”喫煙”を調整するのが正しいかどうかなんじゃない？値が変わったってだけじゃ、説明としては足りない気がするし、Rubin因果モデルの話をしてくれたときもそこには触れなかった」</p>
+<p>Me: “I do appreciate the precision. Still, a metaphor might have worked just as well.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね。前にいったようにデータだけからは、調整前と調整後のどちらが”正しい”かは決められない。でも膵がんの例だと、喫煙は発がん因子だっていう医学的な常識があるよね。こういう事前知識が、調整すべきか交絡因子を選ぶときの判断材料になる。リスク因子だとわかっているなら、疾患にかかる確率をモデル化するときに考慮しておきたいってのは自然だよね」</p>
+<p>Dad: “Do you remember your original question? You said that explanations of confounding felt incomplete, whether in probability models or in the Rubin causal model. That was our starting point. Simply replacing colliders with another metaphor wouldn’t really solve that.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほど。その説明なら、まずまず納得できるかも」</p>
-</div>
-<section id="グラフで考える" class="level3">
-<h3 class="anchored" data-anchor-id="グラフで考える">グラフで考える</h3>
-<div class="voice-father">
-<p>お父さん「本当はね、Rubin因果モデルではなくって図で描いて整理するんだ。ちょっとペンをとってくれる？今、こんなふうに変数が3つあるでしょ。その場合の変数間の因果関係を矢印で表すとき、3パターンあると思わない？この図のように。Eは曝露変数（exposure）、Dはアウトカム（disease）を表していて、E→Dは両者が原因と結果の関係にあるって意味だよ。Cは第3の因子のこと」</p>
-</div>
-<p><img src="causal-inference-1-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「この3つは、Cの周りの矢印の向きが違うわけね。確かに、E←C→DとE→C→DとE→C←Dの3パターンで一通りカバーできてるのかな。E←C←Dみたいに、結果から原因に矢印がさかのぼるのは変だし」</p>
+<p>Me: “Fair enough.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。その場合、Eが原因、Dが結果だとすると、矢印がぐるっと循環する図は、ふつうは除外する。こういう図は、<strong>非循環有向グラフ（DAG）</strong>と呼ばれていて、図のCには、それぞれ別の名前と役割を持っているんだ」</p>
-</div>
-<ul>
-<li>共通原因 （common cause）: E←C→DにおけるCのように、曝露変数とアウトカムの両方に向けた矢印を持つ因子</li>
-<li>中間媒介因子 （intermediator）: E→C→DにおけるCのように、曝露変数からアウトカムに入る矢印の途中にある因子</li>
-<li>合流点 （collider）: E→C←DにおけるCのように、曝露変数とアウトカムからの矢印が合流する因子</li>
-</ul>
-<div class="voice-father">
-<p>お父さん「なにか”がんのリスク因子”をひとつ思い浮かべてみて。それは3パターンのうちどれに当てはまりそう？」</p>
+<p>Dad: “There was a reason I wrote the equations on a napkin. I wanted you to see that the same thing can be expressed in two ways: as a DAG and as a set of equations. We often use multiple abstract representations side by side. Look—there’s a coffee mug right here.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、ピロリ菌とか、お酒とか？どっちも発がんリスクを上げるんだから、共通原因か、中間媒介因子のどっちかかな。リスク因子ってことは、D（がん）の向きの矢印を持っているよね」</p>
+<p>Me: “The one you’re always drinking from.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。さらに中間媒介因子について考えてみてよ。中間媒介因子って、<strong>曝露がアウトカムに影響する効果の一部</strong>を担っているよね。たとえば喫煙によってニコチンに曝露されるけど、ニコチンは”たばこを吸った結果”生じる因子であると同時に、がんの直接のリスク因子でもある。だから、“喫煙の総合的な効果”を推定したいときに、ロジスティック回帰でニコチンを調整するのはおかしいってことになる。ニコチンは効果の一部そのものだから。この理屈でいくと、3パターンのうち、<strong>調整すべきなのは共通原因だけ</strong>という理屈になる」</p>
+<p>Dad: “Try looking at it from directly above.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「へー。まあパターン分けできそうなのはわかるけど、第3の因子なんて無数にあるよね。思考停止で、全部調整したらいいじゃんって気もするけど」</p>
+<p>Me: “Like this?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「実際にデータを解析するときにはそうはいかない。データに限りがあるし、推定も不安定になるからね。じゃあ次に、ストーマ造設と復職率の調査を考えてみようよ。Eはストーマ造設、Dは復職だよね。たとえば、結腸がんと直腸がんで復職率は違うと思う？」</p>
+<p>Dad: “Exactly. You see a circle, right?”</p>
 </div>
 <div class="voice-daughter">
-<p>私「わかんないな。あんまり違わないのかもしれない」</p>
+<p>Me: “Yes. And?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「仮にがん種の違いは、復職率に直接効いてこないとするでしょ。そして、結腸がんだとあまりストーマを増設しないとしたらどうだろう。C→Eの関係はあるけど、C→Dの関係はないってことになる。このDAGによるとがん種は共通原因じゃないから、調整しなくてもいいってことになる」</p>
+<p>Dad: “In math class, you learned that a circle can be described by an equation once you set an x-axis and a y-axis. The relationship between DAGs and conditional probability formulas is similar.”</p>
+</div>
+<p><span class="math display">\[x^2+y^2=r^2\]</span></p>
+<div class="voice-daughter">
+<p>Me: “So the circle is the picture, and the equation is the mathematical expression?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Right. It’s the same object, expressed differently. If you’re just talking about circles, it’s faster to draw one than to write down the equation. DAGs work the same way. They project only the pattern of connections from a set of conditional probability formulas. They deliberately set aside distributional forms and data types, and temporarily bracket complicated equations, so that we can focus on structure alone. A DAG is a topological tool for looking only at how things are connected.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「なるほど、その仮定が正しいならそうね」</p>
+<p>Me: “That makes sense. Arrows are easier to grasp at first glance.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「以前みせてもらった集計では、ストーマ保有者は、非保有者に比べて、平均年齢が低くて、女性が多かった」</p>
+<p>Dad: “Now try looking at the mug from an angle.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうだよ」</p>
+<p>Me: “So now the circle becomes three-dimensional?”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「きっと、60歳を超えると定年の方が多くなるだろうし、男性の方が復職を希望しているんじゃない？こう考えると、年齢・性別は、ストーマ造設と復職率の両方に関連していて、共通原因と考えてよさそうだよね。だから年齢・性別はロジスティック回帰で調整すべきなんだけど、あのときはデータが足りず、モデルが不安だった。つまり、実際の解析では、調整する変数を絞っていかないとうまくいかない」</p>
+<p>Dad: “Exactly. You see a cylinder. That cylinder is like the potential outcomes in the Rubin causal model. From the data we can observe—from the top, so to speak—we can’t see the whole object. The unseen part corresponds to the unobserved potential outcomes.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「ああ、あのときはそういう思考回路だったのね。お父さんがなにを考えていたか理解できた気がする」</p>
+<p>Me:“That’s…surprisingly poetic.”</p>
 </div>
-</section>
-<section id="ランダム化の下で第3の因子はどうする" class="level2">
-<h2 class="anchored" data-anchor-id="ランダム化の下で第3の因子はどうする">ランダム化の下で第3の因子はどうする？</h2>
 <div class="voice-father">
-<p>お父さん「この考え方はランダム化臨床試験でも応用できる。JCOG9912っていう臨床試験の論文を読んだことがあったよね（Sasako, et al.&nbsp;2006）。あれは、手術方法（TH群またはLTA群）を比較して全生存期間に差があるかを調べた研究だった」</p>
+<p>Dad: “In a single coffee mug, you can find three structures: a probability model, a DAG, and the Rubin causal model. We extract information from data by choosing an abstract structure. And this isn’t just about processing or compressing information—it’s about producing knowledge for patients. Statistics is for people. That’s why the way we choose to view the world abstractly really matters.”</p>
+</div>
+<section id="how-do-we-choose-variables" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-choose-variables">How do we choose variables?</h3>
+<div class="voice-daughter">
+<p>Me: “But for me, choosing variables feels more urgent than choosing models. In the DAG for H. pylori eradication, we included not just treatment status, but gastric cancer, personality, age, and constitution. How do you actually decide what to include in a real study?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s the hard part. In practice, you have to rely on <strong>medical knowledge</strong> and <strong>study design</strong> to draw a plausible DAG. Known risk factors for gastric cancer, for example. Or the assumption that, in a randomized clinical trial, treatment assignment should be independent of baseline covariates.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「うん。だけど、ランダム化しているから第3の因子ってないんじゃない？だってTH群とLTA群をランダムに割付けてるもの」</p>
+<p>Me: “But if you think that way, the number of variables could grow without bound. For gastric cancer to occur, you first need a digestive tract. Before that, at the micro level there are cells, and at the macro level there’s a living organism. Even receiving H. pylori treatment might depend on social factors.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「正解。でも、この試験ではハザード比を求めるとき、腫瘍径やBorrman分類などがんの進行度を表す変数で調整している。使ったのはロジスティック回帰じゃなくてCox回帰だけどね。」</p>
+<p>Dad: “That’s a reasonable way to think about it. Some views of causation aren’t limited to linking one cause to one result. At a very fundamental level, everything follows physical laws, like Newtonian mechanics.”</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうなのか。じゃあ調整した方がいいのかな、さっきの”共通原因だけ調整”の話と矛盾するけど」</p>
+<p>Me: “That’s physics, not what we’re talking about right now.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ここでもDAGを使って考えられる。Eを手術方法、Dを全生存期間、Cを腫瘍径とすると、図はこうなる。試験結果では有意な関連はなかったけど、わかりやすいようにE→Dの矢印は残したよ」</p>
-</div>
-<p><img src="causal-inference-1-2.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「やっぱり共通原因ではないね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。JCOG9912では、腫瘍径は交絡因子ではないから、調整する必要はなかった。でも、Cox回帰によって全生存期間をモデル化するとしたらどうかな。腫瘍径のような癌の進行度をモデルに入れたくならない？」</p>
+<p>Dad: “Right. Let’s widen the frame just a little. In Japanese, alongside the word <em>in-ga</em> — which means cause and result—we also use the word <em>en-gi</em>. We often use <em>en-gi</em> to express the idea that outcomes arise from many overlapping conditions and events. But the objects of analysis in randomized trials or observational studies are much more limited than that, don’t you think?”</p>
 </div>
 <div class="voice-daughter">
-<p>私「それは入れたくなる。腫瘍径だけじゃなくてリンパ節転移とか、残存腫瘍の有無とかもモデル化したくなる」</p>
+<p>Me: “Yes. What we really want to know is the effectiveness of a drug, or the effect of H. pylori eradication.”</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この図の場合、Cは交絡因子じゃないから、調整しなくてもバイアスは生じない。でも、真に近いモデルを当てはめて、ハザード比の推定精度を高めるという観点からは、Cを調整してもいいんだ」</p>
+<p>Dad: “Exactly. This isn’t about which framework is ‘correct.’ In clinical research, it’s reasonable to focus on variables that are relevant to the research question and the study’s purpose. One role of DAGs, for example, is <strong>to help identify potential confounders and assess the validity of our inferences</strong>.”</p>
 </div>
 </section>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>この2つのDAGの解釈として正しいのはどれでしょうか。</p>
-<ol type="1">
-<li>どちらの図にもEとDに因果関係がある</li>
-<li>上図はEとDに因果関係があるが、下図にはない</li>
-<li>下図はEとDに因果関係があるが、上図にはない</li>
-<li>どちらの図にもEとDに因果関係はない</li>
-</ol>
-<p><img src="causal-inference-1-3.png" class="img-fluid"></p>
-<p><img src="causal-inference-1-4.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は1です</strong></li>
-</ul>
-<p>どちらも中間媒介因子ですが、上の図では、E→Dという直接の因果関係がありますよね。下の図でも、EはCに作用し、CはDに作用する関係があります。つまり因果関係はないというのは言い過ぎで、間接的な因果関係があるという解釈が正解になります。</p>
-</div>
-</div>
-</div>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</li>
-</ul>
-</section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
+<section id="next-episodes" class="level3">
+<h3 class="anchored" data-anchor-id="next-episodes">Next episodes</h3>
 <ul>
 <li><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></li>
 <li><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></li>
@@ -374,8 +331,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></li>
 </ul>
 </section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<section id="past-series-and-glossary" class="level3">
+<h3 class="anchored" data-anchor-id="past-series-and-glossary">Past series and glossary</h3>
 <ul>
 <li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
 <li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>

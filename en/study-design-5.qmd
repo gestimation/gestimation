@@ -1,6 +1,6 @@
 ---
 title: "When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys"
-description: "How bias enters clinical surveys. Through a coffee chat, the daughter learns how selection bias, information bias, and confounding arise during study design."
+description: "Bias often enters a study long before analysis begins. Through a coffee chat, the daughter learns how selection bias, information bias, and confounding arise and some countermeasures in study design."
 tags:
   - Bias
   - Language & writing
