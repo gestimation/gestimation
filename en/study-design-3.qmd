@@ -180,7 +180,7 @@ This doesn’t mean you must always use central review; in some contexts, local 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
 - [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
-- [A First Step into Survival and Competing Risks Analysis with R]
-- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
 - [Statistical Terms in Plain Language](glossary.html)
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
