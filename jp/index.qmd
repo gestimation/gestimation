@@ -40,7 +40,7 @@ listing:
 - [A First Step into Survival and Competing Risks Analysis with R]　【12/15公開予定】
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]　【12/15公開予定】
 
-::: {.callout-note appearance="simple" title="内容が知りたい方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
 - A Story of Coffee Chat and Research Hypothesis
 　研究は「**どんな問いを立てるか**」から始まります。PICO/PECO、比較しやすい集団・一般化しやすい集団、アウトカムの選び方...。娘は父に研究の出発点について尋ねます。
 - Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes
@@ -69,7 +69,7 @@ listing:
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
-::: {.callout-note appearance="simple" title="内容が知りたい方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
 - Reading a Paper over a Cup of Coffee
 　はじめて論文を読んだとき、**統計の用語**が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。
 - P-Value Explanations That Seem Plausible at First Glance
@@ -90,7 +90,7 @@ listing:
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-::: {.callout-note appearance="simple" title="内容が知りたい方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
 - R Demonstration of Bias in Kaplan-Meier Under Competing Risks
 　頻度論が導く法則は、ただの抽象ではなく**シミュレーション実験**で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
 - Understanding Confidence Intervals via Hypothetical Replications in R
@@ -114,7 +114,7 @@ listing:
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
-::: {.callout-note appearance="simple" title="内容が知りたい方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
 - Silent Confusions Hidden in Percentages
 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。**ワクチン有効率**の注意点を父は語ります。
 - Who Is This Percentage About Target Populations and Attributable Fractions
@@ -161,7 +161,7 @@ listing:
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 
-::: {.callout-note appearance="simple" title="内容が知りたい方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
 　有効非循環グラフ（DAG）、共通原因、合流点、中間媒介因子。「もし...だったら？」を統計的に考えるための**因果の言葉**へ父はいざないます。
 - [A Subtle Distinction between Common Causes and Confounders]

@@ -182,7 +182,7 @@ The I (Intervention) or E (Exposure) differs depending on whether your study is 
 Here are three examples of research hypotheses using the cancer survivor survey as a theme.
 ::: 
 
-::: {.callout-note appearance="simple" title="Research hypothesis 1"}
+::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 1"}
 
 Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within one year** between those with and without a stoma?
 
@@ -197,7 +197,7 @@ What to choose for C (Comparison) is important. If you only know the return-to-w
 Having a clear comparison group improves interpretability. 
 :::
 
-::: {.callout-note appearance="simple" title="Research hypothesis 2"}
+::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 2"}
 
 Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?
 
@@ -209,7 +209,7 @@ Among cancer patients after curative surgery, does providing a guidebook on bala
 Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
 :::
 
-::: {.callout-note appearance="simple" title="Research hypothesis 3 (exploratory)"}
+::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 3 (exploratory)"}
 
 "Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
 

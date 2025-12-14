@@ -46,6 +46,29 @@ Every study starts with a question. How do we frame PICO/PECO? How do we choose 
 - [A First Step into Survival and Competing Risks Analysis with R]
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
 
+::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+- A Story of Coffee Chat and Research Hypothesis
+
+Research begins with the question itself. A coffee-chat guide where a clinician daughter and her statistician father explore research questions, PICO/PECO, and outcome choice. A gentle first step for clinicians starting their very first study.
+
+
+- Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes
+
+Before memorizing R functions, it helps to ask how the data were generated. A coffee-chat guide linking data types, probability models, and common R functions through conversation. An entry point for clinicians beginning data analysis.
+
+- Outcomes: The Bridge from Data Collection to Analysis
+
+OS or PFS? Outcome choice shapes the meaning of a study long before analysis begins. A coffee-chat guide on outcome definition in oncology research, told through a quiet dialogue. 
+
+- A First Step into Survival and Competing Risks Analysis with R
+
+In survival analysis, pitfalls often begin with event definitions and coding. A coffee-chat guide covering data collection and a first demonstration of competing risks analysis in R. Designed for readers new to time-to-event data.
+
+- When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys
+
+Bias often enters a study long before analysis begins. A coffee-chat guide on selection, information, and confounding bias in clinical surveys. What to think about before sending out the questionnaire.
+:::
+
 You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
@@ -62,6 +85,21 @@ Using cancer clinical trials as an example, my father explains the **frequentist
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
+
+::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+- Reading a Paper over a Cup of Coffee
+
+Have you ever felt lost in statistical terms when reading your first paper? A coffee-chat guide that begins with a daughter’s questions at the kitchen table. Learning how to read statistical language in clinical papers.
+
+- P-Value Explanations That Seem Plausible at First Glance
+
+What does a p-value really repeat, hypothetically? A coffee-chat guide exploring frequentist thinking through imagined repetitions. Building intuition for p-values beyond surface explanations.
+
+- Beyond 0.05: Interpreting P-Values in a Clinical Trial
+
+To interpret a p-value, you have to read the Methods section. A coffee-chat guide reflecting on p-values through the ASA statement. Looking beyond the 0.05 threshold.
+:::
+
 You can download the full R script for this and the next episodes here. 
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
@@ -70,11 +108,21 @@ You can download the full R script for this and the next episodes here.
 
 The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.
 
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+- R Demonstration of Bias in Kaplan-Meier Under Competing Risks
 
-You can download the full R script for this and the previous episode here. 
+Bias discussed in theory can be demonstrated in simulation. A coffee-chat guide showing how Kaplan?Meier behaves under competing risks using R. Connecting abstract ideas with concrete experiments.
+
+- Understanding Confidence Intervals via Hypothetical Replications in R
+
+What does the “95%” in a confidence interval really mean? A coffee-chat guide using hypothetical replications in R. Developing an intuitive feel for confidence intervals.
+
+- Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size
+
+Sample size planning is also the planning of error probabilities. A coffee-chat guide to alpha, beta, and statistical power. Revisiting the foundations of frequentist design.
+:::
+
+You can download the full R script for this and the next episode here. 
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
@@ -88,6 +136,33 @@ We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness r
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
+
+
+::: {.callout-note appearance="simple" collapse="true" title="Contents of each episode"}
+- Silent Confusions Hidden in Percentages
+
+Percentages feel intuitive, yet they often mislead. A coffee-chat guide on vaccine effectiveness and how numbers take on lives of their own. Rethinking how effects are communicated.
+
+- Who Is This Percentage About? Target Populations and Attributable Fractions
+
+The meaning of a number depends on who it is about. A coffee-chat guide on target populations and attributable fractions. Asking whose story a percentage is telling.
+
+- Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R
+
+How are adjusted analyses related to Simpson’s paradox? A coffee-chat guide to collapsibility of effect measures, explored with R. Understanding why interpretations sometimes shift.
+
+- When Odds Ratios Approximate Risk Ratios—and When They Fail
+
+Odds ratios are not always intuitive. A coffee-chat guide on when odds ratios approximate risk ratios?and when they do not. Sharpening interpretation rather than calculation.
+
+- From Risk and Rate to Survival and Hazard
+
+Risk, rate, survival, and hazard form a continuum of ideas. A coffee-chat guide introducing the basics of survival analysis. An entry point to thinking about effects over time.
+
+- Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example
+
+Effects may change over time. A coffee-chat guide using R to explore time-point, time-constant, and time-varying effects. Preparing the ground for causal thinking.
+:::
 
 You can download the full R script for this and the previous episode here. 
 

@@ -782,14 +782,16 @@ Clinical questions and research hypotheses
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Research hypothesis 1">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Research hypothesis 1
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Among rectal cancer patients after curative resection in Japan, is there a difference in <strong>return-to-work within one year</strong> between those with and without a stoma?</p>
 <ul>
@@ -806,15 +808,18 @@ Research hypothesis 1
 Having a clear comparison group improves interpretability.</p>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Research hypothesis 2">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Research hypothesis 2
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?</p>
 <ul>
@@ -829,19 +834,23 @@ Research hypothesis 2
 <p>Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.</p>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Research hypothesis 3 (exploratory)">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Research hypothesis 3 (exploratory)
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>“Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”</p>
 <p>In exploratory studies like this, P is clear, but E and C are <strong>not just one thing</strong> — we’re screening multiple potential risk factors.</p>
 <p>So “structuring the question” doesn’t mean you have to force every study into a clean PECO shape. What matters is to identify the <strong>minimal set of elements</strong> needed to design a coherent study for your question.</p>
+</div>
 </div>
 </div>
 <div class="dialogue">
