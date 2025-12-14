@@ -135,13 +135,25 @@ listing:
 
 ### 6. Adjusting for Bias — 回帰モデリングの風景
 
-**ロジスティック回帰**の結果の見方、表の作り方から、使用上の落とし穴まで、父の手ほどきを受けるエピソード。そして...。
-
 - [From Risk to Logistic Regression]
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
 - [Why Logistic Regression Fails in Small Samples]
 - [Simpson's paradox]
+
+::: {.callout-note appearance="simple" collapse="true" title="内容が知りたい方はこちら"}
+
+- [From Risk to Logistic Regression]
+　「教えられた通り、Rのglm関数で**ロジスティック回帰**をしてみたんだけど、なんだかブラックボックスみたい」父は娘の疑問に答えます。
+- [Logit: How a Transformation Shapes an Effect]
+　様々な回帰モデルのうちロジスティック回帰を特徴づけるのは**ロジット関数**です。娘は、なぜロジット関数が用いられるのか統計学の秘密を知らされます。
+- [Where My Logistic Regression Went Wrong]
+　結果の見方、表の作り方から、使用上の落とし穴まで、父から統計解析の手ほどきを受けるエピソード。
+- [Why Logistic Regression Fails in Small Samples]
+　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。
+- [Simpson's paradox]
+　いわゆるSimpsonのパラドックスと**交絡**の関係は？そしてロジスティック回帰を用いた**調整**という操作に足りない構造とは？
+:::
 
 このエピソードのRスクリプト一式はこちらから。
 
@@ -167,9 +179,9 @@ listing:
 - [A Subtle Distinction between Common Causes and Confounders]
 　交絡因子と共通原因は異なる概念だった。現在でも論争の続く交絡因子の正確な定義について、DAGを使って一歩近づきます。
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
-　DAGと確率モデルの関係は？因果モデルの意味を確率に関する必要最小限の数式を交えて扱います。
+　どういう理屈でDAGで交絡因子が特定できるのか？父は、確率に関する必要最小限の数式を使って説明します。
 - [A Circle, an Equation, and a Cylinder]
-　それではDAGと確率モデルとRubin因果モデルはどういう関係にあるの？娘の疑問への答え。
+　DAGと確率モデルとRubin因果モデルっていったいなに？娘の疑問への答え。
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 　わかるようでわからない**ブロック**という操作の正式な解説。
 :::
@@ -195,3 +207,5 @@ listing:
 - **研究を形にして届けるところまで見通したい**: Publish a Paper
 
 どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。
+
+------------------------------------------------------------------------
