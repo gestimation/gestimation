@@ -99,7 +99,7 @@ ASAは2016年に、定量的研究の実施とその解釈を改善するため�
 お父さん「最近の臨床試験では、多重性っていう統計的な問題が潜んでいることが多い。JCOG9502論文を例にもう少し説明しようか。Statistical Analysis（統計解析）のところを読み返してみて。**alpha error（αエラー）**っていうのは、有意水準ともいうけど、どちらもp値と比べる水準のこと」
 :::
 
-After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文\[Sasako, et al. 2016\]の”Statistical Analysis”から抜粋）
+After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文\[Sasako, et al. 2006\]の”Statistical Analysis”から抜粋）
 
 ::: voice-daughter
 私「p値を0.1と比べるってこと？0.05じゃないの？」

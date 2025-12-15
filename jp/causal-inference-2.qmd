@@ -16,7 +16,7 @@ date: 2025-12-13
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Causal inference II − A Subtle Distinction between Common Causes and Confounders
+# Causal Inference II − A Subtle Distinction between Common Causes and Confounders
 
 ::: {.serif-block .text-right}
 Keywords: bias, causal model, confounding & collapsibility, observational study

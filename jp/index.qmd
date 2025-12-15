@@ -40,7 +40,7 @@ listing:
 - [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
 - **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
@@ -53,7 +53,7 @@ listing:
 　バイアスは解析で帳尻合わせできないことが多い。選択バイアス・情報バイアス・交絡を「どこで混入するか」という視点で点検します。
 :::
 
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。R パッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
@@ -69,18 +69,18 @@ listing:
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **Reading a Paper over a Cup of Coffee**
 　はじめて論文を読んだとき、統計の用語が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。
 - **P-Value Explanations That Seem Plausible at First Glance**
 　「繰り返したら数字はどう振る舞う？」という頻度論の視点を、臨床試験の状況で体に落とします。
 - **Beyond 0.05: Interpreting P-Values in a Clinical Trial**
 　p値は「数字」ではなく、Methodsの読み方に接続される。p値について統計家たちがだした声明を扱ったエピソード。
-:::
 
 この回と次のエピソードのRスクリプト一式はこちらから。
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+:::
 
 ### 4. Frequentist Experiments — 統計学の実証
 
@@ -90,18 +90,18 @@ listing:
 - [Understanding Confidence Intervals via Hypothetical Replications in R]
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
 　頻度論が導く法則は、ただの抽象ではなくシミュレーションで確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
 - **Understanding Confidence Intervals via Hypothetical Replications in R**
 　95%信頼区間はどういう意味で95%なのでしょうか？娘はRを用いたシミュレーション実験で確かめます。
 - **Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size**
 　統計学では、p値とサンプルサイズ設計が対になってエラーをコントロールします。サンプルサイズ設計入門。
-:::
 
 この回と前のエピソードのRスクリプト一式はこちらから。
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
+:::
 
 ### 5. Effects and Time — 効果は時間とともに
 
@@ -114,7 +114,7 @@ listing:
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **Silent Confusions Hidden in Percentages**
 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。言葉の意味を知ることの大切さを父は語ります。
 - **Who Is This Percentage About Target Populations and Attributable Fractions**
@@ -127,11 +127,11 @@ listing:
 　「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を娘は父に学びます。
 - **Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example**
 　リスク比、ハザード比、そして時間とともに変化する効果。因果推論に先立って立体的なデータの見方が静かに育ちます。
-:::
 
 このエピソードのRスクリプト一式はこちらから。
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
+:::
 
 ### 6. Adjusting for Bias — 回帰モデリングの風景
 
@@ -143,7 +143,7 @@ listing:
 - [Why Logistic Regression Fails in Small Samples]
 - [Simpson's paradox]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **From Risk to Logistic Regression**
 　「教えられた通り、Rのglm関数でロジスティック回帰をしてみたんだけど、なんだかブラックボックスみたい」父は娘の疑問に答えます。
 - **Logit: How a Transformation Shapes an Effect**
@@ -154,11 +154,11 @@ listing:
 　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。
 - **Simpson's paradox**
 　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整という操作に足りない構造とは？
-:::
 
 このエピソードのRスクリプト一式はこちらから。
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
+:::
 
 ### 7. Truth — 真実
 

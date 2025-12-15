@@ -188,12 +188,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#effects-and-time-iii-understanding-collapsibility-of-effect-measures-in-marginal-and-stratified-analyses-with-r" id="toc-effects-and-time-iii-understanding-collapsibility-of-effect-measures-in-marginal-and-stratified-analyses-with-r" class="nav-link active" data-scroll-target="#effects-and-time-iii-understanding-collapsibility-of-effect-measures-in-marginal-and-stratified-analyses-with-r">Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</a>
+  <li><a href="#effects-and-time-iii-understanding-collapsibility-of-effect-measures-marginal-vs-stratified" id="toc-effects-and-time-iii-understanding-collapsibility-of-effect-measures-marginal-vs-stratified" class="nav-link active" data-scroll-target="#effects-and-time-iii-understanding-collapsibility-of-effect-measures-marginal-vs-stratified">Effects and time III − Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a>
   <ul class="collapse">
-  <li><a href="#リスク差リスク比オッズ比どれを使う" id="toc-リスク差リスク比オッズ比どれを使う" class="nav-link" data-scroll-target="#リスク差リスク比オッズ比どれを使う">リスク差、リスク比、オッズ比、どれを使う？</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#効果の指標" id="toc-効果の指標" class="nav-link" data-scroll-target="#効果の指標">効果の指標</a></li>
+  <li><a href="#リスク比とオッズ比どっちを使う" id="toc-リスク比とオッズ比どっちを使う" class="nav-link" data-scroll-target="#リスク比とオッズ比どっちを使う">リスク比とオッズ比、どっちを使う？</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -228,14 +226,14 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="effects-and-time-iii-understanding-collapsibility-of-effect-measures-in-marginal-and-stratified-analyses-with-r" class="level1">
-<h1>Effects and time III − Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</h1>
+<section id="effects-and-time-iii-understanding-collapsibility-of-effect-measures-marginal-vs-stratified" class="level1">
+<h1>Effects and time III − Understanding Collapsibility of Effect Measures: Marginal vs Stratified</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, confounding &amp; collapsibility, effect measure, R simulation</p>
+<p>Keywords: clinical trial, confounding &amp; collapsibility, effect measure, R simulation</p>
 </div>
 <hr>
-<section id="リスク差リスク比オッズ比どれを使う" class="level3">
-<h3 class="anchored" data-anchor-id="リスク差リスク比オッズ比どれを使う">リスク差、リスク比、オッズ比、どれを使う？</h3>
+<section id="効果の指標" class="level3">
+<h3 class="anchored" data-anchor-id="効果の指標">効果の指標</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「お父さん、なにか甘いものない？お腹すいちゃって」</p>
@@ -250,10 +248,15 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>お父さん「疫学か。疫学は、集団における病気について調べる分野だよね。病気の原因を調べたり、予防方法や公衆衛生対策を立てたりする。がん、循環器、感染症など扱う病気によってだいぶ違うよね。まあ、疫学の基本はなにかっていったら、コホート研究とリスクかな」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうだったね、最初の話題はワクチン有効率だったけど、あれも発症リスクの指標だった。後はリスク比、オッズ比、ハザード比だっけ？」</p>
+<p>私「そうだったね、この前のワクチン有効率のやつは、リスクもワクチン有効率もパーセンテージ表記だからまぎらわしいって話だった。効果の指標（effect measure）もいろいろあったな。リスク比、オッズ比、ハザード比だっけ？」</p>
 </div>
+</div>
+</section>
+<section id="リスク比とオッズ比どっちを使う" class="level3">
+<h3 class="anchored" data-anchor-id="リスク比とオッズ比どっちを使う">リスク比とオッズ比、どっちを使う？</h3>
+<div class="dialogue">
 <div class="voice-father">
-<p>お父さん「そんな話をしたね。じゃあ、リスク比とオッズ比の話をしようか。コーヒー飲みながら気楽に聞いてね。統計学が気にするのは、<strong>それぞれの指標の意味・解釈</strong>の違いもあるけど、それ以上に<strong>数学的な性質</strong>を考えているんだよね。オッズ比は数学的にいい面と悪い面がある。いいところは、”リスクの数値”と”1からリスクを引いた数値”が対称に出てくるような数式をしていること。生存確率と死亡確率をひっくり返しても同じっていったらいいかな」</p>
+<p>お父さん「じゃあ、リスク比とオッズ比の話をしようか。コーヒー飲みながら気楽に聞いてね。統計学が気にするのは、<strong>それぞれの指標の意味・解釈</strong>の違いもあるけど、それ以上に<strong>数学的な性質</strong>を考えているんだよね。オッズ比は数学的にいい面と悪い面がある。いいところは、”リスクの数値”と”1からリスクを引いた数値”が対称に出てくるような数式をしていること。生存確率と死亡確率をひっくり返しても同じっていったらいいかな」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふーんそうなんだ」</p>
@@ -280,10 +283,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="callout-body-container callout-body">
 <p>表1と表2は、がん患者100人のランダム化臨床試験を想定して作った数値例です。表1では100人全体における死亡リスクを、表2はステージIIIの50人とステージIVの50人に層別した死亡リスクを示しています。</p>
 <p>まず、抗がん剤投与群の死亡リスクをみてください。ステージIIIでは死亡リスクは20%と低く、ステージIVでは40%と高いことがわかります。そして全体の死亡リスクは、ステージIIIとステージIVの平均（30%）です。このように、リスクには、層別する前の値が、層別した後の平均になるという性質があります。</p>
-<p>これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、<strong>併合可能性（collapsiblity）</strong>と呼んでいます。</p>
-<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。リスク比は一定であるにも関わらず、同じ比の指標がばらつくのは、好ましい性質ではありません。</p>
-</div>
-</div>
+<p>これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、<strong>併合可能性（collapsibility）</strong>と呼んでいます。</p>
+<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。:::</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">ステージによる層別前</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">ステージによる層別後</a></li></ul>
 <div class="tab-content">
@@ -447,7 +448,26 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「なるほどね、オッズ比は層別解析で不安定な指標だってことね。でもさ、そもそも論なんだけど。どうせ割合同士を比べるんだから、わざわざ比をとらなくてもいいんじゃない？パーセントの差でよくない？+10%とか-10%とか。リスクの違いはこれでじゅうぶん伝わるでしょ」</p>
+<p>私「なるほどね、リスク比を計算すると同じ0.5なのに、オッズ比の値はばらばらなんだ。オッズ比は層別すると同じ効果としては扱いにくいから注意しなさいってことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、研究者としては、ステージ別でも層別しなくても、リスクが半分になる治療なら、半分ってことが読み取れる値になってほしいよね。そういう感覚でしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そこまではいいんだ。でも誤解してほしくないのは、リスク比は併合可能で、オッズ比は併合可能ではない、だからオッズ比が悪いっていいたいわけじゃないよ。結果の読み取り方と相性があるってこと。オッズ比はオッズ比で、ロジスティック回帰と対応しているっていうのは別のメリットがある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふーん。お父さんって数学的性質を整理するときめっちゃ早口」</p>
+</div>
+</div>
+<section id="リスク差リスク比オッズ比どれを使う" class="level3">
+<h3 class="anchored" data-anchor-id="リスク差リスク比オッズ比どれを使う">リスク差、リスク比、オッズ比、どれを使う？</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ごめん、そもそも論なんだけど。どうせ割合同士を比べるんだから、わざわざ比をとらなくてもいいんじゃない？パーセントの差でよくない？+10%とか-10%とか。リスクの違いはこれでじゅうぶん伝わるでしょ」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「うん、リスク差はもっと使われていいと思う。でも、リスク差にも欠点がある。複数の研究を集めてメタアナリシスをするとき、それぞれの研究から得られたリスク差やリスク比をひとつの値に要約するでしょ」</p>
@@ -471,7 +491,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </ul>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「つまりね、指標によって解釈のしやすさや統計的な特徴が違うっていうこと。リスク差だけでも、リスク比やオッズ比のような比の指標だけでも、論文で示す情報としては不足があるっていうのが結論」</p>
+<p>お父さん「つまりね、指標によって解釈のしやすさや統計的な特徴が違うっていうこと。リスク差だけでも、リスク比やオッズ比のような比の指標だけでも、論文で示す情報としては不足があるっていうのが、おそらく結論」</p>
 </div>
 <div class="voice-daughter">
 <p>私「じゃあどうしたらいいのよ」</p>
@@ -490,11 +510,11 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>リスク差、リスク比、オッズ比はいろいろな手段で計算できますが、汎用性が高いのは一般化線型モデル（glm関数）を用いる方法です。リンク関数を選ぶことで、リスク差（link=“identity”）、リスク比（link=“log”）、オッズ比（link=“logit”）を選択することができ、交絡因子の調整もしやすいのが便利なところです。ただし、リスク比とオッズ比では、回帰係数の指数をとるひと手間が必要です。表1のリスク差、リスク比、オッズ比を再現するコードを示しておきますので、参考まで。</p>
+<p>リスク差、リスク比、オッズ比はいろいろな手段で計算できますが、汎用性が高いのは一般化線型モデル（<code>glm</code>）を用いる方法です。リンク関数を選ぶことで、リスク差（<code>link="identity"</code>）、リスク比（<code>link="log"</code>）、オッズ比（<code>link="logit"</code>）を選択することができ、交絡因子の調整もしやすいのが便利なところです。ただし、リスク比とオッズ比では、回帰係数の指数をとるひと手間が必要です。表1のリスク差、リスク比、オッズ比を再現するコードを示しておきますので、参考まで。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -503,7 +523,7 @@ Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -574,7 +594,7 @@ Rコードと結果はこちら
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -583,7 +603,7 @@ Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>
@@ -622,6 +642,9 @@ Rコードと結果はこちら
 </ul>
 
 
+</section>
+</div>
+</div>
 </section>
 </section>
 

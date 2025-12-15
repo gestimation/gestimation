@@ -448,7 +448,7 @@ generate_data()のコードはこちら（データ生成に使用）
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = 死亡, 0 = 打ち切り</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発存期間（RFS） -------------------------------------</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発生存期間（RFS） -----------------------------------</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
@@ -647,7 +647,7 @@ Rコードと結果はこちら
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングのは、次のうちどちらでしょう。</p>
+<p>CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングは、次のうちどちらでしょう。</p>
 <ol type="1">
 <li>CNSR=0</li>
 <li>CNSR=1</li>

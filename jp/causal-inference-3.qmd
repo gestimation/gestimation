@@ -16,7 +16,7 @@ date: 2025-12-13
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Causal inference III − DAGs and Conditional Distributions: Two Languages for the Same Structure
+# Causal Inference III − DAGs and Conditional Distributions: Two Languages for the Same Structure
 
 ::: {.serif-block .text-right}
 Keywords: bias, causal model, confounding & collapsibility, probability model

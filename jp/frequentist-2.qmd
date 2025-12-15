@@ -31,7 +31,7 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 :::
 
 ::: voice-father
-お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、TH群よりLTA群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」
+お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、LTA群よりTH群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」
 :::
 
 ![](clinical-trial-1.png)
@@ -148,7 +148,7 @@ summary(fit)
 3.  統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する
 
 ::: voice-father
-お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群に生存曲線に差がない確率”を意味すると思う？」
+お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。まず1について聞くけど、JCOG9502のp値は、”LTA群とTH群の生存曲線に差がない確率”を意味すると思う？」
 :::
 
 ::: voice-daughter

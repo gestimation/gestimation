@@ -102,7 +102,7 @@ generate_data <- function(n=200, hr1, hr2) {
   time_os   <- pmin(t_death, t_censoring)
   status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
   
-  ## --- 無再発存期間（RFS） -------------------------------------
+  ## --- 無再発生存期間（RFS） -----------------------------------
   time_rfs <- pmin(t_relapse, t_death, t_censoring)
   
   status_rfs <- integer(n)
@@ -190,7 +190,7 @@ print(coverage_200)
 :::
 
 ::: voice-daughter
-私「じゃあ、人数が100人だったどうなるの？人数が減ったら当たりにくくはならないの？」
+私「じゃあ、人数が100人だったらどうなるの？人数が減ったら当たりにくくはならないの？」
 :::
 
 ::: voice-father

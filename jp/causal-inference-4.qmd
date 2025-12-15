@@ -15,7 +15,7 @@ date: 2025-12-13
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Causal inference IV − A Circle, an Equation, and a Cylinder
+# Causal Inference IV − A Circle, an Equation, and a Cylinder
 
 ::: {.serif-block .text-right}
 Keywords: causal model, language & writing, probability model

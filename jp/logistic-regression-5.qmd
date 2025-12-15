@@ -148,10 +148,10 @@ a:hover {
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for Bias V − Simpson's paradox
+# Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified
 
 ::: {.serif-block .text-right}
-Keywords: confounding/collapsibility, effect measure, generalized linear model, observational study, simulation
+Keywords: confounding & collapsibility, effect measure, observational study, R simulation
 :::
 
 ------------------------------------------------------------------------
@@ -274,7 +274,15 @@ Keywords: confounding/collapsibility, effect measure, generalized linear model, 
 ::: 
 
 ::: voice-father
-お父さん「部分的に関係はある。オッズ比は層別したら値が変わりやすい、**併合可能ではない（non-collapsible）**指標だからね。でも、それより重要なことは、ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きいということ。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」
+お父さん「さすが、覚えていたね。でもここは区別しないといけない。確かにオッズ比はリスク比と違って、層別したら値が変わりやすい、**併合可能ではない（non-collapsible）**指標だよ。でもこれは指標の性質の話。ここで問題しているSimpsonのパラドックスは、"比較の仕方が壊れている"話なんだ」
+:::
+
+::: voice-daughter
+私「たしかに。この前はランダム化臨床試験、今回は観察研究だものね。コーヒー好きはコーヒーを飲まない人とは別の特徴を持っていて、単純に比較するのはバイアスってわけだ」
+:::
+
+::: voice-father
+お父さん「そういうこと。ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きい。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」
 ::: 
 :::::::::::::::::::::::::::::::::
 
@@ -364,7 +372,7 @@ print(risk_ratio2)
 ::: 
 
 ::: voice-daughter
-私「時代を感じるね、仕事の合間に寛ぎたい気持ちはめっちゃわかる」
+私「時代を感じるね、仕事の合間に一服したい気持ちはめっちゃわかる」
 ::: 
 
 ::: voice-father

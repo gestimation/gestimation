@@ -242,7 +242,7 @@ generate_data <- function(n=200, hr1, hr2) {
   time_os   <- pmin(t_death, t_censoring)
   status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
   
-  ## --- 無再発存期間（RFS） -------------------------------------
+  ## --- 無再発生存期間（RFS） -----------------------------------
   time_rfs <- pmin(t_relapse, t_death, t_censoring)
   
   status_rfs <- integer(n)
@@ -353,7 +353,7 @@ cifplot(Event(time_cir, status_cir) ~ stoma,
 ::::::::::::::::::::::::::::::::: 
 
 ::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
-CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングのは、次のうちどちらでしょう。
+CDISC ADaM ADTTE（Analysis Data Model for Time-to-Event Endpoints）は、製薬企業が行う臨床試験データの標準規格です。この規格では、打ち切りにはCNSRという変数名の変数を用いることになっています。打ち切りを表すコーディングは、次のうちどちらでしょう。
 
 1. CNSR=0
 2. CNSR=1
