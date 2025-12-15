@@ -1,5 +1,5 @@
 #--------------------------------------------------------------------------------------------------------
-#- Adjusting for Bias V. Simpson's paradox --------------------------------------------------------------
+#- Adjusting for Bias V. Understanding Confounding in Effect Measures: Marginal vs Stratified -----------
 # 
 #  Original article (En): https://gestimation.github.io/coffee-and-research/en/logistic-regression-5.html
 #  Original article (JP): https://gestimation.github.io/coffee-and-research/jp/logistic-regression-5.html

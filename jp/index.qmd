@@ -109,7 +109,7 @@ listing:
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R]
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified]
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
@@ -119,7 +119,7 @@ listing:
 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。言葉の意味を知ることの大切さを父は語ります。
 - **Who Is This Percentage About Target Populations and Attributable Fractions**
 　数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。言葉の裏に潜む集団の違いについて。
-- **Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R**
+- **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
 　バイアス調整解析とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
 - **When Odds Ratios Approximate Risk Ratios and When They Fail**
 　「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。
@@ -141,7 +141,7 @@ listing:
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
 - [Why Logistic Regression Fails in Small Samples]
-- [Simpson's paradox]
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified]
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **From Risk to Logistic Regression**
@@ -152,7 +152,7 @@ listing:
 　結果の見方、表の作り方から、使用上の落とし穴まで、父から統計解析の手ほどきを受けるエピソード。
 - **Why Logistic Regression Fails in Small Samples**
 　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。
-- **Simpson's paradox**
+- **Understanding Confounding in Effect Measures: Marginal vs Stratified**
 　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整という操作に足りない構造とは？
 
 このエピソードのRスクリプト一式はこちらから。

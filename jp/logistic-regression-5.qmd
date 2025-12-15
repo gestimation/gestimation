@@ -1,5 +1,5 @@
 ---
-title: "Simpson's paradox"
+title: "Understanding Confounding in Effect Measures: Marginal vs Stratified"
 format:
   html:
     toc: true

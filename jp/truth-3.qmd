@@ -218,7 +218,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R](effects-3.html)
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
 - [From Risk and Rate to Survival and Hazard](effects-5.html)
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
@@ -229,7 +229,7 @@ Keywords: bias, causal model, confounding/collapsibility, hypothesis/outcome, la
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
 - [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
-- [Simpson's paradox](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-5.html)
 
 **7. Truth — 真実**
 

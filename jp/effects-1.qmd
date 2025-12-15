@@ -194,7 +194,7 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R](effects-3.html)
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
 - [From Risk and Rate to Survival and Hazard](effects-5.html)
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)

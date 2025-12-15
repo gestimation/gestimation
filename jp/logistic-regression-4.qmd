@@ -315,7 +315,7 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
 - [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
-- [Simpson's paradox](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-5.html)
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 

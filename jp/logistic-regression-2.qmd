@@ -437,7 +437,7 @@ LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
 - [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
-- [Simpson's paradox](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-5.html)
 
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 

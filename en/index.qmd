@@ -112,7 +112,7 @@ We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness r
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R]
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified]
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
@@ -122,7 +122,7 @@ We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness r
 Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.
 - **Who Is This Percentage About—Target Populations and Attributable Fractions**
 Every number speaks about someone — reconsidering the assumed population.
-- **Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R**
+- **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
 When adjustment changes results, the reason is structural — revisiting stratification.
 - **When Odds Ratios Approximate Risk Ratios—and When They Fail**
 Measures that look similar may behave differently — pausing over the odds ratio.
@@ -144,7 +144,7 @@ An episode where she learns from her father — from interpreting logistic regre
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
 - [Why Logistic Regression Fails in Small Samples]
-- [Simpson's paradox]
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified]
 
 ::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
 - **From Risk to Logistic Regression**
@@ -155,7 +155,7 @@ Why this transformation and not another? A secret behind the choice of logit.
 When calculations are correct but conclusions feel wrong — pausing at interpretation.
 - **Why Logistic Regression Fails in Small Samples**
 A model that breaks may still be teaching something — about small samples.
-- **Simpson's Paradox**
+- **Understanding Confounding in Effect Measures: Marginal vs Stratified**
 When overall and subgroup results disagree — revealing a structure of confounding.
 :::
 

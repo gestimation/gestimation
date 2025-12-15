@@ -8,7 +8,7 @@
 
 <meta name="description" content="いわゆる調整解析とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。">
 
-<title>Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R – Coffee and Research</title>
+<title>Understanding Collapsibility of Effect Measures: Marginal vs Stratified – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -192,6 +192,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#効果の指標" id="toc-効果の指標" class="nav-link" data-scroll-target="#効果の指標">効果の指標</a></li>
   <li><a href="#リスク比とオッズ比どっちを使う" id="toc-リスク比とオッズ比どっちを使う" class="nav-link" data-scroll-target="#リスク比とオッズ比どっちを使う">リスク比とオッズ比、どっちを使う？</a></li>
+  <li><a href="#リスク差リスク比オッズ比どれを使う" id="toc-リスク差リスク比オッズ比どれを使う" class="nav-link" data-scroll-target="#リスク差リスク比オッズ比どれを使う">リスク差、リスク比、オッズ比、どれを使う？</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
+  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -201,7 +205,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</h1>
+<h1 class="title">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</h1>
 </div>
 
 <div>
@@ -284,7 +288,9 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>表1と表2は、がん患者100人のランダム化臨床試験を想定して作った数値例です。表1では100人全体における死亡リスクを、表2はステージIIIの50人とステージIVの50人に層別した死亡リスクを示しています。</p>
 <p>まず、抗がん剤投与群の死亡リスクをみてください。ステージIIIでは死亡リスクは20%と低く、ステージIVでは40%と高いことがわかります。そして全体の死亡リスクは、ステージIIIとステージIVの平均（30%）です。このように、リスクには、層別する前の値が、層別した後の平均になるという性質があります。</p>
 <p>これを踏まえて、リスク比、リスク差、オッズ比の性質を考えてみましょう。表1と表2を比べると、リスク比はすべて0.50倍です。このように、層別する前後でリスク比が変化しないことは、治療効果を測るために好ましい性質です。なぜなら、ステージIIIでリスクが半分になり、ステージIVでも半分になるなら、2つの層を合計してもリスクが半分になってほしいからです。リスク差は、2つのリスクの差をとったものです。したがって、リスクと同じように層別する前の値が、層別した後の平均になります。層ごとのリスク差が等しければ（この数値例ではそうなっていませんが）、層別前のリスク差も、層別後のリスク差と同じ値になるはずです。リスク差とリスク比の持つこの性質を、<strong>併合可能性（collapsibility）</strong>と呼んでいます。</p>
-<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。:::</p>
+<p>一方で、オッズ比は層の併合可能性を持たないことが知られています。表1と表2において、オッズ比は0.29倍、0.38倍、0.17倍と変化していますよね。</p>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">ステージによる層別前</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">ステージによる層別後</a></li></ul>
 <div class="tab-content">
@@ -463,6 +469,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>私「ふーん。お父さんって数学的性質を整理するときめっちゃ早口」</p>
 </div>
 </div>
+</section>
 <section id="リスク差リスク比オッズ比どれを使う" class="level3">
 <h3 class="anchored" data-anchor-id="リスク差リスク比オッズ比どれを使う">リスク差、リスク比、オッズ比、どれを使う？</h3>
 <div class="dialogue">
@@ -514,7 +521,7 @@ glm()を用いたリスク差、リスク比、オッズ比の計算
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -523,7 +530,7 @@ Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -594,7 +601,7 @@ Rコードと結果はこちら
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -603,7 +610,7 @@ Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は1です</strong></li>
@@ -625,7 +632,7 @@ Rコードと結果はこちら
 <ul>
 <li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
 <li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">Understanding Collapsibility of Effect Measures in Marginal and Stratified Analyses with R</a></p></li>
+<li><p><a href="effects-3.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></p></li>
 <li><p><a href="effects-4.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
 <li><p><a href="effects-5.html">From Risk and Rate to Survival and Hazard</a></p></li>
 <li><p><a href="effects-6.html">Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</a></p></li>
@@ -642,9 +649,6 @@ Rコードと結果はこちら
 </ul>
 
 
-</section>
-</div>
-</div>
 </section>
 </section>
 
