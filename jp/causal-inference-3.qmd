@@ -241,7 +241,7 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 
 - Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48
 
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
@@ -253,7 +253,7 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Silent Confusions Hidden in Percentages](effects-1.html)
-- [From Risk to Logistic Regression](logistic-regression-1.html)
-- [What Data Cannot Tell Us](truth-1.html)
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
 - [Statistical Terms in Plain Language](glossary.html)

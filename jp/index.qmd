@@ -128,8 +128,10 @@ listing:
 - **When Odds Ratios Approximate Risk Ratios and When They Fail**
 　「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。
 - **From Risk and Rate to Survival and Hazard**
-　「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を娘は父に学びます。
-- **Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example**
+　「生存曲線やハザード比について納得感が足りないの」娘の視点で学ぶ生存時間解析の入門講義。
+- **A First Note on Cox Regression**
+　Cox回帰はハザード比のモデルと言い切っていいのか？より正確な理解に迫ります。
+- **After Cox Regression: A Case Study and R Demonstration**
 　リスク比、ハザード比、そして時間とともに変化する効果。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
 このエピソードのRスクリプト一式はこちらから。
