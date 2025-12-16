@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-13">
 
-<title>A Conversation on Causality at Our Table (EN) – Coffee and Research</title>
+<title>Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -69,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
 
 <script type="text/javascript">
@@ -108,38 +78,9 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
-<link rel="alternate" type="application/rss+xml" title="A Conversation on Causality at Our Table (EN)" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed quarto-light">
 
@@ -212,21 +153,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#brewing-coffee-exchanging-words.-as-the-steam-drifts-upward-time-softens-and-the-world-of-statistics-opens-little-by-little." id="toc-brewing-coffee-exchanging-words.-as-the-steam-drifts-upward-time-softens-and-the-world-of-statistics-opens-little-by-little." class="nav-link active" data-scroll-target="#brewing-coffee-exchanging-words.-as-the-steam-drifts-upward-time-softens-and-the-world-of-statistics-opens-little-by-little.">Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.</a>
+  <li><a href="#causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" id="toc-causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="nav-link active" data-scroll-target="#causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias">Causal Inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a>
   <ul class="collapse">
-  <li><a href="#how-to-read-this-site" id="toc-how-to-read-this-site" class="nav-link" data-scroll-target="#how-to-read-this-site">How to read this site</a></li>
-  <li><a href="#episodes" id="toc-episodes" class="nav-link" data-scroll-target="#episodes">Episodes</a>
-  <ul class="collapse">
-  <li><a href="#study-design-where-research-begins" id="toc-study-design-where-research-begins" class="nav-link" data-scroll-target="#study-design-where-research-begins">1. Study Design — Where research begins</a></li>
-  <li><a href="#glossary-the-words-of-statistics" id="toc-glossary-the-words-of-statistics" class="nav-link" data-scroll-target="#glossary-the-words-of-statistics">2. Glossary — The words of statistics</a></li>
-  <li><a href="#frequentist-thinking-practicing-statistics" id="toc-frequentist-thinking-practicing-statistics" class="nav-link" data-scroll-target="#frequentist-thinking-practicing-statistics">3. Frequentist Thinking — Practicing statistics</a></li>
-  <li><a href="#frequentist-experiments-validation-of-statistics" id="toc-frequentist-experiments-validation-of-statistics" class="nav-link" data-scroll-target="#frequentist-experiments-validation-of-statistics">4. Frequentist Experiments — Validation of statistics</a></li>
-  <li><a href="#effects-and-time-how-effects-evolve" id="toc-effects-and-time-how-effects-evolve" class="nav-link" data-scroll-target="#effects-and-time-how-effects-evolve">5. Effects and Time — How effects evolve</a></li>
-  <li><a href="#adjusting-for-bias-the-landscape-of-regression-modeling" id="toc-adjusting-for-bias-the-landscape-of-regression-modeling" class="nav-link" data-scroll-target="#adjusting-for-bias-the-landscape-of-regression-modeling">6. Adjusting for Bias — The landscape of regression modeling</a></li>
-  <li><a href="#truth-what-defines-it" id="toc-truth-what-defines-it" class="nav-link" data-scroll-target="#truth-what-defines-it">7. Truth — What defines it?</a></li>
-  <li><a href="#causal-inference-to-find-causality" id="toc-causal-inference-to-find-causality" class="nav-link" data-scroll-target="#causal-inference-to-find-causality">8. Causal Inference — To find causality</a></li>
-  <li><a href="#publish-a-paper-beyond-the-research" id="toc-publish-a-paper-beyond-the-research" class="nav-link" data-scroll-target="#publish-a-paper-beyond-the-research">9. Publish a Paper — Beyond the research</a></li>
-  </ul></li>
+  <li><a href="#the-meaning-of-blocking" id="toc-the-meaning-of-blocking" class="nav-link" data-scroll-target="#the-meaning-of-blocking">The meaning of blocking</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" id="toc-this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="nav-link" data-scroll-target="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -236,7 +167,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A Conversation on Causality at Our Table (EN)</h1>
+<h1 class="title">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
 </div>
 
 
@@ -244,6 +175,12 @@ window.Quarto = {
 <div class="quarto-title-meta column-page-left">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 13, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -256,304 +193,198 @@ window.Quarto = {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="brewing-coffee-exchanging-words.-as-the-steam-drifts-upward-time-softens-and-the-world-of-statistics-opens-little-by-little." class="level1">
-<h1>Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.</h1>
-<p>These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to lie scattered quietly — across everyday life, clinical practice, causality, data, cognition, and language.</p>
-<p>Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story, careful not to disturb their totality.</p>
-<p>From survival curves and misread p-values to the layered relationship between causality and statistical inference — the episodes hide small clues, arranged like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.</p>
-<p>Mathematics and medicine make their appearances, but feel free to take only what you need. The story can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears. Enjoy following that changing view, at the quiet pace of a cup of coffee.</p>
+<section id="causal-inference-v-backdoor-paths-block-and-d-separation-a-clue-for-adjusting-for-bias" class="level1">
+<h1>Causal Inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</h1>
+<div class="serif-block text-right">
+<p>Keywords: bias, causal model, confounding &amp; collapsibility, probability model</p>
+</div>
 <hr>
-<section id="how-to-read-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-this-site">How to read this site</h2>
-<p>While each episode stands independently, their dialogues start from <strong>Study Design</strong>. From there, you can either follow the narrative or choose the layer that interests you most. Some episodes come with short R simulations. They are not about coding skills, but about feeling how causal questions and statistical assumptions behave when you change the world you generate. Reading the whole, scattered meanings will connect, and surely something will become clear.</p>
-<hr>
-</section>
-<section id="episodes" class="level2">
-<h2 class="anchored" data-anchor-id="episodes">Episodes</h2>
-<section id="study-design-where-research-begins" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-where-research-begins">1. Study Design — Where research begins</h3>
-<p>Every study starts with a question. How do we frame PICO/PECO? How do we choose outcomes? How do we protect against bias? The daughter asks her father about the very starting point of clinical research.</p>
-<ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="study-design-2.html">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a></li>
-<li><a href="study-design-3.html">Outcomes: The Bridge from Data Collection to Analysis</a></li>
-<li><a href="study-design-4.html">A First Step into Survival and Competing Risks Analysis with R</a></li>
-<li><a href="study-design-5.html">When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</a></li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<section id="the-meaning-of-blocking" class="level3">
+<h3 class="anchored" data-anchor-id="the-meaning-of-blocking">The meaning of blocking</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “Let’s pick up where we left off, Dad. When you explained DAGs last time, you used the term <strong>blocking</strong>. You said things like ‘a <strong>collider</strong> blocks a path.’”</p>
+</div>
+<div class="voice-father">
+<p>“I did.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So blocking means that the causal flow is stopped, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Hm. That phrasing isn’t quite precise. Blocking is a property of paths in a DAG. It doesn’t directly refer to causality itself. A path is said to be blocked if it contains a collider, or if a non-collider on the path is conditioned on as a confounder.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So if there’s a collider, the path is blocked automatically. And for a non-collider, the path becomes blocked when we adjust for it.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. More formally, blocking means that two nodes can be d-separated. It might be worth touching on the definition of d-separation to avoid confusion.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="d-Separation">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+d-Separation
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>A Story of Coffee Chat and Research Hypothesis</strong> Research often stumbles first not on data, but on how a question is framed.</li>
-<li><strong>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</strong> Numbers may look the same, yet describe different worlds—this pause starts from outcome types and the probability models behind them.</li>
-<li><strong>Outcomes: The Bridge from Data Collection to Analysis</strong> Once an outcome is defined, much of the study is already decided—pausing over that choice through familiar oncology examples.</li>
-<li><strong>A First Step into Survival and Competing Risks Analysis with R</strong> Before analysis begins, trouble often begins with how events are defined and coded—thinking in terms of time and events.</li>
-<li><strong>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</strong> Distortion rarely comes from formulas alone—this is where bias quietly enters.</li>
-</ul>
+<p>Consider a DAG with three disjoint sets of nodes, denoted by A, B, and C. If the following two conditions hold, then C is said to <strong>d-separate</strong> A and B (Greenland, 1999).</p>
+<p>Every path between A and B that does not contain a collider includes at least one element of C.</p>
+<p>Suppose C contains a collider that lies on a path between A and B. Even if conditioning on that collider opens the path, the path can still be blocked by conditioning on another element of C.</p>
 </div>
 </div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Me: “This is getting complicated.”</p>
 </div>
-<p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
-</ul>
-</section>
-<section id="glossary-the-words-of-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="glossary-the-words-of-statistics">2. Glossary — The words of statistics</h3>
-<ul>
-<li>[Statistical Terms in Plain Language]</li>
-</ul>
-</section>
-<section id="frequentist-thinking-practicing-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">3. Frequentist Thinking — Practicing statistics</h3>
-<p>Using cancer clinical trials as an example, my father explains the <strong>frequentist perspective</strong> of “How do numbers behave when you virtually repeat a study in a long run?”</p>
-<ul>
-<li>[Reading a Paper over a Cup of Coffee]</li>
-<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
-<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="voice-father">
+<p>Dad: “It is. As the number of nodes increases, we have to think in terms of sets of nodes, and the definition becomes harder to parse. That’s why it helps to check the meaning in simple cases. Let’s look at these three DAGs. Do you think C d-separates E and D in each of them?”</p>
+</div>
+<p><img src="causal-inference-4-1.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>Me: “Well, in all three DAGs there’s only one path connecting E and D. In the top two, there’s no collider, and C lies on the path—so C should d-separate them. What about the bottom one? C is a collider there, and the path E–C–D can’t be blocked by any other variable. So it doesn’t satisfy the conditions for d-separation.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. Statements like <strong>adjusting for a common cause or a mediator blocks a path</strong>, or <strong>adjusting for a collider opens a path</strong>, can all be expressed precisely by that definition. Once DAGs become more complex, you start to see why the definition is useful. Now, in this DAG, which sets of nodes d-separate E and D?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “There’s no collider here. So would it be A and C?”</p>
+</div>
+<p><img src="causal-inference-4-2.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>Dad: “Not just that. Either A alone or C alone also satisfies the conditions for d-separation.”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “So that means that if we observe either A or C, we can adjust for confounding?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s right. Now let’s look at one more DAG.”</p>
+</div>
+<p><img src="causal-inference-4-3.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>Me: “Still going? I know I asked for this, but let’s make this the last one. Okay—looking at this diagram, A and B each d-separate, right? C is a collider, so it doesn’t.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s correct as far as it goes. But those aren’t the only possibilities. What about A and C, or B and C? Even though C is a collider, conditioning on A or B blocks the path E ← A → C ← B → D, doesn’t it?”</p>
+</div>
+<div class="voice-daughter">
+<p>Me: “I see—you’re using the second condition. I think I understand when d-separation holds now. But what does this actually mean?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “The main goal today was to explain blocking properly, and maybe it didn’t quite click. In the DAG we just discussed, by searching for sets of variables that d-separate E and D, we identified combinations of confounders that prevent bias. And one more thing: when we replace the nodes in a DAG with random variables, d-separation corresponds exactly to conditional independence. Using this result, we can identify which confounders are needed to identify causal effects. That’s the real meaning of the backdoor criterion.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="d-Separation and Conditional Independence">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+d-Separation and Conditional Independence
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>Reading a Paper over a Cup of Coffee</strong> The unease felt while reading a paper often comes from language — pausing over statistical terms.</li>
-<li><strong>P-Value Explanations That Seem Plausible at First Glance</strong> What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.</li>
-<li><strong>Beyond 0.05: Interpreting P-Values in a Clinical Trial</strong> A p-value is less a number than a shadow of design — watching where interpretation drifts.</li>
-</ul>
+<p>Suppose that, using a DAG, we confirm that C d-separates A and B. Then it also follows that the random variables A and B are conditionally independent given C (Pearl, 1995).</p>
 </div>
 </div>
-</div>
-<p>You can download the full R script for this and the next episodes here.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
-</ul>
-</section>
-<section id="frequentist-experiments-validation-of-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-experiments-validation-of-statistics">4. Frequentist Experiments — Validation of statistics</h3>
-<p>The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+A quiz related to this episode
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>R Demonstration of Bias in Kaplan-Meier Under Competing Risks</strong> A curve that looks convincing may still describe another world — checked through simulation.</li>
-<li><strong>Understanding Confidence Intervals via Hypothetical Replications in R</strong> Where does “95%” come from, and where does it go — lingering over confidence intervals.</li>
-<li><strong>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</strong> Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.</li>
-</ul>
+<p>Which interpretation of this DAG is correct?</p>
+<ol type="1">
+<li><p>E and D are conditionally independent given C</p></li>
+<li><p>E and D remain associated even after conditioning on C</p></li>
+</ol>
+<p><img src="causal-inference-4-4.png" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<p>You can download the full R script for this and the next episode here.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
-</ul>
-</section>
-<section id="effects-and-time-how-effects-evolve" class="level3">
-<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">5. Effects and Time — How effects evolve</h3>
-<p>We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness rates, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.</p>
-<ul>
-<li>[Silent Confusions Hidden in Percentages]</li>
-<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Understanding Collapsibility of Effect Measures: Marginal vs Stratified]</li>
-<li>[When Odds Ratios Approximate Risk Ratios—and When They Fail]</li>
-<li>[From Risk and Rate to Survival and Hazard]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Silent Confusions Hidden in Percentages</strong> Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.</li>
-<li><strong>Who Is This Percentage About—Target Populations and Attributable Fractions</strong> Every number speaks about someone — reconsidering the assumed population.</li>
-<li><strong>Understanding Collapsibility of Effect Measures: Marginal vs Stratified</strong> When adjustment changes results, the reason is structural — revisiting stratification.</li>
-<li><strong>When Odds Ratios Approximate Risk Ratios—and When They Fail</strong> Measures that look similar may behave differently — pausing over the odds ratio.</li>
-<li><strong>From Risk and Rate to Survival and Hazard</strong> Once time enters the picture, effects change shape. An entry point to thinking about effects over time.</li>
-<li><strong>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</strong> Are effects ever constant — considering time-varying perspectives.</li>
+<li>The correct answer is <strong>2</strong>.</li>
 </ul>
+<p>The path E ← C → D is blocked by conditioning on C, but the path E → D is not. Therefore, C does not d-separate E and D. Note that in this case, the reason d-separation fails is that a direct causal path between E and D remains. When estimating the effect of E on D, C should still be adjusted for—regardless of whether the direct path E → D exists.</p>
 </div>
 </div>
 </div>
-<p>You can download the full R script for this and the previous episode here.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
-</ul>
-</section>
-<section id="adjusting-for-bias-the-landscape-of-regression-modeling" class="level3">
-<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression-modeling">6. Adjusting for Bias — The landscape of regression modeling</h3>
-<p>An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoiding pitfalls in its use. And then…</p>
-<ul>
-<li>[From Risk to Logistic Regression]</li>
-<li>[Logit: How a Transformation Shapes an Effect]</li>
-<li>[Where My Logistic Regression Went Wrong]</li>
-<li>[Why Logistic Regression Fails in Small Samples]</li>
-<li>[Understanding Confounding in Effect Measures: Marginal vs Stratified]</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="One more quiz related to this episode">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+One more quiz related to this episode
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>From Risk to Logistic Regression</strong> Translating risk into equations inevitably hides something — an entry into regression.</li>
-<li><strong>Logit: How a Transformation Shapes an Effect</strong> Why this transformation and not another? A secret behind the choice of logit.</li>
-<li><strong>Where My Logistic Regression Went Wrong</strong> When calculations are correct but conclusions feel wrong — pausing at interpretation.</li>
-<li><strong>Why Logistic Regression Fails in Small Samples</strong> A model that breaks may still be teaching something — about small samples.</li>
-<li><strong>Understanding Confounding in Effect Measures: Marginal vs Stratified</strong> When overall and subgroup results disagree — revealing a structure of confounding.</li>
-</ul>
+<p>Which interpretation of this DAG is correct?</p>
+<ol type="1">
+<li><p>E and D are independent without conditioning on C, and also conditionally independent given C</p></li>
+<li><p>E and D are associated without conditioning on C, but conditionally independent given C</p></li>
+<li><p>E and D are independent without conditioning on C, but become associated after conditioning on C</p></li>
+<li><p>E and D are associated without conditioning on C, and remain associated even after conditioning on C</p></li>
+</ol>
+<p><img src="causal-inference-4-5.png" class="img-fluid"></p>
 </div>
 </div>
-</div>
-</section>
-<section id="truth-what-defines-it" class="level3">
-<h3 class="anchored" data-anchor-id="truth-what-defines-it">7. Truth — What defines it?</h3>
-<ul>
-<li>[What Data Cannot Tell Us]</li>
-<li>[What Could Have Happened]</li>
-<li>[What Is It That You Want to Know?]</li>
-</ul>
-</section>
-<section id="causal-inference-to-find-causality" class="level3">
-<h3 class="anchored" data-anchor-id="causal-inference-to-find-causality">8. Causal Inference — To find causality</h3>
-<p>Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the <strong>language of causality</strong> needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.</p>
-<ul>
-<li>[Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]</li>
-<li>[A Subtle Distinction between Common Causes and Confounders]</li>
-<li>[DAGs and Conditional Distributions: Two Languages for the Same Structure]</li>
-<li>[A Circle, an Equation, and a Cylinder]</li>
-<li>[Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A glimpse ahead
+Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</strong> The smallest diagrams that let us speak about causality.</li>
-<li><strong>A Subtle Distinction between Common Causes and Confounders</strong> Similar words, different roles—tracing the boundary between common causes and confounding.</li>
-<li><strong>DAGs and Conditional Distributions: Two Languages for the Same Structure</strong> Diagrams and equations tell the same story in different languages.</li>
-<li><strong>A Circle, an Equation, and a Cylinder</strong> Where causal frameworks overlap and where they diverge — placing causal models side by side.</li>
-<li><strong>Backdoor Paths, Block, and d-Separation</strong> What it really means to “adjust” — Understanding blocking as an operation.</li>
+<li>The correct answer is <strong>4</strong>.</li>
 </ul>
+<p>In this case, unlike the first quiz, there is no direct path between E and D. However, C is a collider. Conditioning on C opens the path E ← A → C ← B → D, so C does not d-separate E and D.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="publish-a-paper-beyond-the-research" class="level3">
-<h3 class="anchored" data-anchor-id="publish-a-paper-beyond-the-research">9. Publish a Paper — Beyond the research</h3>
-<p>How to communicate research findings, creating charts and graphs, tips for revising, navigating peer review. A quiet lecture for researchers, exploring what lies beyond statistics.</p>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
 <ul>
-<li>[A Subtle Distinction Between Editors and Reviewers]</li>
-<li>[Three Tips for Writing a Paper]</li>
-<li>[Communicating with Care]</li>
-<li>[A Morning Just Before Submission]</li>
+<li><p>Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48</p></li>
+<li><p>Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88</p></li>
 </ul>
-<hr>
-<p>This site shares selected R-related posts via <a href="https://www.r-bloggers.com">R-bloggers</a></p>
-
+</section>
+<section id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</h3>
+<ul>
+<li><a href="publish-a-paper-1.html">A Subtle Distinction Between Editors and Reviewers</a></li>
+</ul>
 
 
 </section>
 </section>
-</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1765638000000" data-listing-file-modified-sort="1765776026644" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1771">
-<div class="thumbnail"><a href="../en/study-design-2.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-2.html" class="no-external">Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-2.html" class="no-external">
-<p>This post is part of a long-form series on how clinicians learn research and statistics, told through conversations over coffee. In this episode, a clinician daughter and her statistician father build a practical mental map from outcome types (continuous, binary, count, survival) to probability models and common R functions such as ggplot() and cifplot(). This article can be read on its own and serves as a gentle entry point to the series.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-2.html" class="no-external">
-<div class="listing-date">
-Dec 14, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1764514800000" data-listing-file-modified-sort="1765776026643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1397">
-<div class="thumbnail"><a href="../en/study-design-1.html" class="no-external">
-
-<p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../en/study-design-1.html" class="no-external">A Story of Coffee Chat and Research Hypothesis</a>
-</h3>
-<div class="delink listing-description"><a href="../en/study-design-1.html" class="no-external">
-<p>A coffee-chat introduction to research hypotheses and PECO/PICO for clinicians starting their first study. The daughter asks her father about the very starting point of clinical research.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../en/study-design-1.html" class="no-external">
-<div class="listing-date">
-Dec 1, 2025
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

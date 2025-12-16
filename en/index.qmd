@@ -21,22 +21,19 @@ listing:
 # Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.
 
 
-These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to be scattered quietly across multiple layers: everyday life, clinical practice, causality, data, cognition, and language. 
+These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to lie scattered quietly — across everyday life, clinical practice, causality, data, cognition, and language.
 
-Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story without disturbing their totality.
+Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story, careful not to disturb their totality.
 
-From survival curves and misread p-values to the layered relationship between causality and statistical inference—
-the episodes hide small clues like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.
+From survival curves and misread p-values to the layered relationship between causality and statistical inference — the episodes hide small clues, arranged like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.
 
-Mathematics and medicine make their appearances, but feel free to take only what you need. Every discussion can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears.
-
-Enjoy following that changing view, at the quiet pace of a cup of coffee.
+Mathematics and medicine make their appearances, but feel free to take only what you need. The story can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears. Enjoy following that changing view, at the quiet pace of a cup of coffee.
 
 ------------------------------------------------------------------------
 
 ## How to read this site
 
-While each episode stands independently, their dialogues start from **Study Design**. From there, you can either follow the narrative or choose the layer that interests you most. Reading the whole, scattered meanings will connect, and surely something will become clear.
+While each episode stands independently, their dialogues start from **Study Design**. From there, you can either follow the narrative or choose the layer that interests you most. Some episodes come with short R simulations. They are not about coding skills, but about feeling how causal questions and statistical assumptions behave when you change the world you generate. Reading the whole, scattered meanings will connect, and surely something will become clear. 
 
 ------------------------------------------------------------------------
 
@@ -55,13 +52,13 @@ Every study starts with a question. How do we frame PICO/PECO? How do we choose 
 ::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
 
 - **A Story of Coffee Chat and Research Hypothesis**
-Research often begins not with data, but with a question that has not yet found its shape. 
+Research often stumbles first not on data, but on how a question is framed.
 - **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
-Numbers may look the same, yet describe different worlds—this pause starts from the idea of data types.
+Numbers may look the same, yet describe different worlds—this pause starts from outcome types and the probability models behind them.
 - **Outcomes: The Bridge from Data Collection to Analysis**
-The moment an outcome is defined, much of the study is already decided—quietly revisiting that choice.
+Once an outcome is defined, much of the study is already decided—pausing over that choice through familiar oncology examples.
 - **A First Step into Survival and Competing Risks Analysis with R**
-Before analysis begins, we stop to ask whether an event is truly singular—thinking in terms of time and events.
+Before analysis begins, trouble often begins with how events are defined and coded—thinking in terms of time and events.
 - **When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys**
 Distortion rarely comes from formulas alone—this is where bias quietly enters. 
 :::
