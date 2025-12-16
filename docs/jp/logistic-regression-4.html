@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-08">
 
-<title>Why Logistic Regression Fails in Small Samples – Coffee and Research</title>
+<title>Where My Logistic Regression Went Wrong – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -181,10 +182,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples" id="toc-adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples" class="nav-link active" data-scroll-target="#adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples">Adjusting for Bias IV − Why Logistic Regression Fails in Small Samples</a>
+  <li><a href="#adjusting-for-bias-iv-where-my-logistic-regression-went-wrong" id="toc-adjusting-for-bias-iv-where-my-logistic-regression-went-wrong" class="nav-link active" data-scroll-target="#adjusting-for-bias-iv-where-my-logistic-regression-went-wrong">Adjusting for Bias IV − Where My Logistic Regression Went Wrong</a>
   <ul class="collapse">
-  <li><a href="#なぜロジスティック回帰の計算ができなかったのか" id="toc-なぜロジスティック回帰の計算ができなかったのか" class="nav-link" data-scroll-target="#なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
+  <li><a href="#どうしてオッズ比が無限大になっちゃったの" id="toc-どうしてオッズ比が無限大になっちゃったの" class="nav-link" data-scroll-target="#どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</a></li>
+  <li><a href="#足りなかったたくさんの情報" id="toc-足りなかったたくさんの情報" class="nav-link" data-scroll-target="#足りなかったたくさんの情報">足りなかったたくさんの情報</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
   <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
@@ -195,7 +198,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Logistic Regression Fails in Small Samples</h1>
+<h1 class="title">Where My Logistic Regression Went Wrong</h1>
 </div>
 
 
@@ -203,6 +206,12 @@ window.Quarto = {
 <div class="quarto-title-meta column-page-left">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -212,406 +221,505 @@ window.Quarto = {
 </header>
 
 
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="adjusting-for-bias-iv-why-logistic-regression-fails-in-small-samples" class="level1">
-<h1>Adjusting for Bias IV − Why Logistic Regression Fails in Small Samples</h1>
+<section id="adjusting-for-bias-iv-where-my-logistic-regression-went-wrong" class="level1">
+<h1>Adjusting for Bias IV − Where My Logistic Regression Went Wrong</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, effect measure, generalized linear model</p>
+<p>Keywords: confounding &amp; collapsibility, effect measure, generalized linear model, language &amp; writing</p>
 </div>
 <hr>
-<section id="なぜロジスティック回帰の計算ができなかったのか" class="level3">
-<h3 class="anchored" data-anchor-id="なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、コーヒー飲んで寛いでいるところわるいんだけど、時間あるかな。ロジスティック回帰についてなんだけど。説明してくれたのはありがたいんだけどね、群作用とか完全分離とか、途中でわかんなくなっちゃってさ。気になって、先に進めないわけよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだったのか。Rコードを見せてもらったけど、解析自体は間違ってなさそうだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いや、私自身の問題だよね。納得感というか自信というか。だからさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね。あの解が出なかったていう結果しかないと、なんだかね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ロジスティック回帰の推定
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>尤度関数による推定</strong></p>
-<p>以前、ロジスティック回帰の<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと<span class="math inline">\(\pi_i\)</span>が含まれていますが、この式にデータを代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。さらに、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、確率関数の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
-<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に2通り考えられます。</p>
-<p><strong>完全分離</strong></p>
-<p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
-<p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>を計算したとき、その値によって、アウトカムを100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、共変量からアウトカムがほぼ判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときによく生じる問題です。</p>
-<p><strong>多重共線性</strong></p>
-<p>二つ目は、多重共線性（multicollinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため、同時にロジスティック回帰に含めない方がよい場合が多いです。</p>
-</div>
-</div>
+<section id="どうしてオッズ比が無限大になっちゃったの" class="level3">
+<h3 class="anchored" data-anchor-id="どうしてオッズ比が無限大になっちゃったの">どうしてオッズ比が無限大になっちゃったの？</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「つまり、完全分離が生じるデータは、若い人は全員復職、高齢者は全員非復職っていう調査結果みたいなもの。年齢だけで復職できるかどうか100%当てられてしまう。まさにこれが完全分離で、尤度関数から解が求まらない状況だよ」</p>
+<p>お父さん「あのさ、昨日のロジスティック回帰の表の続きをしない？コーヒー淹れたから」</p>
 </div>
 <div class="voice-daughter">
-<p>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあね。はやりだよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「統計学と機械学習ってどう違うの？同じ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
-</div>
-<div class="voice-daughter">
-<p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は確率モデルが必ず基礎にあるってことかな。そして、標本から母集団を調べるっていう考え方をする。手法でいうと、p値とか信頼区間とか、ああいうやつね」</p>
-</div>
-<section id="統計手法を選ぶ理由" class="level3">
-<h3 class="anchored" data-anchor-id="統計手法を選ぶ理由">統計手法を選ぶ理由</h3>
-<div class="voice-daughter">
-<p>私「はやりだから使っていいのかな。ほら、ニューラルネットワークとかこの前の群作用とか、知らなくてもみんな使ってるよね。問題ないのかな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「でもね、2項分布とロジット関数のところまでは理解できなかった？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そこまではできた」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「なら合格点だと思う。数理的な手法って奥が深いでしょ。だから、仮に数学的な真実があったとして、究極的には部分的な理解しかできないかもしれない。専門家とユーザーで程度は違うけどね。だから、みんな使ってるっていうのは、使ってもいい理由のひとつにはなる。医療でも、添付文書で有効性が確立していないって書かれた薬が、第一選択だったりするでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ああ、コミュニティスタンダードのことね。そういうこともあるのが現実だけど、すっきりはしてないよね、医師はみんな。それにさ、コミュニティスタンダードの薬は、単にみんな使っているから選んでるんじゃないよ。難病で他に候補がなかったり、エビデンスが足りなくても経験上は効果があるから、その薬を使って治療してるの」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それって、医療上の目的に対してじゅうぶん役に立ってるってことでしょ。ロジスティック回帰も同じじゃない？用途に見合った性能があるって自信を持っていえれば、ところどころ理解が追い付かなくても、使用していいと思う。そう、まさに完璧に解明された技術なんてないのが現実だからね。世の中ではいろんな技術が使われてる。でも、すべて3つの理由で正当化されるんだよ」</p>
-</div>
-<ul>
-<li>数学と自然科学が支えている</li>
-<li>コミュニティが支えている</li>
-<li>使用する目的が支えている</li>
-</ul>
-<div class="voice-father">
-<p>お父さん「それぞれが100%じゃなくても、この3つが支えあえれば使う意味があるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういうもんかな。納得したような、まだ霧が残っているような気もする。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
-</div>
-</section>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="データの型と統計手法">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-データの型と統計手法
+<p>私「えーお手やらわかに。コーヒーもありがとう。この表の話だよね」</p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>アウトカムはデータの型によって4種類に分類されます。</p>
-<ul>
-<li>連続データ （例：血圧やQOL）</li>
-<li>分類データ （例：有害事象の有無）</li>
-<li>計数データ （例：有害事象の発生件数）</li>
-<li>生存時間データ （例：全生存期間）</li>
-</ul>
-<p>さらに、分類データはいくつかの種類があり、カテゴリが2通りのものを2値データ、カテゴリに順序があるものを順序データと呼んでいます。生存時間データの一種には、競合リスクを考慮した競合リスクデータがあります。データの型によって、正規分布や2項分布など確率分布が異なりますよね。そのため、それぞれ異なる統計手法が用いられます。詳しくは表をみてください。</p>
-<p>仮に、ストーマ造設あり・なしと復職状況の関係を調べたいとすると、2つの変数をモデルに当てはめることになるため、回帰モデルを用いて調べたいとします。このときアウトカムを復職の有無（2値データ）とするなら、ロジスティック回帰を選ぶべきです。もし復職までの期間（生存時間データ）とするなら、Cox回帰の方が適切です。</p>
-<p><strong>個人内で反復測定があるか</strong></p>
-<p>同一個人にくり返し臨床検査やアンケートを行うと、似たような検査結果になりますよね。たとえば、朝と晩に血圧を測ると、2つの測定値に相関が生じます。治療前と治療後に、QOL質問票に回答してもらう場合も、その測定値は独立ではありません。このように1人の患者に複数回の測定値があるデータを<strong>反復測定データ</strong>といいます。反復測定データでは、個人内の測定値は独立ではありません。したがって、独立性を仮定している統計手法（たとえば対応のないt検定や<span class="math inline">\(\chi^2\)</span>検定）は不適切です。反復測定データの解析では、<strong>変量効果モデル（random-effects model）</strong>や<strong>一般化推定方程式（generalized estimating equation）</strong>と呼ばれるやや高度な手法が用いられます。この場合の変量効果は、「ひとりひとりの個人の効果」を表しています。これらの方法は、個人内でデータが独立ではないこと（データの相関）を考慮するものです。</p>
-<p><strong>交絡の調整が必要かどうか</strong></p>
-<p><strong>交絡因子（confounder）</strong>とは、治療とアウトカムとの関係を歪める第三の因子のことです。仮に、ストーマ造設あり・なしと復職状況の関係に、年齢が強くかかわっているとしましょう。そして、ストーマ保有者と非保有者で、平均年齢が異なっているとします。このような場合、2群間の年齢の違いを無視するとバイアスが生じます。これを補正するために、ロジスティック回帰がよく用いられます。 ランダム化臨床試験では、比較する群間で実験条件が揃っているため、交絡の調整は不要です。一方、観察研究（コホート研究やケース・コントロール研究）では交絡の調整は必須です。今回題材にした復職率の調査も観察研究の一種ですから、統計解析ではロジスティック回帰やCox回帰が主に用いられるでしょう。最近では交絡を調整して、正しく因果関係を調べるために、因果推論の手法（プロペンシティスコアなど）を用いることが増えてきました（田中2022）。</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>データの型</th>
-<th>反復測定</th>
-<th>交絡調整</th>
-<th>統計手法</th>
-<th>備考</th>
+<th>パラメータ</th>
+<th>自由度</th>
+<th>推定値</th>
+<th>標準誤差</th>
+<th>95%信頼区間</th>
+<th><span class="math inline">\(\chi^2\)</span></th>
+<th>p値</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>連続データ</td>
-<td>なし</td>
-<td>なし</td>
-<td>対応のない<em>t</em>検定、Wilcoxon順位和検定</td>
-<td>平均の比較</td>
+<td>Intercept</td>
+<td>1</td>
+<td>-27.25</td>
+<td>3.03</td>
+<td>-33.20～-21.30</td>
+<td>80.55</td>
+<td>&lt;0.01</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>個人内で2回測定</td>
-<td>なし</td>
-<td>対応のある<em>t</em>検定、Wilcoxon符号付順位検定</td>
-<td>対応のあるデータ</td>
+<td>STOMA</td>
+<td>1</td>
+<td>1.41</td>
+<td>1.54</td>
+<td>-16.1～4.45</td>
+<td>0.84</td>
+<td>0.3588</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>なし</td>
-<td>なし</td>
-<td>正規線型モデル</td>
-<td>回帰モデルの一種</td>
+<td>AGE</td>
+<td>1</td>
+<td>1.47</td>
+<td>1.48</td>
+<td>-1.42～4.36</td>
+<td>0.99</td>
+<td>0.3197</td>
 </tr>
 <tr class="even">
+<td>SEX</td>
+<td>1</td>
+<td>25.72</td>
+<td>0.00</td>
+<td>25.72～25.72</td>
 <td></td>
-<td>あり</td>
-<td>あり</td>
-<td>変量効果モデル、一般化推定方程式</td>
-<td>回帰モデルの一種</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>2値データ</td>
-<td>なし</td>
-<td>なし</td>
-<td><span class="math inline">\(\chi^2\)</span>検定</td>
-<td>割合の比較</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>個人内で2回測定</td>
-<td>あり</td>
-<td>McNemar検定</td>
-<td>対応のあるデータ</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>なし</td>
-<td>あり</td>
-<td>ロジスティック回帰</td>
-<td>回帰モデルの一種</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>あり</td>
-<td>あり</td>
-<td>変量効果モデル、一般化推定方程式</td>
-<td>回帰モデルの一種</td>
-</tr>
-<tr class="odd">
-<td>計数データ</td>
-<td>なし</td>
-<td>なし</td>
-<td><span class="math inline">\(\chi^2\)</span>検定</td>
-<td>発生率の比較</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>なし</td>
-<td>あり</td>
-<td>Poisson回帰</td>
-<td>回帰モデルの一種</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>あり</td>
-<td>あり</td>
-<td>変量効果モデル、一般化推定方程式</td>
-<td>回帰モデルの一種</td>
-</tr>
-<tr class="even">
-<td>生存時間データ</td>
-<td>なし</td>
-<td>なし</td>
-<td>Kaplan-Meier曲線</td>
-<td>生存曲線の記述</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>なし</td>
-<td>あり</td>
-<td>Cox回帰</td>
-<td>回帰モデルの一種</td>
-</tr>
-<tr class="even">
-<td>競合リスクデータ</td>
-<td>なし</td>
-<td>なし</td>
-<td>Aalen-Johansen曲線</td>
-<td>累積発生率曲線の記述</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>なし</td>
-<td>あり</td>
-<td>Fine-Grayモデル</td>
-<td>回帰モデルの一種</td>
+<td>INCOME</td>
+<td>1</td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>-0.00～0.00</td>
+<td>0.58</td>
+<td>0.4481</td>
 </tr>
 </tbody>
 </table>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「そう、これね、間違いではないんだけど、まだよくできる。表を作成するときには、情報が自然に入ってくるように、読者の立場で考えなくちゃ。具体的な注意点はこんなところかな」</p>
+</div>
+</div>
+<ul>
+<li>読者の立場で考える</li>
+<li>表のフォーマットに従う</li>
+<li>単位・表示桁数に気を配る</li>
+<li>表タイトル・脚注を利用して補足情報を伝える</li>
+<li>数え尽くしの原則を守る</li>
+</ul>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ロジスティック回帰からいろんな指標が出せるけど、表にはオッズ比、95%信頼区間、p値だけあれば普通はじゅうぶんだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それはこの表にも載ってるよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「載っていません。この表の”推定値”は、みたところ回帰係数の値でしょ。それを換算してオッズ比のスケールに直さないといけない。換算するには、回帰係数<span class="math inline">\(\beta\)</span>の指数をとって、<span class="math inline">\(OR=\exp(\beta)\)</span>を求めればいい」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そうなのか。ストーマのオッズ比は<span class="math inline">\(\exp(1.41)=4.1\)</span>ってことね。あれ？<span class="math inline">\(\exp(25.72)\)</span>を計算してみると、パソコンに表示できないくらいに大きい数字になったんだけど。ほとんど無限大に近い数字だ。性別の影響が強いのかな。年収は<span class="math inline">\(\exp(-0.00)\)</span>？なんか変だな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「これはよくあるトラブルだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そうなの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「復職しなかった患者さんはほとんど女性だったんじゃない？<strong>擬似完全分離（quasi-complete separation）</strong>っていうデータの配置上の問題が起きちゃってて、性別の回帰係数を、うまく推定できていないんだ。この先は少し長くなりそうだから、ちょっとたばこ吸わせてもらうね」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="完全分離">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+完全分離
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ロジスティック回帰の回帰係数は、最尤法（maximum likelihood）という汎用的な推定方法によって計算されます。これはある種の方程式を解くことに対応していますが、データから必ずしも解が求まるわけではありません。これが完全分離（complete separation）や擬似完全分離（quasi-complete separation）という問題です。これらの問題が起きると、回帰係数が求まらなかったり、不安定だったりするため、共変量の数の削減や、最尤法以外の推定方法の利用など、なんらかの根本的な対処が必要になります。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「（灰皿にたばこを押しつけながら）正しい計算ができていないわけだから、ロジスティック回帰の結果を示すのはやめた方がいい。性別だけじゃなくて年収も問題だね。単位が円のまま扱うと、桁が大きすぎて数字が読めない。単位を万円にして、年収が1万円増えたら復職率がどう変化するかを示すといいんじゃないかな。性別と年収の扱いは気になると思うけど、今はこれくらいにしよう。表の体裁を直してあげるよ」</p>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>オッズ比</th>
+<th>95%信頼区間</th>
+<th>p値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ストーマなし</td>
+<td>（基準）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ストーマあり</td>
+<td>4.13</td>
+<td>0.20～85.23</td>
+<td>0.36</td>
+</tr>
+<tr class="odd">
+<td>65歳未満</td>
+<td>（基準）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>65歳以上</td>
+<td>4.35</td>
+<td>0.24～78.60</td>
+<td>0.32</td>
+</tr>
+<tr class="odd">
+<td>女性</td>
+<td>（基準）</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>男性</td>
+<td>∞</td>
+<td>∞～∞</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>年収（万円）</td>
+<td>1.00</td>
+<td>0.98～1.01</td>
+<td>0.45</td>
+</tr>
+</tbody>
+</table>
+<p>*手術後1年以内の復職をアウトカムとした多変量ロジスティック回帰</p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「あれ？オッズ比4.13倍ってことは、復職率がだいたい4倍になったってこと？そんなことある？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「違う違う。あのね、オッズ比はオッズの比をとったもの。オッズっていうのは、復職率を<span class="math inline">\(\pi\)</span>で表すと、それを<span class="math inline">\(\pi/(1-\pi)\)</span>と変換したものなんだ。<span class="math inline">\(\pi\)</span>が0に近いときは、オッズ比は<span class="math inline">\(\pi\)</span>の比に近い値になるんだけど、比の分子と分母の取り方で、向きが変わることに注意しないといけない。今回は、モデルの定義上、ストーマありの方が”復職できない”オッズが約4倍という意味だよ。ただし、2値アウトカムを”復職できない”に取ると、向きは逆になる」</p>
+</div>
+<div class="voice-daughter">
+<p>私「わかりにくいのう」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、どこに気を付けて手直ししたか説明するね。ロジスティック回帰では、共変量はなにで、どう扱ったかを正確に伝えることが大切なんだ。データをみると、年齢は65歳未満か以上かで分類した2値データみたいだね。そういうときは、何歳で分類したか、どの分類を基準にしたかわからないと、結果を読み取れない。また、連続データでは、忘れがちだけど単位が必要。年収の単位を円から万円にして、表に追記しておいたよ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項1. フォーマット">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項1. フォーマット
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。</p>
+<p>数字の意味をわかりやすく伝えるためには、どこにどのような情報を配置するかに気を配るべきです。さきほどの表では、列が指標の種類を表すというシンプルな方針を採用しています。そのため、数字がオッズ比、95%信頼区間、p値に対応することが一目でわかります。また、必要な情報から順に読み取れるように、各行または各列の順序にも気を配りたいところです。</p>
+<p>ある程度大きな表であれば、情報はグループにわけられることが普通です。表のフォーマットも、グループが視覚的にわかりやすいように工夫できます。たとえば後に出てくる表1では、行と列でそれぞれグループ化がなされています。行をグループ化するときには字下げ（indent）を用います。性別の内訳を示すために字下げがなされていますよね。また、列をグループ化するときにはスパナ（spanner）を用います。“ストーマ保有者”、“ストーマ非保有者”といった列の見出しを、スパナヘッド（spanner head）といいます。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項2. 単位・表示桁数">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項2. 単位・表示桁数
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。</p>
+<p>数字の表示桁数は、ある程度桁数やルールが統一されていなければ、印象を悪くします。統計ソフトウェアが出力する数字は桁数が大きいことがありますが、そのまま表に示す必要はありません。有効数字2桁または3桁か、もともとの測定値より桁数を1桁大きく示すのが基本です。</p>
+<p>日本工業規格（Z 9041-1:1999）によると、平均の有効数字は、測定値より1～2桁大きく、標準偏差の有効数字は、最大でも3桁程度といわれています。つまり、むやみに数字の表示桁数を増やしても精確性が増すわけではないのです。年齢を例に挙げると、測定単位は「歳」なので、小数点1桁まで示すとよいでしょう。表1の年齢の平均・標準偏差では、そのようになっています。p値については、小数点以下2桁か3桁まで報告すれば、有意水準（0.05が多い）との大小関係が読み取ることができるので、必要十分でしょう。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「表の作り方をご助言いただけるのはありがたいんだけどさ、肝心のロジスティック回帰はどうすればいいんだろ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「擬似完全分離を避けるには、共変量の数を削るのがわかりやすい。今回はサンプルサイズが不足しているみたいだから、他の共変量はすべて使わないで、単にストーマ造設と復職率だけの関連を調べたらどうかな？1パラメータあたり5〜10イベント程度は欲しいといわれるからね。その場合も、通常の<span class="math inline">\(\chi^2\)</span>検定は使わない方がいいよ。<strong>Fisherの正確検定</strong>と<strong>Clopper-Pearson信頼区間</strong>っていう方法が推奨されている」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="2値データの解析においてサンプルサイズが不足したときの指針">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2値データの解析においてサンプルサイズが不足したときの指針
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>ロジスティック回帰の共変量の数を減らす（目安としてパラメータの数のおよそ5倍のイベント数が必要）</li>
+<li><span class="math inline">\(\chi^2\)</span>検定ではなくFisher正確検定を用いる</li>
+<li>2項分布に基づく信頼区間（Clopper-Pearson信頼区間）を用いる（田中2022）</li>
+</ul>
 </div>
 </div>
 </section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
+<section id="足りなかったたくさんの情報" class="level3 dialogue">
+<h3 class="anchored" data-anchor-id="足りなかったたくさんの情報">足りなかったたくさんの情報</h3>
+<div class="voice-daughter">
+<p>私「でも、ロジスティック回帰で交絡因子を調整しなさいっていったのはお父さんなんだよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、それは重要な問題だよね。じゃあ、ストーマ保有者と非保有者で、年齢、性別、年収の分布がどれくらい違うかをまず確認しようか。前にも話したとおり、年収を尋ねたことでバイアスが生じていないかとか、年収を尋ねて欠測が多いんじゃないかとか、いろいろ気になるし。もし分布が揃ってたら、調整しなくても影響は小さいかもしれない」</p>
+</div>
+<div class="voice-daughter">
+<p>私「あ、その表なら資料にあるよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、あとはストーマ造設と復職率の関連を表にするだけだね。資料には、以下の表1と表2を載せればいいよ」</p>
+</div>
+</section>
+<p>表1. 20XX～20YY年にZZ病院で手術を受け、がんサバイバー復職率調査に回答した直腸がん患者80人の背景因子の記述</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>ストーマ保有者（N=20）</th>
+<th>ストーマ非保有者（N=60）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>年齢（歳）</td>
+<td>57.0 (8.6)</td>
+<td>65.5 (10.4)</td>
+</tr>
+<tr class="even">
+<td>65歳以上</td>
+<td>10.0%</td>
+<td>51.7%</td>
+</tr>
+<tr class="odd">
+<td>性別</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　男性</td>
+<td>35.0%</td>
+<td>53.3%</td>
+</tr>
+<tr class="odd">
+<td>　女性</td>
+<td>60.0%</td>
+<td>46.7%</td>
+</tr>
+<tr class="even">
+<td>　不明</td>
+<td>5.0%</td>
+<td>0.0%</td>
+</tr>
+<tr class="odd">
+<td>年収（万円）</td>
+<td>508 (77)</td>
+<td>514 (101)</td>
+</tr>
+</tbody>
+</table>
+<p>*平均（SD）または%</p>
+<p>表2. 直腸がん患者のうちストーマ保有者20人と非保有者60人の復職率の比較</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 7%">
+<col style="width: 28%">
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>N</th>
+<th>1年以内に復職せず</th>
+<th>復職率</th>
+<th>95%信頼区間*</th>
+<th>p値†</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ストーマあり</td>
+<td>20</td>
+<td>1</td>
+<td>95.0%</td>
+<td>75.1～99.9%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ストーマなし</td>
+<td>60</td>
+<td>2</td>
+<td>96.7%</td>
+<td>88.5～99.6%</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<p>*Clopper-Pearson法</p>
+<p>†Fisher正確検定</p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「集団のアウトカムを比較したいときは、その前に表1のようにそれぞれの集団の背景因子を記述するべきだよ。ストーマ保有者は20人しかいなくて、非保有者に比べて、平均年齢が低くて、女性が多いわけだ。やっぱり最終的にはロジスティック回帰で、背景因子の違いを調整しないといけないかもね。現時点での調査の回答率はどうだった？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「調査票は100人に送って、80人から回収できたから、回答率は80%かな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「項目ごとの無回答（item non-response）についてはどう？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そっか、調査票を回収できたかと、項目ごとの回答があったかは別だもんね。年齢は全員回答してくれたよ。性別は1人記入していなかった。項目ごとの回答数まで、表に示した方がよかった？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ううん、論文ではそこまで細かい数字は示さないことが多い。重要な変数が欠測してたりするなら別だけどね。たとえばさ、ロジスティック回帰を行うとき、性別不明はどう扱ったの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「統計ソフトウェアのマニュアル調べたら、欠測は自動的に除外されるんだって」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうすると解析対象の人数が80人じゃなくて79人に減るんだから、表を作るときにそこを説明しておかないといけないんじゃない？一般に、ロジスティック回帰の結果を示す表だけだと、どんなデータかわかりにくいっていう問題がある。復職できなかったのは3人しかいないって、表2をみるまで気づかなかったよ？まだ1施設からのデータしか集まってないからでしょ。それじゃあロジスティック回帰はしたくてもできないよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「確かにね。そのあたりの状況を、読者に伝えなきゃって気持ちが足りなかったみたい」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項3. 表タイトル・脚注">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項3. 表タイトル・脚注
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。</p>
+<p>表には様々な数字が示されますから、どういった指標かわかりにくいときがしばしばあります。もしかしたら、複雑な統計手法から計算されたものかもしれません。データを解析するために用いた統計手法は、方法のセクションで説明することが基本ですが、読者への配慮として、表の脚注（footnote）を利用することもあります。表1でいえば、括弧内の数字の意味は自明ではないので、“平均（SD）または%”と脚注がついていますよね。表2の脚注には、どの統計手法を用いて信頼区間とp値を計算したかが説明されています。このように読者にとってなじみのない指標や表現には、補足説明が必要です。</p>
+<p>脚注を参照するための記号には、a、b、cまたは*、†、‡、§、¶を用いるのが正式です。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="注意事項4. 数え尽くしの原則">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注意事項4. 数え尽くしの原則
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。</p>
+<p>統計家の間では、<strong>数え尽くしの原則（principle of exhaustion）</strong>という言葉があります。分類変数の分類が複雑だったり、欠測データがあったりするときには、分類ひとつひとつの人数を合計し、それが全体の人数に合うかどうかを確認せよ、というのがこの原則の教えです。最初に作成した表では人数が示されておらず、どのようなデータが解析されたのかわかりません。一方、表1・表2では、何人が解析対象で、何人が復職したのかが記述されています。さらに、数え尽くすと全体80人や100%に一致することから、正しく集計されたことが読み取れます。</p>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ちなみにお父さん、もし”臨床疑問と研究仮説”で例を挙げてくれたときの研究仮説3みたいに、研究の目的が復職率と関連する因子の探索だとしたら、何か変わることはある？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「どんな特徴を持った患者が、復職が難しいのか、予測因子をみつけたいってことかな。予測因子の候補となるデータがあるなら、それをロジスティック回帰の共変量に入れることで、予測因子の探索を行うことができるよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うんうん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「こういった探索的検討では、特定の因子に関心がないってことが第一の違いだよ。ストーマと復職率の関連を調べるときは、ストーマのオッズ比やp値を求めることがゴールでしょ。予測因子の探索では、予測因子の候補をできるだけたくさん集めて、どの因子をモデルに入れたら予測精度が高いか、逆にどの因子は要らないかを調べることがゴールになる。これを変数選択っていうんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ゴールは違ってもさ、p値を使えばよくない？有意な因子をモデルに入れたらいいんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうやり方もあるけどね。予測2乗誤差、ROC曲線、AICといった予測精度専用の指標を使うことも多い。大事なのはね。<strong>予測因子の候補や変数選択の基準を、研究計画書などに書いておくこと</strong>。事前に決めておかないと、どうしても研究者の主観が入っているんじゃないかって批判されるからね」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ロジスティック回帰の起源として正しいのは、次の時代のうちどれでしょうか。</p>
+<ol type="1">
+<li>1900年以前</li>
+<li>1900～30年</li>
+<li>1931～60年</li>
+<li>1961年以降</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li><p><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></p></li>
-<li><p><a href="logistic-regression-2.html">Logit: How a Transformation Shapes an Effect</a></p></li>
-<li><p><a href="logistic-regression-3.html">Where My Logistic Regression Went Wrong</a></p></li>
-<li><p><a href="logistic-regression-4.html">Why Logistic Regression Fails in Small Samples</a></p></li>
-<li><p><a href="logistic-regression-5.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+<li><strong>正解は1です</strong></li>
+</ul>
+<p>少なくとも、ベルギーの数学者Queteletが1838年に出版した書籍に、ロジット関数の式が示されています。ロジスティックという単語は、同じくベルギーの数学者Verhulstが1845年にProceeding of Belgian Royal Academyで、初めて用いられたとされています。</p>
+</div>
+</div>
+</div>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
+</ul>
+</section>
+<section id="次のエピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
+<ul>
+<li><a href="logistic-regression-1.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-3.html">Logit: How a Transformation Shapes an Effect</a></li>
+<li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
+<li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="logistic-regression-6.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
 </ul>
 </section>
 <section id="過去のシリーズと用語集" class="level3">

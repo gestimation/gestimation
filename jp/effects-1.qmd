@@ -190,16 +190,14 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 - [JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
 
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
-- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
-- [From Risk and Rate to Survival and Hazard](effects-5.html)
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
-
-- [Statistical Terms in Plain Language](glossary.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
@@ -207,5 +205,5 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Statistical Terms in Plain Language](glossary.html)
-

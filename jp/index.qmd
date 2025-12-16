@@ -46,7 +46,7 @@ listing:
 - [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
 - **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
 - **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
@@ -117,15 +117,14 @@ listing:
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
+- [A First Note on Cox Regression]
+- [After Cox Regression: A Case Study and R Demonstration]
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **Silent Confusions Hidden in Percentages**
 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。言葉の意味を知ることの大切さを父は語ります。
 - **Who Is This Percentage About Target Populations and Attributable Fractions**
 　数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。言葉の裏に潜む集団の違いについて。
-- **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
-　バイアス調整解析とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
 - **When Odds Ratios Approximate Risk Ratios and When They Fail**
 　「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。
 - **From Risk and Rate to Survival and Hazard**
@@ -150,6 +149,8 @@ listing:
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified]
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+- **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
+　層別解析・ロジスティック回帰とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
 - **From Risk to Logistic Regression**
 　「教えられた通り、Rのglm関数でロジスティック回帰をしてみたんだけど、なんだかブラックボックスみたい」父は娘の疑問に答えます。
 - **Logit: How a Transformation Shapes an Effect**
@@ -159,7 +160,7 @@ listing:
 - **Why Logistic Regression Fails in Small Samples**
 　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。
 - **Understanding Confounding in Effect Measures: Marginal vs Stratified**
-　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整という操作に足りない構造とは？
+　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整になにが足りないのか？
 
 このエピソードのRスクリプト一式はこちらから。
 

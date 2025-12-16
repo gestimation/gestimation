@@ -278,13 +278,13 @@ window.Quarto = {
 <li><a href="study-design-4.html">A First Step into Survival and Competing Risks Analysis with R</a></li>
 <li><a href="study-design-5.html">When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</a></li>
 </ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="あらすじとRスクリプト">
+<div class="callout callout-style-simple callout-note callout-titled" title="あらすじ">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-あらすじとRスクリプト
+あらすじ
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -385,7 +385,8 @@ window.Quarto = {
 <li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
 <li>[When Odds Ratios Approximate Risk Ratios—and When They Fail]</li>
 <li>[From Risk and Rate to Survival and Hazard]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
+<li>[A First Note on Cox Regression]</li>
+<li>[After Cox Regression: A Case Study and R Demonstration]</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="あらすじとRスクリプト">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -402,7 +403,6 @@ window.Quarto = {
 <ul>
 <li><strong>Silent Confusions Hidden in Percentages</strong> 　疫学の研究結果の多くは、わかりやすくパーセントで報告されますが、それが数字が独り歩きする理由だったとは。言葉の意味を知ることの大切さを父は語ります。</li>
 <li><strong>Who Is This Percentage About Target Populations and Attributable Fractions</strong> 　数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。言葉の裏に潜む集団の違いについて。</li>
-<li><strong>Understanding Collapsibility of Effect Measures: Marginal vs Stratified</strong> 　バイアス調整解析とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。</li>
 <li><strong>When Odds Ratios Approximate Risk Ratios and When They Fail</strong> 　「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。</li>
 <li><strong>From Risk and Rate to Survival and Hazard</strong> 　「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を娘は父に学びます。</li>
 <li><strong>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</strong> 　リスク比、ハザード比、そして時間とともに変化する効果。因果推論に先立って立体的なデータの見方が静かに育ちます。</li>
@@ -439,11 +439,12 @@ window.Quarto = {
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
+<li><strong>Understanding Collapsibility of Effect Measures: Marginal vs Stratified</strong> 　層別解析・ロジスティック回帰とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。</li>
 <li><strong>From Risk to Logistic Regression</strong> 　「教えられた通り、Rのglm関数でロジスティック回帰をしてみたんだけど、なんだかブラックボックスみたい」父は娘の疑問に答えます。</li>
 <li><strong>Logit: How a Transformation Shapes an Effect</strong> 　ロジスティック回帰を特徴づけるのはロジット関数です。娘は、なぜロジット関数が用いられるのか統計学の秘密を知らされます。</li>
 <li><strong>Where My Logistic Regression Went Wrong</strong> 　結果の見方、表の作り方から、使用上の落とし穴まで、父から統計解析の手ほどきを受けるエピソード。</li>
 <li><strong>Why Logistic Regression Fails in Small Samples</strong> 　「どうして私のロジスティック回帰は発散しちゃったの？」娘は更なる疑問を父にぶつけます。</li>
-<li><strong>Understanding Confounding in Effect Measures: Marginal vs Stratified</strong> 　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整という操作に足りない構造とは？</li>
+<li><strong>Understanding Confounding in Effect Measures: Marginal vs Stratified</strong> 　いわゆるSimpsonのパラドックスと交絡の関係は？そしてロジスティック回帰を用いた調整になにが足りないのか？</li>
 </ul>
 <p>このエピソードのRスクリプト一式はこちらから。</p>
 <ul>

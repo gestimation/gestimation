@@ -1,0 +1,266 @@
+---
+title: "Understanding Confounding in Effect Measures: Marginal vs Stratified"
+description: ""
+tags:
+  - Confounding & collapsibility
+  - Effect measure, 
+  - Observational study
+  - R simulation
+format:
+  html:
+    toc: true
+date: 2025-12-08
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified
+
+::: {.serif-block .text-right}
+Keywords: confounding & collapsibility, effect measure, observational study, R simulation
+:::
+
+------------------------------------------------------------------------
+
+### ロジスティック回帰で「調整する」ってどういうこと？
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「お父さん、ロジスティック回帰でわからないことがあるんだけど。観察研究では**交絡因子（confounder）**を調整しないといけないって前にいってたよね」
+::: 
+
+::: voice-father
+お父さん「ああ、そんな話もあったね」
+::: 
+
+::: voice-daughter
+私「でも統計学の本を読んでも、なにをどう調整するのか書いてないんだよ」
+::: 
+
+::: voice-father
+お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」
+:::
+
+::: voice-daughter
+私「賛成。いちご大福あるから持ってくる」
+::: 
+
+::: voice-father
+お父さん「疫学では有名な話なんだけどね。40年前に、"コーヒーを飲むと膵がんリスクが上がる"という論文がでたことがあった」
+::: 
+
+::: voice-daughter
+私「いかにもありそうな話だね」
+::: 
+
+::: voice-father
+お父さん「そうでしょ。でも、観察研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」
+::: 
+
+::: voice-daughter
+私「ふんふん」
+::: 
+
+::: voice-father
+お父さん「それでは問題です。このコーヒー論争で、実際に問題になった第3の因子はなんでしょう？」
+::: 
+
+::: voice-daughter
+私「え？えーっと」
+::: 
+
+![](logistic-regression-1.png)
+
+::: voice-father
+お父さん「答えはこれ」
+::: 
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple" collapse="true" title="お父さんの答えは？"}
+それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。
+
+![](logistic-regression-3.png)
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「へえ、そんな話があったんだ」
+::: 
+
+::: voice-father
+お父さん「じゃあさ、こういう第3の因子を無視して解析するとどうなる？」
+::: 
+
+::: voice-daughter
+私「それくらいわかるよ。バイアスが入るんでしょ」
+::: 
+
+::: voice-father
+お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。**Simpsonのパラドックス**っていう現象を使って説明しよう」
+:::
+:::::::::::::::::::::::::::::::::
+
+
+::: {.callout-note appearance="simple" title="Simpsonのパラドックス"}
+
+コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのか、一番シンプルな層別解析でみてみましょう。表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。
+
+表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。
+
+このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。
+
+表1. 層別前の膵がんリスクとオッズ比
+
+|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
+|--------------|--------------|----------------|----------|
+| 合計         |              |                |          |
+| 　膵がんあり | 15           | 12             |          |
+| 　膵がんなし | 365          | 868            |          |
+| 　リスク     | 3.9%         | 1.4%           | 3倍      |
+
+表2. 層別後の膵がんリスクとオッズ比
+
+|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
+|--------------|--------------|----------------|----------|
+| 喫煙         |              |                |          |
+| 　膵がんあり | 14           | 4              |          |
+| 　膵がんなし | 266          | 76             |          |
+| 　リスク     | 5.0%         | 5.0%           | 1倍      |
+| 非喫煙       |              |                |          |
+| 　膵がんあり | 1            | 8              |          |
+| 　膵がんなし | 99           | 792            |          |
+| 　リスク     | 1.0%         | 1.0%           | 1倍      |
+
+:::
+
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「単純な解析ではリスク因子だったのに、層別しただけで関連が消えた。でもこれは“計算上のトリック”じゃないよね？以前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたのは関係ある？」
+::: 
+
+::: voice-father
+お父さん「さすが、覚えていたね。でもここは区別しないといけない。確かにオッズ比はリスク比と違って、層別したら値が変わりやすい、**併合可能ではない（non-collapsible）**指標だよ。でもこれは指標の性質の話。ここで問題しているSimpsonのパラドックスは、"比較の仕方が壊れている"話なんだ」
+:::
+
+::: voice-daughter
+私「たしかに。この前はランダム化臨床試験、今回は観察研究だものね。コーヒー好きはコーヒーを飲まない人とは別の特徴を持っていて、単純に比較するのはバイアスってわけだ」
+:::
+
+::: voice-father
+お父さん「そういうこと。ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きい。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」
+::: 
+:::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple" title="glm()を用いた膵がんデータの解析"}
+交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、`link="logit"`を用いた`glm()`に、リスク比は`link="log"`に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は`smoke`を入れないモデルで、調整後のオッズ比・リスク比は`smoke`を入れたモデルで推定しています。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
+```{r warning=FALSE}
+dat <- data.frame(
+  cancer = c(1, 0, 1, 0,   1, 0, 1, 0),
+  coffee = c(1, 1, 0, 0,   1, 1, 0, 0),
+  smoke  = c(1, 1, 1, 1,   0, 0, 0, 0),
+  n      = c(14, 266, 4, 76,  1, 99, 8, 792)
+)
+fit_logit1 <- glm(
+  cancer ~ coffee,
+  family  = binomial(link = "logit"),
+  weights = n,
+  data    = dat
+)
+odds_ratio1 <- exp(coef(fit_logit1)[["coffee"]])
+print(odds_ratio1)
+
+fit_logit2 <- glm(
+  cancer ~ coffee+smoke,
+  family  = binomial(link = "logit"),
+  weights = n,
+  data    = dat
+)
+odds_ratio2 <- exp(coef(fit_logit2)[["coffee"]])
+print(odds_ratio2)
+
+fit_log1 <- glm(
+  cancer ~ coffee,
+  family  = binomial(link = "log"),
+  weights = n,
+  data    = dat
+)
+risk_ratio1 <- exp(coef(fit_log1)[["coffee"]])
+print(risk_ratio1)
+
+fit_log2 <- glm(
+  cancer ~ coffee+smoke,
+  family  = binomial(link = "log"),
+  weights = n,
+  data    = dat
+)
+risk_ratio2 <- exp(coef(fit_log2)[["coffee"]])
+print(risk_ratio2)
+```
+:::
+
+### Simpsonのパラドックスが起きる条件
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「やっぱりトリックに見えちゃうな、何が起きてるのやら。とりあえず調整しとけっていいたいの？」
+::: 
+
+::: voice-father
+お父さん「えっとね、いちばん伝えたいことから話すね。研究の原則としてときどき使う"ceteris paribus"というラテン語があってね。"All other things being equal"くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない。たとえばランダム化臨床試験とかね」
+::: 
+
+::: voice-daughter
+私「うん、その説明はわかりやすい」
+::: 
+
+::: voice-father
+お父さん「じゃあ、その次になにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」
+::: 
+
+::: voice-daughter
+私「うん」
+::: 
+
+::: voice-father
+お父さん「次に注目してほしいのが、喫煙とコーヒーの関連なんだ。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」
+::: 
+
+::: voice-daughter
+私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」
+::: 
+
+::: voice-father
+お父さん「喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」
+::: 
+
+::: voice-daughter
+私「時代を感じるね、仕事の合間に一服したい気持ちはめっちゃわかる」
+::: 
+
+::: voice-father
+お父さん「Simpsonのパラドックスのポイントは、3つの変数の相関関係なんだ。2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」
+::: 
+
+- 第3の因子と曝露の間に相関がある
+- 第3の因子とアウトカムの間に相関がある
+
+::: voice-daughter
+私「曝露とアウトカムと第3の変数の関係性ねえ。ちょっと確認させて。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か。確かにそうなる。交絡の話ってまあまあややこしいね」
+::: 
+:::::::::::::::::::::::::::::::::
+
+### 文献
+
+- Simpson EH. The interpretation of interaction in contingency tables. J Royal Stat Soc B 1951;13:238-41
+
+- [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12271)
+
+### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+
+- [What Data Cannot Tell Us](truth-1.html)

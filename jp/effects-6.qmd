@@ -1,157 +1,24 @@
 ---
-title: "Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example"
+title: "After Cox Regression: A Case Study and R Demonstration"
+description: ""
+tags:
+  - Bias
+  - Effect measure
+  - R simulation
+  - Survival & competing risks
 format:
   html:
     toc: true
 ---
 
-```{=html}
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-```
-
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Effects and Time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects
+# Effects and Time VI − After Cox Regression: A Case Study and R Demonstration
 
 ::: {.serif-block .text-right}
-Keywords: bias, effect measure, simulation, survival/competing-risk
+Keywords: bias, effect measure, R simulation, survival & competing risks
 :::
 
 ------------------------------------------------------------------------
@@ -159,53 +26,16 @@ Keywords: bias, effect measure, simulation, survival/competing-risk
 ### ハザード比が意味を持つとき、持たないとき
 
 ::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それがこの式なの」
+::: voice-father
+お父さん「もう一杯コーヒーをもらっていい？」
 :::
-::::::::::::::::::::::::::::::::: 
 
-- 指数分布のハザード比
-$$
-HR=\frac{\lambda_1}{\lambda_2}
-$$
-- Cox回帰のハザード比
-$$
-HR=\frac{\lambda_1(x)}{\lambda_2(x)}
-$$
-
-
-
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「$x$が時間で、$\lambda_1$と$\lambda_2$が2群それぞれのハザードだっていうことはわかるよ。$HR$は**ハザード比（hazard ratio）**だよね。でも、どうみても上も下も同じ式じゃない？」
+私「私も欲しい」
 :::
 
 ::: voice-father
-お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、ハザードが$x$に依存しないでしょ、この式以前に。つまりハザード自体がもともと一定なんだ。下の**Cox回帰（Cox regression）**をみると、$\lambda_1(x)$と$\lambda_2(x)$は時間$x$の関数なんだけど、この式はハザード比だけが一定っていうある種の制約を表している」
-:::
-
-::: voice-daughter
-私「つまり？」
-:::
-
-::: voice-father
-お父さん「つまりこの式が出た時点で、はじめて**比例ハザード性**が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」
-:::
-
-::: voice-daughter
-私「やっぱり違うのか。Cox回帰の式は、ロジスティック回帰に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」
-:::
-
-::: voice-father
-お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、$\lambda_1(x)$と$\lambda_2(x)$はどんな関数でもいいという点が、とても実用的なんだ。指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」
-:::
-
-::: voice-daughter
-私「Cox回帰は使いやすいってこと？ほぼほぼCox回帰しかみないけど」
-:::
-
-::: voice-father
-お父さん「そう。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
+お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
 :::
 
 ::: voice-daughter
@@ -213,7 +43,7 @@ $$
 :::
 :::::::::::::::::::::::::::::::::
 
-![](clinical-trial-3.png)
+![](effects-6.png)
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
@@ -372,8 +202,9 @@ summary(rr_at_20)
 
 ### This concludes the Effects and Time series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
-- [From Risk to Logistic Regression](logistic-regression-1.html)
-- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
-- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
-- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
-- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-5.html)
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+- [From Risk to Logistic Regression](logistic-regression-2.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)

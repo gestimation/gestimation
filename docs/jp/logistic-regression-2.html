@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-08">
 
-<title>Logit: How a Transformation Shapes an Effect – Coffee and Research</title>
+<title>From Risk to Logistic Regression – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -181,13 +217,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" id="toc-adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" class="nav-link active" data-scroll-target="#adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect">Adjusting for Bias II − Logit: How a Transformation Shapes an Effect</a>
+  <li><a href="#adjusting-for-bias-ii-from-risk-to-logistic-regression" id="toc-adjusting-for-bias-ii-from-risk-to-logistic-regression" class="nav-link active" data-scroll-target="#adjusting-for-bias-ii-from-risk-to-logistic-regression">Adjusting for Bias II − From Risk to Logistic Regression</a>
   <ul class="collapse">
-  <li><a href="#数式を使ってロジスティック回帰を教えてよ" id="toc-数式を使ってロジスティック回帰を教えてよ" class="nav-link" data-scroll-target="#数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</a></li>
-  <li><a href="#ロジット関数の特徴" id="toc-ロジット関数の特徴" class="nav-link" data-scroll-target="#ロジット関数の特徴">ロジット関数の特徴</a></li>
-  <li><a href="#ロジスティック回帰の可逆性" id="toc-ロジスティック回帰の可逆性" class="nav-link" data-scroll-target="#ロジスティック回帰の可逆性">ロジスティック回帰の可逆性</a></li>
+  <li><a href="#ロジスティック回帰をしてみたんだけど" id="toc-ロジスティック回帰をしてみたんだけど" class="nav-link" data-scroll-target="#ロジスティック回帰をしてみたんだけど">ロジスティック回帰をしてみたんだけど</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
+  <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
   <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
@@ -198,7 +232,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Logit: How a Transformation Shapes an Effect</h1>
+<h1 class="title">From Risk to Logistic Regression</h1>
 </div>
 
 
@@ -206,6 +240,12 @@ window.Quarto = {
 <div class="quarto-title-meta column-page-left">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -215,370 +255,214 @@ window.Quarto = {
 </header>
 
 
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="adjusting-for-bias-ii-logit-how-a-transformation-shapes-an-effect" class="level1">
-<h1>Adjusting for Bias II − Logit: How a Transformation Shapes an Effect</h1>
+<section id="adjusting-for-bias-ii-from-risk-to-logistic-regression" class="level1">
+<h1>Adjusting for Bias II − From Risk to Logistic Regression</h1>
 <div class="serif-block text-right">
-<p>Keywords: effect measure, generalized linear model</p>
+<p>Keywords: confounding &amp; collapsibility, effect measure, generalized linear model, language &amp; writing</p>
 </div>
 <hr>
-<section id="数式を使ってロジスティック回帰を教えてよ" class="level3">
-<h3 class="anchored" data-anchor-id="数式を使ってロジスティック回帰を教えてよ">数式を使ってロジスティック回帰を教えてよ</h3>
-<div class="dialogue">
-<div class="voice-father">
-<p>お父さん「ああ、ここにいたんだ。コーヒーと大福？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うんうまいよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「食べながらでいいから聞いてよ。ロジスティック回帰はね、医学研究でよく使うから知っておいた方がいいと思って。簡単にいうと、2値データのための回帰モデルの一種。ストーマ造設、年齢、性別、年収といった共変量が、復職の有無のような2通りの値をとるアウトカムとどの程度相関するかを、調べることができる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「もうちょっと統計っぽく教えてよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ん？統計手法には、パラメトリック法とノンパラメトリック法があるけど、ロジスティック回帰はパラメトリックモデルの一種として位置づけられる。最近の教科書では、一般化線型モデルのひとつとして扱われることが多いかな」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そういうんじゃなくてさ。ほら、リンク関数とか出てきたでしょ。ああいうのがでてくると消化不良でさ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「数式使っていいの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいや。ほら、このペン使っていいよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ、個人のリスクと共変量の関係から話せばいいのかな」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled" title="前回までのあらすじ">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ロジスティック回帰
+前回までのあらすじ
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\(N\)</span>人の対象者に番号をつけて<span class="math inline">\(i=1,...,N\)</span>で表すことにします。個人<span class="math inline">\(i\)</span>のリスクを<span class="math inline">\(\pi_i\)</span>で表します。<span class="math inline">\(\pi_i\)</span>は、個人レベルの<span class="math inline">\(N\)</span>個のパラメータですが、そのすべてを別々に推定したいわけではありません。<span class="math inline">\(\pi_i\)</span>に関連する<span class="math inline">\(p-1\)</span>個の共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が測定されており、両者の関連の強さに関心があるとします。このとき</p>
-<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>という関係が成り立つ確率分布をロジスティック回帰といいます。</p>
-<p>この式の係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>を回帰係数（regression coefficients）、特に<span class="math inline">\(\beta_0\)</span>を切片項（intercept）といいます。正規分布は平均と分散というパラメータで形状が決まりますよね。それと同じように、ロジスティック回帰の確率分布は、回帰係数<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>で規定されます。<span class="math inline">\(\pi_i\)</span>は、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>が与えられれば計算できますが、直接推定するわけではありません。</p>
+<p>はじめて研究に取り組む娘と統計家の父。父に研究仮説は”PICO”を”PECO”で整理するといいとアドバイスされ、女医である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。その後いくつか質問するうちに、父のことを「こいつ使える」と思い始めたのだった。</p>
 </div>
+</div>
+</div>
+<section id="ロジスティック回帰をしてみたんだけど" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰をしてみたんだけど">ロジスティック回帰をしてみたんだけど</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「これみてよ、お父さん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？どうしたの、この資料」</p>
+</div>
+<div class="voice-daughter">
+<p>私「前に相談したがんサバイバーの復職状況を調べる研究についてなんだけどね、うちの診療科だけだけど調査票が集まったから、解析してみたの。その結果をまとめた資料よ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、あれね。ストーマ造設と復職率の関連を調べることにしたんだっけ。資料のどこをみればいいの？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「この表なんだけど。<strong>ロジスティック回帰（logistic regression）</strong>をしてみたんだ。その結果をまとめたよ。どうかな」</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 10%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>パラメータ</th>
+<th>自由度</th>
+<th>推定値</th>
+<th>標準誤差</th>
+<th>95%信頼区間</th>
+<th><span class="math inline">\(\chi^2\)</span></th>
+<th>p値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>1</td>
+<td>-27.25</td>
+<td>3.03</td>
+<td>-33.20～-21.30</td>
+<td>80.55</td>
+<td>&lt;0.01</td>
+</tr>
+<tr class="even">
+<td>STOMA</td>
+<td>1</td>
+<td>1.41</td>
+<td>1.54</td>
+<td>-16.1～4.45</td>
+<td>0.84</td>
+<td>0.3588</td>
+</tr>
+<tr class="odd">
+<td>AGE</td>
+<td>1</td>
+<td>1.47</td>
+<td>1.48</td>
+<td>-1.42～4.36</td>
+<td>0.99</td>
+<td>0.3197</td>
+</tr>
+<tr class="even">
+<td>SEX</td>
+<td>1</td>
+<td>25.72</td>
+<td>0.00</td>
+<td>25.72～25.72</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>INCOME</td>
+<td>1</td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>-0.00～0.00</td>
+<td>0.58</td>
+<td>0.4481</td>
+</tr>
+</tbody>
+</table>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ふむふむ。よくある回帰分析の結果だね。この表、上司にみせるんでしょ。その前にちょっと手直しした方がいいかもね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱり？そんな気がしてみてもらおうと思ったんだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「まず、Intercept、STOMA、AGE、SEX、INCOMEっていうのがわからないよ。Intercept以外は<strong>共変量（covariates）</strong>のことだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「共変量って？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「共変量っていうのは、ロジスティック回帰に入れる説明変数のこと。復職率を規定する要因っていえばいいかな。それと、Interceptは回帰式でいう切片項のこと。統計ソフトウェアのアウトプットをそのまま表にしたんでしょ？きっとストーマ、年齢、性別、年収という変数を使ったんだと思うんだけど、データ上の変数名がそのままになっている。それに、出てきた数字をぜんぶ載せると、表がうるさくない？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「めっちゃしゃべるな。そうね、実はRの<code>glm()</code>を使ったんだけど、そこもよくわからなかったんだよね。そこから聞こうかな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「どのあたり？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「<code>glm()</code>の指定の仕方。引数っていうの？」</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「ふむふむ。ひとりひとりに<span class="math inline">\(\pi_i\)</span>と<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>がある。そしてロジスティック回帰の式で結びついているわけね。そして、その式の係数が回帰係数」</p>
+<p>私「以前、連続データは正規分布、2値データは2項分布ってイメージが大事みたいなこといってたでしょ？<code>glm()</code>もその延長だと思うんだけど、<code>family</code>とか<code>link</code>とか謎で、ロジスティック回帰になってるか自信ない」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そう。ロジスティック回帰の裏には2項分布があって、実は<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応している。2項確率の式に、共変量<span class="math inline">\(X_{i,1},X_{i,2},...,X_{i,p-1}\)</span>が含まれていて、アウトカムと共変量の関連の強さを、回帰係数が決めるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「この式まではわかったよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「よかった。ちょっと補足するとね、確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、ロジスティック回帰では、アウトカムと共変量の関係が<strong>ロジット関数（logit function）</strong>で結びつくと仮定していること。<code>glm()</code>について話したの覚えてる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。リンク関数を<code>link</code>で指定することは理解したよ。それがこの式？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ。<code>glm()</code>の引数は、<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>なんだけど<code>family=binomial()</code>のように 2項分布を選ぶと自動的にロジット関数が使われる。ロジスティック回帰の左辺をみてよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="リンク関数とロジット関数">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-リンク関数とロジット関数
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>個人のパラメータと共変量との関係を結びつける1対1の単調な変換</p>
-<p><span class="math inline">\(g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}\)</span></p>
-<p>のことを、一般に<strong>リンク関数（link function）</strong>といいます。ロジスティック回帰のリンク関数は</p>
-<p><span class="math inline">\(g(\pi_i)=\log(\frac{\pi_i}{1-\pi_i})\)</span></p>
-<p>です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。</p>
-</div>
-</div>
-</section>
-<section id="ロジット関数の特徴" class="level3">
-<h3 class="anchored" data-anchor-id="ロジット関数の特徴">ロジット関数の特徴</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数の形状">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ロジット関数の形状
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>仮に共変量が1個で、連続データだったとしましょう。確率<span class="math inline">\(\pi_i\)</span>と共変量<span class="math inline">\(X_i\)</span>の関係は、ロジット関数を通じて</p>
-<p><span class="math inline">\(\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}\)</span></p>
-<p>という式で表されることになります。</p>
-<p>図は、このロジット関数の<span class="math inline">\(\exp(\beta_1)\)</span>の値を5、10、20、200と設定して、<span class="math inline">\(X_i\)</span>を0から1までの範囲で変化させた、ロジット関数の逆関数のプロットです。<span class="math inline">\(\exp(\beta_1)\)</span>は、<span class="math inline">\(X_i\)</span>が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。</p>
-<p>このように、ロジット関数の逆関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数<span class="math inline">\(\beta_1\)</span>によって決まります。</p>
-<p><img src="logistic-regression-4.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「さらに、ロジスティック回帰は、がんサバイバー調査のように群を比較するときにも使われる。シンプルに2人の対象者を比べるとどうなるかって話をするね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ロジット関数とオッズ比の関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ロジット関数とオッズ比の関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>共変量が1個のとき、ロジスティック回帰は</p>
-<p><span class="math inline">\(\log \left(\frac{\pi_i}{1-\pi_i}\right)=\beta_0+\beta_1X_{i}\)</span></p>
-<p>と表すことができます。そして、対象者<span class="math inline">\(i=1\)</span>では<span class="math inline">\(X_{1}=0\)</span>、対象者<span class="math inline">\(i=2\)</span>では<span class="math inline">\(X_{2}=1\)</span>という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。</p>
-<p><span class="math inline">\(\log\left(\frac{\pi_1}{1-\pi_1}\right)=\beta_0\)</span></p>
-<p><span class="math inline">\(\log\left(\frac{\pi_2}{1-\pi_2}\right)=\beta_0+\beta_1\)</span></p>
-<p>ここで、<span class="math inline">\(\pi_1\)</span>は対象者1の確率パラメータ、<span class="math inline">\(\pi_2\)</span>は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。</p>
-<p><span class="math inline">\(\left(\frac{\pi_2}{1-\pi_2}\right)\div\left(\frac{\pi_1}{1-\pi_1}\right)=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)\)</span></p>
-<p>この結果は、回帰係数<span class="math inline">\(\beta_1\)</span>の指数をとるとオッズ比が得られることを意味しています。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。大事なのは<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>を選ぶことで、データの型にあった回帰モデルを指定できるってこと。yとxにそれぞれ連続変数を指定すると、散布図に回帰直線を掛くことができるし、計数データにPoisson回帰を当てはめたりもできる。一般化線型モデルは、生存時間データや経時データ以外ならほとんど対応できる汎用的な統計手法なんだ」</p>
-</div>
-</div>
-</section>
-<section id="ロジスティック回帰の可逆性" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰の可逆性">ロジスティック回帰の可逆性</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「でもね、その説明だとみんなロジスティック回帰を使ってる理由にはなってないよね。<code>link="logit"</code>より<code>link="identity"</code>、つまり変換しなくたっていいじゃない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはリスク差のモデルだね。無変換のモデルが悪いわけじゃないんだけど、ロジット関数が選ばれた理由はちゃんとある。この話はちょっと難しいかもしれない。たとえるならね、ロジスティック回帰はルービックキューブのように構造が安定しているんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「どういう意味？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「操作を加えても構造が維持されるっていうこと。どんな方向で、どんな順序で面を回しても、ルービックキューブは元に戻せる。解けば絵の向きもきちんと揃う。統計解析に話を戻すと、人工的にデータに変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量<span class="math inline">\(X_i\)</span>のスケール変換のことだよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それはよくやることだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、<strong>数学では群作用（group action）</strong>っていうんだけど、ある変換を加えても意味が変わらない操作のこと。ほら、コインの表裏を入れ替えても、コイン投げの確率の本質に影響しないでしょ。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」</p>
+<p>お父さん「そこはね、単変量分布を<strong>一般化線型モデル</strong>に広げないと説明できないよ。つまりね、<code>glm()</code>はgeneralized linear modelの略なんだけど、ただの確率分布ってわけじゃなくて、3つのパーツから成り立っているんだ。ざっくりいうとこの3つだよ」</p>
 </div>
 <ul>
-<li><p>確率分布: 2項分布（指数型分布族）</p></li>
-<li><p>回帰係数×共変量（線型結合）</p></li>
-<li><p>リンク関数: ロジット関数</p></li>
+<li><p>確率分布（データの型はなにか）</p></li>
+<li><p>回帰係数×共変量</p></li>
+<li><p>リンク関数（平均をどう変換して共変量と結びつけるか）</p></li>
 </ul>
+<div class="voice-daughter">
+<p>私「で、それが<code>family</code>、<code>y ~ x1 + x2</code>、<code>link</code>なの？」</p>
+</div>
 <div class="voice-father">
-<p>お父さん「ここで出てくるロジット関数は、変換しても<strong>可逆性（invertibility）</strong>を保つ唯一の関数なんだ。たとえば死亡確率を<span class="math inline">\(\pi=0.2\)</span>とするよ。このとき生存確率は？<span class="math inline">\(1-\pi=0.8\)</span>だよね」</p>
+<p>お父さん「そう。<code>glm()</code>は、確率分布+回帰係数×共変量+リンクを指定してるだけなんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「うん。当たり前」</p>
+<p>私「<code>y ~ x1 + x2</code>は私もわかるよ。調べたい変数をいれるんでしょ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この”死亡と生存を入れ替える”という操作が群作用に相当する。ここで問題にしているのはリンク関数<span class="math inline">\(g\)</span>だったよね。確率<span class="math inline">\(\pi\)</span>を、リンク関数で別のスケール<span class="math inline">\(g(\pi)\)</span>に変換したとする。このとき、死亡と生存を入れ替えても、値が反転するだけで構造が維持されるには<span class="math inline">\(g\)</span>はどんな性質を持つべき？」</p>
+<p>お父さん「そうだね。Rの中では、この式がデザイン行列<span class="math inline">\(X\)</span>に変換されてる」</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ちょっとマニアックだけど、Rの内部では、<code>model.matrix()</code>っていう関数で、デザイン行列<span class="math inline">\(X\)</span>を作っている。<span class="math inline">\(X\)</span>の最初の列はすべて1になる。これは回帰直線でいう切片に対応している。次の列以降はx1とx2に対応する値が計算される。こうしておくと、たとえばx1が文字列でも数値に置き換えて計算できたり、回帰係数との掛け算が行列として計算できたり、なにかと都合がいい。ここまで覚えなくていいけど、仕組みを知っておくと理解が進むでしょ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「値が反転する、って？」</p>
+<p>私「なるほどね、じゃあ<code>family</code>ってなに？データの型？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「つまりこういうこと」</p>
+<p>お父さん「そう。<code>family</code>は日本語では分布族の意味だね。正確には<strong>指数型分布族（exponential family）</strong>。前にいったみたいに、データの型にあわせて確率分布を選ぶ」</p>
 </div>
-<p><span class="math display">\[g(1−\pi)=−g(\pi)\]</span></p>
-<div class="voice-daughter">
-<p>私「へ？意味わかんない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？<span class="math inline">\(g(-1\pi)\)</span>は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号反転はするはず」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほど。<span class="math inline">\(g(1−\pi)=−g(\pi)\)</span>という関係が成り立つのはなにか探せばいいのね？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「もう少し条件がある。<span class="math inline">\(g(\pi)\)</span>という尺度に、上限と下限があったら不便だし、ゼロという基準が必要だよね。だから条件を追加する」</p>
 </div>
 <ul>
-<li><span class="math inline">\(g(1−\pi)=−g(\pi)\)</span></li>
-<li><span class="math inline">\(\pi\)</span>が0に近づけば<span class="math inline">\(g(\pi)\)</span>は−∞に向かう</li>
-<li><span class="math inline">\(\pi\)</span>が1に近づけば<span class="math inline">\(g(\pi)\)</span>は∞に向かう</li>
-<li><span class="math inline">\(\pi=1/2\)</span>を基準にとって<span class="math inline">\(g(1/2)=0\)</span></li>
+<li>連続データ: gaussian()</li>
+<li>2値データ: binomial()</li>
+<li>計数データ: poisson()</li>
 </ul>
-<div class="voice-father">
-<p>お父さん「この4つの条件を満たす滑らかな関数は、実はほとんどひとつしかない」</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">gaussian</span>(), <span class="at">data =</span> dat)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">binomial</span>(), <span class="at">data =</span> dat)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">family =</span> <span class="fu">poisson</span>(), <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="math display">\[g(\pi)=\log \left(\frac{\pi_i}{1-\pi_i}\right)\]</span></p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「ただしね、一般化線型モデルではデフォルト仕様みたいなものがあって、<code>family</code>を指定すると以下の3つが一度に決まるっていう特徴がある」</p>
+</div>
+<ul>
+<li>yの確率分布</li>
+<li>yの分散</li>
+<li>その確率分布にあったリンク関数</li>
+</ul>
 <div class="voice-daughter">
-<p>私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」</p>
+<p>私「リンク関数ってなんだ？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。みんなが使っている統計手法はね、大半が人間が選んだだけじゃないんだ。数学的な法則がそっと姿を現しているんだよ」</p>
+<p>お父さん「リンク関数（link function）は、<strong>平均をどう変換して回帰係数×共変量にあわせるか</strong>だよ。<code>family = binomial()</code>は、デフォルトで<strong>ロジット関数（logit function）</strong>というリンク関数を使っている。ロジット関数が、2項分布の構造にあった”自然な”リンク関数なんだ。これがロジスティック回帰だよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そっか、よかった。うん、けっこうわかったから今日はもういい」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -591,19 +475,17 @@ a:hover {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>脳卒中発症の有無をアウトカム、LDLコレステロールを共変量としてロジスティック回帰を当てはめたとします。LDLコレステロールの単位をmg/dLからmmol/Lに変換したとき、オッズ比は何倍になるでしょうか。ただし</p>
-<p>LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586</p>
-<p>という関係が成り立ちます。</p>
+<p>ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます。リンク関数をうまく指定してリスク<span class="math inline">\(\pi\)</span>を変換することで、オッズ比以外の関連の指標を求められることが知られています。次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。</p>
 <ol type="1">
-<li>0.02586倍</li>
-<li>1/0.02586倍</li>
-<li>変化しない</li>
-<li>1、2、3すべて誤り</li>
+<li>リスク差</li>
+<li>リスク比</li>
+<li>ハザード比</li>
+<li>1、2、3すべて求めることができる</li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -612,10 +494,15 @@ a:hover {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>正解は4です。</strong></p>
-<p>これは単位を換算するにはどうすればよいかという問題です。ある共変量<em>X</em>の効果は、回帰係数<em>β</em>との積（<em>βX</em>）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。<em>X</em>の単位を定数倍すると、<em>β</em>は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。</p>
+<ul>
+<li><strong>正解は4です</strong></li>
+</ul>
+<p>一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。詳しくはのちのエピソードで述べますが、リンク関数は、ロジスティック回帰でいえば、リスク<span class="math inline">\(\pi\)</span>を関数<span class="math inline">\(g(\pi)\)</span>を用いて変換しています。</p>
+<p>リスク差を求めるには、<span class="math inline">\(g(\pi)=\pi\)</span>つまり恒等関数を指定します。</p>
+<p>リスク比を求めるには、<span class="math inline">\(g(\pi)=\log(\pi)\)</span> つまり対数関数を指定します。</p>
+<p>ハザード比を求めるには、<span class="math inline">\(g(\pi)=\log\{-\log⁡(1-\pi)\}\)</span>つまり補二重対数（complementary log-log）関数を指定します。</p>
 </div>
 </div>
 </div>
@@ -623,18 +510,19 @@ a:hover {
 <section id="文献" class="level3">
 <h3 class="anchored" data-anchor-id="文献">文献</h3>
 <ul>
-<li><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></li>
+<li><a href="https://www.asakura.co.jp/detail.php?book_code=12270">田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022</a></li>
 </ul>
 </section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
+<section id="次のエピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></p></li>
-<li><p><a href="logistic-regression-2.html">Logit: How a Transformation Shapes an Effect</a></p></li>
-<li><p><a href="logistic-regression-3.html">Where My Logistic Regression Went Wrong</a></p></li>
-<li><p><a href="logistic-regression-4.html">Why Logistic Regression Fails in Small Samples</a></p></li>
-<li><p><a href="logistic-regression-5.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></p></li>
+<li><a href="logistic-regression-1.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-3.html">Logit: How a Transformation Shapes an Effect</a></li>
+<li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
+<li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="logistic-regression-6.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
 </ul>
 </section>
 <section id="過去のシリーズと用語集" class="level3">

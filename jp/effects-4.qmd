@@ -1,169 +1,236 @@
 ---
-title: "When Odds Ratios Approximate Risk Ratios—and When They Fail"
-description: "「オッズ比よりオッズ比の平方根の方がよい一面もあるんだ」父は疫学の常識を揺さぶります。"
+title: "From Risk and Rate to Survival and Hazard"
+description: "「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を整理するcoffee-chat guide。時間を含む効果理解への入り口です。"
 tags:
-  - Bias
   - Effect measure
-  - Observational study
+  - Probability model
+  - R simulation
+  - Survival & competing risks
 format:
   html:
     toc: true
+date: 2025-12-13
 ---
 
 ::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Effects and Time IV − When Odds Ratios Approximate Risk Ratios—and When They Fail
+# Effects and Time V − From Risk and Rate to Survival and Hazard
 
 ::: {.serif-block .text-right}
-Keywords: bias, effect measure, observational study
+Keywords: effect measure, probability model, R simulation, survival & competing-risks
 :::
 
 ------------------------------------------------------------------------
 
-### リスク比とオッズ比って、結局同じ？
+### リスクと時間の関係
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さんの話を聞いててね、国試の勉強してたときのことを思い出したよ。保健統計だったか、疫学だったかの問題で、オッズ比の計算問題を解いたことがあったなあ。リスク比とオッズ比って結局同じ使い方をするの？みたいな」
+私「お父さんさ、以前聞いた寄与割合の話を思い返して気づいたんだけどね。まだ納得感が足りないの」
 :::
 
 ::: voice-father
-お父さん「ああ、この前、膵がんの数値例で計算したとき、リスク比とオッズ比はどちらも3倍だったね。でも、これはたまたま。もっと正確にいうと、膵がんのように、**リスクの値が低いときはリスク比とオッズ比は近い値**になるんだ。ほら、リスク比とオッズ比の数式を見比べてよ。リスク比とオッズ比の違いって、式の分母に$1-\pi_1$と$1-\pi_2$があるかどうかでしょ。リスクが低いと、ここがほとんど1になるから、リスク比とオッズ比の差がなくなる」
+お父さん「なに？コーヒーと一緒にこういう話をするのは歓迎だよ」
 :::
 
 ::: voice-daughter
-私「まあ、私も論文読むとき別に区別してないけど」
+私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」
 :::
 
 ::: voice-father
-お父さん「えーっと、状況によってはそれはよくない。疾患や対象集団によっては、リスクが低いときばかりじゃないからね。最近の論文だと、オッズ比をリスク比の代わりに使うなら、そのままの値じゃなくて、**オッズ比の平方根**を報告した方がいいっていう説もある（VanderWeele 2017）」
+お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」
 :::
 
 ::: voice-daughter
-私「なにそれ、またお作法が増えたの？」
+私「生存曲線からある時点の生存確率を読み取ると、1-リスクになっているっていう意味ね。うんうん。そして、疫学の教科書に出てくる**率（rate）**が、生存時間解析の**ハザード（hazard）**に対応しているっていうのもわかる。でも、気になるのは**ハザード比（hazard ratio）**なんだ。寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」
 :::
 
 ::: voice-father
-お父さん「お作法があるわけじゃないんだけど、オッズ比をリスク比の近似として使うことがあるからね。そういうときに限っては、オッズ比の代わりにオッズ比の平方根でもいいんじゃないっていう主張かな。どっちにしても近似バイアスはそれなりに残るんだけど。リスク比とオッズ比の使い分けの話をするときは、まずは具体的な計算結果をみた方がわかりやすいと思う」
-:::
-::::::::::::::::::::::::::::::::: 
-
-::: {.callout-note appearance="simple" title="リスク比はオッズ比の近似か"}
-
-表1は、2群の疾患リスク$\pi_1$と$\pi_2$の数値を0.1から0.9まで動かして、リスク比、オッズ比、オッズ比の平方根（square root of OR）を計算したものです。
-
-$RR=\frac{\pi_1}{\pi_2}$
-
-$OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}$
-
-$SOR=\sqrt{\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}}$
-
-$\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ比はまったく違う値になることがわかります。リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなります。また、$\pi_1$と$\pi_2$が0.2～0.7の範囲であれば、リスク比とオッズ比の平方根は、高々0.11しか違いません。
+お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、時間を通じてハザード比は一定と、無理やり仮定して計算してる」
 :::
 
+::: voice-daughter
+私「リスク比は変化するけどハザード比は変化しないの？矛盾してない？」
+:::
 
-::: panel-tabset
-### 疾患リスク0.1～0.4
+::: voice-father
+お父さん「えーっと、リスク比が変化しないわけじゃなくて...。リスクはハザードの時間積分だから、どちらか一方の比を固定したらもう一方は固定できなくて...。ちょっと紙ナプキンとペンをとってくれる？教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」
+:::
+:::::::::::::::::::::::::::::::::
 
-表1. 2群の疾患リスクを0.1から0.9まで動かしたときのリスク比（RR）、オッズ比（OR）、オッズ比の平方根（SOR）
+::: {.callout-note appearance="simple" title="生存曲線とハザードの関係"}
 
-|     | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| 0.1 |RR=1 | 0.50| 0.33| 0.25| 0.20| 0.17| 0.14| 0.13| 0.11|
-|     |OR=1 | 0.44| 0.25| 0.17| 0.11| 0.07| 0.05| 0.03| 0.01|
-|     |SOR=1| 0.67| 0.51| 0.41| 0.33| 0.27| 0.22| 0.17| 0.11|
-| 0.2 |     |RR=1 | 0.67| 0.50| 0.40| 0.33| 0.29| 0.25| 0.22|
-|     |     |OR=1 | 0.58| 0.38| 0.25| 0.17| 0.11| 0.06| 0.03|
-|     |     |SOR=1| 0.76| 0.61| 0.50| 0.41| 0.33| 0.25| 0.17|
-| 0.3 |     |     |RR=1 | 0.75| 0.60| 0.50| 0.43| 0.38| 0.33|
-|     |     |     |OR=1 | 0.64| 0.43| 0.29| 0.18| 0.11| 0.05|
-|     |     |     |SOR=1| 0.80| 0.65| 0.53| 0.43| 0.33| 0.22|
-| 0.4 |     |     |     |RR=1 | 0.80| 0.67| 0.57| 0.50| 0.44|
-|     |     |     |     |OR=1 | 0.67| 0.44| 0.29| 0.17| 0.07|
-|     |     |     |     |SOR=1| 0.82| 0.67| 0.53| 0.41| 0.27|
+これまでのエピソードでは、ある時点までのリスクを扱ってきましたが、今度は“時間に沿って変化するリスク”を推定したKaplan-Meier曲線について正式に説明します。Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法でした。そのため、Kaplan-Meier曲線は時間軸を横にとったグラフですし、いわゆるハザード比との関係も知りたいところですよね。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。
 
-### 疾患リスク0.5～0.8
+Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（$x$軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間$x$の関数$S(x)$で表す」ということになります。
 
-表1. 2群の疾患リスクを0.1から0.9まで動かしたときのリスク比（RR）、オッズ比（OR）、オッズ比の平方根（SOR）
+関数$S(x)$を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）は、$λ$という記号で表すことが普通です。このとき指数分布の生存関数とハザードには、以下のような関係があります。
 
-|     | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| 0.5 |     |     |     |     |RR=1 | 0.83| 0.71| 0.63| 0.56|
-|     |     |     |     |     |OR=1 | 0.67| 0.43| 0.25| 0.11|
-|     |     |     |     |     |SOR=1| 0.82| 0.65| 0.50| 0.33|
-| 0.6 |     |     |     |     |     |RR=1 | 0.86| 0.75| 0.67|
-|     |     |     |     |     |     |OR=1 | 0.64| 0.38| 0.17|
-|     |     |     |     |     |     |SOR=1| 0.80| 0.61| 0.41|
-| 0.7 |     |     |     |     |     |     |RR=1 | 0.88| 0.78|
-|     |     |     |     |     |     |     |OR=1 | 0.58| 0.26|
-|     |     |     |     |     |     |     |SOR=1| 0.76| 0.51|
-| 0.8 |     |     |     |     |     |     |     |RR=1 | 0.89|
-|     |     |     |     |     |     |     |     |OR=1 | 0.44|
-|     |     |     |     |     |     |     |     |SOR=1| 0.67|
+$S(x)=\mathrm{exp}(-\lambda x)$
+
+ここまでくればあと一息です。最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク$π$は、特定時点$x$までに疾患を発症する確率を表しています。つまり、疾患リスク$π$とハザード$λ$は、時点$x$の生存関数を$S(x)$を介して、以下の式で結びついています。
+
+$\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)$
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「この表、いっぱい数字があって見方がわからないな。対角のところがRR=OR=SOR=1になるのは、$\pi_1$と$\pi_2$が同じ値だからだよね」
+私「わからん。数式はわからん」
 :::
 
 ::: voice-father
-お父さん「ごめんごめん、説明が必要だよね。RRに近いのは、ORとSORのどっちかをみてほしいんだ。さっき話した通り、古い教科書ではオッズ比はリスク比の近似だって教えるけど、実際にいろんな組み合わせで計算すると、そうならないことがある。っていうか、表をみるとRRとOR、結構ずれてない？むしろオッズ比の平方根をとった方がいいんじゃないかって話」
+お父さん「そう？数学の難しさというより、この等式が何と何を結びつけているかが、慣れないと読み取りにくいんだと思う。ちょっとしたポイントは指数分布だとハザードは定数扱いで、生存関数は時間の関数だってところかなあ」
 :::
 
 ::: voice-daughter
-私「平方根なんて論文書くとき勝手に計算していいのかね」
+私「結びつきねえ。とりあえず生存曲線とハザードの関係式ってことまでかな、確実なのは」
 :::
 
 ::: voice-father
-お父さん「リスク比を推定することが目的なら、オッズ比の平方根を論文で示してもいいかもって気はする。推定方法の一種として、論文のMethodsで説明していればね。でも、よっぽど特殊な状況じゃなければ、リスク比を計算するのが素直だと思うけど」
+お父さん「まずはそこからだね。多分、指数分布からデータを発生させるシミュレーションをやってみると、この式とデータの関係が見えてくると思う」
+:::
+:::::::::::::::::::::::::::::::::
+
+
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
+```{r warning=FALSE}
+generate_data <- function(n=200, hr1, hr2) {
+  stoma <- rbinom(n, size = 1, prob = 0.4)
+  sex <- rbinom(n, size = 1, prob = 0.5)
+  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
+  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
+  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
+  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
+  
+  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
+  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
+  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  
+  ## --- 全生存期間（OS） ----------------------------------------
+  time_os   <- pmin(t_death, t_censoring)
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  
+  ## --- 無再発生存期間（RFS） -----------------------------------
+  time_rfs <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_rfs <- integer(n)
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
+  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  
+  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  time_cir <- pmin(t_relapse, t_death, t_censoring)
+  
+  status_cir <- integer(n)
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
+  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  
+  ## --- データフレームにまとめる --------------------------------
+  dat <- data.frame(
+    id         = 1:n,
+    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
+    age        = age,
+    stoma      = factor(stoma, levels = c(0, 1),
+                        labels = c("WITHOUT STOMA", "WITH STOMA")),
+    time_os    = time_os,
+    status_os  = status_os,
+    time_rfs   = time_rfs,
+    status_rfs = status_rfs,
+    time_cir   = time_cir,
+    status_cir = status_cir
+  )
+}
+```
 :::
 
+::: {.callout-note appearance="simple" title="cifplot()によるKaplan-Meier曲線"}
+どのようなシミュレーションデータが得られるかイメージしやすいように、`cifplot()`で描いたKaplan–Meier曲線と`coxph()`の結果を置いておきます。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="cifplot()のRコードと結果はこちら"}
+```{r warning=FALSE}
+# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
+library(cifmodeling)
+set.seed(46)
+dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+cifplot(Event(time_os, status_os) ~ stoma,
+  data         = dat,
+  outcome.type = "survival",
+  label.y      = "Overall survival"
+)
+```
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="coxph()のRコードと結果はこちら"}
+```{r warning=FALSE}
+# install.packages("survival") #インストールが必要なら実行
+library(survival)
+fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
+summary(fit)
+```
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「そう？私の周りではオッズ比の方がよく聞くけど？まあ胃がんや大腸がんの研究だと、ハザード比をダントツよく使うけど」
+私「ふむふむ。ハザードで指数分布を指定すると生存曲線が決まるわけね」
 :::
 
 ::: voice-father
-お父さん「オッズ比が出てくるのは疫学の教科書とか国試対策でしょ。あれはケース・コントロール研究を教える都合ってだけだよ。リスクって疾患や死亡が起きる確率そのものでしょ。その差や比を直接とったリスク差・リスク比が基本だって理解しとかないと、単なる暗記になっちゃう。ハザード比は、ハザード関数っていう時間の関数の理解がないと取扱注意だし、前回話したように、層別などの調整を行うとき、リスク比はとても扱いやすい指標だからね」
+お父さん「そういうこと。次に気になるはハザードだよね。このパラメータの具体的なイメージを持つのは難しいけど、生存時間中央値と結びつけるのがよくやる手だよ。中央値（median）は生存曲線がちょうど50%まで落ちる時点のこと」
 :::
+:::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple" title="ハザードと生存時間中央値の関係"}
+さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値$M$は、生存確率50%つまり$S(x)=0.5$になるような時間$x$のことです。つまり、指数分布では
+
+$0.5=\mathrm{exp}(-\lambda M)$
+
+と関係が成り立つので、生存時間中央値$M$は、ハザード$λ$から以下のように計算することができます。
+
+$M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「あ、これはちょっとわかった気がする。寿命（生存時間中央値）とハザードが逆数の関係ってことね。つまり寿命が2倍になったらハザードは1/2になる」
+:::
+
+::: voice-father
+お父さん「そうだね、たとえるならハザードはコーヒーにとっての気温みたいなもの。寒いとコーヒーが覚める時間が短くなる。これがハザードが高いってこと。正確に逆数になるのは、指数分布の下で計算するときだけどね。ハザード比は、まさにハザードの比をとったものだよ。指数分布ではこういう式になる。2つの集団の生存曲線を比較するときによく使うよね」
+:::
+
+- 指数分布のハザード比
+$$
+HR=\frac{\lambda_1}{\lambda_2}
+$$
+
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="ケース・コントロール研究とオッズ比"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
-古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。
+生存時間中央値を報告してよいのは、どのような場合でしょうか？
+
+1.  目安としてサンプルサイズが100人以上のとき
+2.  すべての対象者が予定された追跡期間を終了したとき
+3.  半数以上の対象者がイベントを起こしたとき
+4.  1、2、3すべて誤り
 :::
 
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
-
-リスク比とオッズ比が1より小さいとき、オッズ比はリスク比より必ず小さくなるといいました。それでは、2群をオッズ比で比較するときのp値は、リスク比で比較するときのp値より、小さくなる（つまり有意になりやすく、検出力が向上する）のでしょうか。ただし、実際にデータから計算されたp値だと、検定の種類の選び方に影響されるし、偶然性も入ります。理論上の期待値がどうなるか考えてみてください。
-
-1.  オッズ比のp値は、リスク比のp値より、期待値の上で小さい
-2.  オッズ比のp値は、リスク比のp値より、期待値の上で大きい
-3.  オッズ比のp値は、リスク比のp値と、期待値の上で等しい
-:::
-
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解は3です**
 
-リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定、ということが統計学で知られています。直感的な説明をすると、“同じデータから同じ情報を引き出している”から、どの指標を使って差を推定しても、検定としての力は変わらないのです。
+生存時間データでは一部の対象者で打ち切りがあること（これ以上生存時間が長いことしかわからない）、中央値（median）の定義を思い出してください。半数以上の対象者がイベントを起こし、生存時間が確定しないと、生存確率は50%以下になりません。
 :::
 
-### 文献
-
-- VanderWeele T. On a square-root transformation of the odds ratio for a common outcome. Epidemiology 2017;28(6):e58–e60
-
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
-- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
-- [From Risk and Rate to Survival and Hazard](effects-5.html)
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
-
-- [Statistical Terms in Plain Language](glossary.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
@@ -171,5 +238,5 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Statistical Terms in Plain Language](glossary.html)
-

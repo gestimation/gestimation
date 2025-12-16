@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。パーセンテージの裏にあるターゲット集団の違いについて。">
+<meta name="dcterms.date" content="2025-12-08">
 
-<title>Who Is This Percentage About? Target Populations and Attributable Fractions – Coffee and Research</title>
+<title>Understanding Confounding in Effect Measures: Marginal vs Stratified – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,35 +113,6 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -182,11 +188,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#effects-and-time-ii-who-is-this-percentage-about-target-populations-and-attributable-fractions" id="toc-effects-and-time-ii-who-is-this-percentage-about-target-populations-and-attributable-fractions" class="nav-link active" data-scroll-target="#effects-and-time-ii-who-is-this-percentage-about-target-populations-and-attributable-fractions">Effects and Time II − Who Is This Percentage About? Target Populations and Attributable Fractions</a>
+  <li><a href="#adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" id="toc-adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified">Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified</a>
   <ul class="collapse">
-  <li><a href="#疾患リスクとターゲット集団" id="toc-疾患リスクとターゲット集団" class="nav-link" data-scroll-target="#疾患リスクとターゲット集団">疾患リスクとターゲット集団</a></li>
-  <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
+  <li><a href="#simpsonのパラドックスが起きる条件" id="toc-simpsonのパラドックスが起きる条件" class="nav-link" data-scroll-target="#simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</a></li>
+  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
+  <li><a href="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" id="toc-this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="nav-link" data-scroll-target="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,19 +203,20 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Who Is This Percentage About? Target Populations and Attributable Fractions</h1>
+<h1 class="title">Understanding Confounding in Effect Measures: Marginal vs Stratified</h1>
 </div>
 
-<div>
-  <div class="description">
-    数字が独り歩きするのは、計算が理解されていない事だけが理由ではありません。パーセンテージの裏にあるターゲット集団の違いについて。
-  </div>
-</div>
 
 
 <div class="quarto-title-meta column-page-left">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -221,150 +229,105 @@ window.Quarto = {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="effects-and-time-ii-who-is-this-percentage-about-target-populations-and-attributable-fractions" class="level1">
-<h1>Effects and Time II − Who Is This Percentage About? Target Populations and Attributable Fractions</h1>
+<section id="adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" class="level1">
+<h1>Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified</h1>
 <div class="serif-block text-right">
-<p>Keywords: effect measure, language &amp; writing, observational study, research hypothesis</p>
+<p>Keywords: confounding &amp; collapsibility, effect measure, observational study, R simulation</p>
 </div>
 <hr>
-<section id="疾患リスクとターゲット集団" class="level3">
-<h3 class="anchored" data-anchor-id="疾患リスクとターゲット集団">疾患リスクとターゲット集団</h3>
+<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
+<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「コーヒーおかわりいる？お父さん」</p>
+<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。観察研究では<strong>交絡因子（confounder）</strong>を調整しないといけないって前にいってたよね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、ありがとう。ワクチンとは別の話題なんだけど、喫煙歴のあるがんの患者さんって、減ったと思う？」</p>
+<p>お父さん「ああ、そんな話もあったね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「そうね、昔よりは少なくなったんじゃない？」</p>
+<p>私「でも統計学の本を読んでも、なにをどう調整するのか書いてないんだよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でも、日本のがんの統計上は、まだまだ喫煙は健康問題のひとつなんだ。がん罹患のリスク要因は、感染症、喫煙、飲酒の順に影響が大きいと推定されている」</p>
+<p>お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「喫煙率は下がってるのにちょっと意外だね。でもどのがん登録でも、喫煙情報は絶対調べるよね」</p>
+<p>私「賛成。いちご大福あるから持ってくる」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「感染症、喫煙、飲酒が、がん罹患に寄与する割合は、16%、15%、6%っていわれてる。この指標を、集団寄与割合っていうんだけど、これもただのパーセントじゃない」</p>
+<p>お父さん「疫学では有名な話なんだけどね。40年前に、“コーヒーを飲むと膵がんリスクが上がる”という論文がでたことがあった」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」</p>
+<p>私「いかにもありそうな話だね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
+<p>お父さん「そうでしょ。でも、観察研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ふんふん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それでは問題です。このコーヒー論争で、実際に問題になった第3の因子はなんでしょう？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「え？えーっと」</p>
+</div>
+<p><img src="logistic-regression-1.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「答えはこれ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標1. 集団寄与割合">
+<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+お父さんの答えは？
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
+<p><img src="logistic-regression-3.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「へえ、そんな話があったんだ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあさ、こういう第3の因子を無視して解析するとどうなる？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それくらいわかるよ。バイアスが入るんでしょ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。<strong>Simpsonのパラドックス</strong>っていう現象を使って説明しよう」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標1. 集団寄与割合
+Simpsonのパラドックス
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために<strong>寄与割合（attributable fraction/excess fraction）</strong>という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団を<strong>ターゲット</strong>とするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。</p>
-<p>あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、集団寄与割合（population attributable fraction）と呼ばれています。ここで<span class="math inline">\(RR\)</span>はリスク比、<span class="math inline">\(p\)</span>は集団全体のうち群1が占める割合を意味しています。</p>
-<ul>
-<li>集団寄与割合（population attributable fraction）</li>
-</ul>
-<p><span class="math display">\[
-PAF=\frac{p(RR-1)}{p(RR-1)+1}
-\]</span></p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ふーん。集団寄与割合はリスク比だけじゃなくて、リスク因子の割合がわからないと計算できないんだね。でも、まあ、これもワクチン有効率と同じパターンだね。パーセントっていわれるとただの割合と思っちゃう。集団寄与割合のパーセントって、よく考えるとなにを意味するのか謎」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。実はこれはワクチン有効率とほとんど同じ式だったりする」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
-<ul>
-<li>過剰寄与割合（excess fraction） <span class="math display">\[
-EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
-\]</span></li>
-</ul>
-<p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
-<ul>
-<li>予防寄与割合（preventable fraction） <span class="math display">\[
-PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
-\]</span></li>
-</ul>
-<p>曝露集団をターゲットにする意義は、具体的な状況をイメージすると理解しやすくなります。環境疫学では、たとえば化学物質や放射線被ばくなど環境要因の健康影響を評価することが求められます。この場合では、集団全体ではなく、実際に環境要因に曝露した集団における被害を定量化する必要があるため、曝露集団をターゲットとしたexcess fractionがしばしば用いられます。同じような理由で、ワクチン・検診・運動などの予防法の新規導入が、個人のリスクをどれだけ下げたか知りたいときは、preventable fractionが好まれています。</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 16%">
-<col style="width: 61%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>指標</th>
-<th>ターゲット集団</th>
-<th>何を表す？</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PAF（集団寄与割合）</td>
-<td>曝露+非曝露</td>
-<td>集団全体の疾患のうち、どれだけがその曝露のため生じているか</td>
-</tr>
-<tr class="even">
-<td>EF（過剰寄与割合）</td>
-<td>曝露だけ</td>
-<td>曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか</td>
-</tr>
-<tr class="odd">
-<td>PF（予防寄与割合）</td>
-<td>曝露だけ</td>
-<td>曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「余計にわかんない。使い分けもわかんないしパーセントがなにを意味するのか謎」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まあコーヒーを飲んでゆっくり考えよう。まずは具体的な計算結果をみてみてよ」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="コホート研究の数値例">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-コホート研究の数値例
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>リスクや効果の指標について数値例をみるとイメージしやすいと思います。この表は、 喫煙と膵がんリスクの関係を調べる仮想的なコホート研究から得られたデータを表しています。上の式を用いて、リスク差、リスク比、オッズ比、excess fractionを求めると、以下のような結果が得られます。ワクチン有効率と同じように、excess fractionもパーセントで示すことがあるため、要注意です。</p>
+<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのか、一番シンプルな層別解析でみてみましょう。表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
+<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
+<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
+<p>表1. 層別前の膵がんリスクとオッズ比</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
-<th>喫煙あり</th>
-<th>喫煙なし</th>
-<th>効果の指標</th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
 </tr>
 </thead>
 <tbody>
@@ -390,31 +353,68 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <td>　リスク</td>
 <td>3.9%</td>
 <td>1.4%</td>
+<td>3倍</td>
+</tr>
+</tbody>
+</table>
+<p>表2. 層別後の膵がんリスクとオッズ比</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>コーヒー摂取</th>
+<th>コーヒー非摂取</th>
+<th>オッズ比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>喫煙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>　膵がんあり</td>
+<td>14</td>
+<td>4</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>　リスク差</td>
+<td>　膵がんなし</td>
+<td>266</td>
+<td>76</td>
 <td></td>
-<td></td>
-<td>2.5%</td>
 </tr>
 <tr class="even">
-<td>　リスク比</td>
-<td></td>
-<td></td>
-<td>3倍</td>
+<td>　リスク</td>
+<td>5.0%</td>
+<td>5.0%</td>
+<td>1倍</td>
 </tr>
 <tr class="odd">
-<td>　オッズ比</td>
+<td>非喫煙</td>
 <td></td>
 <td></td>
-<td>3倍</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>　Excess fraction</td>
+<td>　膵がんあり</td>
+<td>1</td>
+<td>8</td>
 <td></td>
+</tr>
+<tr class="odd">
+<td>　膵がんなし</td>
+<td>99</td>
+<td>792</td>
 <td></td>
-<td>74%</td>
+</tr>
+<tr class="even">
+<td>　リスク</td>
+<td>1.0%</td>
+<td>1.0%</td>
+<td>1倍</td>
 </tr>
 </tbody>
 </table>
@@ -422,160 +422,152 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う」</p>
+<p>私「単純な解析ではリスク因子だったのに、層別しただけで関連が消えた。でもこれは“計算上のトリック”じゃないよね？以前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたのは関係ある？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でしょ、言葉と認識にギャップがあるよね。それに、ただの計算だと思うとかえって理解しにくいところもある。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「さすが、覚えていたね。でもここは区別しないといけない。確かにオッズ比はリスク比と違って、層別したら値が変わりやすい、<strong>併合可能ではない（non-collapsible）</strong>指標だよ。でもこれは指標の性質の話。ここで問題しているSimpsonのパラドックスは、“比較の仕方が壊れている”話なんだ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「ふんふん」</p>
+<p>私「たしかに。この前はランダム化臨床試験、今回は観察研究だものね。コーヒー好きはコーヒーを飲まない人とは別の特徴を持っていて、単純に比較するのはバイアスってわけだ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「残りの2人は、本当はがんだったのに、検診では見つけられなかった。そのため、67歳と73歳で亡くなった。つまり、がん検診後の生存期間は7年と13年」</p>
-</div>
-<ul>
-<li>60歳がん検診で陽性になり根治手術、71歳まで生存</li>
-<li>60歳がん検診で陽性になり根治手術、79歳まで生存</li>
-<li>60歳がん検診で偽陰性、手術を受けず、67歳まで生存</li>
-<li>60歳がん検診で偽陰性、手術を受けず、73歳まで生存</li>
-</ul>
-<div class="voice-father">
-<p>お父さん「仮にこの2人を60歳のとき根治切除できたとしたら、生存期間は何割長くなるだろう」</p>
-</div>
-<div class="voice-daughter">
-<p>私「えっと、がん検診陽性の2人の生存期間は平均15年でしょ。がん検診陰性の2人の生存期間は平均10年。だから、(15-10)/10=0.5だから、50%の延長」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ、別の質問をするよ。もし、がん検診陽性の2人を60歳のとき根治切除できなかったとしたら、生存期間はどれくらい失われる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「(10-15)/15=-0.33だから、33%減っちゃうね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。つまり、陽性2人と陰性2人のどちらをターゲットにするかで、データは同じでも、根治切除の生存期間に寄与する割合が変わってくる。ここが寄与割合の複雑なところなんだ。この例では生存期間で説明したけど、疾患リスクでもターゲット集団に依存する点は同じ。Excess fractionは、この例でいうと根治切除できなかった2人をターゲットと考えている。Preventable fractionのターゲットは、根治切除できた2人に対応している」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほど、ターゲット集団を分母にとるのね。ターゲットがあるのが、リスク差とかリスク比とかとの違いってわけだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうわけでもないんだ。効果の指標にはどれも、表に出ないだけでターゲット集団がある。たとえば術後の大腸がん患者を対象にランダム化臨床試験をして、補助化学療法をすると死亡リスク差が-5%になったとするでしょ。これって、術後の大腸がん患者全体に補助化学療法をすべきって解釈にならない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「まあねえ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「つまり臨床試験の集団全体がターゲット集団になる。因果リスク差とか、因果リスク比っていう言葉があるんだけど、これは集団全体に別の治療をしたときや、集団全体がリスク因子に曝露したとき、リスクがどう変化するかを表してるんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふーん。じゃあ効果の指標はどれも、単に数式が違うだけじゃなくて”どの集団について語っているか”という言語の問題が潜んでいるんだね。診療科で論文読むことがあるけど、まさか指標によって集団が変わるなんて認識してないんじゃないかな。この前のワクチン有効率はどうなの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ワクチン有効率も臨床試験で推定するよね。だからそのワクチンのターゲット全体が、ワクチンを接種したとき、それがプラセボだったときに比べ、何割感染症が減るかっていう解釈になる。現場では、既存のワクチンが普及していることがほとんどでしょ。そこにワクチン有効率98%の新しいワクチンを投入しても、感染症が98%減ることにはならない」</p>
+<p>お父さん「そういうこと。ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きい。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ターゲット集団">
+<div class="callout callout-style-simple callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ターゲット集団
+glm()を用いた膵がんデータの解析
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。</p>
+<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に、リスク比は<code>link="log"</code>に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は<code>smoke</code>を入れないモデルで、調整後のオッズ比・リスク比は<code>smoke</code>を入れたモデルで推定しています。</p>
 </div>
 </div>
-<div class="dialogue">
-<div class="voice-father">
-<p>お父さん「もうひとつ気を付けないといけないのは、リスクには時間の概念が隠れていること。検診後10年時点の死亡確率を考えてみよう。陽性2人の死亡確率は0%、陰性2人の死亡確率50%だよね。このときのexcess fractionはわかる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん。(0.5-0)/0.5=1でしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう、つまり根治切除していれば、がん陰性の2人の死亡は100%防げたという意味になる。でもさ、がん検診後、12年経つとどうなる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「(0.5-0.5)/0.5=0になるね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ、がん検診後、20年経つと？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「生存者はいなくなるね。(1-1)/1=0かな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうこと。寄与割合は、時間とともに変化することがあり得るんだ。時間が隠れているっていうのは、リスク比やオッズ比も同じだけどね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なるほどね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まとめるとね、“何%減る”とか”何%に効く”というパーセントを見たら、どの集団のことなのか、どの時点のリスクかを意識しよう、ということだね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>今回みたように、寄与割合は、excess fractionやpreventable fraction以外に、曝露・非曝露を合わせた集団全体をターゲットにすることがあります（population attributable fraction）。先ほど用いたがん検診の例で考えましょう。仮にがん検診の精度が高くなって、感度を100%にできたとしましょう。先ほどの状況（感度50%）に比べて、検診後15年後に死亡している人数は、4人のうち、どのくらい減ると期待されるでしょうか。</p>
-<ol type="1">
-<li>0%</li>
-<li>33%</li>
-<li>50%</li>
-<li>100%</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
+Rコードと結果はこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は2です</strong></li>
-</ul>
-<p>この4人の生存期間は、11年、19年、7年、13年なので、15年後の死亡数は3人です。また、根治切除後の死亡率は50%なので、根治切除できなかった2人が、仮にがん検診でがんを見つけられて、根治切除できたとしたら、死亡率は50%と期待されます。この仮想的な状況における死亡数は、1+2×50%=2人です。つまり、検診後15年後に死亡している人数は33%減ったことになります。</p>
-<p>この計算は、集団全体をターゲットとする寄与割合を求めていることに他なりません。集団全体における曝露割合を<span class="math inline">\(p\)</span>で書くと、集団寄与割合は、以下の式で表されます。</p>
-<p><span class="math inline">\(PAF=\frac{p(RR-1)}{p(RR-1)+1}\)</span></p>
-<p>がん検診の例では、<span class="math inline">\(p=0.5\)</span>、15年死亡リスク比は<span class="math inline">\(RR=2\)</span>なので、これを代入すると、<span class="math inline">\(PAF=0.5(2-1)/{0.5(2-1)+1}=0.33\)</span>となり、上の正解と一致します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">coffee =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smoke  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,   <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n      =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">266</span>, <span class="dv">4</span>, <span class="dv">76</span>,  <span class="dv">1</span>, <span class="dv">99</span>, <span class="dv">8</span>, <span class="dv">792</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fit_logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>odds_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.972603</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>odds_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit_log1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>risk_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log1)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.894737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit_log2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>risk_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log2)[[<span class="st">"coffee"</span>]])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="次のエピソードとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
+<section id="simpsonのパラドックスが起きる条件" class="level3">
+<h3 class="anchored" data-anchor-id="simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「やっぱりトリックに見えちゃうな、何が起きてるのやら。とりあえず調整しとけっていいたいの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「えっとね、いちばん伝えたいことから話すね。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない。たとえばランダム化臨床試験とかね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん、その説明はわかりやすい」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ、その次になにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「次に注目してほしいのが、喫煙とコーヒーの関連なんだ。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「時代を感じるね、仕事の合間に一服したい気持ちはめっちゃわかる」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「Simpsonのパラドックスのポイントは、3つの変数の相関関係なんだ。2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」</p>
+</div>
 <ul>
-<li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
-<li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
-<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
+<li>第3の因子と曝露の間に相関がある</li>
+<li>第3の因子とアウトカムの間に相関がある</li>
+</ul>
+<div class="voice-daughter">
+<p>私「曝露とアウトカムと第3の変数の関係性ねえ。ちょっと確認させて。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か。確かにそうなる。交絡の話ってまあまあややこしいね」</p>
+</div>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><p>Simpson EH. The interpretation of interaction in contingency tables. J Royal Stat Soc B 1951;13:238-41</p></li>
+<li><p><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></p></li>
 </ul>
 </section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</h3>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
-<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+<li><a href="truth-1.html">What Data Cannot Tell Us</a></li>
 </ul>
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example – Coffee and Research</title>
+<title>After Cox Regression: A Case Study and R Demonstration – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,35 +112,6 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -216,7 +187,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#effects-and-time-vi-distinguishing-time-point-time-constant-and-time-varying-effects" id="toc-effects-and-time-vi-distinguishing-time-point-time-constant-and-time-varying-effects" class="nav-link active" data-scroll-target="#effects-and-time-vi-distinguishing-time-point-time-constant-and-time-varying-effects">Effects and Time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</a>
+  <li><a href="#effects-and-time-vi-after-cox-regression-a-case-study-and-r-demonstration" id="toc-effects-and-time-vi-after-cox-regression-a-case-study-and-r-demonstration" class="nav-link active" data-scroll-target="#effects-and-time-vi-after-cox-regression-a-case-study-and-r-demonstration">Effects and Time VI − After Cox Regression: A Case Study and R Demonstration</a>
   <ul class="collapse">
   <li><a href="#ハザード比が意味を持つとき持たないとき" id="toc-ハザード比が意味を持つとき持たないとき" class="nav-link" data-scroll-target="#ハザード比が意味を持つとき持たないとき">ハザード比が意味を持つとき、持たないとき</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
@@ -230,7 +201,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</h1>
+<h1 class="title">After Cox Regression: A Case Study and R Demonstration</h1>
 </div>
 
 
@@ -247,196 +218,32 @@ window.Quarto = {
 </header>
 
 
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="effects-and-time-vi-distinguishing-time-point-time-constant-and-time-varying-effects" class="level1">
-<h1>Effects and Time VI − Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</h1>
+<section id="effects-and-time-vi-after-cox-regression-a-case-study-and-r-demonstration" class="level1">
+<h1>Effects and Time VI − After Cox Regression: A Case Study and R Demonstration</h1>
 <div class="serif-block text-right">
-<p>Keywords: bias, effect measure, simulation, survival/competing-risk</p>
+<p>Keywords: bias, effect measure, R simulation, survival &amp; competing risks</p>
 </div>
 <hr>
 <section id="ハザード比が意味を持つとき持たないとき" class="level3">
 <h3 class="anchored" data-anchor-id="ハザード比が意味を持つとき持たないとき">ハザード比が意味を持つとき、持たないとき</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それがこの式なの」</p>
+<div class="voice-father">
+<p>お父さん「もう一杯コーヒーをもらっていい？」</p>
 </div>
-</div>
-<ul>
-<li>指数分布のハザード比 <span class="math display">\[
-HR=\frac{\lambda_1}{\lambda_2}
-\]</span></li>
-<li>Cox回帰のハザード比 <span class="math display">\[
-HR=\frac{\lambda_1(x)}{\lambda_2(x)}
-\]</span></li>
-</ul>
-<div class="dialogue">
 <div class="voice-daughter">
-<p>私「<span class="math inline">\(x\)</span>が時間で、<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>が2群それぞれのハザードだっていうことはわかるよ。<span class="math inline">\(HR\)</span>は<strong>ハザード比（hazard ratio）</strong>だよね。でも、どうみても上も下も同じ式じゃない？」</p>
+<p>私「私も欲しい」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、ハザードが<span class="math inline">\(x\)</span>に依存しないでしょ、この式以前に。つまりハザード自体がもともと一定なんだ。下の<strong>Cox回帰（Cox regression）</strong>をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数なんだけど、この式はハザード比だけが一定っていうある種の制約を表している」</p>
-</div>
-<div class="voice-daughter">
-<p>私「つまり？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「やっぱり違うのか。Cox回帰の式は、ロジスティック回帰に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Cox回帰は使いやすいってこと？ほぼほぼCox回帰しかみないけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」</p>
+<p>お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「あ、よかった。数式ばかりで眠くなりかけてた」</p>
 </div>
 </div>
-<p><img src="clinical-trial-3.png" class="img-fluid"></p>
+<p><img src="effects-6.png" class="img-fluid"></p>
 <div class="dialogue">
 <div class="voice-father">
 <p>お父さん「これはステージIIIB～IVの肺がん患者の臨床試験で、ゲフィチニブと化学療法を比較している。図Aでは6ヶ月まではゲフィチニブ群の無増悪生存確率が低く、それ以降は高くなっているでしょ。こういうときは比例ハザード性が成り立っていないから、ハザード比に意味はない」</p>
@@ -670,11 +477,12 @@ nleqslv.message       Function criterion near zero</code></pre>
 <section id="this-concludes-the-effects-and-time-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
 <h3 class="anchored" data-anchor-id="this-concludes-the-effects-and-time-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Effects and Time series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
 <ul>
-<li><a href="logistic-regression-1.html">From Risk to Logistic Regression</a></li>
-<li><a href="logistic-regression-2.html">Logit: How a Transformation Shapes an Effect</a></li>
-<li><a href="logistic-regression-3.html">Where My Logistic Regression Went Wrong</a></li>
-<li><a href="logistic-regression-4.html">Why Logistic Regression Fails in Small Samples</a></li>
-<li><a href="logistic-regression-5.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="logistic-regression-1.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-3.html">Logit: How a Transformation Shapes an Effect</a></li>
+<li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
+<li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="logistic-regression-6.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
 </ul>
 
 

@@ -264,16 +264,14 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 がん検診の例では、$p=0.5$、15年死亡リスク比は$RR=2$なので、これを代入すると、$PAF=0.5(2-1)/{0.5(2-1)+1}=0.33$となり、上の正解と一致します。
 :::
 
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
-- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
-- [From Risk and Rate to Survival and Hazard](effects-5.html)
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
-
-- [Statistical Terms in Plain Language](glossary.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
@@ -281,5 +279,5 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Statistical Terms in Plain Language](glossary.html)
-

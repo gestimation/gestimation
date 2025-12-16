@@ -1,398 +1,194 @@
 ---
-title: "Understanding Confounding in Effect Measures: Marginal vs Stratified"
+title: "Why Logistic Regression Fails in Small Samples"
+description: ""
+tags:
+  - Bias
+  - Effect measure, 
+  - Generalized linear model
 format:
   html:
     toc: true
+date: 2025-12-08
 ---
 
-```{=html}
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-```
-
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified
+# Adjusting for Bias V − Why Logistic Regression Fails in Small Samples
 
 ::: {.serif-block .text-right}
-Keywords: confounding & collapsibility, effect measure, observational study, R simulation
+Keywords: bias, effect measure, generalized linear model
 :::
 
 ------------------------------------------------------------------------
 
-### ロジスティック回帰で「調整する」ってどういうこと？
+### なぜロジスティック回帰の計算ができなかったのか
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さん、ロジスティック回帰でわからないことがあるんだけど。観察研究では**交絡因子（confounder）**を調整しないといけないって前にいってたよね」
-::: 
-
-::: voice-father
-お父さん「ああ、そんな話もあったね」
-::: 
-
-::: voice-daughter
-私「でも統計学の本を読んでも、なにをどう調整するのか書いてないんだよ」
-::: 
-
-::: voice-father
-お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」
+私「お父さん、コーヒー飲んで寛いでいるところわるいんだけど、時間あるかな。ロジスティック回帰についてなんだけど。説明してくれたのはありがたいんだけどね、群作用とか完全分離とか、途中でわかんなくなっちゃってさ。気になって、先に進めないわけよ」
 :::
 
-::: voice-daughter
-私「賛成。いちご大福あるから持ってくる」
-::: 
-
 ::: voice-father
-お父さん「疫学では有名な話なんだけどね。40年前に、"コーヒーを飲むと膵がんリスクが上がる"という論文がでたことがあった」
+お父さん「そうだったのか。Rコードを見せてもらったけど、解析自体は間違ってなさそうだよ」
 ::: 
 
 ::: voice-daughter
-私「いかにもありそうな話だね」
-::: 
-
-::: voice-father
-お父さん「そうでしょ。でも、観察研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」
-::: 
-
-::: voice-daughter
-私「ふんふん」
-::: 
-
-::: voice-father
-お父さん「それでは問題です。このコーヒー論争で、実際に問題になった第3の因子はなんでしょう？」
-::: 
-
-::: voice-daughter
-私「え？えーっと」
-::: 
-
-![](logistic-regression-1.png)
-
-::: voice-father
-お父さん「答えはこれ」
+私「いや、私自身の問題だよね。納得感というか自信というか。だからさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね。あの解が出なかったていう結果しかないと、なんだかね」
 ::: 
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple" collapse="true" title="お父さんの答えは？"}
-それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。
+::: {.callout-note appearance="simple" title="ロジスティック回帰の推定"}
 
-![](logistic-regression-3.png)
+**尤度関数による推定**
+
+以前、ロジスティック回帰の$\pi_i$は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと$\pi_i$が含まれていますが、この式にデータを代入すると、$\pi_i$の式が得られます。さらに、$\pi_i$は$\beta_0,\beta_1,...,\beta_{p-1}$の関数です。したがって、確率関数の式は、$L(\beta_0,\beta_1,...,\beta_{p-1})$というように、$\beta_0,\beta_1,...,\beta_{p-1}$の関数とみなすことができます。この関数を尤度関数といいます。
+
+ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に2通り考えられます。
+
+**完全分離**
+
+一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、
+
+$\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}$
+
+を計算したとき、その値によって、アウトカムを100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、共変量からアウトカムがほぼ判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときによく生じる問題です。
+
+**多重共線性**
+
+二つ目は、多重共線性（multicollinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため、同時にロジスティック回帰に含めない方がよい場合が多いです。
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「つまり、完全分離が生じるデータは、若い人は全員復職、高齢者は全員非復職っていう調査結果みたいなもの。年齢だけで復職できるかどうか100%当てられてしまう。まさにこれが完全分離で、尤度関数から解が求まらない状況だよ」
+::: 
+
 ::: voice-daughter
-私「へえ、そんな話があったんだ」
+私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」
 ::: 
 
 ::: voice-father
-お父さん「じゃあさ、こういう第3の因子を無視して解析するとどうなる？」
+お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」
 ::: 
 
 ::: voice-daughter
-私「それくらいわかるよ。バイアスが入るんでしょ」
-::: 
-
-::: voice-father
-お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。**Simpsonのパラドックス**っていう現象を使って説明しよう」
-:::
-:::::::::::::::::::::::::::::::::
-
-
-::: {.callout-note appearance="simple" title="Simpsonのパラドックス"}
-
-コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのか、一番シンプルな層別解析でみてみましょう。表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。
-
-表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。
-
-このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。
-
-表1. 層別前の膵がんリスクとオッズ比
-
-|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
-|--------------|--------------|----------------|----------|
-| 合計         |              |                |          |
-| 　膵がんあり | 15           | 12             |          |
-| 　膵がんなし | 365          | 868            |          |
-| 　リスク     | 3.9%         | 1.4%           | 3倍      |
-
-表2. 層別後の膵がんリスクとオッズ比
-
-|              | コーヒー摂取 | コーヒー非摂取 | オッズ比 |
-|--------------|--------------|----------------|----------|
-| 喫煙         |              |                |          |
-| 　膵がんあり | 14           | 4              |          |
-| 　膵がんなし | 266          | 76             |          |
-| 　リスク     | 5.0%         | 5.0%           | 1倍      |
-| 非喫煙       |              |                |          |
-| 　膵がんあり | 1            | 8              |          |
-| 　膵がんなし | 99           | 792            |          |
-| 　リスク     | 1.0%         | 1.0%           | 1倍      |
-
-:::
-
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「単純な解析ではリスク因子だったのに、層別しただけで関連が消えた。でもこれは“計算上のトリック”じゃないよね？以前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたのは関係ある？」
+私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」
 ::: 
 
 ::: voice-father
-お父さん「さすが、覚えていたね。でもここは区別しないといけない。確かにオッズ比はリスク比と違って、層別したら値が変わりやすい、**併合可能ではない（non-collapsible）**指標だよ。でもこれは指標の性質の話。ここで問題しているSimpsonのパラドックスは、"比較の仕方が壊れている"話なんだ」
-:::
+お父さん「まあね。はやりだよね」
+::: 
 
 ::: voice-daughter
-私「たしかに。この前はランダム化臨床試験、今回は観察研究だものね。コーヒー好きはコーヒーを飲まない人とは別の特徴を持っていて、単純に比較するのはバイアスってわけだ」
+私「統計学と機械学習ってどう違うの？同じ？」
+::: 
+
+::: voice-father
+お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」
+::: 
+
+::: voice-daughter
+私「パラメータの数が少ないのが統計学の特徴ってわけ？」
+::: 
+
+::: voice-father
+お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は確率モデルが必ず基礎にあるってことかな。そして、標本から母集団を調べるっていう考え方をする。手法でいうと、p値とか信頼区間とか、ああいうやつね」
+::: 
+
+### 統計手法を選ぶ理由
+
+::: voice-daughter
+私「はやりだから使っていいのかな。ほら、ニューラルネットワークとかこの前の群作用とか、知らなくてもみんな使ってるよね。問題ないのかな」
+::: 
+
+::: voice-father
+お父さん「でもね、2項分布とロジット関数のところまでは理解できなかった？」
+::: 
+
+::: voice-daughter
+私「そこまではできた」
+::: 
+
+::: voice-father
+お父さん「なら合格点だと思う。数理的な手法って奥が深いでしょ。だから、仮に数学的な真実があったとして、究極的には部分的な理解しかできないかもしれない。専門家とユーザーで程度は違うけどね。だから、みんな使ってるっていうのは、使ってもいい理由のひとつにはなる。医療でも、添付文書で有効性が確立していないって書かれた薬が、第一選択だったりするでしょ」
+::: 
+
+::: voice-daughter
+私「ああ、コミュニティスタンダードのことね。そういうこともあるのが現実だけど、すっきりはしてないよね、医師はみんな。それにさ、コミュニティスタンダードの薬は、単にみんな使っているから選んでるんじゃないよ。難病で他に候補がなかったり、エビデンスが足りなくても経験上は効果があるから、その薬を使って治療してるの」
 :::
 
 ::: voice-father
-お父さん「そういうこと。ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きい。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」
-::: 
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple" title="glm()を用いた膵がんデータの解析"}
-交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、`link="logit"`を用いた`glm()`に、リスク比は`link="log"`に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は`smoke`を入れないモデルで、調整後のオッズ比・リスク比は`smoke`を入れたモデルで推定しています。
+お父さん「それって、医療上の目的に対してじゅうぶん役に立ってるってことでしょ。ロジスティック回帰も同じじゃない？用途に見合った性能があるって自信を持っていえれば、ところどころ理解が追い付かなくても、使用していいと思う。そう、まさに完璧に解明された技術なんてないのが現実だからね。世の中ではいろんな技術が使われてる。でも、すべて3つの理由で正当化されるんだよ」
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Rコードと結果はこちら"}
-```{r warning=FALSE}
-dat <- data.frame(
-  cancer = c(1, 0, 1, 0,   1, 0, 1, 0),
-  coffee = c(1, 1, 0, 0,   1, 1, 0, 0),
-  smoke  = c(1, 1, 1, 1,   0, 0, 0, 0),
-  n      = c(14, 266, 4, 76,  1, 99, 8, 792)
-)
-fit_logit1 <- glm(
-  cancer ~ coffee,
-  family  = binomial(link = "logit"),
-  weights = n,
-  data    = dat
-)
-odds_ratio1 <- exp(coef(fit_logit1)[["coffee"]])
-print(odds_ratio1)
-
-fit_logit2 <- glm(
-  cancer ~ coffee+smoke,
-  family  = binomial(link = "logit"),
-  weights = n,
-  data    = dat
-)
-odds_ratio2 <- exp(coef(fit_logit2)[["coffee"]])
-print(odds_ratio2)
-
-fit_log1 <- glm(
-  cancer ~ coffee,
-  family  = binomial(link = "log"),
-  weights = n,
-  data    = dat
-)
-risk_ratio1 <- exp(coef(fit_log1)[["coffee"]])
-print(risk_ratio1)
-
-fit_log2 <- glm(
-  cancer ~ coffee+smoke,
-  family  = binomial(link = "log"),
-  weights = n,
-  data    = dat
-)
-risk_ratio2 <- exp(coef(fit_log2)[["coffee"]])
-print(risk_ratio2)
-```
-:::
-
-### Simpsonのパラドックスが起きる条件
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「やっぱりトリックに見えちゃうな、何が起きてるのやら。とりあえず調整しとけっていいたいの？」
-::: 
+- 数学と自然科学が支えている
+- コミュニティが支えている
+- 使用する目的が支えている
 
 ::: voice-father
-お父さん「えっとね、いちばん伝えたいことから話すね。研究の原則としてときどき使う"ceteris paribus"というラテン語があってね。"All other things being equal"くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない。たとえばランダム化臨床試験とかね」
+お父さん「それぞれが100%じゃなくても、この3つが支えあえれば使う意味があるんだ」
 ::: 
 
 ::: voice-daughter
-私「うん、その説明はわかりやすい」
-::: 
-
-::: voice-father
-お父さん「じゃあ、その次になにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」
-::: 
-
-::: voice-daughter
-私「うん」
-::: 
-
-::: voice-father
-お父さん「次に注目してほしいのが、喫煙とコーヒーの関連なんだ。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」
-::: 
-
-::: voice-daughter
-私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」
-::: 
-
-::: voice-father
-お父さん「喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」
-::: 
-
-::: voice-daughter
-私「時代を感じるね、仕事の合間に一服したい気持ちはめっちゃわかる」
-::: 
-
-::: voice-father
-お父さん「Simpsonのパラドックスのポイントは、3つの変数の相関関係なんだ。2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」
-::: 
-
-- 第3の因子と曝露の間に相関がある
-- 第3の因子とアウトカムの間に相関がある
-
-::: voice-daughter
-私「曝露とアウトカムと第3の変数の関係性ねえ。ちょっと確認させて。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か。確かにそうなる。交絡の話ってまあまあややこしいね」
+私「そういうもんかな。納得したような、まだ霧が残っているような気もする。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」
 ::: 
 :::::::::::::::::::::::::::::::::
 
-### 文献
+::: {.callout-note appearance="simple" title="データの型と統計手法"}
 
-- Simpson EH. The interpretation of interaction in contingency tables. J Royal Stat Soc B 1951;13:238-41
+アウトカムはデータの型によって4種類に分類されます。
 
-- [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12271)
+- 連続データ （例：血圧やQOL）
+- 分類データ （例：有害事象の有無）
+- 計数データ （例：有害事象の発生件数）
+- 生存時間データ （例：全生存期間）
 
-### This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+さらに、分類データはいくつかの種類があり、カテゴリが2通りのものを2値データ、カテゴリに順序があるものを順序データと呼んでいます。生存時間データの一種には、競合リスクを考慮した競合リスクデータがあります。データの型によって、正規分布や2項分布など確率分布が異なりますよね。そのため、それぞれ異なる統計手法が用いられます。詳しくは表をみてください。
 
-- [What Data Cannot Tell Us](truth-1.html)
+仮に、ストーマ造設あり・なしと復職状況の関係を調べたいとすると、2つの変数をモデルに当てはめることになるため、回帰モデルを用いて調べたいとします。このときアウトカムを復職の有無（2値データ）とするなら、ロジスティック回帰を選ぶべきです。もし復職までの期間（生存時間データ）とするなら、Cox回帰の方が適切です。
+
+**個人内で反復測定があるか**
+
+同一個人にくり返し臨床検査やアンケートを行うと、似たような検査結果になりますよね。たとえば、朝と晩に血圧を測ると、2つの測定値に相関が生じます。治療前と治療後に、QOL質問票に回答してもらう場合も、その測定値は独立ではありません。このように1人の患者に複数回の測定値があるデータを**反復測定データ**といいます。反復測定データでは、個人内の測定値は独立ではありません。したがって、独立性を仮定している統計手法（たとえば対応のないt検定や$\chi^2$検定）は不適切です。反復測定データの解析では、**変量効果モデル（random-effects model）**や**一般化推定方程式（generalized estimating equation）**と呼ばれるやや高度な手法が用いられます。この場合の変量効果は、「ひとりひとりの個人の効果」を表しています。これらの方法は、個人内でデータが独立ではないこと（データの相関）を考慮するものです。
+
+**交絡の調整が必要かどうか**
+
+**交絡因子（confounder）**とは、治療とアウトカムとの関係を歪める第三の因子のことです。仮に、ストーマ造設あり・なしと復職状況の関係に、年齢が強くかかわっているとしましょう。そして、ストーマ保有者と非保有者で、平均年齢が異なっているとします。このような場合、2群間の年齢の違いを無視するとバイアスが生じます。これを補正するために、ロジスティック回帰がよく用いられます。 ランダム化臨床試験では、比較する群間で実験条件が揃っているため、交絡の調整は不要です。一方、観察研究（コホート研究やケース・コントロール研究）では交絡の調整は必須です。今回題材にした復職率の調査も観察研究の一種ですから、統計解析ではロジスティック回帰やCox回帰が主に用いられるでしょう。最近では交絡を調整して、正しく因果関係を調べるために、因果推論の手法（プロペンシティスコアなど）を用いることが増えてきました（田中2022）。
+
+| データの型 | 反復測定 | 交絡調整 | 統計手法 | 備考 |
+|---------------|---------------|---------------|---------------|---------------|
+| 連続データ | なし | なし | 対応のない*t*検定、Wilcoxon順位和検定 | 平均の比較 |
+|  | 個人内で2回測定 | なし | 対応のある*t*検定、Wilcoxon符号付順位検定 | 対応のあるデータ |
+|  | なし | なし | 正規線型モデル | 回帰モデルの一種 |
+|  | あり | あり | 変量効果モデル、一般化推定方程式 | 回帰モデルの一種 |
+| 2値データ | なし | なし | $\chi^2$検定 | 割合の比較 |
+|  | 個人内で2回測定 | あり | McNemar検定 | 対応のあるデータ |
+|  | なし | あり | ロジスティック回帰 | 回帰モデルの一種 |
+|  | あり | あり | 変量効果モデル、一般化推定方程式 | 回帰モデルの一種 |
+| 計数データ | なし | なし | $\chi^2$検定 | 発生率の比較 |
+|  | なし | あり | Poisson回帰 | 回帰モデルの一種 |
+|  | あり | あり | 変量効果モデル、一般化推定方程式 | 回帰モデルの一種 |
+| 生存時間データ | なし | なし | Kaplan-Meier曲線 | 生存曲線の記述 |
+|  | なし | あり | Cox回帰 | 回帰モデルの一種 |
+| 競合リスクデータ | なし | なし | Aalen-Johansen曲線 | 累積発生率曲線の記述 |
+|  | なし | あり | Fine-Grayモデル | 回帰モデルの一種 |
+:::
+
+### 次のエピソードとRスクリプト
+
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+- [From Risk to Logistic Regression](logistic-regression-2.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
+
+### 過去のシリーズと用語集
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Statistical Terms in Plain Language](glossary.html)

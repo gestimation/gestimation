@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-13">
-<meta name="description" content="「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を整理するcoffee-chat guide。時間を含む効果理解への入り口です。">
 
-<title>From Risk and Rate to Survival and Hazard – Coffee and Research</title>
+<title>A First Note on Cox Regression – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -218,10 +181,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#effects-and-time-v-from-risk-and-rate-to-survival-and-hazard" id="toc-effects-and-time-v-from-risk-and-rate-to-survival-and-hazard" class="nav-link active" data-scroll-target="#effects-and-time-v-from-risk-and-rate-to-survival-and-hazard">Effects and Time V − From Risk and Rate to Survival and Hazard</a>
+  <li><a href="#effects-and-time-v-a-first-note-on-cox-regression" id="toc-effects-and-time-v-a-first-note-on-cox-regression" class="nav-link active" data-scroll-target="#effects-and-time-v-a-first-note-on-cox-regression">Effects and Time V − A First Note on Cox Regression</a>
   <ul class="collapse">
-  <li><a href="#リスクと時間の関係" id="toc-リスクと時間の関係" class="nav-link" data-scroll-target="#リスクと時間の関係">リスクと時間の関係</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
+  <li><a href="#cox回帰はハザード比のモデルというより比例ハザード性のモデル" id="toc-cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="nav-link" data-scroll-target="#cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</a></li>
+  <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
   <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
@@ -232,25 +195,14 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">From Risk and Rate to Survival and Hazard</h1>
+<h1 class="title">A First Note on Cox Regression</h1>
 </div>
 
-<div>
-  <div class="description">
-    「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を整理するcoffee-chat guide。時間を含む効果理解への入り口です。
-  </div>
-</div>
 
 
 <div class="quarto-title-meta column-page-left">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 13, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -263,293 +215,73 @@ window.Quarto = {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="effects-and-time-v-from-risk-and-rate-to-survival-and-hazard" class="level1">
-<h1>Effects and Time V − From Risk and Rate to Survival and Hazard</h1>
+<section id="effects-and-time-v-a-first-note-on-cox-regression" class="level1">
+<h1>Effects and Time V − A First Note on Cox Regression</h1>
 <div class="serif-block text-right">
-<p>Keywords: effect measure, probability model, R simulation, survival &amp; competing-risks</p>
+<p>Keywords: effect measure, probability model, survival &amp; competing risks</p>
 </div>
 <hr>
-<section id="リスクと時間の関係" class="level3">
-<h3 class="anchored" data-anchor-id="リスクと時間の関係">リスクと時間の関係</h3>
+<section id="cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="level3">
+<h3 class="anchored" data-anchor-id="cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さんさ、以前聞いた寄与割合の話を思い返して気づいたんだけどね。まだ納得感が足りないの」</p>
+<p>私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それが。ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>の比をとったこの式なの。<span class="math inline">\(HR\)</span>は<strong>ハザード比（hazard ratio）</strong>だよね」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「なに？コーヒーと一緒にこういう話をするのは歓迎だよ」</p>
 </div>
-<div class="voice-daughter">
-<p>私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「生存曲線からある時点の生存確率を読み取ると、1-リスクになっているっていう意味ね。うんうん。そして、疫学の教科書に出てくる<strong>率（rate）</strong>が、生存時間解析の<strong>ハザード（hazard）</strong>に対応しているっていうのもわかる。でも、気になるのは<strong>ハザード比（hazard ratio）</strong>なんだ。寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、時間を通じてハザード比は一定と、無理やり仮定して計算してる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「リスク比は変化するけどハザード比は変化しないの？矛盾してない？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「えーっと、リスク比が変化しないわけじゃなくて…。リスクはハザードの時間積分だから、どちらか一方の比を固定したらもう一方は固定できなくて…。ちょっと紙ナプキンとペンをとってくれる？教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="生存曲線とハザードの関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-生存曲線とハザードの関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>これまでのエピソードでは、ある時点までのリスクを扱ってきましたが、今度は“時間に沿って変化するリスク”を推定したKaplan-Meier曲線について正式に説明します。Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法でした。そのため、Kaplan-Meier曲線は時間軸を横にとったグラフですし、いわゆるハザード比との関係も知りたいところですよね。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。</p>
-<p>Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（<span class="math inline">\(x\)</span>軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間<span class="math inline">\(x\)</span>の関数<span class="math inline">\(S(x)\)</span>で表す」ということになります。</p>
-<p>関数<span class="math inline">\(S(x)\)</span>を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）は、<span class="math inline">\(λ\)</span>という記号で表すことが普通です。このとき指数分布の生存関数とハザードには、以下のような関係があります。</p>
-<p><span class="math inline">\(S(x)=\mathrm{exp}(-\lambda x)\)</span></p>
-<p>ここまでくれば簡単なのですが、最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク<span class="math inline">\(π\)</span>は、特定時点<span class="math inline">\(x\)</span>までに疾患を発症する確率を表しています。つまり、疾患リスク<span class="math inline">\(π\)</span>とハザード<span class="math inline">\(λ\)</span>は、時点<span class="math inline">\(x\)</span>の生存関数を<span class="math inline">\(S(x)\)</span>を介して、以下の式で結びついています。</p>
-<p><span class="math inline">\(\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)\)</span></p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-generate_data()のコードはこちら（データ生成に使用）
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n=</span><span class="dv">200</span>, hr1, hr2) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 再発のハザード（大きいほど早く起こる）</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 死亡のハザード（大きいほど早く起こる）</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># 打ち切りハザード（群に依存しない）</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)   <span class="co"># 再発までの潜在時間</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)     <span class="co"># 死亡までの潜在時間</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring) <span class="co"># 打ち切りまでの潜在時間</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 全生存期間（OS） ----------------------------------------</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = 死亡, 0 = 打ち切り</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発生存期間（RFS） -----------------------------------</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># 再発</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># 死亡</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 累積再発率（CIR） + 競合リスク --------------------------</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># イベント1: 再発</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># イベント2: 競合リスクとしての死亡</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- データフレームにまとめる --------------------------------</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="cifplot()によるKaplan-Meier曲線">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-cifplot()によるKaplan-Meier曲線
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>イメージしやすいように、以前<code>cifplot()</code>で描いたKaplan–Meier曲線と<code>coxph()</code>の結果を置いておきます。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="cifplot()のRコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-cifplot()のRコードと結果はこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cifplot</span>(<span class="fu">Event</span>(time_os, status_os) <span class="sc">~</span> stoma,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data         =</span> dat,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="effects-5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="coxph()のRコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-coxph()のRコードと結果はこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
-
-  n= 200, number of events= 144 
-
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.3199    1.3769   0.1693 1.889   0.0589 .
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-                exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.377     0.7262    0.9881     1.919
-
-Concordance= 0.544  (se = 0.024 )
-Likelihood ratio test= 3.51  on 1 df,   p=0.06
-Wald test            = 3.57  on 1 df,   p=0.06
-Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「わからん。数式はわからん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう？数学の難しさというより、この等式が何と何を結びつけているかが、慣れないと読み取りにくいんだと思う」</p>
-</div>
-<div class="voice-daughter">
-<p>私「結びつきねえ。とりあえず生存曲線とハザードの関係式ってことまでかな、確実なのは」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「まずはそこからだね。ハザードを具体的に考えるのは難しいけど、生存時間中央値と結びつけるのがよくやる手だよ。中央値（median）は生存曲線がちょうど50%まで落ちる時点のこと」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="ハザードと生存時間中央値の関係">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ハザードと生存時間中央値の関係
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値<span class="math inline">\(M\)</span>は、生存確率50%つまり<span class="math inline">\(S(x)=0.5\)</span>になるような時間<span class="math inline">\(x\)</span>のことです。つまり、指数分布では</p>
-<p><span class="math inline">\(0.5=\mathrm{exp}(-\lambda M)\)</span></p>
-<p>と関係が成り立つので、生存時間中央値<span class="math inline">\(M\)</span>は、ハザード<span class="math inline">\(λ\)</span>から以下のように計算することができます。</p>
-<p><span class="math inline">\(M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}\)</span></p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「あ、これはちょっとわかった気がする。寿命（生存時間中央値）とハザードが逆数の関係ってことね。つまり寿命が2倍になったらハザードは1/2になる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうだね、たとえるならハザードはコーヒーにとっての気温みたいなもの。寒いとコーヒーが覚める時間が短くなる。これがハザードが高いってこと。正確に逆数になるのは、指数分布の下で計算するときだけどね。ハザード比は、まさにハザードの比をとったものだよ。2つの集団の生存曲線を比較するときに使う」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>生存時間中央値を報告してよいのは、どのような場合でしょうか？</p>
-<ol type="1">
-<li>目安としてサンプルサイズが100人以上のとき</li>
-<li>すべての対象者が予定された追跡期間を終了したとき</li>
-<li>半数以上の対象者がイベントを起こしたとき</li>
-<li>1、2、3すべて誤り</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は3です</strong></li>
+<li>指数分布のハザード比 <span class="math display">\[
+HR=\frac{\lambda_1}{\lambda_2}
+\]</span></li>
 </ul>
-<p>生存時間データでは一部の対象者で打ち切りがあること（これ以上生存時間が長いことしかわからない）、中央値（median）の定義を思い出してください。半数以上の対象者がイベントを起こし、生存時間が確定しないと、生存確率は50%以下になりません。</p>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「この式は<strong>Cox回帰（Cox regression）</strong>でもおなじ？ちがう？」</p>
 </div>
+<div class="voice-father">
+<p>お父さん「ごめん、これはCox回帰の式じゃないね。Cox回帰のハザード比はこういう式で表す」</p>
+</div>
+</div>
+<ul>
+<li>Cox回帰のハザード比 <span class="math display">\[
+HR=\frac{\lambda_1(x)}{\lambda_2(x)}
+\]</span></li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「うん、こんな感じの式になるって思ったんだ。さっき生存関数を教えてくれたのと同じで<span class="math inline">\(x\)</span>は時間だよね。ハザード関数は時間とともに変化できて、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は2群それぞれのハザード関数だっていうことはわかるよ。指数分布ではハザードは定数だった。でも、不思議なのは、どうみても上も下も同じ計算じゃない？割り算しただけ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、<em>この式以前に</em>、もともとハザードが一定なんだ。下のCox回帰をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数で、ハザード比だけが一定っていうある種の制約を表している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「つまり？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱり違うのか。まってね、ということは、この式は<code>coxph()</code>の中で<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>の比をとっているっていう意味じゃないよね。仮定を置いたってことは、それが成り立たないと困るわけだ。ハザード比の定義でもなさそうな口ぶりだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「その通り。比例ハザード性は成り立たないと困るし、この式はハザード比の定義ではない。この式は、単純に2群比較するときのCox回帰のモデルそのものを表している」</p>
+</div>
+<div class="voice-daughter">
+<p>私「これがCox回帰の式ね。ロジスティック回帰の式に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
 </div>
 </div>
 </section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
+<section id="次のエピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
 <li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
 <li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></p></li>
-<li><p><a href="effects-4.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-5.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-6.html">Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example</a></p></li>
-<li><p><a href="glossary.html">Statistical Terms in Plain Language</a></p></li>
+<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
+<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
+<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
+<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
 <li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
 </ul>
 </section>
@@ -558,6 +290,7 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 <ul>
 <li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
 <li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
+<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
 

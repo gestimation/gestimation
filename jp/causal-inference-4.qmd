@@ -143,6 +143,24 @@ $$x^2+y^2=r^2$$
 :::
 ::::::::::::::::::::::::::::::::: 
 
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
+
+DAGはいくつかのアイデアが元になっていますが、そのひとつにSewall Wrightが描いたパスダイアグラムがあります。その最初のものは、1920年にProceeding of the National Academy of Sciencesで発表された論文に載っていたものといわれています。さて、この図は何の因果関係を分析したものでしょうか？
+
+1.  がんとその原因
+2.  車の故障とその原因
+3.  QOLとその原因
+4.  モルモットの特徴とその原因
+
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
+- **正解は4です。**
+
+![](causal-inference-4)
+
+:::
+
 ### このシリーズ
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)

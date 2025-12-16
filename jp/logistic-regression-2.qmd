@@ -1,444 +1,220 @@
 ---
-title: "Logit: How a Transformation Shapes an Effect"
+title: "From Risk to Logistic Regression"
+description: ""
+tags:
+  - Confounding & collapsibility
+  - Effect measure, 
+  - Generalized linear model
+  - Language & writing
 format:
   html:
     toc: true
+date: 2025-12-08
 ---
 
-```{=html}
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
-```
-
-::: hero-header
+::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Adjusting for Bias II − Logit: How a Transformation Shapes an Effect
+# Adjusting for Bias II − From Risk to Logistic Regression
 
 ::: {.serif-block .text-right}
-Keywords: effect measure, generalized linear model
+Keywords: confounding & collapsibility, effect measure, generalized linear model, language & writing
 :::
 
 ------------------------------------------------------------------------
 
-### 数式を使ってロジスティック回帰を教えてよ
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-father
-お父さん「ああ、ここにいたんだ。コーヒーと大福？」
-::: 
-
-::: voice-daughter
-私「うんうまいよ」
-::: 
-
-::: voice-father
-お父さん「食べながらでいいから聞いてよ。ロジスティック回帰はね、医学研究でよく使うから知っておいた方がいいと思って。簡単にいうと、2値データのための回帰モデルの一種。ストーマ造設、年齢、性別、年収といった共変量が、復職の有無のような2通りの値をとるアウトカムとどの程度相関するかを、調べることができる」
-::: 
-
-::: voice-daughter
-私「もうちょっと統計っぽく教えてよ」
-::: 
-
-::: voice-father
-お父さん「ん？統計手法には、パラメトリック法とノンパラメトリック法があるけど、ロジスティック回帰はパラメトリックモデルの一種として位置づけられる。最近の教科書では、一般化線型モデルのひとつとして扱われることが多いかな」
-::: 
-
-::: voice-daughter
-私「そういうんじゃなくてさ。ほら、リンク関数とか出てきたでしょ。ああいうのがでてくると消化不良でさ」
-::: 
-
-::: voice-father
-お父さん「数式使っていいの？」
-::: 
-
-::: voice-daughter
-私「うん。数式でてくると、ところどころわからないんだけど。ごまかされるのもいや。ほら、このペン使っていいよ」
-::: 
-
-::: voice-father
-お父さん「じゃあ、個人のリスクと共変量の関係から話せばいいのかな」
-::: 
-::::::::::::::::::::::::::::::::: 
-
-
-::: {.callout-note appearance="simple" title="ロジスティック回帰"}
-
-$N$人の対象者に番号をつけて$i=1,...,N$で表すことにします。個人$i$のリスクを$\pi_i$で表します。$\pi_i$は、個人レベルの$N$個のパラメータですが、そのすべてを別々に推定したいわけではありません。$\pi_i$に関連する$p-1$個の共変量$X_{i,1},X_{i,2},...,X_{i,p-1}$が測定されており、両者の関連の強さに関心があるとします。このとき
-
-$\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}$
-
-という関係が成り立つ確率分布をロジスティック回帰といいます。
-
-この式の係数$\beta_0,\beta_1,...,\beta_{p-1}$を回帰係数（regression coefficients）、特に$\beta_0$を切片項（intercept）といいます。正規分布は平均と分散というパラメータで形状が決まりますよね。それと同じように、ロジスティック回帰の確率分布は、回帰係数$\beta_0,\beta_1,...,\beta_{p-1}$で規定されます。$\pi_i$は、$\beta_0,\beta_1,...,\beta_{p-1}$が与えられれば計算できますが、直接推定するわけではありません。
+::: {.callout-note appearance="simple" collapse="true" title="前回までのあらすじ"}
+はじめて研究に取り組む娘と統計家の父。父に研究仮説は"PICO"を"PECO"で整理するといいとアドバイスされ、女医である娘は、がんサバイバーにおけるストーマ造設と復職状況の関係を調査することに決める。その後いくつか質問するうちに、父のことを「こいつ使える」と思い始めたのだった。
 :::
 
+### ロジスティック回帰をしてみたんだけど
+
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「ふむふむ。ひとりひとりに$\pi_i$と$X_{i,1},X_{i,2},...,X_{i,p-1}$がある。そしてロジスティック回帰の式で結びついているわけね。そして、その式の係数が回帰係数」
-::: 
-
-::: voice-father
-お父さん「そう。ロジスティック回帰の裏には2項分布があって、実は$\pi_i$は2項分布の確率に対応している。2項確率の式に、共変量$X_{i,1},X_{i,2},...,X_{i,p-1}$が含まれていて、アウトカムと共変量の関連の強さを、回帰係数が決めるんだ」
-::: 
-
-::: voice-daughter
-私「この式まではわかったよ」
-::: 
-
-::: voice-father
-お父さん「よかった。ちょっと補足するとね、確率分布に含まれる未知数のことを、統計学ではパラメータと呼んでいる。そしてパラメータの関数として、確率分布を書くことができるものを、パラメトリックモデルっていうんだ。こういう風に考えると、パラメータを推定したり、推定値に信頼区間をつけたりすることが、統計解析の目標になるよね。もうひとつ知っておいてほしいのが、ロジスティック回帰では、アウトカムと共変量の関係が**ロジット関数（logit function）**で結びつくと仮定していること。`glm()`について話したの覚えてる？」
-::: 
-
-::: voice-daughter
-私「うん。リンク関数を`link`で指定することは理解したよ。それがこの式？」
-::: 
-
-::: voice-father
-お父さん「そうだよ。`glm()`の引数は、`family`、`y ~ x1 + x2`、`link`なんだけど`family=binomial()`のように
-2項分布を選ぶと自動的にロジット関数が使われる。ロジスティック回帰の左辺をみてよ」
-::: 
-::::::::::::::::::::::::::::::::: 
-
-::: {.callout-note appearance="simple" title="リンク関数とロジット関数"}
-
-個人のパラメータと共変量との関係を結びつける1対1の単調な変換
-
-$g(\pi_i)=\beta_0+\beta_1X_{i,1}+...+\beta_{p-1}X_{i,p-1}$
-
-のことを、一般に**リンク関数（link function）**といいます。ロジスティック回帰のリンク関数は
-
-$g(\pi_i)=\log(\frac{\pi_i}{1-\pi_i})$
-
-です。この関数はロジット関数と呼ばれ、ロジスティック回帰を特徴付けています。
+私「これみてよ、お父さん」
 :::
 
-### ロジット関数の特徴
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「単に関数に名前をつけただけでしょ。もうちょっと解説が欲しいなあ」
-::: 
-
 ::: voice-father
-お父さん「そうだよね。ロジット関数も関数の一種だから、グラフにした方が特徴がつかみやすい。次の説明だとどうかな」
-::: 
-::::::::::::::::::::::::::::::::: 
-
-::: {.callout-note appearance="simple" title="ロジット関数の形状"}
-
-仮に共変量が1個で、連続データだったとしましょう。確率$\pi_i$と共変量$X_i$の関係は、ロジット関数を通じて
-
-$\log(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i}$
-
-という式で表されることになります。
-
-図は、このロジット関数の$\exp(\beta_1)$の値を5、10、20、200と設定して、$X_i$を0から1までの範囲で変化させた、ロジット関数の逆関数のプロットです。$\exp(\beta_1)$は、$X_i$が1SD変化したときのオッズ比に相当します。つまり、図でもっとも傾きの小さい黒い曲線は、オッズ比5のときのものです。この曲線はそれほど変化が急にはみえませんが、医学研究ではオッズ比5でもかなり強い関連です。
-
-このように、ロジット関数の逆関数はS字型の曲線を表しています。X軸方向にどんな値をとったとしても、Y軸方向の変化は0から1の範囲に収まることが、特徴のひとつです。そして、曲線の傾きは回帰係数$\beta_1$によって決まります。
-
-![](logistic-regression-4.png)
-
+お父さん「ん？どうしたの、この資料」
 :::
 
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「やっとイメージがわいた。ロジット関数って、確率と共変量との関係を表してるんだ。どれくらい年齢が上がると、復職できる確率が下がるか、みたいなことね」
-::: 
+私「前に相談したがんサバイバーの復職状況を調べる研究についてなんだけどね、うちの診療科だけだけど調査票が集まったから、解析してみたの。その結果をまとめた資料よ」
+:::
 
 ::: voice-father
-お父さん「さらに、ロジスティック回帰は、がんサバイバー調査のように群を比較するときにも使われる。シンプルに2人の対象者を比べるとどうなるかって話をするね」
-::: 
+お父さん「ああ、あれね。ストーマ造設と復職率の関連を調べることにしたんだっけ。資料のどこをみればいいの？」
+:::
+
+::: voice-daughter
+私「この表なんだけど。**ロジスティック回帰（logistic regression）**をしてみたんだ。その結果をまとめたよ。どうかな」
+:::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple" title="ロジット関数とオッズ比の関係"}
-
-共変量が1個のとき、ロジスティック回帰は
-
-$\log \left(\frac{\pi_i}{1-\pi_i}\right)=\beta_0+\beta_1X_{i}$
-
-と表すことができます。そして、対象者$i=1$では$X_{1}=0$、対象者$i=2$では$X_{2}=1$という値をとる状況を考えてみましょう。それぞれの対象者の共変量の値を、上の式に代入すると、以下のようになります。
-
-$\log\left(\frac{\pi_1}{1-\pi_1}\right)=\beta_0$
-
-$\log\left(\frac{\pi_2}{1-\pi_2}\right)=\beta_0+\beta_1$
-
-ここで、$\pi_1$は対象者1の確率パラメータ、$\pi_2$は対象者2の確率パラメータです。これらの確率パラメータから、オッズ比を求めるとどうなるでしょうか。それは、以下の式で計算されます。
-
-$\left(\frac{\pi_2}{1-\pi_2}\right)\div\left(\frac{\pi_1}{1-\pi_1}\right)=\exp(\beta_0+\beta_1)\div \exp(\beta_0)=\exp(\beta_1)$
-
-この結果は、回帰係数$\beta_1$の指数をとるとオッズ比が得られることを意味しています。
-
-:::
+| パラメータ | 自由度 | 推定値 | 標準誤差 | 95%信頼区間   | $\chi^2$ | p値    |
+|------------|--------|--------|----------|---------------|-------|--------|
+| Intercept  | 1      | -27.25 | 3.03     | -33.20～-21.30 | 80.55 | \<0.01 |
+| STOMA      | 1      | 1.41   | 1.54     | -16.1～4.45   | 0.84  | 0.3588 |
+| AGE        | 1      | 1.47   | 1.48     | -1.42～4.36   | 0.99  | 0.3197 |
+| SEX        | 1      | 25.72  | 0.00     | 25.72～25.72  |       |        |
+| INCOME     | 1      | -0.00  | 0.00     | -0.00～0.00   | 0.58  | 0.4481 |
 
 ::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「ふむふむ。よくある回帰分析の結果だね。この表、上司にみせるんでしょ。その前にちょっと手直しした方がいいかもね」
+:::
+
 ::: voice-daughter
-私「なるほど、回帰係数からオッズ比を計算できるってこういうことなのね」
-::: 
+私「やっぱり？そんな気がしてみてもらおうと思ったんだ」
+:::
 
 ::: voice-father
-お父さん「このオッズ比の計算ができるのは、ロジット関数の特徴によるものでしょ。だから、ロジスティック回帰はオッズ比のモデルともいえるんだ。リスク比にはリスク比のモデルがあるし、リスク差にはリスク差のモデルがある。大事なのは`family`、`y ~ x1 + x2`、`link`を選ぶことで、データの型にあった回帰モデルを指定できるってこと。yとxにそれぞれ連続変数を指定すると、散布図に回帰直線を掛くことができるし、計数データにPoisson回帰を当てはめたりもできる。一般化線型モデルは、生存時間データや経時データ以外ならほとんど対応できる汎用的な統計手法なんだ」
-::: 
+お父さん「まず、Intercept、STOMA、AGE、SEX、INCOMEっていうのがわからないよ。Intercept以外は**共変量（covariates）**のことだよね」
+:::
+
+::: voice-daughter
+私「共変量って？」
+:::
+
+::: voice-father
+お父さん「共変量っていうのは、ロジスティック回帰に入れる説明変数のこと。復職率を規定する要因っていえばいいかな。それと、Interceptは回帰式でいう切片項のこと。統計ソフトウェアのアウトプットをそのまま表にしたんでしょ？きっとストーマ、年齢、性別、年収という変数を使ったんだと思うんだけど、データ上の変数名がそのままになっている。それに、出てきた数字をぜんぶ載せると、表がうるさくない？」
+:::
+
+::: voice-daughter
+私「めっちゃしゃべるな。そうね、実はRの`glm()`を使ったんだけど、そこもよくわからなかったんだよね。そこから聞こうかな」
+:::
+
+::: voice-father
+お父さん「どのあたり？」
+:::
+
+::: voice-daughter
+私「`glm()`の指定の仕方。引数っていうの？」
+:::
 :::::::::::::::::::::::::::::::::
 
-### ロジスティック回帰の可逆性
+```{r eval=FALSE}
+glm(y ~ x1 + x2, family = binomial(), data = dat)
+```
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「でもね、その説明だとみんなロジスティック回帰を使ってる理由にはなってないよね。`link="logit"`より`link="identity"`、つまり変換しなくたっていいじゃない」
+私「以前、連続データは正規分布、2値データは2項分布ってイメージが大事みたいなこといってたでしょ？`glm()`もその延長だと思うんだけど、`family`とか`link`とか謎で、ロジスティック回帰になってるか自信ない」
+:::
+
+::: voice-father
+お父さん「そこはね、単変量分布を**一般化線型モデル**に広げないと説明できないよ。つまりね、`glm()`はgeneralized linear modelの略なんだけど、ただの確率分布ってわけじゃなくて、3つのパーツから成り立っているんだ。ざっくりいうとこの3つだよ」
+::: 
+
+- 確率分布（データの型はなにか）
+
+- 回帰係数×共変量
+
+- リンク関数（平均をどう変換して共変量と結びつけるか）
+
+::: voice-daughter
+私「で、それが`family`、`y ~ x1 + x2`、`link`なの？」
 ::: 
 
 ::: voice-father
-お父さん「それはリスク差のモデルだね。無変換のモデルが悪いわけじゃないんだけど、ロジット関数が選ばれた理由はちゃんとある。この話はちょっと難しいかもしれない。たとえるならね、ロジスティック回帰はルービックキューブのように構造が安定しているんだ」
+お父さん「そう。`glm()`は、確率分布+回帰係数×共変量+リンクを指定してるだけなんだ」
 ::: 
 
 ::: voice-daughter
-私「どういう意味？」
+私「`y ~ x1 + x2`は私もわかるよ。調べたい変数をいれるんでしょ」
 ::: 
 
 ::: voice-father
-お父さん「操作を加えても構造が維持されるっていうこと。どんな方向で、どんな順序で面を回しても、ルービックキューブは元に戻せる。解けば絵の向きもきちんと揃う。統計解析に話を戻すと、人工的にデータに変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量$X_i$のスケール変換のことだよ」
+お父さん「そうだね。Rの中では、この式がデザイン行列$X$に変換されてる」
 ::: 
-
-::: voice-daughter
-私「それはよくやることだよね」
-::: 
-
-::: voice-father
-お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、**数学では群作用（group action）**っていうんだけど、ある変換を加えても意味が変わらない操作のこと。ほら、コインの表裏を入れ替えても、コイン投げの確率の本質に影響しないでしょ。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」
-::: 
-
-- 確率分布: 2項分布（指数型分布族）
-
-- 回帰係数×共変量（線型結合）
-
-- リンク関数: ロジット関数
-
-::: voice-father
-お父さん「ここで出てくるロジット関数は、変換しても**可逆性（invertibility）**を保つ唯一の関数なんだ。たとえば死亡確率を$\pi=0.2$とするよ。このとき生存確率は？$1-\pi=0.8$だよね」
-::: 
-
-::: voice-daughter
-私「うん。当たり前」
-:::
-
-::: voice-father
-お父さん「この"死亡と生存を入れ替える"という操作が群作用に相当する。ここで問題にしているのはリンク関数$g$だったよね。確率$\pi$を、リンク関数で別のスケール$g(\pi)$に変換したとする。このとき、死亡と生存を入れ替えても、値が反転するだけで構造が維持されるには$g$はどんな性質を持つべき？」
-:::
-
-::: voice-daughter
-私「値が反転する、って？」
-:::
-
-::: voice-father
-お父さん「つまりこういうこと」
-:::
-
-$$g(1−\pi)=−g(\pi)$$
-
-::: voice-daughter
-私「へ？意味わかんない」
-:::
-
-::: voice-father
-お父さん「さっき、対象者1の$\pi_1$と対象者2の$\pi_2$を比べるとオッズ比が出てきたのを思い出して。あのとき、$g(\pi_1)$と$g(\pi_2)$の差をとっていた。$g$じゃなくてロジット関数そのものを使ったけどね。つまり、$g(\pi)$は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？$g(-1\pi)$は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号反転はするはず」
-:::
-
-::: voice-daughter
-私「なるほど。$g(1−\pi)=−g(\pi)$という関係が成り立つのはなにか探せばいいのね？」
-:::
-
-::: voice-father
-お父さん「もう少し条件がある。$g(\pi)$という尺度に、上限と下限があったら不便だし、ゼロという基準が必要だよね。だから条件を追加する」
-:::
-
-- $g(1−\pi)=−g(\pi)$
-- $\pi$が0に近づけば$g(\pi)$は−∞に向かう
-- $\pi$が1に近づけば$g(\pi)$は∞に向かう
-- $\pi=1/2$を基準にとって$g(1/2)=0$
-
-::: voice-father
-お父さん「この4つの条件を満たす滑らかな関数は、実はほとんどひとつしかない」
-:::
-
-$$g(\pi)=\log \left(\frac{\pi_i}{1-\pi_i}\right)$$
-
-::: voice-daughter
-私「それがロジット関数ってことか。データを人工的に変換しても解析結果が変わらないってこと？」
-:::
-
-::: voice-father
-お父さん「あれ、そこまでは説明しなかったけど、その通り。可逆性があるモデルでは、データを変換しても構造もそれに合わせて変わってくれて、本質的に同じ解析結果が得られる。みんなが使っている統計手法はね、大半が人間が選んだだけじゃないんだ。数学的な法則がそっと姿を現しているんだよ」
-:::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
+```{r eval=FALSE}
+X <- model.matrix(~ x1 + x2, data = dat)
+```
 
-脳卒中発症の有無をアウトカム、LDLコレステロールを共変量としてロジスティック回帰を当てはめたとします。LDLコレステロールの単位をmg/dLからmmol/Lに変換したとき、オッズ比は何倍になるでしょうか。ただし
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「ちょっとマニアックだけど、Rの内部では、`model.matrix()`っていう関数で、デザイン行列$X$を作っている。$X$の最初の列はすべて1になる。これは回帰直線でいう切片に対応している。次の列以降はx1とx2に対応する値が計算される。こうしておくと、たとえばx1が文字列でも数値に置き換えて計算できたり、回帰係数との掛け算が行列として計算できたり、なにかと都合がいい。ここまで覚えなくていいけど、仕組みを知っておくと理解が進むでしょ」
+::: 
 
-LDLコレステロール(mmol/L) =LDL コレステロール(mg/dL) ×0.02586
+::: voice-daughter
+私「なるほどね、じゃあ`family`ってなに？データの型？」
+::: 
 
-という関係が成り立ちます。
+::: voice-father
+お父さん「そう。`family`は日本語では分布族の意味だね。正確には**指数型分布族（exponential family）**。前にいったみたいに、データの型にあわせて確率分布を選ぶ」
+::: 
+::::::::::::::::::::::::::::::::: 
 
-1.  0.02586倍
-2.  1/0.02586倍
-3.  変化しない
-4.  1、2、3すべて誤り
+- 連続データ: gaussian()
+- 2値データ: binomial()
+- 計数データ: poisson()
+
+```{r eval=FALSE}
+glm(y ~ x1 + x2, family = gaussian(), data = dat)
+glm(y ~ x1 + x2, family = binomial(), data = dat)
+glm(y ~ x1 + x2, family = poisson(), data = dat)
+```
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「ただしね、一般化線型モデルではデフォルト仕様みたいなものがあって、`family`を指定すると以下の3つが一度に決まるっていう特徴がある」
+::: 
+
+- yの確率分布
+- yの分散
+- その確率分布にあったリンク関数
+
+::: voice-daughter
+私「リンク関数ってなんだ？」
+::: 
+
+::: voice-father
+お父さん「リンク関数（link function）は、**平均をどう変換して回帰係数×共変量にあわせるか**だよ。`family = binomial()`は、デフォルトで**ロジット関数（logit function）**というリンク関数を使っている。ロジット関数が、2項分布の構造にあった"自然な"リンク関数なんだ。これがロジスティック回帰だよ」
+::: 
+
+::: voice-daughter
+私「そっか、よかった。うん、けっこうわかったから今日はもういい」
+::: 
+::::::::::::::::::::::::::::::::: 
+
+
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
+
+ロジスティック回帰のリンク関数は、ロジット関数以外のものを代わりに使うことができます。リンク関数をうまく指定してリスク$\pi$を変換することで、オッズ比以外の関連の指標を求められることが知られています。次の指標のうち、対応するリンク関数がなく、求められないものはどれでしょうか。
+
+1.  リスク差
+2.  リスク比
+3.  ハザード比
+4.  1、2、3すべて求めることができる
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
-**正解は4です。**
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
+-   **正解は4です**
 
-これは単位を換算するにはどうすればよいかという問題です。ある共変量*X*の効果は、回帰係数*β*との積（*βX*）で表され、それは共変量の単位によらず一定ですよね。このことに気づくと、答えに近づきます。*X*の単位を定数倍すると、*β*は定数分の一に換算されます。ただし、ロジスティック回帰では、回帰係数からロジット関数を経由してオッズ比を求めるため、単位を換算するには、1/0.02586乗のようにべき乗の操作をすることになります。
+一般化線型モデルはロジスティック回帰を一般化したもので、「リンク関数」を変えることで、さまざまな指標を計算できます（田中2022）。詳しくはのちのエピソードで述べますが、リンク関数は、ロジスティック回帰でいえば、リスク$\pi$を関数$g(\pi)$を用いて変換しています。
+
+リスク差を求めるには、$g(\pi)=\pi$つまり恒等関数を指定します。
+
+リスク比を求めるには、$g(\pi)=\log(\pi)$ つまり対数関数を指定します。
+
+ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補二重対数（complementary log-log）関数を指定します。
 :::
 
 ### 文献
 
-- [田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12271)
+- [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
-- [From Risk to Logistic Regression](logistic-regression-1.html)
-- [Logit: How a Transformation Shapes an Effect](logistic-regression-2.html)
-- [Where My Logistic Regression Went Wrong](logistic-regression-3.html)
-- [Why Logistic Regression Fails in Small Samples](logistic-regression-4.html)
-- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-5.html)
-
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+- [From Risk to Logistic Regression](logistic-regression-2.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
 ### 過去のシリーズと用語集

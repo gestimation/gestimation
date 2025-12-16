@@ -1,221 +1,97 @@
 ---
-title: "From Risk and Rate to Survival and Hazard"
-description: "「生存曲線やハザード比について納得感が足りないの」生存時間解析の基礎を整理するcoffee-chat guide。時間を含む効果理解への入り口です。"
+title: "A First Note on Cox Regression"
+description: ""
 tags:
   - Effect measure
   - Probability model
-  - R simulation
   - Survival & competing risks
 format:
   html:
     toc: true
-date: 2025-12-13
 ---
 
 ::: {.hero-header}
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Effects and Time V − From Risk and Rate to Survival and Hazard
+# Effects and Time V − A First Note on Cox Regression
 
 ::: {.serif-block .text-right}
-Keywords: effect measure, probability model, R simulation, survival & competing-risks
+Keywords: effect measure, probability model, survival & competing risks
 :::
 
 ------------------------------------------------------------------------
 
-### リスクと時間の関係
+### Cox回帰はハザード比のモデルというより比例ハザード性のモデル
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さんさ、以前聞いた寄与割合の話を思い返して気づいたんだけどね。まだ納得感が足りないの」
-:::
-
-::: voice-father
-お父さん「なに？コーヒーと一緒にこういう話をするのは歓迎だよ」
-:::
-
-::: voice-daughter
-私「がん検診後、10年、12年、20年って見ていくと、寄与割合が変わるって話だったでしょ。リスクには時間の概念があるって。あれって、2値データじゃなくて生存時間データになってない？ていうか、あれは生存曲線か」
-:::
-
-::: voice-father
-お父さん「そうだよ。リスクと生存曲線は表裏一体なんだ」
-:::
-
-::: voice-daughter
-私「生存曲線からある時点の生存確率を読み取ると、1-リスクになっているっていう意味ね。うんうん。そして、疫学の教科書に出てくる**率（rate）**が、生存時間解析の**ハザード（hazard）**に対応しているっていうのもわかる。でも、気になるのは**ハザード比（hazard ratio）**なんだ。寄与割合とかリスク比とかって、時間とともに変化するっていうけど、ハザード比は変化しないんだっけ」
-:::
-
-::: voice-father
-お父さん「変化しない。正確にいうと、生存曲線をみると変化している状況もあり得るんだけど、時間を通じてハザード比は一定と、無理やり仮定して計算してる」
-:::
-
-::: voice-daughter
-私「リスク比は変化するけどハザード比は変化しないの？矛盾してない？」
-:::
-
-::: voice-father
-お父さん「えーっと、リスク比が変化しないわけじゃなくて...。リスクはハザードの時間積分だから、どちらか一方の比を固定したらもう一方は固定できなくて...。ちょっと紙ナプキンとペンをとってくれる？教科書通りに説明するとこうなるんだけど。まずはリスクとハザードからはじめるね」
-:::
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple" title="生存曲線とハザードの関係"}
-
-これまでのエピソードでは、ある時点までのリスクを扱ってきましたが、今度は“時間に沿って変化するリスク”を推定したKaplan-Meier曲線について正式に説明します。Kaplan-Meier曲線は、そもそも2値データではなく生存時間データに用いられる手法でした。そのため、Kaplan-Meier曲線は時間軸を横にとったグラフですし、いわゆるハザード比との関係も知りたいところですよね。ここでは、ハザードが時間を通じて一定という単純な状況で、そのあたりを整理しましょう。
-
-Kaplan-Meier曲線は、生存時間データから計算された推定値を、時間軸（$x$軸）に沿ってグラフにしたものです。これを数式で書くなら、「生存曲線を時間$x$の関数$S(x)$で表す」ということになります。
-
-関数$S(x)$を具体的に書くこともできます。生存時間が、ハザードが時間を通じて一定ということは、指数分布に従うと仮定したことになります（これはKaplan-Meier曲線とは別ものです）。指数分布の形状を決めるパラメータ（ハザード）は、$λ$という記号で表すことが普通です。このとき指数分布の生存関数とハザードには、以下のような関係があります。
-
-$S(x)=\mathrm{exp}(-\lambda x)$
-
-ここまでくれば簡単なのですが、最後に、疾患リスクとハザードの関係を確認しましょう。疾患リスク$π$は、特定時点$x$までに疾患を発症する確率を表しています。つまり、疾患リスク$π$とハザード$λ$は、時点$x$の生存関数を$S(x)$を介して、以下の式で結びついています。
-
-$\pi=1-S(x)=1-\mathrm{exp}(-\lambda x)$
-:::
-
-::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
-```{r warning=FALSE}
-generate_data <- function(n=200, hr1, hr2) {
-  stoma <- rbinom(n, size = 1, prob = 0.4)
-  sex <- rbinom(n, size = 1, prob = 0.5)
-  age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
-  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
-  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
-  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
-  
-  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
-  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
-  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
-  
-  ## --- 全生存期間（OS） ----------------------------------------
-  time_os   <- pmin(t_death, t_censoring)
-  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
-  
-  ## --- 無再発生存期間（RFS） -----------------------------------
-  time_rfs <- pmin(t_relapse, t_death, t_censoring)
-  
-  status_rfs <- integer(n)
-  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
-  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
-  
-  ## --- 累積再発率（CIR） + 競合リスク --------------------------
-  time_cir <- pmin(t_relapse, t_death, t_censoring)
-  
-  status_cir <- integer(n)
-  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
-  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
-  
-  ## --- データフレームにまとめる --------------------------------
-  dat <- data.frame(
-    id         = 1:n,
-    sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
-    age        = age,
-    stoma      = factor(stoma, levels = c(0, 1),
-                        labels = c("WITHOUT STOMA", "WITH STOMA")),
-    time_os    = time_os,
-    status_os  = status_os,
-    time_rfs   = time_rfs,
-    status_rfs = status_rfs,
-    time_cir   = time_cir,
-    status_cir = status_cir
-  )
-}
-```
-:::
-
-::: {.callout-note appearance="simple" title="cifplot()によるKaplan-Meier曲線"}
-イメージしやすいように、以前`cifplot()`で描いたKaplan–Meier曲線と`coxph()`の結果を置いておきます。
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="cifplot()のRコードと結果はこちら"}
-```{r warning=FALSE}
-# devtools::install_github("gestimation/cifmodeling") #インストールが必要なら実行 
-library(cifmodeling)
-set.seed(46)
-dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
-cifplot(Event(time_os, status_os) ~ stoma,
-  data         = dat,
-  outcome.type = "survival",
-  label.y      = "Overall survival"
-)
-```
-:::
-
-::: {.callout-note appearance="simple" collapse="true" title="coxph()のRコードと結果はこちら"}
-```{r warning=FALSE}
-# install.packages("survival") #インストールが必要なら実行
-library(survival)
-fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
-summary(fit)
-```
-:::
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「わからん。数式はわからん」
-:::
-
-::: voice-father
-お父さん「そう？数学の難しさというより、この等式が何と何を結びつけているかが、慣れないと読み取りにくいんだと思う」
-:::
-
-::: voice-daughter
-私「結びつきねえ。とりあえず生存曲線とハザードの関係式ってことまでかな、確実なのは」
-:::
-
-::: voice-father
-お父さん「まずはそこからだね。ハザードを具体的に考えるのは難しいけど、生存時間中央値と結びつけるのがよくやる手だよ。中央値（median）は生存曲線がちょうど50%まで落ちる時点のこと」
-:::
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple" title="ハザードと生存時間中央値の関係"}
-さて、ハザードは生存曲線が下がるスピードを決める数値です。生存時間がどのくらいの長さなのかは、中央値で測ることができます。生存時間中央値$M$は、生存確率50%つまり$S(x)=0.5$になるような時間$x$のことです。つまり、指数分布では
-
-$0.5=\mathrm{exp}(-\lambda M)$
-
-と関係が成り立つので、生存時間中央値$M$は、ハザード$λ$から以下のように計算することができます。
-
-$M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
-:::
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「あ、これはちょっとわかった気がする。寿命（生存時間中央値）とハザードが逆数の関係ってことね。つまり寿命が2倍になったらハザードは1/2になる」
-:::
-
-::: voice-father
-お父さん「そうだね、たとえるならハザードはコーヒーにとっての気温みたいなもの。寒いとコーヒーが覚める時間が短くなる。これがハザードが高いってこと。正確に逆数になるのは、指数分布の下で計算するときだけどね。ハザード比は、まさにハザードの比をとったものだよ。2つの集団の生存曲線を比較するときに使う」
+私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それが。ハザード$\lambda_1$と$\lambda_2$の比をとったこの式なの。$HR$は**ハザード比（hazard ratio）**だよね」
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
+- 指数分布のハザード比
+$$
+HR=\frac{\lambda_1}{\lambda_2}
+$$
 
-生存時間中央値を報告してよいのは、どのような場合でしょうか？
-
-1.  目安としてサンプルサイズが100人以上のとき
-2.  すべての対象者が予定された追跡期間を終了したとき
-3.  半数以上の対象者がイベントを起こしたとき
-4.  1、2、3すべて誤り
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「この式は**Cox回帰（Cox regression）**でもおなじ？ちがう？」
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
--   **正解は3です**
+::: voice-father
+お父さん「ごめん、これはCox回帰の式じゃないね。Cox回帰のハザード比はこういう式で表す」
+:::
+::::::::::::::::::::::::::::::::: 
 
-生存時間データでは一部の対象者で打ち切りがあること（これ以上生存時間が長いことしかわからない）、中央値（median）の定義を思い出してください。半数以上の対象者がイベントを起こし、生存時間が確定しないと、生存確率は50%以下になりません。
+- Cox回帰のハザード比
+$$
+HR=\frac{\lambda_1(x)}{\lambda_2(x)}
+$$
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+私「うん、こんな感じの式になるって思ったんだ。さっき生存関数を教えてくれたのと同じで$x$は時間だよね。ハザード関数は時間とともに変化できて、$\lambda_1(x)$と$\lambda_2(x)$は2群それぞれのハザード関数だっていうことはわかるよ。指数分布ではハザードは定数だった。でも、不思議なのは、どうみても上も下も同じ計算じゃない？割り算しただけ」
 :::
 
-### このシリーズとRスクリプト
+::: voice-father
+お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、*この式以前に*、もともとハザードが一定なんだ。下のCox回帰をみると、$\lambda_1(x)$と$\lambda_2(x)$は時間$x$の関数で、ハザード比だけが一定っていうある種の制約を表している」
+:::
+
+::: voice-daughter
+私「つまり？」
+:::
+
+::: voice-father
+お父さん「つまりこの式が出た時点で、はじめて**比例ハザード性**が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」
+:::
+
+::: voice-daughter
+私「やっぱり違うのか。まってね、ということは、この式は`coxph()`の中で$\lambda_1(x)$と$\lambda_2(x)$の比をとっているっていう意味じゃないよね。仮定を置いたってことは、それが成り立たないと困るわけだ。ハザード比の定義でもなさそうな口ぶりだよね」
+:::
+
+::: voice-father
+お父さん「その通り。比例ハザード性は成り立たないと困るし、この式はハザード比の定義ではない。この式は、単純に2群比較するときのCox回帰のモデルそのものを表している」
+:::
+
+::: voice-daughter
+私「これがCox回帰の式ね。ロジスティック回帰の式に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」
+:::
+
+::: voice-father
+お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、$\lambda_1(x)$と$\lambda_2(x)$はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」
+:::
+:::::::::::::::::::::::::::::::::
+
+### 次のエピソードとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](effects-3.html)
-- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-4.html)
-- [From Risk and Rate to Survival and Hazard](effects-5.html)
-- [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example](effects-6.html)
-
-- [Statistical Terms in Plain Language](glossary.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 
@@ -223,5 +99,5 @@ $M = \frac{\log 2}{\lambda} \approx \frac{0.7}{\lambda}$
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Statistical Terms in Plain Language](glossary.html)
-

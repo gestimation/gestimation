@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-08">
 
-<title>Understanding Confounding in Effect Measures: Marginal vs Stratified – Coffee and Research</title>
+<title>Why Logistic Regression Fails in Small Samples – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -112,6 +78,35 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -187,12 +182,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" id="toc-adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified">Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified</a>
+  <li><a href="#adjusting-for-bias-v-why-logistic-regression-fails-in-small-samples" id="toc-adjusting-for-bias-v-why-logistic-regression-fails-in-small-samples" class="nav-link active" data-scroll-target="#adjusting-for-bias-v-why-logistic-regression-fails-in-small-samples">Adjusting for Bias V − Why Logistic Regression Fails in Small Samples</a>
   <ul class="collapse">
-  <li><a href="#ロジスティック回帰で調整するってどういうこと" id="toc-ロジスティック回帰で調整するってどういうこと" class="nav-link" data-scroll-target="#ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</a></li>
-  <li><a href="#simpsonのパラドックスが起きる条件" id="toc-simpsonのパラドックスが起きる条件" class="nav-link" data-scroll-target="#simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" id="toc-this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="nav-link" data-scroll-target="#this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</a></li>
+  <li><a href="#なぜロジスティック回帰の計算ができなかったのか" id="toc-なぜロジスティック回帰の計算ができなかったのか" class="nav-link" data-scroll-target="#なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</a></li>
+  <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
+  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,7 +196,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Understanding Confounding in Effect Measures: Marginal vs Stratified</h1>
+<h1 class="title">Why Logistic Regression Fails in Small Samples</h1>
 </div>
 
 
@@ -210,6 +204,12 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="quarto-title-meta column-page-left">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -219,484 +219,280 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </header>
 
 
-<style>
-header#title-block-header.quarto-title-block {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #2b1f1a;
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.55;
-}
-
-h1, h2, h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-  color: #3a2a22;
-  font-weight: 600;
-}
-
-h3 {
-  margin-top: 2.4rem;
-}
-
-a {
-  color: #8b4a24;
-  text-decoration: none;
-}
-a:hover {
-  color: #6f3718;
-  text-decoration: underline;
-}
-
-.navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e6e0da;
-  margin-bottom: 0 !important;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-  color: #3a2a22 !important;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-}
-.navbar .navbar-nav > li > a:hover {
-  border-bottom-color: #8b4a24;
-}
-
-.hero-text {
-  padding: 1.5rem 0;
-  color: #3a2a22;
-}
-
-.project-card {
-  border: 1px solid #e6e0da;
-  padding: 1.3rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  background: #ffffff;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.about-section {
-  border: 1px solid #e6e0da;
-  padding: 1.5rem;
-  border-radius: 0;
-  background: #ffffff;
-  margin-top: 2.5rem;
-}
-
-.about-section::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.btn-link {
-  display: inline-block;
-  border: 1px solid #8b4a24;
-  color: #8b4a24;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
-  border-radius: 3px;
-}
-.btn-link:hover {
-  background: #8b4a24;
-  color: #ffffff;
-}
-
-.content-narrow {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1.8rem 1.2rem 2.5rem;
-}
-
-.hero-header {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-.hero-header-img {
-  width: 100vw;
-  height: min(400px, 45vh);
-  object-fit: cover;
-  object-position: 50% 40%;
-  display: block;
-}
-
-.dialogue p {
-  line-height: 1.7;
-}
-.dialogue .voice-father p {
-  color: #7a3e1a !important;
-}
-.dialogue .voice-daughter p {
-  color: #234f7c !important;
-}
-.dialogue .voice-daughter,
-.dialogue .voice-father {
-  margin-bottom: 0.4rem;
-}
-
-.text-right {
-  text-align: right;
-}
-.serif-block p {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 0.9em;  line-height: 1.6;
-}
-</style>
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="adjusting-for-bias-v-understanding-confounding-in-effect-measures-marginal-vs-stratified" class="level1">
-<h1>Adjusting for Bias V − Understanding Confounding in Effect Measures: Marginal vs Stratified</h1>
+<section id="adjusting-for-bias-v-why-logistic-regression-fails-in-small-samples" class="level1">
+<h1>Adjusting for Bias V − Why Logistic Regression Fails in Small Samples</h1>
 <div class="serif-block text-right">
-<p>Keywords: confounding &amp; collapsibility, effect measure, observational study, R simulation</p>
+<p>Keywords: bias, effect measure, generalized linear model</p>
 </div>
 <hr>
-<section id="ロジスティック回帰で調整するってどういうこと" class="level3">
-<h3 class="anchored" data-anchor-id="ロジスティック回帰で調整するってどういうこと">ロジスティック回帰で「調整する」ってどういうこと？</h3>
+<section id="なぜロジスティック回帰の計算ができなかったのか" class="level3">
+<h3 class="anchored" data-anchor-id="なぜロジスティック回帰の計算ができなかったのか">なぜロジスティック回帰の計算ができなかったのか</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「お父さん、ロジスティック回帰でわからないことがあるんだけど。観察研究では<strong>交絡因子（confounder）</strong>を調整しないといけないって前にいってたよね」</p>
+<p>私「お父さん、コーヒー飲んで寛いでいるところわるいんだけど、時間あるかな。ロジスティック回帰についてなんだけど。説明してくれたのはありがたいんだけどね、群作用とか完全分離とか、途中でわかんなくなっちゃってさ。気になって、先に進めないわけよ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、そんな話もあったね」</p>
+<p>お父さん「そうだったのか。Rコードを見せてもらったけど、解析自体は間違ってなさそうだよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「でも統計学の本を読んでも、なにをどう調整するのか書いてないんだよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いいよ。でも少し長くなる。コーヒーでも飲みながらでいい？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「賛成。いちご大福あるから持ってくる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「疫学では有名な話なんだけどね。40年前に、“コーヒーを飲むと膵がんリスクが上がる”という論文がでたことがあった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いかにもありそうな話だね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そうでしょ。でも、観察研究では、コーヒーを飲む習慣のある集団と、きちんと比較できるようなコントロールを選ぶことは難しい。だから疫学の教科書では、集団同士を比較するときには、第3の因子が隠れていないか注意せよと、必ず書いてある」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ふんふん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それでは問題です。このコーヒー論争で、実際に問題になった第3の因子はなんでしょう？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「え？えーっと」</p>
-</div>
-<p><img src="logistic-regression-1.png" class="img-fluid"></p>
-<div class="voice-father">
-<p>お父さん「答えはこれ」</p>
+<p>私「いや、私自身の問題だよね。納得感というか自信というか。だからさ、完全分離について説明してくれない？この前の解析で、なにが起きたのか知りたいんだよね。あの解が出なかったていう結果しかないと、なんだかね」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="お父さんの答えは？">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-お父さんの答えは？
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>それは喫煙です。当時は今より喫煙率が高くて、ほとんどの方がコーヒーと一緒にたばこを吸っていたそうです。</p>
-<p><img src="logistic-regression-3.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「へえ、そんな話があったんだ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあさ、こういう第3の因子を無視して解析するとどうなる？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それくらいわかるよ。バイアスが入るんでしょ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そういうこと。これが疫学でいう交絡因子。交絡調整の意味は数字で示すと一番早い。<strong>Simpsonのパラドックス</strong>っていう現象を使って説明しよう」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Simpsonのパラドックス">
+<div class="callout callout-style-simple callout-note callout-titled" title="ロジスティック回帰の推定">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Simpsonのパラドックス
+ロジスティック回帰の推定
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>コーヒーと膵がんの数値例を用いて、統計学でいう調整とはどういう操作のことなのか、一番シンプルな層別解析でみてみましょう。表1は、コーヒーと膵がんを想定した仮想データです。コーヒー摂取群とコーヒー非摂取群で、それぞれ膵がん発生ありとなしが調べられています。膵がんを発生したのはそれぞれの群で15人と12人、膵がんがなかったのは365人と868人です。オッズ比を計算してみましょう。コーヒー摂取群では膵がんリスクは3.9%で、コーヒーを摂取しない群の1.4%に比べて、オッズ比は3倍です。これは、コーヒーを摂取すると、膵がんリスクが高くなることを意味しています。</p>
-<p>表2には、交絡因子（喫煙）によって対象者を層別した結果が示されています。ここから膵がんのオッズ比を求めるとどうなるでしょうか。コーヒー摂取でも非摂取でもリスクは同じですよね。つまりオッズ比は1倍です。</p>
-<p>このように、調整前後で、関連の程度が変わる現象を、Simpsonのパラドックスといいます（Simpson 1951）。</p>
-<p>表1. 層別前の膵がんリスクとオッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
-<th>オッズ比</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>合計</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>15</td>
-<td>12</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>365</td>
-<td>868</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>3.9%</td>
-<td>1.4%</td>
-<td>3倍</td>
-</tr>
-</tbody>
-</table>
-<p>表2. 層別後の膵がんリスクとオッズ比</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>コーヒー摂取</th>
-<th>コーヒー非摂取</th>
-<th>オッズ比</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>14</td>
-<td>4</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>266</td>
-<td>76</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>5.0%</td>
-<td>5.0%</td>
-<td>1倍</td>
-</tr>
-<tr class="odd">
-<td>非喫煙</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　膵がんあり</td>
-<td>1</td>
-<td>8</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>　膵がんなし</td>
-<td>99</td>
-<td>792</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>　リスク</td>
-<td>1.0%</td>
-<td>1.0%</td>
-<td>1倍</td>
-</tr>
-</tbody>
-</table>
+<p><strong>尤度関数による推定</strong></p>
+<p>以前、ロジスティック回帰の<span class="math inline">\(\pi_i\)</span>は2項分布の確率に対応しているといいました。2項分布の確率関数にはデータと<span class="math inline">\(\pi_i\)</span>が含まれていますが、この式にデータを代入すると、<span class="math inline">\(\pi_i\)</span>の式が得られます。さらに、<span class="math inline">\(\pi_i\)</span>は<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数です。したがって、確率関数の式は、<span class="math inline">\(L(\beta_0,\beta_1,...,\beta_{p-1})\)</span>というように、<span class="math inline">\(\beta_0,\beta_1,...,\beta_{p-1}\)</span>の関数とみなすことができます。この関数を尤度関数といいます。</p>
+<p>ロジスティック回帰の回帰係数は、この尤度関数を最大化する値として計算されます。ただし、データから必ずしも解が求まるわけではありません。計算が収束しなかったり、不安定になったりする理由は、主に2通り考えられます。</p>
+<p><strong>完全分離</strong></p>
+<p>一つ目は、完全分離（complete separation）や擬似完全分離（quasi-complete separation）です。完全分離とは、</p>
+<p><span class="math inline">\(\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\beta_{p-1}X_{i,p-1}\)</span></p>
+<p>を計算したとき、その値によって、アウトカムを100%の精度で0または1に判別できてしまう状況のことをいいます。擬似完全分離は、100%ではないものの、共変量からアウトカムがほぼ判別できてしまう状況です。別の言葉でいえば、共変量の情報に比べて、データに含まれる情報が不足していて、実質的にランダム性がないということを意味します。つまり、完全分離や擬似完全分離は、サンプルサイズに比べ、共変量の数が多すぎるときによく生じる問題です。</p>
+<p><strong>多重共線性</strong></p>
+<p>二つ目は、多重共線性（multicollinearity）です。これは、共変量同士の相関が強すぎることを意味します。仮に、年収が年齢に完全に比例する状況（つまり相関が1）を考えてみてください。このとき、ロジスティック回帰を用いて年収と年齢の影響を分離することはできません。これが多重共線性の一例です。言い換えると、相関の高い共変量は、推定が不安定になるため、同時にロジスティック回帰に含めない方がよい場合が多いです。</p>
 </div>
 </div>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「単純な解析ではリスク因子だったのに、層別しただけで関連が消えた。でもこれは“計算上のトリック”じゃないよね？以前こうやって雑談してたとき、オッズ比は層別すると数値が安定しないっていってたのは関係ある？」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「さすが、覚えていたね。でもここは区別しないといけない。確かにオッズ比はリスク比と違って、層別したら値が変わりやすい、<strong>併合可能ではない（non-collapsible）</strong>指標だよ。でもこれは指標の性質の話。ここで問題しているSimpsonのパラドックスは、“比較の仕方が壊れている”話なんだ」</p>
+<p>お父さん「つまり、完全分離が生じるデータは、若い人は全員復職、高齢者は全員非復職っていう調査結果みたいなもの。年齢だけで復職できるかどうか100%当てられてしまう。まさにこれが完全分離で、尤度関数から解が求まらない状況だよ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「たしかに。この前はランダム化臨床試験、今回は観察研究だものね。コーヒー好きはコーヒーを飲まない人とは別の特徴を持っていて、単純に比較するのはバイアスってわけだ」</p>
+<p>私「あれ？回帰分析って最小2乗法を使うんじゃないの？尤度関数？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そういうこと。ほとんどの観察研究で、交絡の影響は、効果の指標の違いよりずっと大きい。層別で関連が消える現象は、一般化線型モデルでも再現できるよ」</p>
+<p>お父さん「大学の教科書ではそう教わるけどね。最小2乗法を使うのは連続データのときだけかな。別の推定方法もいろいろある」</p>
 </div>
+<div class="voice-daughter">
+<p>私「ふーん。新しい方法がいろいろありそうってのは知ってるよ。AIとか機械学習とか」</p>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="glm()を用いた膵がんデータの解析">
+<div class="voice-father">
+<p>お父さん「まあね。はやりだよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「統計学と機械学習ってどう違うの？同じ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「お隣さんって感じかな。データを解析するって意味では同じことをしているわけだし、機械学習の教科書でも、ロジスティック回帰とかロジスティック判別とかは扱うもの。統計学で習うROC曲線なんかは、機械学習の範疇な気がするし。重なる部分は多いよ。まあ、機械学習の方がたくさんのパラメータを推定する傾向にあるとはいえるかな。ロジスティック回帰よりニューラルネットワークの方が、モデルも複雑だし、パラメータの数も多い。さっき共変量の数を減らそうっていったでしょ。機械学習では、ああいうパラメータの数を減らすって発想はしない」</p>
+</div>
+<div class="voice-daughter">
+<p>私「パラメータの数が少ないのが統計学の特徴ってわけ？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うーん、でもそれは程度問題かもしれない。一番の違いはなんだろうね。統計学は確率モデルが必ず基礎にあるってことかな。そして、標本から母集団を調べるっていう考え方をする。手法でいうと、p値とか信頼区間とか、ああいうやつね」</p>
+</div>
+<section id="統計手法を選ぶ理由" class="level3">
+<h3 class="anchored" data-anchor-id="統計手法を選ぶ理由">統計手法を選ぶ理由</h3>
+<div class="voice-daughter">
+<p>私「はやりだから使っていいのかな。ほら、ニューラルネットワークとかこの前の群作用とか、知らなくてもみんな使ってるよね。問題ないのかな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「でもね、2項分布とロジット関数のところまでは理解できなかった？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そこまではできた」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「なら合格点だと思う。数理的な手法って奥が深いでしょ。だから、仮に数学的な真実があったとして、究極的には部分的な理解しかできないかもしれない。専門家とユーザーで程度は違うけどね。だから、みんな使ってるっていうのは、使ってもいい理由のひとつにはなる。医療でも、添付文書で有効性が確立していないって書かれた薬が、第一選択だったりするでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ああ、コミュニティスタンダードのことね。そういうこともあるのが現実だけど、すっきりはしてないよね、医師はみんな。それにさ、コミュニティスタンダードの薬は、単にみんな使っているから選んでるんじゃないよ。難病で他に候補がなかったり、エビデンスが足りなくても経験上は効果があるから、その薬を使って治療してるの」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それって、医療上の目的に対してじゅうぶん役に立ってるってことでしょ。ロジスティック回帰も同じじゃない？用途に見合った性能があるって自信を持っていえれば、ところどころ理解が追い付かなくても、使用していいと思う。そう、まさに完璧に解明された技術なんてないのが現実だからね。世の中ではいろんな技術が使われてる。でも、すべて3つの理由で正当化されるんだよ」</p>
+</div>
+<ul>
+<li>数学と自然科学が支えている</li>
+<li>コミュニティが支えている</li>
+<li>使用する目的が支えている</li>
+</ul>
+<div class="voice-father">
+<p>お父さん「それぞれが100%じゃなくても、この3つが支えあえれば使う意味があるんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういうもんかな。納得したような、まだ霧が残っているような気もする。まあいいや、疲れてきたし。性別のオッズ比が無限大になった理由はわかったよ。尤度関数にデータを代入したら、回帰係数の解が変になるような式になったってわけね」</p>
+</div>
+</section>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="データの型と統計手法">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-glm()を用いた膵がんデータの解析
+データの型と統計手法
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>交絡調整のための統計手法として、層別解析以外に一般化線型モデルもよく用いられます。オッズ比のモデルであるロジスティック回帰は、<code>link="logit"</code>を用いた<code>glm()</code>に、リスク比は<code>link="log"</code>に対応していましたね。以下のコードでは調整前のオッズ比・リスク比は<code>smoke</code>を入れないモデルで、調整後のオッズ比・リスク比は<code>smoke</code>を入れたモデルで推定しています。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Rコードと結果はこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cancer =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">coffee =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smoke  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,   <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n      =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">266</span>, <span class="dv">4</span>, <span class="dv">76</span>,  <span class="dv">1</span>, <span class="dv">99</span>, <span class="dv">8</span>, <span class="dv">792</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fit_logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>odds_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit1)[[<span class="st">"coffee"</span>]])</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.972603</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>odds_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_logit2)[[<span class="st">"coffee"</span>]])</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(odds_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit_log1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>risk_ratio1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log1)[[<span class="st">"coffee"</span>]])</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.894737</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit_log2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  cancer <span class="sc">~</span> coffee<span class="sc">+</span>smoke,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family  =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> n,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> dat</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>risk_ratio2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_log2)[[<span class="st">"coffee"</span>]])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(risk_ratio2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="simpsonのパラドックスが起きる条件" class="level3">
-<h3 class="anchored" data-anchor-id="simpsonのパラドックスが起きる条件">Simpsonのパラドックスが起きる条件</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「やっぱりトリックに見えちゃうな、何が起きてるのやら。とりあえず調整しとけっていいたいの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「えっとね、いちばん伝えたいことから話すね。研究の原則としてときどき使う”ceteris paribus”というラテン語があってね。“All other things being equal”くらいの意味なんだけど、比較する集団で条件をそろえたら、交絡によるバイアスは生じない。たとえばランダム化臨床試験とかね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん、その説明はわかりやすい」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ、その次になにが起きたか整理しよう。まず前提になるのが、喫煙が膵がんのリスク因子だってこと。これはいいよね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「うん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「次に注目してほしいのが、喫煙とコーヒーの関連なんだ。喫煙状況ごとにコーヒー摂取割合を計算してみてよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「コーヒー摂取割合ね。層別前は30%。喫煙集団では78%、非喫煙集団では11%だよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「喫煙群と非喫煙群でコーヒー摂取割合に大きな差があるでしょ。この現象が起きた理由は、コーヒー摂取と喫煙に強い関連があったため、ということ。これは、当時、たばこを吸いながらコーヒーを飲んでいたことを表している」</p>
-</div>
-<div class="voice-daughter">
-<p>私「時代を感じるね、仕事の合間に一服したい気持ちはめっちゃわかる」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「Simpsonのパラドックスのポイントは、3つの変数の相関関係なんだ。2つの条件が揃うとSimpsonのパラドックスが起きる。正確にいうと、これは十分条件で必要条件じゃないんだけどね（田中2022）」</p>
-</div>
+<p>アウトカムはデータの型によって4種類に分類されます。</p>
 <ul>
-<li>第3の因子と曝露の間に相関がある</li>
-<li>第3の因子とアウトカムの間に相関がある</li>
+<li>連続データ （例：血圧やQOL）</li>
+<li>分類データ （例：有害事象の有無）</li>
+<li>計数データ （例：有害事象の発生件数）</li>
+<li>生存時間データ （例：全生存期間）</li>
 </ul>
-<div class="voice-daughter">
-<p>私「曝露とアウトカムと第3の変数の関係性ねえ。ちょっと確認させて。コーヒー摂取群とコーヒー非摂取群で、喫煙率が違う。さらに喫煙は膵がんリスクも上げる。そうすると層別したらオッズ比の値が変わった。ああ、もともとバイアスが入ってたんだから、調整して値が変わるのは当然か。確かにそうなる。交絡の話ってまあまあややこしいね」</p>
+<p>さらに、分類データはいくつかの種類があり、カテゴリが2通りのものを2値データ、カテゴリに順序があるものを順序データと呼んでいます。生存時間データの一種には、競合リスクを考慮した競合リスクデータがあります。データの型によって、正規分布や2項分布など確率分布が異なりますよね。そのため、それぞれ異なる統計手法が用いられます。詳しくは表をみてください。</p>
+<p>仮に、ストーマ造設あり・なしと復職状況の関係を調べたいとすると、2つの変数をモデルに当てはめることになるため、回帰モデルを用いて調べたいとします。このときアウトカムを復職の有無（2値データ）とするなら、ロジスティック回帰を選ぶべきです。もし復職までの期間（生存時間データ）とするなら、Cox回帰の方が適切です。</p>
+<p><strong>個人内で反復測定があるか</strong></p>
+<p>同一個人にくり返し臨床検査やアンケートを行うと、似たような検査結果になりますよね。たとえば、朝と晩に血圧を測ると、2つの測定値に相関が生じます。治療前と治療後に、QOL質問票に回答してもらう場合も、その測定値は独立ではありません。このように1人の患者に複数回の測定値があるデータを<strong>反復測定データ</strong>といいます。反復測定データでは、個人内の測定値は独立ではありません。したがって、独立性を仮定している統計手法（たとえば対応のないt検定や<span class="math inline">\(\chi^2\)</span>検定）は不適切です。反復測定データの解析では、<strong>変量効果モデル（random-effects model）</strong>や<strong>一般化推定方程式（generalized estimating equation）</strong>と呼ばれるやや高度な手法が用いられます。この場合の変量効果は、「ひとりひとりの個人の効果」を表しています。これらの方法は、個人内でデータが独立ではないこと（データの相関）を考慮するものです。</p>
+<p><strong>交絡の調整が必要かどうか</strong></p>
+<p><strong>交絡因子（confounder）</strong>とは、治療とアウトカムとの関係を歪める第三の因子のことです。仮に、ストーマ造設あり・なしと復職状況の関係に、年齢が強くかかわっているとしましょう。そして、ストーマ保有者と非保有者で、平均年齢が異なっているとします。このような場合、2群間の年齢の違いを無視するとバイアスが生じます。これを補正するために、ロジスティック回帰がよく用いられます。 ランダム化臨床試験では、比較する群間で実験条件が揃っているため、交絡の調整は不要です。一方、観察研究（コホート研究やケース・コントロール研究）では交絡の調整は必須です。今回題材にした復職率の調査も観察研究の一種ですから、統計解析ではロジスティック回帰やCox回帰が主に用いられるでしょう。最近では交絡を調整して、正しく因果関係を調べるために、因果推論の手法（プロペンシティスコアなど）を用いることが増えてきました（田中2022）。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>データの型</th>
+<th>反復測定</th>
+<th>交絡調整</th>
+<th>統計手法</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>連続データ</td>
+<td>なし</td>
+<td>なし</td>
+<td>対応のない<em>t</em>検定、Wilcoxon順位和検定</td>
+<td>平均の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>個人内で2回測定</td>
+<td>なし</td>
+<td>対応のある<em>t</em>検定、Wilcoxon符号付順位検定</td>
+<td>対応のあるデータ</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>なし</td>
+<td>正規線型モデル</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td>2値データ</td>
+<td>なし</td>
+<td>なし</td>
+<td><span class="math inline">\(\chi^2\)</span>検定</td>
+<td>割合の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>個人内で2回測定</td>
+<td>あり</td>
+<td>McNemar検定</td>
+<td>対応のあるデータ</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>ロジスティック回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td>計数データ</td>
+<td>なし</td>
+<td>なし</td>
+<td><span class="math inline">\(\chi^2\)</span>検定</td>
+<td>発生率の比較</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Poisson回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>あり</td>
+<td>あり</td>
+<td>変量効果モデル、一般化推定方程式</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td>生存時間データ</td>
+<td>なし</td>
+<td>なし</td>
+<td>Kaplan-Meier曲線</td>
+<td>生存曲線の記述</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Cox回帰</td>
+<td>回帰モデルの一種</td>
+</tr>
+<tr class="even">
+<td>競合リスクデータ</td>
+<td>なし</td>
+<td>なし</td>
+<td>Aalen-Johansen曲線</td>
+<td>累積発生率曲線の記述</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>なし</td>
+<td>あり</td>
+<td>Fine-Grayモデル</td>
+<td>回帰モデルの一種</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<section id="次のエピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p>Simpson EH. The interpretation of interaction in contingency tables. J Royal Stat Soc B 1951;13:238-41</p></li>
-<li><p><a href="https://www.asakura.co.jp/detail.php?book_code=12271">田中司朗. 医学研究のための因果推論II. Rubin因果モデル. 東京: 朝倉書店; 2022</a></p></li>
+<li><a href="logistic-regression-1.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-3.html">Logit: How a Transformation Shapes an Effect</a></li>
+<li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
+<li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="logistic-regression-6.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
+<li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
 </ul>
 </section>
-<section id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="level3">
-<h3 class="anchored" data-anchor-id="this-concludes-the-adjusting-for-bias-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Adjusting for Bias series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</h3>
+<section id="過去のシリーズと用語集" class="level3">
+<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
 <ul>
-<li><a href="truth-1.html">What Data Cannot Tell Us</a></li>
+<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
+<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
 
 
