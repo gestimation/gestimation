@@ -98,7 +98,7 @@ Statistics deals with uncertainty, but in clinical research it is crucial to dis
 
 An analogy: random error is like scatter when you aim at the center of a target; bias is when the aim itself is off-center. The bias that arises when Kaplan–Meier curves are misused under competing risks is not random error. Random error can be reduced by increasing sample size, but bias cannot be fixed without improving study design and data collection.
 
-![](study-design-5.png)
+![](study-design-5e.png)
 :::
 
 ### Major categories of bias

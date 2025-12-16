@@ -96,7 +96,7 @@ Keywords: bias, language & writing, observational study, study design
 
 たとえるなら、ランダム誤差は的の中心を狙って矢を放つときのばらつき、バイアスは狙いが中心からずれている状態といえます。競合リスクの扱いを間違ったとき生じるKaplan-Meier曲線のバイアスは、ランダム誤差ではありませんよね。ランダム誤差はサンプルサイズを大きくすることで減少させることができますが、バイアスは研究デザインやデータ収集方法を工夫しないと、解消できません。
 
-![](study-design-5.png)
+![](study-design-5j.png)
 :::
 
 

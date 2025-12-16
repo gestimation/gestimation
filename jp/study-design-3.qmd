@@ -68,7 +68,7 @@ Keywords: clinical trial, research hypothesis, survival & competing risks, langu
 :::
 
 
-![](study-design-2.png)
+![](study-design-3j.png)
 
 ::: voice-daughter
 私「ふんふん。私はね、無病生存期間の結果が重要だと思うな。再発と2次がん、どっちも起きない方がいい。無再発期間はあまり解析する意味を感じないな。死亡は一番重要なイベントじゃない？なんで省いちゃうのよ」

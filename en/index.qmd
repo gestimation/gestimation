@@ -34,6 +34,12 @@ Enjoy following that changing view, at the quiet pace of a cup of coffee.
 
 ------------------------------------------------------------------------
 
+## How to read this site
+
+While each episode stands independently, their dialogues start from **Study Design**. From there, you can either follow the narrative or choose the layer that interests you most. Reading the whole, scattered meanings will connect, and surely something will become clear.
+
+------------------------------------------------------------------------
+
 ## Episodes
 
 ### 1. Study Design — Where research begins
@@ -42,9 +48,9 @@ Every study starts with a question. How do we frame PICO/PECO? How do we choose 
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
-- [Outcomes: The Bridge from Data Collection to Analysis] (coming soon)
-- [A First Step into Survival and Competing Risks Analysis with R]
-- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys]
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
 
 ::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
 
@@ -196,19 +202,6 @@ How to communicate research findings, creating charts and graphs, tips for revis
 - [Three Tips for Writing a Paper]
 - [Communicating with Care]
 - [A Morning Just Before Submission]
-
-------------------------------------------------------------------------
-
-## How to read this site
-
-First, reading the **Study Design** series will give you an overview of the clinical research landscape and outline the process of “what questions to ask and what data to collect.” From there, you can either follow the narrative or choose the layer that interests you most.
-
-- Want to build a foundation for reading papers: Frequentist Thinking
-- Want to understand the meaning of numbers and the practice of statistical analysis more deeply: Effects and Time / Adjusting for bias
-- Want to organize the invisible structure of causality: Causal Inference
-- Want to see the process through to shaping and delivering your research: Publish a Paper
-
-While each episode stands independently, reading the whole reveals how everyday life, clinical practice, causality, data, cognition, and language connect as one flow. Gradually, a map of the research endeavor sketches itself in your mind. Grab your favorite drink and enjoy the journey of conversation between the two.
 
 ------------------------------------------------------------------------
 This site shares selected R-related posts via <a href="https://www.r-bloggers.com">R-bloggers</a>

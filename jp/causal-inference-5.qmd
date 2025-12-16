@@ -19,7 +19,7 @@ date: 2025-12-13
 # Causal Inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias
 
 ::: {.serif-block .text-right}
-Keywords: bias, causal model, Confounding & collapsibility, probability model
+Keywords: bias, causal model, confounding & collapsibility, probability model
 :::
 
 ------------------------------------------------------------------------

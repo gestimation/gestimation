@@ -131,7 +131,7 @@ Keywords: causal model, language & writing, probability model, research hypothes
 :::
 
 ::: voice-daughter
-私「ああ、そういうこと。個々の出来事と一般法則どっちも大事なのはわかる」
+私「ああ、そういうこと。有害事象と薬の因果関係を判定をする、みたいなことね。そういわれたら、個々の出来事と一般法則どっちも因果っていうね」
 :::
 
 ::: voice-father

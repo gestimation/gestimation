@@ -426,6 +426,12 @@ STROBE声明の「変数」というセクションでは、いくつか基本�
 -   効果修飾因子（effect modifier）: 因果効果の大きさや方向の違いをもたらす共変量のこと。または、曝露との交互作用がある共変量のこと
 :::
 
+### 文献
+
+- [Albert T. Winning the Publications Game. Florida: CRC Press; 2016](https://www.timalbert.co.uk/books/winning-the-publications-game)
+
+- [The STROBE reporting guideline for writing up observational studies in epidemiology [Internet]. Oxford: EQUATOR Network; 2007](https://resources.equator-network.org/reporting-guidelines/strobe/)
+
 ### 次のエピソード
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)

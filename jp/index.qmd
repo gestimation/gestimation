@@ -28,6 +28,12 @@ listing:
 
 ------------------------------------------------------------------------
 
+## ご案内
+
+どのエピソードも独立していますが、ふたりの会話は**Study design**から始まります。そこから先は、物語を追っても、興味の向くレイヤーを選んでも構いません。全体を通して読むと、散らばっていた意味どうしがつながり、きっといくつかのことが見えてきます。
+
+------------------------------------------------------------------------
+
 ## エピソード一覧
 
 ### 1. Study Design — 研究の出発点
@@ -109,7 +115,6 @@ listing:
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified]
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail]
 - [From Risk and Rate to Survival and Hazard]
 - [Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]
@@ -137,6 +142,7 @@ listing:
 
 結果の見方、表の作り方から、使用上の落とし穴まで、父からロジスティック回帰と交絡調整の手ほどきを受けるエピソード。
 
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified]
 - [From Risk to Logistic Regression]
 - [Logit: How a Transformation Shapes an Effect]
 - [Where My Logistic Regression Went Wrong]
@@ -195,18 +201,5 @@ listing:
 - [Three Tips for Writing a Paper]
 - [Communicating with Care]
 - [A Morning Just Before Submission]
-
-------------------------------------------------------------------------
-
-## 読み方
-
-まずは **Study designシリーズ**を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。
-
-- **論文を読む足場を整えたい**: Frequentist Thinking
-- **数字の意味や統計解析の実際をもう少し深く知りたい**: Effects and Time / Adjusting for Bias
-- **因果という見えない構造を整理したい**: Causal Inference
-- **研究を形にして届けるところまで見通したい**: Publish a Paper
-
-どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。
 
 ------------------------------------------------------------------------

@@ -214,6 +214,7 @@ window.Quarto = {
   <ul>
   <li><a href="#コーヒーを淹れて言葉を交わす湯気とともに時は流れ統計の世界が少しずつ広がっていく" id="toc-コーヒーを淹れて言葉を交わす湯気とともに時は流れ統計の世界が少しずつ広がっていく" class="nav-link active" data-scroll-target="#コーヒーを淹れて言葉を交わす湯気とともに時は流れ統計の世界が少しずつ広がっていく">コーヒーを淹れて、言葉を交わす。湯気とともに時は流れ、統計の世界が少しずつ広がっていく。</a>
   <ul class="collapse">
+  <li><a href="#ご案内" id="toc-ご案内" class="nav-link" data-scroll-target="#ご案内">ご案内</a></li>
   <li><a href="#エピソード一覧" id="toc-エピソード一覧" class="nav-link" data-scroll-target="#エピソード一覧">エピソード一覧</a>
   <ul class="collapse">
   <li><a href="#study-design-研究の出発点" id="toc-study-design-研究の出発点" class="nav-link" data-scroll-target="#study-design-研究の出発点">1. Study Design — 研究の出発点</a></li>
@@ -226,7 +227,6 @@ window.Quarto = {
   <li><a href="#causal-inference-因果を見つけるために" id="toc-causal-inference-因果を見つけるために" class="nav-link" data-scroll-target="#causal-inference-因果を見つけるために">8. Causal Inference — 因果を見つけるために</a></li>
   <li><a href="#publish-a-paper-研究のその先" id="toc-publish-a-paper-研究のその先" class="nav-link" data-scroll-target="#publish-a-paper-研究のその先">9. Publish a Paper — 研究のその先</a></li>
   </ul></li>
-  <li><a href="#読み方" id="toc-読み方" class="nav-link" data-scroll-target="#読み方">読み方</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,6 +261,11 @@ window.Quarto = {
 <p>このサイトは、統計家の父と医師の娘が交わす小さなコーヒーチャットから生まれました。研究で生じる疑問、論文でひっかかった数字、そしてときおり見える研究者たちの姿勢—大切なはずのことは、生活・臨床・因果・データ・認識・言語という複数のレイヤーにひっそりと散らばっています。コーヒーを交えた軽いやりとりは、そのいくつかを丁寧に拾っていきます。まるでその全体性（totality）を壊さぬよう、ふたりの研究の歩みをひとつの物語として紡ぐように。</p>
 <p>生存曲線、p値の誤解から、因果と統計の階層的な関係まで。螺旋のように伏線を潜ませつつ、冬のマグカップのように温度のある言葉で語ります。数式や医療の話題も出てきますが、必要なところだけ拾ってくだされば大丈夫です。物語はRコードで再現可能。ふたりの対話とともに変化する世界観を、どうぞゆっくりと味わってください。</p>
 <hr>
+<section id="ご案内" class="level2">
+<h2 class="anchored" data-anchor-id="ご案内">ご案内</h2>
+<p>どのエピソードも独立していますが、ふたりの会話は<strong>Study design</strong>から始まります。そこから先は、物語を追っても、興味の向くレイヤーを選んでも構いません。全体を通して読むと、散らばっていた意味どうしがつながり、きっといくつかのことが見えてきます。</p>
+<hr>
+</section>
 <section id="エピソード一覧" class="level2">
 <h2 class="anchored" data-anchor-id="エピソード一覧">エピソード一覧</h2>
 <section id="study-design-研究の出発点" class="level3">
@@ -378,7 +383,6 @@ window.Quarto = {
 <ul>
 <li>[Silent Confusions Hidden in Percentages]</li>
 <li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Understanding Collapsibility of Effect Measures: Marginal vs Stratified]</li>
 <li>[When Odds Ratios Approximate Risk Ratios—and When They Fail]</li>
 <li>[From Risk and Rate to Survival and Hazard]</li>
 <li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
@@ -415,6 +419,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="adjusting-for-bias-回帰モデリングの風景">6. Adjusting for Bias — 回帰モデリングの風景</h3>
 <p>結果の見方、表の作り方から、使用上の落とし穴まで、父からロジスティック回帰と交絡調整の手ほどきを受けるエピソード。</p>
 <ul>
+<li>[Understanding Collapsibility of Effect Measures: Marginal vs Stratified]</li>
 <li>[From Risk to Logistic Regression]</li>
 <li>[Logit: How a Transformation Shapes an Effect]</li>
 <li>[Where My Logistic Regression Went Wrong]</li>
@@ -498,22 +503,10 @@ window.Quarto = {
 <li>[A Morning Just Before Submission]</li>
 </ul>
 <hr>
+
+
+
 </section>
-</section>
-<section id="読み方" class="level2">
-<h2 class="anchored" data-anchor-id="読み方">読み方</h2>
-<p>まずは <strong>Study designシリーズ</strong>を読めば、臨床研究の風景や「どんな問いを立てて、どんなデータを集めるか」という輪郭が見えてきます。そこから先は物語を追っても、興味の向くレイヤーを選んでも構いません。</p>
-<ul>
-<li><strong>論文を読む足場を整えたい</strong>: Frequentist Thinking</li>
-<li><strong>数字の意味や統計解析の実際をもう少し深く知りたい</strong>: Effects and Time / Adjusting for Bias</li>
-<li><strong>因果という見えない構造を整理したい</strong>: Causal Inference</li>
-<li><strong>研究を形にして届けるところまで見通したい</strong>: Publish a Paper</li>
-</ul>
-<p>どのエピソードも独立して構成されていますが、全体を読むと、生活・臨床・因果・データ・認識・言語がひとつの流れとしてつながり、研究という営みの地図が、少しずつ頭の中にスケッチされていきます。お好みの飲み物を片手に、ふたりの会話の旅をどうぞお楽しみください。</p>
-<hr>
-
-
-
 </section>
 </section>
 
@@ -541,7 +534,7 @@ Dec 14, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1765119600000" data-listing-file-modified-sort="1765779368508" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1765119600000" data-listing-file-modified-sort="1765845844792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
 <div class="thumbnail"><a href="../jp/study-design-3.html" class="no-external">
 
 <p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
