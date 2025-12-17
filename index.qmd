@@ -213,7 +213,7 @@ This is a short essay on Japanese language and kanji characters.
 
 ## About the author—gestimation
 
-<img src="image/portrait.jpg" width="130" style="border-radius: 12px; float:left; margin-left:1rem;"/>
+<img src="image/portrait.jpg" width="115" style="border-radius: 12px; float:left; margin-left:1rem;"/>
 
 Alongside developing methods and tools, he is interested in how statistical ideas are understood, interpreted, and used in practice — especially where methods, assumptions, and human judgment meet. This site collects some of his research, teaching materials, and essays, shared freely for anyone who finds them useful.
 
