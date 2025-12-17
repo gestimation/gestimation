@@ -13,8 +13,6 @@ format:
 
 ------------------------------------------------------------------------
 
-### A Quiet Morning Before Submission
-
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 The sound of the early-summer rain soothed the stillness of the night. After clinic hours, we often spent time at our computers. Tonight again, I sat quietly, looking at the manuscript on the monitor.
@@ -31,7 +29,7 @@ In this opening section, many papers are cited, their authors’ names listed on
 They were surely written in rooms much like this one.
 :::
 
-"The aim of this study was—"
+"The aim of this study was..."
 
 ::: voice-daughter
 Such a short sentence, and yet now I know how much it must carry.  
@@ -50,7 +48,7 @@ This was the section that took the longest to write. All I had to do was put int
 I had to fill in what I had taken for granted, and choose words that could be shared and understood in only one way. I write, revise, and read again. I do not dislike this time.
 :::
 
-"The major results of the study were—"
+"The main results of the study were..."
 
 ::: voice-daughter
 The numbers placed there looked different to me than before. They record what happened to patients. At the same time, they are answers returned from the world to the questions we asked.
@@ -65,7 +63,7 @@ The coffee had cooled at the edge of the desk. On the monitor, the freshly writt
 
 I checked each line, making sure it answered the questions we held when we designed the study. 
 
-I nodded slightly and began typing again, slowly.
+I nodded slightly, and began typing again—slowly.
 :::
 :::::::::::::::::::::::::::::::::
 
