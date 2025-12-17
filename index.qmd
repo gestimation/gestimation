@@ -214,7 +214,7 @@ This is a short essay on Japanese language and kanji characters.
 ## About the author—gestimation
 
 <img src="image/portrait.jpg"
-     width="115"
+     width="130"
      style="border-radius: 12px;
             float: left;
             margin: 1rem 1.5rem 1rem 1rem;" />
