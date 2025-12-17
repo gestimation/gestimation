@@ -178,7 +178,7 @@ Through conversations between a father and daughter, the *way researchers think*
 
 <div class="project-card">
 
-## Eight Components of Causal Inference Preserved in Japanese
+## Eight components of causal inference preserved in Japanese
 
 This is a short essay on language. 
 
