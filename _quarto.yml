@@ -6,6 +6,7 @@ project:
     - from-coffee-chat-to-r/study-design.R
     - from-coffee-chat-to-r/frequentist.R
     - from-coffee-chat-to-r/effects.R
+    - from-coffee-chat-to-r/logistic-regression.R
     
 website:
   title: "Coffee and Research"
@@ -17,14 +18,13 @@ website:
         text: Home
       - text: "cifmodeling"
         href: https://gestimation.github.io/cifmodeling/
-        
-      - text: A Conversation on Causality at Our Table (EN)
+      - text: A Conversation (EN)
         menu:
           - text: Index
             href: en/index.qmd
           - text: Study design
             href: en/study-design-1.qmd
-      - text: A Conversation on Causality at Our Table (JP)
+      - text: A Conversation (JP)
         menu:
           - text: Index
             href: jp/index.qmd
@@ -40,6 +40,10 @@ website:
 #            href: jp/causal-inference-1.qmd
 #          - text: Publishing a paper
 #            href: jp/publish-a-paper-1.qmd
+      - text: 8 Elements (EN)
+        href: kanji_en/index.qmd
+      - text: 8 Elements (JP)
+        href: kanji_jp/index.qmd
 
 format:
   html:

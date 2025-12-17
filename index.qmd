@@ -75,12 +75,6 @@ a:hover {
   clear: both;
 }
 
-.author-photo {
-  float: left;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
 .btn-link {
   display: inline-block;
   border: 1px solid #8b4a24;
@@ -178,6 +172,16 @@ Through conversations between a father and daughter, the *way researchers think*
 
 <div class="project-card">
 
+## Eight Elements of Causal Inference Preserved in Japanese
+
+This is a short essay on Japanese language and kanji characters.
+
+**[Read in English](./kanji_en/index.html)**  /  **[Read in Japanese](./kanji_jp/index.html)** 
+
+</div>
+
+<div class="project-card">
+
 ## Books and learning materials
 
 - **Causal Inference for Medical Research I. Generalized Linear Models** (in Japanese)
@@ -209,7 +213,11 @@ Through conversations between a father and daughter, the *way researchers think*
 
 ## About the author—gestimation
 
-<img src="image/portrait.jpg" width="120" class="author-photo">
+<img src="image/portrait.jpg"
+     width="130"
+     style="border-radius: 12px;
+            float: left;
+            margin: 1rem 1.5rem 1rem 1rem;" />
 
 Alongside developing methods and tools, he is interested in how statistical ideas are understood, interpreted, and used in practice — especially where methods, assumptions, and human judgment meet. This site collects some of his research, teaching materials, and essays, shared freely for anyone who finds them useful.
 

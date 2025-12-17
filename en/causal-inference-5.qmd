@@ -1,0 +1,171 @@
+---
+title: "Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias"
+description: ""
+tags:
+  - Bias
+  - Causal model
+  - Confounding & collapsibility
+  - Probability model
+format:
+  html:
+    toc: true
+date: 2025-12-13
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Causal Inference V − Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias
+
+::: {.serif-block .text-right}
+Keywords: bias, causal model, confounding & collapsibility, probability model
+:::
+
+------------------------------------------------------------------------
+
+### The meaning of blocking
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "Let's pick up where we left off, Dad. When you explained DAGs last time, you used the term **blocking**. You said things like 'a **collider** blocks a path.'"
+:::
+
+::: voice-father
+"I did."
+:::
+
+::: voice-daughter
+Me: "So blocking means that the causal flow is stopped, right?"
+:::
+
+::: voice-father
+Dad: "Hm. That phrasing isn't quite precise. Blocking is a property of paths in a DAG. It doesn't directly refer to causality itself. A path is said to be blocked if it contains a collider, or if a non-collider on the path is conditioned on as a confounder."
+:::
+
+::: voice-daughter
+Me: "So if there's a collider, the path is blocked automatically. And for a non-collider, the path becomes blocked when we adjust for it."
+:::
+
+::: voice-father
+Dad: "Exactly. More formally, blocking means that two nodes can be d-separated. It might be worth touching on the definition of d-separation to avoid confusion."
+:::
+:::::::::::::::::::::::::::::::::
+
+::: {.callout-note appearance="simple"  title="d-Separation"}
+Consider a DAG with three disjoint sets of nodes, denoted by A, B, and C. If the following two conditions hold, then C is said to **d-separate** A and B (Greenland, 1999).
+
+Every path between A and B that does not contain a collider includes at least one element of C.
+
+Suppose C contains a collider that lies on a path between A and B. Even if conditioning on that collider opens the path, the path can still be blocked by conditioning on another element of C.
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Me: "This is getting complicated."
+:::
+
+::: voice-father
+Dad: "It is. As the number of nodes increases, we have to think in terms of sets of nodes, and the definition becomes harder to parse. That's why it helps to check the meaning in simple cases. Let's look at these three DAGs. Do you think C d-separates E and D in each of them?"
+:::
+
+![](causal-inference-4-1.png)
+
+::: voice-daughter
+Me: "Well, in all three DAGs there's only one path connecting E and D. In the top two, there's no collider, and C lies on the path—so C should d-separate them. What about the bottom one? C is a collider there, and the path E–C–D can't be blocked by any other variable. So it doesn't satisfy the conditions for d-separation."
+:::
+
+::: voice-father
+Dad: "Exactly. Statements like **adjusting for a common cause or a mediator blocks a path**, or **adjusting for a collider opens a path**, can all be expressed precisely by that definition. Once DAGs become more complex, you start to see why the definition is useful. Now, in this DAG, which sets of nodes d-separate E and D?"
+:::
+
+::: voice-daughter
+Me: "There's no collider here. So would it be A and C?"
+:::
+
+![](causal-inference-4-2.png)
+
+::: voice-father
+Dad: "Not just that. Either A alone or C alone also satisfies the conditions for d-separation."
+:::
+
+::: voice-daughter
+Me: "So that means that if we observe either A or C, we can adjust for confounding?"
+:::
+
+::: voice-father
+Dad: "That's right. Now let's look at one more DAG."
+:::
+
+![](causal-inference-4-3.png)
+
+::: voice-daughter
+Me: "Still going? I know I asked for this, but let's make this the last one.
+Okay—looking at this diagram, A and B each d-separate, right? C is a collider, so it doesn't."
+:::
+
+::: voice-father
+Dad: "That's correct as far as it goes. But those aren't the only possibilities. What about A and C, or B and C? Even though C is a collider, conditioning on A or B blocks the path E ← A → C ← B → D, doesn't it?"
+:::
+
+::: voice-daughter
+Me: "I see—you're using the second condition. I think I understand when d-separation holds now. But what does this actually mean?"
+:::
+
+::: voice-father
+Dad: "The main goal today was to explain blocking properly, and maybe it didn't quite click. In the DAG we just discussed, by searching for sets of variables that d-separate E and D, we identified combinations of confounders that prevent bias.
+And one more thing: when we replace the nodes in a DAG with random variables, d-separation corresponds exactly to conditional independence. Using this result, we can identify which confounders are needed to identify causal effects. That's the real meaning of the backdoor criterion."
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple"  title="d-Separation and Conditional Independence"}
+Suppose that, using a DAG, we confirm that C d-separates A and B.
+Then it also follows that the random variables A and B are conditionally independent given C (Pearl, 1995).
+:::
+
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+Which interpretation of this DAG is correct?
+
+1. E and D are conditionally independent given C
+
+2. E and D remain associated even after conditioning on C
+
+![](causal-inference-4-4.png)
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **2**.
+
+The path E ← C → D is blocked by conditioning on C, but the path E → D is not. Therefore, C does not d-separate E and D. Note that in this case, the reason d-separation fails is that a direct causal path between E and D remains. When estimating the effect of E on D, C should still be adjusted for—regardless of whether the direct path E → D exists.
+:::
+
+::: {.callout-note appearance="simple" title="One more quiz related to this episode"}
+Which interpretation of this DAG is correct?
+
+1. E and D are independent without conditioning on C, and also conditionally independent given C
+
+2. E and D are associated without conditioning on C, but conditionally independent given C
+
+3. E and D are independent without conditioning on C, but become associated after conditioning on C
+
+4. E and D are associated without conditioning on C, and remain associated even after conditioning on C
+
+![](causal-inference-4-5.png)
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **4**.
+
+In this case, unlike the first quiz, there is no direct path between E and D. However, C is a collider. Conditioning on C opens the path
+E ← A → C ← B → D, so C does not d-separate E and D.
+:::
+
+### Reference
+
+- Greenland S, Pearl J, Robins JM. Causal diagrams for epidemiologic research. Epidemiology 1999;10(1):37-48
+
+- Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
+
+### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+
+- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)

@@ -46,6 +46,10 @@ listing:
 - [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
 - [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
 
+このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
+
+- [study-design.R](../from-coffee-chat-to-r/study-design.R)
+
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
 - **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
@@ -58,10 +62,6 @@ listing:
 - **When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys**
 　バイアスは解析で帳尻合わせできないことが多い。選択バイアス・情報バイアス・交絡を「どこで混入するか」という視点で点検します。
 :::
-
-このエピソードのRスクリプト一式は、こちらからダウンロードできます。Rパッケージや、ここで紹介した解析手順をもう一度たどってみたい方はぜひ。
-
-- [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
 ### 2. Glossary — 統計学のことば
 
