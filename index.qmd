@@ -178,6 +178,16 @@ Through conversations between a father and daughter, the *way researchers think*
 
 <div class="project-card">
 
+## Eight Components of Causal Inference Preserved in Japanese
+
+This is a short essay on language. 
+
+**[Read in English](./kanji_en/index.html)**  /  **[Read in Japanese](./kanji_en/index.html)** 
+
+</div>
+
+<div class="project-card">
+
 ## Books and learning materials
 
 - **Causal Inference for Medical Research I. Generalized Linear Models** (in Japanese)
