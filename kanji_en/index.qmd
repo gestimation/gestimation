@@ -8,7 +8,7 @@
 
 <div class="about-intro">
 
-## Eight components of causal inference preserved in Japanese
+## Eight elements of causal inference preserved in Japanese
 
 One intriguing property of kanji characters—the logographic characters used in Japanese and Chinese—is that traces of their ancient meanings remain embedded in their internal structure. When we analyze the characters corresponding to causal inference, a small but revealing discovery emerges.
 

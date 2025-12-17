@@ -178,11 +178,11 @@ Through conversations between a father and daughter, the *way researchers think*
 
 <div class="project-card">
 
-## Eight components of causal inference preserved in Japanese
+## Eight Elements of Causal Inference Preserved in Japanese
 
-This is a short essay on language. 
+This is a short essay on Japanese language and kanji characters.
 
-**[Read in English](./kanji_en/index.html)**  /  **[Read in Japanese](./kanji_en/index.html)** 
+**[Read in English](./kanji_en/index.html)**  /  **[Read in Japanese](./kanji_jp/index.html)** 
 
 </div>
 
