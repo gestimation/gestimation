@@ -19,7 +19,7 @@ date: 2025-12-01
 # Study Design I − A Story of Coffee Chat and Research Hypothesis
 
 ::: {.serif-block .text-right}
-Keywords: research hypothesis, observational study, study design, language & writing
+Keywords: language & writing, observational study, research hypothesis, study design
 :::
 
 ------------------------------------------------------------------------
