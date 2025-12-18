@@ -163,6 +163,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul>
   <li><a href="#causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders" id="toc-causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders" class="nav-link active" data-scroll-target="#causal-inference-ii-a-subtle-distinction-between-common-causes-and-confounders">Causal Inference II − A Subtle Distinction between Common Causes and Confounders</a>
   <ul class="collapse">
+  <li><a href="#dagと一般因果" id="toc-dagと一般因果" class="nav-link" data-scroll-target="#dagと一般因果">DAGと一般因果</a></li>
   <li><a href="#後ろ扉を閉ざすなんて映画みたい" id="toc-後ろ扉を閉ざすなんて映画みたい" class="nav-link" data-scroll-target="#後ろ扉を閉ざすなんて映画みたい">後ろ扉を閉ざすなんて映画みたい</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
@@ -208,8 +209,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Keywords: bias, causal model, confounding &amp; collapsibility, observational study</p>
 </div>
 <hr>
-<section id="後ろ扉を閉ざすなんて映画みたい" class="level3">
-<h3 class="anchored" data-anchor-id="後ろ扉を閉ざすなんて映画みたい">後ろ扉を閉ざすなんて映画みたい</h3>
+<section id="dagと一般因果" class="level3">
+<h3 class="anchored" data-anchor-id="dagと一般因果">DAGと一般因果</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「お父さん、共通原因がバイアスってのはわかるんだけど、正直コーヒーと膵がんの話からあんまり進歩した気がしないんだ。その理由はふたつある。まず、私たちが調べてるのは個々の出来事じゃなくて一般法則だよね」</p>
@@ -224,7 +225,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>お父さん「それはランダム化臨床試験が実験的環境を反映しているからかもね。実際、DAGが示している関係は、あくまで研究から得られたデータを反映するもので、どんな環境でも成り立つとは限らない」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それにさ、いままでのDAGは3変数しかないけど単純すぎない？現実はもっと複雑な気がするんだけど」</p>
+<p>私「それにさ、いままでのDAGは3変数しかないけど単純すぎない？現実はもっと複雑だよね」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「もちろんDAGの変数を増やすこともできるよ。そうすると、もっと統計学っぽい理屈になっちゃうけど」</p>
@@ -236,6 +237,9 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>お父さん「じゃあ変数を5つに増やした例を使って、もう少し正式に解説してみようか。それにはちょっとコーヒーがほしいな」</p>
 </div>
 </div>
+</section>
+<section id="後ろ扉を閉ざすなんて映画みたい" class="level3">
+<h3 class="anchored" data-anchor-id="後ろ扉を閉ざすなんて映画みたい">後ろ扉を閉ざすなんて映画みたい</h3>
 <div class="callout callout-style-simple callout-note callout-titled" title="DAGの例">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -247,7 +251,7 @@ DAGの例
 </div>
 <div class="callout-body-container callout-body">
 <p>因果関係の例として、ピロリ菌と胃がんを取り上げます。このふたつの変数には、抗生物質を飲んでピロリ菌を除菌することで、胃がん発生を予防できることが知られていますよね。言い換えると、ピロリ菌除菌は「原因」、胃がん発生は「結果」に対応します。</p>
-<p>しかし、胃がんに関連する変数は、これだけではありません。たとえば、若いうちは胃がんにはなりませんが、高齢になると胃がんリスクが高くなりますし、同じ年齢でも胃の炎症など様々な体質の違いが胃がんの発生に関連することがわかっています。これを踏まえて、以下の3つの仮定を置きます。</p>
+<p>しかし、胃がんに関連する変数は、これだけではありません。たとえば、若いうちは胃がんにはなりませんが、高齢になると胃がんリスクが高くなりますし、同じ年齢でも胃の炎症など様々な体質の違いが胃がんの発生に関連することがわかっています。これを踏まえて、以下の3つの仮定を置くことにします。この仮定は必ずしも正しいわけではなく、あくまで説明のための題材です。</p>
 <ul>
 <li>年齢が高くなるにつれ、胃がんリスクは高くなるが、その一部は胃の炎症の程度に反映される。胃の炎症がひどくなると、胃がんにかかりやすくなり、さらに医療機関に受診して、ピロリ菌を除菌してもらう確率が高くなる</li>
 <li>心配性な人もまたピロリ菌除菌を受けやすい。心配性な性格だと、胃の炎症も起こしやすい。ただし、性格はピロリ菌除菌と胃の炎症への影響を通してのみ、胃がんに関連する</li>
@@ -272,58 +276,31 @@ DAGの例
 <p>私「ん？<strong>共通原因</strong>、<strong>中間媒介因子</strong>、<strong>合流点</strong>っていう3パターンがあったんだっけ。共通原因を見つければいいから、Cかな。いや、真に近いモデルを当てはめる、なんてことも言ってたよね。だからBとC。どうかな、あってる？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「結果論だけどあってる。実はね、このDAGはトリッキーで、Cを調整するだけじゃ、バイアスが残る例なんだ。そのあたりも説明するから、話の続きを聞いててね」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="DAGの用語">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-DAGの用語
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、<strong>バックドアパス（backdoor path）</strong>、祖先と子孫です。</p>
-<p>グラフ上の変数を表す点を、ノードといいます。上のグラフには5つのノードがありますよね。2つのノードは、線や矢印で結ばれます。A→Bという矢印で結ぶと、それはAからBへの方向性があることを意味します。因果推論の文脈では、原因から結果への直接的な結びつきを表しています。このグラフでは、AとCは隣接しているが、AはBやDとは結ばれていません。これは、AのCへの直接的影響があるという意味です。直接的影響があるとは、もっというと、グラフ上の他の変数に媒介されない影響がある、ということです。</p>
-<p>胃がんの例では、性格は、ピロリ菌除菌と体質を通じて胃がん発生をもたらすと仮定しました。この仮定は、AからBやDへの矢印がないことに対応しています。</p>
-<p>矢印で結びついたグラフは、必ず、矢印の頭から入り、頭から出るような一続きの矢印で辿ることができます。直接的または間接的にノードを結びつける矢印の組み合わせのことを、パスといいます。特に、矢印の方向に従って辿ることのできるパスを、方向性のあるパスという意味で有向パスと呼んでいます。上のグラフでは、A→C→Dのパスは有向パスです。</p>
-<p>次にE←C→Dについて考えてみましょう。こちらは有向パスではありません。有向パス以外のものを無向パスといいます。</p>
-<p>無向パスのうち重要なのは、あるノードから矢印をさかのぼって出て、別のノードに入るパスです。これをバックドアパスといいます。このグラフでは、EからDへのパスは、直接のパス以外はすべてバックドアパスです。</p>
-<p>そして、あるノードを出て別のノードに入っていく有向パスがあるとき、前者を祖先、後者を子孫といいます。文献によっては、祖先を原因、子孫を結果と呼んでいることもあります。このグラフでいえば、A、B、Cは、すべてEとDの祖先です。逆に、EとDは、A、B、Cの子孫です。そしてEはDの祖先であり、DはEの子孫です。</p>
-</div>
-</div>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ややこしいね。覚えきれない」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「どこかポイントか説明しておこうか。まず、DAGとは、directedつまり有向パスだけで構成された、acyclicな循環していないグラフっていう意味。つまりDAGって言ったときは、ノード間の結びつきがすべて矢印で表されており、しかも矢印がループ状にぐるぐるまわったりしないってことを前提にしている。有向パスっていうのは、A→B→C→Dのような矢印で連鎖しているノードの集合のことで、この場合はAからDの順に因果関係が伝わることを意味している。ここでひとつ確認してほしいことがあるんだ」</p>
+<p>お父さん「結果論だけどあってる。実はね、このDAGはトリッキーで、Cを調整するだけじゃ、バイアスが残る例なんだ。まず、DAGのそもそもの意味は、directedつまり有向パスだけで構成された、acyclicな循環していないグラフっていうこと。つまりDAGでは、ノード間の結びつきがすべて矢印で表されて、しかも矢印がループ状にぐるぐるまわったりしない。そして、<strong>有向パス</strong>と共有原因を経由する<strong>バックドアパス</strong>の2種類に注目してほしい」</p>
 </div>
 <div class="voice-daughter">
-<p>私「どんなこと？」</p>
+<p>私「ふむ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それは、DAGにおいて、ブロックされていないパスは、<strong>有向パス</strong>と共有原因を経由する<strong>バックドアパス</strong>の2種類しかありえないってこと」</p>
+<p>お父さん「有向パスっていうのは、A→B→C→Dのような矢印で連鎖しているノードの集合のこと。これはAからDの順に因果関係が伝わることを意味している」</p>
 </div>
 <div class="voice-daughter">
-<p>私「バックドアパスってなに？」</p>
+<p>私「ふむふむ。バックドアパスってなに？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ノードに入る矢印を通じたパスのこと。矢印は出るか入るかしかないでしょ」</p>
+<p>お父さん「あるノードに注目してみて。このノードに入る矢印を通じたパスのこと。矢印は出るか入るかしかないでしょ。バックドアパスは、原因に矢印が入る方向から回り込むような経路なんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ああ、バックドアっていうから後ろ扉かと思った。後ろ扉を閉じて地震を防ぐっていう映画があってね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ふーん」</p>
+<p>お父さん「ふーん。とりあえず、有効パスでは矢印が出る、バックドアパスでは矢印が入る、ここをみてみよう」</p>
 </div>
 <div class="voice-daughter">
-<p>私「えっと、とりあえず胃がんの例で確認してみるね。このDAGには、EとDを結ぶパスは、両者を直接結び付ける有向パスが1つ、バックドアパスが4つある（E←A→C←B→D、E←A→C→D、E←C←B→D、E←C→D）。でも、確かにバックドアパスは、必ず共通原因Cを経由してるね」</p>
+<p>私「えっと、とりあえず胃がんのやつをみるね。このDAGには、EとDを結ぶパスは、両者を直接結び付ける有向パスが1つ、バックドアパスが4つある（E←A→C←B→D、E←A→C→D、E←C←B→D、E←C→D）」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうでしょ。ここがDAGの特徴のひとつ。前回の説明を思い出してみて。共通原因は交絡因子として調整すべきっていったよね。DAGが複雑になると、バックドアパスが増えるけど、基本は同じ。すべてのバックドアパスをブロックできるような共通原因を探して、調整すればいいんだ」</p>
+<p>お父さん「そうでしょ。そして、バックドアパスは、必ず共通原因Cを経由している。これがDAGの特徴のひとつ。前回の説明を思い出してみて。共通原因は交絡因子として調整すべきっていったよね。DAGが複雑になると、バックドアパスが増えるけど、基本は同じ。すべてのバックドアパスをブロックできるような共通原因を探して、調整すればいいんだ。共通原因はDAG上のどこにあるかの話、交絡因子はブロックすべき変数の話ってこと」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="バックドア基準">
@@ -349,6 +326,25 @@ DAGの用語
 </div>
 <div class="voice-daughter">
 <p>私「やはり要石で後ろ扉を閉じるみたいな話だったか」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="DAGの用語">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+DAGの用語
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>次に、DAGで用いられる用語を整理しておきます（Greenland, Pearl, Robins 1999）。ここで説明する用語は、ノード、矢印、有向パス、<strong>バックドアパス（backdoor path）</strong>、祖先と子孫です。</p>
+<p>グラフ上の変数を表す点を、ノードといいます。上のグラフには5つのノードがありますよね。2つのノードは、線や矢印で結ばれます。A→Bという矢印で結ぶと、それはAからBへの方向性があることを意味します。因果推論の文脈では、原因から結果への直接的な結びつきを表しています。このグラフでは、AとCは隣接しているが、AはBやDとは結ばれていません。これは、AのCへの直接的影響があるという意味です。直接的影響があるとは、もっというと、グラフ上の他の変数に媒介されない影響がある、ということです。</p>
+<p>胃がんの例では、性格は、ピロリ菌除菌と体質を通じて胃がん発生をもたらすと仮定しました。この仮定は、AからBやDへの矢印がないことに対応しています。</p>
+<p>矢印で結びついたグラフは、必ず、矢印の頭から入り、頭から出るような一続きの矢印で辿ることができます。直接的または間接的にノードを結びつける矢印の組み合わせのことを、パスといいます。特に、矢印の方向に従って辿ることのできるパスを、方向性のあるパスという意味で有向パスと呼んでいます。上のグラフでは、A→C→Dのパスは有向パスです。</p>
+<p>次にE←C→Dについて考えてみましょう。こちらは有向パスではありません。有向パス以外のものを無向パスといいます。</p>
+<p>無向パスのうち重要なのは、あるノードから矢印をさかのぼって出て、別のノードに入るパスです。これをバックドアパスといいます。このグラフでは、EからDへのパスは、直接のパス以外はすべてバックドアパスです。</p>
+<p>そして、あるノードを出て別のノードに入っていく有向パスがあるとき、前者を祖先、後者を子孫といいます。文献によっては、祖先を原因、子孫を結果と呼んでいることもあります。このグラフでいえば、A、B、Cは、すべてEとDの祖先です。逆に、EとDは、A、B、Cの子孫です。そしてEはDの祖先であり、DはEの子孫です。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
