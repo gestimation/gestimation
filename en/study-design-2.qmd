@@ -19,7 +19,7 @@ date: 2025-12-14
 # Study Design II − Data Have Types
 
 ::: {.serif-block .text-right}
-Keywords: probability model, R simulation, survival & competing risks, language & writing
+Keywords: language & writing, probability model, R simulation, survival & competing risks
 :::
 
 ------------------------------------------------------------------------

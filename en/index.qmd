@@ -33,7 +33,11 @@ Mathematics and medicine make their appearances, but feel free to take only what
 
 ## How to read this site
 
-While each episode stands independently, their dialogues start from **Study Design**. From there, you can either follow the narrative or choose the layer that interests you most. Some episodes come with short R simulations as thought experiments—less about coding, more about feeling how causal questions and statistical assumptions are connected to data. Reading the whole, scattered meanings will connect, and surely something will become clear. 
+Not sure where to begin? Start with **Study Design**.
+
+Each episode can be read on its own, but the conversations gently build from there. Some episodes include short R scripts—not to teach programming, but to help you feel how causal questions and statistical assumptions take shape in data.
+
+You can read in order or jump to any layer that interests you. If you read through the whole series, the scattered pieces will slowly find their places—and the view may look a little different than before.
 
 ------------------------------------------------------------------------
 

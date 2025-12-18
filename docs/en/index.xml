@@ -25,7 +25,7 @@
 <section id="study-design-ii-data-have-types" class="level1">
 <h1>Study Design II − Data Have Types</h1>
 <div class="serif-block text-right">
-<p>Keywords: probability model, R simulation, survival &amp; competing risks, language &amp; writing</p>
+<p>Keywords: language &amp; writing, probability model, R simulation, survival &amp; competing risks</p>
 </div>
 <hr>
 <p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:</p>
@@ -647,7 +647,7 @@ Answer
 <section id="study-design-i-a-story-of-coffee-chat-and-research-hypothesis" class="level1">
 <h1>Study Design I − A Story of Coffee Chat and Research Hypothesis</h1>
 <div class="serif-block text-right">
-<p>Keywords: hypothesis/outcome/population, observational study, study design, language/writing</p>
+<p>Keywords: language &amp; writing, observational study, research hypothesis, study design</p>
 </div>
 <hr>
 <section id="a-daughter-beginning-her-first-study-and-her-father-a-statistician" class="level3">

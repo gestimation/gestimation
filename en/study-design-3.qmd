@@ -19,7 +19,7 @@ date: 2025-12-08
 # Study Design III − Outcomes: The Bridge from Data Collection to Analysis
 
 ::: {.serif-block .text-right}
-Keywords: clinical trial, research hypothesis, survival & competing risks, language & writing
+Keywords: clinical trial, language & writing, research hypothesis, survival & competing risks
 :::
 
 ------------------------------------------------------------------------
