@@ -199,9 +199,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" id="toc-frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="nav-link active" data-scroll-target="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance">Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</a>
   <ul class="collapse">
   <li><a href="#生存曲線とハザード比" id="toc-生存曲線とハザード比" class="nav-link" data-scroll-target="#生存曲線とハザード比">生存曲線とハザード比</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#p値に関する一見正しそうな説明" id="toc-p値に関する一見正しそうな説明" class="nav-link" data-scroll-target="#p値に関する一見正しそうな説明">p値に関する一見正しそうな説明</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,6 +273,7 @@ coxph()を用いたハザード比の推定
 </div>
 <div class="callout-body-container callout-body">
 <p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数<code>generate_data(hr1, hr2)</code>を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。この関数では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
@@ -381,8 +380,10 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 </div>
 </div>
 </div>
+</section>
 <section id="p値に関する一見正しそうな説明" class="level3">
 <h3 class="anchored" data-anchor-id="p値に関する一見正しそうな説明">p値に関する一見正しそうな説明</h3>
+<div class="dialogue">
 <div class="voice-daughter">
 <p>私「ハザード比とp値は知ってる。ハザード比は、TH群が基準になってて、ハザード比が1より小さいとき、TH群よりLTA群の方がOSやDFSがいいってこと？p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績が悪かったけど、p値をみると2群に有意差はないんだよね」</p>
 </div>
@@ -425,7 +426,7 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 <p>私「へ。言葉通りだけど？JCOG9502を100回やったらどうなるかって意味」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「その通り。同じ試験を100回繰り返したらp値が100個出てくるでしょ。これがこの場合の確率の定義なんだ。頻度論的確率っていって。じゃあ次。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
+<p>お父さん「その通り。同じ試験を100回繰り返したらp値が100個出てくるでしょ。これがこの場合の確率の定義なんだ。頻度論的確率（frequentist probability）とかいうね。じゃあ確率の意味の次は、p値の解釈。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
 </div>
 <div class="voice-daughter">
 <p>私「普通そう考えるんじゃない？」</p>
@@ -449,10 +450,10 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 <p>私「はいはい。お父さん、話長くない？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「もう最後にするよ。それにコーヒーも残ってるじゃない。三つ目の説明“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”についてはどう？これは正しいかな？」</p>
+<p>お父さん「説教臭かった？三つ目の説明“統計学的に有意でない結果は、帰無仮説が正しいので採択すべきであることを意味する”まで考えようよ。これは正しい？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
+<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ、目を見ればわかる。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、<strong>同等性 （equivalence）試験</strong>や<strong>非劣性 （non-inferiority）試験</strong>を組む必要がある」</p>
@@ -461,9 +462,33 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 <p>私「ふーん。そんなことわざわざやるかなあ。統計学は“有意差がないこと”と“同等”の区別にうるさいってことね」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「そうだね、仮説にはうるさいね。これは日本の話なんだけど。昔、薬事承認の根拠として非劣性試験を行っていた時代があってね。その時代の経験を踏まえると、研究仮説と統計的な判断基準の関係は、厳密に考えとかないとちょっとまずいと思うんだ」</p>
+<p>お父さん「やっぱり仮説とその判定が臨床試験の焦点だからね。これはもう30年ほど前の日本の話なんだけど。昔、薬事承認の根拠として非劣性試験を行っていた時代があってね。その時代の経験を踏まえると、研究仮説と統計的な判断基準の関係は、厳密に考えとかないとちょっとまずいと思うんだ」</p>
 </div>
-</section>
+<div class="dialogue">
+<section id="臨床試験の技術評価としての側面" class="level3">
+<h3 class="anchored" data-anchor-id="臨床試験の技術評価としての側面">臨床試験の技術評価としての側面</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「ふむ。えっと。この論文を読んで思ったんだけどね。基礎研究だと、有意差がつかない結果はいまいちじゃない？でもJCOG9502は違う。LTAの有効性が示されたわけでも、術式が同等ってわかったわけでもない。でもどうしてLancet Oncologyに載るほど評価されたんだろう」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？有意差がつかない臨床試験結果に価値がないとは思わないけど。臨床試験って、治療のよさを評価することが目的でしょ。有効性が示されるかどうかに関わらず、評価が定まったということに変わりはないじゃない」</p>
+</div>
+<div class="voice-daughter">
+<p>私「…それってネガティブ試験でも価値が変わらないってことだよね。臨床試験は技術を評価することが目的だってこと？科学的発見じゃなくて？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。歴史的にみて臨床試験は技術評価のために行われてきた。p値の使い方や、有効性エンドポイントの定義の標準化も、評価基準を一定に保つための工夫だった。臨床試験ってさ、制度としては、各国の製薬企業が承認を得るために行ってきたものが中心だったでしょ。でも、90年代はまだ臨床試験の規格が統一されていなかった。90年代後半になって、米国、欧州、日本の規制当局が集まって臨床試験の標準規格を策定したんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それは医師主導臨床試験じゃなくて治験だよね。あんまり納得いかないよ。臨床試験の結果、何度もパラダイムシフトが起きてきたもの。S-1や分子標的薬、抗PD-1抗体とか、明らかに科学の進歩に関わってる」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それは技術評価の結果が科学を刺激しただけじゃないかなあ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「お父さんって、技術と科学を区別したがるね。まあ、企業治験は技術評価のくくりでも私はいいよ。でも、科学の営み全体をみたとき、臨床試験はその一部だと思う。結果が仮説を更新して、次の問いを生むから」</p>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="ホパテの悲劇">
 <div class="callout-header d-flex align-content-center">
@@ -476,46 +501,6 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <p>脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1998年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることを明確に示しています。</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="frequentist-2.jpg" class="img-fluid"></p>
-<p>この人は誰でしょう。</p>
-<ol type="1">
-<li>Kaplan</li>
-<li>Meier</li>
-<li>Cox</li>
-<li>Wilcoxon</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>正解は3です</strong></li>
-</ul>
-<p>この方がCox先生です。</p>
-<p><a href="https://en.wikipedia.org/wiki/David_Cox_(statistician)">David Cox (statistician)</a></p>
-</div>
 </div>
 </div>
 </section>
@@ -546,6 +531,9 @@ Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
 </ul>
 
 
+</section>
+</div>
+</div>
 </section>
 </section>
 

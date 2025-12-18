@@ -84,6 +84,27 @@ $$
 :::
 :::::::::::::::::::::::::::::::::
 
+
+::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
+
+![](frequentist-2.jpg)
+
+この人は誰でしょう。
+
+1.  Kaplan
+2.  Meier
+3.  Cox
+4.  Wilcoxon
+:::
+
+::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+-   **正解は3です**
+
+この方がCox先生です。
+
+[David Cox (statistician)](https://en.wikipedia.org/wiki/David_Cox_(statistician))
+:::
+
 ### 次のエピソードとRスクリプト
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
