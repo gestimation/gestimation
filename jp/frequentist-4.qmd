@@ -241,16 +241,13 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 
 ### このシリーズとRスクリプト
 
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
-
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
 ### 過去のシリーズと用語集
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [Statistical Terms in Plain Language](glossary.html)

@@ -71,9 +71,9 @@ listing:
 
 がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論的なものの見方**を父は語ります。
 
-- [Reading a Paper over a Cup of Coffee]
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **Reading a Paper over a Cup of Coffee**
@@ -92,9 +92,9 @@ listing:
 
 頻度論が導く法則は、ただの抽象ではなくシミュレーション実験で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
 
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
@@ -113,12 +113,12 @@ listing:
 
 リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
 
-- [Silent Confusions Hidden in Percentages]
-- [Who Is This Percentage About? Target Populations and Attributable Fractions]
-- [When Odds Ratios Approximate Risk Ratios—and When They Fail]
-- [From Risk and Rate to Survival and Hazard]
-- [A First Note on Cox Regression]
-- [After Cox Regression: A Case Study and R Demonstration]
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
 - **Silent Confusions Hidden in Percentages**

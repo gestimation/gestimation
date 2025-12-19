@@ -151,11 +151,9 @@ Keywords: bias, language & writing, observational study, study design
 
 ### Up to this point, we have been talking about the essence of research — how we frame research questions and plan to obtain unbiased answers. The following episodes step away from study design and begin to reflect on observed effects and their uncertainty, how we reason about causes, and what ultimately becomes publishable.
 
-- [Reading a Paper over a Cup of Coffee]
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
 ### 過去のエピソード
 

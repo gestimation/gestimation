@@ -273,11 +273,8 @@ summary(fit)
 ### このシリーズとRスクリプト
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-3.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
