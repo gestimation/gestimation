@@ -194,7 +194,7 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 - 吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9
 
-### 次のエピソードとRスクリプト
+### This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
 - [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)

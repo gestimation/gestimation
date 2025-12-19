@@ -355,7 +355,7 @@ ssizeCT.default(
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
-### This concludes the Frequentist Thinking/Experiments series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
+### This concludes the Frequentist Experiments series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)

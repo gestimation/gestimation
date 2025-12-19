@@ -175,11 +175,13 @@ Keywords: language/writing
 -   セクションとパラグラフごとに書く
 
 ::: voice-daughter
-私「パラグラフは英語の授業で習ったやつだよね。セクションはそれをまとめたもの？」
+私「パラグラフは英語の授業で習ったやつだよね。セクションはそれをまとめたものか」
 :::
 
+### パラグラフ数の統計
+
 ::: voice-father
-お父さん「うん。論文の章立てには、Introduction、Methods、Results、Discussion、Conclusionsというセクションを使うよね。たとえばIntroductionというセクションを書くことを想像してみて。Introductionには、いくつくらいのパラグラフがありそう？」
+お父さん「論文の章立てには、Introduction、Methods、Results、Discussion、Conclusionsというセクションを使う。たとえばIntroductionというセクションを書くことを想像してみて。Introductionには、いくつくらいのパラグラフがありそう？」
 :::
 
 ::: voice-daughter
