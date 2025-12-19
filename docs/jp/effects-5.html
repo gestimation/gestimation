@@ -191,7 +191,7 @@ window.Quarto = {
   <ul>
   <li><a href="#effects-and-time-v-a-first-note-on-cox-regression" id="toc-effects-and-time-v-a-first-note-on-cox-regression" class="nav-link active" data-scroll-target="#effects-and-time-v-a-first-note-on-cox-regression">Effects and Time V − A First Note on Cox Regression</a>
   <ul class="collapse">
-  <li><a href="#cox回帰はハザード比のモデルというより比例ハザード性のモデル" id="toc-cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="nav-link" data-scroll-target="#cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</a></li>
+  <li><a href="#cox回帰はハザード比ではなく比例ハザード性のモデル" id="toc-cox回帰はハザード比ではなく比例ハザード性のモデル" class="nav-link" data-scroll-target="#cox回帰はハザード比ではなく比例ハザード性のモデル">Cox回帰はハザード比ではなく比例ハザード性のモデル</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
   <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
@@ -229,8 +229,8 @@ window.Quarto = {
 <p>Keywords: effect measure, probability model, survival &amp; competing risks</p>
 </div>
 <hr>
-<section id="cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="level3">
-<h3 class="anchored" data-anchor-id="cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</h3>
+<section id="cox回帰はハザード比ではなく比例ハザード性のモデル" class="level3">
+<h3 class="anchored" data-anchor-id="cox回帰はハザード比ではなく比例ハザード性のモデル">Cox回帰はハザード比ではなく比例ハザード性のモデル</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それが。ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>の比をとったこの式なの。<span class="math inline">\(HR\)</span>は<strong>ハザード比（hazard ratio）</strong>だよね」</p>
@@ -277,7 +277,15 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「これがCox回帰の式ね。ロジスティック回帰の式に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
+<p>お父さん「この式は本質的なところしか書いてないからね。でも、教科書に書いてあるCox回帰の式と、比例ハザード性というエッセンスは同じ。教科書は対数ハザード比を回帰係数<span class="math inline">\(\beta\)</span>に置き換えて、ベクトル表記してあるだけだ」</p>
+</div>
+</div>
+<p><span class="math display">\[
+\lambda(x)=\lambda_0(x)\exp(\beta Z)}
+\]</span></p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="補2重対数変換: ハザード比を抽出する変換">
@@ -290,9 +298,15 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザードを扱うことができます。リンク関数として補2重対数変換（<code>glm</code>でいえば <code>binomial(link = "cloglog")</code>）を選びます。直感を得るため、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。</p>
-<p>2群の生存関数を [ S_1(x)=(-_1 x),S_2(x)=(-_2 x) ] とします。それぞれに対して [ {-S(x)} ] （生存関数の <em>log(-log)</em> 変換）を適用すると、 [ {-S_1(x)}=(_1 x), {-S_2(x)}=(_2 x) ] となります。</p>
-<p>同じ時点(x)の下で、2群の差を取れば、 [ {-S_1(x)}-{-S_2(x)} = (_1 x)-(_2 x) = (_1/_2) = (HR) ] となり、<em>時間項 (t)</em> は打ち消されて <strong>ハザード比だけが残ります</strong>。この変換は、Kaplan–Meier曲線を用いた比例ハザード性の図示（いわゆるログログプロット）でも使われます。</p>
+<p>あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザード比を推定できます。リンク関数として補2重対数変換（<code>glm</code>でいえば <code>binomial(link = "cloglog")</code>）を選びます。直感を得るため、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。指数分布のハザード比と回帰係数を<span class="math inline">\(\beta=\log(HR)\)</span>と表記ことにします。</p>
+<p>2群の生存関数を、ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>を使って <span class="math inline">\(S_1(x)=\exp(-\lambda_1 x)\)</span></p>
+<p><span class="math inline">\(S_2(x)=\exp(-\lambda_2 x)\)</span></p>
+<p>とします。それぞれ対数をとって符号を変えます。</p>
+<p><span class="math inline">\(-\log\{S_1(x)\}=\lambda_1 x\)</span></p>
+<p><span class="math inline">\(-\log\{S_2(x)\}=\lambda_2 x\)</span></p>
+<p>もう一度対数をとり、さらに差をとってみます。</p>
+<p><span class="math inline">\(\log[-\log\{S_1(x)\}]-\log[\log\{S_2(x)\}]=\log(\lambda_1 x)-\log(\lambda_2 x)=\log(HR)=\beta\)</span></p>
+<p>つまり、同じ時点<span class="math inline">\(x\)</span>の下で2群の差をとると、<strong>時間<span class="math inline">\(x\)</span>がキャンセルして回帰係数だけが残ります</strong>。生存時間解析の裏では、この生存関数から回帰係数（対数ハザード比）を抽出する変換が利用されています。その一例は、Kaplan–Meier曲線を用いた比例ハザード性の図示（いわゆるログログプロット）です。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
