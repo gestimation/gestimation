@@ -35,7 +35,7 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 :::
 
 ::: voice-father
-お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
+お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰は幅広いデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
 :::
 
 ::: voice-daughter
@@ -91,7 +91,7 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 :::
 
 ::: voice-daughter
-私「それ、実際の患者さんでもあるかも！」
+私「それ、診療していてもあるかも」
 :::
 
 ::: voice-father
