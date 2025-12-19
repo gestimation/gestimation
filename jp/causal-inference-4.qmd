@@ -161,7 +161,12 @@ DAGはいくつかのアイデアが元になっていますが、そのひと�
 
 :::
 
-### 次のエピソードとRスクリプト
+### 次のエピソード
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+
+::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+
+**このシリーズのエピソード**
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
@@ -169,11 +174,15 @@ DAGはいくつかのアイデアが元になっていますが、そのひと�
 - [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
 
-### 過去のシリーズと用語集
+**過去のシリーズ**
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

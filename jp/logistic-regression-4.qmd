@@ -317,7 +317,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="リンク"}
+::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
 
 **このシリーズのエピソード**
 
@@ -332,8 +332,10 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 
 **用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
 :::

@@ -272,13 +272,22 @@ summary(fit)
 
 ### 次のエピソードとRスクリプト
 
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance](frequentist-3.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
-
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-### 過去のシリーズと用語集
+::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+
+**このシリーズのエピソード**
+
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
+
+**過去のシリーズ**
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

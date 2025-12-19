@@ -200,9 +200,3 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
-
-### 過去のシリーズと用語集
-
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [Statistical Terms in Plain Language](glossary.html)
