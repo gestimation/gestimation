@@ -30,7 +30,7 @@ listing:
 
 ## ご案内
 
-どのエピソードも独立していますが、ふたりの会話は[Study design](study-design-1.html)から始まります。そこから先は、物語を追っても、興味の向くレイヤーを選んでも構いません。ちょっとしたおすすめは[Frequentist Thinking](frequentist-1.html)（臨床試験とp値）、[Causal Inference](causal-inference-1.html)（研究の中の因果） あたり。全体を通して読むと、散らばっていた意味どうしがつながり、きっといくつかのことが見えてきます。
+どのエピソードも独立していますが、ふたりの会話は[Study Design](study-design-1.html)から始まります。そこから先は、物語を追っても、興味の向くレイヤーを選んでも構いません。ちょっとしたおすすめは[Frequentist Thinking](frequentist-1.html)（臨床試験とp値）、[Causal Inference](logistic-regression-1.html)（研究の中の因果推論） あたり。全体を通して読むと、散らばっていた意味どうしがつながり、きっといくつかのことが見えてきます。
 
 ------------------------------------------------------------------------
 
