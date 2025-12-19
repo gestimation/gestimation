@@ -136,7 +136,7 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 ::: 
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple" title="データの型と統計手法"}
+::: {.callout-note appearance="simple" collapse="true" title="データの型と統計手法"}
 
 アウトカムはデータの型によって4種類に分類されます。
 

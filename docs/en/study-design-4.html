@@ -488,14 +488,16 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Entering survival data">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Entering survival data
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Because survival data consist of a pair of variables, you also need to specify them as a pair when you pass them to R functions. The <strong>survival</strong> package provides a dedicated input function <code>Surv()</code> for this purpose, which is used by functions such as <code>survfit()</code> and <code>coxph()</code>. The exact input format depends on the package. For example, the <strong>mets</strong> package defines a separate <code>Event()</code> function. The <code>cifplot()</code> function in the <strong>cifmodeling</strong> package accepts both <code>Surv()</code> and <code>Event()</code>.</p>
 <div class="cell">
@@ -515,6 +517,7 @@ Entering survival data
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome.type =</span> <span class="st">"survival"</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">label.y      =</span> <span class="st">"Overall survival"</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>

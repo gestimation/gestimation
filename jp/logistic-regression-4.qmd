@@ -130,7 +130,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple" title="注意事項1. フォーマット"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項1. フォーマット"}
 
 論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。
 
@@ -140,7 +140,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 
 :::
 
-::: {.callout-note appearance="simple" title="注意事項2. 単位・表示桁数"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項2. 単位・表示桁数"}
 
 表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。
 
@@ -249,7 +249,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple"  title="注意事項3. 表タイトル・脚注"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項3. 表タイトル・脚注"}
 
 読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。
 
@@ -259,7 +259,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 
 :::
 
-::: {.callout-note appearance="simple"  title="注意事項4. 数え尽くしの原則"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項4. 数え尽くしの原則"}
 
 統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。
 

@@ -289,14 +289,16 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 統計的有意性とp値に関するASA声明
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
 <p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
@@ -312,23 +314,27 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 片側p値と両側p値
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
 <p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことがわかります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
+<p><strong>片側（one-sided）p値</strong>と<strong>両側（two-sided）p値</strong>は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
 <hr>
 <p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
 <p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
 <p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
