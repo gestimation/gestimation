@@ -280,6 +280,21 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="補2重対数変換: ハザード比を抽出する変換">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+補2重対数変換: ハザード比を抽出する変換
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザードを扱うことができます。リンク関数として補2重対数変換（<code>glm</code>でいえば <code>binomial(link = "cloglog")</code>）を選びます。直感を得るため、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。</p>
+<p>2群の生存関数を [ S_1(x)=(-_1 x),S_2(x)=(-_2 x) ] とします。それぞれに対して [ {-S(x)} ] （生存関数の <em>log(-log)</em> 変換）を適用すると、 [ {-S_1(x)}=(_1 x), {-S_2(x)}=(_2 x) ] となります。</p>
+<p>同じ時点(x)の下で、2群の差を取れば、 [ {-S_1(x)}-{-S_2(x)} = (_1 x)-(_2 x) = (_1/_2) = (HR) ] となり、<em>時間項 (t)</em> は打ち消されて <strong>ハザード比だけが残ります</strong>。この変換は、Kaplan–Meier曲線を用いた比例ハザード性の図示（いわゆるログログプロット）でも使われます。</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -301,7 +316,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -310,7 +325,7 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は3です</strong></li>

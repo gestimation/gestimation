@@ -84,6 +84,33 @@ $$
 :::
 :::::::::::::::::::::::::::::::::
 
+::: {.callout-note appearance="simple" title="補2重対数変換: ハザード比を抽出する変換"}
+あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザードを扱うことができます。リンク関数として補2重対数変換（`glm`でいえば `binomial(link = "cloglog")`）を選びます。直感を得るため、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。
+
+2群の生存関数を
+\[
+S_1(x)=\exp(-\lambda_1 x),\qquad S_2(x)=\exp(-\lambda_2 x)
+\]
+とします。それぞれに対して
+\[
+\log\{-\log S(x)\}
+\]
+（生存関数の *log(-log)* 変換）を適用すると、
+\[
+\log\{-\log S_1(x)\}=\log(\lambda_1 x),\qquad
+\log\{-\log S_2(x)\}=\log(\lambda_2 x)
+\]
+となります。
+
+同じ時点\(x\)の下で、2群の差を取れば、
+\[
+\log\{-\log S_1(x)\}-\log\{-\log S_2(x)\}
+= \log(\lambda_1 x)-\log(\lambda_2 x)
+= \log(\lambda_1/\lambda_2)
+= \log(HR)
+\]
+となり、*時間項 \(t\)* は打ち消されて **ハザード比だけが残ります**。この変換は、Kaplan–Meier曲線を用いた比例ハザード性の図示（いわゆるログログプロット）でも使われます。
+:::
 
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
 

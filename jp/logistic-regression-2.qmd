@@ -200,7 +200,7 @@ glm(y ~ x1 + x2, family = poisson(), data = dat)
 
 リスク比を求めるには、$g(\pi)=\log(\pi)$ つまり対数関数を指定します。
 
-ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補二重対数（complementary log-log）関数を指定します。
+ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補2重対数（complementary log-log）関数を指定します。
 :::
 
 ### 文献
