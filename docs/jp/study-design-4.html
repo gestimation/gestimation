@@ -200,7 +200,6 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" id="toc-study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="nav-link active" data-scroll-target="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r">Study Design IV − A First Step into Survival and Competing Risks Analysis with R</a>
   <ul class="collapse">
   <li><a href="#調査項目とデータの型" id="toc-調査項目とデータの型" class="nav-link" data-scroll-target="#調査項目とデータの型">調査項目とデータの型</a></li>
-  <li><a href="#生存時間解析と競合リスク解析" id="toc-生存時間解析と競合リスク解析" class="nav-link" data-scroll-target="#生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</a></li>
   <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
@@ -405,12 +404,21 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>イベント変数=2: イベントが観察される前に競合リスクが生じた</li>
 </ul>
 <div class="voice-daughter">
-<p>私「だいたいわかった。この調査票、使わせてもらうね」</p>
+<p>私「そうなんだ。イベント変数ってなんとなく0と1だと思ってたわ」</p>
 </div>
-</div>
-</section>
 <section id="生存時間解析と競合リスク解析" class="level3">
 <h3 class="anchored" data-anchor-id="生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</h3>
+<div class="voice-father">
+<p>お父さん「競合リスクとあわせて知ってほしいのが、Kaplan-Meier曲線が生存曲線じゃなくなるってこと」</p>
+</div>
+<div class="voice-daughter">
+<p>私「どういう意味？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ほら、生存と死亡しかなかったら、死亡確率の裏返しが生存確率でしょ。でも死因の内訳、たとえば原病死と他因死があって、他因死が競合リスクだったらどう？原病死の確率の裏返しは生存確率にならない。だから、競合リスク解析では、Kaplan-Meier曲線じゃなくてAalen-Johansen曲線を使う。ちょっとRの結果をみてほしい」</p>
+</div>
+</section>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -632,7 +640,7 @@ Rコードと結果はこちら
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「Aalen-Johansen曲線って、Kaplan-Meier曲線のY軸を逆さにしただけじゃないの」</p>
+<p>私「CIRの解析に使ったのがAalen-Johansen曲線ね。でもこれって、Kaplan-Meier曲線のY軸を逆さにしただけじゃないの」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。</p>
