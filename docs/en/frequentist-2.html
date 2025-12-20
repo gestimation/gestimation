@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="臨床試験ででてきるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。">
+
+<title>P-Value Explanations That Seem Plausible at First Glance – Coffee and Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FCK3LX51C6"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Coffee and Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gestimation.github.io/cifmodeling/"> 
+<span class="menu-text">cifmodeling</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-(en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation (EN)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-(en">    
+        <li>
+    <a class="dropdown-item" href="../en/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-a-conversation-(jp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">A Conversation (JP)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-a-conversation-(jp">    
+        <li>
+    <a class="dropdown-item" href="../jp/index.html">
+ <span class="dropdown-text">Index</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../jp/study-design-1.html">
+ <span class="dropdown-text">Study design</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../kanji_en/index.html"> 
+<span class="menu-text">8 Elements (EN)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../kanji_jp/index.html"> 
+<span class="menu-text">8 Elements (JP)</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" id="toc-frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="nav-link active" data-scroll-target="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance">Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</a>
+  <ul class="collapse">
+  <li><a href="#生存曲線とハザード比" id="toc-生存曲線とハザード比" class="nav-link" data-scroll-target="#生存曲線とハザード比">生存曲線とハザード比</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">P-Value Explanations That Seem Plausible at First Glance</h1>
+</div>
+
+<div>
+  <div class="description">
+    臨床試験ででてきるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hero-header">
+<p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
+</div>
+<section id="frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="level1">
+<h1>Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</h1>
+<div class="serif-block text-right">
+<p>Keywords: clinical trial, language &amp; writing, p-value, survival &amp; competing risks</p>
+</div>
+<hr>
+<section id="生存曲線とハザード比" class="level3">
+<h3 class="anchored" data-anchor-id="生存曲線とハザード比">生存曲線とハザード比</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「お父さん、コーヒーもう一杯、淹れ直したよ。続けてJCOG9502のハザード比について教えてよ」</p>
+</div>
+<p>Survival Curves and Hazard Ratios</p>
+<div class="voice-daughter">
+<p>Daughter: “Dad, I’ve made another cup of coffee. Can you keep going and explain the hazard ratios from JCOG9502?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Ouch, it’s hot. You’re referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the differences between the Kaplan–Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan–Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio.”</p>
+</div>
+<p>(Figure)</p>
+<div class="voice-daughter">
+<p>Daughter: “Well summarized?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes. In both figures, the Kaplan–Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it’s not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call Cox regression or the proportional hazards model.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “So if the curves cross, that breaks the proportionality assumption.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. And the OS and DFS results are consistent with each other as well. That makes the findings very straightforward and easy to interpret. I’ll show you Cox regression in R later.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan–Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren’t below the threshold, there’s no statistically significant difference between the two groups?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s right. The hazard reflects the speed at which death or recurrence occurs, and the hazard ratio is simply the ratio between the two groups.”</p>
+<p>P-Value Explanations That Seem Plausible</p>
+<div class="voice-father">
+<p>Dad: “The precise meaning of p-values is often misunderstood. One thing to keep in mind when reading papers is that the threshold compared against the p-value—the significance level—may not always be 5%. For example, consider interim analyses. Take a look at the abstract. In JCOG9502, an interim analysis was planned before the final analysis, and this paper reports results after the trial was stopped early. In interim analyses, it’s common to test using a significance level lower than 5%.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “So the trial was stopped early because it became statistically significant?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “No.&nbsp;The trial was stopped not because a significant difference was found, but because the Data and Safety Monitoring Committee judged that there was no reasonable chance that the LTA group would prove superior. There are several other common misunderstandings. Look at these statements.”</p>
+</div>
+<ol type="1">
+<li><p>A p-value is the probability that the null hypothesis is true.</p></li>
+<li><p>A small p-value and statistical significance mean that an important scientific finding has been obtained.</p></li>
+<li><p>A statistically non-significant result means that the null hypothesis is true and should be accepted.</p></li>
+</ol>
+<div class="voice-father">
+<p>Dad: “In JCOG9502, the null hypothesis is that the overall survival curves of the LTA and TH groups are equal. Let me ask you about the first statement. Do you think the p-value in JCOG9502 represents the probability that ‘there is no difference between the survival curves of the LTA and TH groups’?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “This is starting to feel like a blackboard lecture. Was mentioning statistics textbooks a mistake? But sure—statement one sounds fine to me. If the p-value is 0.05, then it’s correct five times out of a hundred, right?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Here I want you to choose your words carefully. Is the statement ‘there is no difference between the survival curves’ a random variable? It isn’t. A proposition is either true or false. Defining a probability for something that is not a random variable is conceptually problematic.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Ah, so that’s the pedantic point you wanted to make. Fine—I’ll stop phrasing it that way.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Then what did you mean by ‘five times out of a hundred’?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Literally that. If we ran JCOG9502 a hundred times, what would happen?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. If you repeat the same trial a hundred times, you get a hundred p-values. That’s the definition of probability in this context—frequentist probability. Now let’s move on. Do you think a small p-value means that an important scientific discovery has been made?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Isn’t that how people usually think about it?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “But look at the p-values shown in the figure—four of them, ranging from 0.15 to 0.92. None are small. Does that mean the results aren’t scientifically important?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “No, that’s not what I meant.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Exactly. The idea that smaller p-values imply more important scientific findings is simply wrong. If you focus too much on p-values, your interpretation of a paper can easily become distorted.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Okay, okay. But aren’t you talking a bit too long?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s consider the third statement: ‘A statistically non-significant result means that the null hypothesis is true and should be accepted.’ Is that correct?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “I remember reading that p-values are used to reject hypotheses, not to accept them. So this must be wrong too. But in practice, what happens when a result isn’t significant? If a clinical trial compares drug A and drug B, can we conclude that they’re equivalent?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That would be breaking the rules. If the null hypothesis were true, it would mean that A and B are equivalent—but you cannot accept it just because there’s no significant difference. To conclude equivalence or non-inferiority, you need a properly designed equivalence trial or non-inferiority trial.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Right. I suspected that, but it helps to hear it stated clearly.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “This distinction had to be built into the rules, and history shows why. About thirty years ago in Japan, non-inferiority trials were required for drug approval. Based on that experience, the relationship between research hypotheses and statistical decision rules has to be handled very carefully.”</p>
+</div>
+<p>P-Values as a Standardized Rule</p>
+<div class="voice-daughter">
+<p>Daughter: “I understand the textbook explanation, but I still feel a gap between theory and reality. About statement two—the idea that ‘small p-values mean important science.’ In basic research, results without significance often get dismissed. That’s the reality. But JCOG9502 is different. It didn’t show superiority of LTA, nor equivalence of the procedures—yet it was published in Lancet Oncology. Why?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “I don’t think a negative clinical trial lacks value. Clinical trials are primarily evaluations of technical performance—of surgeries or drugs. Whether efficacy is demonstrated or not, the evaluation itself still has value.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “So even a negative trial has the same informational value?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes. Think of a clinical trial as an exam. Passing or failing doesn’t change the value of the score itself. The p-value functions like a grading rule or a technical standard—it’s unavoidable. …Though of course, scores aren’t everything.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “So clinical trials are about evaluating technology, not making scientific discoveries?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Historically, clinical trials developed within regulatory systems for technology evaluation. Standardizing p-values and efficacy endpoints was part of maintaining consistent testing standards. In the 1990s, regulatory requirements still differed across countries. In the late 1990s, regulators in the US, Europe, and Japan agreed on common standards—the ICH guidelines.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “But that’s for industry-sponsored trials, not investigator-initiated studies. And haven’t clinical trials driven paradigm shifts? Cytotoxic drugs, anti–PD-1 antibodies, ADCs. Calling all that ‘technology evaluation’ feels unsatisfying.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Perhaps technology evaluation stimulated science.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “You really like separating technology and science. I’m fine with classifying industry trials as technology evaluation. But in the broader scientific enterprise, clinical trials generate new hypotheses and new questions. That’s what I want to call science.”</p>
+</div>
+<div class="voice-father">
+<p>お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、LTA群よりTH群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」</p>
+</div>
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
+<div class="voice-daughter">
+<p>私「要約しやすい？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。ハザード比の基準は書かれていないけど、TH群を比の分母にとっている。この関係を、<strong>Cox回帰（Cox regression）</strong>とか<strong>比例ハザードモデル（proportional hazards model）</strong>って呼ぶんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「比例関係だったら交差したらまずいよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。後でRを用いたCox回帰をみせるよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「ありがとう、後でね。それよりさ。この図のハザード比は1.36と1.29だよね。ハザードが高いほどKaplan-Meier曲線が下がる、比の分母はTH群だっけ。ということは、ハザード比が1より大きいと、TH群よりLTA群の方がOSやDFSの成績が下がるんだよね？あと、p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績がわるかったけど、p値をみると2群に有意差はないんだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そういうことだね。ハザードは死亡や再発が起きるスピードを表していて、ハザード比はその2群間の“比”だから」</p>
+</div>
+</div>
+<section id="p値に関する一見正しそうな説明" class="level3">
+<h3 class="anchored" data-anchor-id="p値に関する一見正しそうな説明">p値に関する一見正しそうな説明</h3>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「p値の正確な意味は誤解されてることが多いんだよ。論文を読むときの注意点としては、まず、試験によってはp値と比べる基準（有意水準）が5%でないかもしれないってこと。たとえば<strong>中間解析（interim analysis）</strong>とか。論文の抄録を読んでごらん。実はJCOG9502では最終解析の前に、中間解析をする計画になっていて、この論文はそのとき早期中止になった結果を報告しているみたいだよ。中間解析では、5%より低い有意水準で検定するのが一般的なんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「じゃあ有意差がついたから早期中止したってこと？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「いや、この試験が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためだね。他にも誤解はいくつもある。これをみてよ」</p>
+</div>
+<ol type="1">
+<li>p値は<strong>帰無仮説（null hypothesis）</strong>が正しい確率である</li>
+<li>p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する</li>
+<li>統計学的に有意でない結果とは、帰無仮説が正しいので採択すべきという意味である</li>
+</ol>
+<div class="voice-father">
+<p>お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。このp値に関する説明のうち、まず1について聞くね。JCOG9502のp値は、”LTA群とTH群の生存曲線に差がない確率”を意味すると思う？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「黒板くさくなってきた。統計の教科書って私がいったの、地雷だったか？まあ、1はそれでいいんじゃない？p値が0.05だったら100回に5回は正しい」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ここではね、言葉を正確に選んで考えてみてほしいんだ。“生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はーん。そういう理屈っぽいことがいいたかったわけね。じゃあそういう言い回しはやめます」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うんうん。じゃあ100回に5回ってどういう意味でいった？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「へ。言葉通りだけど？JCOG9502を100回やったらどうなるかって意味」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「その通り。同じ試験を100回繰り返したらp値が100個出てくるでしょ。これがこの場合の確率の定義なんだ。頻度論的確率（frequentist probability）とかいうね。じゃあ確率の意味の次は、p値の解釈。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「普通そう考えるんじゃない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「じゃあ科学的に重要じゃないってこと？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「そういう意味でいったわけじゃないけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」</p>
+</div>
+<div class="voice-daughter">
+<p>私「はいはい。お父さん、話長くない？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「三つ目の説明“統計学的に有意でない結果とは、帰無仮説が正しいので採択すべきという意味である”まで考えようよ。これは正しい？」</p>
+</div>
+<div class="voice-daughter">
+<p>私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ、目を見ればわかる。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、<strong>同等性 （equivalence）試験</strong>や<strong>非劣性 （non-inferiority）試験</strong>を組む必要がある」</p>
+</div>
+<div class="voice-daughter">
+<p>私「やっぱりね。そう思ったけど、はっきりいってくれて納得だわ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「この区別はルールに組み込まないとまずいことは歴史が証明している。これはもう30年ほど前の日本の話なんだけど。昔、薬事承認の根拠として非劣性試験を国が求めていた時代があってね。その時代の経験を踏まえると、研究仮説と統計的な判断基準の関係は、厳密に考えとかないとちょっとまずいと思うんだ」</p>
+</div>
+</div>
+</section>
+<section id="標準規格としてのp値" class="level3">
+<h3 class="anchored" data-anchor-id="標準規格としてのp値">標準規格としてのp値</h3>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>私「教科書的な説明は、それはそれでいいんだけどさ。なんだか、現実とギャップを感じるよ、私は。2の”p値が小さいと科学的に重要”についてなんだけどね。そうはいっても基礎研究だと、有意差がつかない結果はいまいち扱いじゃない？それが現実だと思う。でもJCOG9502は違うのもわかる。LTAの有効性が示されたわけでも、術式が同等ってわかったわけでもない。でもどうしてLancet Oncologyに載るほど評価されたんだろう」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ん？有意差がつかない臨床試験結果に価値がないとは思わないけど。臨床試験って、技術の性能評価が目的じゃない？手術や薬といった医療技術のね。有効性が示されるかどうかに関わらず、評価が定まったということに変わりはないよね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「…。ネガティブ試験でも価値が変わらないってことをいってるよね？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。たとえるならさ、臨床試験はペーパーテストと同じ”試験”ってことだよ。合格・不合格と試験成績という情報の価値は無関係でしょ。さっき話したp値に関する説明は、採点ルールや試験の”標準規格”みたいなもので避けて通れないんだ。…点数がすべてじゃないけどね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「臨床試験は技術を評価するのが目的ってこと？科学的発見じゃなくて？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「うん。臨床試験が行われてきた文脈は、技術評価の制度の中だったといえると思うよ。p値の使い方や、有効性エンドポイントの定義の標準化も、“試験の規格”を一定に保つための工夫だった。古い話だけど、製薬企業が承認取得のために行う臨床試験って、90年代はまだ各国の共通ルールがなかった。90年代後半になって、米国、欧州、日本の規制当局が集まってICHガイドラインという臨床試験の標準規格を決めたんだ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「それは医師主導臨床試験じゃなくて治験だよね。お父さんさ、やっぱり臨床試験はパラダイムシフトを起こしてない？殺細胞薬、抗PD-1、ADC。あれを”技術評価”って呼ぶのは、あんまり納得いかないな」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「それは技術評価の結果が科学を刺激しただけじゃないかなあ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「お父さんって、技術と科学を区別したがるね。まあ、企業治験は技術評価のくくりでも私はいいよ。でも、科学の営み全体をみたとき、臨床試験はその一部だと思う。結果が仮説を更新して、次の問いを生む。私はそれを科学って呼びたい」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="ホパテの悲劇">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ホパテの悲劇
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1989年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです（厚生省医薬安全局1998）。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることをはっきり示しています。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()を用いたハザード比の推定">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+coxph()を用いたハザード比の推定
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは<strong>survival</strong>パッケージの<code>coxph()</code>です。以前のエピソードでは、関数<code>generate_data(hr1, hr2)</code>を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。<code>generate_data(hr1, hr2)</code>では、死亡ハザード比の真値はhr2という引数で指定できます。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="generate_data()のコードはこちら（データ生成に使用）">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+generate_data()のコードはこちら（データ生成に使用）
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n=</span><span class="dv">200</span>, hr1, hr2) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 再発のハザード（大きいほど早く起こる）</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2<span class="sc">*</span><span class="fl">0.10</span>, <span class="fl">0.10</span>) <span class="co"># 死亡のハザード（大きいほど早く起こる）</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span>                               <span class="co"># 打ち切りハザード（群に依存しない）</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)   <span class="co"># 再発までの潜在時間</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)     <span class="co"># 死亡までの潜在時間</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring) <span class="co"># 打ち切りまでの潜在時間</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 全生存期間（OS） ----------------------------------------</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = 死亡, 0 = 打ち切り</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 無再発存期間（RFS） -------------------------------------</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  time_rfs <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># 再発</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>   <span class="co"># 死亡</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- 累積再発率（CIR） + 競合リスク --------------------------</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># イベント1: 再発</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># イベント2: 競合リスクとしての死亡</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">## --- データフレームにまとめる --------------------------------</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="coxph()のコードと結果はこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+coxph()のコードと結果はこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("survival") #インストールが必要なら実行</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time_os, status_os) <span class="sc">~</span> stoma, <span class="at">data =</span> dat)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
+
+  n= 200, number of events= 144 
+
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3199    1.3769   0.1693 1.889   0.0589 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                exp(coef) exp(-coef) lower .95 upper .95
+stomaWITH STOMA     1.377     0.7262    0.9881     1.919
+
+Concordance= 0.544  (se = 0.024 )
+Likelihood ratio test= 3.51  on 1 df,   p=0.06
+Wald test            = 3.57  on 1 df,   p=0.06
+Score (logrank) test = 3.6  on 1 df,   p=0.06</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="文献" class="level3">
+<h3 class="anchored" data-anchor-id="文献">文献</h3>
+<ul>
+<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
+<li><p><a href="https://www.mhlw.go.jp/www1/houdou/1006/h0616-3.html">脳循環代謝改善薬ニセルゴリンの再評価について [Internet]. 東京: 厚生省医薬安全局; 1998</a></p></li>
+</ul>
+</section>
+<section id="次のエピソードとrスクリプト" class="level3">
+<h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
+<ul>
+<li><a href="frequentist-3.html">Beyond 0.05: Interpreting P-Values in a Clinical Trial</a></li>
+<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
+<ul>
+<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
+<li><a href="frequentist-2.html">P-Value Explanations That Seem Plausible at First Glance</a></li>
+<li><a href="frequentist-3.html">Beyond 0.05: Interpreting P-Values in a Clinical Trial</a></li>
+</ul>
+<p><strong>過去のシリーズ</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+</section>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -395,19 +395,31 @@ window.Quarto = {
 <p>私「でもね、その説明だとみんなロジスティック回帰を使ってる理由にはなってないよね。<code>link="logit"</code>より<code>link="identity"</code>、つまり変換しなくたっていいじゃない」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それはリスク差のモデルだね。無変換のモデルが悪いわけじゃないんだけど、ロジット関数が選ばれた理由はちゃんとある。この話はちょっと難しいかもしれない。たとえるならね、ロジスティック回帰はルービックキューブのように構造が安定しているんだ」</p>
+<p>お父さん「それはリスク差のモデルだね。そのモデルが悪いわけじゃないけど、ロジット関数が選ばれた理由はちゃんとある。この話はちょっと抽象的かもしれない。たとえるならね、ロジスティック回帰はルービックキューブのように構造が安定しているんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「どういう意味？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「操作を加えても構造が維持されるっていうこと。どんな方向で、どんな順序で面を回しても、ルービックキューブは元に戻せる。解けば絵の向きもきちんと揃う。統計解析に話を戻すと、人工的にデータに変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量<span class="math inline">\(X_i\)</span>のスケール変換のことだよ」</p>
+<p>お父さん「操作を加えても構造が維持されるっていうこと。どんな方向で、どんな順序で面を回しても、ルービックキューブは元に戻せる。解けば絵の向きもきちんと揃う。観測できるのは、ただの1面しかないんだけどね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それはよくやることだよね」</p>
+<p>私「ロジスティック回帰とルービックキューブねえ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、<strong>数学では群作用（group action）</strong>っていうんだけど、ある変換を加えても意味が変わらない操作のこと。ほら、コインの表裏を入れ替えても、コイン投げの確率の本質に影響しないでしょ。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」</p>
+<p>お父さん「統計解析に話を戻そうか。人工的にデータに変換を加えることがあるよね。たとえば死亡じゃなくて生存をアウトカムにしたり、LDLコレステロールの単位をmg/dLからmmol/Lに変えたり。これは共変量<span class="math inline">\(X_i\)</span>のスケール変換のことだよ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うんうん。それはよくやることだよね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「統計学者は、いろいろな回帰モデルのうち、変換に対して不変な構造はなにかって考えた。ここでいう変換は、<strong>数学では群作用（group action）</strong>っていうんだけど、ある変換を加えても意味が変わらない操作のこと」</p>
+</div>
+<div class="voice-daughter">
+<p>私「出た。抽象。なんだそれ」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ほら、コインの表裏を入れ替えてもコイン投げの確率は変わらない。ルービックキューブを回転しても構造は変わらない。考えた結果、2値アウトカムのモデルでは以下のパーツを使うしかないってことがわかった」</p>
 </div>
 <ul>
 <li><p>確率分布: 2項分布（指数型分布族）</p></li>
@@ -424,17 +436,17 @@ window.Quarto = {
 <p>お父さん「この”死亡と生存を入れ替える”という操作が群作用に相当する。ここで問題にしているのはリンク関数<span class="math inline">\(g\)</span>だったよね。確率<span class="math inline">\(\pi\)</span>を、リンク関数で別のスケール<span class="math inline">\(g(\pi)\)</span>に変換したとする。このとき、死亡と生存を入れ替えても、値が反転するだけで構造が維持されるには<span class="math inline">\(g\)</span>はどんな性質を持つべき？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「値が反転する、って？」</p>
+<p>私「なるほどね、そういう意味で可逆性っていってるのね。でも値が反転するってのがわかんないな。どういうこと？」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「つまりこういうこと」</p>
 </div>
 <p><span class="math display">\[g(1−\pi)=−g(\pi)\]</span></p>
 <div class="voice-daughter">
-<p>私「へ？意味わかんない」</p>
+<p>私「へ？やっぱ意味わかんない」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？<span class="math inline">\(g(-1\pi)\)</span>は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号反転はするはず」</p>
+<p>お父さん「さっき、対象者1の<span class="math inline">\(\pi_1\)</span>と対象者2の<span class="math inline">\(\pi_2\)</span>を比べるとオッズ比が出てきたのを思い出して。あのとき、<span class="math inline">\(g(\pi_1)\)</span>と<span class="math inline">\(g(\pi_2)\)</span>の差をとっていた。<span class="math inline">\(g\)</span>じゃなくてロジット関数そのものを使ったけどね。つまり、<span class="math inline">\(g(\pi)\)</span>は差のスケールで死亡リスクがどれくらい高いかを表す尺度なんだ。死亡と生存を入れ替えたらどうなる？<span class="math inline">\(g(-1\pi)\)</span>は死亡リスクの低さを意味するよね。つまり、死亡と生存の入れ替えによって、符号は反転するはず」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほど。<span class="math inline">\(g(1−\pi)=−g(\pi)\)</span>という関係が成り立つのはなにか探せばいいのね？」</p>
@@ -507,7 +519,7 @@ window.Quarto = {
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
+<li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
 <li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">

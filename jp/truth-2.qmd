@@ -76,7 +76,7 @@ Keywords: causal model, language & writing, probability model, research hypothes
 ::: 
 
 ::: voice-father
-お父さん「たとえるなら、6つあるルービックキューブの面の1つしか見えないようなもの。別の面に潜在結果変数が描かれていたとしても観測できないんだ。でも同じ構造をもつルービックキューブをたくさん用意して、それぞれをランダムな向きで机の上に並べてごらん。どのキューブも一面しか見えないけれど、どんな絵が描かれているかを推し量ることはできる。ランダム化臨床試験がやっているのはこれに似ている」
+お父さん「たとえるなら、6つあるルービックキューブの面の1つしか見えないようなもの。別の面に別の結果が描かれていたとしても観測できないんだ。でも同じ構造をもつルービックキューブをたくさん用意して、それぞれをランダムな向きで机の上に並べてごらん。どのキューブも一面しか見えないけれど、どんな絵が描かれているかを推し量ることはできる。ランダム化臨床試験がやっているのはこれに似ている」
 ::: 
 
 ::: voice-daughter
@@ -169,7 +169,5 @@ Keywords: causal model, language & writing, probability model, research hypothes
 
 ### 次のエピソード
 
-- [What Data Cannot Tell Us](truth-1.html)
-- [What Could Have Happened](truth-2.html)
 - [What Is It That You Want to Know?](truth-3.html)
 
