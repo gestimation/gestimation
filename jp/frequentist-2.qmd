@@ -275,7 +275,7 @@ summary(fit)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -285,7 +285,7 @@ summary(fit)
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Study Design I](study-design-1.html)
 
 **用語集**
 

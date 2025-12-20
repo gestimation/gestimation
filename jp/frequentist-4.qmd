@@ -244,7 +244,7 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -254,8 +254,8 @@ Kaplan-Meier法では、生存時間が正規分布したり、比例ハザー�
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
 
 **用語集**
 

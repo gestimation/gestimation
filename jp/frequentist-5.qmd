@@ -378,7 +378,7 @@ print(coverage_800)
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -388,8 +388,8 @@ print(coverage_800)
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
 
 **用語集**
 

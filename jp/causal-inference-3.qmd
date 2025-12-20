@@ -244,7 +244,7 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 ### 次のエピソード
 - [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -256,11 +256,11 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
-- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+- [Adjusting for Bias](logistic-regression-1.html)
 
 **用語集**
 

@@ -154,7 +154,7 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -164,7 +164,7 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Study Design I](study-design-1.html)
 
 **用語集**
 

@@ -253,7 +253,7 @@ print(odds_ratio)
 - [From Risk to Logistic Regression](logistic-regression-2.html)
 - [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あのエピソードに飛べたい、そんな方はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
 **このシリーズのエピソード**
 
@@ -266,10 +266,10 @@ print(odds_ratio)
 
 **過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
 
 **用語集**
 
