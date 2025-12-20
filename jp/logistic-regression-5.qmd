@@ -196,7 +196,7 @@ $\log(\frac{\hat\pi_i}{1-\hat\pi_i})=\hat\beta_0+\hat\beta_1X_{i,1}+...+\hat\bet
 - [Study Design I](study-design-1.html)
 - [Frequentist Thinking I](frequentist-1.html)
 - [Frequentist Experiments I](frequentist-4.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Effects and Time I](effects-1.html)
 
 **用語集**
 
