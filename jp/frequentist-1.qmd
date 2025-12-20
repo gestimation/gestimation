@@ -110,6 +110,14 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 -   図に示されない情報だが登録期間・追跡期間も要確認
 
 ::: voice-daughter
+私「でもそういうのって統計の教科書に書いてないよね。平均とか回帰係数ばっかり」
+:::
+
+::: voice-father
+お父さん「生存時間解析は教科書では後回しになりがちだからね。がんの臨床試験データの解析を勉強するなら、統計学一般の教科書より、米国の臨床試験グループ（SWOG）の統計家が書いた臨床試験の教科書がいいよ（Green, et al. 2013）」
+:::
+
+::: voice-daughter
 私「よく考えたら10年以上かかったんだ、この図を描くのに。スタッフは大変だっただろうな。そういえばさ、臨床試験の研究計画書の話がでたでしょ、この前。計画書って参加施設の倫理委員会に出すじゃない。そうしたら基本的に変更しないよね、手続きもいるし」
 :::
 
@@ -146,6 +154,8 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 :::
 
 ### 文献
+
+- [Green J, Benedetti J, Smith A, Crowley J. 米国SWOGに学ぶがん臨床試験の実践 第2版（原書第3版）. 東京: 医学書院; 2013](https://www.igaku-shoin.co.jp/book/detail/84805)
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 

@@ -30,6 +30,186 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 私「お父さん、コーヒーもう一杯、淹れ直したよ。続けてJCOG9502のハザード比について教えてよ」
 :::
 
+
+
+Survival Curves and Hazard Ratios
+
+::: voice-daughter
+Daughter: 
+"Dad, I've made another cup of coffee. Can you keep going and explain the hazard ratios from JCOG9502?"
+:::
+
+::: voice-father
+Dad: "Ouch, it's hot. You're referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B.
+Both summarize the differences between the Kaplan–Meier curves, showing that the TH group had better outcomes than the LTA group.
+A higher hazard means the Kaplan–Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio."
+::: 
+
+
+(Figure)
+
+::: voice-daughter
+Daughter: "Well summarized?"
+:::
+
+::: voice-father
+Dad: "Yes. In both figures, the Kaplan–Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it's not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call Cox regression or the proportional hazards model."
+::: 
+
+::: voice-daughter
+Daughter: "So if the curves cross, that breaks the proportionality assumption."
+:::
+
+::: voice-father
+Dad: "Exactly. And the OS and DFS results are consistent with each other as well. That makes the findings very straightforward and easy to interpret. I'll show you Cox regression in R later."
+::: 
+
+::: voice-daughter
+Daughter: "Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan–Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right?
+So the LTA group had worse outcomes, but since the p-values aren't below the threshold, there's no statistically significant difference between the two groups?"
+:::
+
+::: voice-father
+Dad:  "That's right. The hazard reflects the speed at which death or recurrence occurs, and the hazard ratio is simply the ratio between the two groups."
+
+P-Value Explanations That Seem Plausible
+
+::: voice-father
+Dad: "The precise meaning of p-values is often misunderstood. One thing to keep in mind when reading papers is that the threshold compared against the p-value—the significance level—may not always be 5%. For example, consider interim analyses. Take a look at the abstract.
+In JCOG9502, an interim analysis was planned before the final analysis, and this paper reports results after the trial was stopped early.
+In interim analyses, it's common to test using a significance level lower than 5%."
+::: 
+
+::: voice-daughter
+Daughter: "So the trial was stopped early because it became statistically significant?"
+:::
+
+::: voice-father
+Dad: "No. The trial was stopped not because a significant difference was found, but because the Data and Safety Monitoring Committee judged that there was no reasonable chance that the LTA group would prove superior. There are several other common misunderstandings. Look at these statements."
+::: 
+
+1. A p-value is the probability that the null hypothesis is true.
+
+2. A small p-value and statistical significance mean that an important scientific finding has been obtained.
+
+3. A statistically non-significant result means that the null hypothesis is true and should be accepted.
+
+::: voice-father
+Dad: "In JCOG9502, the null hypothesis is that the overall survival curves of the LTA and TH groups are equal. Let me ask you about the first statement. Do you think the p-value in JCOG9502 represents the probability that ‘there is no difference between the survival curves of the LTA and TH groups'?"
+::: 
+
+::: voice-daughter
+Daughter: "This is starting to feel like a blackboard lecture. Was mentioning statistics textbooks a mistake? But sure—statement one sounds fine to me. If the p-value is 0.05, then it's correct five times out of a hundred, right?"
+:::
+
+::: voice-father
+Dad: "Here I want you to choose your words carefully. Is the statement ‘there is no difference between the survival curves' a random variable? It isn't. A proposition is either true or false. Defining a probability for something that is not a random variable is conceptually problematic."
+::: 
+
+::: voice-daughter
+Daughter: "Ah, so that's the pedantic point you wanted to make. Fine—I'll stop phrasing it that way."
+:::
+
+::: voice-father
+Dad: "Then what did you mean by 'five times out of a hundred'?"
+::: 
+
+::: voice-daughter
+Daughter: "Literally that. If we ran JCOG9502 a hundred times, what would happen?"
+:::
+
+::: voice-father
+Dad: "Exactly. If you repeat the same trial a hundred times, you get a hundred p-values. That's the definition of probability in this context—frequentist probability. Now let's move on. Do you think a small p-value means that an important scientific discovery has been made?"
+::: 
+
+::: voice-daughter
+Daughter: "Isn't that how people usually think about it?"
+:::
+
+::: voice-father
+Dad: "But look at the p-values shown in the figure—four of them, ranging from 0.15 to 0.92. None are small. Does that mean the results aren't scientifically important?"
+::: 
+
+::: voice-daughter
+Daughter: "No, that's not what I meant."
+:::
+
+::: voice-father
+Dad: "Exactly. The idea that smaller p-values imply more important scientific findings is simply wrong. If you focus too much on p-values, your interpretation of a paper can easily become distorted."
+::: 
+
+::: voice-daughter
+Daughter: "Okay, okay. But aren't you talking a bit too long?"
+:::
+
+::: voice-father
+Dad: "Let's consider the third statement: 'A statistically non-significant result means that the null hypothesis is true and should be accepted.' Is that correct?"
+::: 
+
+::: voice-daughter
+Daughter: "I remember reading that p-values are used to reject hypotheses, not to accept them. So this must be wrong too. But in practice, what happens when a result isn't significant? If a clinical trial compares drug A and drug B, can we conclude that they're equivalent?"
+:::
+
+::: voice-father
+Dad: "That would be breaking the rules. If the null hypothesis were true, it would mean that A and B are equivalent—but you cannot accept it just because there's no significant difference. To conclude equivalence or non-inferiority, you need a properly designed equivalence trial or non-inferiority trial."
+::: 
+
+::: voice-daughter
+Daughter: "Right. I suspected that, but it helps to hear it stated clearly."
+:::
+
+::: voice-father
+Dad: "This distinction had to be built into the rules, and history shows why.
+About thirty years ago in Japan, non-inferiority trials were required for drug approval.
+Based on that experience, the relationship between research hypotheses and statistical decision rules has to be handled very carefully."
+::: 
+
+P-Values as a Standardized Rule
+
+::: voice-daughter
+Daughter: "I understand the textbook explanation, but I still feel a gap between theory and reality. About statement two—the idea that ‘small p-values mean important science.' In basic research, results without significance often get dismissed. That's the reality. But JCOG9502 is different. It didn't show superiority of LTA, nor equivalence of the procedures—yet it was published in Lancet Oncology. Why?"
+:::
+
+::: voice-father
+Dad: "I don't think a negative clinical trial lacks value. Clinical trials are primarily evaluations of technical performance—of surgeries or drugs. Whether efficacy is demonstrated or not, the evaluation itself still has value."
+::: 
+
+::: voice-daughter
+Daughter: "So even a negative trial has the same informational value?"
+:::
+
+::: voice-father
+Dad: "Yes. Think of a clinical trial as an exam. Passing or failing doesn't change the value of the score itself. The p-value functions like a grading rule or a technical standard—it's unavoidable. ...Though of course, scores aren't everything."
+::: 
+
+::: voice-daughter
+Daughter: "So clinical trials are about evaluating technology, not making scientific discoveries?"
+:::
+
+::: voice-father
+Dad: "Historically, clinical trials developed within regulatory systems for technology evaluation.
+Standardizing p-values and efficacy endpoints was part of maintaining consistent testing standards.
+In the 1990s, regulatory requirements still differed across countries.
+In the late 1990s, regulators in the US, Europe, and Japan agreed on common standards—the ICH guidelines."
+::: 
+
+::: voice-daughter
+Daughter: "But that's for industry-sponsored trials, not investigator-initiated studies.
+And haven't clinical trials driven paradigm shifts? Cytotoxic drugs, anti–PD-1 antibodies, ADCs.
+Calling all that ‘technology evaluation' feels unsatisfying."
+:::
+
+::: voice-father
+Dad: "Perhaps technology evaluation stimulated science."
+::: 
+
+::: voice-daughter
+Daughter: "You really like separating technology and science.
+I'm fine with classifying industry trials as technology evaluation.
+But in the broader scientific enterprise, clinical trials generate new hypotheses and new questions. That's what I want to call science."
+:::
+
+
 ::: voice-father
 お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、LTA群よりTH群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」
 :::
