@@ -94,7 +94,7 @@ $$
 | PF（予防寄与割合）  | 曝露だけ       | 曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか       | 
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="excess fractionとpreventable fraction"}
+::: {.callout-note appearance="simple" collapse="true" title="Excess fractionとpreventable fractionの定義"}
 
 Excess fractionは、曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されており、以下のように定義されます。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。
 

@@ -320,19 +320,16 @@ window.Quarto = {
 <p>お父さん「ありがとう。αエラー・βエラーは、表にしないと説明できないからね」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="αエラーとβエラー">
+<div class="callout callout-style-simple callout-note callout-titled" title="臨床試験の結果から判断を誤ってしまうふたつのケース">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-αエラーとβエラー
+臨床試験の結果から判断を誤ってしまうふたつのケース
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>これまで、臨床試験JCOG9502（Sasako, et al.&nbsp;2006）の文脈に沿って、片側p値と両側p値の違いも交えながら、p値について解説してきました。しかし本質的に重要なのは、p値を用いた判断に、どのような合理性があるのか、ということです。</p>
-<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果もp&lt;0.05とp≥0.05の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
-<p>このうち、臨床試験の結果から判断を誤ってしまうケースは2つです。つまり、効果があるのにp≥0.05になってしまうケースと、効果がないのに（帰無仮説が正しいのに）p&lt;0.05になってしまうケースです。仮説検定では、前者をαエラー（alpha error）、後者をβエラー（beta error）と呼んでいます。また、βエラーを1から引いたものを<strong>検出力（power）</strong>と呼んでいます。</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -356,9 +353,27 @@ window.Quarto = {
 </table>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="αエラーとβエラーの解説">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+αエラーとβエラーの解説
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>これまで、臨床試験JCOG9502（Sasako, et al.&nbsp;2006）の文脈に沿って、片側p値と両側p値の違いも交えながら、p値について解説してきました。しかし本質的に重要なのは、p値を用いた判断に、どのような合理性があるのか、ということです。</p>
+<p>JCOG9502を題材に考えてみましょう。この場合の真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあるといいました。一方で、試験の結果もp&lt;0.05とp≥0.05の2通りです。これらを組み合わせは2×2の4通りがあります。</p>
+<p>このうち、臨床試験の結果から判断を誤ってしまうケースは2つです。つまり、効果があるのにp≥0.05になってしまうケースと、効果がないのに（帰無仮説が正しいのに）p&lt;0.05になってしまうケースです。仮説検定では、前者をαエラー（alpha error）、後者をβエラー（beta error）と呼んでいます。また、βエラーを1から引いたものを<strong>検出力（power）</strong>と呼んでいます。</p>
+</div>
+</div>
+</div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「まあ当たり前だよね。左開胸開腹連続切開をしたLTA群で予後がよくならないのに、有意に効いたって判断したら間違いだし、逆にいい術式なのに、結果的に有意にならなかったらそれも研究失敗だし」</p>
+<p>私「まあ、このふたつのエラーがあるのは当たり前だよね。左開胸開腹連続切開をしたLTA群で予後がよくならないのに、有意に効いたって判断したら間違いだし、逆にいい術式なのに、結果的に有意にならなかったらそれも研究失敗だし」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そうだね。でも、正確にいうと、αエラー・βエラーは”統計学的に有意”とかp値とかとは、直接関係する概念じゃない。別に、効果があるかどうか判定する基準は、p値じゃなくてもいいわけだからね。ポイントはね、</p>
@@ -875,7 +890,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Rパッケージを用いたサンプルサイズ設計のコードはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -884,7 +899,7 @@ Rパッケージを用いたサンプルサイズ設計のコードはこちら
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("powerSurvEpi") #インストールが必要なら実行</span></span>
