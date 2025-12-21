@@ -122,7 +122,6 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 ::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
-  set.seed(46)
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)

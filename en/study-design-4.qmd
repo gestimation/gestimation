@@ -28,7 +28,7 @@ Keywords: bias, R simulation, study design, survival & competing risks
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "Oh wow, that takes me back. Is that the Rubik's Cube I bought when I was in elementary school? You're still playing with it? If you've got a minute, can I ask you something? Remember the study we talked about on return to work among cancer survivors? I've drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like."
+Me: "Oh wow, that takes me back. Is that the Rubik's Cube I bought when I was in elementary school? You're still playing with it? If you've got a minute, can I ask you something? Remember the study we talked about on return-to-work among cancer survivors? I've drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like."
 :::
 
 ::: voice-father
@@ -49,7 +49,7 @@ Dad: "Let's see."
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-Dad: "How are you defining the return-to-work rate?"
+Dad: "How are you defining the return-to-work proportion?"
 :::
 
 ::: voice-daughter
@@ -61,7 +61,7 @@ Dad: "Just from the questionnaire, I can't tell whether these questions are enou
 :::
 
 ::: voice-daughter
-Me: "That would be good to know, but among the patients who answer that they don't want to return, there might be some who gave up because of company policy or other reasons. So when I calculate the return-to-work rate, I don't want the denominator to be 'patients who wished to return to work.' I'd rather use all patients who had surgery. That feels closer to the real employment situation."
+Me: "That would be good to know, but among the patients who answer that they don't want to return, there might be some who gave up because of company policy or other reasons. So when I calculate the return-to-work proportion, I don't want the denominator to be 'patients who wished to return to work.' I'd rather use all patients who had surgery. That feels closer to the real employment situation."
 :::
 
 ::: voice-father
@@ -69,11 +69,11 @@ Dad: "And do you want to look at whether they returned to work between surgery a
 :::
 
 ::: voice-daughter
-Me: "Hmm. The timing of the responses will vary from patient to patient, so I'd rather not use the survey date. How about defining it as 'returning to work within one year'? Oh—maybe we should also ask them to write down the actual date they returned to work."
+Me: "Hmm. The timing of the responses will vary from patient to patient, so I'd rather not use the survey date. How about defining it as 'return-to-work within 1 year'? Oh—maybe we should also ask them to write down the actual date they returned to work."
 :::
 
 ::: voice-father
-Dad: "Having the date of return to work is a good idea. Then, when you turn return-to-work status into analytic 'variables', you can think in terms of two options: categorical data and survival data. Setting that aside for a moment—what will you do if a patient dies after surgery?"
+Dad: "Having the date of return-to-work is a good idea. Then, when you turn return-to-work status into analytic 'variables', you can think in terms of two options: categorical data and survival data. Setting that aside for a moment—what will you do if a patient dies after surgery?"
 :::
 
 ::: voice-daughter
@@ -89,7 +89,7 @@ Dad: "I agree. Excluding them would introduce bias, because you'd be drifting aw
 - Do not exclude events that occur after the time origin or use them as strata.
 
 ::: voice-daughter
-Me: "Right, I don't want people telling me later that my study is biased. Got it."
+Me: "Right, I don't want to discover later that we built bias into the design. Got it."
 :::
 
 ::: voice-father
@@ -114,21 +114,21 @@ Dad: "I made a few tweaks to your questionnaire, so I'll use this version to exp
 ::::::::::::::::::::::::::::::::: 
 
 
-### Table 2-A. Questionnaire for survivors
+### Table 2A. Questionnaire for survivors
 
 | Item | Response |
 |------|----------|
 | Survey date | ____ Year ____ Month ____ Day |
 | Surgery date | ____ Year ____ Month ____ Day |
 | Discharge date | ____ Year ____ Month ____ Day |
-| Post-discharge employment date (only for those who worked before surgery) | ____ Year ____ Month ____ Day |
+| Date of return-to-work (post-discharge; only if employed before surgery) | ____ Year ____ Month ____ Day |
 | Were you employed before surgery? | Yes ____ / No ____ |
 | For those who were employed: Did you resign because of the surgery? | Yes ____ / No ____ |
 | For those who resigned: Did you wish to return to work? | Yes ____ / No ____ |
 | For those who wished to return: Were you able to return to work? | Yes ____ / No ____ |
 
 
-### Table 2-B. Questionnaire for deceased patients
+### Table 2B. Questionnaire for deceased patients
 
 | Item | Response |
 |------|----------|
@@ -136,13 +136,13 @@ Dad: "I made a few tweaks to your questionnaire, so I'll use this version to exp
 | Surgery date | ____ Year ____ Month ____ Day |
 | Date of death | ____ Year ____ Month ____ Day |
 | Were they employed before surgery? | Yes ____ / No ____ |
-| Did they work after surgery? | Yes ____ / No ____ |
+| Did they return to work after surgery? | Yes ____ / No ____ |
 
 *Enter data from medical records
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-Dad: "In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using 'returning to work within one year' as the outcome, right?"
+Dad: "In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using 'returning to work within 1 year' as the outcome, right?"
 :::
 
 ::: voice-daughter
@@ -150,20 +150,20 @@ Me: "Yes."
 :::
 
 ::: voice-father
-Dad: "For example, if you label 'returned within one year' as category 1 and 'did not return within one year' as category 2, that gives you a type of categorical data called binary data. You can derive it from the questionnaire, and you can calculate the return-to-work rate."
+Dad: "For example, if you label 'returned within 1 year' as category 1 and 'did not return within 1 year' as category 2, that gives you a type of categorical data called binary data. You can derive it from the questionnaire, and you can calculate the return-to-work proportion."
 :::
 
 ::: voice-daughter
-Me: "Right. As long as we treat deaths within one year as 'no return to work'."
+Me: "Right. As long as we treat deaths within 1 year as 'no return to work'."
 :::
 
 ::: voice-father
 Dad: "But when you summarize work status, it's better not to stick with just two categories. A three-category variable would be more informative. For example:"
 :::
 
-- category 1: returned within one year
-- category 2: did not return within one year (for reasons other than death)
-- category 3: did not return within one year (because of death)
+- category 1: returned within 1 year
+- category 2: did not return within 1 year (for reasons other than death)
+- category 3: did not return within 1 year (because of death)
 
 ::: voice-father
 Dad: "That gives you a more detailed picture of the outcomes."
@@ -182,7 +182,7 @@ Me: "So return-to-work status can also be treated as survival data?"
 :::
 
 ::: voice-father
-Dad: "It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn't look any different from ordinary continuous data, but the essence of survival data is the presence of **censoring**. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work."
+Dad: "It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, the survival time is 29 days (or 30 days if you count both endpoints). Written just as a number of days, it doesn't look any different from ordinary continuous data, but the essence of survival data is the presence of **censoring**. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work."
 :::
 
 ::: voice-daughter
@@ -190,7 +190,7 @@ Me: "True, but isn't that fine as it is?"
 :::
 
 ::: voice-father
-Dad: "When you use statistical software, you need to add one more piece of information: at the time of the survey, the patient had not yet returned to work—that is, follow-up for return to work was censored. That is why survival data always come as a pair of variables."
+Dad: "When you use statistical software, you need to add one more piece of information: at the time of the survey, the patient had not yet returned to work—that is, follow-up for return-to-work was censored. That is why survival data always come as a pair of variables."
 :::
 
 - A time variable
@@ -198,7 +198,7 @@ Dad: "When you use statistical software, you need to add one more piece of infor
 - An event variable
 
 ::: voice-father
-Dad: "For a typical survival data, the event variable is binary and indicates whether the event was observed or censored. The time variable, in this case, would be either 'time from discharge to return to work' or 'time from discharge to the survey date'."
+Dad: "For typical survival data, the event variable is binary and indicates whether the event was observed or censored. The time variable, in this case, would be either 'time from discharge to return-to-work' or 'time from discharge to the survey date'."
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -230,11 +230,11 @@ cifplot(Event(time, status) ~ stoma,
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "So if the event variable is binary, that means every patient is in exactly one of two states: either they returned to work or they were censored. Where do deaths go?"
+Me: "So if the event variable is binary, that means every patient is in exactly 1 of 2 states: either they returned to work or they were censored. Where do deaths go?"
 :::
 
 ::: voice-father
-Dad: "If you treat it the way I just described, patients who die are grouped under 'censored'. But there is another way to handle it, called **competing risks**. Put simply, a competing risk is an event that prevents the event of interest (such as return to work) from being observed."
+Dad: "If you treat it the way I just described, patients who die are grouped under 'censored'. But there is another way to handle it, called **competing risks**. Put simply, a competing risk is an event that prevents the event of interest (such as return-to-work) from being observed."
 :::
 
 ::: voice-daughter
@@ -253,6 +253,10 @@ Dad: "Exactly. Survival data are also called 'time-to-event data' in English. Ev
 
 ::: voice-daughter
 Me: "I think I get it. I'm going to use this revised questionnaire, then."
+:::
+
+::: voice-father
+Dad: "Let’s test the idea with a small simulation in R—just enough to see why competing risks matter."
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -274,7 +278,6 @@ In the previous episode, we summarized survival data without competing risks usi
 ::: {.callout-note appearance="simple"  collapse="true" title="R code for generate_data()"}
 ```{r warning=FALSE}
 generate_data <- function(n = 200, hr1, hr2) {
-  set.seed(46)
   # Stoma: 1 = with stoma, 0 = without stoma
   stoma <- rbinom(n, size = 1, prob = 0.4)
   # Sex: 0 = WOMAN, 1 = MAN
@@ -423,7 +426,7 @@ CDISC ADaM ADTTE (Analysis Data Model for Time-to-Event Endpoints) is a standard
 ::: {.callout-note appearance="simple" collapse="true" title="Answer"}
 -   The correct answer is **2**.
 
-In CDISC ADaM ADTTE, the value 1 represents TRUE. In many statistical packages, including `Event()` and `Surv()`, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.
+In ADaM ADTTE, CNSR is the censoring indicator: 0 = event, 1 (or >0) = censored. In many R workflows, including `Event()` and `Surv()`, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.
 :::
 
 ### Episodes, glossary, and R-script

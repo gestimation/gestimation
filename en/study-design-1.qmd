@@ -28,15 +28,15 @@ Keywords: language & writing, observational study, research hypothesis, study de
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "Dad...you're really a statistics professor, right?”
+Me: "Dad...you really are a professor of statistics, right?”
 :::
 
 ::: voice-father
-Dad: "In Japan, yes. One of many.”
+Dad: "In Japan, yes—one of many.”
 :::
 
 ::: voice-daughter
-Me: "My boss keeps telling me it’s time I do 'some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run a survey. I’m not against it, but this feels more like your world than mine. Statistics and all that.” 
+Me: "My boss keeps telling me it’s time I do 'some research’ and present at a conference. He’s really into supporting cancer patients in return-to-work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run a survey. I’m not against it, but this feels more like your world than mine. Statistics and all that.” 
 :::
 
 ::: voice-father
@@ -57,7 +57,7 @@ Me: "Seriously? I thought I could just collect the data first and improvise the 
 :::
 
 ::: voice-father
-Dad: "For example, that men might have higher return-to-work rates than women?”
+Dad: "For example, that men might have a higher return-to-work proportion than women?”
 :::
 
 ::: voice-daughter
@@ -97,7 +97,7 @@ Me: "There you go again with the technical terms. But fine—I do get the point.
 :::
 
 ::: voice-father
-Dad: "There are statistical methods and R packages to improve comparability too, like `glm()` for regression adjustment, or`CBPS()` for propensity score weighting. But on the other hand, a broader study population increases **generalizability**. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”
+Dad: "There are statistical methods and R packages to improve comparability too, like `glm()` for regression adjustment, or `CBPS()` for propensity score weighting. But on the other hand, a broader study population increases **generalizability**. If you want to estimate the return-to-work proportion among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”
 :::
 
 ::: voice-daughter
@@ -145,7 +145,7 @@ Me: "Can you even define it before the data comes in?”
 :::
 
 ::: voice-father
-Dad: "You should, because once the data is collected, you can’t revise them any more. It needs to be decided before finalizing the questionnaire. Right...you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”
+Dad: "You should, because once the data is collected, you can’t revise it any more. It needs to be decided before finalizing the questionnaire. Right...you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”
 :::
 
 ::: voice-daughter
@@ -161,56 +161,56 @@ Me: "I took a class in college, but I’ve forgotten most of it.”
 :::
 
 ::: voice-father
-Dad: "Then you’ll need to relearn it. And which R functions you use depends entirely on your outcome.”
+Dad: "Then you’ll need to brush up on it. And which R functions you use depends entirely on your outcome.”
 :::
 :::::::::::::::::::::::::::::::::
 
 ::: {.callout-note appearance="simple" title="Clinical questions and research hypotheses"}
 
-In daily clinical practice, many questions naturally arise. A question emerging directly from clinical experience is called a clinical question.
+In clinical practice, many questions naturally arise. A question emerging directly from clinical experience is called a clinical question.
 
-When starting a clinical research, what matters is expressing that **clinical question** as a **research hypothesis**. A research hypothesis consists of minimal essential elements, often summarized using PICO/PECO:
+When starting a clinical study, what matters is expressing that **clinical question** as a **research hypothesis**. A research hypothesis consists of minimal essential elements, often summarized using PICO/PECO:
 
 - P: Patients/Population
 - I/E: Intervention/Exposure
 - C: Comparison
 - O: Outcome
 
-The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case?control, or cross-sectional study. All can be structured using PECO. 
+The I (Intervention) or E (Exposure) differs depending on whether your study is an interventional trial or an observational study such as a cohort, case-control, or cross-sectional study. All can be structured using PECO. 
 
 Here are three examples of research hypotheses using the cancer survivor survey as a theme.
 ::: 
 
 ::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 1"}
 
-Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within one year** between those with and without a stoma?
+Among rectal cancer patients after curative resection in Japan, is there a difference in **return-to-work within 1 year** between those with and without a stoma?
 
 - P: Rectal cancer patients after curative resection  
 - E: Stoma present  
 - C: Stoma absent  
-- O: Returned to work within one year after surgery (yes/no)
+- O: Returned to work within 1 year after surgery (yes/no)
 
 Here you’d compare the return-to-work proportion between the stoma and non-stoma groups.
 
-What to choose for C (Comparison) is important. If you only know the return-to-work rate in the stoma group, it’s hard to say whether that number is "high” or "low”.  
+What to choose for C (Comparison) is important. If you only know the return-to-work proportion in the stoma group, it’s hard to say whether that number is "high” or "low”.  
 Having a clear comparison group improves interpretability. 
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 2"}
 
-Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within one year?
+Among cancer patients after curative surgery, does providing a guidebook on balancing work and cancer treatment increase the proportion who return to work within 1 year?
 
 - P: Patients with cancer after curative surgery  
 - E: Received the guidebook  
 - C: Did not receive the guidebook  
-- O: Returned to work within one year after surgery (yes/no)
+- O: Returned to work within 1 year after surgery (yes/no)
 
 Here P is broader, so the results could potentially apply to a wider range of patients. This is an example of higher generalizability.
 :::
 
 ::: {.callout-note appearance="simple" collapse="true" title="Research hypothesis 3 (exploratory)"}
 
-"Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within one year?”
+"Are sex, age, stage, adjuvant chemotherapy, performance status, comorbidities, stoma, preoperative employment status, household income, cancer insurance, and use of employment support services associated with return-to-work within 1 year?”
 
 In exploratory studies like this, P is clear, but E and C are **not just one thing** — we’re screening multiple potential risk factors.
 

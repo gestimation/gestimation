@@ -137,7 +137,6 @@ generate_data <- function(n=200, hr1, hr2) {
 ::: {.callout-note appearance="simple"  collapse="true" title="calculate_coverage()のコードはこちら（generate_data()とcoxph()を呼んでシミュレーションを実行）"}
 ```{r warning=FALSE}
 calculate_coverage <- function(model=c("coxph","finegray"), n, hr1, hr2, hr_true) {
-  set.seed(46)
   replications=1000
   covered <- numeric(replications)
 

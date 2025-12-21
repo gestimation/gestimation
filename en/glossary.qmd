@@ -221,6 +221,7 @@ The following four terms are not formal statistical terms, but they are often se
 
 ::: {.callout-note appearance="simple"  collapse="true" title="Answer"}
 -   **The correct answer is 3**
+
 Some papers use "sample number" to mean sample size, but in clinical trials "sample number" would correspond to the number of groups, making this usage incorrect. Cox is a proper name, so only the first letter should be capitalized. "OS curve" can reasonably be interpreted as an overall survival curve, so it is not necessarily incorrect. "*T*-test" is sometimes used, but since it refers to a different statistical method from the *t*-test and is not used in clinical trials, it should be considered a typographical error.
 :::
 
