@@ -1,6 +1,6 @@
 ---
 title: "P-Value Explanations That Seem Plausible at First Glance"
-description: "臨床試験ででてきるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。"
+description: "What is the true meaning of p-values in clinical trials? A coffee-chat guide to confirm the concept of hypothetical repetitions—the frequentist approach—through conversation. This piece cultivates an intuitive understanding of p-values."
 tags:
   - Clinical trial
   - Language & writing
@@ -23,41 +23,29 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 
 ------------------------------------------------------------------------
 
-### 生存曲線とハザード比
+### Survival curves and hazard ratios
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「お父さん、コーヒーもう一杯、淹れ直したよ。続けてJCOG9502のハザード比について教えてよ」
-:::
-
-
-
-Survival Curves and Hazard Ratios
-
-::: voice-daughter
-Daughter: 
-"Dad, I've made another cup of coffee. Can you keep going and explain the hazard ratios from JCOG9502?"
+Daughter: "Dad, I've made another cup of coffee. Can you keep going and explain the hazard ratios from JCOG9502?"
 :::
 
 ::: voice-father
-Dad: "Ouch, it's hot. You're referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B.
-Both summarize the differences between the Kaplan–Meier curves, showing that the TH group had better outcomes than the LTA group.
-A higher hazard means the Kaplan–Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio."
+Dad: "Ouch, it's hot. You're referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the differences between the Kaplan-Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan-Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio."
 ::: 
 
-
-(Figure)
+![](clinical-trial-1.png)
 
 ::: voice-daughter
 Daughter: "Well summarized?"
 :::
 
 ::: voice-father
-Dad: "Yes. In both figures, the Kaplan–Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it's not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call Cox regression or the proportional hazards model."
+Dad: "Yes. In both figures, the Kaplan-Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it's not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call **Cox regression** or the **proportional hazards model**."
 ::: 
 
 ::: voice-daughter
-Daughter: "So if the curves cross, that breaks the proportionality assumption."
+Daughter: "So if the curves cross, that breaks the proportional hazards assumption."
 :::
 
 ::: voice-father
@@ -65,19 +53,19 @@ Dad: "Exactly. And the OS and DFS results are consistent with each other as well
 ::: 
 
 ::: voice-daughter
-Daughter: "Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan–Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right?
-So the LTA group had worse outcomes, but since the p-values aren't below the threshold, there's no statistically significant difference between the two groups?"
+Daughter: "Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan-Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren't below the threshold, there's no statistically significant difference between the two groups?"
 :::
 
 ::: voice-father
 Dad:  "That's right. The hazard reflects the speed at which death or recurrence occurs, and the hazard ratio is simply the ratio between the two groups."
+:::
+:::::::::::::::::::::::::::::::::
 
-P-Value Explanations That Seem Plausible
+### P-Value explanations that seem plausible
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-Dad: "The precise meaning of p-values is often misunderstood. One thing to keep in mind when reading papers is that the threshold compared against the p-value—the significance level—may not always be 5%. For example, consider interim analyses. Take a look at the abstract.
-In JCOG9502, an interim analysis was planned before the final analysis, and this paper reports results after the trial was stopped early.
-In interim analyses, it's common to test using a significance level lower than 5%."
+Dad: "The precise meaning of p-values is often misunderstood. One thing to keep in mind when reading papers is that the threshold compared against the p-value—the significance level—may not always be 5%. For example, consider **interim analyses**. Take a look at the abstract. In JCOG9502, an interim analysis was planned before the final analysis, and this paper reports results after the trial was stopped early. In interim analyses, it's common to test using a significance level lower than 5%."
 ::: 
 
 ::: voice-daughter
@@ -85,7 +73,7 @@ Daughter: "So the trial was stopped early because it became statistically signif
 :::
 
 ::: voice-father
-Dad: "No. The trial was stopped not because a significant difference was found, but because the Data and Safety Monitoring Committee judged that there was no reasonable chance that the LTA group would prove superior. There are several other common misunderstandings. Look at these statements."
+Dad: "No. The trial was stopped not because a significant difference was found, but because the data and safety monitoring committee judged that there was no reasonable chance that the LTA group would prove superior. There are several other common misunderstandings. Look at these statements."
 ::: 
 
 1. A p-value is the probability that the null hypothesis is true.
@@ -95,7 +83,7 @@ Dad: "No. The trial was stopped not because a significant difference was found, 
 3. A statistically non-significant result means that the null hypothesis is true and should be accepted.
 
 ::: voice-father
-Dad: "In JCOG9502, the null hypothesis is that the overall survival curves of the LTA and TH groups are equal. Let me ask you about the first statement. Do you think the p-value in JCOG9502 represents the probability that ‘there is no difference between the survival curves of the LTA and TH groups'?"
+Dad: "In JCOG9502, the **null hypothesis** is that the overall survival curves of the LTA and TH groups are equal. Let me ask you about the first statement. Do you think the p-value in JCOG9502 represents the probability that ‘there is no difference between the survival curves of the LTA and TH groups'?"
 ::: 
 
 ::: voice-daughter
@@ -151,7 +139,7 @@ Daughter: "I remember reading that p-values are used to reject hypotheses, not t
 :::
 
 ::: voice-father
-Dad: "That would be breaking the rules. If the null hypothesis were true, it would mean that A and B are equivalent—but you cannot accept it just because there's no significant difference. To conclude equivalence or non-inferiority, you need a properly designed equivalence trial or non-inferiority trial."
+Dad: "That would be breaking the rules. If the null hypothesis were true, it would mean that A and B are equivalent—but you cannot accept it just because there's no significant difference. To conclude equivalence or non-inferiority, you need a properly designed **equivalence trial** or **non-inferiority trial**."
 ::: 
 
 ::: voice-daughter
@@ -160,14 +148,15 @@ Daughter: "Right. I suspected that, but it helps to hear it stated clearly."
 
 ::: voice-father
 Dad: "This distinction had to be built into the rules, and history shows why.
-About thirty years ago in Japan, non-inferiority trials were required for drug approval.
-Based on that experience, the relationship between research hypotheses and statistical decision rules has to be handled very carefully."
+About thirty years ago in Japan, non-inferiority trials were required for drug approval. Based on that experience, the relationship between research hypotheses and statistical decision rules has to be handled very carefully."
 ::: 
+:::::::::::::::::::::::::::::::::
 
-P-Values as a Standardized Rule
+### P-values as a standardized rule
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Daughter: "I understand the textbook explanation, but I still feel a gap between theory and reality. About statement two—the idea that ‘small p-values mean important science.' In basic research, results without significance often get dismissed. That's the reality. But JCOG9502 is different. It didn't show superiority of LTA, nor equivalence of the procedures—yet it was published in Lancet Oncology. Why?"
+Daughter: "I understand the textbook explanation, but I still feel a gap between theory and reality. About statement two—the idea that 'small p-values mean important science.' In basic research, results without significance often get dismissed. That's the reality. But JCOG9502 is different. It didn't show superiority of LTA, nor equivalence of the procedures—yet it was published in Lancet Oncology. Why?"
 :::
 
 ::: voice-father
@@ -187,16 +176,11 @@ Daughter: "So clinical trials are about evaluating technology, not making scient
 :::
 
 ::: voice-father
-Dad: "Historically, clinical trials developed within regulatory systems for technology evaluation.
-Standardizing p-values and efficacy endpoints was part of maintaining consistent testing standards.
-In the 1990s, regulatory requirements still differed across countries.
-In the late 1990s, regulators in the US, Europe, and Japan agreed on common standards—the ICH guidelines."
+Dad: "Historically, clinical trials developed within regulatory systems for technology evaluation. Standardizing p-values and efficacy endpoints was part of maintaining consistent testing standards. In the 1990s, regulatory requirements still differed across countries. In the late 1990s, regulators in the US, Europe, and Japan agreed on common standards—the ICH guidelines."
 ::: 
 
 ::: voice-daughter
-Daughter: "But that's for industry-sponsored trials, not investigator-initiated studies.
-And haven't clinical trials driven paradigm shifts? Cytotoxic drugs, anti–PD-1 antibodies, ADCs.
-Calling all that ‘technology evaluation' feels unsatisfying."
+Daughter: "But that's for industry-sponsored trials, not investigator-initiated studies. And haven't clinical trials driven paradigm shifts? Cytotoxic drugs, anti-PD-1 antibodies, ADCs. Calling all that ‘technology evaluation' feels unsatisfying."
 :::
 
 ::: voice-father
@@ -204,223 +188,65 @@ Dad: "Perhaps technology evaluation stimulated science."
 ::: 
 
 ::: voice-daughter
-Daughter: "You really like separating technology and science.
-I'm fine with classifying industry trials as technology evaluation.
-But in the broader scientific enterprise, clinical trials generate new hypotheses and new questions. That's what I want to call science."
-:::
-
-
-::: voice-father
-お父さん「あつつ。それは図Aのhazard ratio of death 1.36、図Bのhazard ratio of recurrence or death 1.29についてだね。どちらもKaplan-Meier曲線の違いを要約していて、LTA群よりTH群の方が予後がよかったことを表している。ハザードが高いってことは、Kaplan-Meier曲線が下がりやすいっていう意味だからね。大事なのは、図Aの全生存期間（OS）、図Bの無病生存期間（DFS）のどちらも、ハザード比で要約しやすい形状をしていることかな」
-:::
-
-![](clinical-trial-1.png)
-
-::: voice-daughter
-私「要約しやすい？」
-:::
-
-::: voice-father
-お父さん「うん。どちらの図でもTH群のKaplan-Meier曲線が、きれいにLTA群の上にあるでしょ、右端の人数が4人しかいないところでは交差しているけど。ハザード比は、2本の生存曲線が、ハザードのスケールで比例関係にあることが前提なんだ。ハザード比の基準は書かれていないけど、TH群を比の分母にとっている。この関係を、**Cox回帰（Cox regression）**とか**比例ハザードモデル（proportional hazards model）**って呼ぶんだ」
-:::
-
-::: voice-daughter
-私「比例関係だったら交差したらまずいよね」
-:::
-
-::: voice-father
-お父さん「そういうこと。それに、OSとDFSの結果が一貫している。これもすごく素直な結果だよね。解釈しやすい。後でRを用いたCox回帰をみせるよ」
-:::
-
-::: voice-daughter
-私「ありがとう、後でね。それよりさ。この図のハザード比は1.36と1.29だよね。ハザードが高いほどKaplan-Meier曲線が下がる、比の分母はTH群だっけ。ということは、ハザード比が1より大きいと、TH群よりLTA群の方がOSやDFSの成績が下がるんだよね？あと、p値は0.05より小さいと統計学的に有意なんでしょ。つまり、LTA群の方が、治療成績がわるかったけど、p値をみると2群に有意差はないんだよね」
-:::
-
-::: voice-father
-お父さん「そういうことだね。ハザードは死亡や再発が起きるスピードを表していて、ハザード比はその2群間の“比”だから」
+Daughter: "You really like separating technology and science. I'm fine with classifying industry trials as technology evaluation. But in the broader scientific enterprise, clinical trials generate new hypotheses and new questions. That's what I want to call science."
 :::
 :::::::::::::::::::::::::::::::::
 
-### p値に関する一見正しそうな説明
+::: {.callout-note appearance="simple" collapse="true" title="The tragedy of Hopate"}
 
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-father
-お父さん「p値の正確な意味は誤解されてることが多いんだよ。論文を読むときの注意点としては、まず、試験によってはp値と比べる基準（有意水準）が5%でないかもしれないってこと。たとえば**中間解析（interim analysis）**とか。論文の抄録を読んでごらん。実はJCOG9502では最終解析の前に、中間解析をする計画になっていて、この論文はそのとき早期中止になった結果を報告しているみたいだよ。中間解析では、5%より低い有意水準で検定するのが一般的なんだ」
+Have you heard of the older drug called cerebral circulation and metabolism enhancing agents? This medication was once used for cerebrovascular disorders and dementia, and reportedly generated cumulative sales of around 800 billion yen in Japan. Several similar drugs existed, but most were approved based on “non-inferiority trials” comparing them to the first-approved drug, calcium hopantenate (brand name Hopate). However, the studies conducted at the time did not perform formal non-inferiority analyses setting a non-inferiority margin; instead, non-inferiority was determined based on the finding that there was “no significant difference compared to calcium hopantenate.” Calcium hopantenate was withdrawn from the market in 1989 due to side effects. Around the same time, the Ministry of Health and Welfare (as it was then) requested pharmaceutical companies to conduct reevaluations using placebo-controlled trials. The results showed that none of the cerebral circulation-improving drugs outperformed placebo (Ministry of Health and Welfare, Pharmaceutical Safety Bureau, 1998). This tragedy clearly demonstrates that concluding equivalence or non-inferiority when no significant difference is found is a mistake.
 :::
 
-::: voice-daughter
-私「じゃあ有意差がついたから早期中止したってこと？」
+::: {.callout-note appearance="simple"  title="Estimation of a hazard ratio using coxph()"}
+There are several methods for estimating hazard ratios, but the most popular is the `coxph()` function in the **survival** package. In a previous episode, we used the function `generate_data(hr1, hr2)` to generate data on the presence of a stoma and overall survival (OS). This time, we will apply Cox regression to the same data and calculate the hazard ratio between the stoma group and the non-stoma group. In `generate_data(hr1, hr2)`, the true value of the hazard ratio for death can be specified using the hr2 argument.
 :::
 
-::: voice-father
-お父さん「いや、この試験が早期中止した理由は、有意差がついたからではなく、LTA群が有意に勝つ見込みがないと、効果安全性評価委員会が判断したためだね。他にも誤解はいくつもある。これをみてよ」
-:::
-
-1.  p値は**帰無仮説（null hypothesis）**が正しい確率である
-2.  p値が小さく、統計学的に有意であることは、科学的に重要な知見が得られたことを意味する
-3.  統計学的に有意でない結果とは、帰無仮説が正しいので採択すべきという意味である
-
-::: voice-father
-お父さん「JCOG9502の場合、帰無仮説は”LTA群の全生存曲線は、TH群の全生存曲線と等しい”ってことだよ。このp値に関する説明のうち、まず1について聞くね。JCOG9502のp値は、”LTA群とTH群の生存曲線に差がない確率”を意味すると思う？」
-:::
-
-::: voice-daughter
-私「黒板くさくなってきた。統計の教科書って私がいったの、地雷だったか？まあ、1はそれでいいんじゃない？p値が0.05だったら100回に5回は正しい」
-:::
-
-::: voice-father
-お父さん「ここではね、言葉を正確に選んで考えてみてほしいんだ。“生存曲線に差がない”っていう命題や仮説は、確率変数かな？確率変数ではないよね。命題は、正しいかどうかのどちらかしかないもの。確率変数ではないのに、確率が定義されるのは学問的におかしい」
-:::
-
-::: voice-daughter
-私「はーん。そういう理屈っぽいことがいいたかったわけね。じゃあそういう言い回しはやめます」
-:::
-
-::: voice-father
-お父さん「うんうん。じゃあ100回に5回ってどういう意味でいった？」
-:::
-
-::: voice-daughter
-私「へ。言葉通りだけど？JCOG9502を100回やったらどうなるかって意味」
-:::
-
-::: voice-father
-お父さん「その通り。同じ試験を100回繰り返したらp値が100個出てくるでしょ。これがこの場合の確率の定義なんだ。頻度論的確率（frequentist probability）とかいうね。じゃあ確率の意味の次は、p値の解釈。p値が小さいことは、“科学的に重要な知見が得られたこと”を意味すると思う？」
-:::
-
-::: voice-daughter
-私「普通そう考えるんじゃない？」
-:::
-
-::: voice-father
-お父さん「でもさっきの図のp値を見てよ。p=0.15からp=0.92まで4つのp値が示されているけど、どれも小さくはないでしょ」
-:::
-
-::: voice-daughter
-私「うん」
-:::
-
-::: voice-father
-お父さん「じゃあ科学的に重要じゃないってこと？」
-:::
-
-::: voice-daughter
-私「そういう意味でいったわけじゃないけど」
-:::
-
-::: voice-father
-お父さん「だよね。p値が小さい方が重要な研究結果だって考えがちだけど、それははっきりとした間違いだと考えてください。論文を読むとき、p値に注目すると見方が偏ってしまう」
-:::
-
-::: voice-daughter
-私「はいはい。お父さん、話長くない？」
-:::
-
-::: voice-father
-お父さん「三つ目の説明“統計学的に有意でない結果とは、帰無仮説が正しいので採択すべきという意味である”まで考えようよ。これは正しい？」
-:::
-
-::: voice-daughter
-私「教科書かなにかで、p値は、仮説を棄却するためのもので、採択しちゃだめって読んだ気がする。この最後の説明も、やっぱり間違いなんでしょ、目を見ればわかる。でもさ、実際問題として、有意差がつかなかったらどうなるの？たとえば実薬AとBを比較する臨床試験だったとして、AとBの効果は同等と結論に書いていいの？」
-:::
-
-::: voice-father
-お父さん「それはルール違反だよ。この問いは、そういう間違いをさせないために出したんだ。帰無仮説が正しいことは、AとBの効果は同等っていう意味になるけど、有意差がないからって、それを採択してはいけない。“同等”や“劣らない”という結論を出すには、**同等性 （equivalence）試験**や**非劣性 （non-inferiority）試験**を組む必要がある」
-:::
-
-::: voice-daughter
-私「やっぱりね。そう思ったけど、はっきりいってくれて納得だわ」
-:::
-
-::: voice-father
-お父さん「この区別はルールに組み込まないとまずいことは歴史が証明している。これはもう30年ほど前の日本の話なんだけど。昔、薬事承認の根拠として非劣性試験を国が求めていた時代があってね。その時代の経験を踏まえると、研究仮説と統計的な判断基準の関係は、厳密に考えとかないとちょっとまずいと思うんだ」
-:::
-:::::::::::::::::::::::::::::::::
-
-### 標準規格としてのp値
-
-::::::::::::::::::::::::::::::::: dialogue
-::: voice-daughter
-私「教科書的な説明は、それはそれでいいんだけどさ。なんだか、現実とギャップを感じるよ、私は。2の"p値が小さいと科学的に重要"についてなんだけどね。そうはいっても基礎研究だと、有意差がつかない結果はいまいち扱いじゃない？それが現実だと思う。でもJCOG9502は違うのもわかる。LTAの有効性が示されたわけでも、術式が同等ってわかったわけでもない。でもどうしてLancet Oncologyに載るほど評価されたんだろう」
-:::
-
-::: voice-father
-お父さん「ん？有意差がつかない臨床試験結果に価値がないとは思わないけど。臨床試験って、技術の性能評価が目的じゃない？手術や薬といった医療技術のね。有効性が示されるかどうかに関わらず、評価が定まったということに変わりはないよね」
-:::
-
-::: voice-daughter
-私「...。ネガティブ試験でも価値が変わらないってことをいってるよね？」
-:::
-
-::: voice-father
-お父さん「うん。たとえるならさ、臨床試験はペーパーテストと同じ"試験"ってことだよ。合格・不合格と試験成績という情報の価値は無関係でしょ。さっき話したp値に関する説明は、採点ルールや試験の"標準規格"みたいなもので避けて通れないんだ。...点数がすべてじゃないけどね」
-:::
-
-::: voice-daughter
-私「臨床試験は技術を評価するのが目的ってこと？科学的発見じゃなくて？」
-:::
-
-::: voice-father
-お父さん「うん。臨床試験が行われてきた文脈は、技術評価の制度の中だったといえると思うよ。p値の使い方や、有効性エンドポイントの定義の標準化も、"試験の規格"を一定に保つための工夫だった。古い話だけど、製薬企業が承認取得のために行う臨床試験って、90年代はまだ各国の共通ルールがなかった。90年代後半になって、米国、欧州、日本の規制当局が集まってICHガイドラインという臨床試験の標準規格を決めたんだ」
-:::
-
-::: voice-daughter
-私「それは医師主導臨床試験じゃなくて治験だよね。お父さんさ、やっぱり臨床試験はパラダイムシフトを起こしてない？殺細胞薬、抗PD-1、ADC。あれを"技術評価"って呼ぶのは、あんまり納得いかないな」
-:::
-
-::: voice-father
-お父さん「それは技術評価の結果が科学を刺激しただけじゃないかなあ」
-:::
-
-::: voice-daughter
-私「お父さんって、技術と科学を区別したがるね。まあ、企業治験は技術評価のくくりでも私はいいよ。でも、科学の営み全体をみたとき、臨床試験はその一部だと思う。結果が仮説を更新して、次の問いを生む。私はそれを科学って呼びたい」
-:::
-:::::::::::::::::::::::::::::::::
-
-::: {.callout-note appearance="simple" collapse="true" title="ホパテの悲劇"}
-
-脳循環改善薬という古い薬をご存知でしょうか？この薬はかつて脳血管障害の後遺症や認知症などに使われ、累計8,000億円ほどの売上げがあったようです。脳循環改善薬にはいくつかの類似薬がありましたが、そのほとんどが、最初に承認されたホパンテン酸カルシウム（販売名ホパテ）と比較した「非劣性試験」を根拠に承認されていました。しかし当時行われていたのは、正式な非劣性の解析ではなく、「ホパンテン酸カルシウムと比べて有意差がない」ことにもとづいて非劣性を判定していました。1989年にホパンテン酸カルシウムは副作用のため市場から撤退しました。同時期に、厚生省（当時）は製薬企業にプラセボ対照試験による再評価を求めました。その結果、脳循環改善薬は、すべてプラセボに勝てなかったのです（厚生省医薬安全局1998）。この悲劇は、有意差がつかなかったとき、同等や非劣性と結論するのは間違いであることをはっきり示しています。
-:::
-
-::: {.callout-note appearance="simple"  title="coxph()を用いたハザード比の推定"}
-ハザード比を推定する方法はいくつかありますが、もっともポピュラーなのは**survival**パッケージの`coxph()`です。以前のエピソードでは、関数`generate_data(hr1, hr2)`を用いて、ストーマの有無やOSのデータを生成しました。今回は同じデータにCox回帰を当てはめ、ストーマあり群とストーマなし群のハザード比を計算してみます。`generate_data(hr1, hr2)`では、死亡ハザード比の真値はhr2という引数で指定できます。
-:::
-
-::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
+::: {.callout-note appearance="simple"  collapse="true" title="Code for generate_data()"}
 ```{r warning=FALSE}
-generate_data <- function(n=200, hr1, hr2) {
+generate_data <- function(n = 200, hr1, hr2) {
   set.seed(46)
+  # Stoma: 1 = with stoma, 0 = without stoma
   stoma <- rbinom(n, size = 1, prob = 0.4)
+  # Sex: 0 = WOMAN, 1 = MAN
   sex <- rbinom(n, size = 1, prob = 0.5)
+  # Age: normal distribution (stoma group slightly older)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
-  hazard_relapse   <- ifelse(stoma == 1, hr1*0.10, 0.10) # 再発のハザード（大きいほど早く起こる）
-  hazard_death     <- ifelse(stoma == 1, hr2*0.10, 0.10) # 死亡のハザード（大きいほど早く起こる）
-  hazard_censoring <- 0.05                               # 打ち切りハザード（群に依存しない）
   
-  t_relapse   <- rexp(n, rate = hazard_relapse)   # 再発までの潜在時間
-  t_death     <- rexp(n, rate = hazard_death)     # 死亡までの潜在時間
-  t_censoring <- rexp(n, rate = hazard_censoring) # 打ち切りまでの潜在時間
+  # Hazards for relapse and death (larger hazard implies earlier event)
+  hazard_relapse   <- ifelse(stoma == 1, hr1 * 0.10, 0.10)
+  hazard_death     <- ifelse(stoma == 1, hr2 * 0.10, 0.10)
+  hazard_censoring <- 0.05
   
-  ## --- 全生存期間（OS） ----------------------------------------
+  # Latent times to relapse, death, and censoring
+  t_relapse   <- rexp(n, rate = hazard_relapse)
+  t_death     <- rexp(n, rate = hazard_death)
+  t_censoring <- rexp(n, rate = hazard_censoring)
+  
+  # Overall survival (OS)
+  # status_os = 1 → death (event of interest)
+  # status_os = 0 → censored
   time_os   <- pmin(t_death, t_censoring)
-  status_os <- as.integer(t_death <= t_censoring)  # 1 = 死亡, 0 = 打ち切り
+  status_os <- as.integer(t_death <= t_censoring)  # 1 = death, 0 = censored
   
-  ## --- 無再発存期間（RFS） -------------------------------------
-  time_rfs <- pmin(t_relapse, t_death, t_censoring)
-  
+  # Relapse-free survival (RFS)
+  # status_rfs = 1 → relapse or death whichever comes first (event of interest)
+  # status_rfs = 0 → censored
+  time_rfs   <- pmin(t_relapse, t_death, t_censoring)
   status_rfs <- integer(n)
-  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1 # 再発
-  status_rfs[time_rfs == t_death & time_rfs < t_censoring] <- 1   # 死亡
+  status_rfs[time_rfs == t_relapse & time_rfs < t_censoring] <- 1  # relapse
+  status_rfs[time_rfs == t_death   & time_rfs < t_censoring] <- 1  # death
   
-  ## --- 累積再発率（CIR） + 競合リスク --------------------------
+  # Cumulative incidence of relapse (CIR)
+  # status_cir = 1 → relapse (event of interest)
+  # status_cir = 2 → death as competing risk
+  # status_cir = 0 → censored
+  
   time_cir <- pmin(t_relapse, t_death, t_censoring)
-  
   status_cir <- integer(n)
-  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1 # イベント1: 再発
-  status_cir[time_cir == t_death & time_cir < t_censoring] <- 2   # イベント2: 競合リスクとしての死亡
+  status_cir[time_cir == t_relapse & time_cir < t_censoring] <- 1
+  status_cir[time_cir == t_death   & time_cir < t_censoring] <- 2
   
-  ## --- データフレームにまとめる --------------------------------
-  dat <- data.frame(
+  data.frame(
     id         = 1:n,
     sex        = factor(sex, levels = c(0, 1), labels = c("WOMAN", "MAN")),
     age        = age,
@@ -437,41 +263,45 @@ generate_data <- function(n=200, hr1, hr2) {
 ```
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="coxph()のコードと結果はこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="Code for coxph() and outout"}
 ```{r warning=FALSE}
-# install.packages("survival") #インストールが必要なら実行
+#- Generation of data frame "dat" --------------------------
+dat <- generate_data(hr1 = 2, hr2 = 1.5)  # true HR for death = 1.5
+
+#- Analysis using coxph() ----------------------------------
+# install.packages("survival") # if needed
 library(survival)
-dat <- generate_data(hr1=2, hr2=1.5) #再発ハザード比2, 死亡ハザード比1.5のデータ生成
+
 fit <- coxph(Surv(time_os, status_os) ~ stoma, data = dat)
 summary(fit)
 ```
 :::
 
 
-### 文献
+### Reference
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
-- [脳循環代謝改善薬ニセルゴリンの再評価について [Internet]. 東京: 厚生省医薬安全局; 1998](https://www.mhlw.go.jp/www1/houdou/1006/h0616-3.html) 
+- [Re-assessment of nicergoline, a cerebral circulation and metabolism enhancing agent [Internet]. Tokyo: Ministry of Health and Welfare, Pharmaceutical Safety Bureau; 1998](https://www.mhlw.go.jp/www1/houdou/1006/h0616-3.html) 
 
-### 次のエピソードとRスクリプト
+### Next episode and R script
 
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="Other episodes"}
 
-**このシリーズのエピソード**
+**Episodes in this series**
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
-**過去のシリーズ**
+**Earlier series**
 
 - [Study Design I](study-design-1.html)
 
-**用語集**
+**Glossary**
 
 - [Statistical Terms in Plain Language](glossary.html)
 :::

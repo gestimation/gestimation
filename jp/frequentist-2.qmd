@@ -1,6 +1,6 @@
 ---
 title: "P-Value Explanations That Seem Plausible at First Glance"
-description: "臨床試験ででてきるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。"
+description: "臨床試験で生まれるp値の真の意味は？仮想的な反復という頻度論の発想を、会話を通して確認するcoffee-chat guide。p値の直感を育てる一編です。"
 tags:
   - Clinical trial
   - Language & writing

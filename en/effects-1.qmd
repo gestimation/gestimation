@@ -1,0 +1,226 @@
+---
+title: "Silent Confusions Hidden in Percentages"
+description: "Percentage displays are easy to understand, yet they can also lead to misunderstandings. Using vaccine effectiveness as an example, this coffee-chat guide explores why numbers can take on a life of their own. We'll rethink how we communicate effectiveness."
+tags:
+  - Effect measure
+  - Language & writing
+  - Observational study
+format:
+  html:
+    toc: true
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Effects and Time I − Silent Confusions Hidden in Percentages
+
+::: {.serif-block .text-right}
+Keywords: effect measure, language & writing, observational study
+:::
+
+------------------------------------------------------------------------
+
+::: {.callout-note appearance="simple"  collapse="true" title="Previously"}
+A daughter taking her first steps into research and her dad, a statistician. After advising her to organize her research hypothesis from "PICO" into "PECO," the daughter—an oncologist—decides to study the relationship between having a stoma and returning to work among cancer survivors. Since then, the dad has been quietly looking for chances to bring up statistics in conversation.
+:::
+
+### When You Hear "95%," Don't You Think It Works for 95 Out of 100 People?
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+Dad: "Oh—you're out of the bath already? Want me to make coffee?"
+:::
+
+::: voice-daughter
+Daughter: "Caffè latte."
+:::
+
+::: voice-father
+Dad: "Your usual? That isn't a caffè latte. It's just coffee with milk."
+:::
+
+::: voice-daughter
+Daughter: "That's fine. By the way—about that vaccine that was in the news. A patient asked me in clinic what '95% efficacy' means. Honestly, statistics like that confuse me too."
+:::
+
+::: voice-father
+Dad: "Yeah, it became a big topic. **Vaccine efficacy** is surprisingly tricky to compute. And first—be careful with the word 'rate.'"
+:::
+
+::: voice-daughter
+Daughter: "Really? I use terms like incidence rate and mortality rate all the time."
+:::
+
+::: voice-father
+Dad: "This is different. Japanese makes it easy to trip up here, because the same word is used in multiple ways. In this context, '95%' is a percentage—but it's **not** a 'rate' in the epidemiologic sense. And the confusion doesn't stop there. Here, 95% means the risk of disease is reduced to **5% of the placebo risk**."
+:::
+::::::::::::::::::::::::::::::::: 
+
+- Vaccine efficacy is not a rate in the general epidemiologic sense.
+- It is a measure defined by relative comparison with placebo.
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Daughter: "Huh? So it doesn't mean 'it works for 95 out of 100 people'?"
+:::
+
+::: voice-father
+Dad: "No, no. It's a relative comparison to the placebo. It's a percentage that expresses how much infection is prevented compared with what would happen under placebo. In papers it's fine, but in everyday conversation it almost always gets miscommunicated. You can't really understand it unless you trace it back to the underlying risk. Grab that paper napkin and a pen—let me write it out. I'll list a few epidemiologic measures, but the only thing you need to keep straight is: 'Which risk is being compared to which risk—and how?' To do that, picture data summarized in a 2×2 table."
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple"  title="Basic measures for comparing risks"}
+
+In medicine, different fields use different measures, and measures that compare proportions are often harder to interpret than they look. A good first step is to think in terms of a 2×2 table.
+
+|            | Group 1 | Group 2 |
+|------------|---------|---------|
+| Disease    |   A     |   B     |
+| No disease |   C     |   D     |
+| Risk       | $\pi_1$ | $\pi_2$ |
+
+Here we write the counts and risks using symbols (A, B, C, D and $\pi_1$, $\pi_2$) rather than specific numbers. When comparing risks $\pi_1$ and $\pi_2$ across two groups, common measures include:
+
+- Risk difference (RD; absolute risk reduction)
+
+$$
+RD=\pi_1-\pi_2
+$$
+
+- Risk ratio (RR)
+
+$$
+RR=\frac{\pi_1}{\pi_2}
+$$
+
+- Odds ratio (OR)
+
+$$
+OR=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}
+$$
+
+When using these measures, it is important to keep track of which group is treated as the reference. In the formulas above, Group 2 is the reference.
+:::
+
+::: {.callout-note appearance="simple"  title="Measures used to compare treatment efficacy"}
+
+When comparing which of two treatments works better, the following measures are also frequently used. In both cases we assume $\pi_2>\pi_1$. For vaccine efficacy, you can think of Group 2 as the placebo group.
+
+- Number needed to treat (NNT)
+
+$$
+NNT=\frac{1}{\pi_2-\pi_1}=-\frac{1}{RD}
+$$
+
+- Vaccine efficacy (relative risk reduction)
+
+$$
+VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
+$$
+:::
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-daughter
+Daughter: "Wow—vaccine efficacy isn't the kind of percentage I pictured. It's basically just the risk ratio, rearranged. But if you call it 'efficacy' and it's written as a percent, you naturally assume it's just 'a proportion.' Do you always carry these formulas around in your head? It feels strange when equations suddenly appear. Statistics and medicine really do have different vibes."
+:::
+
+::: voice-father
+Dad: "Maybe I've just gotten used to it. But if I don't write it as a formula, you can't tell what vaccine efficacy *is*, right? And actually—this number has a meaning that's far more real than the equation."
+:::
+
+::: voice-daughter
+Daughter: "What is that supposed to mean? Don't be so roundabout. This isn't a lecture."
+:::
+
+::: voice-father
+Dad: "You'll see immediately. Vaccine efficacy is estimated from clinical data, right? A clinical trial is run with many participants, and what was actually observed gets compressed—summarized tightly—into that single number. But what was observed in the data doesn't come across from vaccine efficacy alone. That's what people mean when they say **'the number starts walking on its own.'**"
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple"  title="A numerical example from a hypothetical randomized vaccine trial"}
+
+The table below is hypothetical trial data comparing a vaccine with placebo. If you compute vaccine efficacy from these counts, you obtain:
+
+|            | Vaccine | Placebo |
+|------------|---------|---------|
+| Disease    |   40    |  800    |
+| No disease |  960    |  200    |
+| Risk       |   4%    |  80%    |
+
+$\pi_1 = 40/1000 = 0.04$ 
+
+$\pi_2 = 800/1000 = 0.8$ 
+
+$VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
+:::
+
+::: voice-daughter
+::: voice-daughter
+Daughter: "True. When you see '95% effective,' it's easy to hear it as 'it almost certainly saves you.' But if you think about it, vaccines don't have *that* kind of effect. You could get fooled by the rhetoric of percentages."
+:::
+
+::: voice-father
+Dad: "Exactly. Interpreting results requires information that isn't contained in the language itself. '70%' or '80%'—the same-looking number can come from completely different calculations. Response rate and vaccine efficacy are not the same thing. But in daily conversation you can't check definitions every time, can you? That's why these measures are so often misused. And vaccine efficacy isn't the only epidemiologic measure where **percent formatting creates misunderstanding**."
+:::
+::::::::::::::::::::::::::::::::: 
+
+::: {.callout-note appearance="simple" title="A quiz related to this episode"}
+**Response rate** is the proportion of patients whose tumors shrink after chemotherapy (achieving complete or partial response), or—depending on the context—who achieve complete remission (e.g., disappearance of tumor cells in blood). The term is widely used, but the Japan Clinical Oncology Group (JCOG) prefers the expression **response proportion** (Japan Clinical Oncology Group 2025).
+
+Now, which of the following is a *rate* (in the epidemiologic sense)?
+
+1. Batting average  
+2. Sex ratio  
+3. Prevalence  
+4. Mortality rate  
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Answer"}
+-   The correct answer is **4**.
+
+Let's clarify the difference among **ratio**, **proportion**, and **rate**.
+
+A **ratio** is one quantity divided by another. For example, BMI is weight divided by height squared, so it is a ratio with units of kg/m<sup>2</sup>.
+
+A **proportion** is a special kind of ratio where the numerator is contained within the denominator (a "part over the whole"). Proportions cannot exceed 100% and are unitless.
+
+A **rate** reflects *speed over time*. For example, an incidence rate is often computed using person-time: number of new cases divided by observed person-years. Because the denominator includes time (persons × time), the unit is 1/year (more generally, 1/time).
+
+- "Batting average" (hits ÷ at-bats) is a **proportion**.  
+- "Sex ratio" (number of men ÷ number of women) is a **ratio**.  
+- "Prevalence" (number with disease ÷ total number) is a **proportion**.  
+- "Mortality rate" (deaths ÷ person-time) is a **rate**.  
+:::
+
+### Reference
+
+- [JCOG protocol manual version 3.8 [Internet]. Tokyo: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
+
+### Next episodes and R scropt
+
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="Other episodes"}
+
+**Episodes in this series**
+
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
+
+**Earlier series**
+
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+
+**Glossary**
+
+- [Statistical Terms in Plain Language](glossary.html)
+:::

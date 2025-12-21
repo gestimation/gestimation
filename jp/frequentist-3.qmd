@@ -1,5 +1,5 @@
 ---
-title: "P-Value Explanations That Seem Plausible at First Glance"
+title: "Beyond 0.05: Interpreting P-Values in a Clinical Trial"
 description: "p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。"
 tags:
   - Clinical trial

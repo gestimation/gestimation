@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。">
+<meta name="description" content="Have you ever felt lost in statistical terms the first time you read a paper? This episode begins with the daughter’s questions in front of a clinical trial article. Over coffee, her Dad quietly unpacks how to read a paper properly—starting with survival curves.">
 
-<title>Beyond 0.05: Interpreting P-Values in a Clinical Trial – Coffee and Research</title>
+<title>Reading a Paper over a Cup of Coffee – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,11 +161,11 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" id="toc-frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" class="nav-link active" data-scroll-target="#frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial">Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial</a>
+  <li><a href="#frequentist-thinking-i-reading-a-paper-over-a-cup-of-coffee" id="toc-frequentist-thinking-i-reading-a-paper-over-a-cup-of-coffee" class="nav-link active" data-scroll-target="#frequentist-thinking-i-reading-a-paper-over-a-cup-of-coffee">Frequentist Thinking I − Reading a Paper over a Cup of Coffee</a>
   <ul class="collapse">
-  <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
-  <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
+  <li><a href="#making-sense-of-the-numbers-around-survival-curves" id="toc-making-sense-of-the-numbers-around-survival-curves" class="nav-link" data-scroll-target="#making-sense-of-the-numbers-around-survival-curves">Making sense of the numbers around survival curves</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#next-episode-and-r-script" id="toc-next-episode-and-r-script" class="nav-link" data-scroll-target="#next-episode-and-r-script">Next episode and R script</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -175,12 +175,12 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Beyond 0.05: Interpreting P-Values in a Clinical Trial</h1>
+<h1 class="title">Reading a Paper over a Cup of Coffee</h1>
 </div>
 
 <div>
   <div class="description">
-    p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。
+    Have you ever felt lost in statistical terms the first time you read a paper? This episode begins with the daughter’s questions in front of a clinical trial article. Over coffee, her Dad quietly unpacks how to read a paper properly—starting with survival curves.
   </div>
 </div>
 
@@ -200,198 +200,196 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="frequentist-thinking-iii-beyond-0.05-interpreting-p-values-in-a-clinical-trial" class="level1">
-<h1>Frequentist Thinking III − Beyond 0.05: Interpreting P-Values in a Clinical Trial</h1>
+<section id="frequentist-thinking-i-reading-a-paper-over-a-cup-of-coffee" class="level1">
+<h1>Frequentist Thinking I − Reading a Paper over a Cup of Coffee</h1>
 <div class="serif-block text-right">
-<p>Keywords: clinical trial, p-value, research hypothesis, survival &amp; competing risks</p>
+<p>Keywords: clinical trial, language &amp; writing, p-value, survival &amp; competing risks</p>
 </div>
 <hr>
-<section id="正しくp値を解釈するための考え方" class="level3">
-<h3 class="anchored" data-anchor-id="正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</h3>
-<div class="dialogue">
-<div class="voice-daughter">
-<p>私「ただいま、お父さん。そろそろダウン出さなきゃだめだね。あ、ホットコーヒーもらっていい？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そろそろ帰る時間だと思って、たっぷり淹れてた。そうそう、JCOG9502の論文で生存曲線とp値の話をしたことがあったよね（Sasako, et al.&nbsp;2006）。そのとき気になったんだけどさ。どうしてp値が0.05より小さいと統計学的に有意っていったの？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「それがルールなんじゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこはね、論文の読み方を間違えてる。質問していい？論文に目を通すとき、最初にAbstract（抄録）を読むでしょ。次にどこを読む？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「Results（結果）。だってどういう結果だったかはやく知りたいもん」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うんうん、その気持ちはすごくわかる。でも、p値を見るときに限っては、正しく解釈するために、事前にMethods（方法）を読んでおく必要がある。科学コミュニティのなかで、p値について誤解が多いことが問題視されていて、アメリカ統計協会（ASA）が、統計を専門としない研究者、実務家、サイエンスライター向けの声明を出したことがある。そのきっかけは、2014年2月のASAフォーラムにこんな投稿がなされたことだった」</p>
-</div>
-<div class="voice-daughter">
-<p>私「なんだこの禅問答」</p>
-</div>
-<p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
-<p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
-<p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
-<p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="voice-father">
-<p>お父さん「そして、ASAはp値の使い方について6つの原則を出した」</p>
-</div>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<div class="voice-daughter">
-<p>私「さっきのやり取りがきっかけで、学会でp値批判があったってわけね。でもまあ6つとも抽象的でぴんとこないな」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう？“科学的な結論は、有意水準を超えたかどうかにもとづくべきではない”なんてのは、かなり明確に書いてあると思うけど。JCOG9502論文でいえば、原則3や原則5は、p値だけ見るんじゃなくて、生存曲線をじっくり観察してから結論を出そうっていってるんだ。もちろん専門知識がないと、原則がなにを意図しているかはわかりにくい。原則4は、たとえば<strong>多重性の問題（multiplicity）</strong>に関係している」</p>
-</div>
-<div class="voice-daughter">
-<p>私「多重性？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「最近の臨床試験では、多重性っていう統計的な問題が潜んでいることが多い。JCOG9502論文を例にもう少し説明しようか。Statistical Analysis（統計解析）のところを読み返してみて。<strong>alpha error（αエラー）</strong>っていうのは、有意水準ともいうけど、どちらもp値と比べる水準のこと」</p>
-</div>
-<p>After 8 years of slow accrual, the JCOG data and safety monitoring committee approved an amendment to the sample size and analysis plan. The amended sample size was 250, with one-sided alpha error of 0.1 and beta error of 0.2, with a 12-year accrual period (in total) and 8-year follow-up.（JCOG9502論文[Sasako, et al.&nbsp;2006]の”Statistical Analysis”から抜粋）</p>
-<div class="voice-daughter">
-<p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん、αエラーの理想は教科書通りの0.05。試験途中にαエラーは変えるべきではない。そんなことはみんなわかってるんだ。でも、現実に登録が難航すると、軌道修正が必要になることもある。この試験もそう。苦肉の策でαエラーを0.1に緩めたみたい」</p>
-</div>
-<div class="voice-daughter">
-<p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「あとさ、ASA声明の原則4とその解説を念頭に置いて、JCOG9502の図Aと図Bを見てみてよ。生存曲線が2本、p値が4つ示されているよね。この複数のp値は、どう読み解けばいいかわかる？」</p>
-</div>
-<p><img src="clinical-trial-1.png" class="img-fluid"></p>
-<div class="voice-daughter">
-<p>私「もともとそれが知りたくて、お父さんに質問したんだけど、わかってる？図Aのp値と図Bのp値については、私もちゃんと考えてたよ。図Aの方を見ればいいんでしょ。JCOG9502の主要エンドポイントはOSで、図Aが全生存曲線だもの。でも図Aだけでも片側と両側があるじゃない。ここが意味不明で、考えこんじゃった」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「それはそんなに難しくない。臨床試験で、試験治療群と標準治療群の成績を比べるとするでしょ。試験治療群が勝ったときだけ、有意差があったって宣言するのが、片側p値。どちらの群が勝っていても、統計的に有意かどうか判定するのが、両側p値だよ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「論文を読むと、JCOG9502のプロトコール上、LTAが試験治療、THが標準治療とされてたんだよな。LTAの方が、侵襲性が高いからかな。だからLTA群の予後がいいっていう結果でないと、有意差ありって宣言しないわけだ。これって普通？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「いや？両側p値を使うのが普通。でもJCOGが行っている臨床試験では、試験治療群の成績が、標準治療群よりいいかどうかに興味があり、しかも毒性や侵襲の異なる治療同士を比べることが多いので、片側仮説の方が自然なんだ。そのためこのグループでは、片側p値の採用を許容している（Japan Clinical Oncology Group 2025）。片側p値で有意じゃなかったら、標準治療を使い続けるから、それでいいんだって。この論文の両側p値は参考値みたいだね。つまり、有効性の主たる判断には、図Aの片側p値だけが用いられることになる」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
+<div class="callout callout-style-simple callout-note callout-titled" title="Previously">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
+Previously
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
-<ol type="1">
-<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
-<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
-<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
-<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
-<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
-<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
-</ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
+<p>A daughter taking her first steps into research and her Dad, a statistician. After advising her to organize her research hypothesis from “PICO” into “PECO,” the daughter—an oncologist—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same “return-to-work outcome,” there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="making-sense-of-the-numbers-around-survival-curves" class="level3">
+<h3 class="anchored" data-anchor-id="making-sense-of-the-numbers-around-survival-curves">Making sense of the numbers around survival curves</h3>
+<div class="dialogue">
+<div class="voice-father">
+<p>Dad: “Hmm? It’s getting cold—what are you still reading this late? Want me to make coffee?”</p>
 </div>
-<div class="callout-title-container flex-fill">
-片側p値と両側p値
+<div class="voice-daughter">
+<p>Daughter: “Oh—thanks, Dad. Milk too, please. I’m reading a paper on gastric cancer surgery. Hey, you once explained the difference between overall survival (OS) and disease-free survival (DFS), right?”</p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div class="voice-father">
+<p>Dad: “That does ring a bell.”</p>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
-<p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことがわかります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p><strong>片側（one-sided）p値</strong>と<strong>両側（two-sided）p値</strong>は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
-<hr>
-<p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
-<p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
-<p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+<div class="voice-daughter">
+<p>Daughter: “Do you read clinical papers too, for work?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Sometimes. I work as a statistician for clinical trials, so I do. But more often I’m on the writing side of papers. And I don’t really need the latest clinical details for my day-to-day work.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Good. Because there are details in this paper that I don’t understand—especially the words that feel ‘statistical.’ Look at this figure. It’s from a randomized trial comparing surgical approaches for gastric cancer, called JCOG9502 (Sasako et al.&nbsp;2006). The TH group received the standard procedure—approaching the lower mediastinum from a laparotomy incision. The LTA group underwent lower mediastinal dissection as well, through a continuous left thoracoabdominal incision.”</p>
 </div>
 </div>
+<p><img src="clinical-trial-1.png" class="img-fluid"></p>
+<div class="dialogue">
+<div class="voice-father">
+<p>Dad: “This is what people call a <strong>Kaplan-Meier curve</strong>. Panel A is OS, and Panel B is DFS. In both panels, the TH group (the blue curve) sits above the LTA group (the red curve). That means the TH group had better outcomes.”</p>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="voice-daughter">
+<p>Daughter: “That part I get. It’s the small details I’m stuck on. The first thing that tripped me up was the <strong>number at risk</strong> under the curves. That’s the number of patients still under observation at each time point, right? Look at the numbers at time zero. In Panel A it’s 82 and 85, but in Panel B it’s 76 and 75. The sample sizes differ between the two analyses. Do you know why?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s a hard one. In a randomized trial, excluding participants from the analysis usually means something serious—like a major protocol deviation. Can I get a refill? …Hmm. To analyze DFS, you need to be able to evaluate whether recurrence occurred. Is there any reason why that might not be assessable for some patients?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Right—if the tumor wasn’t completely resected, maybe they didn’t treat it as ‘recurrence’ in the DFS definition. Let me check… The paper says there were 151 patients who had an R0 resection. That’s probably part of it. And another thing: after around year seven, the number at risk drops to just a handful of patients. What do you make of that?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That depends. How long was accrual, and how long was follow-up?”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Accrual was from 1995 to 2003—eight years. And it says survival time data up to 2006 were analyzed. So the minimum follow-up is around three years, maybe.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Then not everyone can be followed for more than three years, right? We talked before about <strong>censoring</strong>. Time-to-event data are made of events and censoring. Having a lot of censoring within the first three years would be suspicious—but censoring after three years can simply reflect the planned end of follow-up.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “But papers don’t tell you when censoring happened, do they?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “They do. See those little tick marks on the curve.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “These tiny spikes?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Yes. Those marks indicate censoring. If you saw many tick marks right after time zero, what would you suspect? It would mean patients became untraceable soon after the study began—so they were censored early. That kind of pattern can hint at bias.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “In this figure, there are only a few tick marks within three years. So most patients were followed for at least three years. That sounds like a well-run study. Let me summarize what we just said—something like this?”</p>
+</div>
+</div>
+<ul>
+<li>The number at risk shows how many people remain under observation at each time point.</li>
+<li>Tick marks indicate censoring.</li>
+<li>The figure doesn’t show everything; you should also check the accrual period and planned follow-up.</li>
+</ul>
+<div class="dialogue">
+<div class="voice-daughter">
+<p>Daughter: “But textbooks don’t teach you this kind of thing. They’re all means and regression coefficients.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Survival analysis tends to be pushed to the back of many general statistics textbooks. If you want to learn how cancer clinical trial data are actually analyzed, a clinical trials textbook written by statisticians from the US cooperative group SWOG is more useful than a general statistics text (Green et al.&nbsp;2013).”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “Come to think of it, it took more than ten years to produce this figure. The staff must have worked incredibly hard. By the way—last time we talked about trial protocols. You submit the protocol to each site’s ethics committee, right? And once it’s approved, you basically don’t change it—because changing it means paperwork.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “That’s right.”</p>
+</div>
+<div class="voice-daughter">
+<p>Daughter: “It’s scary, putting a plan into words while looking ten years ahead—without even knowing who will read it. And more than a hundred patients are involved. I can see why you’d want to pin down what each endpoint means, even at the level of wording. Oh—and about English terms around survival curves: how would you say ‘hazard ratio,’ ‘95% CI,’ ‘one-sided p,’ and ‘two-sided p’ in Japanese?”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Usually: hazard ratio, 95% confidence interval, one-sided p-value, and two-sided p-value—basically loanwords with standard Japanese phrasing. These are classic survival-analysis outputs. Hazard ratios and p-values often come from Cox regression, but we can talk about that properly another day—when we have time.”</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="A quiz related to this episode">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
+A quiz related to this episode
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が標準とされている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>To explain prognosis, clinicians sometimes talk about “life expectancy” or remaining lifetime. Can you read “life expectancy after gastric cancer surgery” from the JCOG9502 figure?</p>
 <ol type="1">
-<li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
-<li>統計学者の間の決まりごと</li>
-<li>世界中の臨床試験で統一した方が、混乱が少ないから</li>
-<li>ランダム誤差は、平均の上方向と下方向の両方のばらつきを生じるから</li>
+<li>You can read it from Panel A (the OS Kaplan-Meier curve).</li>
+<li>You can read it from Panel B (the DFS Kaplan-Meier curve).</li>
+<li>You cannot read it from either Panel A or Panel B.</li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout callout-style-simple callout-note callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The correct answer is <strong>1</strong>.</li>
+</ul>
+<p>To summarize survival time, people use the mean or the median, but the <strong>median survival time</strong> is easier to read from a figure.</p>
+<p>Survival time is numerical (measured in days or years), so it behaves like continuous data in many respects. For continuous data, the median is the value corresponding to the top 50%, right? Once at least half of participants experience the event—so their survival times are “observed”—you can estimate the median survival time even in the presence of censoring.</p>
+<p>Concretely, the median survival time corresponds to the time when survival reaches 50%—that is, the point where the OS Kaplan–Meier curve in Panel A falls to 50%. You simply read off the time at which the curve crosses that level.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<ul>
+<li><p><a href="https://doi.org/10.1201/b12125">Green J, Benedetti J, Smith A, Crowley J. Clinical Trials in Oncology. Boca Raton: CRC Press; 2012</a></p></li>
+<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
+</ul>
+</section>
+<section id="next-episode-and-r-script" class="level3">
+<h3 class="anchored" data-anchor-id="next-episode-and-r-script">Next episode and R script</h3>
+<ul>
+<li><a href="frequentist-2.html">P-Value Explanations That Seem Plausible at First Glance</a></li>
+<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Other episodes">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-答えはこちら
+Other episodes
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><strong>Episodes in this series</strong></p>
 <ul>
-<li><strong>正解は3です</strong></li>
+<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
+<li><a href="frequentist-2.html">P-Value Explanations That Seem Plausible at First Glance</a></li>
+<li><a href="frequentist-3.html">Beyond 0.05: Interpreting P-Values in a Clinical Trial</a></li>
 </ul>
-<p>これは歴史的経緯によるものです。1998年にICH E9ガイドラインが策定されたとき、米国、欧州、日本の規制当局で、両側p値を基本にすることが合意されました（吉村2003）。</p>
+<p><strong>Earlier series</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+</ul>
+<p><strong>Glossary</strong></p>
+<ul>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+</ul>
 </div>
 </div>
 </div>
-</section>
-<section id="文献" class="level3">
-<h3 class="anchored" data-anchor-id="文献">文献</h3>
-<ul>
-<li><p><a href="https://jcog.jp/doctor/tool/manual/">JCOGプロトコールマニュアル version 3.8 [Internet]. 東京: Japan Clinical Oncology Group; 2025</a></p></li>
-<li><p>Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51</p></li>
-<li><p><a href="日本語訳: https://www.biometrics.gr.jp">Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33</a></p></li>
-<li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
-</ul>
-</section>
-<section id="this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
-<h3 class="anchored" data-anchor-id="this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
-<ul>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
-<li><a href="frequentist-5.html">Understanding Confidence Intervals via Hypothetical Replications in R</a></li>
-<li><a href="frequentist-6.html">Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</a></li>
-<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
-</ul>
 
 
 </section>
