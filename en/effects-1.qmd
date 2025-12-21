@@ -156,6 +156,7 @@ $\pi_2 = 800/1000 = 0.8$
 $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 :::
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 Me: "True. When you see '95% effective,' it's easy to hear it as 'it almost certainly saves you.' But if you think about it, vaccines don't have *that* kind of effect. You could get fooled by the rhetoric of percentages."
 :::
