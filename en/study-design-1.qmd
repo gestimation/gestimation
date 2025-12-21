@@ -24,11 +24,11 @@ Keywords: language & writing, observational study, research hypothesis, study de
 
 ------------------------------------------------------------------------
 
-### A daughter beginning her first study and her father, a statistician
+### A daughter's first study
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: "Dad...you really are a professor of statistics, right?”
+Me: "Dad...you're really a statistics professor, right?”
 :::
 
 ::: voice-father
@@ -36,7 +36,7 @@ Dad: "In Japan, yes. One of many.”
 :::
 
 ::: voice-daughter
-Me: "My boss keeps telling me it’s time I do 'some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your domain, isn’t it? Statistics and all that.” 
+Me: "My boss keeps telling me it’s time I do 'some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run a survey. I’m not against it, but this feels more like your world than mine. Statistics and all that.” 
 :::
 
 ::: voice-father
@@ -73,7 +73,7 @@ Me: "Hm? Patients who had cancer surgery at our hospital.”
 :::
 
 ::: voice-father
-Dad: "Do gastric cancer patients ever receive a stoma...?”
+Dad: "Do gastric cancer patients ever end up with a stoma...?”
 :::
 
 ::: voice-daughter
@@ -101,8 +101,7 @@ Dad: "There are statistical methods and R packages to improve comparability too,
 :::
 
 ::: voice-daughter
-Me: "True...it feels strange to call it 'a survey of cancer survivors’ if it’s only our hospital.
-Generalizability means gathering data that is useful for other hospitals too, right?”
+Me: "True...it feels strange to call it 'a survey of cancer survivors’ if it’s only our hospital. Generalizability means the results should hold beyond our hospital, right?”
 :::
 
 
@@ -115,11 +114,11 @@ Dad: "In class, I usually tell my students something like this:"
 > before you design the study.
 
 ::: voice-father
-Dad: It sounds fancy, but we simply call that 'structuring’ a study.”
+Dad: "It sounds fancy, but we simply call that 'structuring’ a study."
 :::
 
 ::: voice-daughter
-Me: "Structuring…? That sounds like something from a meeting. Okay, I’ve heard the word before.”
+Me: "Structuring...? That sounds like something from a meeting. Okay, I’ve heard the word before."
 :::
 
 ::: voice-father
@@ -146,7 +145,7 @@ Me: "Can you even define it before the data comes in?”
 :::
 
 ::: voice-father
-Dad: "You should, because once the data is collected, you can’t revise them any more.It needs to be decided before finalizing the questionnaire. Right...you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”
+Dad: "You should, because once the data is collected, you can’t revise them any more. It needs to be decided before finalizing the questionnaire. Right...you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”
 :::
 
 ::: voice-daughter
@@ -220,11 +219,11 @@ So "structuring the question” doesn’t mean you have to force every study int
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Me: ”I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”
+Me: "I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually."
 :::
 
 ::: voice-father
-Father: "Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”
+Dad: "Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can vary subtly across clinicians and facilities. If the terminology is vague, confusion follows.”
 :::
 ::::::::::::::::::::::::::::::::: 
 

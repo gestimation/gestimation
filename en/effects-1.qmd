@@ -34,7 +34,7 @@ Dad: "Oh—you're out of the bath already? Want me to make some coffee?"
 :::
 
 ::: voice-daughter
-Daughter: "Caffè latte."
+Me: "Caffè latte."
 :::
 
 ::: voice-father
@@ -42,7 +42,7 @@ Dad: "Your usual? That isn't a caffè latte. It's just coffee with milk."
 :::
 
 ::: voice-daughter
-Daughter: "That's fine. By the way—about that vaccine that was in the news. A patient asked me in clinic what '95% efficacy' means. Honestly, statistics like that confuse me too."
+Me: "That's fine. By the way—about that vaccine that was in the news. A patient asked me in clinic what '95% efficacy' means. Honestly, statistics like that confuse me too."
 :::
 
 ::: voice-father
@@ -50,7 +50,7 @@ Dad: "Yeah, it became a big topic. **Vaccine efficacy** is surprisingly tricky t
 :::
 
 ::: voice-daughter
-Daughter: "Really? I use terms like incidence rate and mortality rate all the time."
+Me: "Really? I use terms like incidence rate and mortality rate all the time."
 :::
 
 ::: voice-father
@@ -63,7 +63,7 @@ Dad: "This is different. Japanese makes it easy to trip up here, because the sam
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Daughter: "Huh? So it doesn't mean 'it works for 95 out of 100 people'?"
+Me: "Huh? So it doesn't mean 'it works for 95 out of 100 people'?"
 :::
 
 ::: voice-father
@@ -123,7 +123,7 @@ $$
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Daughter: "Wow—vaccine efficacy isn't the kind of percentage I pictured. It's basically just the risk ratio, rearranged. But if you call it 'efficacy' and it's written as a percent, you naturally assume it's just 'a proportion.' Do you always carry these formulas around in your head? It feels strange when equations suddenly appear. Statistics and medicine really do have different vibes."
+Me: "Wow—vaccine efficacy isn't the kind of percentage I pictured. It's basically just the risk ratio, rearranged. But if you call it 'efficacy' and it's written as a percent, you naturally assume it's just 'a proportion.' Do you always carry these formulas around in your head? It feels strange when equations suddenly appear. Statistics and medicine really do have different vibes."
 :::
 
 ::: voice-father
@@ -131,7 +131,7 @@ Dad: "Maybe I've just gotten used to it. But if I don't write it as a formula, y
 :::
 
 ::: voice-daughter
-Daughter: "What is that supposed to mean? Don't be so roundabout. This isn't a lecture."
+Me: "What is that supposed to mean? Don't be so roundabout. This isn't a lecture."
 :::
 
 ::: voice-father
@@ -157,7 +157,7 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 :::
 
 ::: voice-daughter
-Daughter: "True. When you see '95% effective,' it's easy to hear it as 'it almost certainly saves you.' But if you think about it, vaccines don't have *that* kind of effect. You could get fooled by the rhetoric of percentages."
+Me: "True. When you see '95% effective,' it's easy to hear it as 'it almost certainly saves you.' But if you think about it, vaccines don't have *that* kind of effect. You could get fooled by the rhetoric of percentages."
 :::
 
 ::: voice-father

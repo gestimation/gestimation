@@ -29,9 +29,9 @@
 </div>
 <hr>
 <p>This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: <code>mean()</code>, <code>t.test()</code>, <code>glm()</code>, <code>fisher.test()</code>, <code>survfit()</code>, and <code>cifplot()</code>. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:</p>
-<p><a href="https://gestimation.github.io/coffee-and-research/en/study-design-1.html">Study Design I − A Story of Coffee Chat and Research Hypothesis Hypothesis</a></p>
-<section id="four-types-of-data-items" class="level3">
-<h3 class="anchored" data-anchor-id="four-types-of-data-items">Four types of data items</h3>
+<p><a href="https://gestimation.github.io/coffee-and-research/en/study-design-1.html">Study Design I − A Story of Coffee Chat and Research Hypothesis</a></p>
+<section id="four-data-types" class="level3">
+<h3 class="anchored" data-anchor-id="four-data-types">Four data types</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>Me: “Okay, coffee’s ready. Can I keep you a bit longer—just a bit?”</p>
@@ -48,7 +48,7 @@
 </div>
 <ul>
 <li>Continuous data</li>
-<li>Binary / categorical data</li>
+<li>Binary and categorical data</li>
 <li>Count data</li>
 <li>Survival data</li>
 </ul>
@@ -117,7 +117,7 @@
 <li>yes/no: binomial-ish<br>
 </li>
 <li>counts: Poisson-ish</li>
-<li>survival: nonparametric</li>
+<li>survival: time-to-event</li>
 </ul>
 <div class="dialogue">
 <div class="voice-daughter">
@@ -160,7 +160,7 @@
 <p>Me: “Fine. I’ll type them with my brain temporarily switched off. That’s how I survived my R class anyway.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Don’t turn your brain off while I’m teaching you. When you add features to R, you use <code>install.packages()</code> and <code>library()</code>. <code>install.packages()</code> installs a package onto your computer, and <code>library()</code> loads that installed package so you can use it.”</p>
+<p>Dad: “Try not to turn your brain off while I’m teaching you. When you add features to R, you use <code>install.packages()</code> and <code>library()</code>. <code>install.packages()</code> installs a package onto your computer, and <code>library()</code> loads that installed package so you can use it.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Got it. That actually clears things up a lot. I really did think I had to install it every single time.”</p>
@@ -650,17 +650,17 @@ Answer
 <p>Keywords: language &amp; writing, observational study, research hypothesis, study design</p>
 </div>
 <hr>
-<section id="a-daughter-beginning-her-first-study-and-her-father-a-statistician" class="level3">
-<h3 class="anchored" data-anchor-id="a-daughter-beginning-her-first-study-and-her-father-a-statistician">A daughter beginning her first study and her father, a statistician</h3>
+<section id="a-daughters-first-study" class="level3">
+<h3 class="anchored" data-anchor-id="a-daughters-first-study">A daughter’s first study</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Dad…you really are a professor of statistics, right?”</p>
+<p>Me: “Dad…you’re really a statistics professor, right?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “In Japan, yes. One of many.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run some kind of survey. I’m not against it, but this is clearly your domain, isn’t it? Statistics and all that.”</p>
+<p>Me: “My boss keeps telling me it’s time I do ‘some research’ and present at a conference. He’s really into supporting cancer patients in returning to work since the Basic Plan to Promote Cancer Control Programs was revised in 2016. Long story short, I think he wants me to run a survey. I’m not against it, but this feels more like your world than mine. Statistics and all that.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “Half my domain, half yours. You see the patients, I only see the data. Do you have anything clinical you want to know? Any hypothesis?”</p>
@@ -687,7 +687,7 @@ Answer
 <p>Me: “Hm? Patients who had cancer surgery at our hospital.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Do gastric cancer patients ever receive a stoma…?”</p>
+<p>Dad: “Do gastric cancer patients ever end up with a stoma…?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “It’s extremely rare in gastric cancer, practically negligible.”</p>
@@ -708,7 +708,7 @@ Answer
 <p>Dad: “There are statistical methods and R packages to improve comparability too, like <code>glm()</code> for regression adjustment, or<code>CBPS()</code> for propensity score weighting. But on the other hand, a broader study population increases <strong>generalizability</strong>. If you want to estimate return-to-work rates among cancer survivors, you don’t necessarily need to limit the cancer type. Ideally, you’d collect data from multiple institutions.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “True…it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital. Generalizability means gathering data that is useful for other hospitals too, right?”</p>
+<p>Me: “True…it feels strange to call it ‘a survey of cancer survivors’ if it’s only our hospital. Generalizability means the results should hold beyond our hospital, right?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “In class, I usually tell my students something like this:”</p>
@@ -718,7 +718,7 @@ Answer
 try to express it using PICO or PECO before you design the study.</p>
 </blockquote>
 <div class="voice-father">
-<p>Dad: It sounds fancy, but we simply call that ‘structuring’ a study.”</p>
+<p>Dad: “It sounds fancy, but we simply call that ‘structuring’ a study.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Structuring…? That sounds like something from a meeting. Okay, I’ve heard the word before.”</p>
@@ -744,7 +744,7 @@ try to express it using PICO or PECO before you design the study.</p>
 <p>Me: “Can you even define it before the data comes in?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “You should, because once the data is collected, you can’t revise them any more.It needs to be decided before finalizing the questionnaire. Right…you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”</p>
+<p>Dad: “You should, because once the data is collected, you can’t revise them any more. It needs to be decided before finalizing the questionnaire. Right…you probably don’t have a clear picture of your outcome yet. But the outcome determines which data you’ll collect and which statistical methods you’ll use. By the way, which software are you planning to use once the data is ready?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “R. My seniors in the department use it.”</p>
@@ -855,10 +855,10 @@ Research hypothesis 3 (exploratory)
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: ”I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”</p>
+<p>Me: “I think I see. Coming up with an original hypothesis still feels intimidating, but breaking it down into pieces like this? I actually don’t mind that part. I suppose it’s something I’ll need to learn eventually.”</p>
 </div>
 <div class="voice-father">
-<p>Father: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can varysubtly across clinicians and facilities. If the terminology is vague, confusion follows.”</p>
+<p>Dad: “Exactly. Plus, replacing your thinking with specialized terminology early on improves communication. Definitions of diseases and outcomes, detailed treatment regimens, and exposure specifics can vary subtly across clinicians and facilities. If the terminology is vague, confusion follows.”</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Quiz related to this episode">

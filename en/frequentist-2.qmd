@@ -203,7 +203,7 @@ Have you heard of the older drug called cerebral circulation and metabolism enha
 There are several methods for estimating hazard ratios, but the most popular is the `coxph()` function in the **survival** package. In a previous episode, we used the function `generate_data(hr1, hr2)` to generate data on the presence of a stoma and overall survival (OS). This time, we will apply Cox regression to the same data and calculate the hazard ratio between the stoma group and the non-stoma group. In `generate_data(hr1, hr2)`, the true value of the hazard ratio for death can be specified using the hr2 argument.
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="Code for generate_data()"}
+::: {.callout-note appearance="simple"  collapse="true" title="R code for generate_data()"}
 ```{r warning=FALSE}
 generate_data <- function(n = 200, hr1, hr2) {
   set.seed(46)
@@ -265,7 +265,7 @@ generate_data <- function(n = 200, hr1, hr2) {
 ```
 :::
 
-::: {.callout-note appearance="simple" collapse="true" title="Code for coxph() and outout"}
+::: {.callout-note appearance="simple" collapse="true" title="R code for coxph() and outout"}
 ```{r warning=FALSE}
 #- Generation of data frame "dat" --------------------------
 dat <- generate_data(hr1 = 2, hr2 = 1.5)  # true HR for death = 1.5

@@ -40,7 +40,7 @@ Keywords: causal model, language &writing, probability model, research hypothesi
 ::: 
 
 ::: voice-daughter
-娘「この場合の正しさってなんだろう？計算があってるっていう意味じゃないよね」 
+私「この場合の正しさってなんだろう？計算があってるっていう意味じゃないよね」 
 ::: 
 
 ::: voice-father
@@ -48,7 +48,7 @@ Keywords: causal model, language &writing, probability model, research hypothesi
 ::: 
 
 ::: voice-daughter
-娘「なるほどね。目的は因果の問いのことだよね」 
+私「なるほどね。目的は因果の問いのことだよね」 
 ::: 
 
 ::: voice-father
