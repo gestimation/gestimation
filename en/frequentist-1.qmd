@@ -24,14 +24,14 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 ------------------------------------------------------------------------
 
 ::: {.callout-note appearance="simple"  collapse="true" title="Previously"}
-A daughter taking her first steps into research and her Dad, a statistician. After advising her to organize her research hypothesis from "PICO" into "PECO," the daughter—an oncologist—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same "return-to-work outcome," there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.
+A daughter is taking her first steps into research, and her dad is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same "return-to-work outcome," there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.
 :::
 
 ### Making sense of the numbers around survival curves
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-Dad: "Hmm? It's getting cold—what are you still reading this late? Want me to make coffee?"
+Dad: "Hmm? It's getting cold—what are you still reading this late? Want me to make some coffee?"
 :::
 
 ::: voice-daughter
@@ -43,11 +43,11 @@ Dad: "That does ring a bell."
 :::
 
 ::: voice-daughter
-Daughter: "Do you read clinical papers too, for work?"
+Daughter: "Do you read clinical papers for work, too?"
 :::
 
 ::: voice-father
-Dad: "Sometimes. I work as a statistician for clinical trials, so I do. But more often I'm on the writing side of papers. And I don't really need the latest clinical details for my day-to-day work."
+Dad: "Sometimes. I work as a trial statistician, so yes. But more often I'm on the writing side of papers. And I don't really need the latest clinical details for my day-to-day work."
 :::
 
 ::: voice-daughter
@@ -67,11 +67,11 @@ Daughter: "That part I get. It's the small details I'm stuck on. The first thing
 :::
 
 ::: voice-father
-Dad: "That's a hard one. In a randomized trial, excluding participants from the analysis usually means something serious—like a major protocol deviation. Can I get a refill? …Hmm. To analyze DFS, you need to be able to evaluate whether recurrence occurred. Is there any reason why that might not be assessable for some patients?"
+Dad: "That's a hard one. In a randomized trial, excluding patients from the analysis usually means something serious—like a major protocol deviation. Can I get a refill?...Hmm. To analyze DFS, you need to be able to ascertain whether relapse occurred. Is there any reason why that might not be assessable for some patients?"
 :::
 
 ::: voice-daughter
-Daughter: "Right—if the tumor wasn't completely resected, maybe they didn't treat it as 'recurrence' in the DFS definition. Let me check… The paper says there were 151 patients who had an R0 resection. That's probably part of it. And another thing: after around year seven, the number at risk drops to just a handful of patients. What do you make of that?"
+Daughter: "Right—if the tumor wasn't completely resected, maybe they didn't treat it as 'relapse' in the DFS definition. Let me check... The paper says there were 151 patients who had an R0 resection. That's probably part of it. And another thing: after about 7 year, the number at risk drops to just a handful of patients. What do you make of that?"
 :::
 
 ::: voice-father
@@ -79,11 +79,11 @@ Dad: "That depends. How long was accrual, and how long was follow-up?"
 :::
 
 ::: voice-daughter
-Daughter: "Accrual was from 1995 to 2003—eight years. And it says survival time data up to 2006 were analyzed. So the minimum follow-up is around three years, maybe."
+Daughter: "Accrual was from 1995 to 2003—8 years. And it says survival data up to 2006 were analyzed. So the minimum follow-up is around 3 years, maybe."
 :::
 
 ::: voice-father
-Dad: "Then not everyone can be followed for more than three years, right? We talked before about **censoring**. Time-to-event data are made of events and censoring. Having a lot of censoring within the first three years would be suspicious—but censoring after three years can simply reflect the planned end of follow-up."
+Dad: "Then not everyone can be followed for more than 3 years, right? We talked before about **censoring**. Time-to-event data consists of events and censoring. Having a lot of censoring within the first 3 years would be suspicious—but censoring after 3 years can simply reflect the planned end of follow-up."
 :::
 
 ::: voice-daughter
@@ -99,11 +99,11 @@ Daughter: "These tiny spikes?"
 :::
 
 ::: voice-father
-Dad: "Yes. Those marks indicate censoring. If you saw many tick marks right after time zero, what would you suspect? It would mean patients became untraceable soon after the study began—so they were censored early. That kind of pattern can hint at bias."
+Dad: "Yes. Those marks indicate censoring. If you saw many tick marks right after time zero, what would you suspect? It would mean patients were lost to follow-up soon after the study began—so they were censored early. That kind of pattern can hint at bias."
 :::
 
 ::: voice-daughter
-Daughter: "In this figure, there are only a few tick marks within three years. So most patients were followed for at least three years. That sounds like a well-run study. Let me summarize what we just said—something like this?"
+Daughter: "In this figure, there are only a few tick marks within 3 years. So most patients were followed for at least three years. That sounds like a well-run study. Let me summarize what we just said—something like this?"
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -117,7 +117,7 @@ Daughter: "But textbooks don't teach you this kind of thing. They're all means a
 :::
 
 ::: voice-father
-Dad: "Survival analysis tends to be pushed to the back of many general statistics textbooks. If you want to learn how cancer clinical trial data are actually analyzed, a clinical trials textbook written by statisticians from the US cooperative group SWOG is more useful than a general statistics text (Green et al. 2013)."
+Dad: "Survival analysis tends to be pushed to the back of many general statistics textbooks. If you want to learn how cancer clinical trial data are actually analyzed, a clinical trials textbook written by statisticians from the U.S. cooperative group SWOG is often more useful than a general statistics text (Green et al. 2013)."
 :::
 
 ::: voice-daughter
@@ -154,7 +154,7 @@ To summarize survival time, people use the mean or the median, but the **median 
 
 Survival time is numerical (measured in days or years), so it behaves like continuous data in many respects. For continuous data, the median is the value corresponding to the top 50%, right? Once at least half of participants experience the event—so their survival times are "observed"—you can estimate the median survival time even in the presence of censoring.
 
-Concretely, the median survival time corresponds to the time when survival reaches 50%—that is, the point where the OS Kaplan–Meier curve in Panel A falls to 50%. You simply read off the time at which the curve crosses that level.
+Concretely, the median survival time corresponds to the time when survival reaches 50%—that is, the point where the OS Kaplan-Meier curve in Panel A falls to 50%. You simply read off the time at which the curve crosses that level.
 :::
 
 ### Reference

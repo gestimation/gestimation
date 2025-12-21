@@ -27,11 +27,12 @@ Keywords: clinical trial, p-value, research hypothesis, survival & competing ris
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-Daughter: "I'm home, dad. It's about time we got the down jackets out. Oh—can I have a hot coffee?"
+Daughter: "I'm home, Dad. It's about time we got the down jackets out. Oh, can I have 
+a cup of hot coffee?"
 :::
 
 ::: voice-father
-Dad: "I figured you'd be back soon, so I made plenty. Hey—remember when we talked about survival curves and p-values in the JCOG9502 paper (Sasako et al. 2006)? Something stayed with me. Why do people say, 'if the p-value is less than 0.05, it's statistically significant'?"
+Dad: "I figured you'd be back soon, so I made plenty. Hey, remember when we talked about survival curves and p-values in the JCOG9502 paper (Sasako et al. 2006)? Something stuck with me. Why do people say, 'if the p-value is less than 0.05, it's statistically significant'?"
 :::
 
 ::: voice-daughter
@@ -39,7 +40,7 @@ Daughter: "Isn't that just the rule?"
 :::
 
 ::: voice-father
-Dad: "That's a common way of *reading papers*—and it's the wrong one here. Let me ask you: when you read a paper, you start with the Abstract. Then what do you read next?"
+Dad: "That's a common way to read papers—and it's the wrong one here. Let me ask you: when you read a paper, you start with the Abstract. Then what do you read next?"
 :::
 
 ::: voice-daughter
@@ -47,7 +48,7 @@ Daughter: "The Results. I want to know what happened as quickly as possible."
 :::
 
 ::: voice-father
-Dad: "I get that. But when it comes to p-values, if you want a correct interpretation, you need to read the Methods first. People have worried for a long time that p-values are widely misunderstood in the scientific community. The American Statistical Association (ASA) even issued a statement aimed at researchers who aren't statisticians, practitioners, and science writers. One trigger was a post like this, submitted to an ASA forum in February 2014."
+Dad: "I understand. But when it comes to p-values, if you want a correct interpretation, you need to read the Methods first. People have worried for a long time that p-values are widely misunderstood in the scientific community. The American Statistical Association (ASA) even issued a statement aimed at researchers who aren’t statisticians, as well as practitioners and science writers. One trigger was a forum post like this, submitted to the ASA in February 2014."
 :::
 
 ::: voice-daughter
@@ -63,7 +64,7 @@ Q. Why do so many people still use p ≤ 0.05?
 A. Because that’s what they were taught in college or grad school
 
 ::: voice-father
-Dad: "And the ASA summarized six principles about how p-values should be used."
+Dad: "And the ASA summarized six principles for using and interpreting p-values."
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -100,11 +101,11 @@ Daughter: "So they compare the p-value to 0.1? Not 0.05?"
 :::
 
 ::: voice-father
-Dad: "Right. In an ideal world, alpha is the textbook 0.05. And you're not supposed to change alpha mid-trial. Everyone knows that. But when accrual stalls, sometimes the trial has to be adjusted to stay interpretable. That seems to be what happened here: they loosened alpha to 0.1 as a last resort."
+Dad: "Right. In an ideal world, alpha is the textbook 0.05. And you're not supposed to change alpha mid-trial. That’s standard practice. But when accrual stalls, sometimes the trial has to be adjusted to stay interpretable. That seems to be what happened here: they loosened alpha to 0.1 as a last resort."
 :::
 
 ::: voice-daughter
-Daughter: "I skipped right past that. JCOG is... surprisingly flexible."
+Daughter: "I skipped right past that."
 :::
 
 ::: voice-father
@@ -139,7 +140,7 @@ Daughter: "Then for my observational study—stoma vs no stoma and return to wor
 
 P-values appear in nearly every scientific field, but concerns have been raised that they are misused and that they can distort how findings are interpreted. A familiar pattern is that once a small p-value is obtained, the result is treated as 'important' by default, or decisions are made mechanically just because p < 0.05. You have likely seen examples of this yourself.
 
-In 2016, the American Statistical Association (ASA) summarized six principles to improve the practice and interpretation of quantitative research (Wasserstein and Lazar 2016). They are listed below.
+In 2016, the American Statistical Association (ASA) summarized six principles to improve the practice and interpretation of quantitative research (Wasserstein and Lazar 2016). For convenience, the six principles are reproduced here.
 
 1. P-values can indicate how incompatible the data are with a specified statistical model.  
 2. P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone. 

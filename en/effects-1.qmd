@@ -23,14 +23,14 @@ Keywords: effect measure, language & writing, observational study
 ------------------------------------------------------------------------
 
 ::: {.callout-note appearance="simple"  collapse="true" title="Previously"}
-A daughter taking her first steps into research and her dad, a statistician. After advising her to organize her research hypothesis from "PICO" into "PECO," the daughter—an oncologist—decides to study the relationship between having a stoma and returning to work among cancer survivors. Since then, the dad has been quietly looking for chances to bring up statistics in conversation.
+A daughter is taking her first steps into research, and her dad is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. Since then, her dad has been quietly looking for chances to bring up statistics in conversation.
 :::
 
-### When You Hear "95%," Don't You Think It Works for 95 Out of 100 People?
+### When You Hear “95%,” Don’t You Think It Means It Works for 95 Out of 100 People?
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
-Dad: "Oh—you're out of the bath already? Want me to make coffee?"
+Dad: "Oh—you're out of the bath already? Want me to make some coffee?"
 :::
 
 ::: voice-daughter
@@ -46,7 +46,7 @@ Daughter: "That's fine. By the way—about that vaccine that was in the news. A 
 :::
 
 ::: voice-father
-Dad: "Yeah, it became a big topic. **Vaccine efficacy** is surprisingly tricky to compute. And first—be careful with the word 'rate.'"
+Dad: "Yeah, it became a big topic. **Vaccine efficacy** is surprisingly tricky to compute. First, be careful with the word 'rate.'"
 :::
 
 ::: voice-daughter
@@ -54,7 +54,7 @@ Daughter: "Really? I use terms like incidence rate and mortality rate all the ti
 :::
 
 ::: voice-father
-Dad: "This is different. Japanese makes it easy to trip up here, because the same word is used in multiple ways. In this context, '95%' is a percentage—but it's **not** a 'rate' in the epidemiologic sense. And the confusion doesn't stop there. Here, 95% means the risk of disease is reduced to **5% of the placebo risk**."
+Dad: "This is different. Japanese makes it easy to trip up here, because the same word is used in multiple ways. In this context, '95%' is a percentage—but it isn’t a rate in the epidemiologic sense. And the confusion doesn't stop there. Here, 95% means the risk of disease is reduced to **5% of the placebo risk**."
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -67,7 +67,7 @@ Daughter: "Huh? So it doesn't mean 'it works for 95 out of 100 people'?"
 :::
 
 ::: voice-father
-Dad: "No, no. It's a relative comparison to the placebo. It's a percentage that expresses how much infection is prevented compared with what would happen under placebo. In papers it's fine, but in everyday conversation it almost always gets miscommunicated. You can't really understand it unless you trace it back to the underlying risk. Grab that paper napkin and a pen—let me write it out. I'll list a few epidemiologic measures, but the only thing you need to keep straight is: 'Which risk is being compared to which risk—and how?' To do that, picture data summarized in a 2×2 table."
+Dad: "No, no. It's a relative comparison to the placebo. It's a percentage that expresses how much infection is prevented compared with what would happen under placebo. In papers it's fine, but in everyday conversation it almost always gets misunderstood. You can’t really make sense of it unless you trace it back to the underlying risks. Grab that paper napkin and a pen—let me write it out. I’ll list a few measures, but the only thing you need to keep straight is: 'Which risk is being compared to which risk—and how?' To do that, picture data summarized in a 2×2 table."
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -106,7 +106,7 @@ When using these measures, it is important to keep track of which group is treat
 
 ::: {.callout-note appearance="simple"  title="Measures used to compare treatment efficacy"}
 
-When comparing which of two treatments works better, the following measures are also frequently used. In both cases we assume $\pi_2>\pi_1$. For vaccine efficacy, you can think of Group 2 as the placebo group.
+When comparing the effectiveness of two treatments, the following measures are also frequently used. In both cases we assume $\pi_2>\pi_1$. For vaccine efficacy, you can think of Group 2 as the placebo group.
 
 - Number needed to treat (NNT)
 
@@ -135,7 +135,7 @@ Daughter: "What is that supposed to mean? Don't be so roundabout. This isn't a l
 :::
 
 ::: voice-father
-Dad: "You'll see immediately. Vaccine efficacy is estimated from clinical data, right? A clinical trial is run with many participants, and what was actually observed gets compressed—summarized tightly—into that single number. But what was observed in the data doesn't come across from vaccine efficacy alone. That's what people mean when they say **'the number starts walking on its own.'**"
+Dad: "You'll see immediately. Vaccine efficacy is estimated from clinical data, right? A clinical trial is run with many participants, and what was actually observed gets compressed—summarized tightly—into that single number. But what was observed in the data doesn't come across from vaccine efficacy alone. That's what people mean when they say **'the number starts walking around on its own.'**"
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -156,7 +156,6 @@ $\pi_2 = 800/1000 = 0.8$
 $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 :::
 
-::: voice-daughter
 ::: voice-daughter
 Daughter: "True. When you see '95% effective,' it's easy to hear it as 'it almost certainly saves you.' But if you think about it, vaccines don't have *that* kind of effect. You could get fooled by the rhetoric of percentages."
 :::
@@ -198,7 +197,7 @@ A **rate** reflects *speed over time*. For example, an incidence rate is often c
 
 - [JCOG protocol manual version 3.8 [Internet]. Tokyo: Japan Clinical Oncology Group; 2025](https://jcog.jp/doctor/tool/manual/) 
 
-### Next episodes and R scropt
+### Next episodes and R script
 
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
 - [effects.R](../from-coffee-chat-to-r/effects.R)

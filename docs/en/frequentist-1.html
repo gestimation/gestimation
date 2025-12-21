@@ -218,7 +218,7 @@ Previously
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A daughter taking her first steps into research and her Dad, a statistician. After advising her to organize her research hypothesis from “PICO” into “PECO,” the daughter—an oncologist—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same “return-to-work outcome,” there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.</p>
+<p>A daughter is taking her first steps into research, and her dad is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same “return-to-work outcome,” there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.</p>
 </div>
 </div>
 </div>
@@ -226,7 +226,7 @@ Previously
 <h3 class="anchored" data-anchor-id="making-sense-of-the-numbers-around-survival-curves">Making sense of the numbers around survival curves</h3>
 <div class="dialogue">
 <div class="voice-father">
-<p>Dad: “Hmm? It’s getting cold—what are you still reading this late? Want me to make coffee?”</p>
+<p>Dad: “Hmm? It’s getting cold—what are you still reading this late? Want me to make some coffee?”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “Oh—thanks, Dad. Milk too, please. I’m reading a paper on gastric cancer surgery. Hey, you once explained the difference between overall survival (OS) and disease-free survival (DFS), right?”</p>
@@ -235,10 +235,10 @@ Previously
 <p>Dad: “That does ring a bell.”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “Do you read clinical papers too, for work?”</p>
+<p>Daughter: “Do you read clinical papers for work, too?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Sometimes. I work as a statistician for clinical trials, so I do. But more often I’m on the writing side of papers. And I don’t really need the latest clinical details for my day-to-day work.”</p>
+<p>Dad: “Sometimes. I work as a trial statistician, so yes. But more often I’m on the writing side of papers. And I don’t really need the latest clinical details for my day-to-day work.”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “Good. Because there are details in this paper that I don’t understand—especially the words that feel ‘statistical.’ Look at this figure. It’s from a randomized trial comparing surgical approaches for gastric cancer, called JCOG9502 (Sasako et al.&nbsp;2006). The TH group received the standard procedure—approaching the lower mediastinum from a laparotomy incision. The LTA group underwent lower mediastinal dissection as well, through a continuous left thoracoabdominal incision.”</p>
@@ -253,19 +253,19 @@ Previously
 <p>Daughter: “That part I get. It’s the small details I’m stuck on. The first thing that tripped me up was the <strong>number at risk</strong> under the curves. That’s the number of patients still under observation at each time point, right? Look at the numbers at time zero. In Panel A it’s 82 and 85, but in Panel B it’s 76 and 75. The sample sizes differ between the two analyses. Do you know why?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “That’s a hard one. In a randomized trial, excluding participants from the analysis usually means something serious—like a major protocol deviation. Can I get a refill? …Hmm. To analyze DFS, you need to be able to evaluate whether recurrence occurred. Is there any reason why that might not be assessable for some patients?”</p>
+<p>Dad: “That’s a hard one. In a randomized trial, excluding patients from the analysis usually means something serious—like a major protocol deviation. Can I get a refill?…Hmm. To analyze DFS, you need to be able to ascertain whether relapse occurred. Is there any reason why that might not be assessable for some patients?”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “Right—if the tumor wasn’t completely resected, maybe they didn’t treat it as ‘recurrence’ in the DFS definition. Let me check… The paper says there were 151 patients who had an R0 resection. That’s probably part of it. And another thing: after around year seven, the number at risk drops to just a handful of patients. What do you make of that?”</p>
+<p>Daughter: “Right—if the tumor wasn’t completely resected, maybe they didn’t treat it as ‘relapse’ in the DFS definition. Let me check… The paper says there were 151 patients who had an R0 resection. That’s probably part of it. And another thing: after about 7 year, the number at risk drops to just a handful of patients. What do you make of that?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “That depends. How long was accrual, and how long was follow-up?”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “Accrual was from 1995 to 2003—eight years. And it says survival time data up to 2006 were analyzed. So the minimum follow-up is around three years, maybe.”</p>
+<p>Daughter: “Accrual was from 1995 to 2003—8 years. And it says survival data up to 2006 were analyzed. So the minimum follow-up is around 3 years, maybe.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Then not everyone can be followed for more than three years, right? We talked before about <strong>censoring</strong>. Time-to-event data are made of events and censoring. Having a lot of censoring within the first three years would be suspicious—but censoring after three years can simply reflect the planned end of follow-up.”</p>
+<p>Dad: “Then not everyone can be followed for more than 3 years, right? We talked before about <strong>censoring</strong>. Time-to-event data consists of events and censoring. Having a lot of censoring within the first 3 years would be suspicious—but censoring after 3 years can simply reflect the planned end of follow-up.”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “But papers don’t tell you when censoring happened, do they?”</p>
@@ -277,10 +277,10 @@ Previously
 <p>Daughter: “These tiny spikes?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yes. Those marks indicate censoring. If you saw many tick marks right after time zero, what would you suspect? It would mean patients became untraceable soon after the study began—so they were censored early. That kind of pattern can hint at bias.”</p>
+<p>Dad: “Yes. Those marks indicate censoring. If you saw many tick marks right after time zero, what would you suspect? It would mean patients were lost to follow-up soon after the study began—so they were censored early. That kind of pattern can hint at bias.”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “In this figure, there are only a few tick marks within three years. So most patients were followed for at least three years. That sounds like a well-run study. Let me summarize what we just said—something like this?”</p>
+<p>Daughter: “In this figure, there are only a few tick marks within 3 years. So most patients were followed for at least three years. That sounds like a well-run study. Let me summarize what we just said—something like this?”</p>
 </div>
 </div>
 <ul>
@@ -293,7 +293,7 @@ Previously
 <p>Daughter: “But textbooks don’t teach you this kind of thing. They’re all means and regression coefficients.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Survival analysis tends to be pushed to the back of many general statistics textbooks. If you want to learn how cancer clinical trial data are actually analyzed, a clinical trials textbook written by statisticians from the US cooperative group SWOG is more useful than a general statistics text (Green et al.&nbsp;2013).”</p>
+<p>Dad: “Survival analysis tends to be pushed to the back of many general statistics textbooks. If you want to learn how cancer clinical trial data are actually analyzed, a clinical trials textbook written by statisticians from the U.S. cooperative group SWOG is often more useful than a general statistics text (Green et al.&nbsp;2013).”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “Come to think of it, it took more than ten years to produce this figure. The staff must have worked incredibly hard. By the way—last time we talked about trial protocols. You submit the protocol to each site’s ethics committee, right? And once it’s approved, you basically don’t change it—because changing it means paperwork.”</p>
@@ -343,7 +343,7 @@ Answer
 </ul>
 <p>To summarize survival time, people use the mean or the median, but the <strong>median survival time</strong> is easier to read from a figure.</p>
 <p>Survival time is numerical (measured in days or years), so it behaves like continuous data in many respects. For continuous data, the median is the value corresponding to the top 50%, right? Once at least half of participants experience the event—so their survival times are “observed”—you can estimate the median survival time even in the presence of censoring.</p>
-<p>Concretely, the median survival time corresponds to the time when survival reaches 50%—that is, the point where the OS Kaplan–Meier curve in Panel A falls to 50%. You simply read off the time at which the curve crosses that level.</p>
+<p>Concretely, the median survival time corresponds to the time when survival reaches 50%—that is, the point where the OS Kaplan-Meier curve in Panel A falls to 50%. You simply read off the time at which the curve crosses that level.</p>
 </div>
 </div>
 </div>

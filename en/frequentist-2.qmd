@@ -31,17 +31,17 @@ Daughter: "Dad, I've made another cup of coffee. Can you keep going and explain 
 :::
 
 ::: voice-father
-Dad: "Ouch, it's hot. You're referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the differences between the Kaplan-Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan-Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio."
+Dad: "Ouch, it's hot. You're referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the treatment contrast on the hazard scale, which in turn drives the separation you see in the Kaplan-Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan-Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio."
 ::: 
 
 ![](clinical-trial-1.png)
 
 ::: voice-daughter
-Daughter: "Well summarized?"
+Daughter: "Summarized well—meaning what, exactly?"
 :::
 
 ::: voice-father
-Dad: "Yes. In both figures, the Kaplan-Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it's not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call **Cox regression** or the **proportional hazards model**."
+Dad: "Yes. In both figures, the Kaplan-Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it's not explicitly stated in the figures, the hazard ratios are reported so that values above 1 correspond to worse outcomes in the LTA group relative to TH. This relationship is what we call **Cox regression** or the **proportional hazards model**."
 ::: 
 
 ::: voice-daughter
@@ -53,7 +53,7 @@ Dad: "Exactly. And the OS and DFS results are consistent with each other as well
 ::: 
 
 ::: voice-daughter
-Daughter: "Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan-Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren't below the threshold, there's no statistically significant difference between the two groups?"
+Daughter: "Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan-Meier curve drops faster, and the reference is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren't below the threshold, there's no statistically significant difference between the two groups?"
 :::
 
 ::: voice-father
@@ -61,7 +61,7 @@ Dad:  "That's right. The hazard reflects the speed at which death or recurrence 
 :::
 :::::::::::::::::::::::::::::::::
 
-### P-Value explanations that seem plausible
+### P-value explanations that seem plausible
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father
@@ -95,7 +95,7 @@ Dad: "Here I want you to choose your words carefully. Is the statement ‘there 
 ::: 
 
 ::: voice-daughter
-Daughter: "Ah, so that's the pedantic point you wanted to make. Fine—I'll stop phrasing it that way."
+Daughter: "Ah, that’s the distinction you wanted me to notice. Fine—I'll stop phrasing it that way."
 :::
 
 ::: voice-father
@@ -168,7 +168,7 @@ Daughter: "So even a negative trial has the same informational value?"
 :::
 
 ::: voice-father
-Dad: "Yes. Think of a clinical trial as an exam. Passing or failing doesn't change the value of the score itself. The p-value functions like a grading rule or a technical standard—it's unavoidable. ...Though of course, scores aren't everything."
+Dad: "Yes—if it’s well designed and well executed. Think of a clinical trial as an exam. Passing or failing doesn't change the value of the score itself. The p-value functions like a grading rule or a technical standard—it's unavoidable. ...Though of course, scores aren't everything."
 ::: 
 
 ::: voice-daughter
@@ -192,7 +192,9 @@ Daughter: "You really like separating technology and science. I'm fine with clas
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple" collapse="true" title="The tragedy of Hopate"}
+::: {.callout-note appearance="simple" collapse="true" title="A cautionary tale: Hopate"}
+
+This story is a Japan-specific regulatory episode, but the lesson is general. It’s a cautionary tale about treating 'no statistically significant difference' as evidence of equivalence.
 
 Have you heard of the older drug called cerebral circulation and metabolism enhancing agents? This medication was once used for cerebrovascular disorders and dementia, and reportedly generated cumulative sales of around 800 billion yen in Japan. Several similar drugs existed, but most were approved based on “non-inferiority trials” comparing them to the first-approved drug, calcium hopantenate (brand name Hopate). However, the studies conducted at the time did not perform formal non-inferiority analyses setting a non-inferiority margin; instead, non-inferiority was determined based on the finding that there was “no significant difference compared to calcium hopantenate.” Calcium hopantenate was withdrawn from the market in 1989 due to side effects. Around the same time, the Ministry of Health and Welfare (as it was then) requested pharmaceutical companies to conduct reevaluations using placebo-controlled trials. The results showed that none of the cerebral circulation-improving drugs outperformed placebo (Ministry of Health and Welfare, Pharmaceutical Safety Bureau, 1998). This tragedy clearly demonstrates that concluding equivalence or non-inferiority when no significant difference is found is a mistake.
 :::

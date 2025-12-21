@@ -199,7 +199,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" id="toc-frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance" class="nav-link active" data-scroll-target="#frequentist-thinking-ii-p-value-explanations-that-seem-plausible-at-first-glance">Frequentist Thinking II − P-Value Explanations That Seem Plausible at First Glance</a>
   <ul class="collapse">
   <li><a href="#survival-curves-and-hazard-ratios" id="toc-survival-curves-and-hazard-ratios" class="nav-link" data-scroll-target="#survival-curves-and-hazard-ratios">Survival curves and hazard ratios</a></li>
-  <li><a href="#p-value-explanations-that-seem-plausible" id="toc-p-value-explanations-that-seem-plausible" class="nav-link" data-scroll-target="#p-value-explanations-that-seem-plausible">P-Value explanations that seem plausible</a></li>
+  <li><a href="#p-value-explanations-that-seem-plausible" id="toc-p-value-explanations-that-seem-plausible" class="nav-link" data-scroll-target="#p-value-explanations-that-seem-plausible">P-value explanations that seem plausible</a></li>
   <li><a href="#p-values-as-a-standardized-rule" id="toc-p-values-as-a-standardized-rule" class="nav-link" data-scroll-target="#p-values-as-a-standardized-rule">P-values as a standardized rule</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   <li><a href="#next-episode-and-r-script" id="toc-next-episode-and-r-script" class="nav-link" data-scroll-target="#next-episode-and-r-script">Next episode and R script</a></li>
@@ -250,14 +250,14 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Daughter: “Dad, I’ve made another cup of coffee. Can you keep going and explain the hazard ratios from JCOG9502?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Ouch, it’s hot. You’re referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the differences between the Kaplan-Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan-Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio.”</p>
+<p>Dad: “Ouch, it’s hot. You’re referring to the hazard ratio of death of 1.36 in Figure A, and the hazard ratio of recurrence or death of 1.29 in Figure B. Both summarize the treatment contrast on the hazard scale, which in turn drives the separation you see in the Kaplan-Meier curves, showing that the TH group had better outcomes than the LTA group. A higher hazard means the Kaplan-Meier curve tends to drop more quickly. What matters here is that both overall survival (OS) in Figure A and disease-free survival (DFS) in Figure B have shapes that are well summarized by a hazard ratio.”</p>
 </div>
 <p><img src="clinical-trial-1.png" class="img-fluid"></p>
 <div class="voice-daughter">
-<p>Daughter: “Well summarized?”</p>
+<p>Daughter: “Summarized well—meaning what, exactly?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yes. In both figures, the Kaplan-Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it’s not explicitly stated, the TH group is used as the denominator of the ratio. This relationship is what we call <strong>Cox regression</strong> or the <strong>proportional hazards model</strong>.”</p>
+<p>Dad: “Yes. In both figures, the Kaplan-Meier curve for the TH group lies cleanly above that for the LTA group—except at the far right, where only four patients remain and the curves cross. The hazard ratio assumes that the two survival curves are proportional on the hazard scale. Although it’s not explicitly stated in the figures, the hazard ratios are reported so that values above 1 correspond to worse outcomes in the LTA group relative to TH. This relationship is what we call <strong>Cox regression</strong> or the <strong>proportional hazards model</strong>.”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “So if the curves cross, that breaks the proportional hazards assumption.”</p>
@@ -266,7 +266,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Dad: “Exactly. And the OS and DFS results are consistent with each other as well. That makes the findings very straightforward and easy to interpret. I’ll show you Cox regression in R later.”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan-Meier curve drops faster, and the denominator is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren’t below the threshold, there’s no statistically significant difference between the two groups?”</p>
+<p>Daughter: “Thanks—later then. But looking at these figures, the hazard ratios are 1.36 and 1.29, right? A higher hazard means the Kaplan-Meier curve drops faster, and the reference is the TH group. So if the hazard ratio is greater than one, the LTA group did worse than the TH group in OS and DFS. And p-values below 0.05 are considered statistically significant, right? So the LTA group had worse outcomes, but since the p-values aren’t below the threshold, there’s no statistically significant difference between the two groups?”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “That’s right. The hazard reflects the speed at which death or recurrence occurs, and the hazard ratio is simply the ratio between the two groups.”</p>
@@ -274,7 +274,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="p-value-explanations-that-seem-plausible" class="level3">
-<h3 class="anchored" data-anchor-id="p-value-explanations-that-seem-plausible">P-Value explanations that seem plausible</h3>
+<h3 class="anchored" data-anchor-id="p-value-explanations-that-seem-plausible">P-value explanations that seem plausible</h3>
 <div class="dialogue">
 <div class="voice-father">
 <p>Dad: “The precise meaning of p-values is often misunderstood. One thing to keep in mind when reading papers is that the threshold compared against the p-value—the significance level—may not always be 5%. For example, consider <strong>interim analyses</strong>. Take a look at the abstract. In JCOG9502, an interim analysis was planned before the final analysis, and this paper reports results after the trial was stopped early. In interim analyses, it’s common to test using a significance level lower than 5%.”</p>
@@ -300,7 +300,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Dad: “Here I want you to choose your words carefully. Is the statement ‘there is no difference between the survival curves’ a random variable? It isn’t. A proposition is either true or false. Defining a probability for something that is not a random variable is conceptually problematic.”</p>
 </div>
 <div class="voice-daughter">
-<p>Daughter: “Ah, so that’s the pedantic point you wanted to make. Fine—I’ll stop phrasing it that way.”</p>
+<p>Daughter: “Ah, that’s the distinction you wanted me to notice. Fine—I’ll stop phrasing it that way.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “Then what did you mean by ‘five times out of a hundred’?”</p>
@@ -356,7 +356,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Daughter: “So even a negative trial has the same informational value?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Yes. Think of a clinical trial as an exam. Passing or failing doesn’t change the value of the score itself. The p-value functions like a grading rule or a technical standard—it’s unavoidable. …Though of course, scores aren’t everything.”</p>
+<p>Dad: “Yes—if it’s well designed and well executed. Think of a clinical trial as an exam. Passing or failing doesn’t change the value of the score itself. The p-value functions like a grading rule or a technical standard—it’s unavoidable. …Though of course, scores aren’t everything.”</p>
 </div>
 <div class="voice-daughter">
 <p>Daughter: “So clinical trials are about evaluating technology, not making scientific discoveries?”</p>
@@ -374,18 +374,19 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Daughter: “You really like separating technology and science. I’m fine with classifying industry trials as technology evaluation. But in the broader scientific enterprise, clinical trials generate new hypotheses and new questions. That’s what I want to call science.”</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="The tragedy of Hopate">
+<div class="callout callout-style-simple callout-note callout-titled" title="A cautionary tale: Hopate">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The tragedy of Hopate
+A cautionary tale: Hopate
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>This story is a Japan-specific regulatory episode, but the lesson is general. It’s a cautionary tale about treating ‘no statistically significant difference’ as evidence of equivalence.</p>
 <p>Have you heard of the older drug called cerebral circulation and metabolism enhancing agents? This medication was once used for cerebrovascular disorders and dementia, and reportedly generated cumulative sales of around 800 billion yen in Japan. Several similar drugs existed, but most were approved based on “non-inferiority trials” comparing them to the first-approved drug, calcium hopantenate (brand name Hopate). However, the studies conducted at the time did not perform formal non-inferiority analyses setting a non-inferiority margin; instead, non-inferiority was determined based on the finding that there was “no significant difference compared to calcium hopantenate.” Calcium hopantenate was withdrawn from the market in 1989 due to side effects. Around the same time, the Ministry of Health and Welfare (as it was then) requested pharmaceutical companies to conduct reevaluations using placebo-controlled trials. The results showed that none of the cerebral circulation-improving drugs outperformed placebo (Ministry of Health and Welfare, Pharmaceutical Safety Bureau, 1998). This tragedy clearly demonstrates that concluding equivalence or non-inferiority when no significant difference is found is a mistake.</p>
 </div>
 </div>
