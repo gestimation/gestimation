@@ -144,18 +144,28 @@ Dad: "Exactly. This isn't about which framework is 'correct.' In clinical resear
 ::::::::::::::::::::::::::::::::: 
 
 ### Next episodes
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+
+::: {.callout-note appearance="simple" collapse="true" title="Other episodes"}
+
+**Episodes in this series**
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
 - [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
 - [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
 
-### Past series and glossary
+**Earlier series**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
-- [From Risk to Logistic Regression](logistic-regression-1.html)
-- [What Data Cannot Tell Us](truth-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+- [Adjusting for Bias I](logistic-regression-1.html)
+
+**Glossary**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

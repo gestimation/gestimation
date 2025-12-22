@@ -26,7 +26,7 @@ Keywords: effect measure, language & writing, observational study
 A daughter is taking her first steps into research, and her dad is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. Since then, her dad has been quietly looking for chances to bring up statistics in conversation.
 :::
 
-### When You Hear “95%,” Don’t You Think It Means It Works for 95 Out of 100 People?
+### When you hear “95%,” don’t you think it means it works for 95 out of 100 people?
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-father

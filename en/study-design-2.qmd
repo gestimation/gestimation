@@ -24,9 +24,11 @@ Keywords: language & writing, probability model, R simulation, survival & compet
 
 ------------------------------------------------------------------------
 
-This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:   
+::: {.callout-note appearance="simple"  collapse="true" title="To those who started with this episode"}
+This post is the second episode of "a conversation on causality" series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:   
 
 [Study Design I − A Story of Coffee Chat and Research Hypothesis](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
+:::
 
 ### Four data types
 

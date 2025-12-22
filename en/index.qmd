@@ -147,6 +147,7 @@ An episode where she learns from her father — from interpreting logistic regre
 - [Where My Logistic Regression Went Wrong]
 - [Why Logistic Regression Fails in Small Samples]
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified]
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference]
 
 ::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
 - **From Risk to Logistic Regression**
@@ -159,6 +160,8 @@ When calculations are correct but conclusions feel wrong — pausing at interpre
 A model that breaks may still be teaching something — about small samples.
 - **Understanding Confounding in Effect Measures: Marginal vs Stratified**
 When overall and subgroup results disagree — revealing a structure of confounding.
+- **Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference**
+What exactly is the purpose of the DAG tool? A daughter's response to her father's teachings. 
 :::
 
 ### 7. Truth — What defines it?

@@ -184,6 +184,7 @@ listing:
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure]
 - [A Circle, an Equation, and a Cylinder]
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference]
 
 ::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
 - **Three-Variable DAGs: The Smallest Building Blocks of Causal Structure**
@@ -196,6 +197,8 @@ listing:
 　確率モデルとDAGとRubin因果モデルっていったいなに？娘の疑問への答え。
 - **Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias**
 　「ブロックする」とは、どのような操作をDAGに加えることなのか。バイアスの源を探す手触りを、最小限の形式で確かめます。
+- **Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference**
+　「DAGは何のためのだろう？」「複雑さを整理し曖昧さを減らす道具だよね」父の教えへの娘からの回答。
 :::
 
 ### 9. Publish a Paper — 研究のその先

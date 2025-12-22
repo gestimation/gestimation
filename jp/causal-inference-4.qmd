@@ -173,6 +173,7 @@ DAGはいくつかのアイデアが元になっていますが、そのひと�
 - [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
 - [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
 
 **過去のシリーズ**
 

@@ -166,6 +166,29 @@ E ← A → C ← B → D, so C does not d-separate E and D.
 
 - Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
 
-### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+### Next episodes
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
 
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
+::: {.callout-note appearance="simple" collapse="true" title="Other episodes"}
+
+**Episodes in this series**
+
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
+
+**Earlier series**
+
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+- [Adjusting for Bias I](logistic-regression-1.html)
+
+**Glossary**
+
+- [Statistical Terms in Plain Language](glossary.html)
+:::

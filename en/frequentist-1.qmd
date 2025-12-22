@@ -23,8 +23,8 @@ Keywords: clinical trial, language & writing, p-value, survival & competing risk
 
 ------------------------------------------------------------------------
 
-::: {.callout-note appearance="simple"  collapse="true" title="Previously"}
-A daughter is taking her first steps into research, and her dad is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. She also learns that even for the same "return-to-work outcome," there are at least two analytic paths: treating it as binary data or treating it as time-to-event data. Then she remembers a paper her supervisor recommended—one that used the terms OS and DFS.
+::: {.callout-note appearance="simple"  collapse="true" title="Previously..."}
+A daughter is taking her first steps into research, and her father is a statistician. After advising her to refine her research question into “PECO,” the daughter—a clinician—decides to study the relationship between having a stoma and returning to work among cancer survivors. These coffee-chat dialogues blend story, methods, and ways of thinking—sometimes practical, sometimes abstract—sometimes with a quiz and small R scripts you can rerun.
 :::
 
 ### Making sense of the numbers around survival curves

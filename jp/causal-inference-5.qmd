@@ -111,11 +111,15 @@ DAG上に、異なるノードを要素とする3つの集合があるとし、�
 :::
 
 ::: voice-daughter
-私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、どういうとき有向分離してるかっていうのはわかったつもりだけど。どういう意味があるの、これ？」
+私「なるほど、二つ目の条件を使ったわけだ。丁寧に説明してくれたおかげで、有向分離がブロックの進化系っていうのは分かったつもりだけど。どういう意味があるの、これ？」
 :::
 
 ::: voice-father
-お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられたっていう話の流れだったんだけど。もうひとつだけ付け加えるなら、DAGを確率変数に置き換えると、有向分離は条件付独立性と同じっていうことが知られている。この結果を用いて、因果効果を識別するために必要な交絡因子を見つけることができるんだ。実用上はブロックとバックドア基準が使えればじゅうぶんだけど、ほんとうの意味を言葉にしておいた方がいいと思って」
+お父さん「今回の話は、ブロックをちゃんと説明するっていうのが目的だったんだけど、ぴんとこなかったかなあ。さっきのDAGについていえば、有向分離できる変数の集合を探すことで、バイアスを防げる交絡因子の組み合わせを見つけられるっていう話の流れだったんだけど」
+:::
+
+::: voice-daughter
+私「ふーん。どこが分かんないのかも分からない感じになっちゃった。ひとりで考えてみる」
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -163,6 +167,29 @@ DAGを用いて、CがAとBを有向分離することが確認できたとし�
 
 - Pearl J. Causal diagrams for empirical research. Biometrika 1995; 82(4): 669-88
 
-### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+### 次のエピソード
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
 
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+- [A Subtle Distinction between Common Causes and Confounders](causal-inference-2.html)
+- [DAGs and Conditional Distributions: Two Languages for the Same Structure](causal-inference-3.html)
+- [A Circle, an Equation, and a Cylinder](causal-inference-4.html)
+- [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias](causal-inference-5.html)
+- [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference](causal-inference-6.html)
+
+**過去のシリーズ**
+
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+- [Adjusting for Bias I](logistic-regression-1.html)
+
+**用語集**
+
+- [Statistical Terms in Plain Language](glossary.html)
+:::
