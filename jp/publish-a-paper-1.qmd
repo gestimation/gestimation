@@ -209,5 +209,4 @@ Keywords: bias, language & writing, research hypothesis
 
 ### 次のエピソード
 
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
 - [Three Tips for Writing a Paper](publish-a-paper-2.html)

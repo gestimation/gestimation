@@ -266,16 +266,37 @@ window.Quarto = {
 </div>
 <section id="brewing-coffee-exchanging-words.-as-the-steam-drifts-upward-time-softens-and-the-world-of-statistics-opens-little-by-little." class="level1">
 <h1>Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.</h1>
-<p>These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to lie scattered quietly — across everyday life, clinical practice, causality, data, cognition, and language.</p>
+<p>These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged me while reading a paper, and occasionally, glimpses of how researchers conduct themselves—the things that truly matter tend to lie scattered quietly across everyday life, clinical practice, causality, data, cognition, and language.</p>
 <p>Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story, careful not to disturb their totality.</p>
-<p>From survival curves and misread p-values to the layered relationship between causality and statistical inference — the episodes hide small clues, arranged like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.</p>
-<p>Mathematics and medicine make their appearances, but feel free to take only what you need. The story can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears. Enjoy following that changing view, at the quiet pace of a cup of coffee.</p>
+<p>From survival curves and misread p-values to the layered relationship between causality and statistical inference, each episode leaves a few gentle clues—warm enough to hold on a winter morning.</p>
+<p>Mathematics and medicine appear along the way, but take only what you need. Some episodes include short R scripts, meant not as programming lessons but as small experiments you can rerun, to feel how assumptions become data. As the conversation unfolds, the view changes—quietly. I hope you enjoy following it, at the pace of a cup of coffee.</p>
 <hr>
 <section id="how-to-read-this-site" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-read-this-site">How to read this site</h2>
-<p>Not sure where to begin? Start with <strong>Study Design</strong>.</p>
-<p>Each episode can be read on its own, but the conversations gently build from there. Some episodes include short R scripts—not to teach programming, but to help you feel how causal questions and statistical assumptions take shape in data.</p>
-<p>You can read in order or jump to any layer that interests you. If you read through the whole series, the scattered pieces will slowly find their places—and the view may look a little different than before.</p>
+<p>Not sure where to begin? Start with <a href="study-design-1.html"><strong>Study Design</strong></a>.</p>
+<p>Each episode can be read on its own; from there, you can follow the story or choose whichever layer interests you—<a href="frequentist-1.html">clinical trials and p-values</a>, for example, or <a href="logistic-regression-1.html">causal inference in research</a>. When R scripts appear, they are there to make the ideas reproducible—and tangible. Read through the whole series and scattered meanings begin to connect—you’ll likely come away with a few new ways of seeing.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="R scripts for reproducing the episodes">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+R scripts for reproducing the episodes
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you came here from an R post, you may want the code first. These scripts are meant to <em>reproduce the figures and ideas</em>, not to teach programming.</p>
+<ul>
+<li><strong>Study Design series:</strong> <code>study-design.R</code></li>
+<li><strong>Frequentist Thinking / Experiments:</strong> <code>frequentist.R</code></li>
+<li><strong>Effects and Time:</strong> <code>effects.R</code></li>
+<li><strong>Adjusting for Bias:</strong> <code>logistic-regression.R</code></li>
+</ul>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="episodes" class="level2">
@@ -291,47 +312,6 @@ window.Quarto = {
 <li><a href="study-design-5.html">When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</a></li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-A glimpse ahead
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>A Story of Coffee Chat and Research Hypothesis</strong> Research often stumbles first not on data, but on how a question is framed.</li>
-<li><strong>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</strong> Numbers may look the same, yet describe different worlds—this pause starts from outcome types and the probability models behind them.</li>
-<li><strong>Outcomes: The Bridge from Data Collection to Analysis</strong> Once an outcome is defined, much of the study is already decided—pausing over that choice through familiar oncology examples.</li>
-<li><strong>A First Step into Survival and Competing Risks Analysis with R</strong> Before analysis begins, trouble often begins with how events are defined and coded—thinking in terms of time and events.</li>
-<li><strong>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</strong> Distortion rarely comes from formulas alone—this is where bias quietly enters.</li>
-</ul>
-</div>
-</div>
-</div>
-<p>You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/study-design.R">study-design.R</a></li>
-</ul>
-</section>
-<section id="glossary-the-words-of-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="glossary-the-words-of-statistics">2. Glossary — The words of statistics</h3>
-<ul>
-<li>[Statistical Terms in Plain Language]</li>
-</ul>
-</section>
-<section id="frequentist-thinking-practicing-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">3. Frequentist Thinking — Practicing statistics</h3>
-<p>Using cancer clinical trials as an example, my father explains the <strong>frequentist perspective</strong> of “How do numbers behave when you virtually repeat a study in a long run?”</p>
-<ul>
-<li>[Reading a Paper over a Cup of Coffee]</li>
-<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
-<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
-</ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -344,21 +324,30 @@ A glimpse ahead
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Reading a Paper over a Cup of Coffee</strong> The unease felt while reading a paper often comes from language — pausing over statistical terms.</li>
-<li><strong>P-Value Explanations That Seem Plausible at First Glance</strong> What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.</li>
-<li><strong>Beyond 0.05: Interpreting P-Values in a Clinical Trial</strong> A p-value is less a number than a shadow of design — watching where interpretation drifts.</li>
+<li><strong>A Story of Coffee Chat and Research Hypothesis</strong> Research often stumbles first not on data, but on how a question is framed.</li>
+<li><strong>Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes</strong> Numbers may look the same, yet describe different worlds—this pause starts from outcome types and the probability models behind them.</li>
+<li><strong>Outcomes: The Bridge from Data Collection to Analysis</strong> Once an outcome is defined, much of the study is already decided—pausing over that choice through familiar oncology examples.</li>
+<li><strong>A First Step into Survival and Competing Risks Analysis with R</strong> Before analysis begins, trouble often begins with how events are defined and coded—thinking in terms of time and events.</li>
+<li><strong>When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys</strong> Distortion rarely comes from formulas alone—this is where bias quietly enters.</li>
 </ul>
 </div>
 </div>
 </div>
-<p>You can download the full R script for this and the next episodes here.</p>
+</section>
+<section id="glossary-the-words-of-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="glossary-the-words-of-statistics">2. Glossary — The words of statistics</h3>
 <ul>
-<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
+<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
 </section>
-<section id="frequentist-experiments-validation-of-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="frequentist-experiments-validation-of-statistics">4. Frequentist Experiments — Validation of statistics</h3>
-<p>The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.</p>
+<section id="frequentist-thinking-practicing-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-thinking-practicing-statistics">3. Frequentist Thinking — Practicing statistics</h3>
+<p>Using cancer clinical trials as an example, my father explains the <strong>frequentist perspective</strong> of “How do numbers behave under repeated sampling?”</p>
+<ul>
+<li>[Reading a Paper over a Cup of Coffee]</li>
+<li>[P-Value Explanations That Seem Plausible at First Glance]</li>
+<li>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</li>
+</ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -372,29 +361,17 @@ A glimpse ahead
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>R Demonstration of Bias in Kaplan-Meier Under Competing Risks</strong> A curve that looks convincing may still describe another world — checked through simulation.</li>
-<li><strong>Understanding Confidence Intervals via Hypothetical Replications in R</strong> Where does “95%” come from, and where does it go — lingering over confidence intervals.</li>
-<li><strong>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</strong> Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.</li>
+<li><strong>Reading a Paper over a Cup of Coffee</strong> The unease felt while reading a paper often comes from language — pausing over statistical terms.</li>
+<li><strong>P-Value Explanations That Seem Plausible at First Glance</strong> What would happen if the same study were repeated again and again — touching the idea of frequentist thinking.</li>
+<li><strong>Beyond 0.05: Interpreting P-Values in a Clinical Trial</strong> A p-value is less a number than a shadow of design — watching where interpretation drifts.</li>
 </ul>
 </div>
 </div>
 </div>
-<p>You can download the full R script for this and the next episode here.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
-</ul>
 </section>
-<section id="effects-and-time-how-effects-evolve" class="level3">
-<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">5. Effects and Time — How effects evolve</h3>
-<p>We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness rates, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.</p>
-<ul>
-<li>[Silent Confusions Hidden in Percentages]</li>
-<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
-<li>[Understanding Collapsibility of Effect Measures: Marginal vs Stratified]</li>
-<li>[When Odds Ratios Approximate Risk Ratios—and When They Fail]</li>
-<li>[From Risk and Rate to Survival and Hazard]</li>
-<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
-</ul>
+<section id="frequentist-experiments-validation-of-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-experiments-validation-of-statistics">4. Frequentist Experiments — Validation of statistics</h3>
+<p>The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -408,30 +385,24 @@ A glimpse ahead
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Silent Confusions Hidden in Percentages</strong> Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.</li>
-<li><strong>Who Is This Percentage About—Target Populations and Attributable Fractions</strong> Every number speaks about someone — reconsidering the assumed population.</li>
-<li><strong>Understanding Collapsibility of Effect Measures: Marginal vs Stratified</strong> When adjustment changes results, the reason is structural — revisiting stratification.</li>
-<li><strong>When Odds Ratios Approximate Risk Ratios—and When They Fail</strong> Measures that look similar may behave differently — pausing over the odds ratio.</li>
-<li><strong>From Risk and Rate to Survival and Hazard</strong> Once time enters the picture, effects change shape. An entry point to thinking about effects over time.</li>
-<li><strong>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</strong> Are effects ever constant — considering time-varying perspectives.</li>
+<li><strong>R Demonstration of Bias in Kaplan-Meier Under Competing Risks</strong> A curve that looks convincing may still describe another world — checked through simulation.</li>
+<li><strong>Understanding Confidence Intervals via Hypothetical Replications in R</strong> Where does “95%” come from, and where does it go — lingering over confidence intervals.</li>
+<li><strong>Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</strong> Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.</li>
 </ul>
 </div>
 </div>
 </div>
-<p>You can download the full R script for this and the previous episode here.</p>
-<ul>
-<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
-</ul>
 </section>
-<section id="adjusting-for-bias-the-landscape-of-regression-modeling" class="level3">
-<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression-modeling">6. Adjusting for Bias — The landscape of regression modeling</h3>
-<p>An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoiding pitfalls in its use. And then…</p>
+<section id="effects-and-time-how-effects-evolve" class="level3">
+<h3 class="anchored" data-anchor-id="effects-and-time-how-effects-evolve">5. Effects and Time — How effects evolve</h3>
+<p>We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.</p>
 <ul>
-<li>[From Risk to Logistic Regression]</li>
-<li>[Logit: How a Transformation Shapes an Effect]</li>
-<li>[Where My Logistic Regression Went Wrong]</li>
-<li>[Why Logistic Regression Fails in Small Samples]</li>
-<li>[Understanding Confounding in Effect Measures: Marginal vs Stratified]</li>
+<li>[Silent Confusions Hidden in Percentages]</li>
+<li>[Who Is This Percentage About? Target Populations and Attributable Fractions]</li>
+<li>[Understanding Collapsibility of Effect Measures: Marginal vs Stratified]</li>
+<li>[When Odds Ratios Approximate Risk Ratios—and When They Fail]</li>
+<li>[From Risk and Rate to Survival and Hazard]</li>
+<li>[Distinguishing Time-Point, Time-Constant, and Time-Varying Effects: An R Example]</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -444,6 +415,40 @@ A glimpse ahead
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Silent Confusions Hidden in Percentages</strong> Percentages feel intuitive, yet they often mislead. Rethinking how effects are communicated.</li>
+<li><strong>Who Is This Percentage About—Target Populations and Attributable Fractions</strong> Every number speaks about someone — reconsidering the assumed population.</li>
+<li><strong>Understanding Collapsibility of Effect Measures: Marginal vs Stratified</strong> When adjustment changes results, the reason is structural — revisiting stratification.</li>
+<li><strong>When Odds Ratios Approximate Risk Ratios—and When They Fail</strong> Measures that look similar may behave differently — pausing over the odds ratio.</li>
+<li><strong>From Risk and Rate to Survival and Hazard</strong> Once time enters the picture, effects change shape. An entry point to thinking about effects over time.</li>
+<li><strong>Distinguishing Time-Point, Time-Constant, and Time-Varying Effects</strong> Are effects ever constant — considering time-varying perspectives.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="adjusting-for-bias-the-landscape-of-regression-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="adjusting-for-bias-the-landscape-of-regression-modeling">6. Adjusting for Bias — The landscape of regression modeling</h3>
+<p>An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoid pitfalls in its use. And then…</p>
+<ul>
+<li>[From Risk to Logistic Regression]</li>
+<li>[Logit: How a Transformation Shapes an Effect]</li>
+<li>[Where My Logistic Regression Went Wrong]</li>
+<li>[Why Logistic Regression Fails in Small Samples]</li>
+<li>[Understanding Confounding in Effect Measures: Marginal vs Stratified]</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A glimpse ahead
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>From Risk to Logistic Regression</strong> Translating risk into equations inevitably hides something — an entry into regression.</li>
@@ -466,7 +471,7 @@ A glimpse ahead
 </section>
 <section id="causal-inference-to-find-causality" class="level3">
 <h3 class="anchored" data-anchor-id="causal-inference-to-find-causality">8. Causal Inference — To find causality</h3>
-<p>Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the <strong>language of causality</strong> needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.</p>
+<p>Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the <strong>language of causality</strong> needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.</p>
 <ul>
 <li>[Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]</li>
 <li>[A Subtle Distinction between Common Causes and Confounders]</li>
@@ -475,7 +480,7 @@ A glimpse ahead
 <li>[Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled" title="A glimpse ahead">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -484,7 +489,7 @@ A glimpse ahead
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</strong> The smallest diagrams that let us speak about causality.</li>
@@ -517,7 +522,7 @@ A glimpse ahead
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1765638000000" data-listing-file-modified-sort="1766043455611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1771">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1765638000000" data-listing-file-modified-sort="1766320647726" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1770">
 <div class="thumbnail"><a href="../en/study-design-2.html" class="no-external">
 
 <p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>
@@ -539,7 +544,7 @@ Dec 14, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1764514800000" data-listing-file-modified-sort="1766043439477" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1400">
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1764514800000" data-listing-file-modified-sort="1766327904729" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
 <div class="thumbnail"><a href="../en/study-design-1.html" class="no-external">
 
 <p class="card-img-top"><img src="..\image\father-daughter.png"  class="thumbnail-image card-img"/></p>

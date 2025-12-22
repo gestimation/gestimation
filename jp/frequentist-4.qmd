@@ -87,10 +87,9 @@ Keywords: bias, probability model, simulation, survival & competing risks
 以前生成したシミュレーションデータにおける累積再発率（CIR）の解析では、再発の前に死亡した患者（競合リスク）を発生させたことを覚えていますか？競合リスク存在下でKaplan-Meier曲線を用いるとバイアスが生じることは、簡単な実験で確かめることができます。
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="データ生成に用いるgenerate_data()のコードはこちら"}
+::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
-  set.seed(46)
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
@@ -239,18 +238,25 @@ Kaplan-Meier法による生存曲線の推定が妥当な状況として正し�
 Kaplan-Meier法では、生存時間が正規分布したり、比例ハザードが成り立ったりする必要はありません（これはそれぞれ*t*検定とCox回帰の前提条件ですね）。疾患の悪化に伴って、試験の途中で患者が追跡できなくなると、推定された生存曲線にバイアスが生じてしまいます。2群の生存曲線を比べるとき、それぞれの群の打ち切り確率を比較することがあります。有意差があればバイアスがあるといえますが、たとえばサンプルサイズが小さいときは有意差が出ませんから、Kaplan-Meier法が妥当という証拠にはなりません。逆にいうと、打ち切りがランダムに起きていることが、Kaplan-Meier法の基本的な前提条件です。なお、競合イベントを打ち切りとして扱うかどうかは、ランダム打ち切りの条件とは独立に検討すべき問題ですよね。
 :::
 
-### このシリーズとRスクリプト
+### 次のエピソードとRスクリプト
 
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
-
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 
-### 過去のシリーズと用語集
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+**このシリーズのエピソード**
+
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
+
+**過去のシリーズ**
+
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

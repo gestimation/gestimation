@@ -225,6 +225,13 @@ $$
 
 ### 次のエピソードとRスクリプト
 
+- [A First Note on Cox Regression](effects-5.html)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
@@ -232,11 +239,13 @@ $$
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-- [effects.R](../from-coffee-chat-to-r/effects.R)
+**過去のシリーズ**
 
-### 過去のシリーズと用語集
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

@@ -130,9 +130,9 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="ケース・コントロール研究とオッズ比"}
+::: {.callout-note appearance="simple" collapse="true" title="ケース・コントロール研究とオッズ比"}
 
-古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。
+古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、ケース・コントロール研究といってもリスク比を計算できる状況も増えてきています。
 :::
 
 ::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
@@ -144,7 +144,7 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 3.  オッズ比のp値は、リスク比のp値と、期待値の上で等しい
 :::
 
-::: {.callout-note appearance="simple"  collapse="true" title="答えはこちら"}
+::: {.callout-note appearance="simple" collapse="true" title="答えはこちら"}
 -   **正解は3です**
 
 リスク比やオッズ比は最尤法で推定することが普通です。最尤法を用いるとき、検定の性能（検出力など）は、指標の選び方によらず一定、ということが統計学で知られています。直感的な説明をすると、“同じデータから同じ情報を引き出している”から、どの指標を使って差を推定しても、検定としての力は変わらないのです。
@@ -156,6 +156,13 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 
 ### 次のエピソードとRスクリプト
 
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
@@ -163,11 +170,13 @@ $\pi_1$と$\pi_2$のどちらかが0.2を超えると、リスク比とオッズ
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-- [effects.R](../from-coffee-chat-to-r/effects.R)
+**過去のシリーズ**
 
-### 過去のシリーズと用語集
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

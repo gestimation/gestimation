@@ -28,7 +28,7 @@ Keywords: bias, language & writing, observational study, study design
 ::: voice-daughter
 Me: "I'm back—so tired. Dad, do we have anything sweet left?"
 :::
-
+ 
 ::: voice-father
 Dad: "There's some strawberry daifuku. I just made coffee too."
 :::
@@ -153,7 +153,7 @@ Me: "Selection bias, information bias... Clinical research really does have its 
 
 ### Up to this point, we have been talking about the essence of research — how we frame research questions and plan to obtain unbiased answers. The following episodes step away from study design and begin to reflect on observed effects and their uncertainty, how we reason about causes, and what ultimately becomes publishable.
 
-- [Reading a Paper over a Cup of Coffee]
+- [Reading a Paper over a Cup of Coffee] (comming soon)
 - [P-Value Explanations That Seem Plausible at First Glance]
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
 - [Understanding Confidence Intervals via Hypothetical Replications in R]

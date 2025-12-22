@@ -200,7 +200,7 @@ glm(y ~ x1 + x2, family = poisson(), data = dat)
 
 リスク比を求めるには、$g(\pi)=\log(\pi)$ つまり対数関数を指定します。
 
-ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補二重対数（complementary log-log）関数を指定します。
+ハザード比を求めるには、$g(\pi)=\log\{-\log⁡(1-\pi)\}$つまり補2重対数（complementary log-log）関数を指定します。
 :::
 
 ### 文献
@@ -209,17 +209,28 @@ glm(y ~ x1 + x2, family = poisson(), data = dat)
 
 ### 次のエピソードとRスクリプト
 
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
 - [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
 - [From Risk to Logistic Regression](logistic-regression-2.html)
 - [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
 - [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)
-- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-### 過去のシリーズと用語集
+**過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

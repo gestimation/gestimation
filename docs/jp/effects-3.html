@@ -195,7 +195,6 @@ window.Quarto = {
   <li><a href="#リスク比とオッズ比って結局同じ" id="toc-リスク比とオッズ比って結局同じ" class="nav-link" data-scroll-target="#リスク比とオッズ比って結局同じ">リスク比とオッズ比って、結局同じ？</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -631,16 +630,19 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="ケース・コントロール研究とオッズ比">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 ケース・コントロール研究とオッズ比
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、リスク比を計算できる状況も増えてきています。</p>
+<p>古典的なケース・コントロール研究は、コホートの中から疾患を発生したケースを特定し、疾患を発生しなかったものの中からコントロールを選択し、ケースとコントロールの曝露状況を比較する研究です。言い換えると、この研究デザインでは、一部の集団のみ（ケースとコントロールのみ）について、過去の曝露状況を調査します。そうすると、コホートの一部しか曝露状況がわからないから、曝露群・非曝露群のリスクの分母がわかりませんよね。そこで、リスク比の代わりに「曝露オッズ比」を求める、と疫学の教科書には書かれています。ただし、古典的なケース・コントロール研究とは違い、最近ではデータベースが利用できたり、研究デザインを工夫していたりするため、ケース・コントロール研究といってもリスク比を計算できる状況も増えてきています。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -690,23 +692,43 @@ window.Quarto = {
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
-<li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
-<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
+<li><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
 </ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="effects-5.html">A First Note on Cox Regression</a></li>
+<li><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></li>
+</ul>
+<p><strong>過去のシリーズ</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
+<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
+</div>
+</div>
+</div>
 
 
 </section>

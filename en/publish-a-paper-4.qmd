@@ -15,7 +15,7 @@ format:
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-The sound of the early-summer rain soothed the stillness of the night. After clinic hours, we often spent time at our computers. Tonight again, I sat quietly, looking at the manuscript on the monitor.
+Early-summer rain softened the stillness of the night. After clinic hours, we often spent time at our computers. Tonight again, I sat quietly, looking at the manuscript on the monitor.
 
 On the desk, papers and survey forms lay scattered. Beside a note scribbled on a paper napkin, a Rubik’s Cube rested. I reached for the coffee, now lukewarm.
 
@@ -25,15 +25,13 @@ I write, then stop. I stop, then return.
 "Background"
 
 ::: voice-daughter
-In this opening section, many papers are cited, their authors’ names listed one after another.  
-They were surely written in rooms much like this one.
+In this opening section, many papers are cited, their authors’ names listed one after another. They were written in rooms much like this one.
 :::
 
 "The aim of this study was..."
 
 ::: voice-daughter
-Such a short sentence, and yet now I know how much it must carry.  
-An aim is never a private intention. It must be opened to others, shaped into the form of a research hypothesis.
+Such a short sentence, and yet now I know how much it must carry. An aim is never a private intention. It must be opened to others, shaped into the form of a research hypothesis.
 
 It quietly conveys where I stand in the world, and the direction in which I intend to walk.
 
@@ -55,7 +53,7 @@ The numbers placed there looked different to me than before. They record what ha
 
 Did we provide good care? Change the question, and the numbers respond differently. They may appear simply arranged on the page, but they speak more than I once realized.
 
-Because this study involves patients, its hypothesis inevitably carries the values of medicine. It is less about knowing what is “correct,” and more about gaining knowledge that brings us closer to better practice.
+Because this study involves patients, its hypothesis inevitably reflects clinical values. It is less about knowing what is “correct,” and more about gaining knowledge that brings us closer to better practice.
 
 Many things pass unnoticed while we are working, or talking with others over coffee. When I am alone, I understand them more clearly.
 
@@ -69,6 +67,6 @@ I nodded slightly, and began typing again—slowly.
 
 Acknowledgements
 
-We appreciate the advice from an anonymous statistician.
+We thank an anonymous statistician for thoughtful advice.
 
-### This concludes the story. 
+### And that was the morning before submission. 

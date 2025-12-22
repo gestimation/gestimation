@@ -195,7 +195,6 @@ window.Quarto = {
   <li><a href="#って聞いたら100人いたら95人に効くって思わない" id="toc-って聞いたら100人いたら95人に効くって思わない" class="nav-link" data-scroll-target="#って聞いたら100人いたら95人に効くって思わない">95%って聞いたら100人いたら95人に効くって思わない？</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -274,7 +273,7 @@ window.Quarto = {
 <p>私「そう？罹患率とか死亡率とかよく使うけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう<strong>率（rate）</strong>とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが95%って意味だから」</p>
+<p>お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう<strong>率（rate）</strong>とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが5%に下がるって意味だから」</p>
 </div>
 <ul>
 <li>ワクチン有効率は疫学一般で用いられる率ではない</li>
@@ -384,6 +383,7 @@ VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <div class="voice-father">
 <p>お父さん「いや、聞けばすぐわかるよ。ワクチン有効率の数字は、臨床データから推定されたものでしょ。たくさんの参加者を対象に臨床試験を行って、実際に観察されたという経験が、ぎゅっと要約された結果が、この数字なんだ。でも、データ上でどんな結果が観察されたか、ワクチン有効率だけでは伝わらないでしょ。こういうのを”数字が独り歩きする”っていうんだ」</p>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="ワクチンランダム化臨床試験の数値例">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -426,6 +426,7 @@ VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <p><span class="math inline">\(VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%\)</span></p>
 </div>
 </div>
+<div class="dialogue">
 <div class="voice-daughter">
 <p>私「確かにね。95%有効っていう数字だけみると、”ほぼ確実に救える”って意味に捉えがちだけど、よく考えたらワクチンにそこまでの効果はないよね。パーセントを使ったレトリックに騙されちゃいそう」</p>
 </div>
@@ -486,23 +487,43 @@ VE=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
-<li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
-<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
 </ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="effects-5.html">A First Note on Cox Regression</a></li>
+<li><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></li>
+</ul>
+<p><strong>過去のシリーズ</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
+<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
+</div>
+</div>
+</div>
 
 
 </section>

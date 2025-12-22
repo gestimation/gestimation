@@ -137,7 +137,7 @@ Me: "That makes sense. The exact definitions really do differ a bit from study t
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple"  title="Clinical endpoints and surrogate endpoints"}
+::: {.callout-note appearance="simple" collapse="true" title="Clinical endpoints and surrogate endpoints"}
 
 OS, DFS, and RFS are outcomes or endpoints that are frequently used when evaluating the effectiveness of post-operative adjuvant chemotherapy. How are these endpoints chosen and used? One guiding principle comes from how regulatory agencies evaluate anticancer drugs. For example, the Japanese guideline on clinical evaluation of anticancer drugs states that, in order for an anticancer drug to be approved, its efficacy must be demonstrated reliably, typically through evidence such as prolongation of survival. In this framework, overall survival (OS) is treated as a clinical endpoint and given particular weight (Biomarkers Definitions Working Group, 2001). 
 

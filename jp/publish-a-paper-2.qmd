@@ -175,11 +175,13 @@ Keywords: language/writing
 -   セクションとパラグラフごとに書く
 
 ::: voice-daughter
-私「パラグラフは英語の授業で習ったやつだよね。セクションはそれをまとめたもの？」
+私「パラグラフは英語の授業で習ったやつだよね。セクションはそれをまとめたものか」
 :::
 
+### パラグラフ数の統計
+
 ::: voice-father
-お父さん「うん。論文の章立てには、Introduction、Methods、Results、Discussion、Conclusionsというセクションを使うよね。たとえばIntroductionというセクションを書くことを想像してみて。Introductionには、いくつくらいのパラグラフがありそう？」
+お父さん「論文の章立てには、Introduction、Methods、Results、Discussion、Conclusionsというセクションを使う。たとえばIntroductionというセクションを書くことを想像してみて。Introductionには、いくつくらいのパラグラフがありそう？」
 :::
 
 ::: voice-daughter
@@ -299,6 +301,4 @@ STROBE声明の「変数」というセクションでは、いくつか基本�
 
 ### 次のエピソード
 
-- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
-- [Three Tips for Writing a Paper](publish-a-paper-2.html)
 - [Communicating with Care](publish-a-paper-3.html)

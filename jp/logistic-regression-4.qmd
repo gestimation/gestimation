@@ -130,7 +130,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple" title="注意事項1. フォーマット"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項1. フォーマット"}
 
 論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。
 
@@ -140,7 +140,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 
 :::
 
-::: {.callout-note appearance="simple" title="注意事項2. 単位・表示桁数"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項2. 単位・表示桁数"}
 
 表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。
 
@@ -249,7 +249,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 :::
 :::::::::::::::::::::::::::::::::
 
-::: {.callout-note appearance="simple"  title="注意事項3. 表タイトル・脚注"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項3. 表タイトル・脚注"}
 
 読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。
 
@@ -259,7 +259,7 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 
 :::
 
-::: {.callout-note appearance="simple"  title="注意事項4. 数え尽くしの原則"}
+::: {.callout-note appearance="simple" collapse="true" title="注意事項4. 数え尽くしの原則"}
 
 統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。
 
@@ -314,6 +314,12 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 - [田中司朗. 医学研究のための因果推論I. 一般化線型モデル. 東京: 朝倉書店; 2022](https://www.asakura.co.jp/detail.php?book_code=12270)
 
 ### 次のエピソードとRスクリプト
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
+- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
 
 - [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
 - [From Risk to Logistic Regression](logistic-regression-2.html)
@@ -321,11 +327,15 @@ Keywords: confounding & collapsibility, effect measure, generalized linear model
 - [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
 - [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)
-- [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
 
-### 過去のシリーズと用語集
+**過去のシリーズ**
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
+- [Effects and Time I](effects-1.html)
+
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

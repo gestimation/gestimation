@@ -191,9 +191,8 @@ window.Quarto = {
   <ul>
   <li><a href="#effects-and-time-v-a-first-note-on-cox-regression" id="toc-effects-and-time-v-a-first-note-on-cox-regression" class="nav-link active" data-scroll-target="#effects-and-time-v-a-first-note-on-cox-regression">Effects and Time V − A First Note on Cox Regression</a>
   <ul class="collapse">
-  <li><a href="#cox回帰はハザード比のモデルというより比例ハザード性のモデル" id="toc-cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="nav-link" data-scroll-target="#cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</a></li>
+  <li><a href="#cox回帰はハザード比ではなく比例ハザード性のモデル" id="toc-cox回帰はハザード比ではなく比例ハザード性のモデル" class="nav-link" data-scroll-target="#cox回帰はハザード比ではなく比例ハザード性のモデル">Cox回帰はハザード比ではなく比例ハザード性のモデル</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -229,8 +228,8 @@ window.Quarto = {
 <p>Keywords: effect measure, probability model, survival &amp; competing risks</p>
 </div>
 <hr>
-<section id="cox回帰はハザード比のモデルというより比例ハザード性のモデル" class="level3">
-<h3 class="anchored" data-anchor-id="cox回帰はハザード比のモデルというより比例ハザード性のモデル">Cox回帰はハザード比のモデルというより比例ハザード性のモデル</h3>
+<section id="cox回帰はハザード比ではなく比例ハザード性のモデル" class="level3">
+<h3 class="anchored" data-anchor-id="cox回帰はハザード比ではなく比例ハザード性のモデル">Cox回帰はハザード比ではなく比例ハザード性のモデル</h3>
 <div class="dialogue">
 <div class="voice-daughter">
 <p>私「お父さん、正直にいうと生存曲線とかの数式はわからなかったんだけど、ひとつだけすごく気になったことがあって。それが。ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>の比をとったこの式なの。<span class="math inline">\(HR\)</span>は<strong>ハザード比（hazard ratio）</strong>だよね」</p>
@@ -277,30 +276,120 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「これがCox回帰の式ね。ロジスティック回帰の式に比べてシンプルすぎて見てて不安になるな。比例ハザード性っていう聞き覚えのある単語で説明されてやっと安心する」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「この式は本質的なところしか書いてないからね。Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
+<p>お父さん「この式は本質的なところしか書いてないからね。でも、教科書に書いてあるCox回帰の式と、比例ハザード性というエッセンスは同じ。教科書は対数ハザード比を回帰係数ベクトル<span class="math inline">\(\beta\)</span>に置き換えて、ベクトル表記してあるだけだ」</p>
+</div>
+</div>
+<p><span class="math display">\[
+\lambda(x)=\lambda_0(x)\exp(Z \beta)
+\]</span></p>
+<div class="dialogue">
+<div class="voice-father">
+<p>お父さん「Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="補2重対数変換: ハザード比を抽出する変換">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+補2重対数変換: ハザード比を抽出する変換
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザード比を推定できます。リンク関数として補2重対数変換（<code>glm</code>でいえば <code>binomial(link = "cloglog")</code>）を選びます。Cox回帰の構造を深堀するために、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。指数分布のハザード比と回帰係数を<span class="math inline">\(\beta=\log(HR)\)</span>と表すことにします。</p>
+<p>2群の生存関数を、ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>を使って</p>
+<p><span class="math inline">\(S_1(x)=\exp(-\lambda_1 x)\)</span></p>
+<p><span class="math inline">\(S_2(x)=\exp(-\lambda_2 x)\)</span></p>
+<p>とします。それぞれ対数をとって符号を変えます。</p>
+<p><span class="math inline">\(-\log\{S_1(x)\}=\lambda_1 x\)</span></p>
+<p><span class="math inline">\(-\log\{S_2(x)\}=\lambda_2 x\)</span></p>
+<p>もう一度対数をとり、さらに差をとってみます。</p>
+<p><span class="math inline">\(\log[-\log\{S_1(x)\}]-\log[-\log\{S_2(x)\}]=\log(\lambda_1 x)-\log(\lambda_2 x)=\log(HR)=\beta\)</span></p>
+<p>この結果は、比例ハザード性の下では常に成り立ちます。つまり、同じ時点<span class="math inline">\(x\)</span>の下で2群の差をとると、<strong>時間<span class="math inline">\(x\)</span>がキャンセルして回帰係数<span class="math inline">\(\beta\)</span>だけが残ります</strong>。生存時間解析の裏では、生存関数から回帰係数（対数ハザード比）を抽出するために、この変換が使われています。その一例は、比例ハザード性の図示（いわゆるログログプロット）です。Kaplan–Meier曲線の補2重対数変換をとると、曲線間の比例ハザード性が、曲線の平行移動に置き換わるのです。</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+このエピソードに関係するクイズです
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="frequentist-2.jpg" class="img-fluid"></p>
+<p>この人は誰でしょう。</p>
+<ol type="1">
+<li>Kaplan</li>
+<li>Meier</li>
+<li>Cox</li>
+<li>Wilcoxon</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+答えはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>正解は3です</strong></li>
+</ul>
+<p>この方がCox先生です。</p>
+<p><a href="https://en.wikipedia.org/wiki/David_Cox_(statistician)">David Cox (statistician)</a></p>
+</div>
 </div>
 </div>
 </section>
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
-<li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
-<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
+<li><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></li>
+<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
 </ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="effects-5.html">A First Note on Cox Regression</a></li>
+<li><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></li>
+</ul>
+<p><strong>過去のシリーズ</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
+<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
+</div>
+</div>
+</div>
 
 
 </section>

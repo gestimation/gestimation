@@ -194,7 +194,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#疾患リスクとターゲット集団" id="toc-疾患リスクとターゲット集団" class="nav-link" data-scroll-target="#疾患リスクとターゲット集団">疾患リスクとターゲット集団</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -257,19 +256,19 @@ window.Quarto = {
 <p>お父さん「感染症、喫煙、飲酒が、がん罹患に寄与する割合は、16%、15%、6%っていわれてる。この指標を、集団寄与割合っていうんだけど、これもただのパーセントじゃない」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」</p>
+<p>私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はぱっとわかんないな」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「ほら、喫煙者のがん罹患を真っ先にイメージしちゃうでしょ。そこも誤解ポイント。集団寄与割合が想定している集団は、喫煙者じゃないんだ」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標1. 集団寄与割合">
+<div class="callout callout-style-simple callout-note callout-titled" title="集団寄与割合">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標1. 集団寄与割合
+集団寄与割合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -288,32 +287,20 @@ PAF=\frac{p(RR-1)}{p(RR-1)+1}
 <p>私「ふーん。集団寄与割合はリスク比だけじゃなくて、リスク因子の割合がわからないと計算できないんだね。でも、まあ、これもワクチン有効率と同じパターンだね。パーセントっていわれるとただの割合と思っちゃう。集団寄与割合のパーセントって、よく考えるとなにを意味するのか謎」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。実はこれはワクチン有効率とほとんど同じ式だったりする」</p>
+<p>お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。日本語では定訳があるわけではないけど、海外ではexcess fractionやpreventable fractionという専門用語が当てられているんだ。実はこの2つはワクチン有効率とほとんど同じ式だったりする」</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合">
+<div class="callout callout-style-simple callout-note callout-titled" title="3種類の寄与割合">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合
+3種類の寄与割合
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
-<ul>
-<li>過剰寄与割合（excess fraction） <span class="math display">\[
-EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
-\]</span></li>
-</ul>
-<p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
-<ul>
-<li>予防寄与割合（preventable fraction） <span class="math display">\[
-PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
-\]</span></li>
-</ul>
-<p>曝露集団をターゲットにする意義は、具体的な状況をイメージすると理解しやすくなります。環境疫学では、たとえば化学物質や放射線被ばくなど環境要因の健康影響を評価することが求められます。この場合では、集団全体ではなく、実際に環境要因に曝露した集団における被害を定量化する必要があるため、曝露集団をターゲットとしたexcess fractionがしばしば用いられます。同じような理由で、ワクチン・検診・運動などの予防法の新規導入が、個人のリスクをどれだけ下げたか知りたいときは、preventable fractionが好まれています。</p>
+<p>集団寄与割合以外の寄与割合として、excess fraction（過剰寄与割合）とpreventable fraction（予防寄与割合）がよく用いられます。集団寄与割合との本質的な違いはターゲット集団にあります。このふたつの指標のターゲット集団は曝露集団です。</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
@@ -345,6 +332,33 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled" title="Excess fractionとpreventable fractionの定義">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Excess fractionとpreventable fractionの定義
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Excess fractionは、曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されており、以下のように定義されます。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。</p>
+<ul>
+<li>excess fraction（過剰寄与割合） <span class="math display">\[
+EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
+\]</span></li>
+</ul>
+<p>その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、preventable fractionが用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。</p>
+<ul>
+<li>preventable fraction（予防寄与割合） <span class="math display">\[
+PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
+\]</span> 集団全体ではなく、曝露集団をターゲットにする意義は、具体的な状況をイメージすると理解しやすくなります。環境疫学では、たとえば化学物質や放射線被ばくなど環境要因の健康影響を評価することが求められます。この場合では、集団全体ではなく、実際に環境要因に曝露した集団における被害を定量化する必要があるため、曝露集団をターゲットとしたexcess fractionがしばしば用いられます。同じような理由で、ワクチン・検診・運動などの予防法の新規導入が、個人のリスクをどれだけ下げたか知りたいときは、preventable fractionが好まれています。</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="dialogue">
@@ -430,10 +444,10 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う」</p>
+<p>私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う。まあ、私が公衆衛生やっていないのもあるけど」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でしょ、言葉と認識にギャップがあるよね。それに、ただの計算だと思うとかえって理解しにくいところもある。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
+<p>お父さん「でしょ。同じパーセントで言葉と認識にギャップがあるよね。まあ臨床試験のハザード比は”どの治療を選ぶか”、寄与割合は”社会に介入すると疾患がどれだけ減るか”だから、慣れの問題もあるかもだけど。効果の指標って、ただの計算だと思うとかえって理解しにくいところもある。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」</p>
 </div>
 <div class="voice-daughter">
 <p>私「ふんふん」</p>
@@ -482,16 +496,19 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="ターゲット集団">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 ターゲット集団
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。</p>
+</div>
 </div>
 </div>
 <div class="dialogue">
@@ -543,7 +560,7 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -552,7 +569,7 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>正解は2です</strong></li>
@@ -568,23 +585,43 @@ PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
-<li><p><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></p></li>
-<li><p><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></p></li>
-<li><p><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></p></li>
-<li><p><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></p></li>
-<li><p><a href="effects-5.html">A First Note on Cox Regression</a></p></li>
-<li><p><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></p></li>
-<li><p><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></p></li>
+<li><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="../from-coffee-chat-to-r/effects.R">effects.R</a></li>
 </ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
+<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="effects-2.html">Who Is This Percentage About? Target Populations and Attributable Fractions</a></li>
+<li><a href="effects-3.html">When Odds Ratios Approximate Risk Ratios—and When They Fail</a></li>
+<li><a href="effects-4.html">From Risk and Rate to Survival and Hazard</a></li>
+<li><a href="effects-5.html">A First Note on Cox Regression</a></li>
+<li><a href="effects-6.html">After Cox Regression: A Case Study and R Demonstration</a></li>
+</ul>
+<p><strong>過去のシリーズ</strong></p>
+<ul>
+<li><a href="study-design-1.html">Study Design I</a></li>
+<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
+<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
+</div>
+</div>
+</div>
 
 
 </section>

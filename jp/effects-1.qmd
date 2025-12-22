@@ -54,7 +54,7 @@ Keywords: effect measure, language & writing, observational study
 :::
 
 ::: voice-father
-お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう**率（rate）**とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが95%って意味だから」
+お父さん「それとは別。うん、そこは日本語特有の言い回しだから間違えやすいよね。この場合の率は百分率の意味で使っているんだけど、疫学でいう**率（rate）**とは計算が違うんだ。ややこしいのはそこだけじゃない。この場合の95%は、プラセボに比べて発症リスクが5%に下がるって意味だから」
 :::
 
 - ワクチン有効率は疫学一般で用いられる率ではない
@@ -134,6 +134,7 @@ $$
 ::: voice-father
 お父さん「いや、聞けばすぐわかるよ。ワクチン有効率の数字は、臨床データから推定されたものでしょ。たくさんの参加者を対象に臨床試験を行って、実際に観察されたという経験が、ぎゅっと要約された結果が、この数字なんだ。でも、データ上でどんな結果が観察されたか、ワクチン有効率だけでは伝わらないでしょ。こういうのを"数字が独り歩きする"っていうんだ」
 :::
+::::::::::::::::::::::::::::::::: 
 
 ::: {.callout-note appearance="simple"  title="ワクチンランダム化臨床試験の数値例"}
 
@@ -152,6 +153,7 @@ $\pi_2 = 800/1000 = 0.8$
 $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 :::
 
+::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
 私「確かにね。95%有効っていう数字だけみると、”ほぼ確実に救える”って意味に捉えがちだけど、よく考えたらワクチンにそこまでの効果はないよね。パーセントを使ったレトリックに騙されちゃいそう」
 :::
@@ -192,6 +194,13 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 
 ### 次のエピソードとRスクリプト
 
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
@@ -199,11 +208,13 @@ $VE=\frac{\pi_2-\pi_1}{\pi_2}=95 \%$
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-- [effects.R](../from-coffee-chat-to-r/effects.R)
+**過去のシリーズ**
 
-### 過去のシリーズと用語集
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

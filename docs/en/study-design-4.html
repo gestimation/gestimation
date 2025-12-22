@@ -201,8 +201,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#survey-items-and-types-of-data" id="toc-survey-items-and-types-of-data" class="nav-link" data-scroll-target="#survey-items-and-types-of-data">Survey items and types of data</a></li>
   <li><a href="#table-1.-my-original-questionnaire" id="toc-table-1.-my-original-questionnaire" class="nav-link" data-scroll-target="#table-1.-my-original-questionnaire">Table 1. My original questionnaire</a></li>
-  <li><a href="#table-2-a.-questionnaire-for-survivors" id="toc-table-2-a.-questionnaire-for-survivors" class="nav-link" data-scroll-target="#table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for survivors</a></li>
-  <li><a href="#table-2-b.-questionnaire-for-deceased-patients" id="toc-table-2-b.-questionnaire-for-deceased-patients" class="nav-link" data-scroll-target="#table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for deceased patients</a></li>
+  <li><a href="#table-2a.-questionnaire-for-survivors" id="toc-table-2a.-questionnaire-for-survivors" class="nav-link" data-scroll-target="#table-2a.-questionnaire-for-survivors">Table 2A. Questionnaire for survivors</a></li>
+  <li><a href="#table-2b.-questionnaire-for-deceased-patients" id="toc-table-2b.-questionnaire-for-deceased-patients" class="nav-link" data-scroll-target="#table-2b.-questionnaire-for-deceased-patients">Table 2B. Questionnaire for deceased patients</a></li>
   <li><a href="#survival-analysis-and-competing-risk-analysis" id="toc-survival-analysis-and-competing-risk-analysis" class="nav-link" data-scroll-target="#survival-analysis-and-competing-risk-analysis">Survival Analysis and Competing Risk Analysis</a></li>
   <li><a href="#episodes-glossary-and-r-script" id="toc-episodes-glossary-and-r-script" class="nav-link" data-scroll-target="#episodes-glossary-and-r-script">Episodes, glossary, and R-script</a></li>
   </ul></li>
@@ -255,7 +255,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="survey-items-and-types-of-data">Survey items and types of data</h3>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “Oh wow, that takes me back. Is that the Rubik’s Cube I bought when I was in elementary school? You’re still playing with it? If you’ve got a minute, can I ask you something? Remember the study we talked about on return to work among cancer survivors? I’ve drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like.”</p>
+<p>Me: “Oh wow, that takes me back. Is that the Rubik’s Cube I bought when I was in elementary school? You’re still playing with it? If you’ve got a minute, can I ask you something? Remember the study we talked about on return-to-work among cancer survivors? I’ve drafted a questionnaire to send to patients. Could you have a look? Oh, and the R code you showed me last time really helped—I could kind of picture what the results might look like.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “Let’s see.”</p>
@@ -304,7 +304,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </table>
 <div class="dialogue">
 <div class="voice-father">
-<p>Dad: “How are you defining the return-to-work rate?”</p>
+<p>Dad: “How are you defining the return-to-work proportion?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “What do you mean?”</p>
@@ -313,16 +313,16 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Dad: “Just from the questionnaire, I can’t tell whether these questions are enough. Are you trying to find out, between the date of surgery and the date of the survey, whether patients who wanted to return to work actually managed to do so?”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “That would be good to know, but among the patients who answer that they don’t want to return, there might be some who gave up because of company policy or other reasons. So when I calculate the return-to-work rate, I don’t want the denominator to be ‘patients who wished to return to work.’ I’d rather use all patients who had surgery. That feels closer to the real employment situation.”</p>
+<p>Me: “That would be good to know, but among the patients who answer that they don’t want to return, there might be some who gave up because of company policy or other reasons. So when I calculate the return-to-work proportion, I don’t want the denominator to be ‘patients who wished to return to work.’ I’d rather use all patients who had surgery. That feels closer to the real employment situation.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “And do you want to look at whether they returned to work between surgery and the survey date?”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Hmm. The timing of the responses will vary from patient to patient, so I’d rather not use the survey date. How about defining it as ‘returning to work within one year’? Oh—maybe we should also ask them to write down the actual date they returned to work.”</p>
+<p>Me: “Hmm. The timing of the responses will vary from patient to patient, so I’d rather not use the survey date. How about defining it as ‘return-to-work within 1 year’? Oh—maybe we should also ask them to write down the actual date they returned to work.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “Having the date of return to work is a good idea. Then, when you turn return-to-work status into analytic ‘variables’, you can think in terms of two options: categorical data and survival data. Setting that aside for a moment—what will you do if a patient dies after surgery?”</p>
+<p>Dad: “Having the date of return-to-work is a good idea. Then, when you turn return-to-work status into analytic ‘variables’, you can think in terms of two options: categorical data and survival data. Setting that aside for a moment—what will you do if a patient dies after surgery?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “If they die during the hospital stay, I won’t include them in the study population. But it feels strange to exclude deaths from postoperative recurrence from the denominator.”</p>
@@ -336,7 +336,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>Do not exclude events that occur after the time origin or use them as strata.</li>
 </ul>
 <div class="voice-daughter">
-<p>Me: “Right, I don’t want people telling me later that my study is biased. Got it.”</p>
+<p>Me: “Right, I don’t want to discover later that we built bias into the design. Got it.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “Earlier I suggested using the ‘PECO’ elements to structure your clinical question. If P is ‘patients with rectal cancer after curative resection’, then you have to survey that population comprehensively.”</p>
@@ -355,8 +355,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="table-2-a.-questionnaire-for-survivors" class="level3">
-<h3 class="anchored" data-anchor-id="table-2-a.-questionnaire-for-survivors">Table 2-A. Questionnaire for survivors</h3>
+<section id="table-2a.-questionnaire-for-survivors" class="level3">
+<h3 class="anchored" data-anchor-id="table-2a.-questionnaire-for-survivors">Table 2A. Questionnaire for survivors</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 37%">
@@ -382,7 +382,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <td>____ Year ____ Month ____ Day</td>
 </tr>
 <tr class="even">
-<td>Post-discharge employment date (only for those who worked before surgery)</td>
+<td>Date of return-to-work (post-discharge; only if employed before surgery)</td>
 <td>____ Year ____ Month ____ Day</td>
 </tr>
 <tr class="odd">
@@ -404,8 +404,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </tbody>
 </table>
 </section>
-<section id="table-2-b.-questionnaire-for-deceased-patients" class="level3">
-<h3 class="anchored" data-anchor-id="table-2-b.-questionnaire-for-deceased-patients">Table 2-B. Questionnaire for deceased patients</h3>
+<section id="table-2b.-questionnaire-for-deceased-patients" class="level3">
+<h3 class="anchored" data-anchor-id="table-2b.-questionnaire-for-deceased-patients">Table 2B. Questionnaire for deceased patients</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -431,7 +431,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <td>Yes ____ / No ____</td>
 </tr>
 <tr class="odd">
-<td>Did they work after surgery?</td>
+<td>Did they return to work after surgery?</td>
 <td>Yes ____ / No ____</td>
 </tr>
 </tbody>
@@ -439,24 +439,24 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>*Enter data from medical records</p>
 <div class="dialogue">
 <div class="voice-father">
-<p>Dad: “In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using ‘returning to work within one year’ as the outcome, right?”</p>
+<p>Dad: “In this setting, categorical data means that you classify patients according to their outcome. You were thinking of using ‘returning to work within 1 year’ as the outcome, right?”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Yes.”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “For example, if you label ‘returned within one year’ as category 1 and ‘did not return within one year’ as category 2, that gives you a type of categorical data called binary data. You can derive it from the questionnaire, and you can calculate the return-to-work rate.”</p>
+<p>Dad: “For example, if you label ‘returned within 1 year’ as category 1 and ‘did not return within 1 year’ as category 2, that gives you a type of categorical data called binary data. You can derive it from the questionnaire, and you can calculate the return-to-work proportion.”</p>
 </div>
 <div class="voice-daughter">
-<p>Me: “Right. As long as we treat deaths within one year as ‘no return to work’.”</p>
+<p>Me: “Right. As long as we treat deaths within 1 year as ‘no return to work’.”</p>
 </div>
 <div class="voice-father">
 <p>Dad: “But when you summarize work status, it’s better not to stick with just two categories. A three-category variable would be more informative. For example:”</p>
 </div>
 <ul>
-<li>category 1: returned within one year</li>
-<li>category 2: did not return within one year (for reasons other than death)</li>
-<li>category 3: did not return within one year (because of death)</li>
+<li>category 1: returned within 1 year</li>
+<li>category 2: did not return within 1 year (for reasons other than death)</li>
+<li>category 3: did not return within 1 year (because of death)</li>
 </ul>
 <div class="voice-father">
 <p>Dad: “That gives you a more detailed picture of the outcomes.”</p>
@@ -471,31 +471,33 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>Me: “So return-to-work status can also be treated as survival data?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, their survival time is 30 − 1 + 1 = 30 days. Written just as a number of days, it doesn’t look any different from ordinary continuous data, but the essence of survival data is the presence of <strong>censoring</strong>. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work.”</p>
+<p>Dad: “It can. In this case, discharge is a practical time origin. For OS or DFS in clinical trials, surgery or registration is more common. For example, if a patient is discharged on April 1 and returns to work on April 30, the survival time is 29 days (or 30 days if you count both endpoints). Written just as a number of days, it doesn’t look any different from ordinary continuous data, but the essence of survival data is the presence of <strong>censoring</strong>. If a patient has not returned to work by the survey date, there simply is no actual interval from discharge to return to work.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “True, but isn’t that fine as it is?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “When you use statistical software, you need to add one more piece of information: at the time of the survey, the patient had not yet returned to work—that is, follow-up for return to work was censored. That is why survival data always come as a pair of variables.”</p>
+<p>Dad: “When you use statistical software, you need to add one more piece of information: at the time of the survey, the patient had not yet returned to work—that is, follow-up for return-to-work was censored. That is why survival data always come as a pair of variables.”</p>
 </div>
 <ul>
 <li><p>A time variable</p></li>
 <li><p>An event variable</p></li>
 </ul>
 <div class="voice-father">
-<p>Dad: “For a typical survival data, the event variable is binary and indicates whether the event was observed or censored. The time variable, in this case, would be either ‘time from discharge to return to work’ or ‘time from discharge to the survey date’.”</p>
+<p>Dad: “For typical survival data, the event variable is binary and indicates whether the event was observed or censored. The time variable, in this case, would be either ‘time from discharge to return-to-work’ or ‘time from discharge to the survey date’.”</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Entering survival data">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Entering survival data
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Because survival data consist of a pair of variables, you also need to specify them as a pair when you pass them to R functions. The <strong>survival</strong> package provides a dedicated input function <code>Surv()</code> for this purpose, which is used by functions such as <code>survfit()</code> and <code>coxph()</code>. The exact input format depends on the package. For example, the <strong>mets</strong> package defines a separate <code>Event()</code> function. The <code>cifplot()</code> function in the <strong>cifmodeling</strong> package accepts both <code>Surv()</code> and <code>Event()</code>.</p>
 <div class="cell">
@@ -518,12 +520,13 @@ Entering survival data
 </div>
 </div>
 </div>
+</div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>Me: “So if the event variable is binary, that means every patient is in exactly one of two states: either they returned to work or they were censored. Where do deaths go?”</p>
+<p>Me: “So if the event variable is binary, that means every patient is in exactly 1 of 2 states: either they returned to work or they were censored. Where do deaths go?”</p>
 </div>
 <div class="voice-father">
-<p>Dad: “If you treat it the way I just described, patients who die are grouped under ‘censored’. But there is another way to handle it, called <strong>competing risks</strong>. Put simply, a competing risk is an event that prevents the event of interest (such as return to work) from being observed.”</p>
+<p>Dad: “If you treat it the way I just described, patients who die are grouped under ‘censored’. But there is another way to handle it, called <strong>competing risks</strong>. Put simply, a competing risk is an event that prevents the event of interest (such as return-to-work) from being observed.”</p>
 </div>
 <div class="voice-daughter">
 <p>Me: “Ah, so in that sense death is a competing risk.”</p>
@@ -538,6 +541,9 @@ Entering survival data
 </ul>
 <div class="voice-daughter">
 <p>Me: “I think I get it. I’m going to use this revised questionnaire, then.”</p>
+</div>
+<div class="voice-father">
+<p>Dad: “Let’s test the idea with a small simulation in R—just enough to see why competing risks matter.”</p>
 </div>
 </div>
 </section>
@@ -576,62 +582,61 @@ R code for generate_data()
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>generate_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">200</span>, hr1, hr2) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stoma: 1 = with stoma, 0 = without stoma</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sex: 0 = WOMAN, 1 = MAN</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Age: normal distribution (stoma group slightly older)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Hazards for relapse and death (larger hazard implies earlier event)</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1 <span class="sc">*</span> <span class="fl">0.10</span>, <span class="fl">0.10</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2 <span class="sc">*</span> <span class="fl">0.10</span>, <span class="fl">0.10</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Latent times to relapse, death, and censoring</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall survival (OS)</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_os = 1 → death (event of interest)</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_os = 0 → censored</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = death, 0 = censored</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Relapse-free survival (RFS)</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_rfs = 1 → relapse or death whichever comes first (event of interest)</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_rfs = 0 → censored</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  time_rfs   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># relapse</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death   <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># death</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Cumulative incidence of relapse (CIR)</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 1 → relapse (event of interest)</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 2 → death as competing risk</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 0 → censored</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death   <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stoma: 1 = with stoma, 0 = without stoma</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  stoma <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.4</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sex: 0 = WOMAN, 1 = MAN</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  sex <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Age: normal distribution (stoma group slightly older)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">65</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> stoma, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Hazards for relapse and death (larger hazard implies earlier event)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  hazard_relapse   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr1 <span class="sc">*</span> <span class="fl">0.10</span>, <span class="fl">0.10</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  hazard_death     <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(stoma <span class="sc">==</span> <span class="dv">1</span>, hr2 <span class="sc">*</span> <span class="fl">0.10</span>, <span class="fl">0.10</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  hazard_censoring <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Latent times to relapse, death, and censoring</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  t_relapse   <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_relapse)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  t_death     <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_death)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  t_censoring <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> hazard_censoring)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overall survival (OS)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_os = 1 → death (event of interest)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_os = 0 → censored</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  time_os   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_death, t_censoring)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  status_os <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(t_death <span class="sc">&lt;=</span> t_censoring)  <span class="co"># 1 = death, 0 = censored</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Relapse-free survival (RFS)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_rfs = 1 → relapse or death whichever comes first (event of interest)</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_rfs = 0 → censored</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  time_rfs   <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  status_rfs <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># relapse</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  status_rfs[time_rfs <span class="sc">==</span> t_death   <span class="sc">&amp;</span> time_rfs <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># death</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Cumulative incidence of relapse (CIR)</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 1 → relapse (event of interest)</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 2 → death as competing risk</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># status_cir = 0 → censored</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  time_cir <span class="ot">&lt;-</span> <span class="fu">pmin</span>(t_relapse, t_death, t_censoring)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  status_cir <span class="ot">&lt;-</span> <span class="fu">integer</span>(n)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_relapse <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  status_cir[time_cir <span class="sc">==</span> t_death   <span class="sc">&amp;</span> time_cir <span class="sc">&lt;</span> t_censoring] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">id         =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WOMAN"</span>, <span class="st">"MAN"</span>)),</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> age,</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">stoma      =</span> <span class="fu">factor</span>(stoma, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"WITHOUT STOMA"</span>, <span class="st">"WITH STOMA"</span>)),</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_os    =</span> time_os,</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_os  =</span> status_os,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_rfs   =</span> time_rfs,</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_rfs =</span> status_rfs,</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_cir   =</span> time_cir,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">status_cir =</span> status_cir</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -826,7 +831,7 @@ Answer
 <ul>
 <li>The correct answer is <strong>2</strong>.</li>
 </ul>
-<p>In CDISC ADaM ADTTE, the value 1 represents TRUE. In many statistical packages, including <code>Event()</code> and <code>Surv()</code>, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.</p>
+<p>In ADaM ADTTE, CNSR is the censoring indicator: 0 = event, 1 (or &gt;0) = censored. In many R workflows, including <code>Event()</code> and <code>Surv()</code>, the default convention is event = 1, censoring = 0. You therefore cannot use CNSR directly as an event indicator.</p>
 </div>
 </div>
 </div>

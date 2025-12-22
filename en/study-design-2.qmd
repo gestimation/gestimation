@@ -26,9 +26,9 @@ Keywords: language & writing, probability model, R simulation, survival & compet
 
 This post is the second episode of my Story and Quiz series. Over a cup of coffee, a clinician daughter and her statistician father build a rough mental map from data types (continuous, binary, count, survival) to common R functions: `mean()`, `t.test()`, `glm()`, `fisher.test()`, `survfit()`, and `cifplot()`. We simulate a small stoma-surgery dataset in R, look at histograms, tables, and survival curves, and end with a short quiz about oncology endpoints and FDA approvals. If you’d like to start from the beginning, you can find the first episode here:   
 
-[Study Design I − A Story of Coffee Chat and Research Hypothesis Hypothesis](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
+[Study Design I − A Story of Coffee Chat and Research Hypothesis](https://gestimation.github.io/coffee-and-research/en/study-design-1.html)
 
-### Four types of data items
+### Four data types
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
@@ -49,7 +49,7 @@ Dad: "They’re all numbers, yes. But for statistics, the *type* of data matters
 ::::::::::::::::::::::::::::::::: 
 
 - Continuous data
-- Binary / categorical data
+- Binary and categorical data
 - Count data
 - Survival data
 
@@ -134,7 +134,7 @@ Me: "So it’s more about rough matching than exact formulas."
 - continuous: normal-ish  
 - yes/no: binomial-ish  
 - counts: Poisson-ish
-- survival: nonparametric
+- survival: time-to-event
 
 ::::::::::::::::::::::::::::::::: dialogue
 
@@ -192,7 +192,7 @@ Me: "Fine. I’ll type them with my brain temporarily switched off. That’s how
 :::
 
 ::: voice-father
-Dad: "Don't turn your brain off while I'm teaching you. When you add features to R, you use `install.packages()` and `library()`. `install.packages()` installs a package onto your computer, and `library()` loads that installed package so you can use it."
+Dad: "Try not to turn your brain off while I'm teaching you. When you add features to R, you use `install.packages()` and `library()`. `install.packages()` installs a package onto your computer, and `library()` loads that installed package so you can use it."
 :::
 
 ::: voice-daughter

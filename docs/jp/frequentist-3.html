@@ -8,7 +8,7 @@
 
 <meta name="description" content="p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。">
 
-<title>P-Value Explanations That Seem Plausible at First Glance – Coffee and Research</title>
+<title>Beyond 0.05: Interpreting P-Values in a Clinical Trial – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -165,8 +165,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#正しくp値を解釈するための考え方" id="toc-正しくp値を解釈するための考え方" class="nav-link" data-scroll-target="#正しくp値を解釈するための考え方">正しくp値を解釈するための考え方</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
-  <li><a href="#このシリーズとrスクリプト" id="toc-このシリーズとrスクリプト" class="nav-link" data-scroll-target="#このシリーズとrスクリプト">このシリーズとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
+  <li><a href="#this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" id="toc-this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="nav-link" data-scroll-target="#this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -176,7 +175,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">P-Value Explanations That Seem Plausible at First Glance</h1>
+<h1 class="title">Beyond 0.05: Interpreting P-Values in a Clinical Trial</h1>
 </div>
 
 <div>
@@ -231,23 +230,13 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <div class="voice-daughter">
 <p>私「なんだこの禅問答」</p>
 </div>
-</div>
 <p>Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）</p>
 <p>A. Because that’s what the scientific community and journal editors use（なぜなら科学コミュニティと雑誌編集者が依然として0.05を使っているからである）</p>
 <p>Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p ≤ 0.05」を依然として使うのか？）</p>
 <p>A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="voice-father">
+<p>お父さん「そして、ASAはp値の使い方について6つの原則を出した」</p>
 </div>
-<div class="callout-title-container flex-fill">
-統計的有意性とp値に関するASA声明
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
-<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
 <ol type="1">
 <li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
 <li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
@@ -256,13 +245,8 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
 <li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
 </ol>
-<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
-<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
-</div>
-</div>
-<div class="dialogue">
 <div class="voice-daughter">
-<p>私「さっきのやり取りがきっかけで、p値の使い方について学会の議論があったってわけね。でもまあ抽象的でぴんとこないな」</p>
+<p>私「さっきのやり取りがきっかけで、学会でp値批判があったってわけね。でもまあ6つとも抽象的でぴんとこないな」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「そう？“科学的な結論は、有意水準を超えたかどうかにもとづくべきではない”なんてのは、かなり明確に書いてあると思うけど。JCOG9502論文でいえば、原則3や原則5は、p値だけ見るんじゃなくて、生存曲線をじっくり観察してから結論を出そうっていってるんだ。もちろん専門知識がないと、原則がなにを意図しているかはわかりにくい。原則4は、たとえば<strong>多重性の問題（multiplicity）</strong>に関係している」</p>
@@ -278,7 +262,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>私「p値を0.1と比べるってこと？0.05じゃないの？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「登録が難航したため、苦肉の策でαエラーを0.1に緩めたみたい。本当は試験途中にαエラーは変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」</p>
+<p>お父さん「うん、αエラーの理想は教科書通りの0.05。試験途中にαエラーは変えるべきではない。そんなことはみんなわかってるんだ。でも、現実に登録が難航すると、軌道修正が必要になることもある。この試験もそう。苦肉の策でαエラーを0.1に緩めたみたい」</p>
 </div>
 <div class="voice-daughter">
 <p>私「読み飛ばしてた。自由すぎるなJCOG」</p>
@@ -303,23 +287,53 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>私「ストーマ造設あり・なしと復職状況を調べる私の調査だったら、仮説の意味から考えても両側p値がおすすめってことね。よくわかりました」</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note callout-titled" title="統計的有意性とp値に関するASA声明">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+統計的有意性とp値に関するASA声明
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。</p>
+<p>ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。</p>
+<ol type="1">
+<li>p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである</li>
+<li>p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない</li>
+<li>科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない</li>
+<li>適正な推測のためには、すべてを報告する透明性が必要である</li>
+<li>p値や統計的有意性は、効果の大きさや結果の重要性を意味しない</li>
+<li>p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない</li>
+</ol>
+<p>統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。</p>
+<p>原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。</p>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="片側p値と両側p値">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 片側p値と両側p値
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。</p>
 <p>コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことがわかります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。</p>
-<p>片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
+<p><strong>片側（one-sided）p値</strong>と<strong>両側（two-sided）p値</strong>は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。</p>
 <hr>
 <p>JCOG9502に戻って考えてみましょう。仮説検定では3段階の手続きを行います。まず、仮説を設定します。JCOG9502では、真実は「LTA群はTH群に比べ全生存期間を延長する効果がある」と「効果がない」の2通りがあり得ます。仮説検定では、「効果がない」という仮説に注目して、帰無仮説（null hypothesis）と呼びます（こちらが、表が出る確率が1/2に対応します）。</p>
 <p>次に、帰無仮説の下でデータがどのように分布するかを調べます。仮に、同じ対象者167人の試験を1000回繰り返したと想像してみてください。これが頻度論の思考様式です。仮に効果がなかったとしても、ランダム誤差のため、LTA群の生存曲線の方がよい場合もあれば、TH群の方がよい場合もあるでしょう。しかし1000回繰り返した結果は、差がないという結果を中心に分布するはずです。そこで、この1000回の分布と、実際に観察されたデータとを比べp値を計算します。</p>
 <p>p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
@@ -332,7 +346,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。</p>
+<p>非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が標準とされている理由として正しいものは、次のうちどれでしょうか。</p>
 <ol type="1">
 <li>試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから</li>
 <li>統計学者の間の決まりごと</li>
@@ -370,23 +384,13 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li><p>吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9</p></li>
 </ul>
 </section>
-<section id="このシリーズとrスクリプト" class="level3">
-<h3 class="anchored" data-anchor-id="このシリーズとrスクリプト">このシリーズとRスクリプト</h3>
+<section id="this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-frequentist-thinking-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episodes-are-waiting">This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:</h3>
 <ul>
-<li><p><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></p></li>
-<li><p>[P-Value Explanations That Seem Plausible at First Glance]</p></li>
-<li><p>[Beyond 0.05: Interpreting P-Values in a Clinical Trial]</p></li>
-<li><p>[R Demonstration of Bias in Kaplan-Meier Under Competing Risks]</p></li>
-<li><p>[Understanding Confidence Intervals via Hypothetical Replications in R]</p></li>
-<li><p>[Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]</p></li>
-<li><p><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></p></li>
-</ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
-<ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
+<li><a href="frequentist-4.html">R Demonstration of Bias in Kaplan-Meier Under Competing Risks</a></li>
+<li><a href="frequentist-5.html">Understanding Confidence Intervals via Hypothetical Replications in R</a></li>
+<li><a href="frequentist-6.html">Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size</a></li>
+<li><a href="../from-coffee-chat-to-r/frequentist.R">frequentist.R</a></li>
 </ul>
 
 

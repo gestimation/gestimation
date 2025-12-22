@@ -1,5 +1,5 @@
 ---
-title: "P-Value Explanations That Seem Plausible at First Glance"
+title: "Beyond 0.05: Interpreting P-Values in a Clinical Trial"
 description: "p値を正しく解釈するには、論文のMethodsを読む必要があります。米国統計協会の声明を手がかりに、p値の意味について考えるcoffee-chat guide。0.05の一歩先を見つめます。"
 tags:
   - Clinical trial
@@ -53,7 +53,6 @@ Keywords: clinical trial, p-value, research hypothesis, survival & competing ris
 ::: voice-daughter
 私「なんだこの禅問答」
 :::
-:::::::::::::::::::::::::::::::::
 
 Q. Why do so many colleges and grad schools teach p ≤ 0.05?（なぜ多くの大学、大学院で「p ≤ 0.05」と教えているのか？）
 
@@ -63,11 +62,9 @@ Q. Why do so many people still use p ≤ 0.05?（なぜ多くの人々が「p �
 
 A. Because that’s what they were taught in college or grad school（なぜなら彼らが大学、大学院でそう教わったからである）
 
-::: {.callout-note appearance="simple"  title="統計的有意性とp値に関するASA声明"}
-
-あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。
-
-ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。
+::: voice-father
+お父さん「そして、ASAはp値の使い方について6つの原則を出した」
+:::
 
 1.  p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである
 2.  p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない
@@ -76,15 +73,8 @@ ASAは2016年に、定量的研究の実施とその解釈を改善するため�
 5.  p値や統計的有意性は、効果の大きさや結果の重要性を意味しない
 6.  p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない
 
-統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。
-
-原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。
-:::
-
-
-::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「さっきのやり取りがきっかけで、p値の使い方について学会の議論があったってわけね。でもまあ抽象的でぴんとこないな」
+私「さっきのやり取りがきっかけで、学会でp値批判があったってわけね。でもまあ6つとも抽象的でぴんとこないな」
 :::
 
 ::: voice-father
@@ -106,7 +96,7 @@ After 8 years of slow accrual, the JCOG data and safety monitoring committee app
 :::
 
 ::: voice-father
-お父さん「登録が難航したため、苦肉の策でαエラーを0.1に緩めたみたい。本当は試験途中にαエラーは変えるべきではないんだけど、それでも重要な知見だから、こうして論文として多くの人に読まれているわけだよね」
+お父さん「うん、αエラーの理想は教科書通りの0.05。試験途中にαエラーは変えるべきではない。そんなことはみんなわかってるんだ。でも、現実に登録が難航すると、軌道修正が必要になることもある。この試験もそう。苦肉の策でαエラーを0.1に緩めたみたい」
 :::
 
 ::: voice-daughter
@@ -142,13 +132,31 @@ After 8 years of slow accrual, the JCOG data and safety monitoring committee app
 :::::::::::::::::::::::::::::::::
 
 
-::: {.callout-note appearance="simple"  title="片側p値と両側p値"}
+::: {.callout-note appearance="simple" collapse="true" title="統計的有意性とp値に関するASA声明"}
+
+あらゆる科学論文でp値が用いられていますが、p値が誤用されたり、研究結果の解釈に悪い影響を与えたりする弊害が指摘されています。典型的なものを挙げると、研究で小さいp値が得られると、それだけで重要な知見が得られたとみなされたり、機械的にp値が0.05より小さいというだけで意思決定がなされたりするケースは、皆さんもよく目にするのではないでしょうか。
+
+ASAは2016年に、定量的研究の実施とその解釈を改善するため、p値の適正な使用と解釈に関する6つの原則をまとめました（Wasserstein and Lazar 2016）。以下に引用します。
+
+1.  p値はデータと特定の統計モデル（訳注:仮説も統計モデルの要素の1つ）が矛盾する程度を示す指標の1つである
+2.  p値は、調べている仮説が正しい確率や、データが偶然のみで得られた確率を測るものではない
+3.  科学的な結論や、ビジネス、政策における決定は、p値がある値（訳注:有意水準）を超えたかどうかにもとづくべきではない
+4.  適正な推測のためには、すべてを報告する透明性が必要である
+5.  p値や統計的有意性は、効果の大きさや結果の重要性を意味しない
+6.  p値は、それだけでは統計モデルや仮説に関するエビデンスの、よい指標とはならない
+
+統計学の教科書では、p値と帰無仮説の関係を中心に説明しています。しかしp値を解釈するとき大切なのは、帰無仮説だけではありません。ASA声明の趣旨は、研究計画やデータの収集から結果の報告に至るまで、統計解析の背景にあるあらゆる情報を利用しなければ、p値は正しく解釈できないということです。
+
+原則4に注目してみましょう。ASA声明では、原則4の解説として「複数のデータ解析を実施して、そのうち特定のp値のみを報告することは、報告されたp値を根本的に解釈不能としてしまう」と述べています。かみ砕いて言うと、たくさんp値があると、そのなかで都合のいいp値を採用してしまいますよね。このような、いいとこどりの解析は、科学者の間で意識的にも無意識にも広く行われていて、偽陽性（false positive）の研究結果 ばかりが報告される一因ではないか、という問題意識を統計学者はもっています。この問題は、統計学で多重性（multiplicity）や選択的推論（selective inference）と呼ばれています。
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="片側p値と両側p値"}
 
 p値と仮説検定（hypothesis test）は、研究仮説が正しいかどうかについて、二者択一の判断をするための統計手法です。なんだか難しそうなので、例え話で説明しましょう。
 
 コイン投げをして、6回連続で表が出たとします。このコインは、イカサマコイン（表が出る確率が1/2でない）でしょうか？p値では以下のように考えます。表が出る確率は1/2という仮説の下で、6回連続で表の確率は(1/2)の6乗で0.0156ですよね。6回連続で裏の確率は同じく0.0156です。すなわち、このような極端なデータが得られる確率は、足してp=0.0312と極めて低いことがわかります。このような極端なデータが得られるのはおかしくはありませんか？従って、このコインにはイカサマがある、というのが、p値を用いて仮説（表が出る確率は1/2）を否定するときのロジックです。
 
-片側（one-sided）p値と両側（two-sided）p値は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。
+**片側（one-sided）p値**と**両側（two-sided）p値**は、コインの片側（表だけ）をみるか、両側（表と裏）をみるかに、それぞれ対応しています。コイン投げの例え話でいえば、片側p値はp=0.0156、両側p値はp=0.0312です。
 
 ---
 
@@ -159,9 +167,9 @@ JCOG9502に戻って考えてみましょう。仮説検定では3段階の手�
 p値とは、帰無仮説が正しい、つまり生存曲線に差がない、という仮定の下で、実際に観察された2本の生存曲線の差よりも、極端な差が観察される確率のことです。もしp値が小さければ、こんなに確率の低いことが起きるわけがない、だから生存曲線に差がないというそもそもの前提条件が間違いだ、という判断になるわけです。逆に、p値が大きければ、当たり前のことが起きたという意味になります。
 :::
 
-::: {.callout-note appearance="simple"  title="このエピソードに関係するクイズです"}
+::: {.callout-note appearance="simple" title="このエピソードに関係するクイズです"}
 
-非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が用いられている理由として正しいものは、次のうちどれでしょうか。
+非劣性試験や同等性試験を除くほとんどのランダム化臨床試験で、両側p値が標準とされている理由として正しいものは、次のうちどれでしょうか。
 
 1.  試験治療が優れていたとしても、劣っていたとしても、差があるなら結論を出したいから
 2.  統計学者の間の決まりごと
@@ -186,18 +194,9 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 - 吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9
 
-### このシリーズとRスクリプト
+### This concludes the Frequentist Thinking series. If you’d like to keep reading over your next cup of coffee, the following episodes are waiting:
 
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks]
-- [Understanding Confidence Intervals via Hypothetical Replications in R]
-- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size]
-
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
-
-### 過去のシリーズと用語集
-
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Statistical Terms in Plain Language](glossary.html)

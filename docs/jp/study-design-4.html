@@ -200,7 +200,6 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   <li><a href="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" id="toc-study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r" class="nav-link active" data-scroll-target="#study-design-iv-a-first-step-into-survival-and-competing-risks-analysis-with-r">Study Design IV − A First Step into Survival and Competing Risks Analysis with R</a>
   <ul class="collapse">
   <li><a href="#調査項目とデータの型" id="toc-調査項目とデータの型" class="nav-link" data-scroll-target="#調査項目とデータの型">調査項目とデータの型</a></li>
-  <li><a href="#生存時間解析と競合リスク解析" id="toc-生存時間解析と競合リスク解析" class="nav-link" data-scroll-target="#生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</a></li>
   <li><a href="#エピソード用語集rスクリプト" id="toc-エピソード用語集rスクリプト" class="nav-link" data-scroll-target="#エピソード用語集rスクリプト">エピソード、用語集、Rスクリプト</a></li>
   </ul></li>
   </ul>
@@ -354,14 +353,16 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <p>お父さん「イベント変数は、いわゆる生存時間データの場合は、イベントが観察されたか、打ち切りになったかを表す2値データ。時間変数は、この場合は“退院日から復職日までの期間”か“退院日から調査日までの期間”のどちらかになる」</p>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="生存時間データの入力">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 生存時間データの入力
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>生存時間データは2つの変数の組であるため、Rの関数に入力するときもペアで指定する必要があります。<strong>survival</strong>パッケージの<code>survfit()</code>や<code>coxph()</code>では、実は入力専用の関数<code>Surv()</code>を用意しています。入力の仕様はパッケージによってまちまちで、たとえば<strong>mets</strong>パッケージでは<code>Event()</code>を別に定義して用いています。<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>は、<code>Surv()</code>と<code>Event()</code>の両方に対応しています。</p>
 <div class="cell">
@@ -384,6 +385,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+</div>
 <div class="voice-daughter">
 <p>私「えーっと、イベント変数は2値データってことは、すべての患者さんで復職か、打ち切りかの2択しかないってこと？死亡はどうなるの？」</p>
 </div>
@@ -402,12 +404,21 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 <li>イベント変数=2: イベントが観察される前に競合リスクが生じた</li>
 </ul>
 <div class="voice-daughter">
-<p>私「だいたいわかった。この調査票、使わせてもらうね」</p>
+<p>私「そうなんだ。イベント変数ってなんとなく0と1だと思ってたわ」</p>
 </div>
-</div>
-</section>
 <section id="生存時間解析と競合リスク解析" class="level3">
 <h3 class="anchored" data-anchor-id="生存時間解析と競合リスク解析">生存時間解析と競合リスク解析</h3>
+<div class="voice-father">
+<p>お父さん「競合リスクとあわせて知ってほしいのが、Kaplan-Meier曲線が生存曲線じゃなくなるってこと」</p>
+</div>
+<div class="voice-daughter">
+<p>私「どういう意味？」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ほら、生存と死亡しかなかったら、死亡確率の裏返しが生存確率でしょ。でも死因の内訳、たとえば原病死と他因死があって、他因死が競合リスクだったらどう？原病死の確率の裏返しは生存確率にならない。だから、競合リスク解析では、Kaplan-Meier曲線じゃなくてAalen-Johansen曲線を使う。ちょっとRの結果をみてほしい」</p>
+</div>
+</section>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="シミュレーションデータ（再発あり）の生成">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -490,17 +501,17 @@ generate_data()のコードはこちら（データ生成に使用）
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="全生存期間（OS）のKaplan–Meier曲線">
+<div class="callout callout-style-simple callout-note callout-titled" title="全生存期間（OS）のKaplan-Meier曲線">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-全生存期間（OS）のKaplan–Meier曲線
+全生存期間（OS）のKaplan-Meier曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>OSとRFSは通常の生存時間データですから、前回と同様に<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、Kaplan–Meier曲線で記述します。まずはOS。</p>
+<p>OSとRFSは通常の生存時間データですから、前回と同様に<strong>cifmodeling</strong>パッケージの<code>cifplot()</code>を使って、Kaplan-Meier曲線で記述します。まずはOS。</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Rコードと結果はこちら">
@@ -537,13 +548,13 @@ Rコードと結果はこちら
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled" title="無再発生存期間（RFS）のKaplan–Meier曲線">
+<div class="callout callout-style-simple callout-note callout-titled" title="無再発生存期間（RFS）のKaplan-Meier曲線">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-無再発生存期間（RFS）のKaplan–Meier曲線
+無再発生存期間（RFS）のKaplan-Meier曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -629,14 +640,14 @@ Rコードと結果はこちら
 </div>
 <div class="dialogue">
 <div class="voice-daughter">
-<p>私「Aalen-Johansen曲線って、Kaplan–Meier曲線のY軸を逆さにしただけじゃないの」</p>
+<p>私「CIRの解析に使ったのがAalen-Johansen曲線ね。でもこれって、Kaplan-Meier曲線のY軸を逆さにしただけじゃないの」</p>
 </div>
 <div class="voice-father">
 <p>お父さん「グラフ上は見分けられないからそう思っても仕方ないよね。でもこのふたつは区別してほしい。</p>
 <blockquote class="blockquote">
-<p>生存曲線（Kaplan–Meier曲線）と累積発生曲線（Aalen-Johansen曲線）は別の統計手法なので 競合リスクがあるときはAalen-Johansen曲線を用いる。</p>
+<p>生存曲線（Kaplan-Meier曲線）と累積発生曲線（Aalen-Johansen曲線）は別の統計手法なので 競合リスクがあるときはAalen-Johansen曲線を用いる。</p>
 </blockquote>
-<p>ちなみに、relapse-free timeじゃなくてcumulative incidence of relapseを使いたいっていったけど、それは<strong>累積発生曲線（cumulative incidence curve）</strong>が、専門的にはAalen-Johansen曲線と同じ意味だからなんだよね。やろうと思えばCIRを解析するとき、Kaplan–Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（<code>status_cir=2</code>）ではなく打ち切り（<code>status_cir=0</code>）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。</p>
+<p>ちなみに、relapse-free timeじゃなくてcumulative incidence of relapseを使いたいっていったけど、それは<strong>累積発生曲線（cumulative incidence curve）</strong>が、専門的にはAalen-Johansen曲線と同じ意味だからなんだよね。やろうと思えばCIRを解析するとき、Kaplan-Meier曲線を計算することもできるよ。このとき、再発を経験しない死亡は、競合リスク（<code>status_cir=2</code>）ではなく打ち切り（<code>status_cir=0</code>）として入力することになる。でも本来なら、死亡は、追跡期間終了や追跡不能による打ち切りとは、違う転帰だよね。だから競合リスクとして扱うのが正しい。</p>
 </div>
 <div class="voice-daughter">
 <p>私「じゃあ死亡と再発を両方イベントにしたRFSを解析するのは間違い？」</p>

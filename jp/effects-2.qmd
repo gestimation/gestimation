@@ -51,7 +51,7 @@ Keywords: effect measure, language & writing, observational study, research hypo
 :::
 
 ::: voice-daughter
-私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はわかんないな」
+私「それはそうだよね。喫煙者の15%ががんになる、なんて思わないもの。でも正確な意味はぱっとわかんないな」
 :::
 
 ::: voice-father
@@ -59,7 +59,7 @@ Keywords: effect measure, language & writing, observational study, research hypo
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="寄与割合とその関連指標1. 集団寄与割合"}
+::: {.callout-note appearance="simple"  title="集団寄与割合"}
 疫学研究では、一般集団を対象にして、環境物質や生活習慣といったリスク因子を調べることが多く、そのために**寄与割合（attributable fraction/excess fraction）**という指標も用いられます。寄与割合は、特定の集団におけるリスク因子への曝露が、どのくらい疾患発症に寄与するかを表す指標です。ただし、寄与割合には、歴史的に異なる定義のものが複数あり、どのような集団を**ターゲット**とするかで計算方法も変わるので、じゅうぶん意味を確認する必要がある指標です。
 
 あるリスク因子が国民全体の疾患発症にどの程度寄与するかを反映する指標は、集団寄与割合（population attributable fraction）と呼ばれています。ここで$RR$はリスク比、$p$は集団全体のうち群1が占める割合を意味しています。
@@ -77,27 +77,14 @@ $$
 :::
 
 ::: voice-father
-お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。実はこれはワクチン有効率とほとんど同じ式だったりする」
+お父さん「うん。でもね、問題はそこだけじゃない。集団寄与割合にすごく似た別の指標が説明なしに使われることが結構あるってこと。リスク因子の割合が不要な指標もあって、集団寄与割合と混同されていることもある。日本語では定訳があるわけではないけど、海外ではexcess fractionやpreventable fractionという専門用語が当てられているんだ。実はこの2つはワクチン有効率とほとんど同じ式だったりする」
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple"  title="寄与割合とその関連指標2. 集団全体とはターゲット集団が別の寄与割合"}
-曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されているのは、以下の定義によるものです。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。
 
--   過剰寄与割合（excess fraction）
-$$
-EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
-$$
+::: {.callout-note appearance="simple"  title="3種類の寄与割合"}
 
-その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、以下の指標が用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。
-
--   予防寄与割合（preventable fraction）
-$$
-PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
-$$
-
-
-曝露集団をターゲットにする意義は、具体的な状況をイメージすると理解しやすくなります。環境疫学では、たとえば化学物質や放射線被ばくなど環境要因の健康影響を評価することが求められます。この場合では、集団全体ではなく、実際に環境要因に曝露した集団における被害を定量化する必要があるため、曝露集団をターゲットとしたexcess fractionがしばしば用いられます。同じような理由で、ワクチン・検診・運動などの予防法の新規導入が、個人のリスクをどれだけ下げたか知りたいときは、preventable fractionが好まれています。
+集団寄与割合以外の寄与割合として、excess fraction（過剰寄与割合）とpreventable fraction（予防寄与割合）がよく用いられます。集団寄与割合との本質的な違いはターゲット集団にあります。このふたつの指標のターゲット集団は曝露集団です。
 
 
 | 指標                | ターゲット集団 | 何を表す？                                                 |
@@ -105,6 +92,25 @@ $$
 | PAF（集団寄与割合） | 曝露+非曝露    | 集団全体の疾患のうち、どれだけがその曝露のため生じているか |
 | EF（過剰寄与割合）      | 曝露だけ       | 曝露集団のうち、どれだけの割合が曝露のため疾患を生じたか   |
 | PF（予防寄与割合）  | 曝露だけ       | 曝露集団のうち、どれだけ予防的な曝露が疾患を防いだか       | 
+:::
+
+::: {.callout-note appearance="simple" collapse="true" title="Excess fractionとpreventable fractionの定義"}
+
+Excess fractionは、曝露がリスク因子として働くときに用いられる指標として、多くの疫学の教科書で説明されており、以下のように定義されます。この指標では、群1が曝露あり、群2が曝露なしと考えています。そして、群1から曝露を取り除いたとき、どのくらい疾患が減るかを表しています。
+
+-   excess fraction（過剰寄与割合）
+$$
+EF = \frac{\pi_1 - \pi_2}{\pi_1} = 1 - \frac{1}{RR}
+$$
+
+その一方で、たとえば喫煙に対する禁煙のように、曝露が予防的に作用するとき、preventable fractionが用いられます。群1が曝露あり、群2が曝露なしという点は同じですが、ターゲットは群2です。なお、この式はワクチン有効率と同じです。
+
+-   preventable fraction（予防寄与割合）
+$$
+PF=\frac{\pi_2-\pi_1}{\pi_2}=1-RR
+$$
+集団全体ではなく、曝露集団をターゲットにする意義は、具体的な状況をイメージすると理解しやすくなります。環境疫学では、たとえば化学物質や放射線被ばくなど環境要因の健康影響を評価することが求められます。この場合では、集団全体ではなく、実際に環境要因に曝露した集団における被害を定量化する必要があるため、曝露集団をターゲットとしたexcess fractionがしばしば用いられます。同じような理由で、ワクチン・検診・運動などの予防法の新規導入が、個人のリスクをどれだけ下げたか知りたいときは、preventable fractionが好まれています。
+
 :::
 
 ::::::::::::::::::::::::::::::::: dialogue
@@ -135,11 +141,11 @@ $$
 
 ::::::::::::::::::::::::::::::::: dialogue
 ::: voice-daughter
-私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う」
+私「同じパーセントでも、リスク差の2.5%とexcess fractionの74%は印象がだいぶ違う。まあ、私が公衆衛生やっていないのもあるけど」
 :::
 
 ::: voice-father
-お父さん「でしょ、言葉と認識にギャップがあるよね。それに、ただの計算だと思うとかえって理解しにくいところもある。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」
+お父さん「でしょ。同じパーセントで言葉と認識にギャップがあるよね。まあ臨床試験のハザード比は"どの治療を選ぶか"、寄与割合は"社会に介入すると疾患がどれだけ減るか"だから、慣れの問題もあるかもだけど。効果の指標って、ただの計算だと思うとかえって理解しにくいところもある。たとえ話をさせてよ。60歳になってがん検診にきた人が4人いたとする。話をわかりやすくするために、4人の健康状態はまったく同じだとしよう。そのうち、最初の2人はがん検診が陽性で、根治切除できたとする。その後、71歳と79歳まで生きることができた。つまり、がん検診後の生存期間は11年と19年」
 :::
 
 ::: voice-daughter
@@ -200,7 +206,7 @@ $$
 :::
 ::::::::::::::::::::::::::::::::: 
 
-::: {.callout-note appearance="simple" title="ターゲット集団"}
+::: {.callout-note appearance="simple" collapse="true" title="ターゲット集団"}
 治療や曝露とアウトカムの因果関係を扱うときには、どのような集団を考えているかをはっきりさせる必要があります。一例として、根治切除後の直腸がん患者におけるストーマ造設の有無と復職率との因果関係を考えてみましょう。このときストーマ保有者と非保有者を比較する因果リスク差は、「根治切除後の直腸がん患者全体」をターゲット集団としています。ストーマ保有者と非保有者という別の集団を比べているのに、患者全体がターゲットというのは奇妙にみえるかもしれません。しかし因果推論では、「患者全体がストーマを造設したとき」と「患者全体がストーマを造設しなかったとき」という仮想的な状況を対比することで、ストーマ造設が復職率を低下させたかがわかる、という反事実の考え方をするのです。
 :::
 
@@ -266,6 +272,13 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 
 ### 次のエピソードとRスクリプト
 
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [effects.R](../from-coffee-chat-to-r/effects.R)
+
+::: {.callout-note appearance="simple" collapse="true" title="他のエピソードはこちら"}
+
+**このシリーズのエピソード**
+
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
 - [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
@@ -273,11 +286,13 @@ $PAF=\frac{p(RR-1)}{p(RR-1)+1}$
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-- [effects.R](../from-coffee-chat-to-r/effects.R)
+**過去のシリーズ**
 
-### 過去のシリーズと用語集
+- [Study Design I](study-design-1.html)
+- [Frequentist Thinking I](frequentist-1.html)
+- [Frequentist Experiments I](frequentist-4.html)
 
-- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
-- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
-- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+**用語集**
+
 - [Statistical Terms in Plain Language](glossary.html)
+:::

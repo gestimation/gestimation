@@ -21,23 +21,30 @@ listing:
 # Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.
 
 
-These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged while reading a paper, and occasionally, glimpses of how researchers carry themselves—the things that truly matter tend to lie scattered quietly — across everyday life, clinical practice, causality, data, cognition, and language.
+These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged me while reading a paper, and occasionally, glimpses of how researchers conduct themselves—the things that truly matter tend to lie scattered quietly across everyday life, clinical practice, causality, data, cognition, and language.
 
 Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story, careful not to disturb their totality.
 
-From survival curves and misread p-values to the layered relationship between causality and statistical inference — the episodes hide small clues, arranged like a gentle spiral, yet speak in words warm enough to hold between your hands on a winter morning.
+From survival curves and misread p-values to the layered relationship between causality and statistical inference, each episode leaves a few gentle clues—warm enough to hold on a winter morning.
 
-Mathematics and medicine make their appearances, but feel free to take only what you need. The story can be reproduced in R. And as their dialogue unfolds, so too does a subtle shift in how the world appears. Enjoy following that changing view, at the quiet pace of a cup of coffee.
+Mathematics and medicine appear along the way, but take only what you need. Some episodes include short R scripts, meant not as programming lessons but as small experiments you can rerun, to feel how assumptions become data. As the conversation unfolds, the view changes—quietly. I hope you enjoy following it, at the pace of a cup of coffee.
 
 ------------------------------------------------------------------------
 
 ## How to read this site
 
-Not sure where to begin? Start with **Study Design**.
+Not sure where to begin? Start with [**Study Design**](study-design-1.html).
 
-Each episode can be read on its own, but the conversations gently build from there. Some episodes include short R scripts—not to teach programming, but to help you feel how causal questions and statistical assumptions take shape in data.
+Each episode can be read on its own; from there, you can follow the story or choose whichever layer interests you—[clinical trials and p-values](frequentist-1.html), for example, or [causal inference in research](logistic-regression-1.html). When R scripts appear, they are there to make the ideas reproducible—and tangible. Read through the whole series and scattered meanings begin to connect—you’ll likely come away with a few new ways of seeing.
 
-You can read in order or jump to any layer that interests you. If you read through the whole series, the scattered pieces will slowly find their places—and the view may look a little different than before.
+::: {.callout-note appearance="simple" collapse="true" title="R scripts for reproducing the episodes"}
+If you came here from an R post, you may want the code first. These scripts are meant to *reproduce the figures and ideas*, not to teach programming.
+
+- **Study Design series:** `study-design.R`
+- **Frequentist Thinking / Experiments:** `frequentist.R`
+- **Effects and Time:** `effects.R`
+- **Adjusting for Bias:** `logistic-regression.R`
+:::
 
 ------------------------------------------------------------------------
 
@@ -67,17 +74,13 @@ Before analysis begins, trouble often begins with how events are defined and cod
 Distortion rarely comes from formulas alone—this is where bias quietly enters. 
 :::
 
-You can download the full R script for this episode here. If you are curious about the R packages and concrete analysis steps, feel free to take a look.
-
-- [study-design.R](../from-coffee-chat-to-r/study-design.R)
-
 ### 2. Glossary — The words of statistics
 
-- [Statistical Terms in Plain Language]
+- [Statistical Terms in Plain Language](glossary.html)
 
 ### 3. Frequentist Thinking — Practicing statistics
 
-Using cancer clinical trials as an example, my father explains the **frequentist perspective** of “How do numbers behave when you virtually repeat a study in a long run?”
+Using cancer clinical trials as an example, my father explains the **frequentist perspective** of “How do numbers behave under repeated sampling?”
 
 - [Reading a Paper over a Cup of Coffee]
 - [P-Value Explanations That Seem Plausible at First Glance]
@@ -92,10 +95,6 @@ What would happen if the same study were repeated again and again — touching t
 A p-value is less a number than a shadow of design — watching where interpretation drifts.
 :::
 
-You can download the full R script for this and the next episodes here. 
-
-- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
-
 ### 4. Frequentist Experiments — Validation of statistics
 
 The laws derived from the frequentist theory are not mere abstractions; they can be verified through simulation experiments. Even if you are unfamiliar with R, simply run the script to reproduce the results.
@@ -109,13 +108,9 @@ Where does "95%" come from, and where does it go — lingering over confidence i
 Planning of sample size is also the planning of error of the study. Revisiting the foundations of frequentist design.
 :::
 
-You can download the full R script for this and the next episode here. 
-
-- [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
-
 ### 5. Effects and Time — How effects evolve
 
-We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness rates, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.
+We unravel risk differences, risk ratios, hazard ratios, vaccine effectiveness, attributable fractions, and effects that change over time alongside survival curves and cumulative incidence curves. A multidimensional perspective on data quietly develops, paving the way for causal inference.
 
 - [Silent Confusions Hidden in Percentages]
 - [Who Is This Percentage About? Target Populations and Attributable Fractions]
@@ -139,13 +134,9 @@ Once time enters the picture, effects change shape. An entry point to thinking a
 Are effects ever constant — considering time-varying perspectives.
 :::
 
-You can download the full R script for this and the previous episode here. 
-
-- [effects.R](../from-coffee-chat-to-r/effects.R)
-
 ### 6. Adjusting for Bias — The landscape of regression modeling
 
-An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoiding pitfalls in its use. And then...
+An episode where she learns from her father — from interpreting logistic regression results and creating tables to avoid pitfalls in its use. And then...
 
 - [From Risk to Logistic Regression]
 - [Logit: How a Transformation Shapes an Effect]
@@ -174,7 +165,7 @@ When overall and subgroup results disagree — revealing a structure of confound
 
 ### 8. Causal Inference — To find causality
 
-Directed Acyclic Graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the **language of causality** needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.
+Directed acyclic graphs (DAGs), common causes, colliders, mediators, backdoor criteria. We try to talk about the **language of causality** needed to think about “what if?”, incorporating the minimal necessary mathematical expressions concerning probability.
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
 - [A Subtle Distinction between Common Causes and Confounders]

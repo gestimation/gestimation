@@ -196,7 +196,6 @@ window.Quarto = {
   <li><a href="#足りなかったたくさんの情報" id="toc-足りなかったたくさんの情報" class="nav-link" data-scroll-target="#足りなかったたくさんの情報">足りなかったたくさんの情報</a></li>
   <li><a href="#文献" id="toc-文献" class="nav-link" data-scroll-target="#文献">文献</a></li>
   <li><a href="#次のエピソードとrスクリプト" id="toc-次のエピソードとrスクリプト" class="nav-link" data-scroll-target="#次のエピソードとrスクリプト">次のエピソードとRスクリプト</a></li>
-  <li><a href="#過去のシリーズと用語集" id="toc-過去のシリーズと用語集" class="nav-link" data-scroll-target="#過去のシリーズと用語集">過去のシリーズと用語集</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -440,33 +439,39 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="注意事項1. フォーマット">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 注意事項1. フォーマット
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>論文で示される表には、決められたフォーマットがあります。表は、行（row）と列（column）から構成され、行と列は概念的には対称ですが、視覚的には役割が異なります。英語圏では、表は左から右に、行ごとに読むことが慣習になっています。そのため、このサイトに示されている表のように、縦線で区切ることはしません。</p>
 <p>数字の意味をわかりやすく伝えるためには、どこにどのような情報を配置するかに気を配るべきです。さきほどの表では、列が指標の種類を表すというシンプルな方針を採用しています。そのため、数字がオッズ比、95%信頼区間、p値に対応することが一目でわかります。また、必要な情報から順に読み取れるように、各行または各列の順序にも気を配りたいところです。</p>
 <p>ある程度大きな表であれば、情報はグループにわけられることが普通です。表のフォーマットも、グループが視覚的にわかりやすいように工夫できます。たとえば後に出てくる表1では、行と列でそれぞれグループ化がなされています。行をグループ化するときには字下げ（indent）を用います。性別の内訳を示すために字下げがなされていますよね。また、列をグループ化するときにはスパナ（spanner）を用います。“ストーマ保有者”、“ストーマ非保有者”といった列の見出しを、スパナヘッド（spanner head）といいます。</p>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="注意事項2. 単位・表示桁数">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 注意事項2. 単位・表示桁数
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>表では測定単位（unit）を明らかにすることが重要です。臨床検査値を扱う論文を投稿するときは、その雑誌の編集方針をみて、どのような単位系を採用しているか確認しましょう。</p>
 <p>数字の表示桁数は、ある程度桁数やルールが統一されていなければ、印象を悪くします。統計ソフトウェアが出力する数字は桁数が大きいことがありますが、そのまま表に示す必要はありません。有効数字2桁または3桁か、もともとの測定値より桁数を1桁大きく示すのが基本です。</p>
 <p>日本工業規格（Z 9041-1:1999）によると、平均の有効数字は、測定値より1～2桁大きく、標準偏差の有効数字は、最大でも3桁程度といわれています。つまり、むやみに数字の表示桁数を増やしても精確性が増すわけではないのです。年齢を例に挙げると、測定単位は「歳」なので、小数点1桁まで示すとよいでしょう。表1の年齢の平均・標準偏差では、そのようになっています。p値については、小数点以下2桁か3桁まで報告すれば、有意水準（0.05が多い）との大小関係が読み取ることができるので、必要十分でしょう。</p>
+</div>
 </div>
 </div>
 <div class="dialogue">
@@ -626,32 +631,38 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="注意事項3. 表タイトル・脚注">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 注意事項3. 表タイトル・脚注
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>読者が表を読むときのことを想像してみてください。最初に目にするのは、表に示された結果自体ではなく、表タイトルの情報です。簡潔な表タイトルをよく目にしますが、これはもったいないことです。表1、表2の表タイトルには、調査が行われた状況、対象疾患、人数、統計解析の目的などが含まれています。表タイトルを決めるときは、可能な限り多くの情報を伝えるように工夫しましょう。</p>
 <p>表には様々な数字が示されますから、どういった指標かわかりにくいときがしばしばあります。もしかしたら、複雑な統計手法から計算されたものかもしれません。データを解析するために用いた統計手法は、方法のセクションで説明することが基本ですが、読者への配慮として、表の脚注（footnote）を利用することもあります。表1でいえば、括弧内の数字の意味は自明ではないので、“平均（SD）または%”と脚注がついていますよね。表2の脚注には、どの統計手法を用いて信頼区間とp値を計算したかが説明されています。このように読者にとってなじみのない指標や表現には、補足説明が必要です。</p>
 <p>脚注を参照するための記号には、a、b、cまたは*、†、‡、§、¶を用いるのが正式です。</p>
 </div>
 </div>
+</div>
 <div class="callout callout-style-simple callout-note callout-titled" title="注意事項4. 数え尽くしの原則">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 注意事項4. 数え尽くしの原則
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>統計解析の経験があるものなら誰でも、様々な理由で対象者が除外されるため、個々の解析で、人数が必ずしも同じにならないことを知っているものです。透明性を高めるために、統計解析ごとに、何人が対象となったか報告するべきです。</p>
 <p>統計家の間では、<strong>数え尽くしの原則（principle of exhaustion）</strong>という言葉があります。分類変数の分類が複雑だったり、欠測データがあったりするときには、分類ひとつひとつの人数を合計し、それが全体の人数に合うかどうかを確認せよ、というのがこの原則の教えです。最初に作成した表では人数が示されておらず、どのようなデータが解析されたのかわかりません。一方、表1・表2では、何人が解析対象で、何人が復職したのかが記述されています。さらに、数え尽くすと全体80人や100%に一致することから、正しく集計されたことが読み取れます。</p>
+</div>
 </div>
 </div>
 <div class="dialogue">
@@ -721,23 +732,44 @@ window.Quarto = {
 <section id="次のエピソードとrスクリプト" class="level3">
 <h3 class="anchored" data-anchor-id="次のエピソードとrスクリプト">次のエピソードとRスクリプト</h3>
 <ul>
+<li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
+<li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+他のエピソードはこちら
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>このシリーズのエピソード</strong></p>
+<ul>
 <li><a href="logistic-regression-1.html">Understanding Collapsibility of Effect Measures: Marginal vs Stratified</a></li>
 <li><a href="logistic-regression-2.html">From Risk to Logistic Regression</a></li>
 <li><a href="logistic-regression-3.html">Logit: How a Transformation Shapes an Effect</a></li>
 <li><a href="logistic-regression-4.html">Where My Logistic Regression Went Wrong</a></li>
 <li><a href="logistic-regression-5.html">Why Logistic Regression Fails in Small Samples</a></li>
 <li><a href="logistic-regression-6.html">Understanding Confounding in Effect Measures: Marginal vs Stratified</a></li>
-<li><a href="../from-coffee-chat-to-r/logistic-regression.R">logistic-regression.R</a></li>
 </ul>
-</section>
-<section id="過去のシリーズと用語集" class="level3">
-<h3 class="anchored" data-anchor-id="過去のシリーズと用語集">過去のシリーズと用語集</h3>
+<p><strong>過去のシリーズ</strong></p>
 <ul>
-<li><a href="study-design-1.html">A Story of Coffee Chat and Research Hypothesis</a></li>
-<li><a href="frequentist-1.html">Reading a Paper over a Cup of Coffee</a></li>
-<li><a href="effects-1.html">Silent Confusions Hidden in Percentages</a></li>
+<li><a href="study-design-1.html">Study Design I</a></li>
+<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
+<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
+<li><a href="effects-1.html">Effects and Time I</a></li>
+</ul>
+<p><strong>用語集</strong></p>
+<ul>
 <li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
 </ul>
+</div>
+</div>
+</div>
 
 
 </section>

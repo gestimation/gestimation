@@ -35,7 +35,7 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 :::
 
 ::: voice-father
-お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰はどんなデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
+お父さん「うん、ゆっくり考えよう、大事なところだ。比例ハザード性はCox回帰の特徴そのもので、これさえ満たされれば、Cox回帰は幅広いデータにも使えるんだけど、たまに比例ハザード性が崩れたデータをみることがある。これはオンコロジー領域では必須知識かもしれない。このKaplan-Meier曲線をみてよ（Mok, et al, 2009）。生存曲線がクロスした有名なケースなんだ」
 :::
 
 ::: voice-daughter
@@ -91,7 +91,7 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 :::
 
 ::: voice-daughter
-私「それ、実際の患者さんでもあるかも！」
+私「それ、診療していてもあるかも」
 :::
 
 ::: voice-father
@@ -101,6 +101,14 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 > 比例ハザード性が成り立たないと、最初は一方の治療が有利でも、途中から追いつかれることもある
 
 それなのに多くの論文で“ハザード比＝一定”という前提で解析する。Cox回帰が標準的に使われるからね。だから、比例ハザード性が破綻すると、ハザード比の解釈が急に怪しくなる」
+:::
+
+::: voice-daughter
+私「んなこといっても、論文にはだいたいハザード比しか書いてないよね」
+:::
+
+::: voice-father
+お父さん「だから次の一手が必要になる。"ある時点のリスク"や"ある時点までの生存曲線"を比べるんだ。曲線が交差していたら、5年生存率とか10年死亡率のようにどこを比較するか決める。ハザード比も重要だから、それとあわせてね」
 :::
 ::::::::::::::::::::::::::::::::: 
 
@@ -114,7 +122,6 @@ Keywords: bias, effect measure, R simulation, survival & competing risks
 ::: {.callout-note appearance="simple"  collapse="true" title="generate_data()のコードはこちら（データ生成に使用）"}
 ```{r warning=FALSE}
 generate_data <- function(n=200, hr1, hr2) {
-  set.seed(46)
   stoma <- rbinom(n, size = 1, prob = 0.4)
   sex <- rbinom(n, size = 1, prob = 0.5)
   age <- rnorm(n, mean = 65 + 3 * stoma, sd = 8)
