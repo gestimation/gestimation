@@ -2,7 +2,6 @@ project:
   type: website
   output-dir: docs
   resources:
-    - coffee.scss
     - from-coffee-chat-to-r/study-design.R
     - from-coffee-chat-to-r/frequentist.R
     - from-coffee-chat-to-r/effects.R
@@ -11,8 +10,6 @@ project:
 website:
   title: "Coffee and Research"
   site-url: "https://gestimation.github.io/coffee-and-research"
-  site-path: "/coffee-and-research/"
-  canonical-url: true
   google-analytics: "G-FCK3LX51C6"
   navbar:
     left:
@@ -57,3 +54,4 @@ format:
     toc: true
     css: styles.css
     page-layout: full
+    canonical-url: true

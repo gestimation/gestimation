@@ -3,6 +3,8 @@
     "listing": "/jp/index.html",
     "items": [
       "/jp/glossary.html",
+      "/jp/study-design-4.html",
+      "/jp/study-design-5.html",
       "/jp/study-design-3.html",
       "/jp/study-design-1.html",
       "/jp/study-design-2.html"
@@ -12,6 +14,10 @@
     "listing": "/en/index.html",
     "items": [
       "/en/study-design-2.html",
+      "/en/glossary.html",
+      "/en/study-design-4.html",
+      "/en/study-design-5.html",
+      "/en/study-design-3.html",
       "/en/study-design-1.html"
     ]
   }

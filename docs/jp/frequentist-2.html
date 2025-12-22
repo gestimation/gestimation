@@ -115,6 +115,7 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="canonical" href="https://gestimation.github.io/coffee-and-research/jp/frequentist-2.html">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -155,6 +156,10 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
     <a class="dropdown-item" href="../en/study-design-1.html">
  <span class="dropdown-text">Study design</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../en/frequentist-1.html">
+ <span class="dropdown-text">Frequentist Thinking</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -168,7 +173,15 @@ gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
   </li>  
         <li>
     <a class="dropdown-item" href="../jp/study-design-1.html">
- <span class="dropdown-text">Study design</span></a>
+ <span class="dropdown-text">Study Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../jp/frequentist-1.html">
+ <span class="dropdown-text">Frequentist Thinking</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../jp/frequentist-4.html">
+ <span class="dropdown-text">Frequentist Experiments</span></a>
   </li>  
     </ul>
   </li>
@@ -493,20 +506,20 @@ coxph()のコードと結果はこちら
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 147 
+  n= 200, number of events= 141 
 
                   coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.2878    1.3335   0.1682 1.711    0.087 .
+stomaWITH STOMA 0.3992    1.4907   0.1755 2.275   0.0229 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.334     0.7499     0.959     1.854
+stomaWITH STOMA     1.491     0.6708     1.057     2.103
 
-Concordance= 0.534  (se = 0.024 )
-Likelihood ratio test= 2.89  on 1 df,   p=0.09
-Wald test            = 2.93  on 1 df,   p=0.09
-Score (logrank) test = 2.95  on 1 df,   p=0.09</code></pre>
+Concordance= 0.545  (se = 0.024 )
+Likelihood ratio test= 5.08  on 1 df,   p=0.02
+Wald test            = 5.18  on 1 df,   p=0.02
+Score (logrank) test = 5.24  on 1 df,   p=0.02</code></pre>
 </div>
 </div>
 </div>

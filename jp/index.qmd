@@ -8,6 +8,8 @@ listing:
     - study-design-1.qmd
     - study-design-2.qmd
     - study-design-3.qmd
+    - study-design-4.qmd
+    - study-design-5.qmd
     - glossary.qmd
   sort: "date desc"
   feed:

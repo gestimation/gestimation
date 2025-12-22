@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-12-13">
 
-<title>A Circle, an Equation, and a Cylinder – Coffee and Research</title>
+<title>Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference – Coffee and Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,38 +78,9 @@ gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
-<link rel="canonical" href="https://gestimation.github.io/coffee-and-research/jp/causal-inference-4.html">
+<link rel="canonical" href="https://gestimation.github.io/coffee-and-research/jp/causal-inference-6.html">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -203,10 +174,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#causal-inference-iv-a-circle-an-equation-and-a-cylinder" id="toc-causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="nav-link active" data-scroll-target="#causal-inference-iv-a-circle-an-equation-and-a-cylinder">Causal Inference IV − A Circle, an Equation, and a Cylinder</a>
+  <li><a href="#causal-inference-vi-volatility-uncertainty-complexity-and-ambiguity-in-causal-inference" id="toc-causal-inference-vi-volatility-uncertainty-complexity-and-ambiguity-in-causal-inference" class="nav-link active" data-scroll-target="#causal-inference-vi-volatility-uncertainty-complexity-and-ambiguity-in-causal-inference">Causal Inference VI − Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference</a>
   <ul class="collapse">
-  <li><a href="#問いの答えはどの抽象表現で世界を見るかで変わる" id="toc-問いの答えはどの抽象表現で世界を見るかで変わる" class="nav-link" data-scroll-target="#問いの答えはどの抽象表現で世界を見るかで変わる">問いの答えは、どの抽象表現で世界を見るかで変わる</a></li>
-  <li><a href="#次のエピソード" id="toc-次のエピソード" class="nav-link" data-scroll-target="#次のエピソード">次のエピソード</a></li>
+  <li><a href="#dagは何に対処するための道具か" id="toc-dagは何に対処するための道具か" class="nav-link" data-scroll-target="#dagは何に対処するための道具か">DAGは何に対処するための道具か</a></li>
+  <li><a href="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" id="toc-this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="nav-link" data-scroll-target="#this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -216,7 +187,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A Circle, an Equation, and a Cylinder</h1>
+<h1 class="title">Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference</h1>
 </div>
 
 
@@ -242,183 +213,70 @@ window.Quarto = {
 <div class="hero-header">
 <p><img src="../image/father-daughter.png" class="hero-header-img img-fluid"></p>
 </div>
-<section id="causal-inference-iv-a-circle-an-equation-and-a-cylinder" class="level1">
-<h1>Causal Inference IV − A Circle, an Equation, and a Cylinder</h1>
+<section id="causal-inference-vi-volatility-uncertainty-complexity-and-ambiguity-in-causal-inference" class="level1">
+<h1>Causal Inference VI − Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference</h1>
 <div class="serif-block text-right">
-<p>Keywords: causal model, language &amp; writing, probability model</p>
+<p>Keywords: causal model, probability model, p-value, language &amp; writing</p>
 </div>
 <hr>
-<section id="問いの答えはどの抽象表現で世界を見るかで変わる" class="level3">
-<h3 class="anchored" data-anchor-id="問いの答えはどの抽象表現で世界を見るかで変わる">問いの答えは、どの抽象表現で世界を見るかで変わる</h3>
+<section id="dagは何に対処するための道具か" class="level3">
+<h3 class="anchored" data-anchor-id="dagは何に対処するための道具か">DAGは何に対処するための道具か</h3>
 <div class="dialogue">
-<div class="voice-daughter">
-<p>私「お父さんさ、丁寧なのはいいんだけど。合流点の説明ってもっと簡単にできないの？この条件付確率分布の式がきっついわ」</p>
-</div>
 <div class="voice-father">
-<p>お父さん「その気持ちはわかるよ、でも式を出さないと正確じゃないと思って」</p>
+<p>お父さん「お帰り、今日は遅かったね」</p>
 </div>
 <div class="voice-daughter">
-<p>私「それ自体はありがたいんだけどね。たとえ話とかでも十分そうだけど」</p>
+<p>私「うん、病院経営のウェブセミナーが夜にあってさ。疲れちゃった」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「でもさ、最初の質問覚えてる？“確率モデルでもRubin因果モデルでも、交絡の説明が不足しているんじゃないか”、そこが出発点だったよね。だから、合流点を何か別のものに置き換えるだけでは足りないんだ」</p>
+<p>お父さん「ああ、診療後にね。コーヒーでも淹れる？」</p>
 </div>
 <div class="voice-daughter">
-<p>私「まあそうだけど」</p>
+<p>私「うん。あのね、セミナー聴きながらDAGについて考えてたんだ。お父さんがなにを説明してくれたのかって」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「具体的な式をナプキンを書いたのは理由がある。同じものをDAGと数式の2通りで表現していることを知ってほしかったんだ。抽象的な表現を併用することは意外に多い。ここにマグカップがあるよね」</p>
+<p>お父さん「ふむ」</p>
 </div>
 <div class="voice-daughter">
-<p>私「いつもコーヒーを飲んでるやつね」</p>
+<p>私「セミナーの講師がいうわけよ。変化が激しい時代を乗り越えて経営するには”VUCA”に対処しなければならないって。VUCAっていうのは、volatility、uncertainty、complexity、ambiguityの頭文字をとったビジネス用語みたい。経営問題の特徴や求められる対処能力を、VUCAを使って端的に説明してくれたんだ」</p>
 </div>
-<div class="voice-father">
-<p>お父さん「これを上から見てごらん」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん？こう？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。円が見えるでしょ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうだね。それがどうかしたの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「数学の授業で、x軸とy軸をとると円はこんな方程式で表せるって習ったでしょ。DAGと条件付確率の式の関係は、これに似ている」</p>
-</div>
-<p><span class="math display">\[x^2+y^2=r^2\]</span></p>
-<div class="voice-daughter">
-<p>私「円は見た目、円の式は数式って意味？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そう。共通の分析対象を、別の表現で扱ってるでしょ。円の話をするとき、数式が要らなかったら、円の絵を描いた方がはやいよね。DAGもそう。条件付確率の式から、つながり方だけを抜き出した射影なんだ。分布の形やデータの型は捨て、複雑な式をいったん横に置いて必要な構造だけを見るためにね。DAGは、つながり方だけを見るためのトポロジカルな道具なんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そりゃあ、矢印でつながってるだけの方が、まずはわかりやすいよ」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「じゃあ今度はマグカップを斜めから見てごらん」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ん。円が立体になるっていいたいんだよね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「その通り、マグカップが円柱として見える。この円柱はRubin因果モデルの潜在結果変数みたいなものじゃない？上から観測できるデータだけじゃ、全体はわからないよね。それが観測できない潜在結果変数なんだ」</p>
-</div>
-<div class="voice-daughter">
-<p>私「ほえー詩人だね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「1つのマグカップの中に、確率モデル、DAG、Rubin因果モデルという3つの構造が隠れている。抽象的な構造に基づいてデータから情報を引き出す。それも、単なる情報処理や圧縮じゃなく、患者さんのための知識を得るためにね。統計解析は人間のためのもの。だからこそ、どの抽象表現で世界を見るかが大事になる」</p>
-</div>
-<section id="変数をどう選ぶ" class="level3">
-<h3 class="anchored" data-anchor-id="変数をどう選ぶ">変数をどう選ぶ</h3>
-<div class="voice-daughter">
-<p>私「でもね、私にとっては、モデルよりも変数の選び方の方が切実な問題なんだ。ピロリ菌除菌のDAGでいえば、ピロリ菌除菌の有無の他に、胃がん発生、性格、年齢、体質という変数をDAGに入れたでしょ。実際の研究でどうやって選ぶの？」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「そこが難しいんだけど、<strong>医学知識</strong>や<strong>研究デザイン</strong>を根拠にもっともらしいDAGを描くしかないね。胃がんリスク因子だとか、ランダム化臨床試験なら治療割付と共変量は独立なはず、だとか」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうするとDAGの変数が無限に増えちゃうと思うんだ。だって胃がんが発生するためには、消化管が発生しないといけないでしょ。そうすると、その前にはミクロレベルでは細胞があり、マクロレベルでは生物がないとおかしいよね。ピロリ菌除菌を受ける原因だって、社会的要因かもしれないし」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「ああ、そういう発想もあるね。因果観のなかには、単にある原因と結果を結びつけるだけじゃないものもある。あらゆる物質がNewton力学に従っているようにね」</p>
-</div>
-<div class="voice-daughter">
-<p>私「いま物質の話をしてないんだけど」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん。じゃあ枠組みをもう少し広くしよう。日本語には”因果”と並んで”縁起”という言葉がある。因果は原因と結果を意味するよね。一方の縁起は、あらゆる出来事や認識が重なって、結果が生じるという文脈で使われる。でも、ランダム化臨床試験や観察研究の分析対象は、縁起の文脈より、もっと部分的じゃない？」</p>
-</div>
-<div class="voice-daughter">
-<p>私「そうだね。知りたいのは医薬品の有効性やピロリ菌除菌の効果だけだね」</p>
-</div>
-<div class="voice-father">
-<p>お父さん「うん。どの枠組みが正しいかっていう話じゃないよ。臨床研究の場合は、DAGに入れる変数は研究仮説や目的に関わると思われるものにフォーカスしてもいいんじゃないかって言いたいわけ。使用目的は、たとえば交絡因子を特定して、推測の妥当性を吟味することだからね」</p>
-</div>
-</section>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-このエピソードに関係するクイズです
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>DAGはいくつかのアイデアが元になっていますが、そのひとつにSewall Wrightが描いたパスダイアグラムがあります。その最初のものは、1920年にProceeding of the National Academy of Sciencesで発表された論文に載っていたものといわれています。さて、この図は何の因果関係を分析したものでしょうか？</p>
-<ol type="1">
-<li>がんとその原因</li>
-<li>車の故障とその原因</li>
-<li>QOLとその原因</li>
-<li>モルモットの特徴とその原因</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled" title="答えはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-答えはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <ul>
-<li><strong>正解は4です。</strong></li>
+<li>Volatility（変動性）</li>
+<li>Uncertainty（不確実性）</li>
+<li>Complexity（複雑性）</li>
+<li>Ambiguity（曖昧性）</li>
 </ul>
-<p><img src="causal-inference-4.png" class="img-fluid"></p>
+<div class="voice-father">
+<p>お父さん「へえ、まさにビジネスマン的思考だね。で、画面を見ながら研究のVUCAについて考えてたわけだ」</p>
 </div>
+<div class="voice-daughter">
+<p>私「そうなんだ。だって、このところ統計と不確実性の話ばっかりしてたから。p値とかランダム誤差・バイアスって、不確実性そのものでしょ、統計の文脈ではあるけどさ。でもDAGはちょっと違うなって考えてた」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「…ふむ」</p>
+</div>
+<div class="voice-daughter">
+<p>私「でね、この4つにDAGを当てはめるとしたらcomplexityだって思ったんだ。観察研究で交絡因子の候補が多いとき必要なのはよくわかるし、ランダム化臨床試験みたいにデザインが単純明快だとDAGが役に立つケースは限られるかもしれない」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「そうだね、因果推論で出てくる課題をVUCAで整理するとしたら、DAGはcomplexityへの対処の道具なんだと思う。相互に関連する多くの変数を、交絡因子、中間媒介因子、合流点のどれかに分類したり、バックドア基準のような単純ルールを作ったりするのは、まさにそれだよね。そう考えると、Rを使ったシミュレーションも同じカテゴリなんじゃないかな。データが複雑になればなるほど、シミュレーションで数値実験をしないと、何が起きてるか予想できない。へえ、おもしろい分類だね」</p>
+</div>
+<div class="voice-daughter">
+<p>私「でしょ。臨床研究におけるvolatilityって何だろう。新型コロナのとき、臨床研究を行うのが大変だったって聞くけど」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「ああ、あのときは研究を取り巻く医療環境そのものの変化が激しかったよね。感染症以外の疾患でも、臨床試験のリクルート・データ収集が難しかった。外部環境におけるvolatility以外だと、JCOG9502のように中間解析の結果が出たり、未知の副作用が観察されたりすると、何らかの対応が求められるよね。確かにvolatilityも重要だね。これからますます変化が激しくなるとしたら、研究計画書を途中で変更しなければならないことも増えるかもしれない」</p>
+</div>
+<div class="voice-daughter">
+<p>私「うん。それとね、セミナーの途中で思わずうなずいちゃったのはambiguityの話なんだ。研究でも同じだって思って。調査票を作るとき、情報バイアスを減らすには、曖昧な質問をしないのが一番だと思うし、言葉を定義しておくとぶれないってお父さんがいうのもよくわかる。言葉の曖昧性って、考えていたより深刻な問題だよね。データを扱うときって、情報は固定されていても、言語の方がぶれがちなんだ」</p>
 </div>
 </div>
 </section>
-<section id="次のエピソード" class="level3">
-<h3 class="anchored" data-anchor-id="次のエピソード">次のエピソード</h3>
+<section id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting" class="level3">
+<h3 class="anchored" data-anchor-id="this-concludes-the-causal-inference-series.-if-youd-like-to-keep-reading-over-your-next-cup-of-coffee-the-following-episode-is-waiting">This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:</h3>
 <ul>
-<li><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></li>
+<li><a href="publish-a-paper-1.html">A Subtle Distinction Between Editors and Reviewers</a></li>
 </ul>
-<div class="callout callout-style-simple callout-note callout-titled" title="他のエピソードはこちら">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-他のエピソードはこちら
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>このシリーズのエピソード</strong></p>
-<ul>
-<li><a href="causal-inference-1.html">Three-Variable DAGs: The Smallest Building Blocks of Causal Structure</a></li>
-<li><a href="causal-inference-2.html">A Subtle Distinction between Common Causes and Confounders</a></li>
-<li><a href="causal-inference-3.html">DAGs and Conditional Distributions: Two Languages for the Same Structure</a></li>
-<li><a href="causal-inference-4.html">A Circle, an Equation, and a Cylinder</a></li>
-<li><a href="causal-inference-5.html">Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias</a></li>
-</ul>
-<p><strong>過去のシリーズ</strong></p>
-<ul>
-<li><a href="study-design-1.html">Study Design I</a></li>
-<li><a href="frequentist-1.html">Frequentist Thinking I</a></li>
-<li><a href="frequentist-4.html">Frequentist Experiments I</a></li>
-<li><a href="effects-1.html">Effects and Time I</a></li>
-<li><a href="logistic-regression-1.html">Adjusting for Bias I</a></li>
-</ul>
-<p><strong>用語集</strong></p>
-<ul>
-<li><a href="glossary.html">Statistical Terms in Plain Language</a></li>
-</ul>
-</div>
-</div>
-</div>
 
 
 </section>

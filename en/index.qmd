@@ -7,6 +7,10 @@ listing:
   contents:
     - study-design-1.qmd
     - study-design-2.qmd
+    - study-design-3.qmd
+    - study-design-4.qmd
+    - study-design-5.qmd
+    - glossary.qmd
   sort: "date desc"
   feed:
     title: "A Conversation on Causality at Our Table (EN)"
@@ -82,9 +86,9 @@ Distortion rarely comes from formulas alone—this is where bias quietly enters.
 
 Using cancer clinical trials as an example, my father explains the **frequentist perspective** of “How do numbers behave under repeated sampling?”
 
-- [Reading a Paper over a Cup of Coffee]
-- [P-Value Explanations That Seem Plausible at First Glance]
-- [Beyond 0.05: Interpreting P-Values in a Clinical Trial]
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
 ::: {.callout-note appearance="simple" collapse="true" title="A glimpse ahead"}
 - **Reading a Paper over a Cup of Coffee**

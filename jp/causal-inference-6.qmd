@@ -1,0 +1,103 @@
+---
+title: "Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference"
+description: ""
+tags:
+  - Causal model
+  - Probability model
+  - P-value
+  - Language & writing
+format:
+  html:
+    toc: true
+date: 2025-12-13
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Causal Inference VI − Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference
+
+::: {.serif-block .text-right}
+Keywords: causal model, probability model, p-value, language & writing
+:::
+
+------------------------------------------------------------------------
+
+### DAGは何に対処するための道具か
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「お帰り、今日は遅かったね」
+:::
+
+
+::: voice-daughter
+私「うん、病院経営のウェブセミナーが夜にあってさ。疲れちゃった」
+:::
+
+::: voice-father
+お父さん「ああ、診療後にね。コーヒーでも淹れる？」
+:::
+
+::: voice-daughter
+私「うん。あのね、セミナー聴きながらDAGについて考えてたんだ。お父さんがなにを説明してくれたのかって」
+:::
+
+::: voice-father
+お父さん「ふむ」
+:::
+
+::: voice-daughter
+私「セミナーの講師がいうわけよ。変化が激しい時代を乗り越えて経営するには"VUCA"に対処しなければならないって。VUCAっていうのは、volatility、uncertainty、complexity、ambiguityの頭文字をとったビジネス用語みたい。経営問題の特徴や求められる対処能力を、VUCAを使って端的に説明してくれたんだ」
+:::
+
+- Volatility（変動性）
+- Uncertainty（不確実性）
+- Complexity（複雑性）
+- Ambiguity（曖昧性）
+
+::: voice-father
+お父さん「へえ、マネジメントではそう整理するんだね。で、画面を見ながら研究のVUCAについて考えてたわけだ」
+:::
+
+::: voice-daughter
+私「そうなんだ。だって、このところ統計と不確実性の話ばっかりしてたから。p値とかランダム誤差・バイアスって、不確実性そのものでしょ、統計の文脈ではあるけどさ。でもDAGはちょっと違うなって考えてた」
+:::
+
+::: voice-father
+お父さん「...ふむ」
+:::
+
+::: voice-daughter
+私「でね、この4つにDAGを当てはめるとしたらcomplexityだって思ったんだ。観察研究で交絡因子の候補が多いとき必要なのはよくわかるし、デザインが単純明快になればなるほど、DAGを使ってcomplexityに対処しなくても済みそうだもの」
+:::
+
+::: voice-father
+お父さん「そうだね、因果推論で出てくる課題をVUCAで整理するとしたら、DAGはcomplexityへの対処の道具なんだと思う。相互に関連する多くの変数を、交絡因子、中間媒介因子、合流点のどれかに分類したり、バックドア基準のような単純ルールを作ったりするのは、まさにそれだよね。それにDAGは、どこを仮定しているかを"見える形"にするから、ambiguityを減らす道具でもあるね」
+:::
+
+::: voice-daughter
+私「たしかに」
+:::
+
+::: voice-father
+お父さん「そう考えると、Rを使ったシミュレーションもDAGと同じカテゴリなんじゃないかな。データが複雑になればなるほど、シミュレーションで数値実験をしないと、何が起きるか目に見えない。へえ、おもしろい分類だね」
+:::
+
+::: voice-daughter
+私「でしょ。臨床研究におけるvolatilityって何だろう。ガイドラインや診断基準の改訂とかかな。新型コロナのとき、臨床研究を行うのが大変だったって聞くけど」
+:::
+
+::: voice-father
+お父さん「ああ、あのときは研究を取り巻く医療環境そのものの変化が激しかったよね。感染症以外の疾患でも、臨床試験のリクルート・データ収集が難しかった。外部環境におけるvolatility以外だと、JCOG9502のように中間解析の結果が出たり、未知の副作用が観察されたりすると、何らかの対応が求められるよね。確かにvolatilityも重要だね。これからますます変化が激しくなるとしたら、研究計画書を途中で変更しなければならないことも増えるかもしれない」
+:::
+
+::: voice-daughter
+私「うん。それとね、セミナーの途中で思わずうなずいちゃったのはambiguityの話なんだ。研究でも同じだって思って。調査票を作るとき、情報バイアスを減らすには、曖昧な質問をしないのが一番だと思うし、言葉を定義しておくとぶれないってお父さんがいうのもよくわかる。言葉の曖昧性って、考えていたより深刻な問題だよね。データを扱うときって、情報は固定されていても、言語の方がぶれがちなんだ」
+:::
+:::::::::::::::::::::::::::::::::
+
+### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
+
+- [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
