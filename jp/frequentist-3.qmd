@@ -190,7 +190,7 @@ p値とは、帰無仮説が正しい、つまり生存曲線に差がない、�
 
 - Sasako M, Sano T, Yamamoto S, Sairenji M, Arai K, Kinoshita T, Nashimoto A, Hiratsuka M, Japan Clinical Oncology Group (JCOG9502). Left thoracoabdominal approach versus abdominal-transhiatal approach for gastric cancer of the cardia or subcardia: a randomised controlled trial. Lancet Oncol 2006;7(8):644-51
 
-- [Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33](https://www.biometrics.gr.jp)
+- Wasserstein R and Lazar NI. The ASA’s statement on p-values: Context, process, and purpose. Am Statistician 2016; 70: 129-33（[日本語訳](https://www.biometrics.gr.jp/news/all/ASA.pdf)）
 
 - 吉村功. 検証的臨床試験における有意水準と試験の数－「臨床試験のための統計的原則」との関連で－. 計量生物学 2003; 24: S3-9
 
