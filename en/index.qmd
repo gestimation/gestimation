@@ -44,7 +44,7 @@ Each episode can be read on its own; from there, you can follow the story or cho
 ::: {.callout-note appearance="simple" collapse="true" title="R scripts for reproducing the episodes"}
 If you came here from an R post, you may want the code first. These scripts are meant to *reproduce the figures and ideas*, not to teach programming.
 
-- Study Design series: [study-design.R](../from-coffee-chat-to-r/study-design.R)
+- Study Design: [study-design.R](../from-coffee-chat-to-r/study-design.R)
 - Frequentist Thinking / Experiments: [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 - Effects and Time: [effects.R](../from-coffee-chat-to-r/effects.R)
 - Adjusting for Bias: [logistic-regression.R](../from-coffee-chat-to-r/logistic-regression.R)
