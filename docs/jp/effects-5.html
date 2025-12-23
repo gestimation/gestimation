@@ -271,13 +271,13 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p>私「うん、こんな感じの式になるって思ったんだ。さっき生存関数を教えてくれたのと同じで<span class="math inline">\(x\)</span>は時間だよね。ハザード関数は時間とともに変化できて、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は2群それぞれのハザード関数だっていうことはわかるよ。指数分布ではハザードは定数だった。でも、不思議なのは、どうみても上も下も同じ計算じゃない？割り算しただけ」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、<em>この式以前に</em>、もともとハザードが一定なんだ。下のCox回帰をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数で、ハザード比だけが一定っていうある種の制約を表している」</p>
+<p>お父さん「ああ、文脈がないとそう読むのが普通かもね。指数分布の式の方はね、“この式以前に”もともとハザードが一定なんだ。下のCox回帰をみると、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>は時間<span class="math inline">\(x\)</span>の関数で、ハザード比だけが一定っていうある種の制約を表している」</p>
 </div>
 <div class="voice-daughter">
 <p>私「つまり？」</p>
 </div>
 <div class="voice-father">
-<p>お父さん「つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定された、あるいは構造が決まったっていうような文脈でとらえてほしいんだ」</p>
+<p>お父さん「つまりこの式が出た時点で、はじめて<strong>比例ハザード性</strong>が仮定された、あるいは構造が決まったっていうようなロジックでとらえてほしいんだ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「やっぱり違うのか。まってね、ということは、この式は<code>coxph()</code>の中で<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>の比をとっているっていう意味じゃないよね。仮定を置いたってことは、それが成り立たないと困るわけだ。ハザード比の定義でもなさそうな口ぶりだよね」</p>
@@ -299,16 +299,24 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <div class="voice-father">
 <p>お父さん「Cox回帰のよさはいくつもあるけど、<span class="math inline">\(\lambda_1(x)\)</span>と<span class="math inline">\(\lambda_2(x)\)</span>はどんな関数でもいいという点が、とても実用的なんだ。比例ハザード性という仮定はあるけどね。その点、指数分布はハザードが定数だから、ずっと融通が利かない。データへの当てはまりが悪いんだ」</p>
 </div>
+<div class="voice-daughter">
+<p>私「つまりCox回帰を使えばいいってことね」</p>
+</div>
+<div class="voice-father">
+<p>お父さん「他のモデルに比べたら、ね。それでもデータに100%当てはまっている保証はない。だからCox回帰の結果を論文や学会で報告する前には、比例ハザード性のチェックが求められる。生存曲線がクロスしているかどうかや、2重対数プロットが並行かどうかを目安にしてね。2重対数プロットは、Kaplan-Meier曲線を補2重対数変換したものだ」</p>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="補2重対数変換: ハザード比を抽出する変換">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 補2重対数変換: ハザード比を抽出する変換
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>あまり知られていませんが、Cox回帰に代えて一般化線型モデルでも（離散時間の枠組みで）ハザード比を推定できます。リンク関数として補2重対数変換（<code>glm</code>でいえば <code>binomial(link = "cloglog")</code>）を選びます。Cox回帰の構造を深堀するために、指数分布のもとで「生存関数に log(-log) を当てる」と何が起きるかを見てみましょう。指数分布のハザード比と回帰係数を<span class="math inline">\(\beta=\log(HR)\)</span>と表すことにします。</p>
 <p>2群の生存関数を、ハザード<span class="math inline">\(\lambda_1\)</span>と<span class="math inline">\(\lambda_2\)</span>を使って</p>
@@ -319,7 +327,8 @@ HR=\frac{\lambda_1(x)}{\lambda_2(x)}
 <p><span class="math inline">\(-\log\{S_2(x)\}=\lambda_2 x\)</span></p>
 <p>もう一度対数をとり、さらに差をとってみます。</p>
 <p><span class="math inline">\(\log[-\log\{S_1(x)\}]-\log[-\log\{S_2(x)\}]=\log(\lambda_1 x)-\log(\lambda_2 x)=\log(HR)=\beta\)</span></p>
-<p>この結果は、比例ハザード性の下では常に成り立ちます。つまり、同じ時点<span class="math inline">\(x\)</span>の下で2群の差をとると、<strong>時間<span class="math inline">\(x\)</span>がキャンセルして回帰係数<span class="math inline">\(\beta\)</span>だけが残ります</strong>。生存時間解析の裏では、生存関数から回帰係数（対数ハザード比）を抽出するために、この変換が使われています。その一例は、比例ハザード性の図示（いわゆるログログプロット）です。Kaplan–Meier曲線の補2重対数変換をとると、曲線間の比例ハザード性が、曲線の平行移動に置き換わるのです。</p>
+<p>この結果は、比例ハザード性の下では常に成り立ちます。つまり、同じ時点<span class="math inline">\(x\)</span>の下で2群の差をとると、<strong>時間<span class="math inline">\(x\)</span>がキャンセルして回帰係数<span class="math inline">\(\beta\)</span>だけが残ります</strong>。生存時間解析の裏では、生存関数から回帰係数（対数ハザード比）を抽出するために、この変換が使われています。その一例は、比例ハザード性の図示（いわゆる2重対数プロット）です。Kaplan–Meier曲線の補2重対数変換をとると、曲線間の比例ハザード性が、曲線の平行移動に置き換わるのです。</p>
+</div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="このエピソードに関係するクイズです">

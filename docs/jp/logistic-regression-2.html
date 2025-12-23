@@ -443,11 +443,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="dialogue">
 <div class="voice-father">
-<p>お父さん「ちょっとマニアックだけど、Rの内部では、<code>model.matrix()</code>っていう関数で、デザイン行列<span class="math inline">\(X\)</span>を作っている。<span class="math inline">\(X\)</span>の最初の列はすべて1になる。これは回帰直線でいう切片に対応している。次の列以降はx1とx2に対応する値が計算される。こうしておくと、たとえばx1が文字列でも数値に置き換えて計算できたり、回帰係数との掛け算が行列として計算できたり、なにかと都合がいい。ここまで覚えなくていいけど、仕組みを知っておくと理解が進むでしょ」</p>
+<p>お父さん「ちょっとマニアックだけど、Rの内部では、<code>model.matrix()</code>っていう関数で、デザイン行列<span class="math inline">\(Z\)</span>を作っている。<span class="math inline">\(Z\)</span>の最初の列はすべて1になる。これは回帰直線でいう切片に対応している。次の列以降はx1とx2に対応する値が計算される。こうしておくと、たとえばx1が文字列でも数値に置き換えて計算できたり、回帰係数との掛け算が行列として計算できたり、なにかと都合がいい。ここまで覚えなくていいけど、仕組みを知っておくと理解が進むでしょ」</p>
 </div>
 <div class="voice-daughter">
 <p>私「なるほどね、じゃあ<code>family</code>ってなに？データの型？」</p>
