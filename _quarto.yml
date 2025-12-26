@@ -36,8 +36,8 @@ website:
             href: jp/frequentist-1.qmd
           - text: Frequentist Experiments
             href: jp/frequentist-4.qmd
-#          - text: Epidemiology
-#            href: jp/epidemiology-1.qmd
+          - text: Effects and Time
+            href: jp/effects-1.qmd
 #          - text: Regression
 #            href: jp/logistic-regression-1.qmd
 #          - text: Causal inference
