@@ -209,6 +209,7 @@ Keywords: bias, causal model, confounding & collapsibility, observational study
 - [Frequentist Experiments I](frequentist-4.html)
 - [Effects and Time I](effects-1.html)
 - [Adjusting for Bias I](logistic-regression-1.html)
+- [Truth I](truth-1.html)
 
 **用語集**
 

@@ -506,20 +506,20 @@ coxph()のコードと結果はこちら
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 150 
+  n= 200, number of events= 145 
 
                   coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.3530    1.4233   0.1651 2.138   0.0325 *
+stomaWITH STOMA 0.4364    1.5471   0.1726 2.528   0.0115 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.423     0.7026      1.03     1.967
+stomaWITH STOMA     1.547     0.6464     1.103      2.17
 
-Concordance= 0.552  (se = 0.023 )
-Likelihood ratio test= 4.56  on 1 df,   p=0.03
-Wald test            = 4.57  on 1 df,   p=0.03
-Score (logrank) test = 4.62  on 1 df,   p=0.03</code></pre>
+Concordance= 0.536  (se = 0.023 )
+Likelihood ratio test= 6.23  on 1 df,   p=0.01
+Wald test            = 6.39  on 1 df,   p=0.01
+Score (logrank) test = 6.49  on 1 df,   p=0.01</code></pre>
 </div>
 </div>
 </div>
@@ -646,7 +646,7 @@ Score (logrank) test = 4.62  on 1 df,   p=0.03</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research");
+        var filterRegex = new RegExp("https:\/\/gestimation\.github\.io\/coffee-and-research\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

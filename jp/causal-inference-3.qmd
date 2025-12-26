@@ -262,6 +262,7 @@ Cで条件付けたとき、つまりCを特定の値に固定すると、なに
 - [Frequentist Experiments I](frequentist-4.html)
 - [Effects and Time I](effects-1.html)
 - [Adjusting for Bias I](logistic-regression-1.html)
+- [Truth I](truth-1.html)
 
 **用語集**
 
