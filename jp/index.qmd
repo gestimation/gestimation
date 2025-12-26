@@ -191,7 +191,7 @@ listing:
 　「DAGは何のためのだろう？」「複雑さを整理し曖昧さを減らす道具だよね」父の教えへの娘からの回答。
 :::
 
-### 9. Publish a Paper — 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方
+### 9. Publish a Paper — 研究結果を伝えるための研究者の営み
 
 - [A Subtle Distinction Between Editors and Reviewers]
 - [Three Tips for Writing a Paper]
