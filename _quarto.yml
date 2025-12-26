@@ -56,3 +56,4 @@ format:
     css: styles.css
     page-layout: full
     canonical-url: true
+    encoding: "utf-8"
