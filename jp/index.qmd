@@ -38,9 +38,7 @@ listing:
 
 ## エピソード一覧
 
-### 1. Study Design — 研究の出発点
-
-研究は「どんな問いを立てるか」から始まります。PICO/PECO、アウトカムの選び方、バイアスの防ぎ方...。娘は父に研究の出発点について尋ねます。
+### 1. Study Design — 研究はデータではなく問いで決まる
 
 - [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
 - [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
@@ -65,13 +63,11 @@ listing:
 　バイアスは解析で帳尻合わせできないことが多い。選択バイアス・情報バイアス・交絡を「どこで混入するか」という視点で点検します。
 :::
 
-### 2. Glossary — 統計学のことば
+### 2. Glossary — ことばがわかると数字が落ち着く
 
 - [Statistical Terms in Plain Language](glossary.html)
 
-### 3. Frequentist Thinking — 統計学の思考
-
-がん臨床試験を題材に「仮想的に何度も研究を繰り返したときに、数字はどう振る舞うか？」という**頻度論的なものの見方**を父は語ります。
+### 3. Frequentist Thinking — 繰り返しの中で研究はどう揺れるのか
 
 - [Reading a Paper over a Cup of Coffee](frequentist-1.html)
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
@@ -90,9 +86,7 @@ listing:
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 :::
 
-### 4. Frequentist Experiments — 統計学の実証
-
-頻度論が導く法則は、ただの抽象ではなくシミュレーション実験で確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
+### 4. Frequentist Experiments — 頻度論の抽象をシミュレーションで具体化する
 
 - [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
@@ -111,9 +105,7 @@ listing:
 - [frequentist.R](../from-coffee-chat-to-r/frequentist.R)
 :::
 
-### 5. Effects and Time — 効果は時間とともに
-
-リスク差・リスク比・ハザード比、ワクチン有効率、寄与割合、そして**時間とともに変化する効果**を、生存曲線・累積発生曲線とともに紐解きます。因果推論に先立って立体的なデータの見方が静かに育ちます。
+### 5. Effects and Time — 数字の中に織り込まれた集団と時間を紐解く
 
 - [Silent Confusions Hidden in Percentages](effects-1.html)
 - [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
@@ -141,9 +133,7 @@ listing:
 - [effects.R](../from-coffee-chat-to-r/effects.R)
 :::
 
-### 6. Adjusting for Bias — 回帰モデリングの風景
-
-結果の見方、表の作り方から、使用上の落とし穴まで、父からロジスティック回帰と交絡調整の手ほどきを受けるエピソード。
+### 6. Adjusting for Bias — ロジスティック回帰に関する父からの手ほどき
 
 - [Understanding Collapsibility of Effect Measures: Marginal vs Stratified]
 - [From Risk to Logistic Regression]
@@ -177,7 +167,7 @@ listing:
 - [What Could Have Happened]
 - [What Is It That You Want to Know?]
 
-### 8. Causal Inference — 因果を見つけるために
+### 8. Causal Inference — グラフと反事実と数式が映し出す因果の影
 
 - [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure]
 - [A Subtle Distinction between Common Causes and Confounders]
@@ -201,9 +191,7 @@ listing:
 　「DAGは何のためのだろう？」「複雑さを整理し曖昧さを減らす道具だよね」父の教えへの娘からの回答。
 :::
 
-### 9. Publish a Paper — 研究のその先
-
-研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方。統計の“その先”を扱う、研究者の営み。
+### 9. Publish a Paper — 研究結果をどう伝えるか、図表の作り方、推敲のコツ、査読の向き合い方
 
 - [A Subtle Distinction Between Editors and Reviewers]
 - [Three Tips for Writing a Paper]

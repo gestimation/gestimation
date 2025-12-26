@@ -406,25 +406,26 @@ Rコードと結果はこちら
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cifmodeling)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">5</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">generate_data</span>(<span class="at">hr1=</span><span class="dv">2</span>, <span class="at">hr2=</span><span class="fl">1.5</span>) <span class="co">#再発ハザード比2, 死亡ハザード比1.5のデータ生成</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rr_at_5 <span class="ot">&lt;-</span> <span class="fu">polyreg</span>(<span class="at">nuisance.model=</span><span class="fu">Event</span>(time_os,status_os)<span class="sc">~</span><span class="dv">1</span>, <span class="at">exposure=</span><span class="st">"stoma"</span>, <span class="at">data=</span>dat, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">effect.measure1=</span><span class="st">"RR"</span>, <span class="at">time.point=</span><span class="dv">5</span>, <span class="at">outcome.type=</span><span class="st">"survival"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rr_at_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                       event 1 (no competing risk)
 ---------------------------------- 
 stoma, WITH STOMA vs WITHOUT STOMA 
-                      1.356       
-                      [0.926, 1.986]
-                      (p=0.117)   
+                      1.367       
+                      [1.006, 1.856]
+                      (p=0.045)   
 
 ---------------------------------- 
 
 effect.measure        RR at 5     
-n.events              74 in N = 200
-median.follow.up      4.24        
-range.follow.up       [0.01, 30.40]
+n.events              89 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
 n.parameters          2           
 converged.by          Converged in objective function
 nleqslv.message       Function criterion near zero</code></pre>
@@ -437,16 +438,16 @@ nleqslv.message       Function criterion near zero</code></pre>
                       event 1 (no competing risk)
 ---------------------------------- 
 stoma, WITH STOMA vs WITHOUT STOMA 
-                      1.167       
-                      [0.860, 1.583]
-                      (p=0.321)   
+                      1.126       
+                      [0.744, 1.704]
+                      (p=0.576)   
 
 ---------------------------------- 
 
 effect.measure        RR at 10    
-n.events              108 in N = 200
-median.follow.up      4.24        
-range.follow.up       [0.01, 30.40]
+n.events              117 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
 n.parameters          2           
 converged.by          Converged in objective function
 nleqslv.message       Function criterion near zero</code></pre>
@@ -459,16 +460,16 @@ nleqslv.message       Function criterion near zero</code></pre>
                       event 1 (no competing risk)
 ---------------------------------- 
 stoma, WITH STOMA vs WITHOUT STOMA 
-                      1.146       
-                      [0.892, 1.472]
-                      (p=0.287)   
+                      1.078       
+                      [0.720, 1.613]
+                      (p=0.714)   
 
 ---------------------------------- 
 
 effect.measure        RR at 20    
-n.events              131 in N = 200
-median.follow.up      4.24        
-range.follow.up       [0.01, 30.40]
+n.events              137 in N = 200
+median.follow.up      3.54        
+range.follow.up       [0.03, 28.20]
 n.parameters          2           
 converged.by          Converged in objective function
 nleqslv.message       Function criterion near zero</code></pre>
