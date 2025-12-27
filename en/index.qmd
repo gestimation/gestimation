@@ -22,24 +22,26 @@ listing:
 ![](../image/father-daughter.png){.hero-header-img}
 :::
 
-# Brewing coffee, exchanging words. As the steam drifts upward, time softens, and the world of statistics opens little by little.
+# Brewing coffee, exchanging words. As steam rises, time drifts, and the world of statistics opens little by little.
 
+This site grew from small coffee-chat conversations between a clinician daughter and her statistician father. Questions that surface in research, numbers that catch while reading a paper, and occasional glimpses of a researcher’s stance—the things that truly matter tend to lie scattered quietly across everyday life, clinical practice, causality, data, cognition, and language.
 
-These small conversations between a statistician father and his clinician daughter became the seed of this site. Questions born in the middle of research, numbers that snagged me while reading a paper, and occasionally, glimpses of how researchers conduct themselves—the things that truly matter tend to lie scattered quietly across everyday life, clinical practice, causality, data, cognition, and language.
+Over coffee, their light exchanges pick up some of these fragments, one by one—woven into a single story, as if careful not to disturb their totality.
 
-Over coffee, their light conversation gathers these fragments one by one, as if weaving them into a single story, careful not to disturb their totality.
+Told in words warm enough to hold on a winter morning, the narrative moves with a spiral of quiet foreshadowing. Mathematics and medicine appear along the way, but take only what you need. Some episodes include short R scripts—small experiments you can rerun, so the ideas remain reproducible and tangible. If you follow the road all the way to the morning a paper is finally ready to submit, scattered meanings begin to connect—somewhere, into something whole.
 
-From survival curves and misread p-values to the layered relationship between causality and statistical inference, each episode leaves a few gentle clues—warm enough to hold on a winter morning.
-
-Mathematics and medicine appear along the way, but take only what you need. Some episodes include short R scripts, meant not as programming lessons but as small experiments you can rerun, to feel how assumptions become data. As the conversation unfolds, the view changes—quietly. I hope you enjoy following it, at the pace of a cup of coffee.
 
 ------------------------------------------------------------------------
 
-## How to read this site
+## How to begin
 
-Not sure where to begin? Start with [**Study Design**](study-design-1.html).
+This story follows a single clinical study, moving in the order of research hypotheses → statistics → causality → language. If you are not sure where to start, these three episodes are good entry points:
 
-Each episode can be read on its own; from there, you can follow the story or choose whichever layer interests you—[clinical trials and p-values](frequentist-1.html), for example, or [causal inference in research](logistic-regression-1.html). When R scripts appear, they are there to make the ideas reproducible—and tangible. Read through the whole series and scattered meanings begin to connect—you’ll likely come away with a few new ways of seeing.
+- [**The first conversation and a research hypothesis (Study Design I)**](study-design-1.html)
+- [**Clinical trials and p-values (Frequentist Thinking I)**](frequentist-1.html),
+- [**causal inference in research (Adjusting for Bias I)**](logistic-regression-1.html)
+
+Each episode can be read on its own—feel free to choose whichever layer interests you.
 
 ::: {.callout-note appearance="simple" collapse="true" title="R scripts for reproducing the episodes"}
 If you came here from an R post, you may want the code first. These scripts are meant to *reproduce the figures and ideas*, not to teach programming.

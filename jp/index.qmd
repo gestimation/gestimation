@@ -34,9 +34,9 @@ listing:
 
 この物語は、研究仮説→統計→因果→言語という順で、ある臨床研究を描いています。迷った方へのおすすめエピソードはこちら。
 
-- [会話のはじまりと研究仮説（Study Design I）](study-design-1.html)
-- [臨床試験とp値（Frequentist Thinking I）](frequentist-1.html)
-- [研究の中の因果推論（Adjusting for Bias I）](logistic-regression-1.html)
+- [**会話のはじまりと研究仮説（Study Design I）**](study-design-1.html)
+- [**臨床試験とp値（Frequentist Thinking I）**](frequentist-1.html)
+- [**研究の中の因果推論（Adjusting for Bias I）**](logistic-regression-1.html)
 
 どのエピソードも独立しているので、興味の向くレイヤーを選んでも構いません。
 
