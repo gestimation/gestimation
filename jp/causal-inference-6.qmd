@@ -106,6 +106,17 @@ Keywords: causal model, probability model, p-value, language & writing
 :::
 :::::::::::::::::::::::::::::::::
 
+::: {.callout-note appearance="simple" collapse="true" title="VUCAに沿って振り返る"}
+
+これまでのエピソードでは、研究仮説から始まり、統計学から因果推論までたくさんの用語が登場しました。その語感を確かめるためには、VUCAのように別の切り口で整理するのも一つの手です。
+
+- Volatility（変動性）: 生存時間解析・競合リスク解析、中間解析、効果安全性評価委員会
+- Uncertainty（不確実性）: p値、信頼区間、サンプルサイズ設計、確率モデル
+- Complexity（複雑性）: ランダム化、シミュレーション、変数選択、DAG
+- Ambiguity（曖昧性）: 定義、言語、研究計画書（プロトコール）、仮定の明示、因果モデル
+
+:::
+
 ### This concludes the Causal Inference series. If you’d like to keep reading over your next cup of coffee, the following episode is waiting:
 
 - [A Subtle Distinction Between Editors and Reviewers](publish-a-paper-1.html)
