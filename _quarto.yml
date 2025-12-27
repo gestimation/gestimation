@@ -57,3 +57,5 @@ format:
     page-layout: full
     canonical-url: true
     encoding: "utf-8"
+    include-in-header:
+      - includes/head.html

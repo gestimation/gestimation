@@ -112,6 +112,42 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-FCK3LX51C6', { 'anonymize_ip': true});
 </script>
+<!-- Site name signals (helps Google/OG pick the right site name) -->
+
+<meta property="og:site_name" content="Coffee and Research">
+
+<meta property="og:url" content="https://gestimation.github.io/coffee-and-research/">
+
+<meta property="og:type" content="website">
+
+<meta name="application-name" content="Coffee and Research">
+
+
+
+<!-- Optional: make Twitter/X previews less generic -->
+
+<meta name="twitter:card" content="summary">
+
+
+
+<!-- Structured data: WebSite -->
+
+<script type="application/ld+json">
+
+{
+
+  "@context": "https://schema.org",
+
+  "@type": "WebSite",
+
+  "name": "Coffee and Research",
+
+  "url": "https://gestimation.github.io/coffee-and-research/"
+
+}
+
+</script>
+
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -520,20 +556,20 @@ R code for coxph() and outout
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 140 
+  n= 200, number of events= 137 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
-stomaWITH STOMA 0.3410    1.4064   0.1723 1.979   0.0478 *
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)    
+stomaWITH STOMA 0.6275    1.8729   0.1799 3.487 0.000488 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA     1.406      0.711     1.003     1.971
+stomaWITH STOMA     1.873     0.5339     1.316     2.665
 
-Concordance= 0.547  (se = 0.024 )
-Likelihood ratio test= 3.84  on 1 df,   p=0.05
-Wald test            = 3.92  on 1 df,   p=0.05
-Score (logrank) test = 3.95  on 1 df,   p=0.05</code></pre>
+Concordance= 0.572  (se = 0.024 )
+Likelihood ratio test= 11.84  on 1 df,   p=6e-04
+Wald test            = 12.16  on 1 df,   p=5e-04
+Score (logrank) test = 12.53  on 1 df,   p=4e-04</code></pre>
 </div>
 </div>
 </div>
