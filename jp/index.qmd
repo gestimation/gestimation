@@ -171,6 +171,7 @@ listing:
 
 - [What Data Cannot Tell Us]
 - [What Could Have Happened]
+- [What Structures Structure]
 - [What Is It That You Want to Know?]
 
 ### 8. Causal Inference — グラフと反事実と数式が映し出す因果の影

@@ -1,0 +1,124 @@
+---
+title: "What Is It That You Want to Know?"
+description: ""
+tags:
+  - Causal model
+  - Language & writing
+  - Probability model
+  - Research hypothesis
+format:
+  html:
+    toc: true
+date: 2025-12-13
+---
+
+::: {.hero-header}
+![](../image/father-daughter.png){.hero-header-img}
+:::
+
+# Truth IV − What Is It That You Want to Know?
+
+::: {.serif-block .text-right}
+Keywords: causal model, language &writing, probability model, research hypothesis
+:::
+
+------------------------------------------------------------------------
+
+### 研究仮説を言葉にするということ
+
+::::::::::::::::::::::::::::::::: dialogue
+::: voice-father
+お父さん「はい、コーヒーのおかわり。ミルクはいる？」
+::: 
+
+::: voice-daughter
+私「いる。お父さんのいいたいことがわかってきたよ。データを集めてロジスティック回帰をすると、自動的に結論が出るわけじゃないんだ。それは、うちの診療科だけのデータでRを試してたときから気づいてたよ。有意だったら因果関係あり、有意じゃなかったら因果関係なしみたいに、白黒はっきりしてないんだなって。でも、どんな集団が解析対象なのかや、ストーマ保有者をどんな集団と比べているのか、足りない交絡因子はなにかなど、どの部分の詰めが甘いのかがだんだん見えてきた」
+::: 
+
+::: voice-father
+お父さん「それはよかった。最近はデータ駆動型で結論まで行けそうな空気があるから、なおさらね。AIもそうだ。でも、どんな真実を知りたいのか言葉にしないと、正しい解析も存在しない」
+::: 
+
+::: voice-daughter
+私「この場合の正しさってなんだろう？計算があってるっていう意味じゃないよね」 
+::: 
+
+::: voice-father
+お父さん「電卓やそろばんの時代はそれでよかったけど今は違う。どんな情報処理系も汎用化されると、与えた目的を目的関数として解釈して解を求める。だから目的が精密になればなるほど答えも欲しいものに近づく。それは合目的的な正しさなんだ」 
+::: 
+
+::: voice-daughter
+私「なるほどね。目的は因果の問いのことだよね」 
+::: 
+
+::: voice-father
+お父さん「そうだね、問いへの答えとその確からしさを知ることだね。臨床試験のように研究仮説を立てて、それにあわせて研究計画書を書けば、精密な答えが返ってくるはず。ランダム誤差とバイアスが研究で扱われるのは、答えの不確実性にもまた興味があるからじゃない？」
+::: 
+
+::: voice-daughter
+私「その発想、統計っぽい。信頼区間や標準誤差をつけなきゃってのは言われなくても知ってたよ。そっか、でも、調整がうまくいったかどうかにも関係するね、それ。的の中心が決まらないと、矢の狙いが偏らないように調整できない。逆算すると、研究仮説の形で真値を固めておかないと、オッズ比が正しいかどうか判断できないんだ」
+::: 
+
+::: voice-father
+お父さん「そう。研究仮説や因果モデルは、調査票やデータよりずっと抽象的に見えるよね。どちらかというと確率モデル寄りに見える。だけどこれは医療者の疑問そのもの。治療効果や予防方法に関する仮説は、自然の摂理ではなく、**よりよい医療技術はどれか**という人間側の問いなんだ」
+::: 
+
+::: voice-daughter
+私「...じゃあ、真値ってよく聞く言葉だけどあんまりわかってなかった。それって自然のどこかに転がっている数字じゃないんだね」
+::: 
+::::::::::::::::::::::::::::::::: 
+
+### This concludes the Truth series. If you’d like to keep reading over your next cup of coffee, further episodes are waiting:
+
+- [Three-Variable DAGs: The Smallest Building Blocks of Causal Structure](causal-inference-1.html)
+
+### To clarify which conceptual layers the issues in the series belong to, it may help to revisit the previous series:
+
+**1. Study Design — 研究の出発点**
+
+- [A Story of Coffee Chat and Research Hypothesis](study-design-1.html)
+- [Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes](study-design-2.html)
+- [Outcomes: The Bridge from Data Collection to Analysis](study-design-3.html)
+- [A First Step into Survival and Competing Risks Analysis with R](study-design-4.html)
+- [When Bias Creeps In: Selection, Information, and Confounding in Clinical Surveys](study-design-5.html)
+
+**2. Glossary — 統計学のことば**
+
+- [Statistical Terms in Plain Language](glossary.html)
+
+**3. Frequentist Thinking — 統計学の思考**
+
+- [Reading a Paper over a Cup of Coffee](frequentist-1.html)
+- [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
+- [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
+
+**4. Frequentist Experiments — 統計学の実証**
+
+- [R Demonstration of Bias in Kaplan-Meier Under Competing Risks](frequentist-4.html)
+- [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
+- [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
+
+**5. Effects and Time — 効果は時間とともに**
+
+- [Silent Confusions Hidden in Percentages](effects-1.html)
+- [Who Is This Percentage About? Target Populations and Attributable Fractions](effects-2.html)
+- [When Odds Ratios Approximate Risk Ratios—and When They Fail](effects-3.html)
+- [From Risk and Rate to Survival and Hazard](effects-4.html)
+- [A First Note on Cox Regression](effects-5.html)
+- [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
+
+**6. Adjusting for Bias — 回帰モデリングの風景**
+
+- [Understanding Collapsibility of Effect Measures: Marginal vs Stratified](logistic-regression-1.html)
+- [From Risk to Logistic Regression](logistic-regression-2.html)
+- [Logit: How a Transformation Shapes an Effect](logistic-regression-3.html)
+- [Where My Logistic Regression Went Wrong](logistic-regression-4.html)
+- [Why Logistic Regression Fails in Small Samples](logistic-regression-5.html)
+- [Understanding Confounding in Effect Measures: Marginal vs Stratified](logistic-regression-6.html)
+
+**7. Truth — 真実**
+
+- [What Data Cannot Tell Us](truth-1.html)
+- [What Could Have Happened](truth-2.html)
+- [What Structures Structure](truth-3.html)
+- [What Is It That You Want to Know?](truth-4.html)
