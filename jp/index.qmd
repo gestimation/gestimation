@@ -50,7 +50,7 @@ listing:
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="こんな会話をします"}
 - **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
 - **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
@@ -73,7 +73,7 @@ listing:
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="会話の内容とRスクリプト"}
 - **Reading a Paper over a Cup of Coffee**
 　はじめて論文を読んだとき、統計の用語が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。
 - **P-Value Explanations That Seem Plausible at First Glance**
@@ -92,7 +92,7 @@ listing:
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="会話の内容とRスクリプト"}
 - **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
 　頻度論が導く法則は、ただの抽象ではなくシミュレーションで確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
 - **Understanding Confidence Intervals via Hypothetical Replications in R**
@@ -114,7 +114,7 @@ listing:
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="会話の内容とRスクリプト"}
 - **Silent Confusions Hidden in Percentages**
 　パーセントは直感的な疫学指標ですが、それが数字が独り歩きする理由だったとは。言葉のずれを父は語ります。
 - **Who Is This Percentage About Target Populations and Attributable Fractions**
@@ -142,7 +142,7 @@ listing:
 - [Why Logistic Regression Fails in Small Samples]
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじとRスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="会話の内容とRスクリプト"}
 - **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
 　層別解析・ロジスティック回帰とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
 - **From Risk to Logistic Regression**
@@ -176,7 +176,7 @@ listing:
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 - [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference]
 
-::: {.callout-note appearance="simple" collapse="true" title="あらすじ"}
+::: {.callout-note appearance="simple" collapse="true" title="こんな会話をします"}
 - **Three-Variable DAGs: The Smallest Building Blocks of Causal Structure**
 　DAG、共通原因、合流点、中間因子―因果の語彙を、いちばん小さな図から覚えます。「もし...だったら？」を描くために。
 - **A Subtle Distinction between Common Causes and Confounders**
