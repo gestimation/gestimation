@@ -24,21 +24,21 @@ listing:
 
 # コーヒーを淹れて、言葉を交わす。湯気とともに時は流れ、統計の世界が少しずつ広がっていく。
 
-このサイトは、統計家の父と医師の娘が交わす小さなコーヒーチャットから生まれました。研究で生じる疑問、論文でひっかかった数字、そしてときおり見える研究者たちの姿勢—大切なはずのことは、生活・臨床・因果・データ・認識・言語という複数のレイヤーにひっそりと散らばっています。コーヒーを交えた軽いやりとりは、そのいくつかを丁寧に拾っていきます。まるでその全体性（totality）を壊さぬよう、ふたりの研究の歩みをひとつの物語として紡ぐように。
+このサイトは、医師の娘と統計家の父が交わす小さなコーヒーチャットから生まれました。研究で生じる疑問、論文でひっかかった数字、そしてときおり見える研究者たちの姿勢—大切なはずのことは、生活・臨床・因果・データ・認識・言語という複数のレイヤーにひっそりと散らばっています。コーヒーを交えた軽いやりとりは、そのいくつかを丁寧に拾っていきます。まるでその全体性（totality）を壊さぬよう、ふたりの研究の歩みをひとつの物語として紡ぐように。
 
-生存曲線、p値の誤解から、因果と統計の階層的な関係まで。螺旋のように伏線を潜ませつつ、冬のマグカップのように温度のある言葉で語ります。数式や医療の話題も出てきますが、必要なところだけ拾ってくだされば大丈夫です。物語はRコードで再現可能。ふたりの対話とともに変化する世界観を、どうぞゆっくりと味わってください。
+冬のマグカップのように温度のある言葉で、螺旋のように伏線を潜ませつつ語ります。数式や医療の話題も出てきますが、必要なところだけ拾ってくだされば大丈夫です。物語はRコードで再現可能。研究が完成するその朝までの道程を辿ると、散らばっていた意味が、どこかでつながります。
 
 ------------------------------------------------------------------------
 
 ## はじめての方へ
 
-この物語は、研究仮説→統計→因果→言葉という順で、ふたりの会話に沿って、螺旋状に進みます。迷った方へのおすすめエピソードはこちら。
+この物語は、研究仮説→統計→因果→言語という順で、ある臨床研究を描いています。迷った方へのおすすめエピソードはこちら。
 
 - [会話のはじまりと研究仮説（Study Design I）](study-design-1.html)
 - [臨床試験とp値（Frequentist Thinking I）](frequentist-1.html)
 - [研究の中の因果推論（Adjusting for Bias I）](logistic-regression-1.html)
 
-どのエピソードも独立しているので、興味の向くレイヤーを選んでも構いません。全体を通して読むと、散らばっていた意味どうしがつながり、どこかで別の世界が見えてきます。
+どのエピソードも独立しているので、興味の向くレイヤーを選んでも構いません。
 
 ------------------------------------------------------------------------
 
@@ -56,7 +56,7 @@ listing:
 
 - [study-design.R](../from-coffee-chat-to-r/study-design.R)
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードで扱うこと"}
 - **A Story of Coffee Chat and Research Hypothesis**
 　研究の最初のつまずきは、データではなく問いの立て方にあります。PICO/PECO、比較、一般化―「何を答えたいのか」を一度言葉にしてみます。
 - **Data Have Types: A Coffee-Chat Guide to R Functions for Common Outcomes**
@@ -79,7 +79,7 @@ listing:
 - [P-Value Explanations That Seem Plausible at First Glance](frequentist-2.html)
 - [Beyond 0.05: Interpreting P-Values in a Clinical Trial](frequentist-3.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容 & Rスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードの内容 & Rスクリプト"}
 - **Reading a Paper over a Cup of Coffee**
 　はじめて論文を読んだとき、統計の用語が意味不明だと思いませんでしたか？同じ気持ちを抱いた娘は父に質問します。
 - **P-Value Explanations That Seem Plausible at First Glance**
@@ -98,7 +98,7 @@ listing:
 - [Understanding Confidence Intervals via Hypothetical Replications in R](frequentist-5.html)
 - [Alpha, Beta, and Power: The Fundamental Probabilities Behind Sample Size](frequentist-6.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容 & Rスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードの内容 & Rスクリプト"}
 - **R Demonstration of Bias in Kaplan-Meier Under Competing Risks**
 　頻度論が導く法則は、ただの抽象ではなくシミュレーションで確認することができます。Rに不慣れな方も、スクリプトを流すだけですので結果を再現してみてください。
 - **Understanding Confidence Intervals via Hypothetical Replications in R**
@@ -120,7 +120,7 @@ listing:
 - [A First Note on Cox Regression](effects-5.html)
 - [After Cox Regression: A Case Study and R Demonstration](effects-6.html)
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容 & Rスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードの内容 & Rスクリプト"}
 - **Silent Confusions Hidden in Percentages**
 　パーセントは直感的な疫学指標ですが、それが数字が独り歩きする理由だったとは。言葉のずれを父は語ります。
 - **Who Is This Percentage About Target Populations and Attributable Fractions**
@@ -148,7 +148,7 @@ listing:
 - [Why Logistic Regression Fails in Small Samples]
 - [Understanding Confounding in Effect Measures: Marginal vs Stratified]
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容 & Rスクリプト"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードの内容 & Rスクリプト"}
 - **Understanding Collapsibility of Effect Measures: Marginal vs Stratified**
 　層別解析・ロジスティック回帰とSimpsonのパラドックスの関係は？がん臨床試験で用いられる層別Cox回帰にもつながるエピソード。
 - **From Risk to Logistic Regression**
@@ -182,7 +182,7 @@ listing:
 - [Backdoor Paths, Block, and d-Separation: A Clue for Adjusting for Bias]
 - [Volatility, Uncertainty, Complexity, and Ambiguity in Causal Inference]
 
-::: {.callout-note appearance="simple" collapse="true" title="チャットの内容"}
+::: {.callout-note appearance="simple" collapse="true" title="このエピソードで扱うこと"}
 - **Three-Variable DAGs: The Smallest Building Blocks of Causal Structure**
 　DAG、共通原因、合流点、中間因子―因果の語彙を、いちばん小さな図から覚えます。「もし...だったら？」を描くために。
 - **A Subtle Distinction between Common Causes and Confounders**

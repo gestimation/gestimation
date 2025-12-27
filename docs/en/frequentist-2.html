@@ -556,18 +556,20 @@ R code for coxph() and outout
 <pre><code>Call:
 coxph(formula = Surv(time_os, status_os) ~ stoma, data = dat)
 
-  n= 200, number of events= 136 
+  n= 200, number of events= 142 
 
-                  coef exp(coef) se(coef)     z Pr(&gt;|z|)
-stomaWITH STOMA 0.0862    1.0900   0.1773 0.486    0.627
+                  coef exp(coef) se(coef)     z Pr(&gt;|z|)  
+stomaWITH STOMA 0.3640    1.4390   0.1723 2.113   0.0346 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
                 exp(coef) exp(-coef) lower .95 upper .95
-stomaWITH STOMA      1.09     0.9174    0.7701     1.543
+stomaWITH STOMA     1.439     0.6949     1.027     2.017
 
-Concordance= 0.509  (se = 0.024 )
-Likelihood ratio test= 0.23  on 1 df,   p=0.6
-Wald test            = 0.24  on 1 df,   p=0.6
-Score (logrank) test = 0.24  on 1 df,   p=0.6</code></pre>
+Concordance= 0.558  (se = 0.023 )
+Likelihood ratio test= 4.35  on 1 df,   p=0.04
+Wald test            = 4.46  on 1 df,   p=0.03
+Score (logrank) test = 4.51  on 1 df,   p=0.03</code></pre>
 </div>
 </div>
 </div>
